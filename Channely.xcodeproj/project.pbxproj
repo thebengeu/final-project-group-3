@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B66FDC8716EF88A30042A36C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,6 +82,7 @@
 				B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */,
 				B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */,
 				B66FDC8C16EF88A30042A36C /* CoreData.framework in Frameworks */,
+				37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +107,7 @@
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
 				B66FDC8316EF88A30042A36C /* Products */,
+				97663AA3EF11435B88CF1377 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +128,7 @@
 				B66FDC8916EF88A30042A36C /* CoreGraphics.framework */,
 				B66FDC8B16EF88A30042A36C /* CoreData.framework */,
 				B66FDCB416EF88A40042A36C /* SenTestingKit.framework */,
+				2D156770FCBB4A9BB0AFBE5B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 				B66FDC7E16EF88A30042A36C /* Sources */,
 				B66FDC7F16EF88A30042A36C /* Frameworks */,
 				B66FDC8016EF88A30042A36C /* Resources */,
+				1EDEA24BD5C94DE2B27B1EE1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,6 +276,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1EDEA24BD5C94DE2B27B1EE1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		B66FDCB116EF88A40042A36C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -411,6 +432,7 @@
 		};
 		B66FDCC716EF88A40042A36C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97663AA3EF11435B88CF1377 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Channely/Channely-Prefix.pch";
@@ -422,6 +444,7 @@
 		};
 		B66FDCC816EF88A40042A36C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97663AA3EF11435B88CF1377 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Channely/Channely-Prefix.pch";
@@ -484,6 +507,7 @@
 				B66FDCC816EF88A40042A36C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B66FDCC916EF88A40042A36C /* Build configuration list for PBXNativeTarget "ChannelyTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +516,7 @@
 				B66FDCCB16EF88A40042A36C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
