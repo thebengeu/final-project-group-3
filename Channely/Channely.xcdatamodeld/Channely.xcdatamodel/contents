@@ -3,25 +3,35 @@
     <entity name="Event">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
+        <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="events" inverseEntity="Timeline" syncable="YES"/>
         <userInfo/>
     </entity>
-    <entity name="Post" syncable="YES"/>
-    <entity name="Timeline" syncable="YES">
+    <entity name="Post" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" syncable="YES"/>
-        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="posts" inverseEntity="Timeline" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES"/>
+    <entity name="Timeline" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="timeline" inverseEntity="Event" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="timelines" inverseEntity="User" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="timeline" inverseEntity="Post" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="timelines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timeline" inverseName="owner" inverseEntity="Timeline" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Event" positionX="279" positionY="5" width="128" height="103"/>
-        <element name="Timeline" positionX="18" positionY="72" width="128" height="118"/>
-        <element name="User" positionX="243" positionY="216" width="128" height="45"/>
-        <element name="Post" positionX="144" positionY="306" width="128" height="43"/>
+        <element name="Event" positionX="279" positionY="5" width="128" height="133"/>
+        <element name="Timeline" positionX="18" positionY="72" width="128" height="133"/>
+        <element name="User" positionX="243" positionY="216" width="128" height="73"/>
+        <element name="Post" positionX="144" positionY="306" width="128" height="88"/>
     </elements>
 </model>
