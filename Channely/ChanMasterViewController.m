@@ -35,18 +35,23 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (ChanDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    RKManagedObjectStore *managedObjectStore = [RKManagedObjectStore defaultStore];
-    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"Timeline" inManagedObjectStore:managedObjectStore];
-    [entityMapping addAttributeMappingsFromDictionary:@{
-     @"name":       @"name",
-     @"created_at": @"createdAt"}];
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(loadTimelines) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
     
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping pathPattern:@"/timelines" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1:3003/timelines"]];
-    RKManagedObjectRequestOperation *managedObjectRequestOperation = [[RKManagedObjectRequestOperation alloc] initWithRequest:request responseDescriptors:@[ responseDescriptor ]];
-    managedObjectRequestOperation.managedObjectContext = self.managedObjectContext;
-    [[NSOperationQueue currentQueue] addOperation:managedObjectRequestOperation];
+    [self loadTimelines];
+    [self.refreshControl beginRefreshing];
+}
+
+- (void)loadTimelines
+{
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.refreshControl endRefreshing];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self.refreshControl endRefreshing];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

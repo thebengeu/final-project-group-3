@@ -32,6 +32,24 @@
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     
+    // Configure the object manager
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://127.0.0.1:3003"]];
+    objectManager.managedObjectStore = managedObjectStore;
+    
+    [RKObjectManager setSharedManager:objectManager];
+    
+    RKEntityMapping *entityMapping = [RKEntityMapping mappingForEntityForName:@"Timeline" inManagedObjectStore:managedObjectStore];
+    [entityMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    entityMapping.identificationAttributes = @[ @"id" ];
+    
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping pathPattern:@"/timelines" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
