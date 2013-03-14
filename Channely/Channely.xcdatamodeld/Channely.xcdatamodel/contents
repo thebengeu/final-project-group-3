@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C3006" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
+    <entity name="Event" representedClassName="ChanEvent">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,12 +11,12 @@
         <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="events" inverseEntity="Timeline" syncable="YES"/>
         <userInfo/>
     </entity>
-    <entity name="Post" syncable="YES">
+    <entity name="Post" representedClassName="ChanPost" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="posts" inverseEntity="Timeline" syncable="YES"/>
     </entity>
-    <entity name="Timeline" syncable="YES">
+    <entity name="Timeline" representedClassName="ChanTimeline" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,7 +24,7 @@
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="timelines" inverseEntity="User" syncable="YES"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="timeline" inverseEntity="Post" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES">
+    <entity name="User" representedClassName="ChanUser" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="timelines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timeline" inverseName="owner" inverseEntity="Timeline" syncable="YES"/>
     </entity>
