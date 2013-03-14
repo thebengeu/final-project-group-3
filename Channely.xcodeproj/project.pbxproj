@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
+		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
+		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -43,6 +45,11 @@
 
 /* Begin PBXFileReference section */
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkedVideoCapture.h; sourceTree = "<group>"; };
+		4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkedVideoCapture.m; sourceTree = "<group>"; };
+		4A265B6F16F2097300B91564 /* VideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapture.h; sourceTree = "<group>"; };
+		4A265B7016F2097300B91564 /* VideoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureDelegate.h; sourceTree = "<group>"; };
+		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -78,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */,
 				B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */,
 				B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */,
 				B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +108,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A265B6716F207F300B91564 /* Video Capture */ = {
+			isa = PBXGroup;
+			children = (
+				4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */,
+				4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */,
+				4A265B6F16F2097300B91564 /* VideoCapture.h */,
+				4A265B7016F2097300B91564 /* VideoCaptureDelegate.h */,
+			);
+			name = "Video Capture";
+			sourceTree = "<group>";
+		};
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +142,7 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A33C83B16F207AD009BA571 /* AVFoundation.framework */,
 				B66FDC8516EF88A30042A36C /* UIKit.framework */,
 				B66FDC8716EF88A30042A36C /* Foundation.framework */,
 				B66FDC8916EF88A30042A36C /* CoreGraphics.framework */,
@@ -136,6 +156,7 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				4A265B6716F207F300B91564 /* Video Capture */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
 				B66FDC9F16EF88A40042A36C /* MainStoryboard_iPhone.storyboard */,
@@ -315,6 +336,7 @@
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
 				B66FDCAA16EF88A40042A36C /* ChanMasterViewController.m in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
+				4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
