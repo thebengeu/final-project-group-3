@@ -10,6 +10,8 @@
 
 #import "ChanDetailViewController.h"
 
+#import "ChanTimelineStore.h"
+
 @interface ChanMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -45,12 +47,12 @@
 
 - (void)loadTimelines
 {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[ChanTimelineStore sharedStore] getAllTimelinesWithCompletion:^(NSArray *timelines, NSError *error) {
         [self.refreshControl endRefreshing];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [self.refreshControl endRefreshing];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
+        if (error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An Error Has Occurred" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        }
     }];
 }
 

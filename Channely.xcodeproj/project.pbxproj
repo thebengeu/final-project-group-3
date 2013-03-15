@@ -14,6 +14,7 @@
 		B609967916F241C60033B29F /* ChanTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967816F241C60033B29F /* ChanTimeline.m */; };
 		B609967C16F241C60033B29F /* ChanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967B16F241C60033B29F /* ChanUser.m */; };
 		B609967F16F241C60033B29F /* ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967E16F241C60033B29F /* ChanEvent.m */; };
+		B609968416F2E02F0033B29F /* ChanTimelineStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanTimelineStore.m */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -63,6 +64,8 @@
 		B609967B16F241C60033B29F /* ChanUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUser.m; sourceTree = "<group>"; };
 		B609967D16F241C60033B29F /* ChanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEvent.h; sourceTree = "<group>"; };
 		B609967E16F241C60033B29F /* ChanEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEvent.m; sourceTree = "<group>"; };
+		B609968216F2E02E0033B29F /* ChanTimelineStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTimelineStore.h; sourceTree = "<group>"; };
+		B609968316F2E02F0033B29F /* ChanTimelineStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTimelineStore.m; sourceTree = "<group>"; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B66FDC8716EF88A30042A36C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +190,8 @@
 				B609967416F241C50033B29F /* ChanPost.h */,
 				B609967516F241C60033B29F /* ChanPost.m */,
 				B66FDC8E16EF88A30042A36C /* Supporting Files */,
+				B609968216F2E02E0033B29F /* ChanTimelineStore.h */,
+				B609968316F2E02F0033B29F /* ChanTimelineStore.m */,
 			);
 			path = Channely;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				B609967916F241C60033B29F /* ChanTimeline.m in Sources */,
 				B609967C16F241C60033B29F /* ChanUser.m in Sources */,
 				B609967F16F241C60033B29F /* ChanEvent.m in Sources */,
+				B609968416F2E02F0033B29F /* ChanTimelineStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
