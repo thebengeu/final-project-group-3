@@ -13,6 +13,9 @@
 
 @implementation ChanAppDelegate
 
+NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
+//NSString *const _SERVER_ADDR = @"http://127.0.0.1:3003";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSError *error = nil;
@@ -33,7 +36,7 @@
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     
     // Configure the object manager
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://127.0.0.1:3003"]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:_SERVER_ADDR]];
     objectManager.managedObjectStore = managedObjectStore;
     
     [RKObjectManager setSharedManager:objectManager];
