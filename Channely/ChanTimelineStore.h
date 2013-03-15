@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class ChanTimeline;
+
 @interface ChanTimelineStore : NSObject
 
 + (ChanTimelineStore *)sharedStore;
 - (void)getAllTimelinesWithCompletion:(void (^)(NSArray *timelines, NSError *error))block;
+- (void)addTimeline:(ChanTimeline *)timeline withCompletion:(void (^)(ChanTimeline *timeline, NSError *error))block;
 
 @end

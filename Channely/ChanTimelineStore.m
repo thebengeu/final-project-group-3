@@ -8,6 +8,8 @@
 
 #import "ChanTimelineStore.h"
 
+#import "ChanTimeline.h"
+
 @implementation ChanTimelineStore
 
 + (ChanTimelineStore *)sharedStore
@@ -48,6 +50,15 @@
 {
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block([mappingResult array], nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        block(nil, error);
+    }];
+}
+
+- (void)addTimeline:(ChanTimeline *)timeline withCompletion:(void (^)(ChanTimeline *timeline, NSError *error))block
+{
+    [[RKObjectManager sharedManager] postObject:timeline path:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        block(timeline, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
     }];
