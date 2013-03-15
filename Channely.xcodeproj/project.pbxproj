@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7216F301B80017FECB /* NetAssociation.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7416F301B80017FECB /* NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
 		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
@@ -48,6 +52,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9C9E7016F301B80017FECB /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
+		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
+		0A9C9E7216F301B80017FECB /* NetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
+		0A9C9E7316F301B80017FECB /* NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClock.h; sourceTree = "<group>"; };
+		0A9C9E7416F301B80017FECB /* NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClock.m; sourceTree = "<group>"; };
+		0A9C9E7516F301B80017FECB /* NSDate+NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NetworkClock.h"; sourceTree = "<group>"; };
+		0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
+		0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkedVideoCapture.h; sourceTree = "<group>"; };
 		4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkedVideoCapture.m; sourceTree = "<group>"; };
@@ -120,6 +133,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A9C9E6F16F301A50017FECB /* IosNtp */ = {
+			isa = PBXGroup;
+			children = (
+				0A9C9E7016F301B80017FECB /* ios-ntp.h */,
+				0A9C9E7116F301B80017FECB /* NetAssociation.h */,
+				0A9C9E7216F301B80017FECB /* NetAssociation.m */,
+				0A9C9E7316F301B80017FECB /* NetworkClock.h */,
+				0A9C9E7416F301B80017FECB /* NetworkClock.m */,
+				0A9C9E7516F301B80017FECB /* NSDate+NetworkClock.h */,
+				0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */,
+				0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */,
+			);
+			name = IosNtp;
+			sourceTree = "<group>";
+		};
 		4A265B6716F207F300B91564 /* Video Capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +166,7 @@
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
 				B66FDC8316EF88A30042A36C /* Products */,
+				0A9C9E8D16F304960017FECB /* ntp.hosts */,
 				97663AA3EF11435B88CF1377 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -168,6 +197,7 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				4A265B6716F207F300B91564 /* Video Capture */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
@@ -303,6 +333,7 @@
 				B66FDC9E16EF88A40042A36C /* Default-568h@2x.png in Resources */,
 				B66FDCA116EF88A40042A36C /* MainStoryboard_iPhone.storyboard in Resources */,
 				B66FDCA416EF88A40042A36C /* MainStoryboard_iPad.storyboard in Resources */,
+				0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +392,9 @@
 				B609967916F241C60033B29F /* ChanTimeline.m in Sources */,
 				B609967C16F241C60033B29F /* ChanUser.m in Sources */,
 				B609967F16F241C60033B29F /* ChanEvent.m in Sources */,
+				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
+				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
+				0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

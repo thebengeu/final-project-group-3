@@ -10,6 +10,7 @@
 #import "ChanAppDelegate.h"
 
 #import "ChanMasterViewController.h"
+#import "ios-ntp.h"
 
 @implementation ChanAppDelegate
 
@@ -67,6 +68,10 @@ NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
         ChanMasterViewController *controller = (ChanMasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
     }
+    
+    //  Start NTP
+    [NetworkClock sharedNetworkClock];
+    
     return YES;
 }
 
