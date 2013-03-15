@@ -19,6 +19,31 @@
     return sharedStore;
 }
 
+- (id)init
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
+    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Timeline" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [responseMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    responseMapping.identificationAttributes = @[ @"id" ];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:@"/timelines" keyPath:nil statusCodes:statusCodes];
+    
+    RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
+    [requestMapping addAttributeMappingsFromDictionary:@{
+     @"id":         @"_id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanTimeline class] rootKeyPath:nil];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+    
+    return self;
+}
+
 - (void)getAllTimelinesWithCompletion:(void (^)(NSArray *timelines, NSError *error))block
 {
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
