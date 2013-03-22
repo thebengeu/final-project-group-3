@@ -12,6 +12,8 @@
 
 @implementation ChanTimelineStore
 
+NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
+
 + (ChanTimelineStore *)sharedStore
 {
     static ChanTimelineStore *sharedStore = nil;
@@ -31,7 +33,7 @@
      @"name":       @"name",
      @"createdAt":  @"createdAt"}];
     responseMapping.identificationAttributes = @[ @"id" ];
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:@"/timelines" keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:_API_ENDPOINT_CHANNEL keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
@@ -48,7 +50,7 @@
 
 - (void)getAllTimelinesWithCompletion:(void (^)(NSArray *timelines, NSError *error))block
 {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] getObjectsAtPath:_API_ENDPOINT_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
@@ -57,7 +59,7 @@
 
 - (void)addTimeline:(ChanTimeline *)timeline withCompletion:(void (^)(ChanTimeline *timeline, NSError *error))block
 {
-    [[RKObjectManager sharedManager] postObject:timeline path:@"/timelines" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:timeline path:_API_ENDPOINT_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block(timeline, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);

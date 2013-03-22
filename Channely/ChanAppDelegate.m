@@ -14,7 +14,8 @@
 
 @implementation ChanAppDelegate
 
-NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
+NSString *const _SERVER_ADDR = @"http://upthetreehouse.com:10000";
+//NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
 //NSString *const _SERVER_ADDR = @"http://127.0.0.1:3003";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
