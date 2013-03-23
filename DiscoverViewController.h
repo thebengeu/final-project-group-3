@@ -7,7 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface DiscoverViewController : UIViewController
+@interface DiscoverViewController : UIViewController <CLLocationManagerDelegate>
+
+@property CLLocationManager *locationManager;
+
+@property double lat;
+
+@property double lon;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet UITableView *channelTable;
+
+@property NSMutableArray* channelList;
+
+- (void) initMap;
+
+- (void) populateMapWithEventMarker;
+
+- (void) populateTableWithChannel;
+
+- (void) scrollMapToLocation: (CGFloat)lat : (CGFloat)lon;
+
+- (void) scrollTableToEvent: (NSIndexPath*)index;
 
 @end

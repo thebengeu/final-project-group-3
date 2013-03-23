@@ -14,8 +14,8 @@
 
 @implementation ChanAppDelegate
 
-NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
-//NSString *const _SERVER_ADDR = @"http://127.0.0.1:3003";
+//NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
+NSString *const _SERVER_ADDR = @"http://127.0.0.1:3003";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -45,19 +45,7 @@ NSString *const _SERVER_ADDR = @"http://192.168.0.40:3003";
     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        ChanMasterViewController *controller = (ChanMasterViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
-    } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        ChanMasterViewController *controller = (ChanMasterViewController *)navigationController.topViewController;
-        controller.managedObjectContext = managedObjectStore.mainQueueManagedObjectContext;
-    }
+
     
     //  Start NTP
     [NetworkClock sharedNetworkClock];
