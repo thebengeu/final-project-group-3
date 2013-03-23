@@ -57,6 +57,7 @@
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
         <element name="Event" positionX="241" positionY="5" width="128" height="163"/>
@@ -69,6 +70,6 @@
         <element name="Timeline" positionX="18" positionY="72" width="128" height="133"/>
         <element name="TwitterPost" positionX="439" positionY="531" width="128" height="60"/>
         <element name="User" positionX="394" positionY="116" width="128" height="90"/>
-        <element name="VideoPost" positionX="439" positionY="342" width="128" height="90"/>
+        <element name="VideoPost" positionX="439" positionY="342" width="128" height="105"/>
     </elements>
 </model>
