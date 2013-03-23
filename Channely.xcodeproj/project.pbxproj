@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9638B116FC290C0063CFAD /* ChannelUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */; };
+		0A99937B16FD4A3100709D28 /* ChannelUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */; };
+		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
+		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
 		0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7216F301B80017FECB /* NetAssociation.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7416F301B80017FECB /* NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
+		0ABB364D16FC19BC00436E06 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB364C16FC19BC00436E06 /* DiscoverViewController.m */; };
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
 		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
@@ -32,7 +37,6 @@
 		B66FDCA116EF88A40042A36C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66FDC9F16EF88A40042A36C /* MainStoryboard_iPhone.storyboard */; };
 		B66FDCA416EF88A40042A36C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */; };
 		B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCA516EF88A40042A36C /* Channely.xcdatamodeld */; };
-		B66FDCAA16EF88A40042A36C /* ChanMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */; };
 		B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */; };
 		B66FDCB516EF88A40042A36C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDCB416EF88A40042A36C /* SenTestingKit.framework */; };
 		B66FDCB616EF88A40042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
@@ -53,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9638AF16FC290C0063CFAD /* ChannelUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelUITableViewCell.h; sourceTree = "<group>"; };
+		0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelUITableViewCell.m; sourceTree = "<group>"; };
+		0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelUITableViewController.h; sourceTree = "<group>"; };
+		0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelUITableViewController.m; sourceTree = "<group>"; };
+		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0A9C9E7016F301B80017FECB /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
 		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
 		0A9C9E7216F301B80017FECB /* NetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
@@ -62,6 +71,9 @@
 		0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
 		0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
+		0ABB364816FC16A500436E06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0ABB364B16FC19BC00436E06 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		0ABB364C16FC19BC00436E06 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkedVideoCapture.h; sourceTree = "<group>"; };
 		4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkedVideoCapture.m; sourceTree = "<group>"; };
@@ -98,8 +110,8 @@
 		B66FDCA616EF88A40042A36C /* Channely.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Channely.xcdatamodel; sourceTree = "<group>"; };
 		B66FDCA816EF88A40042A36C /* ChanMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanMasterViewController.h; sourceTree = "<group>"; };
 		B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChanMasterViewController.m; sourceTree = "<group>"; };
-		B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanDetailViewController.h; sourceTree = "<group>"; };
-		B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChanDetailViewController.m; sourceTree = "<group>"; };
+		B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChanDetailViewController.h; path = Channely/ChanDetailViewController.h; sourceTree = "<group>"; };
+		B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ChanDetailViewController.m; path = Channely/ChanDetailViewController.m; sourceTree = "<group>"; };
 		B66FDCB316EF88A40042A36C /* ChannelyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChannelyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDCB416EF88A40042A36C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		B66FDCBD16EF88A40042A36C /* ChannelyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChannelyTests-Info.plist"; sourceTree = "<group>"; };
@@ -113,6 +125,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */,
+				0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */,
 				4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */,
 				B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */,
 				B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */,
@@ -151,6 +165,32 @@
 			name = IosNtp;
 			sourceTree = "<group>";
 		};
+		0ABB364716FC13BE00436E06 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				B66FDCA816EF88A40042A36C /* ChanMasterViewController.h */,
+				B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */,
+			);
+			name = Archive;
+			sourceTree = "<group>";
+		};
+		0ABB364A16FC19A200436E06 /* Ux */ = {
+			isa = PBXGroup;
+			children = (
+				B66FDC9F16EF88A40042A36C /* MainStoryboard_iPhone.storyboard */,
+				B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */,
+				0A9638AF16FC290C0063CFAD /* ChannelUITableViewCell.h */,
+				0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */,
+				B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */,
+				B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */,
+				0ABB364B16FC19BC00436E06 /* DiscoverViewController.h */,
+				0ABB364C16FC19BC00436E06 /* DiscoverViewController.m */,
+				0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */,
+				0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */,
+			);
+			name = Ux;
+			sourceTree = "<group>";
+		};
 		4A265B6716F207F300B91564 /* Video Capture */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +205,7 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
+				0ABB364A16FC19A200436E06 /* Ux */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -186,6 +227,8 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */,
+				0ABB364816FC16A500436E06 /* MapKit.framework */,
 				4A33C83B16F207AD009BA571 /* AVFoundation.framework */,
 				B66FDC8516EF88A30042A36C /* UIKit.framework */,
 				B66FDC8716EF88A30042A36C /* Foundation.framework */,
@@ -200,16 +243,11 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				4A265B6716F207F300B91564 /* Video Capture */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
-				B66FDC9F16EF88A40042A36C /* MainStoryboard_iPhone.storyboard */,
-				B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */,
-				B66FDCA816EF88A40042A36C /* ChanMasterViewController.h */,
-				B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */,
-				B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */,
-				B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */,
 				B66FDCA516EF88A40042A36C /* Channely.xcdatamodeld */,
 				B609967D16F241C60033B29F /* ChanEvent.h */,
 				B609967E16F241C60033B29F /* ChanEvent.m */,
@@ -390,7 +428,6 @@
 				B66FDC9416EF88A30042A36C /* main.m in Sources */,
 				B66FDC9816EF88A30042A36C /* ChanAppDelegate.m in Sources */,
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
-				B66FDCAA16EF88A40042A36C /* ChanMasterViewController.m in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
 				4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */,
 				B609967616F241C60033B29F /* ChanPost.m in Sources */,
@@ -401,6 +438,9 @@
 				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
 				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
 				0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */,
+				0ABB364D16FC19BC00436E06 /* DiscoverViewController.m in Sources */,
+				0A9638B116FC290C0063CFAD /* ChannelUITableViewCell.m in Sources */,
+				0A99937B16FD4A3100709D28 /* ChannelUITableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +477,7 @@
 				B66FDCA016EF88A40042A36C /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
+			path = Channely;
 			sourceTree = "<group>";
 		};
 		B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */ = {
@@ -445,6 +486,7 @@
 				B66FDCA316EF88A40042A36C /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			path = Channely;
 			sourceTree = "<group>";
 		};
 		B66FDCBE16EF88A40042A36C /* InfoPlist.strings */ = {
