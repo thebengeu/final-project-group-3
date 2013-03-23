@@ -11,6 +11,14 @@
         <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="events" inverseEntity="Timeline" syncable="YES"/>
         <userInfo/>
     </entity>
+    <entity name="HLSChunk" syncable="YES"/>
+    <entity name="HLSRecording" syncable="YES">
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="playlistUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HLSChunk" syncable="YES"/>
+    </entity>
     <entity name="ImagePost" parentEntity="Post" syncable="YES">
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -55,5 +63,7 @@
         <element name="TwitterPost" positionX="439" positionY="531" width="128" height="60"/>
         <element name="User" positionX="394" positionY="116" width="128" height="90"/>
         <element name="VideoPost" positionX="439" positionY="342" width="128" height="90"/>
+        <element name="HLSRecording" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="HLSChunk" positionX="160" positionY="192" width="128" height="45"/>
     </elements>
 </model>
