@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChanDetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface ChanDetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *discoverSearchToggle;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+-(IBAction)changeSeg;
+
 @end
