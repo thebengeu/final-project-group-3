@@ -10,12 +10,14 @@
 
 @interface ChannelUITableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *enterEventButton;
+@property (weak, nonatomic) IBOutlet UIButton *channelEnterButton;
 
-@property (weak, nonatomic) IBOutlet UITextView *description;
+@property (weak, nonatomic) IBOutlet UITextView *channelNameTextView;
 
-@property (weak, nonatomic) IBOutlet UITextView *channelName;
+@property (weak, nonatomic) IBOutlet UITextView *eventNameTextView;
 
-@property (weak, nonatomic) IBOutlet UITextView *eventName;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+@property (nonatomic) NSNumber *channelId;
 
 @end

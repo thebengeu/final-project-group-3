@@ -7,6 +7,7 @@
 //
 
 #import "ChannelUITableViewController.h"
+#import "ChannelUITableViewCell.h"
 
 @interface ChannelUITableViewController ()
 
@@ -14,13 +15,21 @@
 
 @implementation ChannelUITableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize channelList = _channelList;
+
+- (id)initWithStyle:(UITableViewStyle)style :(NSMutableArray*)channelList
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        [self setChannelList:channelList];
     }
     return self;
+}
+
+- (void)setChannelList: (NSMutableArray*)channels{
+    _channelList = channels;
+    [[self tableView]reloadData];
 }
 
 - (void)viewDidLoad
@@ -39,83 +48,41 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_channelList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSObject *channel = [_channelList objectAtIndex:[indexPath row]];
+    ChannelUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChannelCell"];
+    if(cell == nil) {
+        cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChannelCell"];
+    }
     
-    // Configure the cell...
+    [[cell channelNameTextView]setText: [channel valueForKey:@"ChannelName"]];
+    [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
+    [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
+    [cell setChannelId:[channel valueForKey:@"ChannelId"]];
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //NSLog(@"%@", [NSString stringWithFormat:@"Selected %@", [[_channelList objectAtIndex:[indexPath row]]valueForKey:@"ChannelName"]]);
+    [[self delegate]tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 @end

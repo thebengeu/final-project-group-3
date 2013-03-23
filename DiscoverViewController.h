@@ -8,29 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "ChannelUITableViewController.h"
 
-@interface DiscoverViewController : UIViewController <CLLocationManagerDelegate>
+@interface DiscoverViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, ChannelUITableViewControllerDelegate>
 
 @property CLLocationManager *locationManager;
 
-@property double lat;
-
-@property double lon;
+@property CLLocationCoordinate2D location;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (weak, nonatomic) IBOutlet UITableView *channelTable;
+@property (weak, nonatomic) IBOutlet UIView *channelListContainer;
 
 @property NSMutableArray* channelList;
 
-- (void) initMap;
+@property ChannelUITableViewController *channelTableViewController;
 
-- (void) populateMapWithEventMarker;
+@property int currentSelectedIndex;
+
+- (void) populateMapWithChannelAnnotation;
 
 - (void) populateTableWithChannel;
 
 - (void) scrollMapToLocation: (CGFloat)lat : (CGFloat)lon;
 
 - (void) scrollTableToEvent: (NSIndexPath*)index;
+
 
 @end
