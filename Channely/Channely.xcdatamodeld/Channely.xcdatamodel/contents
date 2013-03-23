@@ -14,11 +14,12 @@
         <userInfo/>
     </entity>
     <entity name="HLSChunk" syncable="YES">
+        <attribute name="seqNo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recording" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HLSRecording" inverseName="chunks" inverseEntity="HLSRecording" syncable="YES"/>
     </entity>
     <entity name="HLSRecording" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="playlistUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chunks" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HLSChunk" inverseName="recording" inverseEntity="HLSChunk" syncable="YES"/>
@@ -59,8 +60,8 @@
     </entity>
     <elements>
         <element name="Event" positionX="241" positionY="5" width="128" height="163"/>
-        <element name="HLSChunk" positionX="90" positionY="522" width="128" height="58"/>
-        <element name="HLSRecording" positionX="-117" positionY="342" width="117" height="118"/>
+        <element name="HLSChunk" positionX="90" positionY="522" width="128" height="90"/>
+        <element name="HLSRecording" positionX="-117" positionY="342" width="117" height="105"/>
         <element name="ImagePost" positionX="441" positionY="279" width="128" height="60"/>
         <element name="InstagramPost" positionX="439" positionY="459" width="128" height="60"/>
         <element name="Post" positionX="178" positionY="317" width="128" height="103"/>
