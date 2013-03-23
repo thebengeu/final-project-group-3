@@ -193,13 +193,10 @@
     
     ChannelAnnotation *annotation = [view annotation];
     NSNumber *selectedChannelId = [annotation channelId];
-    NSLog(@"Size: %d", [_channelList count]);
     for (int i = 0; i < [_channelList count]; i++){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [[_channelTableViewController tableView]cellForRowAtIndexPath:indexPath];
-        NSLog(@"%d vs %d", [selectedChannelId intValue],[[cell channelId]intValue]);
-        //if ([[cell channelId] compare:selectedChannelId] == NSOrderedSame){
-        if ([selectedChannelId intValue] == [[cell channelId]intValue]){
+        NSDictionary *channel = [_channelList objectAtIndex:i];
+        if ([selectedChannelId intValue] == [[channel valueForKey:@"ChannelId"]intValue]){
             [[_channelTableViewController tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             break;
         }
