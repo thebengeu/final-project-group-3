@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A9638B116FC290C0063CFAD /* ChannelUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */; };
+		0A989FCE16FFEE8F00D72361 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A989FCD16FFEE8F00D72361 /* SearchViewController.m */; };
 		0A99937B16FD4A3100709D28 /* ChannelUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */; };
 		0A99938816FD6E4C00709D28 /* ChannelAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A99938716FD6E4C00709D28 /* ChannelAnnotation.m */; };
 		0A99938B16FD7AAE00709D28 /* LocationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A99938A16FD7AAE00709D28 /* LocationAnnotation.m */; };
@@ -61,6 +62,8 @@
 /* Begin PBXFileReference section */
 		0A9638AF16FC290C0063CFAD /* ChannelUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelUITableViewCell.h; sourceTree = "<group>"; };
 		0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelUITableViewCell.m; sourceTree = "<group>"; };
+		0A989FCC16FFEE8F00D72361 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		0A989FCD16FFEE8F00D72361 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelUITableViewController.h; sourceTree = "<group>"; };
 		0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelUITableViewController.m; sourceTree = "<group>"; };
 		0A99938616FD6E4C00709D28 /* ChannelAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelAnnotation.h; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				0ABB364C16FC19BC00436E06 /* DiscoverViewController.m */,
 				0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */,
 				0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */,
+				0A989FCC16FFEE8F00D72361 /* SearchViewController.h */,
+				0A989FCD16FFEE8F00D72361 /* SearchViewController.m */,
 			);
 			name = Ux;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				0A99937B16FD4A3100709D28 /* ChannelUITableViewController.m in Sources */,
 				0A99938816FD6E4C00709D28 /* ChannelAnnotation.m in Sources */,
 				0A99938B16FD7AAE00709D28 /* LocationAnnotation.m in Sources */,
+				0A989FCE16FFEE8F00D72361 /* SearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

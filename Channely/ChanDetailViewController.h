@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiscoverViewController.h"
+#import "SearchViewController.h"
 
 @interface ChanDetailViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *discoverSearchToggle;
+@property (strong) DiscoverViewController *discoverViewController;
 
--(IBAction)changeSeg;
+@property (strong) SearchViewController *searchViewController;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *discoverSearchControl;
+
+- (IBAction)segmentChanged:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIView *container;
 
 @end
