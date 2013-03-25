@@ -11,8 +11,6 @@
 @interface ChanDetailViewController ()
 @property (strong) UITabBarController *_homeTabController;
 
-- (void) hideTabBar;
-
 @end
 
 @implementation ChanDetailViewController
@@ -35,16 +33,6 @@
 - (IBAction) segmentChanged:(UISegmentedControl *)sender {
     [self switchContainerView: sender.selectedSegmentIndex];
 }
-
-- (void) hideTabBar {
-    if (!_homeTabController) {
-        NSLog(@"_homeTabController still null!");
-    }
-    
-    // TODO:
-    
-}
-
 
 - (void) switchContainerView: (NSUInteger)index{
     [UIView beginAnimations:nil context:nil];

@@ -41,17 +41,17 @@
             </objects>
             <point key="canvasLocation" x="-498" y="-1176"/>
         </scene>
-        <!--Tab Bar Controller - HomeTabController-->
+        <!--Chan Hidden Tab Bar Controller - HomeTabController-->
         <scene sceneID="DlC-I2-XLZ">
             <objects>
-                <tabBarController storyboardIdentifier="" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" customClass="ChanHiddenTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="VlV-xI-glL">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBar" destination="VlV-xI-glL" id="Zyk-P8-VtI"/>
                         <segue destination="OGg-I2-UC3" kind="relationship" relationship="viewControllers" id="agE-UX-WxO"/>
                         <segue destination="56a-lG-Alq" kind="relationship" relationship="viewControllers" id="8h1-Bb-yvF"/>
                     </connections>
@@ -295,6 +295,12 @@
             <relationships>
                 <relationship kind="action" name="segmentChanged:"/>
                 <relationship kind="outlet" name="container" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ChanHiddenTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanHiddenTabBarController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
             </relationships>
         </class>
         <class className="ChannelUITableViewCell" superclassName="UITableViewCell">

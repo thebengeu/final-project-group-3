@@ -23,6 +23,7 @@
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
 		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
+		4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */; };
 		B609967616F241C60033B29F /* ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967516F241C60033B29F /* ChanPost.m */; };
 		B609967916F241C60033B29F /* ChanTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967816F241C60033B29F /* ChanTimeline.m */; };
 		B609967C16F241C60033B29F /* ChanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B609967B16F241C60033B29F /* ChanUser.m */; };
@@ -92,6 +93,8 @@
 		4A265B6F16F2097300B91564 /* VideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapture.h; sourceTree = "<group>"; };
 		4A265B7016F2097300B91564 /* VideoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureDelegate.h; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4ADD4FCE1700760900FB92D5 /* ChanHiddenTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHiddenTabBarController.h; sourceTree = "<group>"; };
+		4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHiddenTabBarController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B609967416F241C50033B29F /* ChanPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanPost.h; sourceTree = "<group>"; };
 		B609967516F241C60033B29F /* ChanPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPost.m; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */,
 				0A989FCC16FFEE8F00D72361 /* SearchViewController.h */,
 				0A989FCD16FFEE8F00D72361 /* SearchViewController.m */,
+				4ADD4FCE1700760900FB92D5 /* ChanHiddenTabBarController.h */,
+				4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */,
 			);
 			name = UI;
 			path = ..;
@@ -474,6 +479,7 @@
 				0A99938B16FD7AAE00709D28 /* LocationAnnotation.m in Sources */,
 				0A989FCE16FFEE8F00D72361 /* SearchViewController.m in Sources */,
 				0A989FD11700400900D72361 /* ChannelViewController.m in Sources */,
+				4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
