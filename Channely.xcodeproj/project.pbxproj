@@ -194,7 +194,7 @@
 			name = Archive;
 			sourceTree = "<group>";
 		};
-		0ABB364A16FC19A200436E06 /* Ux */ = {
+		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				0A99938416FD6E1400709D28 /* Map */,
@@ -211,7 +211,8 @@
 				0A989FCC16FFEE8F00D72361 /* SearchViewController.h */,
 				0A989FCD16FFEE8F00D72361 /* SearchViewController.m */,
 			);
-			name = Ux;
+			name = UI;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4A265B6716F207F300B91564 /* Video Capture */ = {
@@ -228,7 +229,6 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
-				0ABB364A16FC19A200436E06 /* Ux */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -266,6 +266,7 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				0ABB364A16FC19A200436E06 /* UI */,
 				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				4A265B6716F207F300B91564 /* Video Capture */,

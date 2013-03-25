@@ -30,9 +30,9 @@
 
 - (void) populateTableWithChannel;
 
-- (void) scrollMapToLocation: (CGFloat)lat : (CGFloat)lon;
+//- (void) scrollMapToLocation: (CGFloat)lat : (CGFloat)lon;
 
-- (void) scrollTableToEvent: (NSIndexPath*)index;
+//- (void) scrollTableToEvent: (NSIndexPath*)index;
 
 
 @end
