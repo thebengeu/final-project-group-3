@@ -11,6 +11,7 @@
 #import "ChannelUITableViewController.h"
 #import "ChannelAnnotation.h"
 #import "LocationAnnotation.h"
+#import "ChannelViewController.h"
 
 @interface DiscoverViewController ()
 
@@ -62,6 +63,12 @@
         ChannelUITableViewController * childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
     }
+    if ([[segue identifier] isEqualToString:@"ChannelSegue"])
+    {
+        ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
+        [vc setChannelName:[[sender channelNameTextView]text]];
+    } 
+    
 }
 
 -(void) populateTableWithChannel{

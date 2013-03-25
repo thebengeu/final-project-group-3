@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelUITableViewCell.h"
 
-@protocol ChannelUITableViewControllerDelegate <NSObject>
+@protocol ChannelUITableViewControllerDelegate <NSObject, UITableCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -18,6 +19,8 @@
 @interface ChannelUITableViewController : UITableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style :(NSMutableArray*)channelList;
+
+- (void) enterChannel: (id) cell;
 
 @property (nonatomic) NSMutableArray *channelList;
 

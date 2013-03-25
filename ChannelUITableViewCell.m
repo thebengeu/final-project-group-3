@@ -27,4 +27,8 @@
 
 
 
+- (IBAction)enterChannel:(id)sender {
+    [[self delegate]enterChannel:self];
+}
+
 @end

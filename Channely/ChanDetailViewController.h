@@ -12,14 +12,12 @@
 
 @interface ChanDetailViewController : UIViewController
 
-@property (strong) DiscoverViewController *discoverViewController;
-
-@property (strong) SearchViewController *searchViewController;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *discoverSearchControl;
 
 - (IBAction)segmentChanged:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *container;
+
+@property (strong) UITabBarController *homeTabController;
 
 @end

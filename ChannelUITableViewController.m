@@ -8,6 +8,7 @@
 
 #import "ChannelUITableViewController.h"
 #import "ChannelUITableViewCell.h"
+#import "ChannelViewController.h"
 
 @interface ChannelUITableViewController ()
 
@@ -74,6 +75,7 @@
     [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
     [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
     [cell setChannelId:[channel valueForKey:@"ChannelId"]];
+    [cell setDelegate:self];
     
     return cell;
 }
@@ -84,5 +86,13 @@
     //NSLog(@"%@", [NSString stringWithFormat:@"Selected %@", [[_channelList objectAtIndex:[indexPath row]]valueForKey:@"ChannelName"]]);
     [[self delegate]tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
+
+-(void) enterChannel: (id) cell
+{
+    [[self parentViewController] performSegueWithIdentifier:@"ChannelSegue" sender:cell];
+}
+
+
+
 
 @end

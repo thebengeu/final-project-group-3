@@ -12,6 +12,9 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <segue destination="udZ-EX-hhA" kind="embed" id="ghE-XP-uEC"/>
+                        </connections>
                     </containerView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Channely" id="53">
@@ -38,20 +41,39 @@
             </objects>
             <point key="canvasLocation" x="-498" y="-1176"/>
         </scene>
-        <!--Discover View Controller-->
+        <!--Tab Bar Controller - HomeTabController-->
+        <scene sceneID="DlC-I2-XLZ">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeTabController" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="VlV-xI-glL">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="OGg-I2-UC3" kind="relationship" relationship="viewControllers" id="agE-UX-WxO"/>
+                        <segue destination="56a-lG-Alq" kind="relationship" relationship="viewControllers" id="8h1-Bb-yvF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x0a-Sr-E0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="435" y="-1144"/>
+        </scene>
+        <!--Discover View Controller - Discover-->
         <scene sceneID="z73-81-IWT">
             <objects>
-                <viewController storyboardIdentifier="DiscoverViewController" id="OGg-I2-UC3" customClass="DiscoverViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverViewController" title="Discover" providesPresentationContextTransitionStyle="YES" id="OGg-I2-UC3" customClass="DiscoverViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yN9-uP-K6p">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="1pc-tl-fIH">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="476"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="432"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </mapView>
                             <containerView contentMode="scaleToFill" id="iug-rU-gRG">
-                                <rect key="frame" x="1" y="482" width="768" height="520"/>
+                                <rect key="frame" x="1" y="437" width="768" height="471"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -61,38 +83,41 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.88806596920338521" blue="0.35184450148097468" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="LZh-Lz-Nkd"/>
                     <connections>
                         <outlet property="channelListContainer" destination="iug-rU-gRG" id="GCg-lw-lMi"/>
                         <outlet property="channelTableViewController" destination="iug-rU-gRG" id="st8-bs-Cyd"/>
                         <outlet property="mapView" destination="1pc-tl-fIH" id="bJ2-aJ-W7A"/>
+                        <segue destination="YM0-f0-7yp" kind="push" identifier="ChannelSegue" id="zMj-7R-y2K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="321-PP-i7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="-1176"/>
+            <point key="canvasLocation" x="1366" y="-1120"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search View Controller - Search-->
         <scene sceneID="oOV-Nh-DAD">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="56a-lG-Alq" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" title="Search" providesPresentationContextTransitionStyle="YES" id="56a-lG-Alq" customClass="SearchViewController" sceneMemberID="viewController">
                     <textView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="This page is currently empty." id="bQh-mi-nA4">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <tabBarItem key="tabBarItem" title="Item" id="GK7-r6-oPi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="biK-0y-Jfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="98"/>
+            <point key="canvasLocation" x="1270" y="186"/>
         </scene>
         <!--ChannelUI Table View Controller-->
         <scene sceneID="5p6-Vu-Wto">
             <objects>
                 <tableViewController id="5Ec-5s-YOF" customClass="ChannelUITableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="117" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Z9-QO-pHs">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="520"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="471"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -147,12 +172,14 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="enterChannel:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="d6p-Hn-wyV"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="channelEnterButton" destination="LkH-L5-43l" id="NeZ-dB-h3f"/>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
                                     <outlet property="descriptionTextView" destination="OCf-gX-ECr" id="uTR-tY-nQl"/>
                                     <outlet property="eventNameTextView" destination="Ho4-FB-biZ" id="E61-Ez-FLY"/>
@@ -167,7 +194,83 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXy-ju-O6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1411" y="-780"/>
+            <point key="canvasLocation" x="2349" y="-1356"/>
+        </scene>
+        <!--Channel View Controller-->
+        <scene sceneID="gAk-qM-kwa">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ry-aH-vlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ChannelViewController" wantsFullScreenLayout="YES" id="YM0-f0-7yp" customClass="ChannelViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LRv-3l-sIG">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView contentMode="scaleToFill" id="2Ao-CD-Lz2">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="799"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="cnd-ON-lmi" kind="embed" id="y9K-Sd-m6Q"/>
+                                </connections>
+                            </containerView>
+                            <containerView contentMode="scaleToFill" id="XhB-48-2D3">
+                                <rect key="frame" x="7" y="807" width="768" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="YKt-lk-KCM" kind="embed" id="NNb-MW-tsd"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="p5R-a1-h3d"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3209" y="-1120"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="17c-Uw-kia">
+            <objects>
+                <tableViewController id="cnd-ON-lmi" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9le-JL-bof">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="799"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hGO-bL-P0w">
+                                <rect key="frame" x="0.0" y="22" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cnd-ON-lmi" id="l1h-Wx-8ug"/>
+                            <outlet property="delegate" destination="cnd-ON-lmi" id="h0e-w7-DrN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gfv-DO-zs0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4203" y="-1372"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TGI-vu-HpC">
+            <objects>
+                <viewController id="YKt-lk-KCM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Mg-AR-iUY">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="104"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOu-Bl-vQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4225" y="-421"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="50">
@@ -185,38 +288,6 @@
             <point key="canvasLocation" x="-1568" y="-1176"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ChanDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="segmentChanged:"/>
-                <relationship kind="outlet" name="container" candidateClass="UIView"/>
-                <relationship kind="outlet" name="discoverSearchControl" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="channelEnterButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="ChannelUITableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewController.h"/>
-        </class>
-        <class className="DiscoverViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiscoverViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="channelListContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="SearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

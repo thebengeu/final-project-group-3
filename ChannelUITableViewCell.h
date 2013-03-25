@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol UITableCellDelegate <NSObject>
+
+- (void)enterChannel: (id)cell;
+
+@end
+
 @interface ChannelUITableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *channelEnterButton;
@@ -19,5 +25,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @property (nonatomic) NSNumber *channelId;
+
+@property (strong, nonatomic) id<UITableCellDelegate> delegate;
+
+- (IBAction)enterChannel:(id)sender;
 
 @end
