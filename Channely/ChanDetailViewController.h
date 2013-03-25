@@ -10,14 +10,9 @@
 #import "DiscoverViewController.h"
 #import "SearchViewController.h"
 
-@interface ChanDetailViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *discoverSearchControl;
-
-- (IBAction)segmentChanged:(id)sender;
-
+@interface ChanDetailViewController : UIViewController <UITabBarDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;
 
-@property (strong) UITabBarController *homeTabController;
+- (IBAction)segmentChanged:(id)sender;
 
 @end

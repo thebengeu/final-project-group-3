@@ -8,42 +8,57 @@
 
 #import "ChanDetailViewController.h"
 
+@interface ChanDetailViewController ()
+@property (strong) UITabBarController *_homeTabController;
+
+- (void) hideTabBar;
+
+@end
+
 @implementation ChanDetailViewController
+@synthesize _homeTabController;
 
-@synthesize homeTabController;
-
-
-- (void)viewDidLoad
-{
+- (void) viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self setHomeTabController:[self.storyboard instantiateViewControllerWithIdentifier:@"HomeTabController"]];
+    
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 
-- (IBAction)segmentChanged:(id)sender {
-    UISegmentedControl *seg = sender;
-    [self switchContainerView: seg.selectedSegmentIndex];
+- (IBAction) segmentChanged:(UISegmentedControl *)sender {
+    [self switchContainerView: sender.selectedSegmentIndex];
+}
+
+- (void) hideTabBar {
+    if (!_homeTabController) {
+        NSLog(@"_homeTabController still null!");
+    }
+    
+    // TODO:
+    
 }
 
 
-- (void) switchContainerView: (NSUInteger)i{
+- (void) switchContainerView: (NSUInteger)index{
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.4];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight
-                           forView:_container
-                             cache:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:_container cache:YES];
     [UIView commitAnimations];
-    NSLog(@"%d", [homeTabController selectedIndex]);
-    [homeTabController setSelectedIndex:i];
-    NSLog(@"%d", [homeTabController selectedIndex]);
+    _homeTabController.selectedIndex = index;
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"embeddedTabBarSegue"]) {
+        self._homeTabController = (UITabBarController *)segue.destinationViewController;
+    }
+}
+
 
 @end

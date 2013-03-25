@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
-                            <segue destination="udZ-EX-hhA" kind="embed" id="ghE-XP-uEC"/>
+                            <segue destination="udZ-EX-hhA" kind="embed" identifier="embeddedTabBarSegue" id="ghE-XP-uEC"/>
                         </connections>
                     </containerView>
                     <toolbarItems/>
@@ -44,7 +44,7 @@
         <!--Tab Bar Controller - HomeTabController-->
         <scene sceneID="DlC-I2-XLZ">
             <objects>
-                <tabBarController storyboardIdentifier="HomeTabController" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="VlV-xI-glL">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -295,7 +295,6 @@
             <relationships>
                 <relationship kind="action" name="segmentChanged:"/>
                 <relationship kind="outlet" name="container" candidateClass="UIView"/>
-                <relationship kind="outlet" name="discoverSearchControl" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
