@@ -13,21 +13,21 @@
         <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="events" inverseEntity="Timeline" syncable="YES"/>
         <userInfo/>
     </entity>
-    <entity name="HLSChunk" syncable="YES">
+    <entity name="HLSChunk" representedClassName="ChanHLSChunk" syncable="YES">
         <attribute name="seqNo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recording" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HLSRecording" inverseName="chunks" inverseEntity="HLSRecording" syncable="YES"/>
     </entity>
-    <entity name="HLSRecording" syncable="YES">
+    <entity name="HLSRecording" representedClassName="ChanHLSRecording" syncable="YES">
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="chunks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HLSChunk" inverseName="recording" inverseEntity="HLSChunk" syncable="YES"/>
     </entity>
-    <entity name="ImagePost" parentEntity="Post" syncable="YES">
+    <entity name="ImagePost" representedClassName="ChanImagePost" parentEntity="Post" syncable="YES">
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="InstagramPost" parentEntity="Post" syncable="YES">
+    <entity name="InstagramPost" representedClassName="ChanInstagramPost" parentEntity="Post" syncable="YES">
         <attribute name="jsonData" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -38,7 +38,7 @@
         <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posts" inverseEntity="User" syncable="YES"/>
         <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="posts" inverseEntity="Timeline" syncable="YES"/>
     </entity>
-    <entity name="TextPost" parentEntity="Post" syncable="YES"/>
+    <entity name="TextPost" representedClassName="ChanTextPost" parentEntity="Post" syncable="YES"/>
     <entity name="Timeline" representedClassName="ChanTimeline" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -47,7 +47,7 @@
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="timelines" inverseEntity="User" syncable="YES"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="timeline" inverseEntity="Post" syncable="YES"/>
     </entity>
-    <entity name="TwitterPost" parentEntity="Post" syncable="YES">
+    <entity name="TwitterPost" representedClassName="ChanTwitterPost" parentEntity="Post" syncable="YES">
         <attribute name="jsonData" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -57,7 +57,7 @@
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="creator" inverseEntity="Post" syncable="YES"/>
         <relationship name="timelines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timeline" inverseName="owner" inverseEntity="Timeline" syncable="YES"/>
     </entity>
-    <entity name="VideoPost" parentEntity="Post" syncable="YES">
+    <entity name="VideoPost" representedClassName="ChanVideoPost" parentEntity="Post" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -65,15 +65,15 @@
     </entity>
     <elements>
         <element name="Event" positionX="36" positionY="89" width="128" height="163"/>
-        <element name="HLSChunk" positionX="81" positionY="576" width="128" height="90"/>
+        <element name="HLSChunk" positionX="81" positionY="576" width="128" height="88"/>
         <element name="HLSRecording" positionX="-81" positionY="579" width="117" height="103"/>
-        <element name="ImagePost" positionX="441" positionY="261" width="128" height="60"/>
+        <element name="ImagePost" positionX="441" positionY="261" width="128" height="58"/>
         <element name="InstagramPost" positionX="340" positionY="462" width="128" height="73"/>
         <element name="Post" positionX="196" positionY="311" width="128" height="118"/>
-        <element name="TextPost" positionX="441" positionY="189" width="128" height="45"/>
+        <element name="TextPost" positionX="441" positionY="189" width="128" height="43"/>
         <element name="Timeline" positionX="-162" positionY="263" width="128" height="133"/>
         <element name="TwitterPost" positionX="198" positionY="462" width="128" height="73"/>
         <element name="User" positionX="34" positionY="270" width="128" height="103"/>
-        <element name="VideoPost" positionX="439" positionY="333" width="128" height="105"/>
+        <element name="VideoPost" positionX="439" positionY="333" width="128" height="103"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  ChanTimeline.m
 //  Channely
 //
-//  Created by Beng on 15/3/13.
+//  Created by Beng on 28/3/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
@@ -15,8 +15,8 @@
 @implementation ChanTimeline
 
 @dynamic createdAt;
-@dynamic name;
 @dynamic id;
+@dynamic name;
 @dynamic events;
 @dynamic owner;
 @dynamic posts;
