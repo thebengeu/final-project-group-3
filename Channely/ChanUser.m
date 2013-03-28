@@ -7,8 +7,8 @@
 //
 
 #import "ChanUser.h"
+#import "ChanChannel.h"
 #import "ChanPost.h"
-#import "ChanTimeline.h"
 
 
 @implementation ChanUser
@@ -16,6 +16,6 @@
 @dynamic id;
 @dynamic name;
 @dynamic posts;
-@dynamic timelines;
+@dynamic channels;
 
 @end

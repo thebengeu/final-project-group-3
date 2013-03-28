@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Channel" representedClassName="ChanChannel" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="channel" inverseEntity="Event" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="channels" inverseEntity="User" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="channel" inverseEntity="Post" syncable="YES"/>
+    </entity>
     <entity name="Event" representedClassName="ChanEvent">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -10,7 +18,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date">
             <userInfo/>
         </attribute>
-        <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="events" inverseEntity="Timeline" syncable="YES"/>
+        <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="events" inverseEntity="Channel" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="HLSChunk" representedClassName="ChanHLSChunk" syncable="YES">
@@ -35,18 +43,10 @@
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="posts" inverseEntity="Channel" syncable="YES"/>
         <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posts" inverseEntity="User" syncable="YES"/>
-        <relationship name="timeline" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Timeline" inverseName="posts" inverseEntity="Timeline" syncable="YES"/>
     </entity>
     <entity name="TextPost" representedClassName="ChanTextPost" parentEntity="Post" syncable="YES"/>
-    <entity name="Timeline" representedClassName="ChanTimeline" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="timeline" inverseEntity="Event" syncable="YES"/>
-        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="timelines" inverseEntity="User" syncable="YES"/>
-        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="timeline" inverseEntity="Post" syncable="YES"/>
-    </entity>
     <entity name="TwitterPost" representedClassName="ChanTwitterPost" parentEntity="Post" syncable="YES">
         <attribute name="jsonData" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,8 +54,8 @@
     <entity name="User" representedClassName="ChanUser" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Channel" inverseName="owner" inverseEntity="Channel" syncable="YES"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="creator" inverseEntity="Post" syncable="YES"/>
-        <relationship name="timelines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Timeline" inverseName="owner" inverseEntity="Timeline" syncable="YES"/>
     </entity>
     <entity name="VideoPost" representedClassName="ChanVideoPost" parentEntity="Post" syncable="YES">
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
@@ -71,7 +71,7 @@
         <element name="InstagramPost" positionX="340" positionY="462" width="128" height="73"/>
         <element name="Post" positionX="196" positionY="311" width="128" height="118"/>
         <element name="TextPost" positionX="441" positionY="189" width="128" height="43"/>
-        <element name="Timeline" positionX="-162" positionY="263" width="128" height="133"/>
+        <element name="Channel" positionX="-162" positionY="263" width="128" height="133"/>
         <element name="TwitterPost" positionX="198" positionY="462" width="128" height="73"/>
         <element name="User" positionX="34" positionY="270" width="128" height="103"/>
         <element name="VideoPost" positionX="439" positionY="333" width="128" height="103"/>

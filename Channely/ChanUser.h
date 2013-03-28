@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ChanPost, ChanTimeline;
+@class ChanChannel, ChanPost;
 
 @interface ChanUser : NSManagedObject
 
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *posts;
-@property (nonatomic, retain) NSSet *timelines;
+@property (nonatomic, retain) NSSet *channels;
 @end
 
 @interface ChanUser (CoreDataGeneratedAccessors)
@@ -26,9 +26,9 @@
 - (void)addPosts:(NSSet *)values;
 - (void)removePosts:(NSSet *)values;
 
-- (void)addTimelinesObject:(ChanTimeline *)value;
-- (void)removeTimelinesObject:(ChanTimeline *)value;
-- (void)addTimelines:(NSSet *)values;
-- (void)removeTimelines:(NSSet *)values;
+- (void)addChannelsObject:(ChanChannel *)value;
+- (void)removeChannelsObject:(ChanChannel *)value;
+- (void)addChannels:(NSSet *)values;
+- (void)removeChannels:(NSSet *)values;
 
 @end

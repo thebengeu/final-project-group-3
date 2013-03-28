@@ -1,24 +1,24 @@
 //
-//  ChanTimelineStore.m
+//  ChanChannelStore.m
 //  Channely
 //
 //  Created by Beng on 15/3/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "ChanTimelineStore.h"
+#import "ChanChannelStore.h"
 
-#import "ChanTimeline.h"
+#import "ChanChannel.h"
 
-@implementation ChanTimelineStore
+@implementation ChanChannelStore
 
 NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
 
-+ (ChanTimelineStore *)sharedStore
++ (ChanChannelStore *)sharedStore
 {
-    static ChanTimelineStore *sharedStore = nil;
+    static ChanChannelStore *sharedStore = nil;
     if (!sharedStore) {
-        sharedStore = [[ChanTimelineStore alloc] init];
+        sharedStore = [[ChanChannelStore alloc] init];
     }
     return sharedStore;
 }
@@ -27,7 +27,7 @@ NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
-    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Timeline" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Channel" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [responseMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"name":       @"name",
@@ -40,7 +40,7 @@ NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
      @"id":         @"_id",
      @"name":       @"name",
      @"createdAt":  @"createdAt"}];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanTimeline class] rootKeyPath:nil];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanChannel class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
@@ -48,7 +48,7 @@ NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
     return self;
 }
 
-- (void)getAllTimelinesWithCompletion:(void (^)(NSArray *timelines, NSError *error))block
+- (void)getAllChannelsWithCompletion:(void (^)(NSArray *channels, NSError *error))block
 {
     [[RKObjectManager sharedManager] getObjectsAtPath:_API_ENDPOINT_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block([mappingResult array], nil);
@@ -57,10 +57,10 @@ NSString *const _API_ENDPOINT_CHANNEL = @"/channels";
     }];
 }
 
-- (void)addTimeline:(ChanTimeline *)timeline withCompletion:(void (^)(ChanTimeline *timeline, NSError *error))block
+- (void)addChannel:(ChanChannel *)channel withCompletion:(void (^)(ChanChannel *channel, NSError *error))block
 {
-    [[RKObjectManager sharedManager] postObject:timeline path:_API_ENDPOINT_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(timeline, nil);
+    [[RKObjectManager sharedManager] postObject:channel path:_API_ENDPOINT_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        block(channel, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
     }];

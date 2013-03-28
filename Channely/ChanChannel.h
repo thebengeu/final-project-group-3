@@ -1,5 +1,5 @@
 //
-//  ChanTimeline.h
+//  ChanChannel.h
 //  Channely
 //
 //  Created by Beng on 28/3/13.
@@ -11,7 +11,7 @@
 
 @class ChanEvent, ChanPost, ChanUser;
 
-@interface ChanTimeline : NSManagedObject
+@interface ChanChannel : NSManagedObject
 
 @property (nonatomic, retain) NSString * createdAt;
 @property (nonatomic, retain) NSString * id;
@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSSet *posts;
 @end
 
-@interface ChanTimeline (CoreDataGeneratedAccessors)
+@interface ChanChannel (CoreDataGeneratedAccessors)
 
 - (void)addEventsObject:(ChanEvent *)value;
 - (void)removeEventsObject:(ChanEvent *)value;

@@ -7,7 +7,7 @@
 //
 
 #import "ChanEvent.h"
-#import "ChanTimeline.h"
+#import "ChanChannel.h"
 
 
 @implementation ChanEvent
@@ -19,6 +19,6 @@
 @dynamic longitude;
 @dynamic name;
 @dynamic startTime;
-@dynamic timeline;
+@dynamic channel;
 
 @end

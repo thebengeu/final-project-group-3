@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class ChanTimeline;
+@class ChanChannel;
 
 @interface ChanEvent : NSManagedObject
 
@@ -20,6 +20,6 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) ChanTimeline *timeline;
+@property (nonatomic, retain) ChanChannel *channel;
 
 @end
