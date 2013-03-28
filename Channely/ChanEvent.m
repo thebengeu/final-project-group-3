@@ -16,7 +16,7 @@
 @dynamic endTime;
 @dynamic id;
 @dynamic latitude;
-@dynamic longtitude;
+@dynamic longitude;
 @dynamic name;
 @dynamic startTime;
 @dynamic timeline;

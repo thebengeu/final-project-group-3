@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSString * id;
 @property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longtitude;
+@property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) ChanTimeline *timeline;
