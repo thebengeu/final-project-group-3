@@ -74,7 +74,7 @@
     [[cell channelNameTextView]setText: [channel valueForKey:@"ChannelName"]];
     [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
     [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
-    [cell setChannelId:[channel valueForKey:@"ChannelId"]];
+    [cell setChannelID:[channel valueForKey:@"ChannelId"]];
     [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
     
     return cell;

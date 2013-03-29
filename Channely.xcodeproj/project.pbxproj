@@ -205,13 +205,10 @@
 		0A7423BA170548E200644070 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				0AF534FA1705C50C00E437F9 /* Table */,
 				0A99938416FD6E1400709D28 /* Map */,
 				0ABB364B16FC19BC00436E06 /* DiscoverViewController.h */,
 				0ABB364C16FC19BC00436E06 /* DiscoverViewController.m */,
-				0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */,
-				0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */,
-				0A9638AF16FC290C0063CFAD /* ChannelUITableViewCell.h */,
-				0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -301,6 +298,17 @@
 			);
 			name = UI;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		0AF534FA1705C50C00E437F9 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				0A99937916FD4A3100709D28 /* ChannelUITableViewController.h */,
+				0A99937A16FD4A3100709D28 /* ChannelUITableViewController.m */,
+				0A9638AF16FC290C0063CFAD /* ChannelUITableViewCell.h */,
+				0A9638B016FC290C0063CFAD /* ChannelUITableViewCell.m */,
+			);
+			name = Table;
 			sourceTree = "<group>";
 		};
 		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
@@ -593,17 +601,6 @@
 				0A989FCE16FFEE8F00D72361 /* SearchViewController.m in Sources */,
 				0A989FD11700400900D72361 /* ChannelViewController.m in Sources */,
 				4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */,
-				B63866191703E51B00800FBE /* ChanEvent.m in Sources */,
-				B638661C1703E51C00800FBE /* ChanPost.m in Sources */,
-				B638661F1703E51C00800FBE /* ChanTimeline.m in Sources */,
-				B63866221703E51C00800FBE /* ChanUser.m in Sources */,
-				B63866251703E51D00800FBE /* ChanVideoPost.m in Sources */,
-				B63866281703E51D00800FBE /* ChanHLSRecording.m in Sources */,
-				B638662B1703E51D00800FBE /* ChanImagePost.m in Sources */,
-				B638662E1703E51D00800FBE /* ChanHLSChunk.m in Sources */,
-				B63866311703E51D00800FBE /* ChanInstagramPost.m in Sources */,
-				B63866341703E51E00800FBE /* ChanTextPost.m in Sources */,
-				B63866371703E51E00800FBE /* ChanTwitterPost.m in Sources */,
 				0AA3938C1704493900A35814 /* ChanPostCell.m in Sources */,
 				0AA3938F17046E0500A35814 /* ChannelPostTableViewController.m in Sources */,
 				0AF534F41705991C00E437F9 /* ChanTextPostCell.m in Sources */,

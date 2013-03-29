@@ -18,7 +18,7 @@
 
 @property (nonatomic, readonly) NSString *eventName;
 
-@property (nonatomic) NSNumber *channelId;
+@property (nonatomic) NSString *channelID;
 
 - (id)initWithChannelName:(NSString*)channelName eventName:(NSString*)eventName coordinate:(CLLocationCoordinate2D)coord;
 

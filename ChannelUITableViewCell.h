@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
-@property (nonatomic) NSNumber *channelId;
+@property (nonatomic) NSString *channelID;
 
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
 
