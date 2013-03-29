@@ -26,8 +26,8 @@
 		0AF534F717059D8400E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF534F617059D8400E437F9 /* ChanImagePostCell.m */; };
 		0AF534F91705A03800E437F9 /* wolfdie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF534F81705A03700E437F9 /* wolfdie.png */; };
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
-		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
+		4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */; };
 		4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */; };
 		B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanChannelStore.m */; };
 		B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866391703E96A00800FBE /* ChanEventStore.m */; };
@@ -110,11 +110,10 @@
 		0AF534F617059D8400E437F9 /* ChanImagePostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanImagePostCell.m; sourceTree = "<group>"; };
 		0AF534F81705A03700E437F9 /* wolfdie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wolfdie.png; sourceTree = "<group>"; };
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkedVideoCapture.h; sourceTree = "<group>"; };
-		4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkedVideoCapture.m; sourceTree = "<group>"; };
-		4A265B6F16F2097300B91564 /* VideoCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCapture.h; sourceTree = "<group>"; };
-		4A265B7016F2097300B91564 /* VideoCaptureDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCaptureDelegate.h; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4A8933D217059D1E004D6E53 /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
+		4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4A8933D417059D1E004D6E53 /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
 		4ADD4FCE1700760900FB92D5 /* ChanHiddenTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHiddenTabBarController.h; sourceTree = "<group>"; };
 		4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHiddenTabBarController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -304,15 +303,22 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		4A265B6716F207F300B91564 /* Video Capture */ = {
+		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
 			isa = PBXGroup;
 			children = (
-				4A265B6D16F2097300B91564 /* ChunkedVideoCapture.h */,
-				4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */,
-				4A265B6F16F2097300B91564 /* VideoCapture.h */,
-				4A265B7016F2097300B91564 /* VideoCaptureDelegate.h */,
+				4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */,
 			);
-			name = "Video Capture";
+			name = "Http Live Streaming";
+			sourceTree = "<group>";
+		};
+		4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				4A8933D217059D1E004D6E53 /* ChunkingVideoRecorder.h */,
+				4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */,
+				4A8933D417059D1E004D6E53 /* ChunkingVideoRecorderDelegate.h */,
+			);
+			name = ChunkingVideoRecorder;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model */ = {
@@ -395,12 +401,12 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				4A8933D017059CF5004D6E53 /* Http Live Streaming */,
 				B63865F41703E28900800FBE /* Model */,
 				B63865F51703E3DF00800FBE /* Store */,
 				0ABB364A16FC19A200436E06 /* UI */,
 				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
-				4A265B6716F207F300B91564 /* Video Capture */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
 				B66FDCA516EF88A40042A36C /* Channely.xcdatamodeld */,
@@ -575,7 +581,6 @@
 				B66FDC9816EF88A30042A36C /* ChanAppDelegate.m in Sources */,
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
-				4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */,
 				B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */,
 				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
 				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
@@ -615,6 +620,7 @@
 				B6386685170467A500800FBE /* ChanEvent.m in Sources */,
 				B6386688170467E400800FBE /* ChanPost.m in Sources */,
 				B638668B170467E400800FBE /* ChanUser.m in Sources */,
+				4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
