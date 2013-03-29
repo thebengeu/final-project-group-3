@@ -185,6 +185,7 @@
             continue;
         ChannelAnnotation *annotation = [annotations objectAtIndex:i];
         if ([[annotation channelID] compare:selectedChannelID] == NSOrderedSame){
+            [_mapView deselectAnnotation:annotation animated:NO];
             [_mapView selectAnnotation:annotation animated:YES];
             [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             break;
