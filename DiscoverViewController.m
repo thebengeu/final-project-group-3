@@ -208,6 +208,10 @@
     }
 }
 
+- (void) enterChannel:(id)cell {
+    // TODO:
+}
+
 
 -(void) enterChannel: (id) cell
 {
