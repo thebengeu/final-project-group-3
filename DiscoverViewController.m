@@ -208,5 +208,9 @@
     }
 }
 
+- (void) enterChannel:(id)cell {
+    // TODO:
+}
+
 
 @end
