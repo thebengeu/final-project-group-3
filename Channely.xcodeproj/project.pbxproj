@@ -28,7 +28,9 @@
 		0AF535241705D40000E437F9 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535231705D40000E437F9 /* SearchViewController.m */; };
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
-		4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */; };
+		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
+		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
+		4A59D1E11705E44B00D04B6F /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1E01705E44B00D04B6F /* HLSEventPlaylistHelper.m */; };
 		B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanChannelStore.m */; };
 		B60DFD3917054F9A0012CFA0 /* ChanPostStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B60DFD3817054F9A0012CFA0 /* ChanPostStore.m */; };
 		B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866391703E96A00800FBE /* ChanEventStore.m */; };
@@ -114,9 +116,13 @@
 		0AF535231705D40000E437F9 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Channely/SearchViewController.m; sourceTree = "<group>"; };
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4A8933D217059D1E004D6E53 /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
-		4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkingVideoRecorder.m; sourceTree = "<group>"; };
-		4A8933D417059D1E004D6E53 /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
+		4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
+		4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
+		4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedChunkingVideoRecorder.h; sourceTree = "<group>"; };
+		4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4A59D1DF1705E44B00D04B6F /* HLSEventPlaylistHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSEventPlaylistHelper.h; sourceTree = "<group>"; };
+		4A59D1E01705E44B00D04B6F /* HLSEventPlaylistHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSEventPlaylistHelper.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B609968216F2E02E0033B29F /* ChanChannelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelStore.h; sourceTree = "<group>"; };
 		B609968316F2E02F0033B29F /* ChanChannelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannelStore.m; sourceTree = "<group>"; };
@@ -317,6 +323,8 @@
 		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
 			isa = PBXGroup;
 			children = (
+				4A59D1DF1705E44B00D04B6F /* HLSEventPlaylistHelper.h */,
+				4A59D1E01705E44B00D04B6F /* HLSEventPlaylistHelper.m */,
 				4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */,
 			);
 			name = "Http Live Streaming";
@@ -325,9 +333,11 @@
 		4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				4A8933D217059D1E004D6E53 /* ChunkingVideoRecorder.h */,
-				4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */,
-				4A8933D417059D1E004D6E53 /* ChunkingVideoRecorderDelegate.h */,
+				4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */,
+				4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */,
+				4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */,
+				4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */,
+				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
 			name = ChunkingVideoRecorder;
 			sourceTree = "<group>";
@@ -610,7 +620,6 @@
 				B6386685170467A500800FBE /* ChanEvent.m in Sources */,
 				B6386688170467E400800FBE /* ChanPost.m in Sources */,
 				B638668B170467E400800FBE /* ChanUser.m in Sources */,
-				4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */,
 				B60DFD3917054F9A0012CFA0 /* ChanPostStore.m in Sources */,
 				0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */,
 				0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */,
@@ -624,6 +633,9 @@
 				0AF5351E1705D36500E437F9 /* ChanHiddenTabBarController.m in Sources */,
 				0AF535211705D39200E437F9 /* ChannelViewController.m in Sources */,
 				0AF535241705D40000E437F9 /* SearchViewController.m in Sources */,
+				4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */,
+				4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */,
+				4A59D1E11705E44B00D04B6F /* HLSEventPlaylistHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
