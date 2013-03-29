@@ -30,6 +30,7 @@
 		4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8933D317059D1E004D6E53 /* ChunkingVideoRecorder.m */; };
 		4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */; };
 		B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanChannelStore.m */; };
+		B60DFD3917054F9A0012CFA0 /* ChanPostStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B60DFD3817054F9A0012CFA0 /* ChanPostStore.m */; };
 		B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866391703E96A00800FBE /* ChanEventStore.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
@@ -119,6 +120,8 @@
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B609968216F2E02E0033B29F /* ChanChannelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelStore.h; sourceTree = "<group>"; };
 		B609968316F2E02F0033B29F /* ChanChannelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannelStore.m; sourceTree = "<group>"; };
+		B60DFD3717054F9A0012CFA0 /* ChanPostStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanPostStore.h; sourceTree = "<group>"; };
+		B60DFD3817054F9A0012CFA0 /* ChanPostStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPostStore.m; sourceTree = "<group>"; };
 		B63866381703E96A00800FBE /* ChanEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEventStore.h; sourceTree = "<group>"; };
 		B63866391703E96A00800FBE /* ChanEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEventStore.m; sourceTree = "<group>"; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 				B609968316F2E02F0033B29F /* ChanChannelStore.m */,
 				B63866381703E96A00800FBE /* ChanEventStore.h */,
 				B63866391703E96A00800FBE /* ChanEventStore.m */,
+				B60DFD3717054F9A0012CFA0 /* ChanPostStore.h */,
+				B60DFD3817054F9A0012CFA0 /* ChanPostStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -618,6 +623,7 @@
 				B6386688170467E400800FBE /* ChanPost.m in Sources */,
 				B638668B170467E400800FBE /* ChanUser.m in Sources */,
 				4A8933D517059D1E004D6E53 /* ChunkingVideoRecorder.m in Sources */,
+				B60DFD3917054F9A0012CFA0 /* ChanPostStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
