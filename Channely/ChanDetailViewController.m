@@ -10,10 +10,14 @@
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
+CGFloat const cMenuPopoverWidth = 341.;
+CGFloat const cMaxMenuPopoverHeight = 704.;
 
 @interface ChanDetailViewController ()
 @property (strong) UITabBarController *_homeTabController;
 @property (weak) UIPopoverController *_menuSegue;
+
+- (CGSize) calcMenuPopoverSize;
 
 @end
 
@@ -50,6 +54,7 @@ NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
         self._homeTabController = (UITabBarController *)segue.destinationViewController;
     } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         _menuSegue = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        _menuSegue.popoverContentSize = [self calcMenuPopoverSize];
     }
 }
 
@@ -63,5 +68,9 @@ NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
     }
 }
 
+- (CGSize) calcMenuPopoverSize {
+    CGFloat height = MIN(self.view.bounds.size.height, cMaxMenuPopoverHeight);    
+    return CGSizeMake(cMenuPopoverWidth, height);
+}
 
 @end
