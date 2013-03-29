@@ -37,12 +37,7 @@
     // content view (#0), bar view (#1))
     // Ref: http://stackoverflow.com/questions/2426248/uitabbar-leaves-a-white-rectangle-when-hidden
     
-    CGRect rect = [UIScreen mainScreen].bounds;
-    if (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])){
-        CGFloat temp = rect.size.width;
-        rect.size.width = rect.size.height;
-        rect.size.height = temp;
-    }
+    CGRect rect = [[self view] superview].bounds;
     ((UIView *)[self.view.subviews objectAtIndex:0]).frame = rect;
 }
 

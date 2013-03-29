@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "ChannelUITableViewController.h"
 
-@interface DiscoverViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, ChannelUITableViewControllerDelegate>
+@interface DiscoverViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, DiscoverUITableViewControllerDelegate>
 
 @property CLLocationManager *locationManager;
 

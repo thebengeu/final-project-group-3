@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol UITableCellDelegate <NSObject>
+@protocol DiscoverUITableCellDelegate <NSObject>
 
 - (void)enterChannel: (id)cell;
 
@@ -26,7 +26,7 @@
 
 @property (nonatomic) NSNumber *channelId;
 
-@property (strong, nonatomic) id<UITableCellDelegate> delegate;
+@property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
 
 - (IBAction)enterChannel:(id)sender;
 

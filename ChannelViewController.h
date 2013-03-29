@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelPostTableViewController.h"
 
 @interface ChannelViewController : UIViewController
 
 @property NSString *channelName;
+
+@property ChannelPostTableViewController *postTableViewController;
+
+@property NSMutableArray *posts;
 
 @end

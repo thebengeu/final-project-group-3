@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChannelUITableViewCell.h"
 
-@protocol ChannelUITableViewControllerDelegate <NSObject, UITableCellDelegate>
+@protocol DiscoverUITableViewControllerDelegate <NSObject, DiscoverUITableCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
@@ -24,6 +24,6 @@
 
 @property (nonatomic) NSMutableArray *channelList;
 
-@property id<ChannelUITableViewControllerDelegate> delegate;
+@property id<DiscoverUITableViewControllerDelegate> delegate;
 
 @end

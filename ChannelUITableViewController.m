@@ -75,7 +75,7 @@
     [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
     [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
     [cell setChannelId:[channel valueForKey:@"ChannelId"]];
-    [cell setDelegate:self];
+    [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
     
     return cell;
 }
@@ -89,7 +89,7 @@
 
 -(void) enterChannel: (id) cell
 {
-    [[self parentViewController] performSegueWithIdentifier:@"ChannelSegue" sender:cell];
+    [[self delegate] enterChannel: cell];
 }
 
 

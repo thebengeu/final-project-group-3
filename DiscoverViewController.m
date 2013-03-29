@@ -211,4 +211,10 @@
 }
 
 
+-(void) enterChannel: (id) cell
+{
+    [self performSegueWithIdentifier:@"ChannelSegue" sender:cell];
+}
+
+
 @end
