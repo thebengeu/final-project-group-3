@@ -29,18 +29,19 @@
 		4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A265B6E16F2097300B91564 /* ChunkedVideoCapture.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		4ADD4FD01700760900FB92D5 /* ChanHiddenTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */; };
-		B609968416F2E02F0033B29F /* ChanTimelineStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanTimelineStore.m */; };
-		B63866191703E51B00800FBE /* ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866181703E51B00800FBE /* ChanEvent.m */; };
-		B638661C1703E51C00800FBE /* ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B638661B1703E51B00800FBE /* ChanPost.m */; };
-		B638661F1703E51C00800FBE /* ChanTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = B638661E1703E51C00800FBE /* ChanTimeline.m */; };
-		B63866221703E51C00800FBE /* ChanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866211703E51C00800FBE /* ChanUser.m */; };
-		B63866251703E51D00800FBE /* ChanVideoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866241703E51D00800FBE /* ChanVideoPost.m */; };
-		B63866281703E51D00800FBE /* ChanHLSRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866271703E51D00800FBE /* ChanHLSRecording.m */; };
-		B638662B1703E51D00800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B638662A1703E51D00800FBE /* ChanImagePost.m */; };
-		B638662E1703E51D00800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B638662D1703E51D00800FBE /* ChanHLSChunk.m */; };
-		B63866311703E51D00800FBE /* ChanInstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866301703E51D00800FBE /* ChanInstagramPost.m */; };
-		B63866341703E51E00800FBE /* ChanTextPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866331703E51E00800FBE /* ChanTextPost.m */; };
-		B63866371703E51E00800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866361703E51E00800FBE /* ChanTwitterPost.m */; };
+		B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanChannelStore.m */; };
+		B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866391703E96A00800FBE /* ChanEventStore.m */; };
+		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
+		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
+		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
+		B638666D170466D700800FBE /* ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B638666C170466D700800FBE /* ChanChannel.m */; };
+		B6386676170466D700800FBE /* ChanVideoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386675170466D700800FBE /* ChanVideoPost.m */; };
+		B6386679170466D700800FBE /* ChanHLSRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386678170466D700800FBE /* ChanHLSRecording.m */; };
+		B638667C170466D800800FBE /* ChanInstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B638667B170466D800800FBE /* ChanInstagramPost.m */; };
+		B6386682170466D800800FBE /* ChanTextPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386681170466D800800FBE /* ChanTextPost.m */; };
+		B6386685170467A500800FBE /* ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386684170467A500800FBE /* ChanEvent.m */; };
+		B6386688170467E400800FBE /* ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386687170467E400800FBE /* ChanPost.m */; };
+		B638668B170467E400800FBE /* ChanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B638668A170467E400800FBE /* ChanUser.m */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -117,30 +118,32 @@
 		4ADD4FCE1700760900FB92D5 /* ChanHiddenTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHiddenTabBarController.h; sourceTree = "<group>"; };
 		4ADD4FCF1700760900FB92D5 /* ChanHiddenTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHiddenTabBarController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		B609968216F2E02E0033B29F /* ChanTimelineStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTimelineStore.h; sourceTree = "<group>"; };
-		B609968316F2E02F0033B29F /* ChanTimelineStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTimelineStore.m; sourceTree = "<group>"; };
-		B63866171703E51B00800FBE /* ChanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEvent.h; sourceTree = "<group>"; };
-		B63866181703E51B00800FBE /* ChanEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEvent.m; sourceTree = "<group>"; };
-		B638661A1703E51B00800FBE /* ChanPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanPost.h; sourceTree = "<group>"; };
-		B638661B1703E51B00800FBE /* ChanPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPost.m; sourceTree = "<group>"; };
-		B638661D1703E51C00800FBE /* ChanTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTimeline.h; sourceTree = "<group>"; };
-		B638661E1703E51C00800FBE /* ChanTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTimeline.m; sourceTree = "<group>"; };
-		B63866201703E51C00800FBE /* ChanUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUser.h; sourceTree = "<group>"; };
-		B63866211703E51C00800FBE /* ChanUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUser.m; sourceTree = "<group>"; };
-		B63866231703E51D00800FBE /* ChanVideoPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoPost.h; sourceTree = "<group>"; };
-		B63866241703E51D00800FBE /* ChanVideoPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoPost.m; sourceTree = "<group>"; };
-		B63866261703E51D00800FBE /* ChanHLSRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSRecording.h; sourceTree = "<group>"; };
-		B63866271703E51D00800FBE /* ChanHLSRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSRecording.m; sourceTree = "<group>"; };
-		B63866291703E51D00800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
-		B638662A1703E51D00800FBE /* ChanImagePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanImagePost.m; sourceTree = "<group>"; };
-		B638662C1703E51D00800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
-		B638662D1703E51D00800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
-		B638662F1703E51D00800FBE /* ChanInstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanInstagramPost.h; sourceTree = "<group>"; };
-		B63866301703E51D00800FBE /* ChanInstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanInstagramPost.m; sourceTree = "<group>"; };
-		B63866321703E51E00800FBE /* ChanTextPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTextPost.h; sourceTree = "<group>"; };
-		B63866331703E51E00800FBE /* ChanTextPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTextPost.m; sourceTree = "<group>"; };
-		B63866351703E51E00800FBE /* ChanTwitterPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTwitterPost.h; sourceTree = "<group>"; };
-		B63866361703E51E00800FBE /* ChanTwitterPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTwitterPost.m; sourceTree = "<group>"; };
+		B609968216F2E02E0033B29F /* ChanChannelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelStore.h; sourceTree = "<group>"; };
+		B609968316F2E02F0033B29F /* ChanChannelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannelStore.m; sourceTree = "<group>"; };
+		B63866381703E96A00800FBE /* ChanEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEventStore.h; sourceTree = "<group>"; };
+		B63866391703E96A00800FBE /* ChanEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEventStore.m; sourceTree = "<group>"; };
+		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
+		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
+		B6386665170466D700800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
+		B6386666170466D700800FBE /* ChanImagePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanImagePost.m; sourceTree = "<group>"; };
+		B6386668170466D700800FBE /* ChanTwitterPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTwitterPost.h; sourceTree = "<group>"; };
+		B6386669170466D700800FBE /* ChanTwitterPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTwitterPost.m; sourceTree = "<group>"; };
+		B638666B170466D700800FBE /* ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannel.h; sourceTree = "<group>"; };
+		B638666C170466D700800FBE /* ChanChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannel.m; sourceTree = "<group>"; };
+		B6386674170466D700800FBE /* ChanVideoPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoPost.h; sourceTree = "<group>"; };
+		B6386675170466D700800FBE /* ChanVideoPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoPost.m; sourceTree = "<group>"; };
+		B6386677170466D700800FBE /* ChanHLSRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSRecording.h; sourceTree = "<group>"; };
+		B6386678170466D700800FBE /* ChanHLSRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSRecording.m; sourceTree = "<group>"; };
+		B638667A170466D800800FBE /* ChanInstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanInstagramPost.h; sourceTree = "<group>"; };
+		B638667B170466D800800FBE /* ChanInstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanInstagramPost.m; sourceTree = "<group>"; };
+		B6386680170466D800800FBE /* ChanTextPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTextPost.h; sourceTree = "<group>"; };
+		B6386681170466D800800FBE /* ChanTextPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTextPost.m; sourceTree = "<group>"; };
+		B6386683170467A500800FBE /* ChanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEvent.h; sourceTree = "<group>"; };
+		B6386684170467A500800FBE /* ChanEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEvent.m; sourceTree = "<group>"; };
+		B6386686170467E400800FBE /* ChanPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanPost.h; sourceTree = "<group>"; };
+		B6386687170467E400800FBE /* ChanPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPost.m; sourceTree = "<group>"; };
+		B6386689170467E400800FBE /* ChanUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUser.h; sourceTree = "<group>"; };
+		B638668A170467E400800FBE /* ChanUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUser.m; sourceTree = "<group>"; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B66FDC8716EF88A30042A36C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -315,28 +318,28 @@
 		B63865F41703E28900800FBE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B63866351703E51E00800FBE /* ChanTwitterPost.h */,
-				B63866361703E51E00800FBE /* ChanTwitterPost.m */,
-				B63866321703E51E00800FBE /* ChanTextPost.h */,
-				B63866331703E51E00800FBE /* ChanTextPost.m */,
-				B638662F1703E51D00800FBE /* ChanInstagramPost.h */,
-				B63866301703E51D00800FBE /* ChanInstagramPost.m */,
-				B638662C1703E51D00800FBE /* ChanHLSChunk.h */,
-				B638662D1703E51D00800FBE /* ChanHLSChunk.m */,
-				B63866291703E51D00800FBE /* ChanImagePost.h */,
-				B638662A1703E51D00800FBE /* ChanImagePost.m */,
-				B63866261703E51D00800FBE /* ChanHLSRecording.h */,
-				B63866271703E51D00800FBE /* ChanHLSRecording.m */,
-				B63866231703E51D00800FBE /* ChanVideoPost.h */,
-				B63866241703E51D00800FBE /* ChanVideoPost.m */,
-				B63866201703E51C00800FBE /* ChanUser.h */,
-				B63866211703E51C00800FBE /* ChanUser.m */,
-				B638661D1703E51C00800FBE /* ChanTimeline.h */,
-				B638661E1703E51C00800FBE /* ChanTimeline.m */,
-				B638661A1703E51B00800FBE /* ChanPost.h */,
-				B638661B1703E51B00800FBE /* ChanPost.m */,
-				B63866171703E51B00800FBE /* ChanEvent.h */,
-				B63866181703E51B00800FBE /* ChanEvent.m */,
+				B6386689170467E400800FBE /* ChanUser.h */,
+				B638668A170467E400800FBE /* ChanUser.m */,
+				B6386686170467E400800FBE /* ChanPost.h */,
+				B6386687170467E400800FBE /* ChanPost.m */,
+				B6386683170467A500800FBE /* ChanEvent.h */,
+				B6386684170467A500800FBE /* ChanEvent.m */,
+				B6386680170466D800800FBE /* ChanTextPost.h */,
+				B6386681170466D800800FBE /* ChanTextPost.m */,
+				B638667A170466D800800FBE /* ChanInstagramPost.h */,
+				B638667B170466D800800FBE /* ChanInstagramPost.m */,
+				B6386677170466D700800FBE /* ChanHLSRecording.h */,
+				B6386678170466D700800FBE /* ChanHLSRecording.m */,
+				B6386674170466D700800FBE /* ChanVideoPost.h */,
+				B6386675170466D700800FBE /* ChanVideoPost.m */,
+				B638666B170466D700800FBE /* ChanChannel.h */,
+				B638666C170466D700800FBE /* ChanChannel.m */,
+				B6386668170466D700800FBE /* ChanTwitterPost.h */,
+				B6386669170466D700800FBE /* ChanTwitterPost.m */,
+				B6386665170466D700800FBE /* ChanImagePost.h */,
+				B6386666170466D700800FBE /* ChanImagePost.m */,
+				B6386662170466D600800FBE /* ChanHLSChunk.h */,
+				B6386663170466D700800FBE /* ChanHLSChunk.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -344,8 +347,10 @@
 		B63865F51703E3DF00800FBE /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				B609968216F2E02E0033B29F /* ChanTimelineStore.h */,
-				B609968316F2E02F0033B29F /* ChanTimelineStore.m */,
+				B609968216F2E02E0033B29F /* ChanChannelStore.h */,
+				B609968316F2E02F0033B29F /* ChanChannelStore.m */,
+				B63866381703E96A00800FBE /* ChanEventStore.h */,
+				B63866391703E96A00800FBE /* ChanEventStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -571,7 +576,7 @@
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
 				4A265B7116F2097300B91564 /* ChunkedVideoCapture.m in Sources */,
-				B609968416F2E02F0033B29F /* ChanTimelineStore.m in Sources */,
+				B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */,
 				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
 				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
 				0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */,
@@ -598,6 +603,18 @@
 				0AA3938F17046E0500A35814 /* ChannelPostTableViewController.m in Sources */,
 				0AF534F41705991C00E437F9 /* ChanTextPostCell.m in Sources */,
 				0AF534F717059D8400E437F9 /* ChanImagePostCell.m in Sources */,
+				B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */,
+				B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */,
+				B6386667170466D700800FBE /* ChanImagePost.m in Sources */,
+				B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */,
+				B638666D170466D700800FBE /* ChanChannel.m in Sources */,
+				B6386676170466D700800FBE /* ChanVideoPost.m in Sources */,
+				B6386679170466D700800FBE /* ChanHLSRecording.m in Sources */,
+				B638667C170466D800800FBE /* ChanInstagramPost.m in Sources */,
+				B6386682170466D800800FBE /* ChanTextPost.m in Sources */,
+				B6386685170467A500800FBE /* ChanEvent.m in Sources */,
+				B6386688170467E400800FBE /* ChanPost.m in Sources */,
+				B638668B170467E400800FBE /* ChanUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

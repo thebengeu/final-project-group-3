@@ -12,6 +12,9 @@
 #import "ChannelAnnotation.h"
 #import "LocationAnnotation.h"
 #import "ChannelViewController.h"
+#import "ChanEventStore.h"
+#import "ChanEvent.h"
+#import "ChanChannel.h"
 
 @interface DiscoverViewController ()
 
@@ -36,25 +39,6 @@
     
     //  Force first update
     firstUpdate = false;
-}
-
-- (void) populateFakeChannelList{
-    _channelList = [[NSMutableArray alloc]init];
-   
-    for (int i = 0; i < 10; i++){
-        NSMutableDictionary *channel = [[NSMutableDictionary alloc]init];
-        [channel setValue:[NSString stringWithFormat:@"Channel %d", i] forKey:@"ChannelName"];
-        [channel setValue:[NSString stringWithFormat:@"Event %d", i] forKey:@"EventName"];
-        [channel setValue:[NSString stringWithFormat:@"Description %d", i] forKey:@"Description"];
-        [channel setValue:[NSString stringWithFormat:@"Channel %d", i] forKey:@"ChannelName"];
-        
-        NSNumber *channelLat = [[NSNumber alloc]initWithDouble:_location.latitude + (arc4random() % 1000)/100000.0 - 0.005];
-        NSNumber *channelLon = [[NSNumber alloc]initWithDouble:_location.longitude + (arc4random() % 1000)/100000.0 - 0.005];
-        [channel setValue:channelLat forKey:@"Lat"];
-        [channel setValue:channelLon forKey:@"Lon"];
-        [channel setValue:[NSNumber numberWithInt:i] forKey:@"ChannelId"];
-        [_channelList addObject: channel];
-    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -101,12 +85,26 @@
     _location = newLocation.coordinate;
     NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
     
-    //  Add fake events for the first time
-    if (firstUpdate == false){
-        [self populateFakeChannelList];
-        firstUpdate = true;
-        [self populateTableWithChannel];
-        [self populateMapWithChannelAnnotation];
+    // TODO: introduce threshold for requerying?
+    if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
+        newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
+        _channelList = [[NSMutableArray alloc] init];
+        
+        // search for nearby events within 1 km
+        [[ChanEventStore sharedStore] search:_location withinDistance:1000.0 withCompletion:^(NSArray *events, NSError *error) {
+            for (ChanEvent *event in events) {
+                [_channelList addObject: @{
+                 @"ChannelName": event.channel.name,
+                 @"EventName": event.name,
+                 @"Description": event.details,
+                 @"Lat": event.latitude,
+                 @"Lon": event.longitude,
+                 @"ChannelId": event.channel.id}];
+            }
+            
+            [self populateTableWithChannel];
+            [self populateMapWithChannelAnnotation];
+        }];
     }
 }
 
