@@ -91,4 +91,11 @@
     return 0;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSInteger tableRows = [[self tableView] numberOfRowsInSection:0];
+    if (tableRows > 0)
+        [[self tableView] selectRowAtIndexPath:[NSIndexPath indexPathForRow:tableRows-1 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionBottom];
+}
+
 @end

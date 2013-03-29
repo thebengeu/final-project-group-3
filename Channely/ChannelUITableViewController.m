@@ -36,7 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -74,7 +73,8 @@
     [[cell channelNameTextView]setText: [channel valueForKey:@"ChannelName"]];
     [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
     [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
-    [cell setChannelID:[channel valueForKey:@"ChannelId"]];
+    [cell setChannelID:[channel valueForKey:@"ChannelID"]];
+    [cell setEventID:[channel valueForKey:@"EventID"]];
     [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
     
     return cell;
@@ -83,7 +83,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"%@", [NSString stringWithFormat:@"Selected %@", [[_channelList objectAtIndex:[indexPath row]]valueForKey:@"ChannelName"]]);
     [[self delegate]tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 

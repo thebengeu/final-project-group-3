@@ -13,6 +13,8 @@
 
 @property NSString *channelName;
 
+@property NSString *channelID;
+
 @property ChannelPostTableViewController *postTableViewController;
 
 @property NSMutableArray *posts;

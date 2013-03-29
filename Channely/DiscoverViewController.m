@@ -51,6 +51,7 @@
     {
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         [vc setChannelName:[[sender channelNameTextView]text]];
+        [vc setChannelID:[sender channelID]];
     } 
     
 }
@@ -70,6 +71,7 @@
         
         ChannelAnnotation *annotation = [[ChannelAnnotation alloc] initWithChannelName:[channel valueForKey:@"ChannelName"] eventName:[channel valueForKey:@"EventName"] coordinate:channelLocation];
         [annotation setChannelID:[channel valueForKey:@"ChannelID"]];
+        [annotation setEventID:[channel valueForKey:@"EventID"]];
         [_mapView addAnnotation:annotation];
     }
     
@@ -99,7 +101,8 @@
                  @"Description": event.details,
                  @"Lat": event.latitude,
                  @"Lon": event.longitude,
-                 @"ChannelId": event.channel.id}];
+                 @"EventID": event.id,
+                 @"ChannelID": event.channel.id}];
             }
             
             [self populateTableWithChannel];
@@ -176,7 +179,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [tableView cellForRowAtIndexPath:indexPath];
-    NSString *selectedChannelID = [cell channelID];
+    NSString *selectedEventID = [cell eventID];
     NSArray *annotations = [_mapView annotations];
 
     for (int i = 0; i < [annotations count]; i++){
@@ -184,7 +187,7 @@
         if ( [[annotations objectAtIndex:i] class] != [ChannelAnnotation class])
             continue;
         ChannelAnnotation *annotation = [annotations objectAtIndex:i];
-        if ([[annotation channelID] compare:selectedChannelID] == NSOrderedSame){
+        if ([[annotation eventID] compare:selectedEventID] == NSOrderedSame){
             [_mapView deselectAnnotation:annotation animated:NO];
             [_mapView selectAnnotation:annotation animated:YES];
             [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -201,11 +204,11 @@
     }
     
     ChannelAnnotation *annotation = [view annotation];
-    NSString *selectedChannelId = [annotation channelID];
+    NSString *selectedEventId = [annotation eventID];
     for (int i = 0; i < [_channelList count]; i++){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         NSDictionary *channel = [_channelList objectAtIndex:i];
-        if ([selectedChannelId compare: [channel valueForKey:@"channelID"]] == NSOrderedSame){
+        if ([selectedEventId compare: [channel valueForKey:@"EventID"]] == NSOrderedSame){
             [[_channelTableViewController tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             break;
         }

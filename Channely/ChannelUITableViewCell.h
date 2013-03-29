@@ -26,6 +26,8 @@
 
 @property (nonatomic) NSString *channelID;
 
+@property (nonatomic) NSString *eventID;
+
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
 
 - (IBAction)enterChannel:(id)sender;

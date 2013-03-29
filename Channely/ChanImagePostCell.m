@@ -15,6 +15,7 @@
     [super setPostContent:post];
     [[self textContent]setText:[(ChanImagePost*)post content]];
     [[self imageContent]setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
+    NSLog(@"%@",[(ChanImagePost*)post url]);
 }
 
 @end

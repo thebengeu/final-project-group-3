@@ -10,6 +10,8 @@
 #import "ChanUser.h"
 #import "ChanPost.h"
 #import "ChanImagePost.h"
+#import "ChanPostStore.h"
+
 @interface ChannelViewController ()
 
 @end
@@ -29,7 +31,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@", [self channelName]);
-    [self populateFakePosts];
+    [self populateChannelPost];
+    //[self populateFakePosts];
 }
 
 - (void)viewDidLoad
@@ -77,6 +80,14 @@
     }
     [self setPosts:posts];
     [_postTableViewController setPostList:[self posts]];
+}
+
+-(void)populateChannelPost
+{
+    [[ChanPostStore sharedStore] getPostsWithChannelId:[self channelID] withCompletion:^(NSArray *posts, NSError *error) {
+        [self setPosts:[NSMutableArray arrayWithArray:posts]];
+        [_postTableViewController setPostList:[self posts]];
+    }];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
