@@ -1,17 +1,15 @@
-//
-//  ChanTwitterPost.m
-//  Channely
-//
-//  Created by Beng on 28/3/13.
-//  Copyright (c) 2013 nus.cs3217. All rights reserved.
-//
-
 #import "ChanTwitterPost.h"
+
+
+@interface ChanTwitterPost ()
+
+// Private interface goes here.
+
+@end
 
 
 @implementation ChanTwitterPost
 
-@dynamic jsonData;
-@dynamic url;
+// Custom logic goes here.
 
 @end

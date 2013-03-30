@@ -1,25 +1,5 @@
-//
-//  ChanEvent.h
-//  Channely
-//
-//  Created by Beng on 28/3/13.
-//  Copyright (c) 2013 nus.cs3217. All rights reserved.
-//
+#import "_ChanEvent.h"
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
-@class ChanChannel;
-
-@interface ChanEvent : NSManagedObject
-
-@property (nonatomic, retain) NSString * details;
-@property (nonatomic, retain) NSDate * endTime;
-@property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSDate * startTime;
-@property (nonatomic, retain) ChanChannel *channel;
-
+@interface ChanEvent : _ChanEvent {}
+// Custom logic goes here.
 @end

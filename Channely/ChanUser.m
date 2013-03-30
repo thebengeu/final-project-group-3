@@ -1,21 +1,15 @@
-//
-//  ChanUser.m
-//  Channely
-//
-//  Created by Beng on 28/3/13.
-//  Copyright (c) 2013 nus.cs3217. All rights reserved.
-//
-
 #import "ChanUser.h"
-#import "ChanChannel.h"
-#import "ChanPost.h"
+
+
+@interface ChanUser ()
+
+// Private interface goes here.
+
+@end
 
 
 @implementation ChanUser
 
-@dynamic id;
-@dynamic name;
-@dynamic posts;
-@dynamic channels;
+// Custom logic goes here.
 
 @end

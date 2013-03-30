@@ -1,16 +1,15 @@
-//
-//  ChanImagePost.m
-//  Channely
-//
-//  Created by Beng on 28/3/13.
-//  Copyright (c) 2013 nus.cs3217. All rights reserved.
-//
-
 #import "ChanImagePost.h"
+
+
+@interface ChanImagePost ()
+
+// Private interface goes here.
+
+@end
 
 
 @implementation ChanImagePost
 
-@dynamic url;
+// Custom logic goes here.
 
 @end
