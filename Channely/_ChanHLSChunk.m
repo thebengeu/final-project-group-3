@@ -4,6 +4,7 @@
 #import "_ChanHLSChunk.h"
 
 const struct ChanHLSChunkAttributes ChanHLSChunkAttributes = {
+	.duration = @"duration",
 	.seqNo = @"seqNo",
 	.url = @"url",
 };
@@ -41,6 +42,11 @@ const struct ChanHLSChunkFetchedProperties ChanHLSChunkFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"durationValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"seqNoValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"seqNo"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -49,6 +55,32 @@ const struct ChanHLSChunkFetchedProperties ChanHLSChunkFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic duration;
+
+
+
+- (double)durationValue {
+	NSNumber *result = [self duration];
+	return [result doubleValue];
+}
+
+- (void)setDurationValue:(double)value_ {
+	[self setDuration:[NSNumber numberWithDouble:value_]];
+}
+
+- (double)primitiveDurationValue {
+	NSNumber *result = [self primitiveDuration];
+	return [result doubleValue];
+}
+
+- (void)setPrimitiveDurationValue:(double)value_ {
+	[self setPrimitiveDuration:[NSNumber numberWithDouble:value_]];
+}
+
 
 
 

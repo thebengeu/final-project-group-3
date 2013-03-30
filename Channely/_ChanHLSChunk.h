@@ -5,6 +5,7 @@
 
 
 extern const struct ChanHLSChunkAttributes {
+	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *seqNo;
 	__unsafe_unretained NSString *url;
 } ChanHLSChunkAttributes;
@@ -21,6 +22,7 @@ extern const struct ChanHLSChunkFetchedProperties {
 
 
 
+
 @interface ChanHLSChunkID : NSManagedObjectID {}
 @end
 
@@ -29,6 +31,20 @@ extern const struct ChanHLSChunkFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ChanHLSChunkID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* duration;
+
+
+
+@property double durationValue;
+- (double)durationValue;
+- (void)setDurationValue:(double)value_;
+
+//- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -73,6 +89,15 @@ extern const struct ChanHLSChunkFetchedProperties {
 @end
 
 @interface _ChanHLSChunk (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveDuration;
+- (void)setPrimitiveDuration:(NSNumber*)value;
+
+- (double)primitiveDurationValue;
+- (void)setPrimitiveDurationValue:(double)value_;
+
+
 
 
 - (NSNumber*)primitiveSeqNo;
