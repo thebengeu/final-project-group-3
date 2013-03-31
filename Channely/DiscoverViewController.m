@@ -89,14 +89,9 @@
     // TODO: introduce threshold for requerying?
     if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
         newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
-        _channelList = [[NSMutableArray alloc] init];
-        
         // search for nearby events within 1 km
         [[ChanEventStore sharedStore] search:_location withinDistance:1000.0 withCompletion:^(NSArray *events, NSError *error) {
-
-            for (ChanEvent *event in events) {
-                [_channelList addObject: event];
-            }
+            _channelList = events;
             
             [self populateTableWithChannel];
             [self populateMapWithChannelAnnotation];

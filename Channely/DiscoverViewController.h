@@ -20,7 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *channelListContainer;
 
-@property NSMutableArray* channelList;
+@property NSArray* channelList;
 
 @property ChannelUITableViewController *channelTableViewController;
 
