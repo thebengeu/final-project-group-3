@@ -5,8 +5,10 @@
 
 const struct ChanHLSRecordingAttributes ChanHLSRecordingAttributes = {
 	.endDate = @"endDate",
+	.endSeqNo = @"endSeqNo",
+	.id = @"id",
+	.playlistURL = @"playlistURL",
 	.startDate = @"startDate",
-	.videoId = @"videoId",
 };
 
 const struct ChanHLSRecordingRelationships ChanHLSRecordingRelationships = {
@@ -42,6 +44,11 @@ const struct ChanHLSRecordingFetchedProperties ChanHLSRecordingFetchedProperties
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"endSeqNoValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"endSeqNo"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -56,14 +63,47 @@ const struct ChanHLSRecordingFetchedProperties ChanHLSRecordingFetchedProperties
 
 
 
+@dynamic endSeqNo;
+
+
+
+- (int32_t)endSeqNoValue {
+	NSNumber *result = [self endSeqNo];
+	return [result intValue];
+}
+
+- (void)setEndSeqNoValue:(int32_t)value_ {
+	[self setEndSeqNo:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveEndSeqNoValue {
+	NSNumber *result = [self primitiveEndSeqNo];
+	return [result intValue];
+}
+
+- (void)setPrimitiveEndSeqNoValue:(int32_t)value_ {
+	[self setPrimitiveEndSeqNo:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic id;
+
+
+
+
+
+
+@dynamic playlistURL;
+
+
+
+
+
+
 @dynamic startDate;
-
-
-
-
-
-
-@dynamic videoId;
 
 
 

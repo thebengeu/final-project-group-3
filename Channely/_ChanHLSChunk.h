@@ -54,9 +54,9 @@ extern const struct ChanHLSChunkFetchedProperties {
 
 
 
-@property int16_t seqNoValue;
-- (int16_t)seqNoValue;
-- (void)setSeqNoValue:(int16_t)value_;
+@property int32_t seqNoValue;
+- (int32_t)seqNoValue;
+- (void)setSeqNoValue:(int32_t)value_;
 
 //- (BOOL)validateSeqNo:(id*)value_ error:(NSError**)error_;
 
@@ -103,8 +103,8 @@ extern const struct ChanHLSChunkFetchedProperties {
 - (NSNumber*)primitiveSeqNo;
 - (void)setPrimitiveSeqNo:(NSNumber*)value;
 
-- (int16_t)primitiveSeqNoValue;
-- (void)setPrimitiveSeqNoValue:(int16_t)value_;
+- (int32_t)primitiveSeqNoValue;
+- (void)setPrimitiveSeqNoValue:(int32_t)value_;
 
 
 

@@ -6,8 +6,10 @@
 
 extern const struct ChanHLSRecordingAttributes {
 	__unsafe_unretained NSString *endDate;
+	__unsafe_unretained NSString *endSeqNo;
+	__unsafe_unretained NSString *id;
+	__unsafe_unretained NSString *playlistURL;
 	__unsafe_unretained NSString *startDate;
-	__unsafe_unretained NSString *videoId;
 } ChanHLSRecordingAttributes;
 
 extern const struct ChanHLSRecordingRelationships {
@@ -18,6 +20,8 @@ extern const struct ChanHLSRecordingFetchedProperties {
 } ChanHLSRecordingFetchedProperties;
 
 @class ChanHLSChunk;
+
+
 
 
 
@@ -46,21 +50,45 @@ extern const struct ChanHLSRecordingFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* endSeqNo;
+
+
+
+@property int32_t endSeqNoValue;
+- (int32_t)endSeqNoValue;
+- (void)setEndSeqNoValue:(int32_t)value_;
+
+//- (BOOL)validateEndSeqNo:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* id;
+
+
+
+//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* playlistURL;
+
+
+
+//- (BOOL)validatePlaylistURL:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSDate* startDate;
 
 
 
 //- (BOOL)validateStartDate:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* videoId;
-
-
-
-//- (BOOL)validateVideoId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -94,14 +122,29 @@ extern const struct ChanHLSRecordingFetchedProperties {
 
 
 
+- (NSNumber*)primitiveEndSeqNo;
+- (void)setPrimitiveEndSeqNo:(NSNumber*)value;
+
+- (int32_t)primitiveEndSeqNoValue;
+- (void)setPrimitiveEndSeqNoValue:(int32_t)value_;
+
+
+
+
+- (NSString*)primitiveId;
+- (void)setPrimitiveId:(NSString*)value;
+
+
+
+
+- (NSString*)primitivePlaylistURL;
+- (void)setPrimitivePlaylistURL:(NSString*)value;
+
+
+
+
 - (NSDate*)primitiveStartDate;
 - (void)setPrimitiveStartDate:(NSDate*)value;
-
-
-
-
-- (NSString*)primitiveVideoId;
-- (void)setPrimitiveVideoId:(NSString*)value;
 
 
 

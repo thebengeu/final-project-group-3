@@ -89,22 +89,22 @@ const struct ChanHLSChunkFetchedProperties ChanHLSChunkFetchedProperties = {
 
 
 
-- (int16_t)seqNoValue {
+- (int32_t)seqNoValue {
 	NSNumber *result = [self seqNo];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setSeqNoValue:(int16_t)value_ {
-	[self setSeqNo:[NSNumber numberWithShort:value_]];
+- (void)setSeqNoValue:(int32_t)value_ {
+	[self setSeqNo:[NSNumber numberWithInt:value_]];
 }
 
-- (int16_t)primitiveSeqNoValue {
+- (int32_t)primitiveSeqNoValue {
 	NSNumber *result = [self primitiveSeqNo];
-	return [result shortValue];
+	return [result intValue];
 }
 
-- (void)setPrimitiveSeqNoValue:(int16_t)value_ {
-	[self setPrimitiveSeqNo:[NSNumber numberWithShort:value_]];
+- (void)setPrimitiveSeqNoValue:(int32_t)value_ {
+	[self setPrimitiveSeqNo:[NSNumber numberWithInt:value_]];
 }
 
 
