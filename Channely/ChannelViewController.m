@@ -11,8 +11,11 @@
 #import "ChanUser.h"
 #import "ChanPost.h"
 #import "ChanImagePost.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ChannelViewController ()
+@interface ChannelViewController () <UIPopoverControllerDelegate>
+
+@property UIPopoverController *imagePickerPopover;
 
 @end
 
@@ -33,12 +36,18 @@
     NSLog(@"%@", self.channel.name);
     [self populateChannelPost];
     //[self populateFakePosts];
+    
+   
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    CGRect frame = [self imagePreview].frame;
+    frame.size.width = 1;
+    [[self imagePreview]setFrame:frame];
 }
 
 
@@ -100,5 +109,57 @@
     }
       
 }
+
+- (IBAction)pickImage:(id)sender {
+    [self presentImagePicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:sender];
+}
+
+- (IBAction)takePhoto:(id)sender {
+    [self presentImagePicker:UIImagePickerControllerSourceTypeCamera sender:sender];
+}
+
+- (IBAction)sendPost:(id)sender {
+}
+
+- (void) presentImagePicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender
+{
+    if (!self.imagePickerPopover && [UIImagePickerController isSourceTypeAvailable:sourceType]){
+        NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
+        if ([availableMediaTypes containsObject:(NSString*)kUTTypeImage]){
+            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.sourceType = sourceType;
+            picker.mediaTypes = @[(NSString*)kUTTypeImage];
+            picker.allowsEditing = NO;
+            picker.delegate = self;
+            if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
+                self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
+                [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                self.imagePickerPopover.delegate = self;
+            } else {
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }
+    }
+}
+
+- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.imagePickerPopover = nil;
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    if (!image)
+        image = info[UIImagePickerControllerOriginalImage];
+    
+    
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
 
 @end
