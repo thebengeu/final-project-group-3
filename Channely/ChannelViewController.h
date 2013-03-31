@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ChannelPostTableViewController.h"
+#import "AttachPickerViewController.h"
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate>
 
 @property ChanChannel *channel;
 
@@ -21,10 +22,16 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textInput;
 
-@property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
+@property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
-- (IBAction)pickImage:(id)sender;
-- (IBAction)takePhoto:(id)sender;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *sendPostIndicator;
+
+- (IBAction)attach:(id)sender;
+
 - (IBAction)sendPost:(id)sender;
+
+- (void)pickImage:(id)sender;
+
+- (void)takePhoto:(id)sender;
 
 @end

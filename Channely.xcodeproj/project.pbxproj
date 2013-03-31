@@ -14,6 +14,7 @@
 		0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
+		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
 		0AF534F91705A03800E437F9 /* wolfdie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF534F81705A03700E437F9 /* wolfdie.png */; };
 		0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535021705D29100E437F9 /* ChanImagePostCell.m */; };
 		0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535041705D29100E437F9 /* ChanPostCell.m */; };
@@ -102,6 +103,8 @@
 		0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
+		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
 		0ABB364816FC16A500436E06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0AF534F81705A03700E437F9 /* wolfdie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wolfdie.png; sourceTree = "<group>"; };
 		0AF535011705D29100E437F9 /* ChanImagePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanImagePostCell.h; path = Channely/ChanImagePostCell.h; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 				0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */,
 				0AF5351F1705D39100E437F9 /* ChannelViewController.h */,
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
+				0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */,
+				0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */,
 			);
 			name = Channel;
 			sourceTree = "<group>";
@@ -722,6 +727,7 @@
 				B6F4802A1706C80F0005029D /* _ChanVideoPost.m in Sources */,
 				4AC420751706E16200ECBD30 /* HLSEventProducer.m in Sources */,
 				B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */,
+				0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

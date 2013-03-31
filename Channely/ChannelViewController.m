@@ -13,11 +13,24 @@
 #import "ChanImagePost.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
+
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
 @property UIPopoverController *imagePickerPopover;
 
+@property UIPopoverController *attachPickerPopover;
+
+@property AttachPickerViewController *attachPickerViewController;
+
+@property UIImage *attachedImage;
+
+@property UILongPressGestureRecognizer *attachButtonLongPressGestureRecognizer;
+
+@property UIAlertView *deleteAttachmentAlertView;
+
 @end
+
+
 
 @implementation ChannelViewController
 
@@ -37,6 +50,17 @@
     [self populateChannelPost];
     //[self populateFakePosts];
     
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
    
 }
 
@@ -45,9 +69,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CGRect frame = [self imagePreview].frame;
-    frame.size.width = 1;
-    [[self imagePreview]setFrame:frame];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardDidHideNotification
+                                                  object:nil];
 }
 
 
@@ -110,15 +144,50 @@
       
 }
 
-- (IBAction)pickImage:(id)sender {
-    [self presentImagePicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:sender];
+- (void)pickImage:(id)sender {
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentImagePicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton];
 }
 
-- (IBAction)takePhoto:(id)sender {
-    [self presentImagePicker:UIImagePickerControllerSourceTypeCamera sender:sender];
+- (void)takePhoto:(id)sender {
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentImagePicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton];
+
+}
+
+- (IBAction)attach:(id)sender {
+    if(!_attachPickerPopover && !_attachedImage) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+        _attachPickerViewController = [storyboard instantiateViewControllerWithIdentifier:@"AttachPickerViewController"];
+        [_attachPickerViewController setDelegate:self];
+        _attachPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_attachPickerViewController];
+        [_attachPickerPopover setDelegate:self];
+        [_attachPickerPopover presentPopoverFromRect:_attachButton.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 - (IBAction)sendPost:(id)sender {
+    [_sendPostIndicator startAnimating];
+    [_textInput setEditable:NO];
+    ChannelViewController *channelViewController = self;
+    if (_attachedImage == nil){
+        [_channel addTextPostWithContent:[_textInput text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
+            [[channelViewController textInput]setText:@""];
+            [[channelViewController sendPostIndicator]stopAnimating];
+            [[channelViewController textInput] setEditable:YES];
+            
+        }];
+    } else {
+        [_channel addImagePostWithContent:[_textInput text] image:_attachedImage withCompletion:^(ChanImagePost *imagePost, NSError *error) {
+            [[channelViewController textInput]setText:@""];
+            [[channelViewController sendPostIndicator]stopAnimating];
+            [[channelViewController textInput] setEditable:YES];
+            [channelViewController setAttachedImage:nil];
+            [channelViewController changeAttachButtonToDefault];
+        }];
+    }
 }
 
 - (void) presentImagePicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender
@@ -144,7 +213,10 @@
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    self.imagePickerPopover = nil;
+    if (popoverController == _imagePickerPopover)
+        _imagePickerPopover = nil;
+    else if (popoverController == _attachPickerPopover)
+        _attachPickerPopover = nil;
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -152,11 +224,77 @@
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if (!image)
         image = info[UIImagePickerControllerOriginalImage];
-    
-    
-    
-    
+
     [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    _attachedImage = image;
+    [self changeAttachButtonToAttached];
+}
+
+-(void)changeAttachButtonToAttached{
+    [_attachButton setBackgroundImage:_attachedImage forState:UIControlStateNormal];
+    [_attachButton setTitle:@"" forState:UIControlStateNormal];
+    
+    //  Delete gesture
+    _attachButtonLongPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(confirmRemoveAttachedImage)];
+    [_attachButtonLongPressGestureRecognizer setMinimumPressDuration:1];
+    [_attachButton addGestureRecognizer:_attachButtonLongPressGestureRecognizer];
+}
+
+-(void)changeAttachButtonToDefault{
+    [_attachButton setBackgroundImage:nil forState:UIControlStateNormal];
+    [_attachButton setTitle:@"Attach" forState:UIControlStateNormal];
+    if (_attachButtonLongPressGestureRecognizer != nil){
+        [_attachButton removeGestureRecognizer:_attachButtonLongPressGestureRecognizer];
+        _attachButtonLongPressGestureRecognizer = nil;
+        [_attachButton setSelected:NO];
+        [_attachButton setHighlighted:NO];
+    }
+}
+
+-(void)confirmRemoveAttachedImage{
+    if (_deleteAttachmentAlertView == nil){
+        _deleteAttachmentAlertView = [[UIAlertView alloc] initWithTitle:@"Attachment"
+                                                    message:@"Delete the attachment?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:@"Cancel", nil];
+        [_deleteAttachmentAlertView show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (_deleteAttachmentAlertView == alertView){
+        if (buttonIndex == 0)
+            [self changeAttachButtonToDefault];
+        _deleteAttachmentAlertView = nil;
+        _attachedImage = nil;
+    }
+}
+
+
+-(void)keyboardDidShow: (NSNotification*)aNotification {
+    // Animate the current view out of the way
+    CGRect frame = [self view].frame;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+        frame.origin.y -= kbSize.width;
+    else
+        frame.origin.y -= kbSize.height;
+    [[self view]setFrame:frame];
+}
+
+-(void)keyboardDidHide: (NSNotification*)aNotification  {
+    // Animate the current view out of the way
+    CGRect frame = [self view].frame;
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
+        frame.origin.y += kbSize.width;
+    else
+        frame.origin.y += kbSize.height;
+    [[self view]setFrame:frame];
 }
 
 
