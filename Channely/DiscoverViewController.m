@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.distanceFilter = kCLDistanceFilterNone;
@@ -50,8 +50,7 @@
     if ([[segue identifier] isEqualToString:@"ChannelSegue"])
     {
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
-        [vc setChannelName:[[sender channelNameTextView]text]];
-        [vc setChannelID:[sender channelID]];
+        vc.channel = [[sender event] channel];
     } 
     
 }
@@ -65,13 +64,13 @@
     
     //  Channel nearby
     for (int i = 0; i < [_channelList count]; i++){
-        NSObject *channel = [_channelList objectAtIndex:i];
+        ChanEvent *event = [_channelList objectAtIndex:i];
         
-        CLLocationCoordinate2D channelLocation = CLLocationCoordinate2DMake([[channel valueForKey:@"Lat"] doubleValue], [[channel valueForKey:@"Lon"] doubleValue]);
+        CLLocationCoordinate2D channelLocation = CLLocationCoordinate2DMake(event.latitudeValue, event.longitudeValue);
         
-        ChannelAnnotation *annotation = [[ChannelAnnotation alloc] initWithChannelName:[channel valueForKey:@"ChannelName"] eventName:[channel valueForKey:@"EventName"] coordinate:channelLocation];
-        [annotation setChannelID:[channel valueForKey:@"ChannelID"]];
-        [annotation setEventID:[channel valueForKey:@"EventID"]];
+        ChannelAnnotation *annotation = [[ChannelAnnotation alloc] initWithChannelName:event.channel.name eventName:event.name coordinate:channelLocation];
+        [annotation setChannelID:event.channel.id];
+        [annotation setEventID:event.id];
         [_mapView addAnnotation:annotation];
     }
     
@@ -94,15 +93,9 @@
         
         // search for nearby events within 1 km
         [[ChanEventStore sharedStore] search:_location withinDistance:1000.0 withCompletion:^(NSArray *events, NSError *error) {
+
             for (ChanEvent *event in events) {
-                [_channelList addObject: @{
-                 @"ChannelName": event.channel.name,
-                 @"EventName": event.name,
-                 @"Description": event.details,
-                 @"Lat": event.latitude,
-                 @"Lon": event.longitude,
-                 @"EventID": event.id,
-                 @"ChannelID": event.channel.id}];
+                [_channelList addObject: event];
             }
             
             [self populateTableWithChannel];
@@ -179,7 +172,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [tableView cellForRowAtIndexPath:indexPath];
-    NSString *selectedEventID = [cell eventID];
+    NSString *selectedEventID = cell.event.id;
     NSArray *annotations = [_mapView annotations];
 
     for (int i = 0; i < [annotations count]; i++){
@@ -207,8 +200,8 @@
     NSString *selectedEventId = [annotation eventID];
     for (int i = 0; i < [_channelList count]; i++){
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-        NSDictionary *channel = [_channelList objectAtIndex:i];
-        if ([selectedEventId compare: [channel valueForKey:@"EventID"]] == NSOrderedSame){
+        ChanEvent *event = [_channelList objectAtIndex:i];
+        if ([selectedEventId compare: event.id] == NSOrderedSame){
             [[_channelTableViewController tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             break;
         }

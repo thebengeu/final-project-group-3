@@ -11,6 +11,7 @@
 
 #import "ChanMasterViewController.h"
 #import "ios-ntp.h"
+#import "ChanRestKitObjectMappings.h"
 
 @implementation ChanAppDelegate
 
@@ -42,6 +43,8 @@ NSString *const _SERVER_ADDR = @"http://upthetreehouse.com:10000";
     objectManager.managedObjectStore = managedObjectStore;
     
     [RKObjectManager setSharedManager:objectManager];
+    
+    [ChanRestKitObjectMappings setup];
         
     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     

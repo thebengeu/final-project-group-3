@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ChannelPostTableViewController.h"
 
+@class ChanChannel;
+
 @interface ChannelViewController : UIViewController
 
-@property NSString *channelName;
-
-@property NSString *channelID;
+@property ChanChannel *channel;
 
 @property ChannelPostTableViewController *postTableViewController;
 

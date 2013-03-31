@@ -7,10 +7,10 @@
 //
 
 #import "ChannelViewController.h"
+#import "ChanChannel.h"
 #import "ChanUser.h"
 #import "ChanPost.h"
 #import "ChanImagePost.h"
-#import "ChanPostStore.h"
 
 @interface ChannelViewController ()
 
@@ -30,7 +30,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"%@", [self channelName]);
+    NSLog(@"%@", self.channel.name);
     [self populateChannelPost];
     //[self populateFakePosts];
 }
@@ -84,7 +84,7 @@
 
 -(void)populateChannelPost
 {
-    [[ChanPostStore sharedStore] getPostsWithChannelId:[self channelID] withCompletion:^(NSArray *posts, NSError *error) {
+    [self.channel getPostsWithCompletion:^(NSArray *posts, NSError *error) {
         [self setPosts:[NSMutableArray arrayWithArray:posts]];
         [_postTableViewController setPostList:[self posts]];
     }];

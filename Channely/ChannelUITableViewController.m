@@ -9,6 +9,8 @@
 #import "ChannelUITableViewController.h"
 #import "ChannelUITableViewCell.h"
 #import "ChannelViewController.h"
+#import "ChanEvent.h"
+#import "ChanChannel.h"
 
 @interface ChannelUITableViewController ()
 
@@ -64,17 +66,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSObject *channel = [_channelList objectAtIndex:[indexPath row]];
+    ChanEvent *event = [_channelList objectAtIndex:[indexPath row]];
     ChannelUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChannelCell"];
     if(cell == nil) {
         cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChannelCell"];
     }
     
-    [[cell channelNameTextView]setText: [channel valueForKey:@"ChannelName"]];
-    [[cell eventNameTextView]setText: [channel valueForKey:@"EventName"]];
-    [[cell descriptionTextView]setText: [channel valueForKey:@"Description"]];
-    [cell setChannelID:[channel valueForKey:@"ChannelID"]];
-    [cell setEventID:[channel valueForKey:@"EventID"]];
+    [[cell channelNameTextView]setText: event.channel.name];
+    [[cell eventNameTextView]setText: event.name];
+    [[cell descriptionTextView]setText: event.details];
+    cell.event = event;
     [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
     
     return cell;

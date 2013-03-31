@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChanEvent;
+
 @protocol DiscoverUITableCellDelegate <NSObject>
 
 - (void)enterChannel: (id)cell;
@@ -24,9 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
-@property (nonatomic) NSString *channelID;
-
-@property (nonatomic) NSString *eventID;
+@property (weak, nonatomic) ChanEvent *event;
 
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
 
