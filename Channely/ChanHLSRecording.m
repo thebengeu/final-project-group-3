@@ -1,9 +1,6 @@
 #import "ChanHLSRecording.h"
 #import "ChanHLSChunk.h"
-
-NSString *const _API_ENDPOINT_CREATE_RECORDING = @"/hls/recordings";
-NSString *const _API_ENDPOINT_STOP_RECORDING = @"/hls/recordings/%@/stop";
-NSString *const _API_ENDPOINT_ADD_CHUNK = @"/hls/recordings/%@/chunks";
+#import "ChanAPIEndpoints.h"
 
 @interface ChanHLSRecording ()
 
@@ -20,7 +17,7 @@ NSString *const _API_ENDPOINT_ADD_CHUNK = @"/hls/recordings/%@/chunks";
     ChanHLSRecording *hlsRecording = [NSEntityDescription insertNewObjectForEntityForName:@"HLSRecording" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     hlsRecording.startDate = startDate;
     
-    [[RKObjectManager sharedManager] postObject:hlsRecording path:_API_ENDPOINT_CREATE_RECORDING parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:hlsRecording path:PATH_CREATE_RECORDING parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block(hlsRecording, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
@@ -34,7 +31,7 @@ NSString *const _API_ENDPOINT_ADD_CHUNK = @"/hls/recordings/%@/chunks";
     self.endDate = endDate;
     self.endSeqNoValue = endSeqNo;
     
-    [[RKObjectManager sharedManager] postObject:self path:[NSString stringWithFormat:_API_ENDPOINT_STOP_RECORDING, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:self path:[NSString stringWithFormat:PATH_STOP_RECORDING_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block(self, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
@@ -51,7 +48,7 @@ NSString *const _API_ENDPOINT_ADD_CHUNK = @"/hls/recordings/%@/chunks";
     hlsChunk.seqNoValue = seqNo;
     [self addChunksObject:hlsChunk];
     
-    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:hlsChunk method:RKRequestMethodPOST path:[NSString stringWithFormat:_API_ENDPOINT_ADD_CHUNK, self.id] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:hlsChunk method:RKRequestMethodPOST path:[NSString stringWithFormat:PATH_ADD_CHUNK_FORMAT, self.id] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data
                                     name:@"chunk"
                                 fileName:@"chunk.ts"

@@ -12,7 +12,6 @@
 #import "ChannelAnnotation.h"
 #import "LocationAnnotation.h"
 #import "ChannelViewController.h"
-#import "ChanEventStore.h"
 #import "ChanEvent.h"
 #import "ChanChannel.h"
 
@@ -90,7 +89,7 @@
     if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
         newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
         // search for nearby events within 1 km
-        [[ChanEventStore sharedStore] search:_location withinDistance:1000.0 withCompletion:^(NSArray *events, NSError *error) {
+        [ChanEvent search:_location withinDistance:1000.0 withCompletion:^(NSArray *events, NSError *error) {
             _channelList = events;
             
             [self populateTableWithChannel];

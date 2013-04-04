@@ -34,8 +34,6 @@
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
 		4A59D1E11705E44B00D04B6F /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1E01705E44B00D04B6F /* HLSEventPlaylistHelper.m */; };
 		4AC420751706E16200ECBD30 /* HLSEventProducer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC420731706E16200ECBD30 /* HLSEventProducer.m */; };
-		B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B609968316F2E02F0033B29F /* ChanChannelStore.m */; };
-		B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B63866391703E96A00800FBE /* ChanEventStore.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -144,10 +142,6 @@
 		4AC420731706E16200ECBD30 /* HLSEventProducer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSEventProducer.m; sourceTree = "<group>"; };
 		4AC420741706E16200ECBD30 /* HLSEventProducerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSEventProducerDelegate.h; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		B609968216F2E02E0033B29F /* ChanChannelStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelStore.h; sourceTree = "<group>"; };
-		B609968316F2E02F0033B29F /* ChanChannelStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannelStore.m; sourceTree = "<group>"; };
-		B63866381703E96A00800FBE /* ChanEventStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEventStore.h; sourceTree = "<group>"; };
-		B63866391703E96A00800FBE /* ChanEventStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanEventStore.m; sourceTree = "<group>"; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
 		B6386665170466D700800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
@@ -197,6 +191,7 @@
 		B66FDCBF16EF88A40042A36C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B66FDCC116EF88A40042A36C /* ChannelyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelyTests.h; sourceTree = "<group>"; };
 		B66FDCC216EF88A40042A36C /* ChannelyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelyTests.m; sourceTree = "<group>"; };
+		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
 		B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRestKitObjectMappings.m; sourceTree = "<group>"; };
 		B6F4800A1706C80F0005029D /* _ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanChannel.h; sourceTree = "<group>"; };
@@ -419,17 +414,14 @@
 			name = "Model-Custom";
 			sourceTree = "<group>";
 		};
-		B63865F51703E3DF00800FBE /* Store */ = {
+		B63865F51703E3DF00800FBE /* API */ = {
 			isa = PBXGroup;
 			children = (
-				B609968216F2E02E0033B29F /* ChanChannelStore.h */,
-				B609968316F2E02F0033B29F /* ChanChannelStore.m */,
-				B63866381703E96A00800FBE /* ChanEventStore.h */,
-				B63866391703E96A00800FBE /* ChanEventStore.m */,
 				B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */,
 				B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */,
+				B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */,
 			);
-			name = Store;
+			name = API;
 			sourceTree = "<group>";
 		};
 		B66FDC7916EF88A30042A36C = {
@@ -476,7 +468,7 @@
 				4A8933D017059CF5004D6E53 /* Http Live Streaming */,
 				B63865F41703E28900800FBE /* Model-Custom */,
 				B6F480091706C7F50005029D /* Model-Generated */,
-				B63865F51703E3DF00800FBE /* Store */,
+				B63865F51703E3DF00800FBE /* API */,
 				0ABB364A16FC19A200436E06 /* UI */,
 				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
@@ -683,11 +675,9 @@
 				B66FDC9816EF88A30042A36C /* ChanAppDelegate.m in Sources */,
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
-				B609968416F2E02F0033B29F /* ChanChannelStore.m in Sources */,
 				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
 				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
 				0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */,
-				B638663A1703E96A00800FBE /* ChanEventStore.m in Sources */,
 				B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */,
 				B6386667170466D700800FBE /* ChanImagePost.m in Sources */,
 				B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */,

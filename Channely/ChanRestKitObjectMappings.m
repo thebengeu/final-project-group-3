@@ -9,12 +9,22 @@
 #import "ChanRestKitObjectMappings.h"
 #import "ChanTextPost.h"
 #import "ChanImagePost.h"
-
-NSString *const _API_ENDPOINT_POSTS_UNIFIED_GET = @"/channels/:channelID/posts";
+#import "ChanAPIEndpoints.h"
+#import "ChanHLSRecording.h"
+#import "ChanHLSChunk.h"
+#import "ChanChannel.h"
 
 @implementation ChanRestKitObjectMappings
 
 + (void)setup
+{
+    [ChanRestKitObjectMappings setupPostMappings];
+    [ChanRestKitObjectMappings setupHLSMappings];
+    [ChanRestKitObjectMappings setupChannelMappings];
+    [ChanRestKitObjectMappings setupEventMappings];
+}
+
++ (void)setupPostMappings
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -37,7 +47,7 @@ NSString *const _API_ENDPOINT_POSTS_UNIFIED_GET = @"/channels/:channelID/posts";
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"image" objectMapping:imagePostMapping]];
     
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping pathPattern:_API_ENDPOINT_POSTS_UNIFIED_GET keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping pathPattern:PATH_POSTS_UNIFIED_GET keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *textPostRequestMapping = [RKObjectMapping requestMapping];
     [textPostRequestMapping addAttributeMappingsFromDictionary:@{
@@ -54,6 +64,96 @@ NSString *const _API_ENDPOINT_POSTS_UNIFIED_GET = @"/channels/:channelID/posts";
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:textPostRequestDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:imagePostRequestDescriptor];
+}
+
++ (void)setupHLSMappings
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
+    RKEntityMapping *hlsRecordingMapping = [RKEntityMapping mappingForEntityForName:@"HLSRecording" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [hlsRecordingMapping addAttributeMappingsFromDictionary:@{
+     @"_id":            @"id",
+     @"startDate":      @"startDate",
+     @"endDate":        @"endDate",
+     @"endSeqNo":       @"endSeqNo",
+     @"playlistURL":    @"playlistURL"}];
+    hlsRecordingMapping.identificationAttributes = @[ @"id" ];
+    
+    RKResponseDescriptor *createRecordingDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hlsRecordingMapping pathPattern:PATH_CREATE_RECORDING keyPath:nil statusCodes:statusCodes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:createRecordingDescriptor];
+    
+    RKResponseDescriptor *stopRecordingDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hlsRecordingMapping pathPattern:PATH_STOP_RECORDING keyPath:nil statusCodes:statusCodes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:stopRecordingDescriptor];
+    
+    RKObjectMapping *hlsRecordingRequestMapping = [RKObjectMapping requestMapping];
+    [hlsRecordingRequestMapping addAttributeMappingsFromDictionary:@{
+     @"id":             @"_id",
+     @"startDate":      @"startDate",
+     @"endDate":        @"endDate",
+     @"endSeqNo":       @"endSeqNo",
+     @"playlistURL":    @"playlistURL"}];
+    RKRequestDescriptor *hlsRecordingRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:hlsRecordingRequestMapping objectClass:[ChanHLSRecording class] rootKeyPath:nil];
+    
+    RKObjectMapping *hlsChunkRequestMapping = [RKObjectMapping requestMapping];
+    [hlsChunkRequestMapping addAttributeMappingsFromDictionary:@{
+     @"duration":   @"duration",
+     @"seqNo":      @"seqNo"}];
+    RKRequestDescriptor *hlsChunkRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:hlsChunkRequestMapping objectClass:[ChanHLSChunk class] rootKeyPath:nil];
+
+    [[RKObjectManager sharedManager] addRequestDescriptor:hlsRecordingRequestDescriptor];
+    [[RKObjectManager sharedManager] addRequestDescriptor:hlsChunkRequestDescriptor];
+}
+
++ (void)setupChannelMappings
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
+    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Channel" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [responseMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    responseMapping.identificationAttributes = @[ @"id" ];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
+    
+    RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
+    [requestMapping addAttributeMappingsFromDictionary:@{
+     @"id":         @"_id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanChannel class] rootKeyPath:nil];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+}
+
++ (void)setupEventMappings
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
+    RKEntityMapping *channelMapping = [RKEntityMapping mappingForEntityForName:@"Channel" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [channelMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"name":       @"name",
+     @"createdAt":  @"createdAt"}];
+    channelMapping.identificationAttributes = @[ @"id" ];
+    
+    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [responseMapping addAttributeMappingsFromDictionary:@{
+     @"_id":            @"id",
+     @"details":        @"details",
+     @"endDateTime":    @"endTime",
+     @"latitude":       @"latitude",
+     @"longitude":      @"longitude",
+     @"name":           @"name",
+     @"startDateTime":  @"startTime"}];
+    responseMapping.identificationAttributes = @[ @"id" ];
+    
+    [responseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"_channel" toKeyPath:@"channel" withMapping:channelMapping]];
+    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_EVENTS_SEARCH keyPath:nil statusCodes:statusCodes];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
 }
 
 @end
