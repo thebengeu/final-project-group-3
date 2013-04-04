@@ -9,6 +9,10 @@
 #ifndef Channely_ChanAPIEndpoints_h
 #define Channely_ChanAPIEndpoints_h
 
+// Client ID / Secret
+static NSString *const CLIENT_ID = @"515d95a2d529fbbb18000001";
+static NSString *const CLIENT_SECRET = @"bRst9AEPfEst6UN7UGZdGzuiemzcl7";
+
 // Channel Endpoints
 static NSString *const PATH_CHANNEL = @"/channels";
 
@@ -29,5 +33,11 @@ static NSString *const PATH_STOP_RECORDING = @"/hls/recordings/:recordingID/stop
 static NSString *const PATH_STOP_RECORDING_FORMAT = @"/hls/recordings/%@/stop";
 static NSString *const PATH_ADD_CHUNK = @"/hls/recordings/:recordingID/chunks";
 static NSString *const PATH_ADD_CHUNK_FORMAT = @"/hls/recordings/%@/chunks";
+
+// User Endpoints
+static NSString *const PATH_USER = @"/users";
+
+// Auth Endpoints
+static NSString *const PATH_GET_ACCESS_TOKEN = @"/oauth/token";
 
 #endif

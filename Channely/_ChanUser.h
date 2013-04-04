@@ -5,8 +5,10 @@
 
 
 extern const struct ChanUserAttributes {
+	__unsafe_unretained NSString *accessToken;
 	__unsafe_unretained NSString *id;
 	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *password;
 } ChanUserAttributes;
 
 extern const struct ChanUserRelationships {
@@ -23,6 +25,8 @@ extern const struct ChanUserFetchedProperties {
 
 
 
+
+
 @interface ChanUserID : NSManagedObjectID {}
 @end
 
@@ -31,6 +35,16 @@ extern const struct ChanUserFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ChanUserID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* accessToken;
+
+
+
+//- (BOOL)validateAccessToken:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -51,6 +65,16 @@ extern const struct ChanUserFetchedProperties {
 
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* password;
+
+
+
+//- (BOOL)validatePassword:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -90,6 +114,12 @@ extern const struct ChanUserFetchedProperties {
 @interface _ChanUser (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSString*)primitiveAccessToken;
+- (void)setPrimitiveAccessToken:(NSString*)value;
+
+
+
+
 - (NSString*)primitiveId;
 - (void)setPrimitiveId:(NSString*)value;
 
@@ -98,6 +128,12 @@ extern const struct ChanUserFetchedProperties {
 
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
+
+
+
+
+- (NSString*)primitivePassword;
+- (void)setPrimitivePassword:(NSString*)value;
 
 
 

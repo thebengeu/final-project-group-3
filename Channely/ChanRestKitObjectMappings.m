@@ -13,6 +13,7 @@
 #import "ChanHLSRecording.h"
 #import "ChanHLSChunk.h"
 #import "ChanChannel.h"
+#import "ChanUser.h"
 
 @implementation ChanRestKitObjectMappings
 
@@ -22,6 +23,7 @@
     [ChanRestKitObjectMappings setupHLSMappings];
     [ChanRestKitObjectMappings setupChannelMappings];
     [ChanRestKitObjectMappings setupEventMappings];
+    [ChanRestKitObjectMappings setupUserMappings];
 }
 
 + (void)setupPostMappings
@@ -32,7 +34,8 @@
     [textPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"content":    @"content",
-     @"time":       @"createdAt"}];
+     @"time":       @"createdAt",
+     @"username":   @"username"}];
     textPostMapping.identificationAttributes = @[ @"id" ];
     
     RKEntityMapping *imagePostMapping = [RKEntityMapping mappingForEntityForName:@"ImagePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
@@ -40,7 +43,8 @@
      @"_id":        @"id",
      @"content":    @"content",
      @"time":       @"createdAt",
-     @"url":        @"url"}];
+     @"url":        @"url",
+     @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
     
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
@@ -154,6 +158,32 @@
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_EVENTS_SEARCH keyPath:nil statusCodes:statusCodes];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+}
+
++ (void)setupUserMappings
+{
+    NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
+    
+    RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [responseMapping addAttributeMappingsFromDictionary:@{
+     @"_id":            @"id",
+     @"username":       @"name",
+     @"password":       @"password",
+     @"accessToken":    @"accessToken"}];
+    responseMapping.identificationAttributes = @[ @"id" ];
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_USER keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *oauthResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_GET_ACCESS_TOKEN keyPath:nil statusCodes:statusCodes];
+    
+    RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
+    [requestMapping addAttributeMappingsFromDictionary:@{
+     @"id":         @"_id",
+     @"name":       @"username",
+     @"password":   @"password"}];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanUser class] rootKeyPath:nil];
+    
+    [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:oauthResponseDescriptor];
+    [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
 }
 
 @end

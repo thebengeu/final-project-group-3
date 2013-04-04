@@ -12,6 +12,7 @@
 #import "ChanMasterViewController.h"
 #import "ios-ntp.h"
 #import "ChanRestKitObjectMappings.h"
+#import "ChanAPIEndpoints.h"
 
 @implementation ChanAppDelegate
 
@@ -41,6 +42,8 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
     // Configure the object manager
     RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:_SERVER_ADDR]];
     objectManager.managedObjectStore = managedObjectStore;
+    [objectManager.HTTPClient setDefaultHeader:@"clientId" value:CLIENT_ID];
+    [objectManager.HTTPClient setDefaultHeader:@"clientSecret" value:CLIENT_SECRET];
     
     [RKObjectManager setSharedManager:objectManager];
     

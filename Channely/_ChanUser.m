@@ -4,8 +4,10 @@
 #import "_ChanUser.h"
 
 const struct ChanUserAttributes ChanUserAttributes = {
+	.accessToken = @"accessToken",
 	.id = @"id",
 	.name = @"name",
+	.password = @"password",
 };
 
 const struct ChanUserRelationships ChanUserRelationships = {
@@ -49,6 +51,13 @@ const struct ChanUserFetchedProperties ChanUserFetchedProperties = {
 
 
 
+@dynamic accessToken;
+
+
+
+
+
+
 @dynamic id;
 
 
@@ -57,6 +66,13 @@ const struct ChanUserFetchedProperties ChanUserFetchedProperties = {
 
 
 @dynamic name;
+
+
+
+
+
+
+@dynamic password;
 
 
 

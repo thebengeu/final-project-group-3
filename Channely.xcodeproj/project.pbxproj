@@ -65,6 +65,7 @@
 		B66FDCB816EF88A40042A36C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8B16EF88A30042A36C /* CoreData.framework */; };
 		B66FDCC016EF88A40042A36C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66FDCBE16EF88A40042A36C /* InfoPlist.strings */; };
 		B66FDCC316EF88A40042A36C /* ChannelyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCC216EF88A40042A36C /* ChannelyTests.m */; };
+		B68B8192170DBA34001B6986 /* ChanMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B8191170DBA34001B6986 /* ChanMenuViewController.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
 		B6F480201706C80F0005029D /* _ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800B1706C80F0005029D /* _ChanChannel.m */; };
 		B6F480211706C80F0005029D /* _ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800D1706C80F0005029D /* _ChanEvent.m */; };
@@ -192,6 +193,8 @@
 		B66FDCC116EF88A40042A36C /* ChannelyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelyTests.h; sourceTree = "<group>"; };
 		B66FDCC216EF88A40042A36C /* ChannelyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelyTests.m; sourceTree = "<group>"; };
 		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
+		B68B8190170DBA33001B6986 /* ChanMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanMenuViewController.h; sourceTree = "<group>"; };
+		B68B8191170DBA34001B6986 /* ChanMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanMenuViewController.m; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
 		B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRestKitObjectMappings.m; sourceTree = "<group>"; };
 		B6F4800A1706C80F0005029D /* _ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanChannel.h; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 				0AF5351C1705D36500E437F9 /* ChanHiddenTabBarController.h */,
 				0AF5351D1705D36500E437F9 /* ChanHiddenTabBarController.m */,
 				0AF534F81705A03700E437F9 /* wolfdie.png */,
+				B68B8190170DBA33001B6986 /* ChanMenuViewController.h */,
+				B68B8191170DBA34001B6986 /* ChanMenuViewController.m */,
 			);
 			name = UI;
 			path = ..;
@@ -718,6 +723,7 @@
 				4AC420751706E16200ECBD30 /* HLSEventProducer.m in Sources */,
 				B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */,
 				0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */,
+				B68B8192170DBA34001B6986 /* ChanMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

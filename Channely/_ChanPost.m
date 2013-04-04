@@ -7,6 +7,7 @@ const struct ChanPostAttributes ChanPostAttributes = {
 	.content = @"content",
 	.createdAt = @"createdAt",
 	.id = @"id",
+	.username = @"username",
 };
 
 const struct ChanPostRelationships ChanPostRelationships = {
@@ -65,6 +66,13 @@ const struct ChanPostFetchedProperties ChanPostFetchedProperties = {
 
 
 @dynamic id;
+
+
+
+
+
+
+@dynamic username;
 
 
 
