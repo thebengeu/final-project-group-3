@@ -1,5 +1,7 @@
 #import "_ChanImagePost.h"
 
 @interface ChanImagePost : _ChanImagePost {}
-// Custom logic goes here.
+
+- (void)deleteWithCompletion:(void (^)(ChanImagePost *imagePost, NSError *error))block;
+
 @end

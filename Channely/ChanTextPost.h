@@ -1,5 +1,7 @@
 #import "_ChanTextPost.h"
 
 @interface ChanTextPost : _ChanTextPost {}
-// Custom logic goes here.
+
+- (void)deleteWithCompletion:(void (^)(ChanTextPost *textPost, NSError *error))block;
+
 @end
