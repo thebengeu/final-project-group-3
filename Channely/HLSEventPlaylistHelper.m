@@ -8,7 +8,7 @@
 
 #import "HLSEventPlaylistHelper.h"
 
-NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%d\n#EXT-X-MEDIA-SEQUENCE:%d\n";
+NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%lf\n#EXT-X-MEDIA-SEQUENCE:%d\n";
 NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
 NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
 NSUInteger const cDefaultSequenceNumber = 0;
@@ -16,7 +16,7 @@ NSUInteger const cDefaultSequenceNumber = 0;
 @interface HLSEventPlaylistHelper ()
 // Internal.
 @property (strong) NSURL * _fileName;
-@property (atomic) NSUInteger _targetInterval;
+@property (atomic) CGFloat _targetInterval;
 @property (strong) NSMutableString *_buffer;
 
 - (void) writeBufferToFile;
@@ -39,7 +39,7 @@ NSUInteger const cDefaultSequenceNumber = 0;
 }
 
 #pragma mark Playlist Manipulation
-- (void) beginPlaylistWithTargetInterval:(NSUInteger)period {
+- (void) beginPlaylistWithTargetInterval:(CGFloat)period {
     _targetInterval = period;
     _buffer = [[NSMutableString alloc] init];
     
