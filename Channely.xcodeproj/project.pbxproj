@@ -13,6 +13,7 @@
 		0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7416F301B80017FECB /* NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
+		0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EC539170EEE80002D60D1 /* DiscoveryService.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
 		0AF534F91705A03800E437F9 /* wolfdie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF534F81705A03700E437F9 /* wolfdie.png */; };
@@ -104,6 +105,8 @@
 		0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
 		0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
+		0A9EC538170EEE80002D60D1 /* DiscoveryService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryService.h; sourceTree = "<group>"; };
+		0A9EC539170EEE80002D60D1 /* DiscoveryService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryService.m; sourceTree = "<group>"; };
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
 		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
@@ -320,6 +323,15 @@
 			name = IosNtp;
 			sourceTree = "<group>";
 		};
+		0A9EC537170EEE51002D60D1 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EC538170EEE80002D60D1 /* DiscoveryService.h */,
+				0A9EC539170EEE80002D60D1 /* DiscoveryService.m */,
+			);
+			name = Discovery;
+			sourceTree = "<group>";
+		};
 		0AA3938317043E3B00A35814 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +495,7 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
+				0A9EC537170EEE51002D60D1 /* Discovery */,
 				4A8933D017059CF5004D6E53 /* Http Live Streaming */,
 				B63865F41703E28900800FBE /* Model-Custom */,
 				B6F480091706C7F50005029D /* Model-Generated */,
@@ -740,6 +753,7 @@
 				4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */,
 				4AE16EE5170DF6E500573A4B /* HLSStreamDownloader.m in Sources */,
 				4AE16EE6170DF6E500573A4B /* HLSUtility.m in Sources */,
+				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
