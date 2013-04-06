@@ -69,7 +69,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.posts = [NSMutableArray array];
+    NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:YES];
+    [request setSortDescriptors:@[sortDescriptor]];
+
+    NSError *error;
+    self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&error]];
+    if (self.posts == nil) {
+        self.posts = [NSMutableArray array];
+    }
     
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
@@ -145,8 +156,8 @@
     if ([segueName isEqualToString: @"PostTableSegue"]) {
         ChannelPostTableViewController * childViewController = (ChannelPostTableViewController *) [segue destinationViewController];
         _postTableViewController = childViewController;
-        [[_postTableViewController tableView]reloadData];
-        [_postTableViewController setPostList:[self posts]];
+//        [[_postTableViewController tableView]reloadData];
+//        [_postTableViewController setPostList:[self posts]];
     }
       
 }
