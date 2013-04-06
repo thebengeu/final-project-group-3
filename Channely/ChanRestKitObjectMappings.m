@@ -33,19 +33,25 @@
     RKEntityMapping *textPostMapping = [RKEntityMapping mappingForEntityForName:@"TextPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [textPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
+     @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"username":   @"username"}];
     textPostMapping.identificationAttributes = @[ @"id" ];
+
+    [textPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
     RKEntityMapping *imagePostMapping = [RKEntityMapping mappingForEntityForName:@"ImagePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [imagePostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
+     @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
      @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
+    
+    [imagePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
