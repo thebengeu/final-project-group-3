@@ -13,8 +13,11 @@
 #import "ios-ntp.h"
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
+#import "ChanHTTPServer.h"
 
-@implementation ChanAppDelegate
+@implementation ChanAppDelegate{
+    ChanHTTPServer *chanHTTPServer;
+}
 
 NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 //NSString *const _SERVER_ADDR = @"https://192.168.0.40:3003";
@@ -56,7 +59,7 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
     
     //  Start NTP
     [NetworkClock sharedNetworkClock];
-    
+
     return YES;
 }
 

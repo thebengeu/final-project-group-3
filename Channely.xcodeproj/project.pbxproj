@@ -17,6 +17,11 @@
 		0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EC539170EEE80002D60D1 /* DiscoveryService.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
+		0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA798B01710024200632E22 /* ChanHTTPServer.m */; };
+		0AA798B3171009EA00632E22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B2171009EA00632E22 /* Security.framework */; };
+		0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B4171009F300632E22 /* CFNetwork.framework */; };
+		0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B817100A6F00632E22 /* libxml2.dylib */; };
+		0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798BA17100B4E00632E22 /* libxml2.2.dylib */; };
 		0AF534F91705A03800E437F9 /* wolfdie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF534F81705A03700E437F9 /* wolfdie.png */; };
 		0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535021705D29100E437F9 /* ChanImagePostCell.m */; };
 		0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535041705D29100E437F9 /* ChanPostCell.m */; };
@@ -113,6 +118,12 @@
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
 		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
+		0AA798AF1710024200632E22 /* ChanHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHTTPServer.h; sourceTree = "<group>"; };
+		0AA798B01710024200632E22 /* ChanHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHTTPServer.m; sourceTree = "<group>"; };
+		0AA798B2171009EA00632E22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0AA798B4171009F300632E22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0AA798B817100A6F00632E22 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		0AA798BA17100B4E00632E22 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		0ABB364816FC16A500436E06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0AF534F81705A03700E437F9 /* wolfdie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wolfdie.png; sourceTree = "<group>"; };
 		0AF535011705D29100E437F9 /* ChanImagePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanImagePostCell.h; path = Channely/ChanImagePostCell.h; sourceTree = "<group>"; };
@@ -240,6 +251,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */,
+				0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */,
+				0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */,
+				0AA798B3171009EA00632E22 /* Security.framework in Frameworks */,
 				0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */,
 				0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */,
 				0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */,
@@ -411,6 +426,8 @@
 				4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */,
 				4AE16EE0170DF6E500573A4B /* HLSUtility.h */,
 				4AE16EE1170DF6E500573A4B /* HLSUtility.m */,
+				0AA798AF1710024200632E22 /* ChanHTTPServer.h */,
+				0AA798B01710024200632E22 /* ChanHTTPServer.m */,
 			);
 			name = "Http Live Streaming";
 			sourceTree = "<group>";
@@ -469,6 +486,8 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
+				0AA798BA17100B4E00632E22 /* libxml2.2.dylib */,
+				0AA798B817100A6F00632E22 /* libxml2.dylib */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -490,6 +509,8 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AA798B4171009F300632E22 /* CFNetwork.framework */,
+				0AA798B2171009EA00632E22 /* Security.framework */,
 				0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */,
 				0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */,
 				0ABB364816FC16A500436E06 /* MapKit.framework */,
@@ -768,6 +789,7 @@
 				4AE16EE6170DF6E500573A4B /* HLSUtility.m in Sources */,
 				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
+				0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
