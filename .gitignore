@@ -1,2 +1,7 @@
 xcuserdata
 *.orig
+build/*
+
+.DS_Store
+*.swp
+*.un~
