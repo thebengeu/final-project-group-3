@@ -19,10 +19,10 @@
 
 + (void)setup
 {
+    RKEntityMapping *channelMapping = [ChanRestKitObjectMappings setupChannelMappings];
+    [ChanRestKitObjectMappings setupEventMappings:channelMapping];
     [ChanRestKitObjectMappings setupPostMappings];
     [ChanRestKitObjectMappings setupHLSMappings];
-    [ChanRestKitObjectMappings setupChannelMappings];
-    [ChanRestKitObjectMappings setupEventMappings];
     [ChanRestKitObjectMappings setupUserMappings];
 }
 
@@ -108,7 +108,7 @@
     [[RKObjectManager sharedManager] addRequestDescriptor:hlsChunkRequestDescriptor];
 }
 
-+ (void)setupChannelMappings
++ (RKEntityMapping *)setupChannelMappings
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -129,19 +129,14 @@
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+    
+    return responseMapping;
 }
 
-+ (void)setupEventMappings
++ (void)setupEventMappings:(RKEntityMapping *)channelMapping
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
-    
-    RKEntityMapping *channelMapping = [RKEntityMapping mappingForEntityForName:@"Channel" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [channelMapping addAttributeMappingsFromDictionary:@{
-     @"_id":        @"id",
-     @"name":       @"name",
-     @"createdAt":  @"createdAt"}];
-    channelMapping.identificationAttributes = @[ @"id" ];
-    
+        
     RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [responseMapping addAttributeMappingsFromDictionary:@{
      @"_id":            @"id",
