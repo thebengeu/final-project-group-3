@@ -4,6 +4,7 @@
 #import "_ChanPost.h"
 
 const struct ChanPostAttributes ChanPostAttributes = {
+	.channelId = @"channelId",
 	.content = @"content",
 	.createdAt = @"createdAt",
 	.id = @"id",
@@ -47,6 +48,13 @@ const struct ChanPostFetchedProperties ChanPostFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic channelId;
+
+
 
 
 
