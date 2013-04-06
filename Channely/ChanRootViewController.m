@@ -8,6 +8,7 @@
 
 #import "ChanRootViewController.h"
 
+NSString *const cLocalServerLoadKey = @"_lsload";
 NSString *const cApplicationTypeName = @"_channely._tcp.";
 NSUInteger const cLocalServerPort = 10001;
 
@@ -73,7 +74,10 @@ NSUInteger const cLocalServerPort = 10001;
 #pragma mark HLS Stream Advertiser Delegate
 - (void) setAdvertiserDictionary:(NSDictionary *)dict {
     if (_localServer) {
-        [_localServer setTXTRecordDictionary:dict];
+        NSUInteger load = [_localServer numberOfHTTPConnections] + [_localServer numberOfWebSocketConnections];
+        NSMutableDictionary *records = [NSMutableDictionary dictionaryWithDictionary:dict];
+        [records setObject:[NSString stringWithFormat:@"%d", load] forKey:cLocalServerLoadKey];
+        [_localServer setTXTRecordDictionary:records];
     }
 }
 
