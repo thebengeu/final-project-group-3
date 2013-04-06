@@ -66,13 +66,9 @@ extern const struct ChanVideoPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* videoId;
+@property (nonatomic, strong) NSString* videoId;
 
 
-
-@property int64_t videoIdValue;
-- (int64_t)videoIdValue;
-- (void)setVideoIdValue:(int64_t)value_;
 
 //- (BOOL)validateVideoId:(id*)value_ error:(NSError**)error_;
 
@@ -108,11 +104,8 @@ extern const struct ChanVideoPostFetchedProperties {
 
 
 
-- (NSNumber*)primitiveVideoId;
-- (void)setPrimitiveVideoId:(NSNumber*)value;
-
-- (int64_t)primitiveVideoIdValue;
-- (void)setPrimitiveVideoIdValue:(int64_t)value_;
+- (NSString*)primitiveVideoId;
+- (void)setPrimitiveVideoId:(NSString*)value;
 
 
 

@@ -5,6 +5,7 @@
 
 
 extern const struct ChanPostAttributes {
+	__unsafe_unretained NSString *channelId;
 	__unsafe_unretained NSString *content;
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *id;
@@ -27,6 +28,7 @@ extern const struct ChanPostFetchedProperties {
 
 
 
+
 @interface ChanPostID : NSManagedObjectID {}
 @end
 
@@ -35,6 +37,16 @@ extern const struct ChanPostFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ChanPostID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* channelId;
+
+
+
+//- (BOOL)validateChannelId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -102,6 +114,12 @@ extern const struct ChanPostFetchedProperties {
 @end
 
 @interface _ChanPost (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveChannelId;
+- (void)setPrimitiveChannelId:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveContent;

@@ -19,10 +19,10 @@
 
 + (void)setup
 {
+    RKEntityMapping *channelMapping = [ChanRestKitObjectMappings setupChannelMappings];
+    [ChanRestKitObjectMappings setupEventMappings:channelMapping];
     [ChanRestKitObjectMappings setupPostMappings];
     [ChanRestKitObjectMappings setupHLSMappings];
-    [ChanRestKitObjectMappings setupChannelMappings];
-    [ChanRestKitObjectMappings setupEventMappings];
     [ChanRestKitObjectMappings setupUserMappings];
 }
 
@@ -33,19 +33,25 @@
     RKEntityMapping *textPostMapping = [RKEntityMapping mappingForEntityForName:@"TextPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [textPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
+     @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"username":   @"username"}];
     textPostMapping.identificationAttributes = @[ @"id" ];
+
+    [textPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
     RKEntityMapping *imagePostMapping = [RKEntityMapping mappingForEntityForName:@"ImagePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [imagePostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
+     @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
      @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
+    
+    [imagePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
@@ -108,7 +114,7 @@
     [[RKObjectManager sharedManager] addRequestDescriptor:hlsChunkRequestDescriptor];
 }
 
-+ (void)setupChannelMappings
++ (RKEntityMapping *)setupChannelMappings
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -129,19 +135,14 @@
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+    
+    return responseMapping;
 }
 
-+ (void)setupEventMappings
++ (void)setupEventMappings:(RKEntityMapping *)channelMapping
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
-    
-    RKEntityMapping *channelMapping = [RKEntityMapping mappingForEntityForName:@"Channel" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
-    [channelMapping addAttributeMappingsFromDictionary:@{
-     @"_id":        @"id",
-     @"name":       @"name",
-     @"createdAt":  @"createdAt"}];
-    channelMapping.identificationAttributes = @[ @"id" ];
-    
+        
     RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [responseMapping addAttributeMappingsFromDictionary:@{
      @"_id":            @"id",

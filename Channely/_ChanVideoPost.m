@@ -42,11 +42,6 @@ const struct ChanVideoPostFetchedProperties ChanVideoPostFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"videoIdValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"videoId"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
 
 	return keyPaths;
 }
@@ -77,25 +72,6 @@ const struct ChanVideoPostFetchedProperties ChanVideoPostFetchedProperties = {
 
 @dynamic videoId;
 
-
-
-- (int64_t)videoIdValue {
-	NSNumber *result = [self videoId];
-	return [result longLongValue];
-}
-
-- (void)setVideoIdValue:(int64_t)value_ {
-	[self setVideoId:[NSNumber numberWithLongLong:value_]];
-}
-
-- (int64_t)primitiveVideoIdValue {
-	NSNumber *result = [self primitiveVideoId];
-	return [result longLongValue];
-}
-
-- (void)setPrimitiveVideoIdValue:(int64_t)value_ {
-	[self setPrimitiveVideoId:[NSNumber numberWithLongLong:value_]];
-}
 
 
 
