@@ -34,6 +34,8 @@
 		0AF535211705D39200E437F9 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535201705D39100E437F9 /* ChannelViewController.m */; };
 		0AF535241705D40000E437F9 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535231705D40000E437F9 /* SearchViewController.m */; };
 		37A6F10E2EF44B479165CDF8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D156770FCBB4A9BB0AFBE5B /* libPods.a */; };
+		4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */; };
+		4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
@@ -148,6 +150,10 @@
 		0AF535221705D40000E437F9 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = Channely/SearchViewController.h; sourceTree = "<group>"; };
 		0AF535231705D40000E437F9 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Channely/SearchViewController.m; sourceTree = "<group>"; };
 		2D156770FCBB4A9BB0AFBE5B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A2C2BAD1710473700CB25D4 /* HLSStreamSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamSync.h; sourceTree = "<group>"; };
+		4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamSync.m; sourceTree = "<group>"; };
+		4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloadOperation.h; sourceTree = "<group>"; };
+		4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloadOperation.m; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkingVideoRecorder.m; sourceTree = "<group>"; };
@@ -432,6 +438,10 @@
 				4AE16EDE170DF6E500573A4B /* HLSPlaylistDownloader.h */,
 				4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */,
 				4AA361F817100A35009F703E /* HLSPlaylistDownloaderDelegate.h */,
+				4A2C2BAD1710473700CB25D4 /* HLSStreamSync.h */,
+				4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */,
+				4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */,
+				4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */,
 			);
 			name = "Stream Downloader";
 			sourceTree = "<group>";
@@ -817,6 +827,8 @@
 				82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
 				4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */,
+				4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */,
+				4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -276,7 +276,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
     NSString *filePath = [_mediaDirectory stringByAppendingPathComponent:fileName];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     
-    HLSChunkDownloadMetaData *meta = [[HLSChunkDownloadMetaData alloc] initWithSequence:curSeqNo URL:fileURL duration:length]; // PLACEHOLDER
+    HLSChunkDownloadMetaData *meta = [[HLSChunkDownloadMetaData alloc] initWithSequence:curSeqNo URL:fileURL duration:length];
     HLSChunkDownloadOperation *operation = [[HLSChunkDownloadOperation alloc] initWithURL:url outputFile:fileURL meta:meta];
     [operation addObserver:self forKeyPath:cKVOIsFinished options:0 context:nil];
     
