@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DiscoveryService.h"
+#import <HTTPServer.h>
+#import "HLSUtility.h"
 
 @interface ChanRootViewController : UINavigationController
 
