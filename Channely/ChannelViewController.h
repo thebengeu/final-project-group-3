@@ -34,4 +34,6 @@
 
 - (void)takePhoto:(id)sender;
 
+- (void)pickVideo:(id)sender;
+
 @end

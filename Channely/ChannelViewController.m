@@ -154,7 +154,10 @@
     [_attachPickerPopover dismissPopoverAnimated:NO];
     _attachPickerPopover = nil;
     [self presentImagePicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton];
+}
 
+-(void)pickVideo:(id)sender {
+    // TODO: add video picker for Camillus
 }
 
 - (IBAction)attach:(id)sender {

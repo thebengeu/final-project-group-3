@@ -11,12 +11,14 @@
 @protocol AttachPickerControllerDelegate <NSObject>
 - (void)pickImage:(id)sender;
 - (void)takePhoto:(id)sender;
+- (void)pickVideo:(id)sender;
 @end
 
 @interface AttachPickerViewController : UIViewController
 
 - (IBAction)pickImage:(id)sender;
 - (IBAction)takePhoto:(id)sender;
+- (IBAction)pickVideo:(id)sender;
 
 @property id<AttachPickerControllerDelegate> delegate;
 
