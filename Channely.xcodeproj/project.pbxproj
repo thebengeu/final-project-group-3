@@ -44,6 +44,7 @@
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
 		4AE16EE5170DF6E500573A4B /* HLSStreamDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* HLSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* HLSUtility.m */; };
+		82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82151C121710217800720C00 /* ChanVideoCaptureViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -168,6 +169,8 @@
 		4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamDownloader.m; sourceTree = "<group>"; };
 		4AE16EE0170DF6E500573A4B /* HLSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSUtility.h; sourceTree = "<group>"; };
 		4AE16EE1170DF6E500573A4B /* HLSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSUtility.m; sourceTree = "<group>"; };
+		82151C111710217700720C00 /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
+		82151C121710217800720C00 /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -393,6 +396,8 @@
 				B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */,
 				B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */,
 				B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */,
+				82151C111710217700720C00 /* ChanVideoCaptureViewController.h */,
+				82151C121710217800720C00 /* ChanVideoCaptureViewController.m */,
 				0AF5351C1705D36500E437F9 /* ChanHiddenTabBarController.h */,
 				0AF5351D1705D36500E437F9 /* ChanHiddenTabBarController.m */,
 				0AF534F81705A03700E437F9 /* wolfdie.png */,
@@ -799,6 +804,7 @@
 				4AE16EE6170DF6E500573A4B /* HLSUtility.m in Sources */,
 				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
+				82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

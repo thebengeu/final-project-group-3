@@ -1,18 +1,18 @@
 //
-//  AttachPickerViewController.m
+//  ChanVideoCaptureViewController.m
 //  Channely
 //
-//  Created by k on 31/3/13.
+//  Created by Cedric on 4/6/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "AttachPickerViewController.h"
+#import "ChanVideoCaptureViewController.h"
 
-@interface AttachPickerViewController ()
+@interface ChanVideoCaptureViewController ()
 
 @end
 
-@implementation AttachPickerViewController
+@implementation ChanVideoCaptureViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,16 +29,10 @@
 	// Do any additional setup after loading the view.
 }
 
-- (IBAction)pickImage:(id)sender {
-    [_delegate pickImage:sender];
-}
-
-- (IBAction)takePhoto:(id)sender {
-    [_delegate takePhoto:sender];
-}
-
-- (IBAction)pickVideo:(id)sender {
-    [_delegate pickVideo:sender];
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
