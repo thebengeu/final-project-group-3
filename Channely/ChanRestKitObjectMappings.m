@@ -83,6 +83,7 @@
     RKEntityMapping *hlsRecordingMapping = [RKEntityMapping mappingForEntityForName:@"HLSRecording" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [hlsRecordingMapping addAttributeMappingsFromDictionary:@{
      @"_id":            @"id",
+     @"_channel":       @"channelId",
      @"startDate":      @"startDate",
      @"endDate":        @"endDate",
      @"endSeqNo":       @"endSeqNo",
@@ -98,6 +99,7 @@
     RKObjectMapping *hlsRecordingRequestMapping = [RKObjectMapping requestMapping];
     [hlsRecordingRequestMapping addAttributeMappingsFromDictionary:@{
      @"id":             @"_id",
+     @"channelId":      @"_channel",
      @"startDate":      @"startDate",
      @"endDate":        @"endDate",
      @"endSeqNo":       @"endSeqNo",
