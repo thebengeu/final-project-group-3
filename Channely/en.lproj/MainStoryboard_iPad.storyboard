@@ -678,9 +678,10 @@
             <point key="canvasLocation" x="3305" y="34"/>
         </scene>
         <!--Navigation Controller-->
+        <!--Chan Root View Controller-->
         <scene sceneID="50">
             <objects>
-                <navigationController id="42" sceneMemberID="viewController">
+                <navigationController id="42" customClass="ChanRootViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="43">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -736,6 +737,9 @@
                 <relationship kind="outlet" name="timeView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="usernameView" candidateClass="UITextView"/>
             </relationships>
+        </class>
+        <class className="ChanRootViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanRootViewController.h"/>
         </class>
         <class className="ChanTextPostCell" superclassName="ChanPostCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostCell.h"/>

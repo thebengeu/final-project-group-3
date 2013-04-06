@@ -17,6 +17,7 @@ static NSString *const CLIENT_SECRET = @"bRst9AEPfEst6UN7UGZdGzuiemzcl7";
 static NSString *const PATH_CHANNEL = @"/channels";
 
 // Event Endpoints
+static NSString *const PATH_EVENTS_POST = @"/events";
 static NSString *const PATH_EVENTS_SEARCH = @"/events/search";
 
 // Post Endpoints

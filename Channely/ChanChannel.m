@@ -2,6 +2,7 @@
 #import "ChanImagePost.h"
 #import "ChanTextPost.h"
 #import "ChanAPIEndpoints.h"
+#import "ChanEvent.h"
 
 @interface ChanChannel ()
 
@@ -76,6 +77,28 @@
         block(nil, error);
     }];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
+}
+
+- (void)addEventWithName:(NSString *)name
+                 details:(NSString *)details
+                location:(CLLocationCoordinate2D)location
+               startTime:(NSDate *)startTime
+                 endTime:(NSDate *)endTime
+          withCompletion:(void (^)(ChanEvent *event, NSError *error))block
+{
+    ChanEvent *event = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
+    event.name = name;
+    event.details = details;
+    event.latitudeValue = location.latitude;
+    event.longitudeValue = location.longitude;
+    event.startTime = startTime;
+    event.endTime = endTime;
+    
+    [[RKObjectManager sharedManager] postObject:event path:PATH_EVENTS_POST parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        block(event, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        block(nil, error);
+    }];
 }
 
 @end

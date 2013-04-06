@@ -17,6 +17,11 @@
 		0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EC539170EEE80002D60D1 /* DiscoveryService.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
+		0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA798B01710024200632E22 /* ChanHTTPServer.m */; };
+		0AA798B3171009EA00632E22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B2171009EA00632E22 /* Security.framework */; };
+		0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B4171009F300632E22 /* CFNetwork.framework */; };
+		0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B817100A6F00632E22 /* libxml2.dylib */; };
+		0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798BA17100B4E00632E22 /* libxml2.2.dylib */; };
 		0AF534F91705A03800E437F9 /* wolfdie.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF534F81705A03700E437F9 /* wolfdie.png */; };
 		0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535021705D29100E437F9 /* ChanImagePostCell.m */; };
 		0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535041705D29100E437F9 /* ChanPostCell.m */; };
@@ -34,6 +39,7 @@
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
+		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
@@ -114,6 +120,12 @@
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
 		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
+		0AA798AF1710024200632E22 /* ChanHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHTTPServer.h; sourceTree = "<group>"; };
+		0AA798B01710024200632E22 /* ChanHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHTTPServer.m; sourceTree = "<group>"; };
+		0AA798B2171009EA00632E22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0AA798B4171009F300632E22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0AA798B817100A6F00632E22 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		0AA798BA17100B4E00632E22 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		0ABB364816FC16A500436E06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0AF534F81705A03700E437F9 /* wolfdie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wolfdie.png; sourceTree = "<group>"; };
 		0AF535011705D29100E437F9 /* ChanImagePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanImagePostCell.h; path = Channely/ChanImagePostCell.h; sourceTree = "<group>"; };
@@ -147,6 +159,9 @@
 		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
 		4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamDownloaderDelegate.h; sourceTree = "<group>"; };
+		4AA361FA17100C77009F703E /* ChanRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanRootViewController.h; path = Channely/ChanRootViewController.h; sourceTree = "<group>"; };
+		4AA361FB17100C77009F703E /* ChanRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanRootViewController.m; path = Channely/ChanRootViewController.m; sourceTree = "<group>"; };
 		4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadMetaData.h; sourceTree = "<group>"; };
 		4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSChunkDownloadMetaData.m; sourceTree = "<group>"; };
 		4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadOperation.h; sourceTree = "<group>"; };
@@ -243,6 +258,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */,
+				0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */,
+				0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */,
+				0AA798B3171009EA00632E22 /* Security.framework in Frameworks */,
 				0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */,
 				0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */,
 				0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */,
@@ -372,6 +391,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4AA361F917100C0D009F703E /* Root */,
 				0A7423BC1705490B00644070 /* Search */,
 				0A7423BB170548FC00644070 /* Channel */,
 				0A7423BA170548E200644070 /* Discover */,
@@ -414,8 +434,11 @@
 				4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */,
 				4AE16EDE170DF6E500573A4B /* HLSStreamDownloader.h */,
 				4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */,
+				4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */,
 				4AE16EE0170DF6E500573A4B /* HLSUtility.h */,
 				4AE16EE1170DF6E500573A4B /* HLSUtility.m */,
+				0AA798AF1710024200632E22 /* ChanHTTPServer.h */,
+				0AA798B01710024200632E22 /* ChanHTTPServer.m */,
 			);
 			name = "Http Live Streaming";
 			sourceTree = "<group>";
@@ -430,6 +453,15 @@
 				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
 			name = ChunkingVideoRecorder;
+			sourceTree = "<group>";
+		};
+		4AA361F917100C0D009F703E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
+				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
+			);
+			name = Root;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -495,6 +527,8 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0AA798B4171009F300632E22 /* CFNetwork.framework */,
+				0AA798B2171009EA00632E22 /* Security.framework */,
 				0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */,
 				0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */,
 				0ABB364816FC16A500436E06 /* MapKit.framework */,
@@ -505,6 +539,8 @@
 				B66FDC8B16EF88A30042A36C /* CoreData.framework */,
 				B66FDCB416EF88A40042A36C /* SenTestingKit.framework */,
 				2D156770FCBB4A9BB0AFBE5B /* libPods.a */,
+				0AA798BA17100B4E00632E22 /* libxml2.2.dylib */,
+				0AA798B817100A6F00632E22 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -774,6 +810,8 @@
 				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
 				82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */,
+				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
+				0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
