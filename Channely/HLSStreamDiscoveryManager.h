@@ -12,10 +12,13 @@
 @interface HLSStreamDiscoveryManager : NSObject
 @property (readonly) NSDictionary *advertisements;
 
-- (id) initWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
+- (id) init;
 - (void) startAdvertisingPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId;
 - (BOOL) isAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertising;
+
++ (HLSStreamDiscoveryManager *) discoveryManager;
++ (HLSStreamDiscoveryManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 
 @end

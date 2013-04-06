@@ -68,7 +68,7 @@ NSUInteger const cLocalServerPort = 10001;
 
 #pragma mark HLS Stream Discovery Manager
 - (void) setupDiscoveryManager {
-    _discoveryManager = [[HLSStreamDiscoveryManager alloc] initWithAdvertiser:self];
+    _discoveryManager = [HLSStreamDiscoveryManager discoveryManagerWithAdvertiser:self];
 }
 
 #pragma mark HLS Stream Advertiser Delegate

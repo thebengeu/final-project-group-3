@@ -13,12 +13,33 @@
 @property (weak) id<HLSStreamAdvertiser> _advertiser;
 
 - (void) pushAdvertisements;
+- (id) initWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 
 @end
 
 @implementation HLSStreamDiscoveryManager
+static HLSStreamDiscoveryManager *_internal;
+
 @synthesize _advertiser;
 @synthesize _advertisements;
+
+#pragma mark Singleton
+- (id) init {
+    return nil;
+}
+
++ (HLSStreamDiscoveryManager *) discoveryManager {
+    return _internal;
+}
+
++ (HLSStreamDiscoveryManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
+    if (!_internal) {
+        _internal = [[HLSStreamDiscoveryManager alloc] initWithAdvertiser:advertiser];
+        return _internal;
+    } else {
+        return nil;
+    }
+}
 
 #pragma mark Constructors
 - (id) initWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
