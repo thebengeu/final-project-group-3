@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <HTTPServer.h>
-#import "HLSUtility.h"
+#import "ChanUtility.h"
 
 @interface ChanRootViewController : UINavigationController
 

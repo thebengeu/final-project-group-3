@@ -35,7 +35,7 @@ NSUInteger const cLocalServerPort = 10001;
     
     _localServer = [[HTTPServer alloc] init];
     _localServer.port = cLocalServerPort;
-    _localServer.documentRoot = [HLSUtility documentsDirectory];
+    _localServer.documentRoot = [ChanUtility documentsDirectory];
     
     // Test dictionary.
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"index.html", @"beng", @"another.html", @"cedric", nil];
@@ -44,7 +44,7 @@ NSUInteger const cLocalServerPort = 10001;
     _localServer.TXTRecordDictionary = dict;
     
     // Test file.
-    NSURL *file = [NSURL fileURLWithPath:[[HLSUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
+    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
     [@"<h1>hello world</h1>" writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     [_localServer start:nil];
