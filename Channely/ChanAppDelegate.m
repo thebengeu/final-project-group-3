@@ -17,6 +17,9 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 
 @implementation ChanAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Enable Activity Indicator Spinner
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    
     NSError *error = nil;
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Channely" ofType:@"momd"]];
     // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
