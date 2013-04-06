@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "HLSStreamDownloader.h"
+#import "HLSPlaylistDownloader.h"
 
 NSTimeInterval const cRefreshInterval = 5.0; // Time in seconds.
 NSUInteger const cStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
@@ -19,7 +19,7 @@ NSString *const cKVOOperation = @"operations";
 NSString *const cMediaDirectoryFormat = @"%@";
 NSString *const cRelativePathFormat = @"%@/%@";
 
-@interface HLSStreamDownloader ()
+@interface HLSPlaylistDownloader ()
 // Redefinitions.
 @property (atomic, readwrite) BOOL isConsumed;
 
@@ -28,7 +28,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
 @property (strong) NSString *_playlistFileName;
 @property (strong) NSString *_playlistName;
 @property (strong) NSString *_mediaDirectory;
-@property (strong) id<HLSStreamDownloaderDelegate> _delegate;
+@property (strong) id<HLSPlaylistDownloaderDelegate> _delegate;
 
 // Playlist Refresh.
 @property (strong) NSTimer *_refreshTimer;
@@ -57,7 +57,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
 
 @end
 
-@implementation HLSStreamDownloader
+@implementation HLSPlaylistDownloader
 // Redefinitions.
 @synthesize isConsumed;
 
@@ -86,7 +86,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
 @synthesize _playlistHelper;
 
 #pragma mark Constructors
-- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSStreamDownloaderDelegate>)delegate {
+- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSPlaylistDownloaderDelegate>)delegate {
     if (self = [super init]) {
         _delegate = delegate;
         
