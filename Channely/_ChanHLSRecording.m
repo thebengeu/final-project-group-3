@@ -4,6 +4,7 @@
 #import "_ChanHLSRecording.h"
 
 const struct ChanHLSRecordingAttributes ChanHLSRecordingAttributes = {
+	.channelId = @"channelId",
 	.endDate = @"endDate",
 	.endSeqNo = @"endSeqNo",
 	.id = @"id",
@@ -52,6 +53,13 @@ const struct ChanHLSRecordingFetchedProperties ChanHLSRecordingFetchedProperties
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic channelId;
+
+
 
 
 

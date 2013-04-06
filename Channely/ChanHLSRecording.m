@@ -12,10 +12,12 @@
 @implementation ChanHLSRecording
 
 + (void)createRecordingWithStartDate:(NSDate *)startDate
+                           channelId:(NSString *)channelId
                       withCompletion:(void (^)(ChanHLSRecording *hlsRecording, NSError *error))block
 {
     ChanHLSRecording *hlsRecording = [NSEntityDescription insertNewObjectForEntityForName:@"HLSRecording" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     hlsRecording.startDate = startDate;
+    hlsRecording.channelId = channelId;
     
     [[RKObjectManager sharedManager] postObject:hlsRecording path:PATH_CREATE_RECORDING parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block(hlsRecording, nil);

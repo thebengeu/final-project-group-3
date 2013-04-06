@@ -5,6 +5,7 @@
 
 
 extern const struct ChanHLSRecordingAttributes {
+	__unsafe_unretained NSString *channelId;
 	__unsafe_unretained NSString *endDate;
 	__unsafe_unretained NSString *endSeqNo;
 	__unsafe_unretained NSString *id;
@@ -27,6 +28,7 @@ extern const struct ChanHLSRecordingFetchedProperties {
 
 
 
+
 @interface ChanHLSRecordingID : NSManagedObjectID {}
 @end
 
@@ -35,6 +37,16 @@ extern const struct ChanHLSRecordingFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ChanHLSRecordingID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* channelId;
+
+
+
+//- (BOOL)validateChannelId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -114,6 +126,12 @@ extern const struct ChanHLSRecordingFetchedProperties {
 @end
 
 @interface _ChanHLSRecording (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveChannelId;
+- (void)setPrimitiveChannelId:(NSString*)value;
+
+
 
 
 - (NSDate*)primitiveEndDate;

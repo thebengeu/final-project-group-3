@@ -3,6 +3,7 @@
 @interface ChanHLSRecording : _ChanHLSRecording {}
 
 + (void)createRecordingWithStartDate:(NSDate *)startDate
+                           channelId:(NSString *)channelId
                       withCompletion:(void (^)(ChanHLSRecording *hlsRecording, NSError *error))block;
 - (void)stopRecordingWithEndDate:(NSDate *)endDate
                         endSeqNo:(NSUInteger)endSeqNo
