@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <HTTPServer.h>
+#import "HLSStreamDiscoveryManager.h"
+#import "HLSStreamAdvertiser.h"
 #import "ChanUtility.h"
 
-@interface ChanRootViewController : UINavigationController
+@interface ChanRootViewController : UINavigationController <HLSStreamAdvertiser>
+- (void) setAdvertiserDictionary:(NSDictionary *)dict;
 
 @end

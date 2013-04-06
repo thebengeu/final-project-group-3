@@ -14,12 +14,16 @@ NSUInteger const cLocalServerPort = 10001;
 @interface ChanRootViewController ()
 // Internal.
 @property (strong) HTTPServer *_localServer;
+@property (strong) HLSStreamDiscoveryManager *_discoveryManager;
+
+- (void) setupHttpServer;
 
 @end
 
 @implementation ChanRootViewController
 // Internal.
 @synthesize _localServer;
+@synthesize _discoveryManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,21 +37,12 @@ NSUInteger const cLocalServerPort = 10001;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    _localServer = [[HTTPServer alloc] init];
-    _localServer.port = cLocalServerPort;
-    _localServer.documentRoot = [ChanUtility documentsDirectory];
-    
-    // Test dictionary.
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"index.html", @"beng", @"another.html", @"cedric", nil];
-    
-    _localServer.type = cApplicationTypeName;
-    _localServer.TXTRecordDictionary = dict;
-    
-    // Test file.
+    // Create test file.
     NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
     [@"<h1>hello world</h1>" writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
-    [_localServer start:nil];
+    [self setupHttpServer];
+    [self setupDiscoveryManager];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -57,6 +52,29 @@ NSUInteger const cLocalServerPort = 10001;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Http Server
+- (void) setupHttpServer {
+    _localServer = [[HTTPServer alloc] init];
+    _localServer.port = cLocalServerPort;
+    _localServer.documentRoot = [ChanUtility documentsDirectory];
+    
+    _localServer.type = cApplicationTypeName;
+    
+    [_localServer start:nil];
+}
+
+#pragma mark HLS Stream Discovery Manager
+- (void) setupDiscoveryManager {
+    _discoveryManager = [[HLSStreamDiscoveryManager alloc] initWithAdvertiser:self];
+}
+
+#pragma mark HLS Stream Advertiser Delegate
+- (void) setAdvertiserDictionary:(NSDictionary *)dict {
+    if (_localServer) {
+        [_localServer setTXTRecordDictionary:dict];
+    }
 }
 
 @end

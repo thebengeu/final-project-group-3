@@ -380,7 +380,6 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				4AA361F917100C0D009F703E /* Root */,
 				0A7423BC1705490B00644070 /* Search */,
 				0A7423BB170548FC00644070 /* Channel */,
 				0A7423BA170548E200644070 /* Discover */,
@@ -459,13 +458,14 @@
 			name = "Timed Video Chunking";
 			sourceTree = "<group>";
 		};
-		4AA361F917100C0D009F703E /* Root */ = {
+		4AA361F917100C0D009F703E /* Root Controller */ = {
 			isa = PBXGroup;
 			children = (
 				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
 				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
 			);
-			name = Root;
+			name = "Root Controller";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -552,12 +552,13 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
-				0A937FBA170F5210000A4079 /* Custom View */,
+				4AA361F917100C0D009F703E /* Root Controller */,
 				4A8933D017059CF5004D6E53 /* Http Live Streaming */,
 				B63865F41703E28900800FBE /* Model-Custom */,
 				B6F480091706C7F50005029D /* Model-Generated */,
 				B63865F51703E3DF00800FBE /* API */,
 				0ABB364A16FC19A200436E06 /* UI */,
+				0A937FBA170F5210000A4079 /* Custom View */,
 				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
