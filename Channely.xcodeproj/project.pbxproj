@@ -501,8 +501,6 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
-				0AA798BA17100B4E00632E22 /* libxml2.2.dylib */,
-				0AA798B817100A6F00632E22 /* libxml2.dylib */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -536,6 +534,8 @@
 				B66FDC8B16EF88A30042A36C /* CoreData.framework */,
 				B66FDCB416EF88A40042A36C /* SenTestingKit.framework */,
 				2D156770FCBB4A9BB0AFBE5B /* libPods.a */,
+				0AA798BA17100B4E00632E22 /* libxml2.2.dylib */,
+				0AA798B817100A6F00632E22 /* libxml2.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
