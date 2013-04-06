@@ -7,6 +7,7 @@
 extern const struct ChanChannelAttributes {
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *id;
+	__unsafe_unretained NSString *lastRefreshed;
 	__unsafe_unretained NSString *name;
 } ChanChannelAttributes;
 
@@ -22,6 +23,7 @@ extern const struct ChanChannelFetchedProperties {
 @class ChanEvent;
 @class ChanUser;
 @class ChanPost;
+
 
 
 
@@ -55,6 +57,16 @@ extern const struct ChanChannelFetchedProperties {
 
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* lastRefreshed;
+
+
+
+//- (BOOL)validateLastRefreshed:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -119,6 +131,12 @@ extern const struct ChanChannelFetchedProperties {
 
 - (NSString*)primitiveId;
 - (void)setPrimitiveId:(NSString*)value;
+
+
+
+
+- (NSDate*)primitiveLastRefreshed;
+- (void)setPrimitiveLastRefreshed:(NSDate*)value;
 
 
 
