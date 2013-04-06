@@ -52,7 +52,7 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
     
     [ChanRestKitObjectMappings setup];
         
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+//    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
     // Override point for customization after application launch.
 
