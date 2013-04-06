@@ -34,7 +34,7 @@
 - (void) startAdvertisingPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId {
     NSString *obj = [_advertisements objectForKey:(NSString *)rId];
     if (!obj) {
-        
+        [_advertisements setObject:(NSString *)playlist forKey:(NSString *)rId];
     }
     
     [self pushAdvertisements];

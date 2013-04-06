@@ -8,23 +8,15 @@
 
 #import <RestKit/RestKit.h>
 #import "ChanAppDelegate.h"
-
 #import "ChanMasterViewController.h"
 #import "ios-ntp.h"
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
-#import "ChanHTTPServer.h"
-
-@implementation ChanAppDelegate{
-    ChanHTTPServer *chanHTTPServer;
-}
 
 NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
-//NSString *const _SERVER_ADDR = @"https://192.168.0.40:3003";
-//NSString *const _SERVER_ADDR = @"https://127.0.0.1:3003";
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+@implementation ChanAppDelegate
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSError *error = nil;
     NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Channely" ofType:@"momd"]];
     // NOTE: Due to an iOS 5 bug, the managed object model returned is immutable.
@@ -51,11 +43,7 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
     [RKObjectManager setSharedManager:objectManager];
     
     [ChanRestKitObjectMappings setup];
-        
 //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    
-    // Override point for customization after application launch.
-
     
     //  Start NTP
     [NetworkClock sharedNetworkClock];
