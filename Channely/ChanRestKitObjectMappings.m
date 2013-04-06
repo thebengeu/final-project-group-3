@@ -14,6 +14,7 @@
 #import "ChanHLSChunk.h"
 #import "ChanChannel.h"
 #import "ChanUser.h"
+#import "ChanEvent.h"
 
 @implementation ChanRestKitObjectMappings
 
@@ -160,7 +161,19 @@
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_EVENTS_SEARCH keyPath:nil statusCodes:statusCodes];
     
+    RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
+    [requestMapping addAttributeMappingsFromDictionary:@{
+     @"id":             @"_id",
+     @"details":        @"details",
+     @"endTime":        @"endDateTime",
+     @"latitude":       @"latitude",
+     @"longitude":      @"longitude",
+     @"name":           @"name",
+     @"startTime":      @"startDateTime"}];
+    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanEvent class] rootKeyPath:nil];
+    
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
 }
 
 + (void)setupUserMappings
