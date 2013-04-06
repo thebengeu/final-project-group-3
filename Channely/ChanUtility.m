@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "HLSUtility.h"
+#import "ChanUtility.h"
 
-@implementation HLSUtility
+@implementation ChanUtility
 + (NSString *) documentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }

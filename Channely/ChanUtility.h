@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HLSUtility : NSObject
+@interface ChanUtility : NSObject
 + (NSString *) documentsDirectory;
 + (void) clearDirectory:(NSString *)directory;
 
