@@ -28,6 +28,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
 @property (strong) NSString *_playlistFileName;
 @property (strong) NSString *_playlistName;
 @property (strong) NSString *_mediaDirectory;
+@property (strong) id<HLSStreamDownloaderDelegate> _delegate;
 
 // Playlist Refresh.
 @property (strong) NSTimer *_refreshTimer;
@@ -65,6 +66,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
 @synthesize _playlistFileName;
 @synthesize _playlistName;
 @synthesize _mediaDirectory;
+@synthesize _delegate;
 
 // Playlist Refresh.
 @synthesize _refreshTimer;
@@ -84,8 +86,10 @@ NSString *const cRelativePathFormat = @"%@/%@";
 @synthesize _playlistHelper;
 
 #pragma mark Constructors
-- (id) initWithPlaylist:(NSURL *)playlist {
+- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSStreamDownloaderDelegate>)delegate {
     if (self = [super init]) {
+        _delegate = delegate;
+        
         // Default init.
         _playlistDirectory = nil;
         isConsumed = NO;
@@ -142,6 +146,10 @@ NSString *const cRelativePathFormat = @"%@/%@";
     
     _refreshTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:cRefreshInterval target:self selector:@selector(refreshTimer_Tick:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_refreshTimer forMode:NSDefaultRunLoopMode];
+    
+    if (_delegate) {
+        [_delegate streamDownloader:self didStartDownloadingRemoteStream:_playlistURL];
+    }
 }
 
 - (void) refreshTimer_Tick:(NSTimer *)timer {
@@ -188,6 +196,10 @@ NSString *const cRelativePathFormat = @"%@/%@";
     if (_intervalsSinceLastChange >= cStreamTimeoutFactor) {
         // Timeout condition.
         NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
+        
+        if (_delegate) {
+            [_delegate streamDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
+        }
         
         _shouldFinishWhenQueueEmpty = YES;
         [timer invalidate];
@@ -259,7 +271,6 @@ NSString *const cRelativePathFormat = @"%@/%@";
 
 - (void) addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length {
     NSLog(@"found url:%@", url); // DEBUG
-    
     NSUInteger curSeqNo = _chunkSequenceNumber++;
     NSString *fileName = [NSString stringWithFormat:@"chunk%d.ts", curSeqNo];
     NSString *filePath = [_mediaDirectory stringByAppendingPathComponent:fileName];
@@ -272,6 +283,9 @@ NSString *const cRelativePathFormat = @"%@/%@";
     [_downloadQueue addOperation:operation];
 }
 
+// Note: There is no notification if the download of an individual video chunk fails.
+// The didDownloadChunk delegate will be fired, but the chunk file will not be written.
+// Note: There may be a slight timing error where didFinishDownloading is called before the last chunk is written.
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([object class] == [HLSChunkDownloadOperation class] && [keyPath isEqualToString:cKVOIsFinished]) {
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
@@ -282,11 +296,19 @@ NSString *const cRelativePathFormat = @"%@/%@";
         NSString *relativePath = [NSString stringWithFormat:cRelativePathFormat, _playlistName, [meta.path lastPathComponent]];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];
         
+        if (_delegate) {
+            [_delegate streamDownloader:self didDownloadNewChunkForRemoteStream:_playlistURL];
+        }
+        
         [finishedOp removeObserver:self forKeyPath:cKVOIsFinished];
     } else if ([object class] == [NSOperationQueue class] && [keyPath isEqualToString:cKVOOperation]) {
         NSArray *queueState = (NSArray *)[change valueForKey:NSKeyValueChangeNewKey];
         if (_shouldFinishWhenQueueEmpty && queueState.count == 0) {
             [_playlistHelper endPlaylist];
+            
+            if (_delegate) {
+                [_delegate streamDownloader:self didFinishDownloadingRemoteStream:_playlistURL];
+            }
         }
     }
 }

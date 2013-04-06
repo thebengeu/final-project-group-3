@@ -10,11 +10,12 @@
 #import "HLSChunkDownloadOperation.h"
 #import "HLSChunkDownloadMetaData.h"
 #import "HLSEventPlaylistHelper.h"
+#import "HLSStreamDownloaderDelegate.h"
 
 @interface HLSStreamDownloader : NSObject
 @property (atomic, readonly) BOOL isConsumed;
 
-- (id) initWithPlaylist:(NSURL *)playlist;
+- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSStreamDownloaderDelegate>)delegate;
 - (void) downloadToDirectory:(NSString *)directory;
 
 @end
