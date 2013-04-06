@@ -17,7 +17,6 @@
 		0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EC539170EEE80002D60D1 /* DiscoveryService.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
-		0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA798B01710024200632E22 /* ChanHTTPServer.m */; };
 		0AA798B3171009EA00632E22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B2171009EA00632E22 /* Security.framework */; };
 		0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B4171009F300632E22 /* CFNetwork.framework */; };
 		0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B817100A6F00632E22 /* libxml2.dylib */; };
@@ -119,8 +118,6 @@
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
 		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
-		0AA798AF1710024200632E22 /* ChanHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHTTPServer.h; sourceTree = "<group>"; };
-		0AA798B01710024200632E22 /* ChanHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHTTPServer.m; sourceTree = "<group>"; };
 		0AA798B2171009EA00632E22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0AA798B4171009F300632E22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0AA798B817100A6F00632E22 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -432,8 +429,6 @@
 				4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */,
 				4AE16EE0170DF6E500573A4B /* HLSUtility.h */,
 				4AE16EE1170DF6E500573A4B /* HLSUtility.m */,
-				0AA798AF1710024200632E22 /* ChanHTTPServer.h */,
-				0AA798B01710024200632E22 /* ChanHTTPServer.m */,
 			);
 			name = "Http Live Streaming";
 			sourceTree = "<group>";
@@ -805,7 +800,6 @@
 				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
-				0AA798B11710024200632E22 /* ChanHTTPServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

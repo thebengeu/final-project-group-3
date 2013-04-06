@@ -8,6 +8,9 @@
 
 #import "ChanRootViewController.h"
 
+NSString *const cApplicationTypeName = @"_channely._tcp.";
+NSUInteger const cLocalServerPort = 10001;
+
 @interface ChanRootViewController ()
 // Internal.
 @property (strong) HTTPServer *_localServer;
@@ -31,13 +34,13 @@
 	// Do any additional setup after loading the view.
     
     _localServer = [[HTTPServer alloc] init];
-    _localServer.port = 10001;
+    _localServer.port = cLocalServerPort;
     _localServer.documentRoot = [HLSUtility documentsDirectory];
     
     // Test dictionary.
     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:@"index.html", @"beng", @"another.html", @"cedric", nil];
     
-    _localServer.type = @"_channely._tcp.";
+    _localServer.type = cApplicationTypeName;
     _localServer.TXTRecordDictionary = dict;
     
     // Test file.
