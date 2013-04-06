@@ -34,8 +34,17 @@
     }];
 }
 
-- (void)getPostsWithCompletion:(void (^)(NSArray *posts, NSError *error))block {
-    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:PATH_POSTS_UNIFIED_GET_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+- (void)getPostsSince:(NSDate *)since
+                until:(NSDate *)until
+       withCompletion:(void (^)(NSArray *posts, NSError *error))block {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    if (since) {
+        [params setObject:[NSNumber numberWithDouble:[since timeIntervalSince1970] * 1000] forKey:@"since"];
+    }
+    if (until) {
+        [params setObject:[NSNumber numberWithDouble:[until timeIntervalSince1970] * 1000] forKey:@"until"];
+    }
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:PATH_POSTS_UNIFIED_GET_FORMAT, self.id] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         block(nil, error);
