@@ -147,17 +147,19 @@
 - (void)pickImage:(id)sender {
     [_attachPickerPopover dismissPopoverAnimated:NO];
     _attachPickerPopover = nil;
-    [self presentImagePicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton];
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
 }
 
 - (void)takePhoto:(id)sender {
     [_attachPickerPopover dismissPopoverAnimated:NO];
     _attachPickerPopover = nil;
-    [self presentImagePicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton];
+    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
 }
 
 -(void)pickVideo:(id)sender {
-    // TODO: add video picker for Camillus
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeMovie]];
 }
 
 - (IBAction)attach:(id)sender {
@@ -193,20 +195,27 @@
     }
 }
 
-- (void) presentImagePicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender
+// Based on type, displays image picker, video picker, or camera
+- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type
 {
     if (!self.imagePickerPopover && [UIImagePickerController isSourceTypeAvailable:sourceType]){
         NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
-        if ([availableMediaTypes containsObject:(NSString*)kUTTypeImage]){
+        if ([availableMediaTypes containsObject:(NSString*)kUTTypeImage]) {
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.sourceType = sourceType;
-            picker.mediaTypes = @[(NSString*)kUTTypeImage];
+            
+            if (type) picker.mediaTypes = type;
+            else picker.mediaTypes = @[(NSString*) kUTTypeImage];
+            
             picker.allowsEditing = NO;
             picker.delegate = self;
+            
             if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
+                
                 self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
                 [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                 self.imagePickerPopover.delegate = self;
+                
             } else {
                 [self presentViewController:picker animated:YES completion:nil];
             }

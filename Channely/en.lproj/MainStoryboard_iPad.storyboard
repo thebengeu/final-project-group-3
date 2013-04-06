@@ -417,7 +417,7 @@
                                     <segue destination="Kf2-Zq-2Ks" kind="modal" identifier="takeVideoSegue" modalPresentationStyle="fullScreen" id="NPq-7G-2Vh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjM-ZY-eId">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjM-ZY-eId">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="95" id="G9k-wI-jlB"/>
                                 </constraints>
@@ -437,16 +437,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dJ7-WV-Hne" firstAttribute="leading" secondItem="thi-dx-EK5" secondAttribute="leading" constant="128" id="2RI-Yo-92R"/>
-                            <constraint firstAttribute="bottom" secondItem="sjM-ZY-eId" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3x8-F7-Uxp"/>
-                            <constraint firstAttribute="trailing" secondItem="sjM-ZY-eId" secondAttribute="trailing" constant="128" id="520-QU-zby"/>
                             <constraint firstAttribute="bottom" secondItem="11g-GJ-elw" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Ctb-75-JCe"/>
+                            <constraint firstAttribute="trailing" secondItem="sjM-ZY-eId" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="F0l-Pf-ZhL"/>
                             <constraint firstAttribute="bottom" secondItem="qcw-tJ-n73" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="GHl-pR-Ozg"/>
+                            <constraint firstItem="sjM-ZY-eId" firstAttribute="top" secondItem="thi-dx-EK5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GrS-zZ-txc"/>
+                            <constraint firstAttribute="trailing" secondItem="qcw-tJ-n73" secondAttribute="trailing" constant="127" id="Jvp-Ds-Un1"/>
+                            <constraint firstItem="sjM-ZY-eId" firstAttribute="baseline" secondItem="qcw-tJ-n73" secondAttribute="baseline" type="default" id="KrE-MM-51V"/>
                             <constraint firstItem="11g-GJ-elw" firstAttribute="top" secondItem="thi-dx-EK5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Rff-3D-cgE"/>
                             <constraint firstItem="11g-GJ-elw" firstAttribute="leading" secondItem="thi-dx-EK5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Znd-Nv-U05"/>
                             <constraint firstItem="dJ7-WV-Hne" firstAttribute="top" secondItem="thi-dx-EK5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="esR-jG-rlP"/>
-                            <constraint firstItem="sjM-ZY-eId" firstAttribute="top" secondItem="thi-dx-EK5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="gQ6-lh-mQh"/>
-                            <constraint firstAttribute="trailing" secondItem="qcw-tJ-n73" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="lKd-BE-V5Q"/>
                             <constraint firstAttribute="bottom" secondItem="dJ7-WV-Hne" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="scX-Qh-pPq"/>
+                            <constraint firstAttribute="bottom" secondItem="sjM-ZY-eId" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="x1d-or-zWC"/>
                             <constraint firstItem="qcw-tJ-n73" firstAttribute="top" secondItem="thi-dx-EK5" secondAttribute="top" constant="20" symbolic="YES" type="default" id="yZC-Pz-NcP"/>
                         </constraints>
                     </view>
@@ -677,7 +678,6 @@
             </objects>
             <point key="canvasLocation" x="3305" y="34"/>
         </scene>
-        <!--Navigation Controller-->
         <!--Chan Root View Controller-->
         <scene sceneID="50">
             <objects>
@@ -701,7 +701,6 @@
                 <relationship kind="action" name="pickImage:"/>
                 <relationship kind="action" name="pickVideo:"/>
                 <relationship kind="action" name="takePhoto:"/>
-                <relationship kind="action" name="takeVideo:"/>
             </relationships>
         </class>
         <class className="ChanDetailViewController" superclassName="UIViewController">
