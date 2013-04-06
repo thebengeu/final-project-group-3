@@ -34,6 +34,7 @@
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
+		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
@@ -146,6 +147,9 @@
 		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
 		4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamDownloaderDelegate.h; sourceTree = "<group>"; };
+		4AA361FA17100C77009F703E /* ChanRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanRootViewController.h; path = Channely/ChanRootViewController.h; sourceTree = "<group>"; };
+		4AA361FB17100C77009F703E /* ChanRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanRootViewController.m; path = Channely/ChanRootViewController.m; sourceTree = "<group>"; };
 		4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadMetaData.h; sourceTree = "<group>"; };
 		4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSChunkDownloadMetaData.m; sourceTree = "<group>"; };
 		4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadOperation.h; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4AA361F917100C0D009F703E /* Root */,
 				0A7423BC1705490B00644070 /* Search */,
 				0A7423BB170548FC00644070 /* Channel */,
 				0A7423BA170548E200644070 /* Discover */,
@@ -409,6 +414,7 @@
 				4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */,
 				4AE16EDE170DF6E500573A4B /* HLSStreamDownloader.h */,
 				4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */,
+				4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */,
 				4AE16EE0170DF6E500573A4B /* HLSUtility.h */,
 				4AE16EE1170DF6E500573A4B /* HLSUtility.m */,
 			);
@@ -425,6 +431,15 @@
 				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
 			name = ChunkingVideoRecorder;
+			sourceTree = "<group>";
+		};
+		4AA361F917100C0D009F703E /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
+				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
+			);
+			name = Root;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -768,6 +783,7 @@
 				4AE16EE6170DF6E500573A4B /* HLSUtility.m in Sources */,
 				0A9EC53A170EEE80002D60D1 /* DiscoveryService.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
+				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
