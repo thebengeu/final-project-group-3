@@ -40,14 +40,16 @@
     [self pushAdvertisements];
 }
 
-- (void) isAdvertisingRecordingId:(NSString *)rId {
-    // TODO:
-    
-    [self pushAdvertisements];
+- (BOOL) isAdvertisingRecordingId:(NSString *)rId {
+    NSString *obj = [_advertisements objectForKey:(NSString *)rId];
+    return (obj != nil);
 }
 
 - (void) stopAdvertisingRecordingId:(NSString *)rId {
-    // TODO:
+    NSString *obj = [_advertisements objectForKey:(NSString *)rId];
+    if (obj) {
+        [_advertisements removeObjectForKey:(NSString *)rId];
+    }
     
     [self pushAdvertisements];
 }

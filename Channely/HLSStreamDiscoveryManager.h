@@ -14,7 +14,7 @@
 
 - (id) initWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 - (void) startAdvertisingPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId;
-- (void) isAdvertisingRecordingId:(NSString *)rId;
+- (BOOL) isAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertising;
 
