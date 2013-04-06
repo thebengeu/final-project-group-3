@@ -37,6 +37,7 @@
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
+		4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */; };
 		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
@@ -153,6 +154,9 @@
 		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
 		4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedChunkingVideoRecorder.m; sourceTree = "<group>"; };
+		4A625AE517102D63000DF8B9 /* HLSStreamDiscoveryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamDiscoveryManager.h; sourceTree = "<group>"; };
+		4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamDiscoveryManager.m; sourceTree = "<group>"; };
+		4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSStreamAdvertiser.h; sourceTree = "<group>"; };
 		4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamDownloaderDelegate.h; sourceTree = "<group>"; };
 		4AA361FA17100C77009F703E /* ChanRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanRootViewController.h; path = Channely/ChanRootViewController.h; sourceTree = "<group>"; };
 		4AA361FB17100C77009F703E /* ChanRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanRootViewController.m; path = Channely/ChanRootViewController.m; sourceTree = "<group>"; };
@@ -407,10 +411,19 @@
 			name = Table;
 			sourceTree = "<group>";
 		};
-		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
+		4A625AE317102D11000DF8B9 /* Stream Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */,
+				4A625AE517102D63000DF8B9 /* HLSStreamDiscoveryManager.h */,
+				4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */,
+				4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */,
+			);
+			name = "Stream Discovery";
+			sourceTree = "<group>";
+		};
+		4A625AE417102D42000DF8B9 /* Stream Downloader */ = {
+			isa = PBXGroup;
+			children = (
 				4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */,
 				4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */,
 				4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */,
@@ -421,10 +434,20 @@
 				4AE16EDF170DF6E500573A4B /* HLSStreamDownloader.m */,
 				4AA361F817100A35009F703E /* HLSStreamDownloaderDelegate.h */,
 			);
+			name = "Stream Downloader";
+			sourceTree = "<group>";
+		};
+		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				4A625AE417102D42000DF8B9 /* Stream Downloader */,
+				4A625AE317102D11000DF8B9 /* Stream Discovery */,
+				4A8933D117059D00004D6E53 /* Timed Video Chunking */,
+			);
 			name = "Http Live Streaming";
 			sourceTree = "<group>";
 		};
-		4A8933D117059D00004D6E53 /* ChunkingVideoRecorder */ = {
+		4A8933D117059D00004D6E53 /* Timed Video Chunking */ = {
 			isa = PBXGroup;
 			children = (
 				4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */,
@@ -433,7 +456,7 @@
 				4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */,
 				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
-			name = ChunkingVideoRecorder;
+			name = "Timed Video Chunking";
 			sourceTree = "<group>";
 		};
 		4AA361F917100C0D009F703E /* Root */ = {
@@ -792,6 +815,7 @@
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
 				82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
+				4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
