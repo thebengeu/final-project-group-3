@@ -69,7 +69,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-
+    self.posts = [NSMutableArray array];
+    
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
+    _postTableViewController.refreshControl = refreshControl;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -127,9 +131,12 @@
 
 -(void)populateChannelPost
 {
-    [self.channel getPostsWithCompletion:^(NSArray *posts, NSError *error) {
-        [self setPosts:[NSMutableArray arrayWithArray:posts]];
-        [_postTableViewController setPostList:[self posts]];
+    [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
+        [_postTableViewController.refreshControl endRefreshing];
+        
+        self.channel.lastRefreshed = [NSDate date];
+        [self.posts addObjectsFromArray:posts];
+        [_postTableViewController setPostList:self.posts];
     }];
 }
 
@@ -182,7 +189,7 @@
             [[channelViewController textInput]setText:@""];
             [[channelViewController sendPostIndicator]stopAnimating];
             [[channelViewController textInput] setEditable:YES];
-            
+            [channelViewController populateChannelPost];
         }];
     } else {
         [_channel addImagePostWithContent:[_textInput text] image:_attachedImage withCompletion:^(ChanImagePost *imagePost, NSError *error) {
@@ -191,6 +198,7 @@
             [[channelViewController textInput] setEditable:YES];
             [channelViewController setAttachedImage:nil];
             [channelViewController changeAttachButtonToDefault];
+            [channelViewController populateChannelPost];
         }];
     }
 }
