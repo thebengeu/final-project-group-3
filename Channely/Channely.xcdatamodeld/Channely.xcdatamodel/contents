@@ -3,6 +3,7 @@
     <entity name="Channel" representedClassName="ChanChannel" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastRefreshed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="channel" inverseEntity="Event" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="channels" inverseEntity="User" syncable="YES"/>
@@ -72,7 +73,7 @@
         <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="-162" positionY="263" width="128" height="133"/>
+        <element name="Channel" positionX="-162" positionY="263" width="128" height="150"/>
         <element name="Event" positionX="36" positionY="89" width="128" height="163"/>
         <element name="HLSChunk" positionX="81" positionY="576" width="128" height="103"/>
         <element name="HLSRecording" positionX="-81" positionY="579" width="117" height="150"/>
