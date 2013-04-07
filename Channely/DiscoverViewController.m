@@ -82,11 +82,12 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     
     _location = newLocation.coordinate;
-    NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
     
     // TODO: introduce threshold for requerying?
     if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
         newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
+        NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
+        
         // search for nearby events within 100 km
         [ChanEvent search:_location withinDistance:100000.0 withCompletion:^(NSArray *events, NSError *error) {
             _channelList = events;
