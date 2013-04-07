@@ -893,10 +893,10 @@
                 <relationship kind="action" name="endDateEditingBegin:"/>
                 <relationship kind="action" name="startDateEditingBegin:"/>
                 <relationship kind="outlet" name="descriptionTextViewField" candidateClass="UITextViewField"/>
-                <relationship kind="outlet" name="endDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="endDateTextField" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="startDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="startDateTextField" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="ChanDetailViewController" superclassName="UIViewController">
@@ -944,6 +944,12 @@
         </class>
         <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
+                <relationship kind="action" name="recordingControlButton_Action:"/>
+                <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordingControlButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="ChannelPostTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelPostTableViewController.h"/>
