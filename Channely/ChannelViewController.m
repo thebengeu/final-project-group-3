@@ -12,7 +12,8 @@
 #import "ChanPost.h"
 #import "ChanImagePost.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import "ChanCreateEventViewController.h"
+#import "ChanEvent.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
@@ -27,6 +28,12 @@
 @property UILongPressGestureRecognizer *attachButtonLongPressGestureRecognizer;
 
 @property UIAlertView *deleteAttachmentAlertView;
+
+@property UIPopoverController *createEventPopover;
+
+@property UIBarButtonItem *createEventButton;
+
+@property ChanCreateEventViewController *createEventViewController;
 
 @end
 
@@ -89,6 +96,14 @@
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
     _postTableViewController.refreshControl = refreshControl;
+    
+    //  Bar items
+    NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
+    _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
+    [rightBarItems addObject:_createEventButton];
+    //  Add more items if needed
+
+    self.navigationItem.rightBarButtonItems = rightBarItems;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -252,7 +267,10 @@
         _imagePickerPopover = nil;
     else if (popoverController == _attachPickerPopover)
         _attachPickerPopover = nil;
+    else if ([popoverController isEqual: _createEventPopover])
+        _createEventPopover = nil;
 }
+
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -332,6 +350,27 @@
     [[self view]setFrame:frame];
 }
 
+
+
+-(void)createEventButtonPressed{
+    if (_createEventPopover != nil)
+        return;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    _createEventViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCreateEventViewController"];
+    [_createEventViewController setDelegate:self];
+    
+    _createEventPopover = [[UIPopoverController alloc]initWithContentViewController:_createEventViewController];
+    _createEventPopover.delegate = self;
+    [_createEventPopover presentPopoverFromBarButtonItem:_createEventButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+
+
+-(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
+    //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
+    [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
+}
 
 
 
