@@ -47,6 +47,10 @@
 		4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* ChanUtility.m */; };
 		82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82151C121710217800720C00 /* ChanVideoCaptureViewController.m */; };
+		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
+		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
+		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
+		824E964617113DE700E96418 /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964517113DE700E96418 /* icon-small.png */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -178,6 +182,10 @@
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
 		82151C111710217700720C00 /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
 		82151C121710217800720C00 /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
+		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
+		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		824E964517113DE700E96418 /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -520,6 +528,10 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
+				824E964517113DE700E96418 /* icon-small.png */,
+				824E964117113BD100E96418 /* icon.png */,
+				824E963F17113B8C00E96418 /* icon@2x.png */,
+				824E963D17113B1A00E96418 /* icon-small@2x.png */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -724,6 +736,10 @@
 				B66FDCA416EF88A40042A36C /* MainStoryboard_iPad.storyboard in Resources */,
 				0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */,
 				0AF534F91705A03800E437F9 /* wolfdie.png in Resources */,
+				824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */,
+				824E964017113B8C00E96418 /* icon@2x.png in Resources */,
+				824E964217113BD100E96418 /* icon.png in Resources */,
+				824E964617113DE700E96418 /* icon-small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
