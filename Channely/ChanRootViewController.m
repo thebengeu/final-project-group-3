@@ -11,7 +11,7 @@
 static NSString *const cLocalServerLoadKey = @"_lsload";
 static NSString *const cApplicationTypeName = @"_channely._tcp.";
 static NSUInteger const cLocalServerPort = 80;
-static NSString *const cHTMLDebugPage = @"<!DOCTYPE html><html><head><title>HLS Example</title></head><body><div><video src=\"playlist.m3u8\" controls autoplay></video></div></body></html>";
+//static NSString *const cHTMLDebugPage = @"<!DOCTYPE html><html><head><title>HLS Example</title></head><body><div><video src=\"prog_index.m3u8\" controls autoplay></video></div></body></html>";
 
 @interface ChanRootViewController ()
 // Internal.
@@ -40,8 +40,8 @@ static NSString *const cHTMLDebugPage = @"<!DOCTYPE html><html><head><title>HLS 
 	// Do any additional setup after loading the view.
     
     // DEBUG - Create test file.
-    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
-    [cHTMLDebugPage writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
+//    [cHTMLDebugPage writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     [self setupHttpServer];
     [self setupDiscoveryManager];
@@ -49,8 +49,8 @@ static NSString *const cHTMLDebugPage = @"<!DOCTYPE html><html><head><title>HLS 
 
 - (void) viewDidAppear:(BOOL)animated {
     // DEBUG
-    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility documentsDirectory]];
-    [sync syncStreamId:@"playlist" playlistURL:[NSURL URLWithString:@"http://www.comp.nus.edu.sg/~cgcai/playlist.m3u8"]];
+//    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility documentsDirectory]];
+//    [sync syncStreamId:@"playlist" playlistURL:[NSURL URLWithString:@"http://upthetreehouse.com/images/gear1/prog_index.m3u8"]];
 }
 
 - (void)didReceiveMemoryWarning {

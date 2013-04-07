@@ -22,4 +22,7 @@
 - (id)initWithFilePath:(NSString *)filePath forConnection:(HTTPConnection *)connection;
 - (NSString *)filePath;
 
+// Modifications for MIME.
+- (NSDictionary *) httpHeaders;
+
 @end

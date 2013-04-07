@@ -220,7 +220,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
             
             [_playlistHelper beginPlaylistWithTargetInterval:targetDuration];
         } else if ([line hasPrefix:cHLSEndListPrefix]) {
-            NSLog(@"stream ended"); // DEBUG
+//            NSLog(@"stream ended"); // DEBUG
             
             hasLengthOfNextChunk = NO;
             
