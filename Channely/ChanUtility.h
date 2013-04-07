@@ -10,6 +10,9 @@
 
 @interface ChanUtility : NSObject
 + (NSString *) documentsDirectory;
++ (NSString *) webRootDirectory;
++ (NSString *) videoTempDirectory;
++ (void) createDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
 
 @end

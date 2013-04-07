@@ -19,6 +19,8 @@ static NSUInteger const cLocalServerPort = 80;
 @property (strong) HLSStreamDiscoveryManager *_discoveryManager;
 
 - (void) setupHttpServer;
+- (void) setupDiscoveryManager;
+- (void) setupDirectories;
 
 @end
 
@@ -39,8 +41,10 @@ static NSUInteger const cLocalServerPort = 80;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self setupDirectories];
+    
     // DEBUG - Create test file.
-//    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
+//    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility webRootDirectory] stringByAppendingPathComponent:@"index.html"]];
 //    [cHTMLDebugPage writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     [self setupHttpServer];
@@ -49,8 +53,8 @@ static NSUInteger const cLocalServerPort = 80;
 
 - (void) viewDidAppear:(BOOL)animated {
     // DEBUG
-//    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility documentsDirectory]];
-//    [sync syncStreamId:@"playlist" playlistURL:[NSURL URLWithString:@"http://upthetreehouse.com/images/gear1/prog_index.m3u8"]];
+//    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+//    [sync syncStreamId:@"prog_index" playlistURL:[NSURL URLWithString:@"http://upthetreehouse.com/images/gear1/prog_index.m3u8"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +66,7 @@ static NSUInteger const cLocalServerPort = 80;
 - (void) setupHttpServer {
     _localServer = [[HTTPServer alloc] init];
     _localServer.port = cLocalServerPort;
-    _localServer.documentRoot = [ChanUtility documentsDirectory];
+    _localServer.documentRoot = [ChanUtility webRootDirectory];
     
     _localServer.type = cApplicationTypeName;
     
@@ -82,6 +86,14 @@ static NSUInteger const cLocalServerPort = 80;
         [records setObject:[NSString stringWithFormat:@"%d", load] forKey:cLocalServerLoadKey];
         [_localServer setTXTRecordDictionary:records];
     }
+}
+
+#pragma mark Recording Temp Directory
+- (void) setupDirectories {
+    // Note: this also clears all exisiting files in the web root.
+    [ChanUtility createDirectory:[ChanUtility webRootDirectory]];
+    
+    [ChanUtility createDirectory:[ChanUtility videoTempDirectory]];
 }
 
 @end

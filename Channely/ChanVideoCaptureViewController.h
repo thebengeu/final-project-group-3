@@ -13,7 +13,7 @@
 #import "HLSStreamSync.h"
 #import "ChanHLSRecording.h"
 
-@interface ChanVideoCaptureViewController : UIViewController
+@interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *recordingControlButton;
 
