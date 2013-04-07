@@ -38,6 +38,10 @@
     
     //  Force first update
     firstUpdate = false;
+    
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
+    self.channelTableViewController.refreshControl = refreshControl;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -89,16 +93,21 @@
         NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
         
         // search for nearby events within 100 km
-        [ChanEvent search:_location withinDistance:100000.0 withCompletion:^(NSArray *events, NSError *error) {
-            _channelList = events;
-            
-            [self populateTableWithChannel];
-            [self populateMapWithChannelAnnotation];
-        }];
+        [self refreshEvents];
     }
 }
 
-
+- (void)refreshEvents
+{
+    [ChanEvent search:_location withinDistance:100000.0 withCompletion:^(NSArray *events, NSError *error) {
+        [self.channelTableViewController.refreshControl endRefreshing];
+        
+        _channelList = events;
+        
+        [self populateTableWithChannel];
+        [self populateMapWithChannelAnnotation];
+    }];
+}
 
 -(void)zoomToFitMapAnnotations:(MKMapView*)mapView{
     if([mapView.annotations count] == 0)
