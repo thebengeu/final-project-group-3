@@ -35,7 +35,7 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
       UITextAttributeTextShadowColor,
       [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
       UITextAttributeTextShadowOffset,
-      [UIFont fontWithName:@"Arial-Bold" size:0.0],
+      [UIFont fontWithName:@"Avenir" size:0.0],
       UITextAttributeFont,
       nil]];
 }
