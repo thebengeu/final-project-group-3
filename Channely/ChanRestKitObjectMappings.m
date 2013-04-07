@@ -20,11 +20,11 @@
 
 + (void)setup
 {
-    RKEntityMapping *channelMapping = [ChanRestKitObjectMappings setupChannelMappings];
+    RKEntityMapping *userMapping = [ChanRestKitObjectMappings setupUserMappings];
+    RKEntityMapping *channelMapping = [ChanRestKitObjectMappings setupChannelMappings:userMapping];
     [ChanRestKitObjectMappings setupEventMappings:channelMapping];
     [ChanRestKitObjectMappings setupPostMappings];
     [ChanRestKitObjectMappings setupHLSMappings];
-    [ChanRestKitObjectMappings setupUserMappings];
 }
 
 + (void)setupPostMappings
@@ -147,7 +147,7 @@
     [[RKObjectManager sharedManager] addRequestDescriptor:hlsChunkRequestDescriptor];
 }
 
-+ (RKEntityMapping *)setupChannelMappings
++ (RKEntityMapping *)setupChannelMappings:(RKEntityMapping *)userMapping
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -157,12 +157,16 @@
      @"name":       @"name",
      @"createdAt":  @"createdAt"}];
     responseMapping.identificationAttributes = @[ @"id" ];
+
+    [responseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"owner" toKeyPath:@"owner" withMapping:userMapping]];
+    
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
      @"id":         @"_id",
      @"name":       @"name",
+     @"owner.id":   @"owner",
      @"createdAt":  @"createdAt"}];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanChannel class] rootKeyPath:nil];
     
@@ -207,7 +211,7 @@
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
 }
 
-+ (void)setupUserMappings
++ (RKEntityMapping *)setupUserMappings
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
     
@@ -231,6 +235,8 @@
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:oauthResponseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+    
+    return responseMapping;
 }
 
 @end
