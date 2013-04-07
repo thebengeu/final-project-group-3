@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ChannelPostTableViewController.h"
 #import "AttachPickerViewController.h"
+#import "ChanCreateEventViewController.h"
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate>
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property ChanChannel *channel;
 
@@ -35,5 +36,7 @@
 - (void)takePhoto:(id)sender;
 
 - (void)pickVideo:(id)sender;
+
+-(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description lat:(double) lat lon:(double) lon;
 
 @end

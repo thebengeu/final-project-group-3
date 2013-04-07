@@ -46,11 +46,10 @@
         ChannelUITableViewController * childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
     }
-    if ([[segue identifier] isEqualToString:@"ChannelSegue"])
-    {
+    if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         vc.channel = [[sender event] channel];
-    } 
+    }
     
 }
 

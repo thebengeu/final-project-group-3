@@ -10,12 +10,18 @@
 #import <MapKit/MapKit.h>
 #import "UITextViewField.h"
 
-@interface ChanCreateEventViewController : UIViewController <UIPopoverControllerDelegate>
+@protocol ChanCreateEventViewControllerDelegate
+
+-(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description lat:(double)lat lon:(double)lon;
+
+@end
+
+@interface ChanCreateEventViewController : UIViewController <UIPopoverControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UITextField *eventNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *startDateTextField;
-@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
+@property (weak, nonatomic) IBOutlet UIButton *startDateTextField;
+@property (weak, nonatomic) IBOutlet UIButton *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextViewField *descriptionTextViewField;
 
 - (IBAction)startDateEditingBegin:(id)sender;
@@ -25,5 +31,9 @@
 @property NSDate *startDate;
 @property NSDate *endDate;
 @property CLLocationCoordinate2D chosenCoordinate;
+
+@property id<ChanCreateEventViewControllerDelegate> delegate;
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation;
 
 @end
