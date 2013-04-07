@@ -72,6 +72,9 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="VideoThumbnailPost" representedClassName="ChanVideoThumbnailPost" parentEntity="ImagePost" syncable="YES">
+        <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Channel" positionX="-162" positionY="263" width="128" height="150"/>
         <element name="Event" positionX="36" positionY="89" width="128" height="163"/>
@@ -84,5 +87,6 @@
         <element name="TwitterPost" positionX="198" positionY="462" width="128" height="73"/>
         <element name="User" positionX="34" positionY="270" width="128" height="133"/>
         <element name="VideoPost" positionX="439" positionY="333" width="128" height="105"/>
+        <element name="VideoThumbnailPost" positionX="160" positionY="192" width="128" height="58"/>
     </elements>
 </model>
