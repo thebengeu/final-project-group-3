@@ -22,7 +22,7 @@
 
 - (void) enterChannel: (id) cell;
 
-@property (nonatomic) NSMutableArray *channelList;
+@property (nonatomic) NSArray *channelList;
 
 @property id<DiscoverUITableViewControllerDelegate> delegate;
 
