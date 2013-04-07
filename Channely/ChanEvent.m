@@ -19,9 +19,9 @@ withCompletion:(void (^)(NSArray *events, NSError *error))block {
                             [NSNumber numberWithDouble:maxDistance], @"maxDistance",
                             nil];
     [[RKObjectManager sharedManager] getObjectsAtPath:PATH_EVENTS_SEARCH parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block([mappingResult array], nil);
+        if (block) block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 

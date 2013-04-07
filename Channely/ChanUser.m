@@ -33,9 +33,9 @@ static ChanUser *loggedInUser = nil;
     
     [[RKObjectManager sharedManager] postObject:user path:PATH_USER parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user.password = nil;
-        block(user, nil);
+        if (block) block(user, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -53,10 +53,10 @@ static ChanUser *loggedInUser = nil;
         loggedInUser = user;
         [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", loggedInUser.accessToken]];
         
-        block(user, nil);
+        if (block) block(user, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [[RKObjectManager sharedManager].HTTPClient clearAuthorizationHeader];
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 

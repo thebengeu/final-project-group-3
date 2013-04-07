@@ -3,6 +3,7 @@
 @interface ChanUser : _ChanUser {}
 
 + (ChanUser *)loggedInUser;
++ (void)logout;
 + (void)createUserWithUsername:(NSString *)username
                       password:(NSString *)password
                 withCompletion:(void (^)(ChanUser *user, NSError *error))block;
