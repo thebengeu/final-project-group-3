@@ -8,7 +8,6 @@ extern const struct ChanVideoPostAttributes {
 	__unsafe_unretained NSString *endTime;
 	__unsafe_unretained NSString *startTime;
 	__unsafe_unretained NSString *url;
-	__unsafe_unretained NSString *videoId;
 } ChanVideoPostAttributes;
 
 extern const struct ChanVideoPostRelationships {
@@ -16,7 +15,6 @@ extern const struct ChanVideoPostRelationships {
 
 extern const struct ChanVideoPostFetchedProperties {
 } ChanVideoPostFetchedProperties;
-
 
 
 
@@ -66,16 +64,6 @@ extern const struct ChanVideoPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* videoId;
-
-
-
-//- (BOOL)validateVideoId:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 
 @end
 
@@ -100,12 +88,6 @@ extern const struct ChanVideoPostFetchedProperties {
 
 - (NSString*)primitiveUrl;
 - (void)setPrimitiveUrl:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveVideoId;
-- (void)setPrimitiveVideoId:(NSString*)value;
 
 
 

@@ -5,6 +5,7 @@
 #import "ChanImagePost.h"
 
 extern const struct ChanVideoThumbnailPostAttributes {
+	__unsafe_unretained NSString *startTime;
 	__unsafe_unretained NSString *videoId;
 } ChanVideoThumbnailPostAttributes;
 
@@ -17,6 +18,7 @@ extern const struct ChanVideoThumbnailPostFetchedProperties {
 
 
 
+
 @interface ChanVideoThumbnailPostID : NSManagedObjectID {}
 @end
 
@@ -25,6 +27,16 @@ extern const struct ChanVideoThumbnailPostFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (ChanVideoThumbnailPostID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* startTime;
+
+
+
+//- (BOOL)validateStartTime:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -48,6 +60,12 @@ extern const struct ChanVideoThumbnailPostFetchedProperties {
 @end
 
 @interface _ChanVideoThumbnailPost (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSDate*)primitiveStartTime;
+- (void)setPrimitiveStartTime:(NSDate*)value;
+
+
 
 
 - (NSString*)primitiveVideoId;

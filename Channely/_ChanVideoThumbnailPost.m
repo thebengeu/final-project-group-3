@@ -4,6 +4,7 @@
 #import "_ChanVideoThumbnailPost.h"
 
 const struct ChanVideoThumbnailPostAttributes ChanVideoThumbnailPostAttributes = {
+	.startTime = @"startTime",
 	.videoId = @"videoId",
 };
 
@@ -42,6 +43,13 @@ const struct ChanVideoThumbnailPostFetchedProperties ChanVideoThumbnailPostFetch
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic startTime;
+
+
 
 
 
