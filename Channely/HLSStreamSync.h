@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HLSPlaylistDownloadOperation.h"
 
 @interface HLSStreamSync : NSObject
 - (id) init;

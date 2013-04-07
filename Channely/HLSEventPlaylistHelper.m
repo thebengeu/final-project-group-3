@@ -8,10 +8,10 @@
 
 #import "HLSEventPlaylistHelper.h"
 
-NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%lf\n#EXT-X-MEDIA-SEQUENCE:%d\n";
-NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
-NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
-NSUInteger const cDefaultSequenceNumber = 0;
+static NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%.4lf\n#EXT-X-MEDIA-SEQUENCE:%d\n";
+static NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%.4lf,%@\n%@\n";
+static NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
+static NSUInteger const cDefaultSequenceNumber = 0;
 
 @interface HLSEventPlaylistHelper ()
 // Internal.
