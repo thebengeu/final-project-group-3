@@ -102,6 +102,7 @@
     event.longitudeValue = location.longitude;
     event.startTime = startTime;
     event.endTime = endTime;
+    [self addEventsObject:event];
     
     [[RKObjectManager sharedManager] postObject:event path:PATH_EVENTS_POST parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         block(event, nil);

@@ -21,35 +21,44 @@ static NSString *const cButtonStartRecording = @"Start";
 - (void) updateRecordingControlButtonState;
 
 // Video Capture
+- (void) startPreviewing;
+- (void) stopPreviewing;
 - (void) startRecording;
 - (void) stopRecording;
 
 @end
 
 @implementation ChanVideoCaptureViewController
+// Storyboard.
+//@synthesize previewArea;
+//@synthesize recordingControlButton;
+
 // Internal.
 @synthesize _recorder;
 @synthesize _isRecording;
 
-#pragma mark Constructors
+#pragma mark View Controller Methods
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _recorder = [[TimedChunkingVideoRecorder alloc] initWithPreset:AVCaptureSessionPresetHigh];
-        _isRecording = NO;
+        // Custom initialization
     }
     return self;
 }
 
-#pragma mark View Controller Methods
 - (void) viewDidLoad {
     [super viewDidLoad];
-	
-    [_recorder startPreview];
+    
+    _recorder = [[TimedChunkingVideoRecorder alloc] initWithPreset:AVCaptureSessionPresetHigh];
+    _recorder.delegate = self;
+    
+    _isRecording = NO;
+    
+    [self updateRecordingControlButtonState];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    // TODO - attach preview layer.
+    [self startPreviewing];
 }
 
 - (void) didReceiveMemoryWarning {
@@ -87,7 +96,21 @@ static NSString *const cButtonStartRecording = @"Start";
     }
 }
 
-#pragma mark Video Capture
+#pragma mark Logic
+- (void) startPreviewing {
+    AVCaptureVideoPreviewLayer *layer = [_recorder startPreview];
+    
+    layer.frame = self.previewArea.frame;
+    layer.videoGravity = AVLayerVideoGravityResizeAspect;
+    [self.previewArea.layer addSublayer:layer];
+    
+    NSLog(@"start previewing. target=%@ target.layer=%@ preview.layer=%@", self.previewArea, self.previewArea.layer, layer); // DEBUG
+}
+
+- (void) stopPreviewing {
+    [_recorder stopPreview];
+}
+
 - (void) startRecording {
     // TODO - start recording.
     
@@ -98,6 +121,19 @@ static NSString *const cButtonStartRecording = @"Start";
     // TODO - stop recording.
     
     _isRecording = YES;
+}
+
+#pragma mark Chunking Video Recorder Delegate
+- (void) recorder:(ChunkingVideoRecorder *)recorder didChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+    
+}
+
+- (void) recorder:(ChunkingVideoRecorder *)recorder didStopRecordingWithChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+    
+}
+
+- (void) recorderDidStartRecording:(ChunkingVideoRecorder *)recorder {
+    
 }
 
 @end

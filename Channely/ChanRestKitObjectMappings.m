@@ -194,6 +194,7 @@
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
      @"id":             @"_id",
+     @"channel.id":     @"_channel",
      @"details":        @"details",
      @"endTime":        @"endDateTime",
      @"latitude":       @"latitude",
