@@ -71,7 +71,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
         } else {
             contentType = @"text/plain";
         }
-        NSLog(@"modified http server. file=%@ content-type=%@", fpath, contentType); // DEBUG
+//        NSLog(@"modified http server. file=%@ content-type=%@", fpath, contentType); // DEBUG
         [_httpHeaders setObject:(NSString *)contentType forKey:@"Content-Type"];
 	}
 	return self;
@@ -259,7 +259,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 // Modifications for MIME.
 - (NSDictionary *) httpHeaders {
-    NSLog(@"modified http server. someoned accessed httpHeaders.");
+//    NSLog(@"modified http server. someoned accessed httpHeaders.");
     return _httpHeaders;
 }
 
