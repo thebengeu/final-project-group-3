@@ -16,9 +16,9 @@
 + (void)getAllChannelsWithCompletion:(void (^)(NSArray *channels, NSError *error))block
 {
     [[RKObjectManager sharedManager] getObjectsAtPath:PATH_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block([mappingResult array], nil);
+        if (block) block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -28,9 +28,9 @@
     channel.name = name;
 
     [[RKObjectManager sharedManager] postObject:channel path:PATH_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(channel, nil);
+        if (block) block(channel, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -45,9 +45,9 @@
         [params setObject:[NSNumber numberWithDouble:[until timeIntervalSince1970] * 1000] forKey:@"until"];
     }
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:PATH_POSTS_UNIFIED_GET_FORMAT, self.id] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block([mappingResult array], nil);
+        if (block) block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -59,9 +59,9 @@
     [self addPostsObject:textPost];
     
     [[RKObjectManager sharedManager] postObject:textPost path:[NSString stringWithFormat:PATH_POST_TEXT_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(textPost, nil);
+        if (block) block(textPost, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -81,9 +81,9 @@
     }];
     
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(imagePost, nil);
+        if (block) block(imagePost, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
 }
@@ -105,9 +105,9 @@
     [self addEventsObject:event];
     
     [[RKObjectManager sharedManager] postObject:event path:PATH_EVENTS_POST parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(event, nil);
+        if (block) block(event, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 

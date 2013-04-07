@@ -20,9 +20,9 @@
     hlsRecording.channelId = channelId;
     
     [[RKObjectManager sharedManager] postObject:hlsRecording path:PATH_CREATE_RECORDING parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(hlsRecording, nil);
+        if (block) block(hlsRecording, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -34,9 +34,9 @@
     self.endSeqNoValue = endSeqNo;
     
     [[RKObjectManager sharedManager] postObject:self path:[NSString stringWithFormat:PATH_STOP_RECORDING_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(self, nil);
+        if (block) block(self, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
 }
 
@@ -58,9 +58,9 @@
     }];
     
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        block(hlsChunk, nil);
+        if (block) block(hlsChunk, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        block(nil, error);
+        if (block) block(nil, error);
     }];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
 }
