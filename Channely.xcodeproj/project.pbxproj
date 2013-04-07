@@ -82,6 +82,8 @@
 		B66FDCB816EF88A40042A36C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8B16EF88A30042A36C /* CoreData.framework */; };
 		B66FDCC016EF88A40042A36C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B66FDCBE16EF88A40042A36C /* InfoPlist.strings */; };
 		B66FDCC316EF88A40042A36C /* ChannelyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCC216EF88A40042A36C /* ChannelyTests.m */; };
+		B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */; };
+		B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */; };
 		B68B8192170DBA34001B6986 /* ChanMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B8191170DBA34001B6986 /* ChanMenuViewController.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
 		B6F480201706C80F0005029D /* _ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800B1706C80F0005029D /* _ChanChannel.m */; };
@@ -236,6 +238,10 @@
 		B66FDCBF16EF88A40042A36C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B66FDCC116EF88A40042A36C /* ChannelyTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelyTests.h; sourceTree = "<group>"; };
 		B66FDCC216EF88A40042A36C /* ChannelyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelyTests.m; sourceTree = "<group>"; };
+		B6892F7A1711541C007C71C9 /* _ChanVideoThumbnailPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanVideoThumbnailPost.h; sourceTree = "<group>"; };
+		B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanVideoThumbnailPost.m; sourceTree = "<group>"; };
+		B6892F7D17115426007C71C9 /* ChanVideoThumbnailPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailPost.h; sourceTree = "<group>"; };
+		B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailPost.m; sourceTree = "<group>"; };
 		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
 		B68B8190170DBA33001B6986 /* ChanMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanMenuViewController.h; sourceTree = "<group>"; };
 		B68B8191170DBA34001B6986 /* ChanMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanMenuViewController.m; sourceTree = "<group>"; };
@@ -489,6 +495,8 @@
 		B63865F41703E28900800FBE /* Model-Custom */ = {
 			isa = PBXGroup;
 			children = (
+				B6892F7D17115426007C71C9 /* ChanVideoThumbnailPost.h */,
+				B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */,
 				B6386689170467E400800FBE /* ChanUser.h */,
 				B638668A170467E400800FBE /* ChanUser.m */,
 				B6386686170467E400800FBE /* ChanPost.h */,
@@ -629,6 +637,8 @@
 		B6F480091706C7F50005029D /* Model-Generated */ = {
 			isa = PBXGroup;
 			children = (
+				B6892F7A1711541C007C71C9 /* _ChanVideoThumbnailPost.h */,
+				B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */,
 				B6F4800A1706C80F0005029D /* _ChanChannel.h */,
 				B6F4800B1706C80F0005029D /* _ChanChannel.m */,
 				B6F4800C1706C80F0005029D /* _ChanEvent.h */,
@@ -845,6 +855,8 @@
 				4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */,
 				4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */,
 				4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */,
+				B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */,
+				B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

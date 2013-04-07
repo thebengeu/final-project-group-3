@@ -54,9 +54,39 @@
     
     [imagePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
+    RKEntityMapping *videoPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [videoPostMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"_channel":   @"channelId",
+     @"content":    @"content",
+     @"time":       @"createdAt",
+     @"startDate":  @"startTime",
+     @"endDate":    @"endTime",
+     @"url":        @"url",
+     @"username":   @"username"}];
+    videoPostMapping.identificationAttributes = @[ @"id" ];
+    
+    [videoPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    
+    RKEntityMapping *videoThumbnailPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoThumbnailPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [videoThumbnailPostMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"_channel":   @"channelId",
+     @"_video":     @"videoId",
+     @"content":    @"content",
+     @"time":       @"createdAt",
+     @"startDate":  @"startTime",
+     @"url":        @"url",
+     @"username":   @"username"}];
+    videoThumbnailPostMapping.identificationAttributes = @[ @"id" ];
+    
+    [videoThumbnailPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"image" objectMapping:imagePostMapping]];
+    [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"video" objectMapping:videoPostMapping]];
+    [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"videoThumbnail" objectMapping:videoThumbnailPostMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping pathPattern:PATH_POSTS_UNIFIED_GET keyPath:nil statusCodes:statusCodes];
     

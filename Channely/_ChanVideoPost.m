@@ -7,7 +7,6 @@ const struct ChanVideoPostAttributes ChanVideoPostAttributes = {
 	.endTime = @"endTime",
 	.startTime = @"startTime",
 	.url = @"url",
-	.videoId = @"videoId",
 };
 
 const struct ChanVideoPostRelationships ChanVideoPostRelationships = {
@@ -64,13 +63,6 @@ const struct ChanVideoPostFetchedProperties ChanVideoPostFetchedProperties = {
 
 
 @dynamic url;
-
-
-
-
-
-
-@dynamic videoId;
 
 
 
