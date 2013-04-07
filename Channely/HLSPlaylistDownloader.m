@@ -8,16 +8,16 @@
 
 #import "HLSPlaylistDownloader.h"
 
-NSTimeInterval const cRefreshInterval = 5.0; // Time in seconds.
-NSUInteger const cStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
-NSString *const cHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
-NSString *const cHLSEndListPrefix = @"#EXT-X-ENDLIST";
-NSString *const cHLSChunkPrefix = @"#EXTINF:";
-NSString *const cHLSMetaPrefix = @"#";
-NSString *const cKVOIsFinished = @"isFinished";
-NSString *const cKVOOperation = @"operations";
-NSString *const cMediaDirectoryFormat = @"%@";
-NSString *const cRelativePathFormat = @"%@/%@";
+static NSTimeInterval const cRefreshInterval = 5.0; // Time in seconds.
+static NSUInteger const cStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
+static NSString *const cHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
+static NSString *const cHLSEndListPrefix = @"#EXT-X-ENDLIST";
+static NSString *const cHLSChunkPrefix = @"#EXTINF:";
+static NSString *const cHLSMetaPrefix = @"#";
+static NSString *const cKVOIsFinished = @"isFinished";
+static NSString *const cKVOOperation = @"operations";
+static NSString *const cMediaDirectoryFormat = @"%@";
+static NSString *const cRelativePathFormat = @"%@/%@";
 
 @interface HLSPlaylistDownloader ()
 // Redefinitions.

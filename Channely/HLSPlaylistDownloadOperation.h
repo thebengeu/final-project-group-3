@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HLSPlaylistDownloader.h"
 #import "HLSPlaylistDownloaderDelegate.h"
+#import "HLSStreamDiscoveryManager.h"
 
 @interface HLSPlaylistDownloadOperation : NSOperation <HLSPlaylistDownloaderDelegate>
 @property (atomic, readonly) BOOL isExecuting;

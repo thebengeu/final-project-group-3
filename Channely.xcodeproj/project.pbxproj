@@ -195,12 +195,12 @@
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
 		82151C111710217700720C00 /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
 		82151C121710217800720C00 /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
-		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small@2x.png"; sourceTree = "<group>"; };
-		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		824E964517113DE700E96418 /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-small.png"; sourceTree = "<group>"; };
-		8250166F17119B7A003BC16A /* top_gradient_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_gradient_32.png; sourceTree = "<group>"; };
-		8250167017119B7A003BC16A /* top_gradient_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_gradient_44.png; sourceTree = "<group>"; };
+		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
+		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		824E964517113DE700E96418 /* icon-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small.png"; path = "../icon-small.png"; sourceTree = "<group>"; };
+		8250166F17119B7A003BC16A /* top_gradient_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_gradient_32.png; path = ../top_gradient_32.png; sourceTree = "<group>"; };
+		8250167017119B7A003BC16A /* top_gradient_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_gradient_44.png; path = ../top_gradient_44.png; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -563,12 +563,6 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
-				8250166F17119B7A003BC16A /* top_gradient_32.png */,
-				8250167017119B7A003BC16A /* top_gradient_44.png */,
-				824E964517113DE700E96418 /* icon-small.png */,
-				824E964117113BD100E96418 /* icon.png */,
-				824E963F17113B8C00E96418 /* icon@2x.png */,
-				824E963D17113B1A00E96418 /* icon-small@2x.png */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -640,6 +634,12 @@
 				B66FDC9916EF88A30042A36C /* Default.png */,
 				B66FDC9B16EF88A30042A36C /* Default@2x.png */,
 				B66FDC9D16EF88A30042A36C /* Default-568h@2x.png */,
+				8250166F17119B7A003BC16A /* top_gradient_32.png */,
+				8250167017119B7A003BC16A /* top_gradient_44.png */,
+				824E964517113DE700E96418 /* icon-small.png */,
+				824E964117113BD100E96418 /* icon.png */,
+				824E963F17113B8C00E96418 /* icon@2x.png */,
+				824E963D17113B1A00E96418 /* icon-small@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
