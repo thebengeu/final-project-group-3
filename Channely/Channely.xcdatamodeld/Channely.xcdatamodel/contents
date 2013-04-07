@@ -80,15 +80,15 @@
     <elements>
         <element name="Channel" positionX="-162" positionY="263" width="128" height="150"/>
         <element name="Event" positionX="36" positionY="89" width="128" height="163"/>
-        <element name="HLSChunk" positionX="81" positionY="576" width="128" height="103"/>
-        <element name="HLSRecording" positionX="-81" positionY="579" width="117" height="150"/>
-        <element name="ImagePost" positionX="441" positionY="261" width="128" height="58"/>
-        <element name="InstagramPost" positionX="340" positionY="462" width="128" height="73"/>
+        <element name="HLSChunk" positionX="27" positionY="459" width="128" height="103"/>
+        <element name="HLSRecording" positionX="-135" positionY="462" width="117" height="150"/>
+        <element name="ImagePost" positionX="378" positionY="306" width="128" height="58"/>
+        <element name="InstagramPost" positionX="340" positionY="494" width="128" height="73"/>
         <element name="Post" positionX="196" positionY="311" width="128" height="148"/>
-        <element name="TextPost" positionX="441" positionY="189" width="128" height="43"/>
-        <element name="TwitterPost" positionX="198" positionY="462" width="128" height="73"/>
+        <element name="TextPost" positionX="378" positionY="234" width="128" height="43"/>
+        <element name="TwitterPost" positionX="198" positionY="494" width="128" height="73"/>
         <element name="User" positionX="34" positionY="270" width="128" height="133"/>
-        <element name="VideoPost" positionX="439" positionY="333" width="128" height="103"/>
-        <element name="VideoThumbnailPost" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="VideoPost" positionX="376" positionY="378" width="128" height="103"/>
+        <element name="VideoThumbnailPost" positionX="549" positionY="288" width="128" height="88"/>
     </elements>
 </model>
