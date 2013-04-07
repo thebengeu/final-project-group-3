@@ -66,25 +66,25 @@
                     </containerView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Channely" id="53">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="v1I-kR-xvx">
-                            <connections>
-                                <segue destination="uEc-Ol-0UT" kind="popover" identifier="popoverMenuSegue" popoverAnchorBarButtonItem="v1I-kR-xvx" id="BCn-FQ-YbX">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="LWY-Bx-Dk0">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="lFL-aM-Vtc">
-                                <rect key="frame" x="605" y="6" width="156" height="32"/>
+                        <barButtonItem key="leftBarButtonItem" id="Mft-ZF-Zhw">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="kiI-ev-v88">
+                                <rect key="frame" x="7" y="6" width="156" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Discover"/>
                                     <segment title="Search"/>
                                 </segments>
                                 <connections>
-                                    <action selector="segmentChanged:" destination="4" eventType="valueChanged" id="ccR-Dr-JnT"/>
+                                    <action selector="segmentChanged:" destination="4" eventType="valueChanged" id="dNw-Ge-N9b"/>
                                 </connections>
                             </segmentedControl>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Menu" id="v1I-kR-xvx">
+                            <connections>
+                                <segue destination="uEc-Ol-0UT" kind="popover" identifier="popoverMenuSegue" popoverAnchorBarButtonItem="v1I-kR-xvx" id="BCn-FQ-YbX">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -124,7 +124,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-tl-fIH">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="422" id="A84-4Y-Vp8"/>
+                                    <constraint firstAttribute="height" constant="426" id="Es1-FE-zEB"/>
                                 </constraints>
                             </mapView>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iug-rU-gRG">
@@ -134,15 +134,15 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iug-rU-gRG" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0A3-3z-Afo"/>
-                            <constraint firstItem="iug-rU-gRG" firstAttribute="leading" secondItem="yN9-uP-K6p" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="2N2-17-xy6"/>
-                            <constraint firstItem="1pc-tl-fIH" firstAttribute="top" secondItem="yN9-uP-K6p" secondAttribute="top" constant="20" symbolic="YES" type="default" id="BBb-VP-GvM"/>
-                            <constraint firstAttribute="bottom" secondItem="iug-rU-gRG" secondAttribute="bottom" constant="16" id="QBy-C2-S1v"/>
-                            <constraint firstItem="1pc-tl-fIH" firstAttribute="leading" secondItem="yN9-uP-K6p" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UMS-rI-84z"/>
-                            <constraint firstAttribute="trailing" secondItem="1pc-tl-fIH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cbu-iK-wUL"/>
-                            <constraint firstItem="iug-rU-gRG" firstAttribute="top" secondItem="yN9-uP-K6p" secondAttribute="top" constant="462" id="g1P-DJ-Bpo"/>
+                            <constraint firstItem="iug-rU-gRG" firstAttribute="bottom" secondItem="yN9-uP-K6p" secondAttribute="bottom" type="default" id="7MW-tg-Ln9"/>
+                            <constraint firstItem="iug-rU-gRG" firstAttribute="top" secondItem="yN9-uP-K6p" secondAttribute="top" constant="426" id="9Q4-GO-7Kq"/>
+                            <constraint firstItem="1pc-tl-fIH" firstAttribute="trailing" secondItem="yN9-uP-K6p" secondAttribute="trailing" type="default" id="H1k-S7-b4P"/>
+                            <constraint firstItem="iug-rU-gRG" firstAttribute="trailing" secondItem="yN9-uP-K6p" secondAttribute="trailing" type="default" id="WKE-Wp-poU"/>
+                            <constraint firstItem="iug-rU-gRG" firstAttribute="leading" secondItem="yN9-uP-K6p" secondAttribute="leading" type="default" id="XWx-Ce-uP6"/>
+                            <constraint firstItem="1pc-tl-fIH" firstAttribute="top" secondItem="yN9-uP-K6p" secondAttribute="top" type="default" id="qds-Dc-R7b"/>
+                            <constraint firstItem="1pc-tl-fIH" firstAttribute="leading" secondItem="yN9-uP-K6p" secondAttribute="leading" type="default" id="tS8-aG-svY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" id="LZh-Lz-Nkd"/>
@@ -179,15 +179,15 @@
             <objects>
                 <tableViewController id="5Ec-5s-YOF" customClass="ChannelUITableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="117" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Z9-QO-pHs">
-                        <rect key="frame" x="0.0" y="0.0" width="728" height="433"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="485"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChannelCell" rowHeight="117" id="rNn-5t-cVJ" customClass="ChannelUITableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="728" height="117"/>
+                                <rect key="frame" x="0.0" y="22" width="768" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="728" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="3VO-c0-eVp">
@@ -229,6 +229,7 @@
                                         </textView>
                                         <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="96" id="3jj-KC-Rzj"/>
                                                 <constraint firstAttribute="width" constant="96" id="y2a-eY-lzb"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -252,11 +253,10 @@
                                     <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="top" type="default" id="FOJ-El-MIs"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="leading" type="default" id="Mqn-Yd-R1O"/>
                                     <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YZC-lo-hTz"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="centerY" secondItem="rNn-5t-cVJ" secondAttribute="centerY" type="default" id="dit-a3-KsC"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="11" id="gKf-g6-Hil"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="OCf-gX-ECr" secondAttribute="top" type="default" id="hIW-Xq-Rd4"/>
-                                    <constraint firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="20" type="default" id="ixV-6k-it6"/>
                                     <constraint firstItem="Ho4-FB-biZ" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j8C-jd-BK9"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="bottom" secondItem="OCf-gX-ECr" secondAttribute="bottom" type="default" id="ueU-kF-Oig"/>
+                                    <constraint firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="60" id="jkb-cc-Ejs"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
@@ -813,6 +813,120 @@
             <point key="canvasLocation" x="-1568" y="-1176"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AttachPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AttachPickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickImage:"/>
+                <relationship kind="action" name="pickVideo:"/>
+                <relationship kind="action" name="takePhoto:"/>
+            </relationships>
+        </class>
+        <class className="ChanCreateEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCreateEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="endDateEditingBegin:"/>
+                <relationship kind="action" name="startDateEditingBegin:"/>
+                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="UITextViewField"/>
+                <relationship kind="outlet" name="endDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="startDateTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentChanged:"/>
+                <relationship kind="outlet" name="container" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ChanHiddenTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanHiddenTabBarController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
+            </relationships>
+        </class>
+        <class className="ChanImagePostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="signup:"/>
+            </relationships>
+        </class>
+        <class className="ChanPostCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="usernameView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanRootViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanRootViewController.h"/>
+        </class>
+        <class className="ChanTextPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
+        </class>
+        <class className="ChannelPostTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelPostTableViewController.h"/>
+        </class>
+        <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="enterChannel:"/>
+                <relationship kind="outlet" name="channelEnterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelUITableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewController.h"/>
+        </class>
+        <class className="ChannelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="attach:"/>
+                <relationship kind="action" name="sendPost:"/>
+                <relationship kind="outlet" name="attachButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sendPostIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textInput" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="DiscoverViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiscoverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelListContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="UITextViewField" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITextViewField.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
