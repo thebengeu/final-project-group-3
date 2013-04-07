@@ -100,7 +100,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
         _playlistFileName = [playlist lastPathComponent];
         _playlistName = [_playlistFileName stringByDeletingPathExtension];
         
-        NSLog(@"%@\n%@", _baseURL, _playlistFileName); // DEBUG
+//        NSLog(@"%@\n%@", _baseURL, _playlistFileName); // DEBUG
     }
     return self;
 }
@@ -109,7 +109,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
 - (void) downloadToDirectory:(NSString *)directory {
     if (isConsumed) {
         // Error.
-        NSLog(@"this HLSDownloader was already used.");
+        NSLog(@"this HLSPlaylistDownloader was already used.");
         return;
     }
     
@@ -124,7 +124,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
     // Create media content directory.
     NSFileManager *fm = [NSFileManager defaultManager];
     _mediaDirectory = [_playlistDirectory stringByAppendingPathComponent:_playlistName];
-    NSLog(@"mediaDirectory=%@", _mediaDirectory); // DEBUG
+//    NSLog(@"mediaDirectory=%@", _mediaDirectory); // DEBUG
     BOOL isDirectory = NO;
     if ([fm fileExistsAtPath:_mediaDirectory isDirectory:&isDirectory] && isDirectory) {
         [fm removeItemAtPath:_mediaDirectory error:nil];
@@ -153,7 +153,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
 }
 
 - (void) refreshTimer_Tick:(NSTimer *)timer {
-    NSLog(@"tick!"); // DEBUG
+//    NSLog(@"tick!"); // DEBUG
     
     // Synchronously get new playlist.
     NSError *downloadError = nil;
@@ -172,7 +172,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
             
             // Discard common portion of playlist (items at the front are guaranteed not to change).
             NSString *diff = [_curPlaylist substringFromIndex:_oldPlaylist.length];
-            NSLog(@"@start\ndiff:\n%@\n@end\n", diff); // DEBUG
+//            NSLog(@"@start\ndiff:\n%@\n@end\n", diff); // DEBUG
             
             // Parse diff.
             _shouldFinishWhenQueueEmpty = [self parsePartialPlaylist:diff];
@@ -185,7 +185,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
                 [timer invalidate];
             }
         } else {
-            NSLog(@"no change in playlist"); // DEBUG
+//            NSLog(@"no change in playlist"); // DEBUG
             
             // Increment timeout timer.
             _intervalsSinceLastChange++;
@@ -195,7 +195,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
     // Check for timeout condition.
     if (_intervalsSinceLastChange >= cStreamTimeoutFactor) {
         // Timeout condition.
-        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
+//        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
         
         if (_delegate) {
             [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
@@ -270,7 +270,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
 }
 
 - (void) addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length {
-    NSLog(@"found url:%@", url); // DEBUG
+//    NSLog(@"found url:%@", url); // DEBUG
     NSUInteger curSeqNo = _chunkSequenceNumber++;
     NSString *fileName = [NSString stringWithFormat:@"chunk%d.ts", curSeqNo];
     NSString *filePath = [_mediaDirectory stringByAppendingPathComponent:fileName];
@@ -291,7 +291,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
         
-        NSLog(@"chunk seq:%d duration:%lf downloaded to file:%@", meta.sequenceNumber, meta.duration, meta.path); // DEBUG
+//        NSLog(@"chunk seq:%d duration:%lf downloaded to file:%@", meta.sequenceNumber, meta.duration, meta.path); // DEBUG
         
         NSString *relativePath = [NSString stringWithFormat:cRelativePathFormat, _playlistName, [meta.path lastPathComponent]];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];

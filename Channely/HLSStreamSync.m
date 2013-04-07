@@ -57,7 +57,8 @@ static HLSStreamSync *_internal;
 }
 
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist {
-    // TODO
+    HLSPlaylistDownloadOperation *operation = [[HLSPlaylistDownloadOperation alloc] initWithStreamId:sId forPlaylist:playlist toDirectory:_baseDirectory];
+    [_opQueue addOperation:operation];
 }
 
 @end

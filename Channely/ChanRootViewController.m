@@ -8,9 +8,10 @@
 
 #import "ChanRootViewController.h"
 
-NSString *const cLocalServerLoadKey = @"_lsload";
-NSString *const cApplicationTypeName = @"_channely._tcp.";
-NSUInteger const cLocalServerPort = 10001;
+static NSString *const cLocalServerLoadKey = @"_lsload";
+static NSString *const cApplicationTypeName = @"_channely._tcp.";
+static NSUInteger const cLocalServerPort = 80;
+static NSString *const cHTMLDebugPage = @"<!DOCTYPE html><html><head><title>HLS Example</title></head><body><div><video src=\"playlist.m3u8\" controls autoplay></video></div></body></html>";
 
 @interface ChanRootViewController ()
 // Internal.
@@ -38,16 +39,18 @@ NSUInteger const cLocalServerPort = 10001;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // Create test file.
+    // DEBUG - Create test file.
     NSURL *file = [NSURL fileURLWithPath:[[ChanUtility documentsDirectory] stringByAppendingPathComponent:@"index.html"]];
-    [@"<h1>hello world</h1>" writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    [cHTMLDebugPage writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     [self setupHttpServer];
     [self setupDiscoveryManager];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-
+    // DEBUG
+    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility documentsDirectory]];
+    [sync syncStreamId:@"playlist" playlistURL:[NSURL URLWithString:@"http://www.comp.nus.edu.sg/~cgcai/playlist.m3u8"]];
 }
 
 - (void)didReceiveMemoryWarning {

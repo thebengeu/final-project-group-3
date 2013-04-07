@@ -58,6 +58,15 @@ static NSString *const cKVOIsFinished = @"isFinished";
 }
 
 - (void) start {
+    if (![NSThread isMainThread]) {
+        NSLog(@"moving download operation to main thread."); // DEBUG
+        
+        [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
+        return;
+    }
+    
+    NSLog(@"download operation started."); // DEBUG
+    
     _expectingFirstChunk = YES;
     
     [_worker downloadToDirectory:_downloadDirectory];
@@ -81,12 +90,17 @@ static NSString *const cKVOIsFinished = @"isFinished";
 #pragma mark Playlist Downloader Delegate
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didDownloadNewChunkForRemoteStream:(NSURL *)stream {
     if (_expectingFirstChunk) {
+        NSLog(@"sync: first chunk downloaded"); // DEBUG
+        
         NSString *playlistName = [_playlistURL lastPathComponent];
         [[HLSStreamDiscoveryManager discoveryManager] startAdvertisingPlaylist:playlistName asRecordingId:_recordingId];
+        _expectingFirstChunk = NO;
     }
 }
 
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didFinishDownloadingRemoteStream:(NSURL *)stream {
+    NSLog(@"sync complete"); // DEBUG
+    
     [self finish];
 }
 
