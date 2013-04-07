@@ -183,11 +183,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChannelCell" rowHeight="117" id="rNn-5t-cVJ" customClass="ChannelUITableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChannelCell" rowHeight="117" id="rNn-5t-cVJ" customClass="ChannelUITableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="768" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="748" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="3VO-c0-eVp">
@@ -197,10 +197,11 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="364" id="75a-8L-oAj"/>
+                                                <constraint firstAttribute="width" constant="337" id="DVG-2y-kfa"/>
                                                 <constraint firstAttribute="height" constant="54" id="ouG-E6-HuI"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <color key="textColor" red="0.79607850313186646" green="0.0" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="34"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Event Name" translatesAutoresizingMaskIntoConstraints="NO" id="Ho4-FB-biZ">
@@ -212,7 +213,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="34" id="Amf-3i-qG7"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-gX-ECr">
@@ -222,18 +224,19 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="243" id="Adu-gB-XZC"/>
+                                                <constraint firstAttribute="width" constant="293" id="Cay-Jb-WCl"/>
+                                                <constraint firstAttribute="height" constant="97" id="Kda-Ad-2hl"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
+                                        <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="96" id="3jj-KC-Rzj"/>
-                                                <constraint firstAttribute="width" constant="96" id="y2a-eY-lzb"/>
+                                                <constraint firstAttribute="height" constant="67" id="bUg-OJ-riS"/>
+                                                <constraint firstAttribute="width" constant="66" id="mdl-AK-P3V"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal" title="Enter">
+                                            <state key="normal" title="Enter" image="mapmarker_red.png">
                                                 <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <state key="highlighted">
@@ -243,20 +246,30 @@
                                                 <action selector="enterChannel:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="d6p-Hn-wyV"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="AUy-nl-18u"/>
+                                                <constraint firstAttribute="height" constant="21" id="McI-aA-Les"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="3BM-8b-NNQ"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="10" id="5Iy-x2-Dfq"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="5a7-gn-e3l"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="OCf-gX-ECr" secondAttribute="bottom" type="default" id="CVT-Fg-mLo"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="top" type="default" id="FOJ-El-MIs"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="leading" type="default" id="Mqn-Yd-R1O"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YZC-lo-hTz"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="centerY" secondItem="rNn-5t-cVJ" secondAttribute="centerY" type="default" id="dit-a3-KsC"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="11" id="gKf-g6-Hil"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j8C-jd-BK9"/>
-                                    <constraint firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="60" id="jkb-cc-Ejs"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="leading" type="default" id="TYg-3D-5IK"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="VmH-eA-ixZ"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="24" id="Xhd-vF-a2L"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="5" id="hE7-fJ-dQ2"/>
+                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="11" id="mri-Eq-Lkx"/>
+                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="nEk-V2-kXI"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="centerY" secondItem="OCf-gX-ECr" secondAttribute="centerY" type="default" id="uie-XQ-XDT"/>
+                                    <constraint firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="40" id="vmn-XN-2k9"/>
+                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="yLF-FO-ISi"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
@@ -847,6 +860,123 @@
             <point key="canvasLocation" x="-1568" y="-1176"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mapmarker_red.png" width="88" height="88"/>
+    </resources>
+    <classes>
+        <class className="AttachPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AttachPickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickImage:"/>
+                <relationship kind="action" name="pickVideo:"/>
+                <relationship kind="action" name="takePhoto:"/>
+            </relationships>
+        </class>
+        <class className="ChanCreateEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCreateEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="endDateEditingBegin:"/>
+                <relationship kind="action" name="startDateEditingBegin:"/>
+                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="UITextViewField"/>
+                <relationship kind="outlet" name="endDateTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="startDateTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="segmentChanged:"/>
+                <relationship kind="outlet" name="container" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ChanHiddenTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanHiddenTabBarController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
+            </relationships>
+        </class>
+        <class className="ChanImagePostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="login:"/>
+                <relationship kind="action" name="signup:"/>
+            </relationships>
+        </class>
+        <class className="ChanPostCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="usernameView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanRootViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanRootViewController.h"/>
+        </class>
+        <class className="ChanTextPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
+        </class>
+        <class className="ChannelPostTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelPostTableViewController.h"/>
+        </class>
+        <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="enterChannel:"/>
+                <relationship kind="outlet" name="channelEnterButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelUITableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewController.h"/>
+        </class>
+        <class className="ChannelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="attach:"/>
+                <relationship kind="action" name="sendPost:"/>
+                <relationship kind="outlet" name="attachButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sendPostIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textInput" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="DiscoverViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiscoverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelListContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchViewController.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="UITextViewField" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UITextViewField.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
