@@ -40,6 +40,8 @@
 		4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */; };
 		4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
+		4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */; };
+		4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
 		4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */; };
@@ -49,7 +51,6 @@
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
 		4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* ChanUtility.m */; };
-		82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82151C121710217800720C00 /* ChanVideoCaptureViewController.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -89,7 +90,6 @@
 		B66FDCC316EF88A40042A36C /* ChannelyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCC216EF88A40042A36C /* ChannelyTests.m */; };
 		B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */; };
 		B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */; };
-		B68B8192170DBA34001B6986 /* ChanMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B68B8191170DBA34001B6986 /* ChanMenuViewController.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
 		B6F480201706C80F0005029D /* _ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800B1706C80F0005029D /* _ChanChannel.m */; };
 		B6F480211706C80F0005029D /* _ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800D1706C80F0005029D /* _ChanEvent.m */; };
@@ -172,6 +172,10 @@
 		4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloadOperation.h; sourceTree = "<group>"; };
 		4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloadOperation.m; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4A4F06DF1711D8C60007A7DF /* ChanMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuViewController.h; path = Channely/ChanMenuViewController.h; sourceTree = "<group>"; };
+		4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuViewController.m; path = Channely/ChanMenuViewController.m; sourceTree = "<group>"; };
+		4A4F06E11711D8C70007A7DF /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanVideoCaptureViewController.h; path = Channely/ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
+		4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanVideoCaptureViewController.m; path = Channely/ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
 		4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChunkingVideoRecorder.m; sourceTree = "<group>"; };
 		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
@@ -193,8 +197,6 @@
 		4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloader.m; sourceTree = "<group>"; };
 		4AE16EE0170DF6E500573A4B /* ChanUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUtility.h; sourceTree = "<group>"; };
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
-		82151C111710217700720C00 /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
-		82151C121710217800720C00 /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -256,8 +258,6 @@
 		B6892F7D17115426007C71C9 /* ChanVideoThumbnailPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailPost.h; sourceTree = "<group>"; };
 		B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailPost.m; sourceTree = "<group>"; };
 		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
-		B68B8190170DBA33001B6986 /* ChanMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanMenuViewController.h; sourceTree = "<group>"; };
-		B68B8191170DBA34001B6986 /* ChanMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanMenuViewController.m; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
 		B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRestKitObjectMappings.m; sourceTree = "<group>"; };
 		B6F4800A1706C80F0005029D /* _ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanChannel.h; sourceTree = "<group>"; };
@@ -427,6 +427,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4A4F06DE1711D3BB0007A7DF /* Video Capture */,
 				0A7423BC1705490B00644070 /* Search */,
 				0A7423BB170548FC00644070 /* Channel */,
 				0A7423BA170548E200644070 /* Discover */,
@@ -434,13 +435,11 @@
 				B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */,
 				B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */,
 				B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */,
-				82151C111710217700720C00 /* ChanVideoCaptureViewController.h */,
-				82151C121710217800720C00 /* ChanVideoCaptureViewController.m */,
 				0AF5351C1705D36500E437F9 /* ChanHiddenTabBarController.h */,
 				0AF5351D1705D36500E437F9 /* ChanHiddenTabBarController.m */,
 				0AF534F81705A03700E437F9 /* wolfdie.png */,
-				B68B8190170DBA33001B6986 /* ChanMenuViewController.h */,
-				B68B8191170DBA34001B6986 /* ChanMenuViewController.m */,
+				4A4F06DF1711D8C60007A7DF /* ChanMenuViewController.h */,
+				4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */,
 			);
 			name = UI;
 			path = ..;
@@ -455,6 +454,15 @@
 				0AF535101705D2F500E437F9 /* ChannelUITableViewController.m */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		4A4F06DE1711D3BB0007A7DF /* Video Capture */ = {
+			isa = PBXGroup;
+			children = (
+				4A4F06E11711D8C70007A7DF /* ChanVideoCaptureViewController.h */,
+				4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */,
+			);
+			name = "Video Capture";
 			sourceTree = "<group>";
 		};
 		4A625AE317102D11000DF8B9 /* Stream Discovery */ = {
@@ -874,14 +882,12 @@
 				B6F4802A1706C80F0005029D /* _ChanVideoPost.m in Sources */,
 				B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */,
 				0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */,
-				B68B8192170DBA34001B6986 /* ChanMenuViewController.m in Sources */,
 				4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */,
 				4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */,
 				4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */,
 				4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */,
 				4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
-				82151C131710217900720C00 /* ChanVideoCaptureViewController.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
 				4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */,
 				4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */,
@@ -891,6 +897,8 @@
 				0A91BA1217116A0C0095FA01 /* SelectionAnnotation.m in Sources */,
 				0A91BA1517116A580095FA01 /* ChanCreateEventViewController.m in Sources */,
 				0A91BA18171170730095FA01 /* UITextViewField.m in Sources */,
+				4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */,
+				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
