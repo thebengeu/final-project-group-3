@@ -73,6 +73,10 @@
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
+    [request setPredicate:predicate];
+    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:YES];
     [request setSortDescriptors:@[sortDescriptor]];
 
