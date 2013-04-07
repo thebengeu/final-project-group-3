@@ -17,10 +17,17 @@
 
 
 @implementation UITextViewField
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+        CGFloat components[] = {0.0, 0.0, 0.0, 1.0};
+
+        self.layer.borderColor = CGColorCreate(colorspace, components);
+        self.layer.borderWidth = 2;
         self.layer.cornerRadius = 5;
         self.clipsToBounds = YES;
         self.delegate = self;
@@ -29,12 +36,13 @@
         
         [self setText:_placeholder];
         [self setPlaceholderColor:[UIColor lightGrayColor]];
+        NSLog(@"created textiviewfield");
     }
     return self;
 }
 
 
--(void)textViewDidBeginEditing:(UITextView *)textView{
+-(void)textViewDidBeginEditing:(UITextView *)textView{NSLog(@"editing");
     if ([[self text]compare:_placeholder] == NSOrderedSame){
         [self setText:@""];
         [self setTextColor:_userTextColor];

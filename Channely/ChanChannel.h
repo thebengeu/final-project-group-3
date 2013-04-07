@@ -1,4 +1,5 @@
 #import "_ChanChannel.h"
+#import <MapKit/MapKit.h>
 
 @class ChanTextPost;
 @class ChanImagePost;
@@ -15,4 +16,10 @@
 - (void)addImagePostWithContent:(NSString *)content
                           image:(UIImage *)image
                  withCompletion:(void (^)(ChanImagePost *imagePost, NSError *error))block;
+- (void)addEventWithName:(NSString *)name
+                 details:(NSString *)details
+                location:(CLLocationCoordinate2D)location
+               startTime:(NSDate *)startTime
+                 endTime:(NSDate *)endTime
+          withCompletion:(void (^)(ChanEvent *event, NSError *error))block;
 @end
