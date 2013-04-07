@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HLSPlaylistDownloader.h"
+#import "HLSPlaylistDownloaderDelegate.h"
 
-@interface HLSPlaylistDownloadOperation : NSOperation
+@interface HLSPlaylistDownloadOperation : NSOperation <HLSPlaylistDownloaderDelegate>
+@property (atomic, readonly) BOOL isExecuting;
+@property (atomic, readonly) BOOL isFinished;
+
 - (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir;
 
 @end

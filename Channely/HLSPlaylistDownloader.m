@@ -148,7 +148,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
     [[NSRunLoop currentRunLoop] addTimer:_refreshTimer forMode:NSDefaultRunLoopMode];
     
     if (_delegate) {
-        [_delegate streamDownloader:self didStartDownloadingRemoteStream:_playlistURL];
+        [_delegate playlistDownloader:self didStartDownloadingRemoteStream:_playlistURL];
     }
 }
 
@@ -198,7 +198,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
         NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
         
         if (_delegate) {
-            [_delegate streamDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
+            [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
         }
         
         _shouldFinishWhenQueueEmpty = YES;
@@ -297,7 +297,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];
         
         if (_delegate) {
-            [_delegate streamDownloader:self didDownloadNewChunkForRemoteStream:_playlistURL];
+            [_delegate playlistDownloader:self didDownloadNewChunkForRemoteStream:_playlistURL];
         }
         
         [finishedOp removeObserver:self forKeyPath:cKVOIsFinished];
@@ -307,7 +307,7 @@ NSString *const cRelativePathFormat = @"%@/%@";
             [_playlistHelper endPlaylist];
             
             if (_delegate) {
-                [_delegate streamDownloader:self didFinishDownloadingRemoteStream:_playlistURL];
+                [_delegate playlistDownloader:self didFinishDownloadingRemoteStream:_playlistURL];
             }
         }
     }
