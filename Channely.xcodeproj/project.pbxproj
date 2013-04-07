@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A91BA1217116A0C0095FA01 /* SelectionAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91BA1117116A0C0095FA01 /* SelectionAnnotation.m */; };
+		0A91BA1517116A580095FA01 /* ChanAddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91BA1417116A580095FA01 /* ChanAddEventViewController.m */; };
+		0A91BA18171170730095FA01 /* UITextViewField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91BA17171170730095FA01 /* UITextViewField.m */; };
 		0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A937FBC170F52BB000A4079 /* AnnotationUIView.m */; };
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
@@ -110,6 +113,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A91BA1017116A0C0095FA01 /* SelectionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectionAnnotation.h; path = Channely/SelectionAnnotation.h; sourceTree = "<group>"; };
+		0A91BA1117116A0C0095FA01 /* SelectionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionAnnotation.m; path = Channely/SelectionAnnotation.m; sourceTree = "<group>"; };
+		0A91BA1317116A580095FA01 /* ChanAddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAddEventViewController.h; path = Channely/ChanAddEventViewController.h; sourceTree = "<group>"; };
+		0A91BA1417116A580095FA01 /* ChanAddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAddEventViewController.m; path = Channely/ChanAddEventViewController.m; sourceTree = "<group>"; };
+		0A91BA16171170730095FA01 /* UITextViewField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextViewField.h; sourceTree = "<group>"; };
+		0A91BA17171170730095FA01 /* UITextViewField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextViewField.m; sourceTree = "<group>"; };
 		0A937FBB170F52BB000A4079 /* AnnotationUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationUIView.h; sourceTree = "<group>"; };
 		0A937FBC170F52BB000A4079 /* AnnotationUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationUIView.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -320,6 +329,7 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				0A91BA0F171169C10095FA01 /* AddEvent */,
 				0AA3938317043E3B00A35814 /* Posts */,
 				0AF5350A1705D2E600E437F9 /* ChannelPostTableViewController.h */,
 				0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */,
@@ -340,11 +350,24 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		0A91BA0F171169C10095FA01 /* AddEvent */ = {
+			isa = PBXGroup;
+			children = (
+				0A91BA1317116A580095FA01 /* ChanAddEventViewController.h */,
+				0A91BA1417116A580095FA01 /* ChanAddEventViewController.m */,
+				0A91BA1017116A0C0095FA01 /* SelectionAnnotation.h */,
+				0A91BA1117116A0C0095FA01 /* SelectionAnnotation.m */,
+			);
+			name = AddEvent;
+			sourceTree = "<group>";
+		};
 		0A937FBA170F5210000A4079 /* Custom View */ = {
 			isa = PBXGroup;
 			children = (
 				0A937FBB170F52BB000A4079 /* AnnotationUIView.h */,
 				0A937FBC170F52BB000A4079 /* AnnotationUIView.m */,
+				0A91BA16171170730095FA01 /* UITextViewField.h */,
+				0A91BA17171170730095FA01 /* UITextViewField.m */,
 			);
 			name = "Custom View";
 			sourceTree = "<group>";
@@ -857,6 +880,9 @@
 				4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */,
 				B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */,
 				B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */,
+				0A91BA1217116A0C0095FA01 /* SelectionAnnotation.m in Sources */,
+				0A91BA1517116A580095FA01 /* ChanAddEventViewController.m in Sources */,
+				0A91BA18171170730095FA01 /* UITextViewField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

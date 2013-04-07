@@ -25,7 +25,7 @@
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        [self setBackgroundColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:0.1]];
+        //[self setBackgroundColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:0.1]];
         [self setUserInteractionEnabled:YES];
         _currentStrokePoints = [[NSMutableArray alloc]init];
         _strokesPoints = [[NSMutableArray alloc]init];
@@ -37,7 +37,7 @@
         [self addGestureRecognizer:draw];
         
         _markerColor = [UIColor blackColor];
-        _markerSize = (CGFloat)4.0;
+        _markerSize = (CGFloat)3.0;
         
         UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0);
         UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
