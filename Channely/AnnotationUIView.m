@@ -36,7 +36,7 @@
         [draw setMaximumNumberOfTouches:1];
         [self addGestureRecognizer:draw];
         
-        _markerColor = [UIColor blackColor];
+        _markerColor = [UIColor redColor];
         _markerSize = (CGFloat)3.0;
         
         UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0);

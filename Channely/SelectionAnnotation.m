@@ -20,8 +20,4 @@
     return self;
 }
 
-- (NSString *)title {
-    return @"selected";
-}
-
 @end

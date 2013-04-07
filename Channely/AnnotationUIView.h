@@ -8,7 +8,7 @@
 
 /*
  *  Init: [[AnnotationUIView alloc]initWithFrame:"Target frame"];
- *  Set color (default black) and size (default 4.0) by property
+ *  Set color (default red) and size (default 3.0) by property
  *  Get screenshot by screenshot method
  */
 
