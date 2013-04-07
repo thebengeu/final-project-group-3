@@ -16,7 +16,34 @@
 NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 
 @implementation ChanAppDelegate
+
+// Method to customize appearance 
+- (void)customizeAppearance {
+    // Create resizable images
+    UIImage *gradientImg44 = [[UIImage imageNamed:@"top_gradient_44"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *gradientImg32 = [[UIImage imageNamed:@"top_gradient_32"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    // Set the background image for all UINavigationBars
+    [[UINavigationBar appearance] setBackgroundImage:gradientImg44 forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:gradientImg32 forBarMetrics:UIBarMetricsLandscapePhone];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+      UITextAttributeTextColor,
+      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
+      UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+      UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"Arial-Bold" size:0.0],
+      UITextAttributeFont,
+      nil]];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Set UI customizations
+    [self customizeAppearance];
+    
     // Enable Activity Indicator Spinner
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
