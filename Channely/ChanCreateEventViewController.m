@@ -179,7 +179,7 @@
         return;
     }
     
-    [_delegate createEventWithEventName:[_eventNameTextField text] startDate:_startDate endDate:_endDate description:[_descriptionTextViewField text] lat:_location.latitude lon:_location.longitude];
+    [_delegate createEventWithEventName:[_eventNameTextField text] startDate:_startDate endDate:_endDate description:[_descriptionTextViewField text] location:_location];
 }
 
 

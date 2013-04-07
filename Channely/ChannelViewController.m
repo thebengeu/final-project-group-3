@@ -367,9 +367,9 @@
 
 
 
--(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description lat: (double)lat lon:(double)lon{
+-(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
     //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
-    //[_channel addeve]
+    [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
 }
 
 
