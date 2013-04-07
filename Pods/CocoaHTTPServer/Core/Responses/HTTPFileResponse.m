@@ -15,8 +15,15 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 
 #define NULL_FD  -1
 
+// Modifications for MIME.
+@interface HTTPFileResponse ()
+@property (strong) NSMutableDictionary *_httpHeaders;
+
+@end
+
 
 @implementation HTTPFileResponse
+@synthesize _httpHeaders;
 
 - (id)initWithFilePath:(NSString *)fpath forConnection:(HTTPConnection *)parent
 {
@@ -50,6 +57,22 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		
 		// We don't bother opening the file here.
 		// If this is a HEAD request we only need to know the fileLength.
+        
+        // Modifications for MIME.
+        _httpHeaders = [NSMutableDictionary dictionary];
+        NSString *fileExtension = [fpath pathExtension];
+        NSString *contentType;
+        if ([fileExtension isEqualToString:@"html"]) {
+            contentType = @"text/html";
+        } else if ([fileExtension isEqualToString:@"m3u8"]) {
+            contentType = @"application/x-mpegURL";
+        } else if ([fileExtension isEqualToString:@"ts"]) {
+            contentType = @"video/MP2T";
+        } else {
+            contentType = @"text/plain";
+        }
+        NSLog(@"modified http server. file=%@ content-type=%@", fpath, contentType); // DEBUG
+        [_httpHeaders setObject:(NSString *)contentType forKey:@"Content-Type"];
 	}
 	return self;
 }
@@ -232,6 +255,12 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 	if (buffer)
 		free(buffer);
 	
+}
+
+// Modifications for MIME.
+- (NSDictionary *) httpHeaders {
+    NSLog(@"modified http server. someoned accessed httpHeaders.");
+    return _httpHeaders;
 }
 
 @end
