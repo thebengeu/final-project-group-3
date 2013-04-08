@@ -8,18 +8,16 @@
 
 #import "HLSEventPlaylistHelper.h"
 
-// This is a hack. TODO
+// Note: #EXT-X-TARGETDURATION must be an (unsigned) integral value, whereas the actual length of a clip in #EXTINF may be a decimal value.
 static NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%d\n#EXT-X-MEDIA-SEQUENCE:%d\n";
-
-// This is a hack. TODO
-static NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%d,%@\n%@\n";
+static NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
 static NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
 static NSUInteger const cDefaultSequenceNumber = 0;
 
 @interface HLSEventPlaylistHelper ()
 // Internal.
 @property (strong) NSURL * _fileName;
-@property (atomic) CGFloat _targetInterval;
+@property (atomic) NSUInteger _targetInterval;
 @property (strong) NSMutableString *_buffer;
 
 - (void) writeBufferToFile;
@@ -42,12 +40,10 @@ static NSUInteger const cDefaultSequenceNumber = 0;
 }
 
 #pragma mark Playlist Manipulation
-- (void) beginPlaylistWithTargetInterval:(CGFloat)period {
+- (void) beginPlaylistWithTargetInterval:(NSUInteger)period {
     _targetInterval = period;
     _buffer = [[NSMutableString alloc] init];
-    
-    // This is a hack. TODO
-    [_buffer appendFormat:cPlaylistHeaderFormat, (NSUInteger)_targetInterval, (NSUInteger)cDefaultSequenceNumber];
+    [_buffer appendFormat:cPlaylistHeaderFormat, _targetInterval, cDefaultSequenceNumber];
 }
 
 - (void) appendItem:(NSString *)path withDuration:(CGFloat)duration {
@@ -59,8 +55,7 @@ static NSUInteger const cDefaultSequenceNumber = 0;
         return;
     }
     
-    // This is a hack. TODO
-    [_buffer appendFormat:cPlaylistMediaItemFormat, (NSUInteger)duration, title, path];
+    [_buffer appendFormat:cPlaylistMediaItemFormat, duration, title, path];
     [self writeBufferToFile];
 }
 
