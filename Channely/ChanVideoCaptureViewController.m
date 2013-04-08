@@ -19,6 +19,7 @@ static NSString *const cButtonStartRecording = @"Start";
 
 // UI Utility
 - (void) updateRecordingControlButtonState;
+- (void) updatePreviewRotationToOrientation;
 
 // Video Capture
 - (void) startPreviewing;
@@ -59,11 +60,24 @@ static NSString *const cButtonStartRecording = @"Start";
 
 - (void) viewDidAppear:(BOOL)animated {
     [self startPreviewing];
+    
+    [self updatePreviewRotationToOrientation];
+    _recorder.previewLayer.frame = self.previewArea.frame;
 }
 
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self updatePreviewRotationToOrientation];
+    _recorder.previewLayer.frame = self.previewArea.frame;
+}
+
+// Fix orientation once recording has started.
+- (BOOL) shouldAutorotate {
+    return !_isRecording;
 }
 
 #pragma mark Event Handlers
@@ -96,11 +110,30 @@ static NSString *const cButtonStartRecording = @"Start";
     }
 }
 
+- (void) updatePreviewRotationToOrientation {
+    CGFloat transformAngle;
+    switch (self.interfaceOrientation) {
+        case UIInterfaceOrientationLandscapeLeft:
+            transformAngle = M_PI / 2.;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            transformAngle = -M_PI / 2.;
+            break;
+        case UIInterfaceOrientationPortrait:
+            transformAngle = 0.;
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            transformAngle = M_PI;
+            break;
+    }
+    CGAffineTransform transform = CGAffineTransformMakeRotation(transformAngle);
+    [_recorder.previewLayer setAffineTransform:transform];
+}
+
 #pragma mark Logic
 - (void) startPreviewing {
     AVCaptureVideoPreviewLayer *layer = [_recorder startPreview];
     
-    layer.frame = self.previewArea.frame;
     layer.videoGravity = AVLayerVideoGravityResizeAspect;
     [self.previewArea.layer addSublayer:layer];
     
