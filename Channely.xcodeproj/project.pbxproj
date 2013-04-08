@@ -63,6 +63,7 @@
 		8250167C1711F133003BC16A /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167B1711F133003BC16A /* Default-Landscape@2x.png */; };
 		8250167E1711F1A9003BC16A /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167D1711F1A9003BC16A /* Default-Landscape.png */; };
 		825016801712E7FE003BC16A /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167F1712E7FE003BC16A /* button_back.png */; };
+		825016821712FF27003BC16A /* button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 825016811712FF27003BC16A /* button_normal.png */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -213,6 +214,7 @@
 		8250167B1711F133003BC16A /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x.png"; path = "../Default-Landscape@2x.png"; sourceTree = "<group>"; };
 		8250167D1711F1A9003BC16A /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "../Default-Landscape.png"; sourceTree = "<group>"; };
 		8250167F1712E7FE003BC16A /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_back.png; sourceTree = "<group>"; };
+		825016811712FF27003BC16A /* button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_normal.png; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				B66FDC9316EF88A30042A36C /* main.m */,
 				B66FDC9516EF88A30042A36C /* Channely-Prefix.pch */,
 				8250167F1712E7FE003BC16A /* button_back.png */,
+				825016811712FF27003BC16A /* button_normal.png */,
 				825016791711EE84003BC16A /* Default.png */,
 				825016771711EE28003BC16A /* Default@2x.png */,
 				8250167B1711F133003BC16A /* Default-Landscape@2x.png */,
@@ -805,6 +808,7 @@
 				8250167C1711F133003BC16A /* Default-Landscape@2x.png in Resources */,
 				8250167E1711F1A9003BC16A /* Default-Landscape.png in Resources */,
 				825016801712E7FE003BC16A /* button_back.png in Resources */,
+				825016821712FF27003BC16A /* button_normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
