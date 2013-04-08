@@ -226,7 +226,7 @@ static NSString *const cButtonStartRecording = @"Start";
 
 #pragma mark REST API
 - (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording {
-    NSLog(@"received current recording from server.");
+    NSLog(@"received current recording from server. recording=%@", recording);
     _currentRecording = recording;
 }
 
