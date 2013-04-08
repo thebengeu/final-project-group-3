@@ -226,14 +226,22 @@ static NSString *const cButtonStartRecording = @"Start";
 
 #pragma mark REST API
 - (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording {
-    NSLog(@"received current recording from server. playlist=%@", recording.playlistURL);
+    NSLog(@"received current recording from server. playlist=%@", recording.playlistURL); // DEBUG
+    
     _currentRecording = recording;
 }
 
 - (void) didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk {
-    NSLog(@"received first transcoded chunk from server.");
+    NSLog(@"received first transcoded chunk from server."); // DEBUG
+    
     NSURL *playlistURL = [NSURL URLWithString:_currentRecording.playlistURL];
-    [[HLSStreamSync streamSync] syncStreamId:_currentRecording.id playlistURL:playlistURL];
+    HLSStreamSync *sync = [HLSStreamSync streamSync];
+    
+    NSLog(@"sync=%@", sync); // DEBUG
+    
+    [sync syncStreamId:_currentRecording.id playlistURL:playlistURL];
+    
+    isExpectingFirstChunk = NO;
 }
 
 @end

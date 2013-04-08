@@ -30,7 +30,7 @@
 - (NSURL *) newChunkUrlInDirectory:(NSString *)directory;
 - (void) resetChunkId;
 - (NSUInteger) getAndIncrementChunkId;
-- (NSUInteger) peekChunkId;
+- (NSUInteger) previousChunkId;
 
 @end
 
@@ -143,7 +143,7 @@
     
     if (_videoRecordingChunkStop) {
         if (delegate) {
-            [delegate recorder:self didChunk:outputFileURL index:[self peekChunkId] duration:duration];
+            [delegate recorder:self didChunk:outputFileURL index:[self previousChunkId] duration:duration];
         }
         
         // Restart recording if the previous file output was stopped due to a chunk request.
@@ -155,7 +155,7 @@
         [_session removeOutput:_movieFileOutput];
         _movieFileOutput = nil;
         if (delegate) {
-            [delegate recorder:self didStopRecordingWithChunk:outputFileURL index:[self peekChunkId] duration:duration];
+            [delegate recorder:self didStopRecordingWithChunk:outputFileURL index:[self previousChunkId] duration:duration];
         }
     }
 }
@@ -218,8 +218,9 @@
     return [NSURL fileURLWithPath:outputFile];
 }
 
-- (NSUInteger) peekChunkId {
-    return _chunkIndex;
+- (NSUInteger) previousChunkId {
+    // Note: we subtract 1 here because the value of _chunkId would have been atomically incremented after starting to record a new chunk.
+    return MAX(0, (_chunkIndex - 1));
 }
 
 @end
