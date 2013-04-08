@@ -30,9 +30,8 @@ static NSString *const cButtonStartRecording = @"Start";
 @end
 
 @implementation ChanVideoCaptureViewController
-// Storyboard.
-//@synthesize previewArea;
-//@synthesize recordingControlButton;
+// External.
+@synthesize parentChannel;
 
 // Internal.
 @synthesize _recorder;
@@ -127,7 +126,7 @@ static NSString *const cButtonStartRecording = @"Start";
             break;
     }
     CGAffineTransform transform = CGAffineTransformMakeRotation(transformAngle);
-    [_recorder.previewLayer setAffineTransform:transform];
+    _recorder.previewLayer.affineTransform = transform;
 }
 
 #pragma mark Logic
@@ -137,7 +136,7 @@ static NSString *const cButtonStartRecording = @"Start";
     layer.videoGravity = AVLayerVideoGravityResizeAspect;
     [self.previewArea.layer addSublayer:layer];
     
-    NSLog(@"start previewing. target=%@ target.layer=%@ preview.layer=%@", self.previewArea, self.previewArea.layer, layer); // DEBUG
+    NSLog(@"start previewing. channelid=%@, target=%@ target.layer=%@ preview.layer=%@", parentChannel.id, self.previewArea, self.previewArea.layer, layer); // DEBUG
 }
 
 - (void) stopPreviewing {

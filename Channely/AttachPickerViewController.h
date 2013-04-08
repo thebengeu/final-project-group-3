@@ -7,19 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanVideoCaptureViewController.h"
+#import "ChanChannel.h"
 
 @protocol AttachPickerControllerDelegate <NSObject>
-- (void)pickImage:(id)sender;
-- (void)takePhoto:(id)sender;
-- (void)pickVideo:(id)sender;
+- (void) pickImage:(id)sender;
+- (void) takePhoto:(id)sender;
+- (void) pickVideo:(id)sender;
+- (ChanChannel *) underlyingChannel;
+
 @end
 
 @interface AttachPickerViewController : UIViewController
-
-- (IBAction)pickImage:(id)sender;
-- (IBAction)takePhoto:(id)sender;
-- (IBAction)pickVideo:(id)sender;
-
 @property id<AttachPickerControllerDelegate> delegate;
+
+- (IBAction) pickImage:(id)sender;
+- (IBAction) takePhoto:(id)sender;
+- (IBAction) pickVideo:(id)sender;
 
 @end

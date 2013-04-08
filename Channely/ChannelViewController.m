@@ -181,24 +181,6 @@
       
 }
 
-- (void)pickImage:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
-}
-
-- (void)takePhoto:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
-}
-
--(void)pickVideo:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeMovie]];
-}
-
 - (IBAction)attach:(id)sender {
     if(!_attachPickerPopover && !_attachedImage) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
@@ -372,6 +354,27 @@
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
 }
 
+#pragma mark Atatch Picker Controller Delegate
+- (void) pickImage:(id)sender {
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
+}
 
+- (void) takePhoto:(id)sender {
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
+}
+
+- (void) pickVideo:(id)sender {
+    [_attachPickerPopover dismissPopoverAnimated:NO];
+    _attachPickerPopover = nil;
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeMovie]];
+}
+
+- (ChanChannel *) underlyingChannel {
+    return self.channel;
+}
 
 @end

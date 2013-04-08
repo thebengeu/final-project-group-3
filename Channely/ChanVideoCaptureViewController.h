@@ -12,10 +12,15 @@
 #import "ChunkingVideoRecorderDelegate.h"
 #import "HLSStreamSync.h"
 #import "ChanHLSRecording.h"
+#import "ChanChannel.h"
 
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
+// Storyboard.
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *recordingControlButton;
+
+// External.
+@property (strong) ChanChannel *parentChannel;
 
 - (IBAction)recordingControlButton_Action:(id)sender;
 - (IBAction)backButton_Action:(id)sender;
