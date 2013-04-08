@@ -64,6 +64,7 @@
 		8250167E1711F1A9003BC16A /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167D1711F1A9003BC16A /* Default-Landscape.png */; };
 		825016801712E7FE003BC16A /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167F1712E7FE003BC16A /* button_back.png */; };
 		825016821712FF27003BC16A /* button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 825016811712FF27003BC16A /* button_normal.png */; };
+		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -215,6 +216,8 @@
 		8250167D1711F1A9003BC16A /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "../Default-Landscape.png"; sourceTree = "<group>"; };
 		8250167F1712E7FE003BC16A /* button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_back.png; sourceTree = "<group>"; };
 		825016811712FF27003BC16A /* button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_normal.png; sourceTree = "<group>"; };
+		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
+		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -358,6 +361,8 @@
 		0A7423BC1705490B00644070 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */,
+				82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */,
 				0AF535221705D40000E437F9 /* SearchViewController.h */,
 				0AF535231705D40000E437F9 /* SearchViewController.m */,
 			);
@@ -919,6 +924,7 @@
 				0A91BA18171170730095FA01 /* UITextViewField.m in Sources */,
 				4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */,
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
+				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

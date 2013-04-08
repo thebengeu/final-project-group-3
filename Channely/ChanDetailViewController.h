@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "DiscoverViewController.h"
-#import "SearchViewController.h"
+#import "ChanSearchBarViewController.h"
 
-@interface ChanDetailViewController : UIViewController <UITabBarDelegate>
+@interface ChanDetailViewController : UIViewController <UITabBarDelegate, UIPopoverControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
+
+- (IBAction)searchButtonPressed:(id)sender;
 
 @end
