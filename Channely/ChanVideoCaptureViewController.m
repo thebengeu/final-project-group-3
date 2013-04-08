@@ -19,7 +19,7 @@ static NSString *const cButtonStartRecording = @"Start";
 // Internal.
 @property (strong) TimedChunkingVideoRecorder *_recorder;
 @property (nonatomic) BOOL _isRecording;
-@property (weak) ChanHLSRecording *_currentRecording;
+@property (strong) ChanHLSRecording *_currentRecording;
 
 // UI Utility
 - (void) updateRecordingControlButtonState;
@@ -226,7 +226,7 @@ static NSString *const cButtonStartRecording = @"Start";
 
 #pragma mark REST API
 - (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording {
-    NSLog(@"received current recording from server. recording=%@", recording);
+    NSLog(@"received current recording from server. playlist=%@", recording.playlistURL);
     _currentRecording = recording;
 }
 
