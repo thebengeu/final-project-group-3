@@ -16,6 +16,8 @@
 
 @property CLLocationCoordinate2D location;
 
+@property BOOL isShowingLandscapeView;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIView *channelListContainer;

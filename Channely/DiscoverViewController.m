@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    _isShowingLandscapeView = NO;
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                        selector:@selector(orientationChanged:)
+                                        name:UIDeviceOrientationDidChangeNotification
+                                        object:nil];
 
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
@@ -208,6 +214,26 @@
 //            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             break;
         }
+    }
+}
+
+# pragma mark Orientation Handler
+
+// Presents a different view controller depending on screen orientation
+- (void)orientationChanged:(NSNotification *)notification
+{
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation) &&
+        !_isShowingLandscapeView)
+    {
+        [self performSegueWithIdentifier:@"LandscapeDiscoverSegue" sender:self];
+        _isShowingLandscapeView = YES;
+    }
+    else if (UIDeviceOrientationIsPortrait(deviceOrientation) &&
+             _isShowingLandscapeView)
+    {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        _isShowingLandscapeView = NO;
     }
 }
 

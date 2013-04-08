@@ -131,6 +131,7 @@
                     <connections>
                         <outlet property="tabBar" destination="VlV-xI-glL" id="Zyk-P8-VtI"/>
                         <segue destination="OGg-I2-UC3" kind="relationship" relationship="viewControllers" id="agE-UX-WxO"/>
+                        <segue destination="JW9-Lq-Yzq" kind="relationship" relationship="viewControllers" id="Ya9-8g-Dzr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0a-Sr-E0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,11 +175,12 @@
                         <outlet property="channelTableViewController" destination="iug-rU-gRG" id="st8-bs-Cyd"/>
                         <outlet property="mapView" destination="1pc-tl-fIH" id="bJ2-aJ-W7A"/>
                         <segue destination="YM0-f0-7yp" kind="push" identifier="ChannelSegue" id="zMj-7R-y2K"/>
+                        <segue destination="JW9-Lq-Yzq" kind="push" identifier="LandscapeDiscoverSegue" id="d3J-AX-jXJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="321-PP-i7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-1566"/>
+            <point key="canvasLocation" x="1354" y="-1508"/>
         </scene>
         <!--ChannelUI Table View Controller-->
         <scene sceneID="5p6-Vu-Wto">
@@ -382,6 +384,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ry-aH-vlt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2303" y="-655"/>
+        </scene>
+        <!--Landscape Discover View Controller - Discover-->
+        <scene sceneID="w0d-6v-jON">
+            <objects>
+                <viewController storyboardIdentifier="LandscapeDiscoverViewController" title="Discover" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JW9-Lq-Yzq" customClass="LandscapeDiscoverViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="poN-Ce-9T0">
+                        <rect key="frame" x="0.0" y="0.0" width="960" height="719"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wut-dd-2V8">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="753" id="17D-aE-rJP"/>
+                                    <constraint firstAttribute="width" constant="490" id="B4O-n1-hLl"/>
+                                </constraints>
+                            </mapView>
+                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNX-lr-jBc">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PNX-lr-jBc" firstAttribute="trailing" secondItem="poN-Ce-9T0" secondAttribute="trailing" type="default" id="7E3-BX-u7i"/>
+                            <constraint firstItem="PNX-lr-jBc" firstAttribute="bottom" secondItem="poN-Ce-9T0" secondAttribute="bottom" type="default" id="F9m-ly-ZBR"/>
+                            <constraint firstItem="wut-dd-2V8" firstAttribute="top" secondItem="poN-Ce-9T0" secondAttribute="top" type="default" id="O9q-BX-wp7"/>
+                            <constraint firstItem="wut-dd-2V8" firstAttribute="leading" secondItem="poN-Ce-9T0" secondAttribute="leading" type="default" id="bWr-ap-vtC"/>
+                            <constraint firstItem="PNX-lr-jBc" firstAttribute="leading" secondItem="poN-Ce-9T0" secondAttribute="leading" constant="488" id="uAH-0l-l5g"/>
+                            <constraint firstItem="PNX-lr-jBc" firstAttribute="top" secondItem="poN-Ce-9T0" secondAttribute="top" type="default" id="yzU-lA-rZu"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="gjC-5a-AMs"/>
+                    <navigationItem key="navigationItem" id="pvR-oL-lP3"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Rh-DX-9LU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1226" y="4"/>
         </scene>
         <!--Attach Picker View Controller-->
         <scene sceneID="1qR-Tf-eLB">
@@ -1011,4 +1050,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="d3J-AX-jXJ"/>
+    </inferredMetricsTieBreakers>
 </document>
