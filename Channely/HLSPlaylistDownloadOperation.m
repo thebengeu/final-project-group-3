@@ -10,6 +10,8 @@
 
 static NSString *const cKVOIsExecuting = @"isExecuting";
 static NSString *const cKVOIsFinished = @"isFinished";
+static NSString *const cHTMLDebugPageFormat = @"<!DOCTYPE html><html><head><title>Local Stream View</title></head><body><div><video src=\"%@.m3u8\" controls autoplay></video></div></body></html>";
+static NSString *const cHTMLDebugPageName = @"view.html";
 
 @interface HLSPlaylistDownloadOperation ()
 // Internal.
@@ -95,6 +97,11 @@ static NSString *const cKVOIsFinished = @"isFinished";
         NSString *playlistName = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
         [[HLSStreamDiscoveryManager discoveryManager] startAdvertisingPlaylist:playlistName asRecordingId:_recordingId];
         _expectingFirstChunk = NO;
+        
+        // Create HTML page to view stream on Safari.
+        NSString *pageContent = [NSString stringWithFormat:cHTMLDebugPageFormat, _recordingId];
+        NSString *pagePath = [_downloadDirectory stringByAppendingPathComponent:cHTMLDebugPageName];
+        [pageContent writeToFile:pagePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
 }
 

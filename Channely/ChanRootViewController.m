@@ -44,10 +44,6 @@ static NSUInteger const cLocalServerPort = 80;
     
     [self setupDirectories];
     
-    // DEBUG - Create test file.
-//    NSURL *file = [NSURL fileURLWithPath:[[ChanUtility webRootDirectory] stringByAppendingPathComponent:@"index.html"]];
-//    [cHTMLDebugPage writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
     [self setupHttpServer];
     [self setupDiscoveryManager];
     [self setupStreamSync];
@@ -55,8 +51,7 @@ static NSUInteger const cLocalServerPort = 80;
 
 - (void) viewDidAppear:(BOOL)animated {
     // DEBUG
-//    HLSStreamSync *sync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
-//    [sync syncStreamId:@"prog_index" playlistURL:[NSURL URLWithString:@"http://upthetreehouse.com/images/gear1/prog_index.m3u8"]];
+//    [[HLSStreamSync streamSync] syncStreamId:@"prog_index" playlistURL:[NSURL URLWithString:@"http://upthetreehouse.com/images/gear1/prog_index.m3u8"]];
 }
 
 - (void)didReceiveMemoryWarning {
