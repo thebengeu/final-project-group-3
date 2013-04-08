@@ -8,6 +8,8 @@
 
 #import "ChunkingVideoRecorder.h"
 
+static NSString *const cOutputFilePathFormat = @"%@/chunk%d.mp4";
+
 @interface ChunkingVideoRecorder ()
 // Redefinitions.
 @property (atomic, readwrite) BOOL isPreviewing;
@@ -214,7 +216,7 @@
 }
 
 - (NSURL *) newChunkUrlInDirectory:(NSString *)directory {
-    NSString *outputFile = [NSString stringWithFormat:@"%@/chunk%d.ts", directory, [self getAndIncrementChunkId]];
+    NSString *outputFile = [NSString stringWithFormat:cOutputFilePathFormat, directory, [self getAndIncrementChunkId]];
     return [NSURL fileURLWithPath:outputFile];
 }
 
