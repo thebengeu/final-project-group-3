@@ -137,6 +137,17 @@
      @"playlistURL":    @"playlistURL"}];
     RKRequestDescriptor *hlsRecordingRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:hlsRecordingRequestMapping objectClass:[ChanHLSRecording class] rootKeyPath:nil];
     
+    RKEntityMapping *hlsChunkMapping = [RKEntityMapping mappingForEntityForName:@"HLSChunk" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [hlsChunkMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"duration":   @"duration",
+     @"seqNo":      @"seqNo",
+     @"url":        @"url"}];
+    hlsChunkMapping.identificationAttributes = @[ @"id" ];
+    
+    RKResponseDescriptor *addChunkDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hlsChunkMapping pathPattern:PATH_ADD_CHUNK keyPath:nil statusCodes:statusCodes];
+    [[RKObjectManager sharedManager] addResponseDescriptor:addChunkDescriptor];
+    
     RKObjectMapping *hlsChunkRequestMapping = [RKObjectMapping requestMapping];
     [hlsChunkRequestMapping addAttributeMappingsFromDictionary:@{
      @"duration":   @"duration",

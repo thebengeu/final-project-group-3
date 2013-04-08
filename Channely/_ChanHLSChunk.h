@@ -6,6 +6,7 @@
 
 extern const struct ChanHLSChunkAttributes {
 	__unsafe_unretained NSString *duration;
+	__unsafe_unretained NSString *id;
 	__unsafe_unretained NSString *seqNo;
 	__unsafe_unretained NSString *url;
 } ChanHLSChunkAttributes;
@@ -18,6 +19,7 @@ extern const struct ChanHLSChunkFetchedProperties {
 } ChanHLSChunkFetchedProperties;
 
 @class ChanHLSRecording;
+
 
 
 
@@ -45,6 +47,16 @@ extern const struct ChanHLSChunkFetchedProperties {
 - (void)setDurationValue:(double)value_;
 
 //- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* id;
+
+
+
+//- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -96,6 +108,12 @@ extern const struct ChanHLSChunkFetchedProperties {
 
 - (double)primitiveDurationValue;
 - (void)setPrimitiveDurationValue:(double)value_;
+
+
+
+
+- (NSString*)primitiveId;
+- (void)setPrimitiveId:(NSString*)value;
 
 
 

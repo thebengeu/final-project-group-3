@@ -5,6 +5,7 @@
 
 const struct ChanHLSChunkAttributes ChanHLSChunkAttributes = {
 	.duration = @"duration",
+	.id = @"id",
 	.seqNo = @"seqNo",
 	.url = @"url",
 };
@@ -80,6 +81,13 @@ const struct ChanHLSChunkFetchedProperties ChanHLSChunkFetchedProperties = {
 - (void)setPrimitiveDurationValue:(double)value_ {
 	[self setPrimitiveDuration:[NSNumber numberWithDouble:value_]];
 }
+
+
+
+
+
+@dynamic id;
+
 
 
 

@@ -24,6 +24,7 @@
     </entity>
     <entity name="HLSChunk" representedClassName="ChanHLSChunk" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="seqNo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recording" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HLSRecording" inverseName="chunks" inverseEntity="HLSRecording" syncable="YES"/>
@@ -78,17 +79,17 @@
         <relationship name="video" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VideoPost" inverseName="thumbnails" inverseEntity="VideoPost" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Event" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HLSChunk" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HLSRecording" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ImagePost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="InstagramPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Post" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TextPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TwitterPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="VideoPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="VideoThumbnailPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Channel" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Event" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="HLSChunk" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="HLSRecording" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="ImagePost" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="InstagramPost" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Post" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="TextPost" positionX="0" positionY="0" width="128" height="45"/>
+        <element name="TwitterPost" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="VideoPost" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="VideoThumbnailPost" positionX="0" positionY="0" width="128" height="90"/>
     </elements>
 </model>
