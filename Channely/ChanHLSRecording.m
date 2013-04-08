@@ -57,7 +57,7 @@
                                 mimeType:@"video/MP2T"];
     }];
     
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    RKManagedObjectRequestOperation *operation = [[RKObjectManager sharedManager] managedObjectRequestOperationWithRequest:request managedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (block) block(hlsChunk, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (block) block(nil, error);
