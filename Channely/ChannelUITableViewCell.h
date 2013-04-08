@@ -12,24 +12,19 @@
 
 @protocol DiscoverUITableCellDelegate <NSObject>
 
-- (void)enterChannel: (id)cell;
+- (void)selectMapAnnotationForChannel: (id)cell;
 
 @end
 
 @interface ChannelUITableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *channelEnterButton;
-
 @property (weak, nonatomic) IBOutlet UITextView *channelNameTextView;
-
 @property (weak, nonatomic) IBOutlet UITextView *eventNameTextView;
-
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @property (weak, nonatomic) ChanEvent *event;
-
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
 
-- (IBAction)enterChannel:(id)sender;
+- (IBAction)locationButtonTapped:(id)sender;
 
 @end

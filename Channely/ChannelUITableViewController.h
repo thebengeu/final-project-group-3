@@ -20,7 +20,7 @@
 
 - (id)initWithStyle:(UITableViewStyle)style :(NSMutableArray*)channelList;
 
-- (void) enterChannel: (id) cell;
+- (void) selectMapAnnotationForChannel: (id)cell;
 
 @property (nonatomic) NSArray *channelList;
 

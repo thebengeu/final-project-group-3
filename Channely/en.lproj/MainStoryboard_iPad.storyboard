@@ -236,7 +236,7 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
+                                        <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="67" id="bUg-OJ-riS"/>
                                                 <constraint firstAttribute="width" constant="66" id="mdl-AK-P3V"/>
@@ -249,7 +249,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="enterChannel:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="d6p-Hn-wyV"/>
+                                                <action selector="locationButtonTapped:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="Ejf-lx-rb2"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
@@ -970,8 +970,7 @@
         <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
             <relationships>
-                <relationship kind="action" name="enterChannel:"/>
-                <relationship kind="outlet" name="channelEnterButton" candidateClass="UIButton"/>
+                <relationship kind="action" name="locationButtonTapped:"/>
                 <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>

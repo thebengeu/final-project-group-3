@@ -87,9 +87,9 @@
     [[self delegate]tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
--(void) enterChannel: (id) cell
+-(void) selectMapAnnotationForChannel: (id) cell
 {
-    [[self delegate] enterChannel: cell];
+    [[self delegate] selectMapAnnotationForChannel: cell];
 }
 
 

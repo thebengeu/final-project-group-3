@@ -47,7 +47,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"DiscoverChannelContainerSeque"]) {
-        ChannelUITableViewController * childViewController = (ChannelUITableViewController *) [segue destinationViewController];
+        ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
     }
     if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
@@ -140,10 +140,6 @@
     [mapView setRegion:region animated:YES];
 }
 
-
-
-
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 
     static NSString *locationIdentifier = @"MyLocation";
@@ -172,28 +168,14 @@
     return annotationView;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [tableView cellForRowAtIndexPath:indexPath];
-    NSString *selectedEventID = cell.event.id;
-    NSArray *annotations = [_mapView annotations];
+    [self performSegueWithIdentifier:@"ChannelSegue" sender:cell];
 
-    for (int i = 0; i < [annotations count]; i++){
-
-        if ( [[annotations objectAtIndex:i] class] != [ChannelAnnotation class])
-            continue;
-        ChannelAnnotation *annotation = [annotations objectAtIndex:i];
-        if ([[annotation eventID] compare:selectedEventID] == NSOrderedSame){
-            [_mapView deselectAnnotation:annotation animated:NO];
-            [_mapView selectAnnotation:annotation animated:YES];
-            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-            break;
-        }
-    }
 }
 
 
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view{
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     if ([[view annotation] class] != [ChannelAnnotation class]){
         [[_channelTableViewController tableView] deselectRowAtIndexPath:[[_channelTableViewController tableView] indexPathForSelectedRow] animated:NO];
         return;
@@ -212,9 +194,21 @@
 }
 
 
--(void) enterChannel: (id) cell
+-(void)selectMapAnnotationForChannel: (id)cell
 {
-    [self performSegueWithIdentifier:@"ChannelSegue" sender:cell];
+    ChannelUITableViewCell *currCell = (ChannelUITableViewCell*) cell;
+    NSString *selectedEventID = currCell.event.id;
+    
+    for (ChannelAnnotation *currAnnot in _mapView.annotations) {
+        if ( [currAnnot class] != [ChannelAnnotation class])
+            continue;
+        if ([[currAnnot eventID] compare:selectedEventID] == NSOrderedSame){
+            [_mapView deselectAnnotation:currAnnot animated:NO];
+            [_mapView selectAnnotation:currAnnot animated:YES];
+//            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            break;
+        }
+    }
 }
 
 
