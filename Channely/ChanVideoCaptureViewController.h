@@ -13,6 +13,8 @@
 #import "HLSStreamSync.h"
 #import "ChanHLSRecording.h"
 #import "ChanChannel.h"
+#import "ChanHLSChunk.h"
+#import "ChanUtility.h"
 
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 // Storyboard.
@@ -21,8 +23,13 @@
 
 // External.
 @property (strong) ChanChannel *parentChannel;
+@property (atomic, readonly) BOOL isExpectingFirstChunk;
 
 - (IBAction)recordingControlButton_Action:(id)sender;
 - (IBAction)backButton_Action:(id)sender;
+
+// REST API
+- (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording;
+- (void) didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk;
 
 @end

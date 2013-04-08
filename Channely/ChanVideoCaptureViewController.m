@@ -13,9 +13,13 @@ static NSString *const cButtonStopRecording = @"Stop";
 static NSString *const cButtonStartRecording = @"Start";
 
 @interface ChanVideoCaptureViewController ()
+// Redefinitions.
+@property (atomic, readwrite) BOOL isExpectingFirstChunk;
+
 // Internal.
 @property (strong) TimedChunkingVideoRecorder *_recorder;
 @property (nonatomic) BOOL _isRecording;
+@property (weak) ChanHLSRecording *_currentRecording;
 
 // UI Utility
 - (void) updateRecordingControlButtonState;
@@ -30,12 +34,16 @@ static NSString *const cButtonStartRecording = @"Start";
 @end
 
 @implementation ChanVideoCaptureViewController
+// Redefinitions.
+@synthesize isExpectingFirstChunk;
+
 // External.
 @synthesize parentChannel;
 
 // Internal.
 @synthesize _recorder;
 @synthesize _isRecording;
+@synthesize _currentRecording;
 
 #pragma mark View Controller Methods
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -82,9 +90,9 @@ static NSString *const cButtonStartRecording = @"Start";
 #pragma mark Event Handlers
 - (IBAction)recordingControlButton_Action:(id)sender {
     if (_isRecording) {
-        [self startRecording];
-    } else {
         [self stopRecording];
+    } else {
+        [self startRecording];
     }
     
     [self updateRecordingControlButtonState];
@@ -144,28 +152,88 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) startRecording {
-    // TODO - start recording.
-    
-    _isRecording = NO;
-}
-
-- (void) stopRecording {
-    // TODO - stop recording.
+    [_recorder startTimedRecordingToDirectory:[ChanUtility videoTempDirectory] chunkInterval:cChunkPeriod];
     
     _isRecording = YES;
 }
 
+- (void) stopRecording {
+    [_recorder stopRecording];
+    
+    _isRecording = NO;
+}
+
 #pragma mark Chunking Video Recorder Delegate
 - (void) recorder:(ChunkingVideoRecorder *)recorder didChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+    NSLog(@"local video recording did chunk.");
     
+    if (!_currentRecording) {
+        NSLog(@"video capture. in recorderDidChunk: current recording does not exist!");
+        return;
+    }
+    
+    ChanVideoCaptureViewController *vc = self;
+    NSData *chunkData = [NSData dataWithContentsOfURL:chunk];
+    
+    [_currentRecording addChunkWithData:chunkData duration:duration seqNo:index withCompletion:^(ChanHLSChunk *hlsChunk, NSError *error) {
+        if (error) {
+            NSLog(@"video capture. in recorderDidChunk: REST error.");
+            return;
+        }
+        
+        if (vc.isExpectingFirstChunk) {
+            [vc didReceiveFirstTranscodedChunk:hlsChunk];
+        }
+    }];
 }
 
 - (void) recorder:(ChunkingVideoRecorder *)recorder didStopRecordingWithChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+    NSLog(@"local video recording stopped.");
     
+    if (!_currentRecording) {
+        NSLog(@"video capture. in recorderDidStopRecording: current recording does not exist!");
+        return;
+    }
+    
+    NSData *chunkData = [NSData dataWithContentsOfURL:chunk];
+    
+    [_currentRecording addChunkWithData:chunkData duration:duration seqNo:index withCompletion:^(ChanHLSChunk *hlsChunk, NSError *error) {
+        if (error) {
+            NSLog(@"video capture. in recorderDidStopRecording: REST error.");
+            return;
+        }
+    }];
+    
+    [_currentRecording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
+        return;
+    }];
 }
 
 - (void) recorderDidStartRecording:(ChunkingVideoRecorder *)recorder {
+    NSLog(@"local video recording started.");
     
+    isExpectingFirstChunk = YES;
+    ChanVideoCaptureViewController *vc = self;
+    
+    [ChanHLSRecording createRecordingWithStartDate:[NSDate date] channelId:parentChannel.id withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
+        if (!error) {
+            [vc didReceiveCurrentRecording:hlsRecording];
+        } else {
+            NSLog(@"video capture. in recorderDidStartRecording: REST error.");
+        }
+    }];
+}
+
+#pragma mark REST API
+- (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording {
+    NSLog(@"received current recording from server.");
+    _currentRecording = recording;
+}
+
+- (void) didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk {
+    NSLog(@"received first transcoded chunk from server.");
+    NSURL *playlistURL = [NSURL URLWithString:_currentRecording.playlistURL];
+    [[HLSStreamSync streamSync] syncStreamId:_currentRecording.id playlistURL:playlistURL];
 }
 
 @end
