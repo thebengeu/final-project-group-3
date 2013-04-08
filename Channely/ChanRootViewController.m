@@ -21,6 +21,7 @@ static NSUInteger const cLocalServerPort = 80;
 - (void) setupHttpServer;
 - (void) setupDiscoveryManager;
 - (void) setupDirectories;
+- (void) setupStreamSync;
 
 @end
 
@@ -49,6 +50,7 @@ static NSUInteger const cLocalServerPort = 80;
     
     [self setupHttpServer];
     [self setupDiscoveryManager];
+    [self setupStreamSync];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -94,6 +96,11 @@ static NSUInteger const cLocalServerPort = 80;
     [ChanUtility createDirectory:[ChanUtility webRootDirectory]];
     
     [ChanUtility createDirectory:[ChanUtility videoTempDirectory]];
+}
+
+#pragma mark HLS Stream Sync
+- (void) setupStreamSync {
+    [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
 }
 
 @end

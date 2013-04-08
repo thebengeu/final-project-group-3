@@ -57,7 +57,7 @@ static NSString *const cButtonStartRecording = @"Start";
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    _recorder = [[TimedChunkingVideoRecorder alloc] initWithPreset:AVCaptureSessionPresetHigh];
+    _recorder = [[TimedChunkingVideoRecorder alloc] initWithPreset:AVCaptureSessionPresetMedium];
     _recorder.delegate = self;
     
     _isRecording = NO;
