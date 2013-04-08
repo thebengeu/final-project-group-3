@@ -69,6 +69,13 @@
         if(cell == nil) {
             cell = [[ChanImagePostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanImagePostCell"];
         }
+    } else {
+        // temporary hack till VideoPost, VideoThumbnailPost, etc. have defined
+        // custom cells, to avoid crashing
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanTextPostCell"];
+        if(cell == nil) {
+            cell = [[ChanTextPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanTextPostCell"];
+        }
     }
     
     [cell setPostContent:post];
