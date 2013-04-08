@@ -41,7 +41,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 - (void) refreshTimer_Tick:(NSTimer *)timer;
 - (BOOL) parsePartialPlaylist:(NSString *)diff;
 - (CGFloat) chunkDurationFromInfString:(NSString *)inf;
-- (CGFloat) targetDurationFromInfString:(NSString *)inf;
+- (NSUInteger) targetDurationFromInfString:(NSString *)inf;
 
 // Chunk Download.
 @property (strong) NSOperationQueue *_downloadQueue;
@@ -208,7 +208,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     for (NSString *line in lines) {
         if ([line hasPrefix:cHLSTargetDurationPrefix]) {
             NSString *infString = [line substringFromIndex:cHLSTargetDurationPrefix.length];
-            CGFloat targetDuration = [self targetDurationFromInfString:infString];
+            NSUInteger targetDuration = [self targetDurationFromInfString:infString];
             
             [_playlistHelper beginPlaylistWithTargetInterval:targetDuration];
         } else if ([line hasPrefix:cHLSEndListPrefix]) {
@@ -248,8 +248,8 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     return candidate;
 }
 
-- (CGFloat) targetDurationFromInfString:(NSString *)inf {
-    return [inf doubleValue];
+- (NSUInteger) targetDurationFromInfString:(NSString *)inf {
+    return (NSUInteger)[inf integerValue];
 }
 
 #pragma mark Video Chunk Download

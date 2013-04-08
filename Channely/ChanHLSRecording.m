@@ -53,8 +53,8 @@
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:hlsChunk method:RKRequestMethodPOST path:[NSString stringWithFormat:PATH_ADD_CHUNK_FORMAT, self.id] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data
                                     name:@"chunk"
-                                fileName:@"chunk.ts"
-                                mimeType:@"video/MP2T"];
+                                fileName:@"chunk.mp4"
+                                mimeType:@"video/mp4"];
     }];
     
     RKManagedObjectRequestOperation *operation = [[RKObjectManager sharedManager] managedObjectRequestOperationWithRequest:request managedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
