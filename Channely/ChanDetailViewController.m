@@ -27,7 +27,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
 }
 
@@ -35,18 +34,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     
-}
-
-- (IBAction) segmentChanged:(UISegmentedControl *)sender {
-    [self switchContainerView: sender.selectedSegmentIndex];
-}
-
-- (void) switchContainerView: (NSUInteger)index{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.4];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:_container cache:YES];
-    [UIView commitAnimations];
-    _homeTabController.selectedIndex = index;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -13,6 +13,4 @@
 @interface ChanDetailViewController : UIViewController <UITabBarDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;
 
-- (IBAction)segmentChanged:(id)sender;
-
 @end
