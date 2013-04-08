@@ -165,7 +165,7 @@ static NSString *const cButtonStartRecording = @"Start";
 
 #pragma mark Chunking Video Recorder Delegate
 - (void) recorder:(ChunkingVideoRecorder *)recorder didChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
-    NSLog(@"local video recording did chunk.");
+    NSLog(@"local video recording did chunk. index=%d", index);
     
     if (!_currentRecording) {
         NSLog(@"video capture. in recorderDidChunk: current recording does not exist!");

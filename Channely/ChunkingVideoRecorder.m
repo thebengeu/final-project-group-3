@@ -210,7 +210,7 @@
 }
 
 - (NSUInteger) getAndIncrementChunkId {
-    return (_chunkIndex++);
+    return _chunkIndex++;
 }
 
 - (NSURL *) newChunkUrlInDirectory:(NSString *)directory {
