@@ -92,7 +92,7 @@ static NSString *const cKVOIsFinished = @"isFinished";
     if (_expectingFirstChunk) {
         NSLog(@"sync: first chunk downloaded"); // DEBUG
         
-        NSString *playlistName = [_playlistURL lastPathComponent];
+        NSString *playlistName = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
         [[HLSStreamDiscoveryManager discoveryManager] startAdvertisingPlaylist:playlistName asRecordingId:_recordingId];
         _expectingFirstChunk = NO;
     }

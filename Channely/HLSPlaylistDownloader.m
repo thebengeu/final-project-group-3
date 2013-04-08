@@ -17,7 +17,6 @@ static NSString *const cHLSMetaPrefix = @"#";
 static NSString *const cKVOIsFinished = @"isFinished";
 static NSString *const cKVOOperation = @"operations";
 static NSString *const cMediaDirectoryFormat = @"%@";
-static NSString *const cRelativePathFormat = @"%@/%@";
 
 @interface HLSPlaylistDownloader ()
 // Redefinitions.
@@ -121,15 +120,8 @@ static NSString *const cRelativePathFormat = @"%@/%@";
     NSURL *localPlaylistURL = [NSURL fileURLWithPath:localPlaylistPath];
     _playlistHelper = [[HLSEventPlaylistHelper alloc] initWithFileURL:localPlaylistURL];
     
-    // Create media content directory.
-    NSFileManager *fm = [NSFileManager defaultManager];
-    _mediaDirectory = [_playlistDirectory stringByAppendingPathComponent:_playlistName];
-//    NSLog(@"mediaDirectory=%@", _mediaDirectory); // DEBUG
-    BOOL isDirectory = NO;
-    if ([fm fileExistsAtPath:_mediaDirectory isDirectory:&isDirectory] && isDirectory) {
-        [fm removeItemAtPath:_mediaDirectory error:nil];
-    }
-    [fm createDirectoryAtPath:_mediaDirectory withIntermediateDirectories:NO attributes:nil error:nil];
+    // Set media directory - this is where media files will be stored.
+    _mediaDirectory = _playlistDirectory;
     
     [self setupDownloadQueue];
     [self setupPlaylistRefresh];
@@ -293,7 +285,7 @@ static NSString *const cRelativePathFormat = @"%@/%@";
         
 //        NSLog(@"chunk seq:%d duration:%lf downloaded to file:%@", meta.sequenceNumber, meta.duration, meta.path); // DEBUG
         
-        NSString *relativePath = [NSString stringWithFormat:cRelativePathFormat, _playlistName, [meta.path lastPathComponent]];
+        NSString *relativePath = [meta.path lastPathComponent];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];
         
         if (_delegate) {
