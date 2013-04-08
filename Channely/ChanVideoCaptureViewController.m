@@ -66,6 +66,9 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    // Prevent device from going to sleep.
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    
     [self startPreviewing];
     
     [self updatePreviewRotationToOrientation];
@@ -102,6 +105,10 @@ static NSString *const cButtonStartRecording = @"Start";
     if (_isRecording) {
         [self stopRecording];
     }
+    
+    // Allow device to go back to sleep when we are no longer in the camera context.
+    // We assume that the 'back' button is the only way to exit the camera software.
+    [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     [self dismissViewControllerAnimated:YES completion:^{
         return;
