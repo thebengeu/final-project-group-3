@@ -56,14 +56,14 @@
     
     RKEntityMapping *videoPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [videoPostMapping addAttributeMappingsFromDictionary:@{
-     @"_id":        @"id",
-     @"_channel":   @"channelId",
-     @"content":    @"content",
-     @"time":       @"createdAt",
-     @"startDate":  @"startTime",
-     @"endDate":    @"endTime",
-     @"url":        @"url",
-     @"username":   @"username"}];
+     @"_id":            @"id",
+     @"_channel":       @"channelId",
+     @"content":        @"content",
+     @"time":           @"createdAt",
+     @"startDate":      @"startTime",
+     @"endDate":        @"endTime",
+     @"playlistURL":    @"url",
+     @"username":       @"username"}];
     videoPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
