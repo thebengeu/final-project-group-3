@@ -85,9 +85,17 @@ static NSString *const cButtonStartRecording = @"Start";
     _recorder.previewLayer.frame = self.previewArea.frame;
 }
 
-// Fix orientation once recording has started.
+// Videos should be in landscape format.
 - (BOOL) shouldAutorotate {
-    return !_isRecording;
+    return YES;
+}
+
+- (NSUInteger) supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscapeRight;
+}
+
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationLandscapeRight;
 }
 
 #pragma mark Event Handlers

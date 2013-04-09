@@ -689,9 +689,9 @@
         <!--Chan Video Capture View Controller-->
         <scene sceneID="nAC-xZ-2Re">
             <objects>
-                <viewController id="Kf2-Zq-2Ks" customClass="ChanVideoCaptureViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="Kf2-Zq-2Ks" customClass="ChanVideoCaptureViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwc-DG-5At">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v56-f7-TRl">
@@ -724,7 +724,9 @@
                             <constraint firstItem="v56-f7-TRl" firstAttribute="leading" secondItem="fwc-DG-5At" secondAttribute="leading" type="default" id="wmz-ph-RGs"/>
                             <constraint firstItem="Gcz-Ny-9oH" firstAttribute="leading" secondItem="fwc-DG-5At" secondAttribute="leading" type="default" id="x0r-Bj-Ykg"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="previewArea" destination="Gcz-Ny-9oH" id="YGL-U1-8bw"/>
                         <outlet property="recordingControlButton" destination="jz8-Wt-ufU" id="n40-dp-wym"/>

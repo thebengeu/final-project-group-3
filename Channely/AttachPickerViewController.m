@@ -32,6 +32,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:cTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
+        
         destination.parentChannel = [_delegate underlyingChannel];
     }
 }
