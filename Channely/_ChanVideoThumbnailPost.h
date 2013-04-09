@@ -10,11 +10,13 @@ extern const struct ChanVideoThumbnailPostAttributes {
 } ChanVideoThumbnailPostAttributes;
 
 extern const struct ChanVideoThumbnailPostRelationships {
+	__unsafe_unretained NSString *video;
 } ChanVideoThumbnailPostRelationships;
 
 extern const struct ChanVideoThumbnailPostFetchedProperties {
 } ChanVideoThumbnailPostFetchedProperties;
 
+@class ChanVideoPost;
 
 
 
@@ -52,6 +54,13 @@ extern const struct ChanVideoThumbnailPostFetchedProperties {
 
 
 
+@property (nonatomic, strong) ChanVideoPost *video;
+
+//- (BOOL)validateVideo:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @end
 
@@ -72,6 +81,11 @@ extern const struct ChanVideoThumbnailPostFetchedProperties {
 - (void)setPrimitiveVideoId:(NSString*)value;
 
 
+
+
+
+- (ChanVideoPost*)primitiveVideo;
+- (void)setPrimitiveVideo:(ChanVideoPost*)value;
 
 
 @end

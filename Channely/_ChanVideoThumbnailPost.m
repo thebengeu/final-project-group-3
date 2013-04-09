@@ -9,6 +9,7 @@ const struct ChanVideoThumbnailPostAttributes ChanVideoThumbnailPostAttributes =
 };
 
 const struct ChanVideoThumbnailPostRelationships ChanVideoThumbnailPostRelationships = {
+	.video = @"video",
 };
 
 const struct ChanVideoThumbnailPostFetchedProperties ChanVideoThumbnailPostFetchedProperties = {
@@ -60,6 +61,10 @@ const struct ChanVideoThumbnailPostFetchedProperties ChanVideoThumbnailPostFetch
 
 
 
+
+@dynamic video;
+
+	
 
 
 

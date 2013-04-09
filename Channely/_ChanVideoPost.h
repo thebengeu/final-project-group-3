@@ -11,11 +11,13 @@ extern const struct ChanVideoPostAttributes {
 } ChanVideoPostAttributes;
 
 extern const struct ChanVideoPostRelationships {
+	__unsafe_unretained NSString *thumbnails;
 } ChanVideoPostRelationships;
 
 extern const struct ChanVideoPostFetchedProperties {
 } ChanVideoPostFetchedProperties;
 
+@class ChanVideoThumbnailPost;
 
 
 
@@ -64,10 +66,22 @@ extern const struct ChanVideoPostFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *thumbnails;
+
+- (NSMutableSet*)thumbnailsSet;
+
+
+
+
 
 @end
 
 @interface _ChanVideoPost (CoreDataGeneratedAccessors)
+
+- (void)addThumbnails:(NSSet*)value_;
+- (void)removeThumbnails:(NSSet*)value_;
+- (void)addThumbnailsObject:(ChanVideoThumbnailPost*)value_;
+- (void)removeThumbnailsObject:(ChanVideoThumbnailPost*)value_;
 
 @end
 
@@ -90,6 +104,11 @@ extern const struct ChanVideoPostFetchedProperties {
 - (void)setPrimitiveUrl:(NSString*)value;
 
 
+
+
+
+- (NSMutableSet*)primitiveThumbnails;
+- (void)setPrimitiveThumbnails:(NSMutableSet*)value;
 
 
 @end
