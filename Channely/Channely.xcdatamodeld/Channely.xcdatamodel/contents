@@ -50,6 +50,7 @@
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="channel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Channel" inverseName="posts" inverseEntity="Channel" syncable="YES"/>
         <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posts" inverseEntity="User" syncable="YES"/>
@@ -85,7 +86,7 @@
         <element name="HLSRecording" positionX="0" positionY="0" width="128" height="150"/>
         <element name="ImagePost" positionX="0" positionY="0" width="128" height="60"/>
         <element name="InstagramPost" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="Post" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Post" positionX="0" positionY="0" width="128" height="165"/>
         <element name="TextPost" positionX="0" positionY="0" width="128" height="45"/>
         <element name="TwitterPost" positionX="0" positionY="0" width="128" height="75"/>
         <element name="User" positionX="0" positionY="0" width="128" height="135"/>

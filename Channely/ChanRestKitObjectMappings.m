@@ -37,6 +37,7 @@
      @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
+     @"type":       @"type",
      @"username":   @"username"}];
     textPostMapping.identificationAttributes = @[ @"id" ];
 
@@ -49,6 +50,7 @@
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
+     @"type":       @"type",
      @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
     
@@ -63,6 +65,7 @@
      @"startDate":      @"startTime",
      @"endDate":        @"endTime",
      @"playlistURL":    @"url",
+     @"type":           @"type",
      @"username":       @"username"}];
     videoPostMapping.identificationAttributes = @[ @"id" ];
     
@@ -77,6 +80,7 @@
      @"time":       @"createdAt",
      @"startDate":  @"startTime",
      @"url":        @"url",
+     @"type":       @"type",
      @"username":   @"username"}];
     videoThumbnailPostMapping.identificationAttributes = @[ @"id" ];
     
