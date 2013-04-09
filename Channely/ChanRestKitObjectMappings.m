@@ -37,6 +37,7 @@
      @"_channel":   @"channelId",
      @"content":    @"content",
      @"time":       @"createdAt",
+     @"type":       @"type",
      @"username":   @"username"}];
     textPostMapping.identificationAttributes = @[ @"id" ];
 
@@ -49,6 +50,7 @@
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
+     @"type":       @"type",
      @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
     
@@ -56,14 +58,15 @@
     
     RKEntityMapping *videoPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [videoPostMapping addAttributeMappingsFromDictionary:@{
-     @"_id":        @"id",
-     @"_channel":   @"channelId",
-     @"content":    @"content",
-     @"time":       @"createdAt",
-     @"startDate":  @"startTime",
-     @"endDate":    @"endTime",
-     @"url":        @"url",
-     @"username":   @"username"}];
+     @"_id":            @"id",
+     @"_channel":       @"channelId",
+     @"content":        @"content",
+     @"time":           @"createdAt",
+     @"startDate":      @"startTime",
+     @"endDate":        @"endTime",
+     @"playlistURL":    @"url",
+     @"type":           @"type",
+     @"username":       @"username"}];
     videoPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
@@ -77,6 +80,7 @@
      @"time":       @"createdAt",
      @"startDate":  @"startTime",
      @"url":        @"url",
+     @"type":       @"type",
      @"username":   @"username"}];
     videoThumbnailPostMapping.identificationAttributes = @[ @"id" ];
     

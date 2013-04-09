@@ -10,6 +10,7 @@ const struct ChanVideoPostAttributes ChanVideoPostAttributes = {
 };
 
 const struct ChanVideoPostRelationships ChanVideoPostRelationships = {
+	.thumbnails = @"thumbnails",
 };
 
 const struct ChanVideoPostFetchedProperties ChanVideoPostFetchedProperties = {
@@ -68,6 +69,19 @@ const struct ChanVideoPostFetchedProperties ChanVideoPostFetchedProperties = {
 
 
 
+
+@dynamic thumbnails;
+
+	
+- (NSMutableSet*)thumbnailsSet {
+	[self willAccessValueForKey:@"thumbnails"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"thumbnails"];
+  
+	[self didAccessValueForKey:@"thumbnails"];
+	return result;
+}
+	
 
 
 
