@@ -15,6 +15,21 @@
 #import "ChanImagePost.h"
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
+#import "ChanAnnotationViewController.h"
+
+
+/*  Things to do for seguing:
+
+ if ([segueName isEqualToString: @"AnnotationSegue"]) {
+    ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
+    ChanImagePostCell *cell = (ChanImagePostCell*)[[((UIButton*)sender)superview] superview];
+ 
+    annotationViewController.channel = [[cell post] channel];
+    annotationViewController.image = [[cell imageContent]image];
+ }
+
+ 
+ */
 
 @implementation ChannelPostTableViewController
 
@@ -26,6 +41,18 @@
     if (self) {
     }
     return self;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSString * segueName = segue.identifier;
+    if ([segueName isEqualToString: @"AnnotationSegue"]) {
+        ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
+        ChanImagePostCell *cell = (ChanImagePostCell*)[[((UIButton*)sender)superview] superview];
+        
+        annotationViewController.channel = [[cell post] channel];
+        annotationViewController.image = [[cell imageContent]image];
+    }
+    
 }
 
 - (void)setPostList:(NSMutableArray *)postList
@@ -85,7 +112,7 @@
         }
     }
     
-    [cell setPostContent:post];
+    [cell setPost:post];
     return cell;
 }
 

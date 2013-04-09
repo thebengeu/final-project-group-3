@@ -47,6 +47,14 @@
     return self;
 }
 
+-(void)clear{
+    UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
+    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self setImage:blank];
+
+}
+
 -(float)pointToDist:(CGPoint) p{
     return sqrt(p.x * p.x + p.y * p.y);
 }
@@ -149,7 +157,7 @@
 
 -(UIImage*)screenshot{
     CGRect rect = [self bounds];
-    UIGraphicsBeginImageContextWithOptions(rect.size,YES,0.0f);
+    UIGraphicsBeginImageContextWithOptions(rect.size,NO,0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self.layer renderInContext:context];
     UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();

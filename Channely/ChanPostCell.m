@@ -11,9 +11,16 @@
 
 @implementation ChanPostCell
 
--(void)setPostContent: (ChanPost*)post{
+@synthesize post = _post;
+
+-(void)setPost:(ChanPost *)post{
+    _post = post;
     [[self timeView]setText:[[post createdAt]description]];
     [[self usernameView]setText:post.username];
+}
+
+-(ChanPost*)post{
+    return _post;
 }
 
 @end

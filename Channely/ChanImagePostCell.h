@@ -14,6 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *textContent;
 
--(void)setPostContent: (ChanPost*)post;
+@property (weak, nonatomic) IBOutlet UIButton *drawButton;
 
 @end

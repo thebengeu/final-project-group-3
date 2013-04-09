@@ -11,11 +11,10 @@
 
 @implementation ChanImagePostCell
 
--(void)setPostContent:(ChanPost *)post{
-    [super setPostContent:post];
+-(void)setPost:(ChanPost *)post{
+    [super setPost:post];
     [[self textContent]setText:[(ChanImagePost*)post content]];
     [[self imageContent]setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
-    NSLog(@"%@",[(ChanImagePost*)post url]);
 }
 
 @end

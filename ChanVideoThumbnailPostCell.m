@@ -11,8 +11,8 @@
 
 @implementation ChanVideoThumbnailPostCell
 
--(void)setPostContent:(ChanPost *)post{
-    [super setPostContent:post];
+-(void)setPost:(ChanPost *)post{
+    [super setPost:post];
     [[self textContent]setText:[(ChanVideoThumbnailPost*)post url]];
 //    [[self imageContent]setImageWithURL:[NSURL URLWithString:[(ChanVideoThumbnailPost*)post url]]];
 //    NSLog(@"%@",[(ChanVideoThumbnailPost*)post url]);

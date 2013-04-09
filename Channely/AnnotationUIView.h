@@ -22,4 +22,6 @@
 
 -(UIImage*)screenshot;
 
+-(void)clear;
+
 @end

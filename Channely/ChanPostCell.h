@@ -15,6 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *usernameView;
 
--(void)setPostContent: (ChanPost*)post;
+@property ChanPost *post;
 
 @end

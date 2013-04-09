@@ -11,8 +11,8 @@
 
 @implementation ChanVideoPostCell
 
--(void)setPostContent:(ChanPost *)post{
-    [super setPostContent:post];
+-(void)setPost:(ChanPost *)post{
+    [super setPost:post];
     [[self textContent]setText:[(ChanVideoPost*)post url]];
 }
 

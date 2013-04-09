@@ -11,8 +11,8 @@
 
 @implementation ChanTextPostCell
 
--(void)setPostContent:(ChanPost *)post{
-    [super setPostContent:post];
+-(void)setPost:(ChanPost *)post{
+    [super setPost:post];
     [[self textContent]setText:[(ChanTextPost*)post content]];
 }
 
