@@ -13,7 +13,7 @@
 
 -(void)setPostContent: (ChanPost*)post{
     [[self timeView]setText:[[post createdAt]description]];
-    [[self usernameView]setText:[[post creator]name]];
+    [[self usernameView]setText:post.username];
 }
 
 @end
