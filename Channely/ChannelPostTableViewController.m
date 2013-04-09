@@ -9,8 +9,12 @@
 #import "ChannelPostTableViewController.h"
 #import "ChanTextPostCell.h"
 #import "ChanImagePostCell.h"
+#import "ChanVideoPostCell.h"
+#import "ChanVideoThumbnailPostCell.h"
 #import "ChanTextPost.h"
 #import "ChanImagePost.h"
+#import "ChanVideoPost.h"
+#import "ChanVideoThumbnailPost.h"
 
 @implementation ChannelPostTableViewController
 
@@ -69,12 +73,15 @@
         if(cell == nil) {
             cell = [[ChanImagePostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanImagePostCell"];
         }
-    } else {
-        // temporary hack till VideoPost, VideoThumbnailPost, etc. have defined
-        // custom cells, to avoid crashing
-        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanTextPostCell"];
+    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanVideoPostCell"];
         if(cell == nil) {
-            cell = [[ChanTextPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanTextPostCell"];
+            cell = [[ChanVideoPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanVideoPostCell"];
+        }
+    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanVideoThumbnailPost"];
+        if(cell == nil) {
+            cell = [[ChanVideoThumbnailPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanVideoThumbnailPost"];
         }
     }
     
@@ -99,6 +106,10 @@
     }
     else if ([[[post class]description] compare:[ChanImagePost description]] == NSOrderedSame)
         return 233;
+    else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame)
+        return 233;
+    else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame)
+        return 0;
     return 0;
 }
 

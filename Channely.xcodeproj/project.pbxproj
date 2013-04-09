@@ -98,6 +98,8 @@
 		B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */; };
 		B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
+		B6BCD8C11713D5AD004DC80D /* ChanVideoPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */; };
+		B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */; };
 		B6F480201706C80F0005029D /* _ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800B1706C80F0005029D /* _ChanChannel.m */; };
 		B6F480211706C80F0005029D /* _ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800D1706C80F0005029D /* _ChanEvent.m */; };
 		B6F480221706C80F0005029D /* _ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800F1706C80F0005029D /* _ChanHLSChunk.m */; };
@@ -276,6 +278,10 @@
 		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
 		B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRestKitObjectMappings.m; sourceTree = "<group>"; };
+		B6BCD8BF1713D5AC004DC80D /* ChanVideoPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoPostCell.h; sourceTree = "<group>"; };
+		B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoPostCell.m; sourceTree = "<group>"; };
+		B6BCD8C21713D5BE004DC80D /* ChanVideoThumbnailPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailPostCell.h; sourceTree = "<group>"; };
+		B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailPostCell.m; sourceTree = "<group>"; };
 		B6F4800A1706C80F0005029D /* _ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanChannel.h; sourceTree = "<group>"; };
 		B6F4800B1706C80F0005029D /* _ChanChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanChannel.m; sourceTree = "<group>"; };
 		B6F4800C1706C80F0005029D /* _ChanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanEvent.h; sourceTree = "<group>"; };
@@ -429,6 +435,10 @@
 				0AF535041705D29100E437F9 /* ChanPostCell.m */,
 				0AF535051705D29100E437F9 /* ChanTextPostCell.h */,
 				0AF535061705D29100E437F9 /* ChanTextPostCell.m */,
+				B6BCD8BF1713D5AC004DC80D /* ChanVideoPostCell.h */,
+				B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */,
+				B6BCD8C21713D5BE004DC80D /* ChanVideoThumbnailPostCell.h */,
+				B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -931,6 +941,8 @@
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
 				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
 				0AA2CB3D1713F6A100D8C28F /* ChanPeerSelection.m in Sources */,
+				B6BCD8C11713D5AD004DC80D /* ChanVideoPostCell.m in Sources */,
+				B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
