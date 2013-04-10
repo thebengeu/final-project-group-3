@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "ChanUtility.h"
+#import "HLSLoadBalancer.h"
+#import "HLSStreamSync.h"
 
 @interface ChanVideoPlayerViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
+- (void) setServerURL:(NSString *)url;
+
+- (IBAction)backButton_Action:(id)sender;
 
 @end

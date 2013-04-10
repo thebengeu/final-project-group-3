@@ -819,7 +819,6 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="viewButtonEventHandler:" destination="wPS-mJ-V4d" eventType="touchUpInside" id="OQm-6g-bVB"/>
                                                 <segue destination="mLk-YZ-vAp" kind="modal" identifier="videoPlayerSegue" id="ilw-QW-MHg"/>
                                             </connections>
                                         </button>
@@ -869,24 +868,39 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkS-Mf-Yoi">
                                 <items>
-                                    <barButtonItem title="Back" id="Tg4-pd-w9g"/>
+                                    <barButtonItem title="Back" id="Tg4-pd-w9g">
+                                        <connections>
+                                            <action selector="backButton_Action:" destination="mLk-YZ-vAp" id="gYw-gY-hcP"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2rM-tR-xxn"/>
-                                    <barButtonItem title="Play" id="b9p-wZ-PYG"/>
-                                    <barButtonItem title="Pause" id="Qcu-Rv-7lb"/>
-                                    <barButtonItem title="Stop" id="Mk5-1U-zho"/>
-                                    <barButtonItem title="Draw" id="fbb-Eb-bdl"/>
+                                    <barButtonItem title="Draw" id="fbb-Eb-bdl">
+                                        <connections>
+                                            <action selector="drawButton_Action:" destination="mLk-YZ-vAp" id="kaf-pH-l2G"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsB-gN-58s">
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kkS-Mf-Yoi" firstAttribute="bottom" secondItem="BYL-3Z-uBx" secondAttribute="bottom" type="default" id="Bt0-NG-7gH"/>
                             <constraint firstItem="kkS-Mf-Yoi" firstAttribute="trailing" secondItem="BYL-3Z-uBx" secondAttribute="trailing" type="default" id="Fmn-GB-DKK"/>
+                            <constraint firstItem="fsB-gN-58s" firstAttribute="bottom" secondItem="kkS-Mf-Yoi" secondAttribute="top" type="default" id="P2n-TA-qpu"/>
+                            <constraint firstItem="fsB-gN-58s" firstAttribute="leading" secondItem="BYL-3Z-uBx" secondAttribute="leading" type="default" id="PTl-eW-jDa"/>
                             <constraint firstItem="kkS-Mf-Yoi" firstAttribute="leading" secondItem="BYL-3Z-uBx" secondAttribute="leading" type="default" id="iBc-JP-33c"/>
+                            <constraint firstItem="fsB-gN-58s" firstAttribute="top" secondItem="BYL-3Z-uBx" secondAttribute="top" type="default" id="ks1-vZ-SzK"/>
+                            <constraint firstItem="fsB-gN-58s" firstAttribute="trailing" secondItem="BYL-3Z-uBx" secondAttribute="trailing" type="default" id="ldQ-s5-MF6"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="contentView" destination="fsB-gN-58s" id="UTj-tA-BQF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teA-oX-YHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

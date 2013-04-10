@@ -16,7 +16,7 @@
 
 - (id) init;
 
-+ (HLSAdvertisementData *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4;
++ (HLSAdvertisementData *) streamAdvertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4;
 + (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl;
 
 @end

@@ -7,19 +7,9 @@
 //
 
 #import "ChannelPostTableViewController.h"
-#import "ChanTextPostCell.h"
-#import "ChanImagePostCell.h"
-#import "ChanVideoPostCell.h"
-#import "ChanVideoThumbnailPostCell.h"
-#import "ChanTextPost.h"
-#import "ChanImagePost.h"
-#import "ChanVideoPost.h"
-#import "ChanVideoThumbnailPost.h"
-#import "ChanAnnotationViewController.h"
 
 static NSString *const cAnnotationSegue = @"AnnotationSegue";
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
-
 
 /*  Things to do for seguing:
 
@@ -55,7 +45,10 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
         annotationViewController.channel = [[cell post] channel];
         annotationViewController.image = [[cell imageContent]image];
     } else if ([segueName isEqualToString:cVideoPlayerSegue]) {
-        // TODO
+        ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
+        ChanVideoPostCell *cell = (ChanVideoPostCell *)((UIButton *)sender).superview.superview;
+        
+        [vpvc setServerURL:cell.serverURL];
     }
 }
 

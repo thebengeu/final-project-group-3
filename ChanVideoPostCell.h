@@ -7,16 +7,11 @@
 //
 
 #import "ChanPostCell.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import "ChanVideoPost.h"
-#import "ChanUtility.h"
-#import "HLSLoadBalancer.h"
-#import "HLSStreamSync.h"
 
 @interface ChanVideoPostCell : ChanPostCell
+@property (readonly, strong) NSString *serverURL;
 @property (weak, nonatomic) IBOutlet UIImageView *imageContent;
 @property (weak, nonatomic) IBOutlet UITextView *textContent;
-
-- (IBAction) viewButtonEventHandler:(id)sender;
 
 @end
