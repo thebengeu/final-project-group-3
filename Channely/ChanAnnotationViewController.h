@@ -19,9 +19,10 @@
 @property UIImage *image;
 @property ChanChannel *channel;
 
-@property (weak, nonatomic) IBOutlet UIImageView *redColor;
-@property (weak, nonatomic) IBOutlet UIImageView *blueColor;
-@property (weak, nonatomic) IBOutlet UIImageView *greenColor;
+- (IBAction)redColor:(id)sender;
+- (IBAction)greenColor:(id)sender;
+- (IBAction)blueColor:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UITextView *textContent;
 
