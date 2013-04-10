@@ -42,23 +42,6 @@
                                                object:nil];
 
     
-    //  Palette
-    UITapGestureRecognizer *touch = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setRed)];
-    [touch setNumberOfTapsRequired:1];
-    [_redColor addGestureRecognizer:touch];
-    [_redColor setUserInteractionEnabled:YES];
-    
-    UITapGestureRecognizer *touch2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setGreen)];
-    [touch2 setNumberOfTapsRequired:1];
-    [_greenColor addGestureRecognizer:touch2];
-    [_greenColor setUserInteractionEnabled:YES];
-    
-    UITapGestureRecognizer *touch3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(setBlue)];
-    [touch3 setNumberOfTapsRequired:1];
-    [_blueColor addGestureRecognizer:touch3];
-    [_blueColor setUserInteractionEnabled:YES];
-
-    
     //  Set images and annotation view
     [_imageView setImage:_image];
     
@@ -69,21 +52,6 @@
     [[self view]bringSubviewToFront:_annotationView];
 }
 
--(void)setRed{
-    [_annotationView setMarkerColor:[UIColor redColor]];
-}
-
--(void)setGreen{
-    [_annotationView setMarkerColor:[UIColor greenColor]];
-}
-
--(void)setBlue{
-    [_annotationView setMarkerColor:[UIColor blueColor]];
-}
-
--(void)doClear{
-    [_annotationView clear];
-}
 
 -(UIImage*)mergeAnnotation{
     UIGraphicsBeginImageContext(_annotationView.frame.size);
@@ -102,15 +70,6 @@
         [me dismissViewControllerAnimated:YES completion:nil];
     }];
 }
-
-- (IBAction)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)clear:(id)sender {
-    [self doClear];
-}
-
 
 
 
@@ -147,6 +106,31 @@
         frame.origin.x += kbSize.width;
     [[self view]setFrame:frame];
 }
+
+
+
+
+
+- (IBAction)redColor:(id)sender {
+    [_annotationView setMarkerColor:[UIColor redColor]];
+}
+
+- (IBAction)greenColor:(id)sender {
+    [_annotationView setMarkerColor:[UIColor greenColor]];
+}
+
+- (IBAction)blueColor:(id)sender {
+    [_annotationView setMarkerColor:[UIColor blueColor]];
+}
+
+- (IBAction)clear:(id)sender {
+    [_annotationView clear];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

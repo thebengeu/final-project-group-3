@@ -10,5 +10,6 @@
 + (void)getAccessTokenWithUsername:(NSString *)username
                           password:(NSString *)password
                     withCompletion:(void (^)(ChanUser *user, NSError *error))block;
+- (void)getOwnedChannels:(void (^)(NSArray *channels, NSError *error))block;
 
 @end

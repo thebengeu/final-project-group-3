@@ -2,6 +2,7 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Channel" representedClassName="ChanChannel" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hashTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastRefreshed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -80,7 +81,7 @@
         <relationship name="video" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VideoPost" inverseName="thumbnails" inverseEntity="VideoPost" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Channel" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Event" positionX="0" positionY="0" width="128" height="165"/>
         <element name="HLSChunk" positionX="0" positionY="0" width="128" height="120"/>
         <element name="HLSRecording" positionX="0" positionY="0" width="128" height="150"/>

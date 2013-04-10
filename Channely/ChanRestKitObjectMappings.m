@@ -170,22 +170,27 @@
     [responseMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"name":       @"name",
+     @"hashTag":    @"hashTag",
      @"createdAt":  @"createdAt"}];
     responseMapping.identificationAttributes = @[ @"id" ];
 
     [responseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"owner" toKeyPath:@"owner" withMapping:userMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *channelUpdateDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL_UPDATE keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *ownedChannelsDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_OWNED_CHANNELS keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
      @"id":         @"_id",
      @"name":       @"name",
-     @"owner.id":   @"owner",
+     @"hashTag":    @"hashTag",
      @"createdAt":  @"createdAt"}];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanChannel class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:channelUpdateDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:ownedChannelsDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
     
     return responseMapping;

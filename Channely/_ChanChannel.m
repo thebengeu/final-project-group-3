@@ -5,6 +5,7 @@
 
 const struct ChanChannelAttributes ChanChannelAttributes = {
 	.createdAt = @"createdAt",
+	.hashTag = @"hashTag",
 	.id = @"id",
 	.lastRefreshed = @"lastRefreshed",
 	.name = @"name",
@@ -53,6 +54,13 @@ const struct ChanChannelFetchedProperties ChanChannelFetchedProperties = {
 
 
 @dynamic createdAt;
+
+
+
+
+
+
+@dynamic hashTag;
 
 
 
