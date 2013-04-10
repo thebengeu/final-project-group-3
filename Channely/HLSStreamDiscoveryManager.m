@@ -52,7 +52,6 @@ static HLSStreamDiscoveryManager *_internal;
 }
 
 #pragma mark External Logic
-// TODO
 - (void) updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count {
     NSString *obj = [_advertisements objectForKey:(NSString *)rId];
     
