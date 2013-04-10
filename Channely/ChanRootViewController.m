@@ -29,7 +29,7 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
-    // DEBUG
+
 }
 
 - (void) didReceiveMemoryWarning {

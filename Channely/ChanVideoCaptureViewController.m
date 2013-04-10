@@ -80,6 +80,11 @@ static NSString *const cButtonStartRecording = @"Start";
     // Dispose of any resources that can be recreated.
 }
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self updatePreviewRotationToOrientation];
+    _recorder.previewLayer.frame = self.previewArea.frame;
+}
+
 #pragma mark Event Handlers
 - (IBAction)recordingControlButton_Action:(id)sender {
     if (_isRecording) {
