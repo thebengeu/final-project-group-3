@@ -19,7 +19,7 @@
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2476917086A3500E5A4C0 /* AttachPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */; };
-		0AA2CB3D1713F6A100D8C28F /* ChanPeerSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2CB3C1713F6A100D8C28F /* ChanPeerSelection.m */; };
+		0AA2CB3D1713F6A100D8C28F /* HLSLoadBalancer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2CB3C1713F6A100D8C28F /* HLSLoadBalancer.m */; };
 		0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA64A6D1714774A00239C0F /* ChanAnnotationViewController.m */; };
 		0AA798B3171009EA00632E22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B2171009EA00632E22 /* Security.framework */; };
 		0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B4171009F300632E22 /* CFNetwork.framework */; };
@@ -47,7 +47,7 @@
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
 		4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */; };
 		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
-		4ACD2516171570D9001542E8 /* HLSStreamAdvertisement.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */; };
+		4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
@@ -147,8 +147,8 @@
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachPickerViewController.h; path = Channely/AttachPickerViewController.h; sourceTree = "<group>"; };
 		0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachPickerViewController.m; path = Channely/AttachPickerViewController.m; sourceTree = "<group>"; };
-		0AA2CB3B1713F6A100D8C28F /* ChanPeerSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanPeerSelection.h; sourceTree = "<group>"; };
-		0AA2CB3C1713F6A100D8C28F /* ChanPeerSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPeerSelection.m; sourceTree = "<group>"; };
+		0AA2CB3B1713F6A100D8C28F /* HLSLoadBalancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSLoadBalancer.h; sourceTree = "<group>"; };
+		0AA2CB3C1713F6A100D8C28F /* HLSLoadBalancer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSLoadBalancer.m; sourceTree = "<group>"; };
 		0AA64A6C1714774A00239C0F /* ChanAnnotationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAnnotationViewController.h; path = Channely/ChanAnnotationViewController.h; sourceTree = "<group>"; };
 		0AA64A6D1714774A00239C0F /* ChanAnnotationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnnotationViewController.m; path = Channely/ChanAnnotationViewController.m; sourceTree = "<group>"; };
 		0AA798B2171009EA00632E22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -201,8 +201,8 @@
 		4AA361F817100A35009F703E /* HLSPlaylistDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloaderDelegate.h; sourceTree = "<group>"; };
 		4AA361FA17100C77009F703E /* ChanRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanRootViewController.h; path = Channely/ChanRootViewController.h; sourceTree = "<group>"; };
 		4AA361FB17100C77009F703E /* ChanRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanRootViewController.m; path = Channely/ChanRootViewController.m; sourceTree = "<group>"; };
-		4ACD2514171570D9001542E8 /* HLSStreamAdvertisement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamAdvertisement.h; sourceTree = "<group>"; };
-		4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamAdvertisement.m; sourceTree = "<group>"; };
+		4ACD2514171570D9001542E8 /* HLSAdvertisementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSAdvertisementData.h; sourceTree = "<group>"; };
+		4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSAdvertisementData.m; sourceTree = "<group>"; };
 		4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadMetaData.h; sourceTree = "<group>"; };
 		4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSChunkDownloadMetaData.m; sourceTree = "<group>"; };
 		4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadOperation.h; sourceTree = "<group>"; };
@@ -472,6 +472,8 @@
 				0AF5351D1705D36500E437F9 /* ChanHiddenTabBarController.m */,
 				4A4F06DF1711D8C60007A7DF /* ChanMenuViewController.h */,
 				4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */,
+				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
+				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
 			);
 			name = UI;
 			path = ..;
@@ -503,8 +505,10 @@
 				4A625AE517102D63000DF8B9 /* HLSStreamDiscoveryManager.h */,
 				4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */,
 				4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */,
-				4ACD2514171570D9001542E8 /* HLSStreamAdvertisement.h */,
-				4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */,
+				4ACD2514171570D9001542E8 /* HLSAdvertisementData.h */,
+				4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */,
+				0AA2CB3B1713F6A100D8C28F /* HLSLoadBalancer.h */,
+				0AA2CB3C1713F6A100D8C28F /* HLSLoadBalancer.m */,
 			);
 			name = "Stream Discovery";
 			sourceTree = "<group>";
@@ -525,8 +529,6 @@
 				4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */,
 				4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */,
 				4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */,
-				0AA2CB3B1713F6A100D8C28F /* ChanPeerSelection.h */,
-				0AA2CB3C1713F6A100D8C28F /* ChanPeerSelection.m */,
 			);
 			name = "Stream Downloader";
 			sourceTree = "<group>";
@@ -551,16 +553,6 @@
 				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
 			name = "Timed Video Chunking";
-			sourceTree = "<group>";
-		};
-		4AA361F917100C0D009F703E /* Root Controller */ = {
-			isa = PBXGroup;
-			children = (
-				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
-				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
-			);
-			name = "Root Controller";
-			path = ..;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -649,7 +641,6 @@
 		B66FDC8D16EF88A30042A36C /* Channely */ = {
 			isa = PBXGroup;
 			children = (
-				4AA361F917100C0D009F703E /* Root Controller */,
 				4A8933D017059CF5004D6E53 /* Http Live Streaming */,
 				B63865F41703E28900800FBE /* Model-Custom */,
 				B6F480091706C7F50005029D /* Model-Generated */,
@@ -946,11 +937,11 @@
 				4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */,
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
 				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
-				0AA2CB3D1713F6A100D8C28F /* ChanPeerSelection.m in Sources */,
+				0AA2CB3D1713F6A100D8C28F /* HLSLoadBalancer.m in Sources */,
 				B6BCD8C11713D5AD004DC80D /* ChanVideoPostCell.m in Sources */,
 				B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */,
 				0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */,
-				4ACD2516171570D9001542E8 /* HLSStreamAdvertisement.m in Sources */,
+				4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
 #import "HLSStreamAdvertiser.h"
 #import "ChanUtility.h"
 #import "HLSStreamSync.h"
+#import "HLSLoadBalancer.h"
 
 @interface ChanAppDelegate : UIResponder <UIApplicationDelegate, HLSStreamAdvertiser>
 @property (strong, nonatomic) UIWindow *window;

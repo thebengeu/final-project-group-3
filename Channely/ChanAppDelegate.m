@@ -73,6 +73,7 @@ static NSUInteger const cLocalServerPort = 80;
     [self setupHttpServer];
     [self setupDiscoveryManager];
     [self setupStreamSync];
+    [self setupLoadBalancer];
     
     return YES;
 }
@@ -145,6 +146,11 @@ static NSUInteger const cLocalServerPort = 80;
 #pragma mark HLS Stream Sync
 - (void) setupStreamSync {
     [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+}
+
+#pragma mark HLS Load Balancer
+- (void) setupLoadBalancer {
+    [HLSLoadBalancer setupLoadBalancer];
 }
 
 
