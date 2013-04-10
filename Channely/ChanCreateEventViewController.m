@@ -8,7 +8,7 @@
 
 #import "ChanCreateEventViewController.h"
 #import "SelectionAnnotation.h"
-#import "ios-ntp.h"
+#import "NetworkTimeProtocol.h"
 
 @interface ChanCreateEventViewController ()
 

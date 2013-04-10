@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import <HTTPServer.h>
-#import "ChanMasterViewController.h"
-#import "ios-ntp.h"
+#import "NetworkTimeProtocol.h"
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
 #import "HLSStreamDiscoveryManager.h"

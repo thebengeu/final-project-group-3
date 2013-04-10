@@ -135,7 +135,7 @@
 		0A937FBB170F52BB000A4079 /* AnnotationUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationUIView.h; sourceTree = "<group>"; };
 		0A937FBC170F52BB000A4079 /* AnnotationUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationUIView.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0A9C9E7016F301B80017FECB /* ios-ntp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ios-ntp.h"; sourceTree = "<group>"; };
+		0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTimeProtocol.h; sourceTree = "<group>"; };
 		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
 		0A9C9E7216F301B80017FECB /* NetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
 		0A9C9E7316F301B80017FECB /* NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClock.h; sourceTree = "<group>"; };
@@ -267,8 +267,6 @@
 		B66FDCA016EF88A40042A36C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		B66FDCA316EF88A40042A36C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		B66FDCA616EF88A40042A36C /* Channely.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Channely.xcdatamodel; sourceTree = "<group>"; };
-		B66FDCA816EF88A40042A36C /* ChanMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanMasterViewController.h; sourceTree = "<group>"; };
-		B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChanMasterViewController.m; sourceTree = "<group>"; };
 		B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChanDetailViewController.h; path = Channely/ChanDetailViewController.h; sourceTree = "<group>"; };
 		B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ChanDetailViewController.m; path = Channely/ChanDetailViewController.m; sourceTree = "<group>"; };
 		B66FDCB316EF88A40042A36C /* ChannelyTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChannelyTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,7 +418,7 @@
 		0A9C9E6F16F301A50017FECB /* IosNtp */ = {
 			isa = PBXGroup;
 			children = (
-				0A9C9E7016F301B80017FECB /* ios-ntp.h */,
+				0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */,
 				0A9C9E7116F301B80017FECB /* NetAssociation.h */,
 				0A9C9E7216F301B80017FECB /* NetAssociation.m */,
 				0A9C9E7316F301B80017FECB /* NetworkClock.h */,
@@ -456,15 +454,6 @@
 				0AA64A6D1714774A00239C0F /* ChanAnnotationViewController.m */,
 			);
 			name = Annotation;
-			sourceTree = "<group>";
-		};
-		0ABB364716FC13BE00436E06 /* Archive */ = {
-			isa = PBXGroup;
-			children = (
-				B66FDCA816EF88A40042A36C /* ChanMasterViewController.h */,
-				B66FDCA916EF88A40042A36C /* ChanMasterViewController.m */,
-			);
-			name = Archive;
 			sourceTree = "<group>";
 		};
 		0ABB364A16FC19A200436E06 /* UI */ = {
@@ -667,7 +656,6 @@
 				B63865F51703E3DF00800FBE /* API */,
 				0ABB364A16FC19A200436E06 /* UI */,
 				0A937FBA170F5210000A4079 /* Custom View */,
-				0ABB364716FC13BE00436E06 /* Archive */,
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
