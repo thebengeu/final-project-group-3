@@ -14,6 +14,7 @@
 @property (strong) NSString *_recordingId;
 @property (strong) NSURL *_selectedURL;
 @property (strong) MPMoviePlayerController *_player;
+@property (nonatomic) BOOL _firstLoad;
 
 // P2P Peer Selection.
 - (void) selectSource;
@@ -29,6 +30,7 @@
 @synthesize _recordingId;
 @synthesize _selectedURL;
 @synthesize _player;
+@synthesize _firstLoad;
 
 #pragma mark View Controller Methods
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -46,11 +48,17 @@
 
 // Note: There may be a race condition here if the parent does not call setServerURL: before the view appears.
 - (void) viewDidAppear:(BOOL)animated {
+    if (!_firstLoad) {
+        return;
+    }
+    
     if (!_parametersSet) {
         NSLog(@"Race condition in VideoPlayerViewController!");
     }
     
     [self attachPlayer];
+    
+    _firstLoad = NO;
 }
 
 - (void) didReceiveMemoryWarning {
@@ -64,6 +72,7 @@
         _recordingId = [ChanUtility fileNameFromURLString:url];
         _serverURL = [NSURL URLWithString:url];
         _parametersSet = YES;
+        _firstLoad = YES;
         
         [self selectSource];
     }
