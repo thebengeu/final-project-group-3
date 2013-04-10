@@ -85,6 +85,7 @@
     videoThumbnailPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoThumbnailPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [videoThumbnailPostMapping addConnectionForRelationship:@"video" connectedBy:@{ @"videoId": @"id" }];
     
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
