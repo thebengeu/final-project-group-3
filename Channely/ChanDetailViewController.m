@@ -7,6 +7,7 @@
 //
 
 #import "ChanDetailViewController.h"
+#import "ChannelViewController.h"
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
