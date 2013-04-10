@@ -92,7 +92,7 @@ static HLSLoadBalancer * _internal;
     
     [_browser searchForServicesOfType:cAppServiceName inDomain:cBonjourDomain];
     
-    _ttlTimer = [NSTimer scheduledTimerWithTimeInterval:cServiceTimerInterval target:self selector:@selector(timerDidTick:) userInfo:nil repeats:YES];
+    _ttlTimer = [NSTimer scheduledTimerWithTimeInterval:cServiceTimerInterval target:self selector:@selector(ttlTimerDidTick:) userInfo:nil repeats:YES];
 }
 
 #pragma mark NetService Browser Delegate
