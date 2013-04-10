@@ -49,6 +49,7 @@
 		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */; };
 		4ACD25191715AF31001542E8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACD25181715AF31001542E8 /* MediaPlayer.framework */; };
+		4ACD251D1715B572001542E8 /* ChanVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
@@ -205,6 +206,8 @@
 		4ACD2514171570D9001542E8 /* HLSAdvertisementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSAdvertisementData.h; sourceTree = "<group>"; };
 		4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSAdvertisementData.m; sourceTree = "<group>"; };
 		4ACD25181715AF31001542E8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4ACD251B1715B572001542E8 /* ChanVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanVideoPlayerViewController.h; path = Channely/ChanVideoPlayerViewController.h; sourceTree = "<group>"; };
+		4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanVideoPlayerViewController.m; path = Channely/ChanVideoPlayerViewController.m; sourceTree = "<group>"; };
 		4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadMetaData.h; sourceTree = "<group>"; };
 		4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSChunkDownloadMetaData.m; sourceTree = "<group>"; };
 		4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadOperation.h; sourceTree = "<group>"; };
@@ -462,6 +465,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4ACD251A1715B509001542E8 /* P2P Video Player */,
 				0AA64A6B1714772B00239C0F /* Annotation */,
 				4A4F06DE1711D3BB0007A7DF /* Video Capture */,
 				0A7423BC1705490B00644070 /* Search */,
@@ -556,6 +560,15 @@
 				4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */,
 			);
 			name = "Timed Video Chunking";
+			sourceTree = "<group>";
+		};
+		4ACD251A1715B509001542E8 /* P2P Video Player */ = {
+			isa = PBXGroup;
+			children = (
+				4ACD251B1715B572001542E8 /* ChanVideoPlayerViewController.h */,
+				4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */,
+			);
+			name = "P2P Video Player";
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -946,6 +959,7 @@
 				B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */,
 				0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */,
 				4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */,
+				4ACD251D1715B572001542E8 /* ChanVideoPlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
