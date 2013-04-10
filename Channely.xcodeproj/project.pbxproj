@@ -68,6 +68,7 @@
 		825016801712E7FE003BC16A /* button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8250167F1712E7FE003BC16A /* button_back.png */; };
 		825016821712FF27003BC16A /* button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 825016811712FF27003BC16A /* button_normal.png */; };
 		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
+		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -229,6 +230,8 @@
 		825016811712FF27003BC16A /* button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_normal.png; sourceTree = "<group>"; };
 		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
 		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
+		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
+		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */,
+				82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */,
 				0A91BA0F171169C10095FA01 /* CreateEvent */,
 				0AA3938317043E3B00A35814 /* Posts */,
 				0AF5350A1705D2E600E437F9 /* ChannelPostTableViewController.h */,
@@ -942,6 +947,7 @@
 				B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */,
 				0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */,
 				4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */,
+				82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
