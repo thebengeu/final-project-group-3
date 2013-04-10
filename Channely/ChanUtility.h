@@ -14,5 +14,6 @@
 + (NSString *) videoTempDirectory;
 + (void) createDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
++ (NSString *) fileNameFromURLString:(NSString *)url;
 
 @end

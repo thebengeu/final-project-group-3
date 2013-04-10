@@ -7,11 +7,11 @@
 //
 
 #import "ChanPostCell.h"
+#import "ChanVideoPost.h"
+#import "ChanUtility.h"
 
 @interface ChanVideoPostCell : ChanPostCell
-
 @property (weak, nonatomic) IBOutlet UIImageView *imageContent;
-
 @property (weak, nonatomic) IBOutlet UITextView *textContent;
 
 @end

@@ -56,4 +56,8 @@ static NSString *const cVideoTempDir = @"recording";
     }
 }
 
++ (NSString *) fileNameFromURLString:(NSString *)url {
+    return [[url lastPathComponent] stringByDeletingPathExtension];
+}
+
 @end

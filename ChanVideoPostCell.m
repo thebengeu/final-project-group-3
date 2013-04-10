@@ -7,13 +7,22 @@
 //
 
 #import "ChanVideoPostCell.h"
-#import "ChanVideoPost.h"
+
+@interface ChanVideoPostCell ()
+- (void) setPost:(ChanPost *)post;
+
+@end
 
 @implementation ChanVideoPostCell
-
--(void)setPost:(ChanPost *)post{
+- (void) setPost:(ChanPost *)post {
     [super setPost:post];
-    [[self textContent]setText:[(ChanVideoPost*)post url]];
+    
+    ChanVideoPost *videoPost = (ChanVideoPost *)post;
+    NSString *recordingId = [ChanUtility fileNameFromURLString:videoPost.url];
+    
+    self.textContent.text = [NSString stringWithFormat:@"Placeholder for recordingId:%@", recordingId];
 }
+
+
 
 @end
