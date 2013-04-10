@@ -48,6 +48,7 @@
 		4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */; };
 		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */; };
+		4ACD25191715AF31001542E8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACD25181715AF31001542E8 /* MediaPlayer.framework */; };
 		4AE16EE2170DF6E500573A4B /* HLSChunkDownloadMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */; };
 		4AE16EE3170DF6E500573A4B /* HLSChunkDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */; };
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
@@ -203,6 +204,7 @@
 		4AA361FB17100C77009F703E /* ChanRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanRootViewController.m; path = Channely/ChanRootViewController.m; sourceTree = "<group>"; };
 		4ACD2514171570D9001542E8 /* HLSAdvertisementData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSAdvertisementData.h; sourceTree = "<group>"; };
 		4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSAdvertisementData.m; sourceTree = "<group>"; };
+		4ACD25181715AF31001542E8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadMetaData.h; sourceTree = "<group>"; };
 		4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSChunkDownloadMetaData.m; sourceTree = "<group>"; };
 		4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSChunkDownloadOperation.h; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACD25191715AF31001542E8 /* MediaPlayer.framework in Frameworks */,
 				0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */,
 				0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */,
 				0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */,
@@ -620,6 +623,7 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4ACD25181715AF31001542E8 /* MediaPlayer.framework */,
 				0AA798B4171009F300632E22 /* CFNetwork.framework */,
 				0AA798B2171009EA00632E22 /* Security.framework */,
 				0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */,
