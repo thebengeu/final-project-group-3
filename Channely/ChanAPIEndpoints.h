@@ -39,6 +39,8 @@ static NSString *const PATH_ADD_CHUNK_FORMAT = @"/hls/recordings/%@/chunks";
 
 // User Endpoints
 static NSString *const PATH_USER = @"/users";
+static NSString *const PATH_OWNED_CHANNELS = @"/users/:userID/channels";
+static NSString *const PATH_OWNED_CHANNELS_FORMAT = @"/users/%@/channels";
 
 // Auth Endpoints
 static NSString *const PATH_GET_ACCESS_TOKEN = @"/oauth/token";

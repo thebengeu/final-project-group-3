@@ -1,5 +1,6 @@
 #import "ChanUser.h"
 #import "ChanAPIEndpoints.h"
+#import "ChanChannel.h"
 
 
 @interface ChanUser ()
@@ -56,6 +57,15 @@ static ChanUser *loggedInUser = nil;
         if (block) block(user, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [[RKObjectManager sharedManager].HTTPClient clearAuthorizationHeader];
+        if (block) block(nil, error);
+    }];
+}
+
+- (void)getOwnedChannels:(void (^)(NSArray *channels, NSError *error))block
+{
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:PATH_OWNED_CHANNELS_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (block) block([mappingResult array], nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (block) block(nil, error);
     }];
 }

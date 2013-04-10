@@ -178,6 +178,7 @@
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
     RKResponseDescriptor *channelUpdateDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL_UPDATE keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *ownedChannelsDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_OWNED_CHANNELS keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
@@ -189,6 +190,7 @@
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:channelUpdateDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:ownedChannelsDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
     
     return responseMapping;
