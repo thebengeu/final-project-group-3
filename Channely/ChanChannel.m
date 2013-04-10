@@ -22,13 +22,26 @@
     }];
 }
 
-+ (void)addChannelWithName:(NSString *)name withCompletion:(void (^)(ChanChannel *channel, NSError *error))block
++ (void)addChannelWithName:(NSString *)name hashTag:(NSString *)hashTag withCompletion:(void (^)(ChanChannel *channel, NSError *error))block
 {
     ChanChannel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     channel.name = name;
+    channel.hashTag = hashTag;
 
     [[RKObjectManager sharedManager] postObject:channel path:PATH_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (block) block(channel, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (block) block(nil, error);
+    }];
+}
+
+- (void)updateChannelWithName:(NSString *)name hashTag:(NSString *)hashTag withCompletion:(void (^)(ChanChannel *channel, NSError *error))block
+{
+    self.name = name;
+    self.hashTag = hashTag;
+    
+    [[RKObjectManager sharedManager] putObject:self path:[NSString stringWithFormat:PATH_CHANNEL_UPDATE_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (block) block(self, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (block) block(nil, error);
     }];
