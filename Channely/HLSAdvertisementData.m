@@ -49,7 +49,7 @@ static NSString *const cProtocolFormat = @"http://%@";
 }
 
 #pragma mark External Static Methods
-+ (HLSAdvertisementData *) streamAdvertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4 {
++ (HLSAdvertisementData *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4 {
     NSString *representativeString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *components = [representativeString componentsSeparatedByString:@","];
     
