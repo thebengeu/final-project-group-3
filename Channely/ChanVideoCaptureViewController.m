@@ -80,24 +80,6 @@ static NSString *const cButtonStartRecording = @"Start";
     // Dispose of any resources that can be recreated.
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self updatePreviewRotationToOrientation];
-    _recorder.previewLayer.frame = self.previewArea.frame;
-}
-
-// Videos should be in landscape format.
-- (BOOL) shouldAutorotate {
-    return YES;
-}
-
-- (NSUInteger) supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscapeRight;
-}
-
-- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationLandscapeRight;
-}
-
 #pragma mark Event Handlers
 - (IBAction)recordingControlButton_Action:(id)sender {
     if (_isRecording) {
