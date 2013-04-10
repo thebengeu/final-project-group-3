@@ -16,4 +16,6 @@
 
 - (IBAction)searchButtonPressed:(id)sender;
 
+- (void)startChannel:(ChanChannel*)channel;
+
 @end
