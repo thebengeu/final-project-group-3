@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "HLSStreamAdvertiser.h"
+#import "HLSStreamAdvertisement.h"
 
 @interface HLSStreamDiscoveryManager : NSObject
 @property (readonly) NSDictionary *advertisements;
 
 - (id) init;
-- (void) startAdvertisingPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId;
+- (void) updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count;
 - (BOOL) isAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertising;

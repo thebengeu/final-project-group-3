@@ -52,11 +52,16 @@ static HLSStreamDiscoveryManager *_internal;
 }
 
 #pragma mark External Logic
-- (void) startAdvertisingPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId {
+// TODO
+- (void) updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count {
     NSString *obj = [_advertisements objectForKey:(NSString *)rId];
-    if (!obj) {
-        [_advertisements setObject:(NSString *)playlist forKey:(NSString *)rId];
+    
+    if (obj) {
+        [_advertisements removeObjectForKey:(NSString *)rId];
     }
+    
+    NSString *packedAd = [HLSStreamAdvertisement packAdvertisementForChunkCount:count playlist:playlist];
+    [_advertisements setObject:packedAd forKey:rId];
     
     [self pushAdvertisements];
 }

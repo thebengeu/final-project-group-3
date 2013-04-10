@@ -20,6 +20,7 @@ static NSString *const cHTMLDebugPageName = @"view.html";
 @property (strong) NSString *_downloadDirectory;
 @property (strong) HLSPlaylistDownloader *_worker;
 @property (atomic) BOOL _expectingFirstChunk;
+@property (atomic) NSUInteger _chunkCount;
 
 // Redefinitions.
 @property (atomic, readwrite) BOOL isExecuting;
@@ -34,6 +35,7 @@ static NSString *const cHTMLDebugPageName = @"view.html";
 @synthesize _downloadDirectory;
 @synthesize _worker;
 @synthesize _expectingFirstChunk;
+@synthesize _chunkCount;
 
 // Redefinitions.
 @synthesize isExecuting;
@@ -70,6 +72,7 @@ static NSString *const cHTMLDebugPageName = @"view.html";
     NSLog(@"download operation started."); // DEBUG
     
     _expectingFirstChunk = YES;
+    _chunkCount = 0;
     
     [_worker downloadToDirectory:_downloadDirectory];
     
@@ -91,17 +94,22 @@ static NSString *const cHTMLDebugPageName = @"view.html";
 
 #pragma mark Playlist Downloader Delegate
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didDownloadNewChunkForRemoteStream:(NSURL *)stream {
+    _chunkCount++;
+    
+    // We guarantee that the relative path will never contain a comma ',' -
+    // otherwise this will violate the precondition of HLSStreamDiscoveryManager.
+    NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
+    [[HLSStreamDiscoveryManager discoveryManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    
+    // DEBUG - create a Safari-viewable HTML page that can be used to display the local stream.
     if (_expectingFirstChunk) {
-        NSLog(@"sync: first chunk downloaded"); // DEBUG
+        NSLog(@"sync: first chunk downloaded");
         
-        NSString *playlistName = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-        [[HLSStreamDiscoveryManager discoveryManager] startAdvertisingPlaylist:playlistName asRecordingId:_recordingId];
-        _expectingFirstChunk = NO;
-        
-        // Create HTML page to view stream on Safari.
         NSString *pageContent = [NSString stringWithFormat:cHTMLDebugPageFormat, _recordingId];
         NSString *pagePath = [_downloadDirectory stringByAppendingPathComponent:cHTMLDebugPageName];
         [pageContent writeToFile:pagePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        _expectingFirstChunk = NO;
     }
 }
 
