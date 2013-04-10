@@ -42,11 +42,11 @@ static NSUInteger const cLocalServerPort = 80;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self setupDirectories];
-    
-    [self setupHttpServer];
-    [self setupDiscoveryManager];
-    [self setupStreamSync];
+//    [self setupDirectories];
+//    
+//    [self setupHttpServer];
+//    [self setupDiscoveryManager];
+//    [self setupStreamSync];
 }
 
 - (void) viewDidAppear:(BOOL)animated {

@@ -6,52 +6,30 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import <RestKit/RestKit.h>
 #import "ChanAppDelegate.h"
-#import "ChanMasterViewController.h"
-#import "ios-ntp.h"
-#import "ChanRestKitObjectMappings.h"
-#import "ChanAPIEndpoints.h"
 
-NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
+static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
+static NSString *const cLocalServerLoadKey = @"_lsload";
+static NSString *const cApplicationTypeName = @"_channely._tcp.";
+static NSUInteger const cLocalServerPort = 80;
+
+@interface ChanAppDelegate ()
+// Internal.
+@property (strong) HTTPServer *_localServer;
+@property (strong) HLSStreamDiscoveryManager *_discoveryManager;
+
+// Appearance.
+- (void) customizeAppearance;
+
+@end
 
 @implementation ChanAppDelegate
+// Internal.
+@synthesize _localServer;
+@synthesize _discoveryManager;
 
-// Method to customize appearance 
-- (void)customizeAppearance {
-    // Create resizable images
-    UIImage *gradientImg44 = [[UIImage imageNamed:@"top_gradient_44"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    UIImage *gradientImg32 = [[UIImage imageNamed:@"top_gradient_32"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    
-    // Set the background image for all UINavigationBars
-    [[UINavigationBar appearance] setBackgroundImage:gradientImg44 forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setBackgroundImage:gradientImg32 forBarMetrics:UIBarMetricsLandscapePhone];
-    
-    //Set background image for all UIBar
-    [[UIToolbar appearance] setBackgroundImage:gradientImg44 forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
-      UITextAttributeTextColor,
-      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
-      UITextAttributeTextShadowColor,
-      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-      UITextAttributeTextShadowOffset,
-      [UIFont fontWithName:@"Avenir" size:0.0],
-      UITextAttributeFont,
-      nil]];
-    
-    // Change the appearance of back button
-    UIImage *backButtonImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 8)];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    // Change the appearance of other navigation buttons
-    UIImage *barButtonImage = [[UIImage imageNamed:@"button_normal"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
-    [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#pragma mark AppDelegate Methods
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Set UI customizations
     [self customizeAppearance];
     
@@ -84,12 +62,90 @@ NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
     [RKObjectManager setSharedManager:objectManager];
     
     [ChanRestKitObjectMappings setup];
-//    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
     //  Start NTP
     [NetworkClock sharedNetworkClock];
-
+    
+    // Setup directory structure for recording and serving
+    [self setupDirectories];
+    
+    [self setupHttpServer];
+    [self setupDiscoveryManager];
+    [self setupStreamSync];
+    
     return YES;
 }
+
+#pragma mark Appearance
+- (void) customizeAppearance {
+    // Create resizable images
+    UIImage *gradientImg44 = [[UIImage imageNamed:@"top_gradient_44"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *gradientImg32 = [[UIImage imageNamed:@"top_gradient_32"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    // Set the background image for all UINavigationBars
+    [[UINavigationBar appearance] setBackgroundImage:gradientImg44 forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:gradientImg32 forBarMetrics:UIBarMetricsLandscapePhone];
+    
+    //Set background image for all UIBar
+    [[UIToolbar appearance] setBackgroundImage:gradientImg44 forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+      UITextAttributeTextColor,
+      [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
+      UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+      UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"Avenir" size:0.0],
+      UITextAttributeFont,
+      nil]];
+    
+    // Change the appearance of back button
+    UIImage *backButtonImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 8)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    // Change the appearance of other navigation buttons
+    UIImage *barButtonImage = [[UIImage imageNamed:@"button_normal"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
+    [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
+
+#pragma mark Http Server
+- (void) setupHttpServer {
+    _localServer = [[HTTPServer alloc] init];
+    _localServer.port = cLocalServerPort;
+    _localServer.documentRoot = [ChanUtility webRootDirectory];
+    
+    _localServer.type = cApplicationTypeName;
+    
+    [_localServer start:nil];
+}
+
+#pragma mark HLS Stream Discovery Manager
+- (void) setupDiscoveryManager {
+    _discoveryManager = [HLSStreamDiscoveryManager discoveryManagerWithAdvertiser:self];
+}
+
+#pragma mark HLS Stream Advertiser Delegate
+- (void) setAdvertiserDictionary:(NSDictionary *)dict {
+    if (_localServer) {
+        [_localServer setTXTRecordDictionary:dict];
+    }
+}
+
+#pragma mark Recording Temp Directory
+- (void) setupDirectories {
+    // Note: this also clears all exisiting files in the web root.
+    [ChanUtility createDirectory:[ChanUtility webRootDirectory]];
+    
+    [ChanUtility createDirectory:[ChanUtility videoTempDirectory]];
+}
+
+#pragma mark HLS Stream Sync
+- (void) setupStreamSync {
+    [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+}
+
 
 @end

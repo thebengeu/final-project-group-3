@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
+#import <HTTPServer.h>
+#import "ChanMasterViewController.h"
+#import "ios-ntp.h"
+#import "ChanRestKitObjectMappings.h"
+#import "ChanAPIEndpoints.h"
+#import "HLSStreamDiscoveryManager.h"
+#import "HLSStreamAdvertiser.h"
+#import "ChanUtility.h"
+#import "HLSStreamSync.h"
 
-@interface ChanAppDelegate : UIResponder <UIApplicationDelegate>
-
+@interface ChanAppDelegate : UIResponder <UIApplicationDelegate, HLSStreamAdvertiser>
 @property (strong, nonatomic) UIWindow *window;
 
 @end
