@@ -19,6 +19,10 @@ static const int PASSWORD_MIN_LEN = 1;
 
 @interface ChanMenuViewController ()
 
+@property UINavigationController *channelNavigationController;
+
+@property UIPopoverController *channelPopover;
+
 @end
 
 @implementation ChanMenuViewController
@@ -64,6 +68,16 @@ static const int PASSWORD_MIN_LEN = 1;
     alert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
     alert.tag = kSignup;
     [alert show];
+}
+
+- (IBAction)channels:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    _channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelNavigationController"];
+    
+    _channelPopover = [[UIPopoverController alloc]initWithContentViewController:_channelNavigationController];
+ 
+    [_channelPopover presentPopoverFromRect:_channelButton.frame inView:[[self view]superview] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

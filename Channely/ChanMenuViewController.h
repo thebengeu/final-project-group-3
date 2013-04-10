@@ -12,5 +12,7 @@
 
 - (IBAction)login:(id)sender;
 - (IBAction)signup:(id)sender;
+- (IBAction)channels:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *channelButton;
 
 @end
