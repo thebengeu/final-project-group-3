@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanCollectionCell.h"
+#import "ChanPost.h"
 
-@interface ChanCollectionViewController : UICollectionViewController
+@class ChanChannel;
+
+@interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property ChanChannel *channel;
 
 @end

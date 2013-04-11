@@ -58,6 +58,7 @@
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
 		4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* ChanUtility.m */; };
+		821463C6171671EB00699085 /* ChanCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463C5171671EB00699085 /* ChanCollectionCell.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -228,6 +229,8 @@
 		4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloader.m; sourceTree = "<group>"; };
 		4AE16EE0170DF6E500573A4B /* ChanUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUtility.h; sourceTree = "<group>"; };
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
+		821463C4171671EB00699085 /* ChanCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionCell.h; sourceTree = "<group>"; };
+		821463C5171671EB00699085 /* ChanCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionCell.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 			children = (
 				82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */,
 				82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */,
+				821463C4171671EB00699085 /* ChanCollectionCell.h */,
+				821463C5171671EB00699085 /* ChanCollectionCell.m */,
 				0AA8E1431715D5B60010F99A /* ChannelOwned */,
 				0A91BA0F171169C10095FA01 /* CreateEvent */,
 				0AA3938317043E3B00A35814 /* Posts */,
@@ -992,6 +997,7 @@
 				0AA8E1461715D5DF0010F99A /* ChanChannelOwnedTableController.m in Sources */,
 				0AA8E1491715D73E0010F99A /* ChanChannelOwnedTableCell.m in Sources */,
 				0A5F5E9E1715DC9200687A26 /* ChanChannelCreateUpdateViewController.m in Sources */,
+				821463C6171671EB00699085 /* ChanCollectionCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
