@@ -166,6 +166,10 @@
         
         self.channel.lastRefreshed = [NSDate date];
         [self.posts addObjectsFromArray:posts];
+        
+        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
+        [self.posts filterUsingPredicate:postsPredicate];
+        
         [_postTableViewController setPostList:self.posts];
     }];
 }
