@@ -10,6 +10,7 @@
 
 static NSString *const cAnnotationSegue = @"AnnotationSegue";
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
+static NSString *const cSlideSegue = @"slidesSegue";
 
 /*  Things to do for seguing:
 
@@ -49,6 +50,11 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
         ChanVideoPostCell *cell = (ChanVideoPostCell *)((UIButton *)sender).superview.superview;
         
         [vpvc setServerURL:cell.serverURL];
+    } else if ([segueName isEqualToString:cSlideSegue]) {
+        ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
+        ChanSlidesPostCell *cell = (ChanSlidesPostCell *)((UIButton *)sender).superview.superview;
+        
+        slidesViewController.post = (ChanSlidesPost *)cell.post;
     }
 }
 
@@ -107,6 +113,11 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
         if(cell == nil) {
             cell = [[ChanVideoThumbnailPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanVideoThumbnailPost"];
         }
+    } else if ([[[post class]description] compare:[ChanSlidesPost description]] == NSOrderedSame){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanSlidesPostCell"];
+        if(cell == nil) {
+            cell = [[ChanSlidesPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanSlidesPostCell"];
+        }
     }
     
     [cell setPost:post];
@@ -134,6 +145,8 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
         return 233;
     else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame)
         return 0;
+    else if ([[[post class]description] compare:[ChanSlidesPost description]] == NSOrderedSame)
+        return 233;
     return 0;
 }
 
