@@ -7,6 +7,7 @@
 //
 
 #import "ChanDetailViewController.h"
+#import "ChannelViewController.h"
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
@@ -46,7 +47,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         _menuSegue = ((UIStoryboardPopoverSegue *)segue).popoverController;
         _menuSegue.popoverContentSize = [self calcMenuPopoverSize];
-    }
+    } 
 }
 
 - (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
@@ -82,4 +83,15 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     if (popoverController == _searchPopover)
         _searchPopover = nil;
 }
+
+- (void)startChannel:(ChanChannel*)channel{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
+    channelViewController.channel = channel;
+    
+    [[self navigationController]pushViewController:channelViewController animated:YES];
+}
+
+
 @end

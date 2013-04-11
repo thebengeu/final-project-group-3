@@ -9,9 +9,7 @@
 #import "ChanPostCell.h"
 
 @interface ChanVideoThumbnailPostCell : ChanPostCell
-
 @property (weak, nonatomic) IBOutlet UIImageView *imageContent;
-
 @property (weak, nonatomic) IBOutlet UITextView *textContent;
 
 @end

@@ -7,16 +7,9 @@
 //
 
 #import "ChannelPostTableViewController.h"
-#import "ChanTextPostCell.h"
-#import "ChanImagePostCell.h"
-#import "ChanVideoPostCell.h"
-#import "ChanVideoThumbnailPostCell.h"
-#import "ChanTextPost.h"
-#import "ChanImagePost.h"
-#import "ChanVideoPost.h"
-#import "ChanVideoThumbnailPost.h"
-#import "ChanAnnotationViewController.h"
 
+static NSString *const cAnnotationSegue = @"AnnotationSegue";
+static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 
 /*  Things to do for seguing:
 
@@ -45,14 +38,18 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"AnnotationSegue"]) {
+    if ([segueName isEqualToString:cAnnotationSegue]) {
         ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
         ChanImagePostCell *cell = (ChanImagePostCell*)[[((UIButton*)sender)superview] superview];
         
         annotationViewController.channel = [[cell post] channel];
         annotationViewController.image = [[cell imageContent]image];
+    } else if ([segueName isEqualToString:cVideoPlayerSegue]) {
+        ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
+        ChanVideoPostCell *cell = (ChanVideoPostCell *)((UIButton *)sender).superview.superview;
+        
+        [vpvc setServerURL:cell.serverURL];
     }
-    
 }
 
 - (void)setPostList:(NSMutableArray *)postList

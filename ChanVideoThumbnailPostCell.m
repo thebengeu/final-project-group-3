@@ -13,7 +13,8 @@
 
 -(void)setPost:(ChanPost *)post{
     [super setPost:post];
-    [[self textContent]setText:[(ChanVideoThumbnailPost*)post url]];
+    
+    self.textContent.text = @"video thumbnail";
 //    [[self imageContent]setImageWithURL:[NSURL URLWithString:[(ChanVideoThumbnailPost*)post url]]];
 //    NSLog(@"%@",[(ChanVideoThumbnailPost*)post url]);
 }
