@@ -17,6 +17,7 @@ static NSUInteger const cLocalServerPort = 80;
 // Internal.
 @property (strong) HTTPServer *_localServer;
 @property (strong) HLSStreamDiscoveryManager *_discoveryManager;
+@property (strong) HLSLoadBalancer *_loadBalancer;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -27,6 +28,7 @@ static NSUInteger const cLocalServerPort = 80;
 // Internal.
 @synthesize _localServer;
 @synthesize _discoveryManager;
+@synthesize _loadBalancer;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -150,7 +152,7 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Load Balancer
 - (void) setupLoadBalancer {
-    [HLSLoadBalancer setupLoadBalancer];
+    _loadBalancer = [HLSLoadBalancer setupLoadBalancer];
 }
 
 

@@ -87,6 +87,8 @@
     if (!_selectedURL) {
         _selectedURL = _serverURL;
     }
+    
+    NSLog(@"selected source=%@", _selectedURL);
 
     // Start P2P replication.
     [[HLSStreamSync streamSync] syncStreamId:_recordingId playlistURL:_selectedURL];
