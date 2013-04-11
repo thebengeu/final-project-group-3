@@ -54,8 +54,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@", self.channel.name);
-    [self populateChannelPost];
-    //[self populateFakePosts];
     
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -74,7 +72,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // Get posts and populate
+    [self populateChannelPost];
     
     NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];

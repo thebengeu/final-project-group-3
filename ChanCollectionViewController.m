@@ -41,7 +41,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Collection View methods
+#pragma mark - Collection View Protocol methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -59,12 +59,23 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChanCollectionCell *cell = (ChanCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"ChanCollectionCell" forIndexPath:indexPath];
+//    ChanCollectionCell *cell = (ChanCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"TextCell" forIndexPath:indexPath];
+    
+    ChanAbstractCell *cell;
     
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    [cell setPostContent:post];
+    if ([[[post class] description] compare:[ChanTextPost description]] == NSOrderedSame) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TextCell" forIndexPath:indexPath];
+    } else if ([[[post class] description] compare:[ChanImagePost description]] == NSOrderedSame) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
+    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
+    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoThumbnailCell" forIndexPath:indexPath];
+    }
     
+    [cell setPostContent:post];
     return cell;
 }
 
@@ -83,12 +94,12 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    //    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(channel == %@) AND (type == %@)", self.channel, @"text"];
-    //    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
-
-    //    [fetchRequest setPredicate:predicate];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"type == %@", @"text"];
-    [fetchRequest setPredicate:predicate];
+//   NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(channel == %@) AND (type == %@)", self.channel, @"text"];
+//    [fetchRequest setPredicate:predicate];
+    
+    
+//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"type == %@", @"text"];
+//    [fetchRequest setPredicate:predicate];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
@@ -116,6 +127,7 @@
     return _fetchedResultsController;
 }
 
+#pragma mark - Bugfixes
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
@@ -158,9 +170,6 @@
     }
     [_objectChanges addObject:change];
 }
-
-
-#pragma mark - Bugfixes
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {

@@ -1,14 +1,14 @@
 //
-//  ChanCollectionViewCell.m
+//  ChanVideoThumbnailCell.m
 //  Channely
 //
-//  Created by Cedric on 4/11/13.
+//  Created by Cedric on 4/12/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "ChanCollectionCell.h"
+#import "ChanVideoThumbnailCell.h"
 
-@implementation ChanCollectionCell
+@implementation ChanVideoThumbnailCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,8 +19,10 @@
     return self;
 }
 
--(void)setPostContent:(ChanPost*)post{
-    [[self textView] setText:post.content];
+-(void)setPostContent:(ChanPost *)post {
+    [super setPostContent:post];
+    
+    
 }
 
 /*

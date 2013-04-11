@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanCollectionCell.h"
+#import "ChanTextCell.h"
 #import "ChanPost.h"
+#import "ChanTextPost.h"
+#import "ChanImagePost.h"
+#import "ChanVideoPost.h"
+#import "ChanVideoThumbnailPost.h"
 
 @class ChanChannel;
 

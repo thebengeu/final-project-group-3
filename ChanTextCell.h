@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanAbstractCell.h"
 #import "ChanPost.h"
 
-@interface ChanCollectionCell : UICollectionViewCell
+@interface ChanTextCell : ChanAbstractCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
 
