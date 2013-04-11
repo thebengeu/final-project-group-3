@@ -63,8 +63,6 @@
     
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    NSLog(@"POST CONTENT: %@ \n", post.content);
-    
     [cell setPostContent:post];
     
     return cell;
