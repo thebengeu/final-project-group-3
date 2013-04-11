@@ -9,6 +9,9 @@
 #import "ChanSlidesViewController.h"
 #import "ChanSlidesPost.h"
 #import "ChanSlidePost.h"
+#import "ChanAnnotationViewController.h"
+
+static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
 
 @interface ChanSlidesViewController ()
 
@@ -101,6 +104,21 @@
         prevView.frame = (CGRect){.origin.x = prevPage * self.pageWidth, .origin.y = 0.0f, .size = prevView.frame.size};
         ChanSlidePost* prevSlide = [self.slides objectAtIndex:prevPage];
         [prevView setImageWithURL:[NSURL URLWithString:prevSlide.url]];
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSString * segueName = segue.identifier;
+    if ([segueName isEqualToString:cSlideAnnotationSegue]) {
+        ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
+        
+        annotationViewController.channel = self.post.channel;
+        
+        // Use image for annotation from currently displayed UIImageView.
+        const CGFloat currPos = self.scrollView.contentOffset.x; // Get current X scrollview position
+        const NSInteger selectedPage = lroundf(currPos * (1.0f / self.pageWidth)); // Compute selected page
+        const NSInteger zone = 1 + (selectedPage % 3); // Current zone : 0 - 1 - 2
+        annotationViewController.image = [(UIImageView*)[self.scrollView viewWithTag:zone] image];
     }
 }
 
