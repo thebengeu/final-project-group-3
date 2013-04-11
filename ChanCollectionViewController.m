@@ -50,22 +50,24 @@
     return [sectionInfo numberOfObjects];
 }
 
+// UICollectionViewDataSource protocol methods
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return [[self.fetchedResultsController sections] count];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanCollectionCell *cell = (ChanCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"ChanCollectionCell" forIndexPath:indexPath];
     
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    NSLog(@"POST CONTENT: %s \n", post.content);
+    NSLog(@"POST CONTENT: %@ \n", post.content);
     
     [cell setPostContent:post];
     
     return cell;
-}
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return [[self.fetchedResultsController sections] count];
 }
 
 #pragma mark - Fetched results controller
@@ -115,6 +117,50 @@
     
     return _fetchedResultsController;
 }
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    
+    NSMutableDictionary *change = [NSMutableDictionary new];
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            change[@(type)] = @(sectionIndex);
+            break;
+        case NSFetchedResultsChangeDelete:
+            change[@(type)] = @(sectionIndex);
+            break;
+    }
+    
+    [_sectionChanges addObject:change];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    
+    NSMutableDictionary *change = [NSMutableDictionary new];
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            change[@(type)] = newIndexPath;
+            break;
+        case NSFetchedResultsChangeDelete:
+            change[@(type)] = indexPath;
+            break;
+        case NSFetchedResultsChangeUpdate:
+            change[@(type)] = indexPath;
+            break;
+        case NSFetchedResultsChangeMove:
+            change[@(type)] = @[indexPath, newIndexPath];
+            break;
+    }
+    [_objectChanges addObject:change];
+}
+
 
 #pragma mark - Bugfixes
 
