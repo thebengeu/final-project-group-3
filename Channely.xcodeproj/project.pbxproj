@@ -84,6 +84,12 @@
 		B6386685170467A500800FBE /* ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386684170467A500800FBE /* ChanEvent.m */; };
 		B6386688170467E400800FBE /* ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386687170467E400800FBE /* ChanPost.m */; };
 		B638668B170467E400800FBE /* ChanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B638668A170467E400800FBE /* ChanUser.m */; };
+		B6396D091715C469004CEA25 /* _ChanSlidePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6396D071715C469004CEA25 /* _ChanSlidePost.m */; };
+		B6396D0F1715C473004CEA25 /* ChanSlidePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6396D0D1715C473004CEA25 /* ChanSlidePost.m */; };
+		B63B64AE1716580000885E4B /* _ChanSlidesPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64AD1716580000885E4B /* _ChanSlidesPost.m */; };
+		B63B64B11716580B00885E4B /* ChanSlidesPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B01716580B00885E4B /* ChanSlidesPost.m */; };
+		B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B417165E0B00885E4B /* ChanSlidesViewController.m */; };
+		B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B71716610000885E4B /* ChanSlidesPostCell.m */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -266,6 +272,18 @@
 		B6386687170467E400800FBE /* ChanPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanPost.m; sourceTree = "<group>"; };
 		B6386689170467E400800FBE /* ChanUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUser.h; sourceTree = "<group>"; };
 		B638668A170467E400800FBE /* ChanUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUser.m; sourceTree = "<group>"; };
+		B6396D061715C469004CEA25 /* _ChanSlidePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanSlidePost.h; sourceTree = "<group>"; };
+		B6396D071715C469004CEA25 /* _ChanSlidePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanSlidePost.m; sourceTree = "<group>"; };
+		B6396D0C1715C473004CEA25 /* ChanSlidePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSlidePost.h; sourceTree = "<group>"; };
+		B6396D0D1715C473004CEA25 /* ChanSlidePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidePost.m; sourceTree = "<group>"; };
+		B63B64AC1716580000885E4B /* _ChanSlidesPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanSlidesPost.h; sourceTree = "<group>"; };
+		B63B64AD1716580000885E4B /* _ChanSlidesPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanSlidesPost.m; sourceTree = "<group>"; };
+		B63B64AF1716580B00885E4B /* ChanSlidesPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSlidesPost.h; sourceTree = "<group>"; };
+		B63B64B01716580B00885E4B /* ChanSlidesPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidesPost.m; sourceTree = "<group>"; };
+		B63B64B317165E0B00885E4B /* ChanSlidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSlidesViewController.h; path = Channely/ChanSlidesViewController.h; sourceTree = "<group>"; };
+		B63B64B417165E0B00885E4B /* ChanSlidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSlidesViewController.m; path = Channely/ChanSlidesViewController.m; sourceTree = "<group>"; };
+		B63B64B61716610000885E4B /* ChanSlidesPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSlidesPostCell.h; sourceTree = "<group>"; };
+		B63B64B71716610000885E4B /* ChanSlidesPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidesPostCell.m; sourceTree = "<group>"; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B66FDC8716EF88A30042A36C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -459,6 +477,8 @@
 				B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */,
 				B6BCD8C21713D5BE004DC80D /* ChanVideoThumbnailPostCell.h */,
 				B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */,
+				B63B64B61716610000885E4B /* ChanSlidesPostCell.h */,
+				B63B64B71716610000885E4B /* ChanSlidesPostCell.m */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -488,6 +508,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B63B64B217165DE000885E4B /* Slides */,
 				4ACD251A1715B509001542E8 /* P2P Video Player */,
 				0AA64A6B1714772B00239C0F /* Annotation */,
 				4A4F06DE1711D3BB0007A7DF /* Video Capture */,
@@ -597,6 +618,10 @@
 		B63865F41703E28900800FBE /* Model-Custom */ = {
 			isa = PBXGroup;
 			children = (
+				B63B64AF1716580B00885E4B /* ChanSlidesPost.h */,
+				B63B64B01716580B00885E4B /* ChanSlidesPost.m */,
+				B6396D0C1715C473004CEA25 /* ChanSlidePost.h */,
+				B6396D0D1715C473004CEA25 /* ChanSlidePost.m */,
 				B6892F7D17115426007C71C9 /* ChanVideoThumbnailPost.h */,
 				B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */,
 				B6386689170467E400800FBE /* ChanUser.h */,
@@ -633,6 +658,15 @@
 				B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		B63B64B217165DE000885E4B /* Slides */ = {
+			isa = PBXGroup;
+			children = (
+				B63B64B317165E0B00885E4B /* ChanSlidesViewController.h */,
+				B63B64B417165E0B00885E4B /* ChanSlidesViewController.m */,
+			);
+			name = Slides;
 			sourceTree = "<group>";
 		};
 		B66FDC7916EF88A30042A36C = {
@@ -746,6 +780,10 @@
 		B6F480091706C7F50005029D /* Model-Generated */ = {
 			isa = PBXGroup;
 			children = (
+				B63B64AC1716580000885E4B /* _ChanSlidesPost.h */,
+				B63B64AD1716580000885E4B /* _ChanSlidesPost.m */,
+				B6396D061715C469004CEA25 /* _ChanSlidePost.h */,
+				B6396D071715C469004CEA25 /* _ChanSlidePost.m */,
 				B6892F7A1711541C007C71C9 /* _ChanVideoThumbnailPost.h */,
 				B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */,
 				B6F4800A1706C80F0005029D /* _ChanChannel.h */,
@@ -986,6 +1024,12 @@
 				0AA8E1461715D5DF0010F99A /* ChanChannelOwnedTableController.m in Sources */,
 				0AA8E1491715D73E0010F99A /* ChanChannelOwnedTableCell.m in Sources */,
 				0A5F5E9E1715DC9200687A26 /* ChanChannelCreateUpdateViewController.m in Sources */,
+				B6396D091715C469004CEA25 /* _ChanSlidePost.m in Sources */,
+				B6396D0F1715C473004CEA25 /* ChanSlidePost.m in Sources */,
+				B63B64AE1716580000885E4B /* _ChanSlidesPost.m in Sources */,
+				B63B64B11716580B00885E4B /* ChanSlidesPost.m in Sources */,
+				B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */,
+				B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
