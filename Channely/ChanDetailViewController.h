@@ -11,7 +11,7 @@
 #import "ChanSearchBarViewController.h"
 #import "ChanChannel.h"
 
-@interface ChanDetailViewController : UIViewController <UITabBarDelegate, UIPopoverControllerDelegate>
+@interface ChanDetailViewController : UIViewController <UITabBarDelegate, UIPopoverControllerDelegate, UISearchBarDelegate, DiscoverUITableViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;

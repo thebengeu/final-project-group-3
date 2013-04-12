@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tn0-8X-sK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="435" y="-2319"/>
+            <point key="canvasLocation" x="447" y="-2315"/>
         </scene>
         <!--Chan Channel Owned Table Controller - Channels-->
         <scene sceneID="1VI-kO-vAQ">
@@ -183,7 +183,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tra-fe-hbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2499" y="-2703"/>
+            <point key="canvasLocation" x="2435" y="-3469"/>
         </scene>
         <!--Chan Channel Create Update View Controller - Update Channel-->
         <scene sceneID="HCr-dY-vzp">
@@ -248,12 +248,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIT-ED-aQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3046" y="-2737"/>
+            <point key="canvasLocation" x="3162" y="-3469"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CzR-Ot-nZ5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Rq-t4-8Oi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="ChanChannelNavigationController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E9H-PT-7Yd" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -264,6 +263,7 @@
                         <segue destination="YGG-gb-KXL" kind="relationship" relationship="rootViewController" id="thc-UU-HIz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Rq-t4-8Oi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1407" y="-2839"/>
         </scene>
@@ -280,6 +280,9 @@
                                     <constraint firstAttribute="width" constant="280" id="ZWM-uJ-Li1"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HWt-KQ-vNM" id="GOO-aE-PsF"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -296,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3z-y8-Yuh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-477" y="-1408"/>
+            <point key="canvasLocation" x="-477" y="-1398"/>
         </scene>
         <!--Chan Detail View Controller - Detail-->
         <scene sceneID="16">
@@ -307,7 +310,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
-                            <segue destination="udZ-EX-hhA" kind="embed" identifier="embeddedTabBarSegue" id="ghE-XP-uEC"/>
+                            <segue destination="OGg-I2-UC3" kind="embed" id="GF4-26-4TO"/>
                         </connections>
                     </containerView>
                     <toolbarItems/>
@@ -333,32 +336,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-498" y="-1176"/>
-        </scene>
-        <!--Chan Hidden Tab Bar Controller - HomeTabController-->
-        <scene sceneID="DlC-I2-XLZ">
-            <objects>
-                <tabBarController storyboardIdentifier="" title="HomeTabController" definesPresentationContext="YES" id="udZ-EX-hhA" customClass="ChanHiddenTabBarController" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="VlV-xI-glL">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    </tabBar>
-                    <connections>
-                        <outlet property="tabBar" destination="VlV-xI-glL" id="Zyk-P8-VtI"/>
-                        <segue destination="OGg-I2-UC3" kind="relationship" relationship="viewControllers" id="agE-UX-WxO"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x0a-Sr-E0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="435" y="-1144"/>
+            <point key="canvasLocation" x="-418" y="-912"/>
         </scene>
         <!--Discover View Controller - Discover-->
         <scene sceneID="z73-81-IWT">
             <objects>
                 <viewController storyboardIdentifier="DiscoverViewController" title="Discover" providesPresentationContextTransitionStyle="YES" id="OGg-I2-UC3" customClass="DiscoverViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yN9-uP-K6p">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-tl-fIH">
@@ -394,14 +379,158 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="321-PP-i7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-1566"/>
+            <point key="canvasLocation" x="986" y="-1019"/>
+        </scene>
+        <!--Chan Search Table View Controller-->
+        <scene sceneID="i4F-y4-Wvb">
+            <objects>
+                <tableViewController storyboardIdentifier="ChanSearchTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1TV-gw-bjn" customClass="ChanSearchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LMN-QE-Bhx">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="117" id="DuA-x8-Oua" customClass="ChannelUITableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="768" height="117"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="748" height="116"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="AaZ-NN-6MP">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="337" id="Amr-hv-cUc"/>
+                                                <constraint firstAttribute="height" constant="54" id="sL0-VH-pwR"/>
+                                            </constraints>
+                                            <color key="textColor" red="0.79607850309999995" green="0.0" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Event Name" translatesAutoresizingMaskIntoConstraints="NO" id="js8-an-XSq">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="d1l-dS-Bh1"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="4FF-q7-rG5">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="293" id="cLR-1b-8um"/>
+                                                <constraint firstAttribute="height" constant="97" id="iCJ-6U-DNc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPR-LA-7kr">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="dee-CM-pKa"/>
+                                                <constraint firstAttribute="height" constant="21" id="kI0-92-feM"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="4FF-q7-rG5" firstAttribute="top" secondItem="DuA-x8-Oua" secondAttribute="top" constant="11" id="438-bE-5W9"/>
+                                    <constraint firstItem="4FF-q7-rG5" firstAttribute="leading" secondItem="AaZ-NN-6MP" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="FiL-Vq-w5o"/>
+                                    <constraint firstAttribute="bottom" secondItem="js8-an-XSq" secondAttribute="bottom" constant="21" id="L0v-Nl-Z16"/>
+                                    <constraint firstItem="AaZ-NN-6MP" firstAttribute="leading" secondItem="DuA-x8-Oua" secondAttribute="leading" constant="10" id="MZD-9z-6rK"/>
+                                    <constraint firstItem="js8-an-XSq" firstAttribute="leading" secondItem="AaZ-NN-6MP" secondAttribute="leading" type="default" id="PIL-rl-DAg"/>
+                                    <constraint firstItem="nPR-LA-7kr" firstAttribute="leading" secondItem="DuA-x8-Oua" secondAttribute="leading" constant="20" type="default" id="gfB-xb-J5o"/>
+                                    <constraint firstItem="nPR-LA-7kr" firstAttribute="centerY" secondItem="4FF-q7-rG5" secondAttribute="centerY" type="default" id="nAN-Yb-y3X"/>
+                                    <constraint firstItem="4FF-q7-rG5" firstAttribute="leading" secondItem="js8-an-XSq" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="p4O-nv-Ypm"/>
+                                    <constraint firstItem="AaZ-NN-6MP" firstAttribute="top" secondItem="DuA-x8-Oua" secondAttribute="top" constant="5" id="zhN-hv-iaL"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="channelNameTextView" destination="AaZ-NN-6MP" id="Pfw-2Q-5dc"/>
+                                    <outlet property="descriptionTextView" destination="4FF-q7-rG5" id="tS0-ra-EB7"/>
+                                    <outlet property="eventNameTextView" destination="js8-an-XSq" id="xyG-FU-5gc"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChannelCell" rowHeight="100" id="9ag-hl-NAy" customClass="ChannelUITableViewCell">
+                                <rect key="frame" x="0.0" y="139" width="768" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="748" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="#Hashtag" translatesAutoresizingMaskIntoConstraints="NO" id="K43-z3-7f2">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="bor-qS-2B2"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="H3b-Cv-HUc">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="fSh-a3-K8i"/>
+                                                <constraint firstAttribute="width" constant="337" id="zzF-pk-gyT"/>
+                                            </constraints>
+                                            <color key="textColor" red="0.79607850309999995" green="0.0" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="H3b-Cv-HUc" firstAttribute="top" secondItem="9ag-hl-NAy" secondAttribute="top" constant="3" id="aJm-MV-SpY"/>
+                                    <constraint firstItem="K43-z3-7f2" firstAttribute="trailing" secondItem="H3b-Cv-HUc" secondAttribute="trailing" type="default" id="f4j-Fa-998"/>
+                                    <constraint firstItem="K43-z3-7f2" firstAttribute="top" secondItem="9ag-hl-NAy" secondAttribute="top" constant="45" id="gYI-eu-9Co"/>
+                                    <constraint firstItem="K43-z3-7f2" firstAttribute="leading" secondItem="9ag-hl-NAy" secondAttribute="leading" constant="10" id="gxT-fp-t2H"/>
+                                    <constraint firstItem="K43-z3-7f2" firstAttribute="leading" secondItem="H3b-Cv-HUc" secondAttribute="leading" type="default" id="j20-fZ-119"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="channelNameTextView" destination="H3b-Cv-HUc" id="SUp-uC-dRz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1TV-gw-bjn" id="GRX-6n-bCT"/>
+                            <outlet property="delegate" destination="1TV-gw-bjn" id="wRF-n5-crH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VBc-A9-28Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3152" y="-2170"/>
         </scene>
         <!--ChannelUI Table View Controller-->
         <scene sceneID="5p6-Vu-Wto">
             <objects>
-                <tableViewController id="5Ec-5s-YOF" customClass="ChannelUITableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChannelUITableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ec-5s-YOF" customClass="ChannelUITableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="117" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Z9-QO-pHs">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="485"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="534"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -511,7 +640,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXy-ju-O6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2357" y="-1549"/>
+            <point key="canvasLocation" x="2289" y="-1585"/>
         </scene>
         <!--Channel View Controller-->
         <scene sceneID="gAk-qM-kwa">
@@ -1675,12 +1804,6 @@
                 <relationship kind="outlet" name="searchButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
-        <class className="ChanHiddenTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanHiddenTabBarController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
-            </relationships>
-        </class>
         <class className="ChanImagePostCell" superclassName="ChanPostCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostCell.h"/>
             <relationships>
@@ -1812,7 +1935,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="gDw-y5-8wA"/>
         <segue reference="HFz-yd-cxk"/>
+        <segue reference="gDw-y5-8wA"/>
     </inferredMetricsTieBreakers>
 </document>

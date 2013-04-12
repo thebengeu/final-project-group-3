@@ -10,8 +10,9 @@
 
 @class ChanEvent;
 
-@protocol DiscoverUITableCellDelegate <NSObject>
+@protocol DiscoverUITableCellDelegate
 
+@optional
 - (void)selectMapAnnotationForChannel: (id)cell;
 
 @end

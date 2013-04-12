@@ -9,6 +9,9 @@
 #import "ChanDetailViewController.h"
 #import "ChannelViewController.h"
 #import "ChanMenuViewController.h"
+#import "ChanSearchBarViewController.h"
+#import "ChanEvent.h"
+#import "ChanSearchTableViewController.h"
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
@@ -21,7 +24,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 @property (weak) UIPopoverController *_menuSegue;
 
 @property UIPopoverController *searchPopover;
-@property ChanSearchBarViewController *searchBarViewController;
+
 @property UIPopoverController *channelPopover;
 
 - (CGSize) calcMenuPopoverSize;
@@ -49,7 +52,9 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
         self._homeTabController = (UITabBarController *)segue.destinationViewController;
     } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         [_searchPopover dismissPopoverAnimated:YES];
+        _searchPopover = nil;
         [_channelPopover dismissPopoverAnimated:YES];
+        _channelPopover = nil;
         
         _menuSegue = ((UIStoryboardPopoverSegue *)segue).popoverController;
         _menuSegue.popoverContentSize = [self calcMenuPopoverSize];
@@ -77,19 +82,22 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
-    if (self.searchPopover != nil)
+    if (_searchPopover != nil)
         return;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    _searchBarViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchBarViewController"];
-//    [_searchBarViewController setDelegate:self];
+    ChanSearchBarViewController *searchBarViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchBarViewController"];
+    [searchBarViewController setDelegate:self];
     
-    self.searchPopover = [[UIPopoverController alloc]initWithContentViewController:_searchBarViewController];
-    self.searchPopover.delegate = self;
-    [self.searchPopover presentPopoverFromBarButtonItem:self.searchButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    _searchPopover = [[UIPopoverController alloc]initWithContentViewController:searchBarViewController];
+    _searchPopover.delegate = self;
+    [_searchPopover presentPopoverFromBarButtonItem:_searchButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
     
     [_channelPopover dismissPopoverAnimated:YES];
+    _channelPopover = nil;
     [_menuSegue dismissPopoverAnimated:YES];
+    _menuSegue = nil;
 }
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
@@ -105,8 +113,11 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 - (void)startChannel:(ChanChannel*)channel{
     [_searchPopover dismissPopoverAnimated:YES];
+    _searchPopover = nil;
     [_menuSegue dismissPopoverAnimated:YES];
+    _menuSegue = nil;
     [_channelPopover dismissPopoverAnimated:YES];
+    _channelPopover = nil;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
@@ -118,8 +129,9 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 -(void)showChannelList{
     [_searchPopover dismissPopoverAnimated:YES];
+    _searchPopover = nil;
     [_menuSegue dismissPopoverAnimated:YES];
-    
+    _menuSegue = nil;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     UIViewController *channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelListViewController"];
@@ -130,11 +142,45 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     [_channelPopover presentPopoverFromBarButtonItem:_menuButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
     return;
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [_searchPopover dismissPopoverAnimated:YES];
+    _searchPopover = nil;
+    [_menuSegue dismissPopoverAnimated:YES];
+    _menuSegue = nil;
+    [_channelPopover dismissPopoverAnimated:YES];
+    _channelPopover = nil;
     
-    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    //UIViewController *channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelListViewController"];
+    NSString *searchTerm = [searchBar text];
     
-    //[[self navigationController]pushViewController:channelNavigationController animated:NO];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChanSearchTableViewController *searchController = [storyboard instantiateViewControllerWithIdentifier:@"ChanSearchTableViewController"];
+    //searchController.delegate = self;
+    
+    [[self navigationController]pushViewController:searchController animated:YES];
+
+    //  Search
+    CLLocation * location = [[CLLocation alloc]initWithLatitude:1.294457 longitude:103.773956];
+
+    [ChanEvent search:location.coordinate withinDistance:100000.0 withCompletion:^(NSArray *events, NSError *error) {
+        [searchController.refreshControl endRefreshing];
+        
+        NSArray *channelList = events;
+      //  [searchController setChannelList: channelList];
+    }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [tableView cellForRowAtIndexPath:indexPath];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
+    channelViewController.channel = [[cell event]channel];
+    
+    [[self navigationController]pushViewController:channelViewController animated:YES];
+    
 }
 
 @end

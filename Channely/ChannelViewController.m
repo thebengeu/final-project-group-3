@@ -352,13 +352,12 @@
 }
 
 
-
 -(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
     //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
 }
 
-#pragma mark Atatch Picker Controller Delegate
+#pragma mark Attach Picker Controller Delegate
 - (void) pickImage:(id)sender {
     [_attachPickerPopover dismissPopoverAnimated:NO];
     _attachPickerPopover = nil;

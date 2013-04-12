@@ -35,4 +35,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [[self delegate]searchBarSearchButtonClicked:searchBar];
+}
+
 @end

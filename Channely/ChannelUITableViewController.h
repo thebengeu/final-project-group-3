@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChannelUITableViewCell.h"
 
-@protocol DiscoverUITableViewControllerDelegate <NSObject, DiscoverUITableCellDelegate>
+@protocol DiscoverUITableViewControllerDelegate <DiscoverUITableCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
