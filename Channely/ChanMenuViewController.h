@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanDetailViewController.h"
 
 @interface ChanMenuViewController : UIViewController
 
@@ -14,4 +15,6 @@
 - (IBAction)signup:(id)sender;
 - (IBAction)channels:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *channelButton;
+@property ChanDetailViewController *mainController;
+
 @end

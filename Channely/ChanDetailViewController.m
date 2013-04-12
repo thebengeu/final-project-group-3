@@ -8,6 +8,7 @@
 
 #import "ChanDetailViewController.h"
 #import "ChannelViewController.h"
+#import "ChanMenuViewController.h"
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
@@ -21,6 +22,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 @property UIPopoverController *searchPopover;
 @property ChanSearchBarViewController *searchBarViewController;
+@property UIPopoverController *channelPopover;
 
 - (CGSize) calcMenuPopoverSize;
 
@@ -29,6 +31,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 @implementation ChanDetailViewController
 @synthesize _homeTabController;
 @synthesize _menuSegue;
+
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -45,8 +48,15 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     if ([segue.identifier isEqualToString:cTabBarSegueIdentifier]) {
         self._homeTabController = (UITabBarController *)segue.destinationViewController;
     } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
+        [_searchPopover dismissPopoverAnimated:YES];
+        [_channelPopover dismissPopoverAnimated:YES];
+        
         _menuSegue = ((UIStoryboardPopoverSegue *)segue).popoverController;
         _menuSegue.popoverContentSize = [self calcMenuPopoverSize];
+        _menuSegue.delegate = self;
+        ChanMenuViewController *content = (ChanMenuViewController*)_menuSegue.contentViewController;
+        content.mainController = self;
+        
     } 
 }
 
@@ -56,6 +66,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     } else if ([identifier isEqualToString:cMenuSegueIdentifier]) {
         return (_menuSegue == nil);
     } else {
+        
         return YES;
     }
 }
@@ -76,15 +87,26 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     self.searchPopover = [[UIPopoverController alloc]initWithContentViewController:_searchBarViewController];
     self.searchPopover.delegate = self;
     [self.searchPopover presentPopoverFromBarButtonItem:self.searchButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    [_channelPopover dismissPopoverAnimated:YES];
+    [_menuSegue dismissPopoverAnimated:YES];
 }
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     if (popoverController == _searchPopover)
         _searchPopover = nil;
+    if (popoverController == _menuSegue)
+        _menuSegue = nil;
+    if (popoverController == _channelPopover)
+        _channelPopover = nil;
+
 }
 
 - (void)startChannel:(ChanChannel*)channel{
+    [_searchPopover dismissPopoverAnimated:YES];
+    [_menuSegue dismissPopoverAnimated:YES];
+    [_channelPopover dismissPopoverAnimated:YES];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
@@ -93,5 +115,26 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     [[self navigationController]pushViewController:channelViewController animated:YES];
 }
 
+
+-(void)showChannelList{
+    [_searchPopover dismissPopoverAnimated:YES];
+    [_menuSegue dismissPopoverAnimated:YES];
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    UIViewController *channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelListViewController"];
+    
+    _channelPopover = [[UIPopoverController alloc]initWithContentViewController:channelNavigationController];
+    _channelPopover.delegate = self;
+    
+    [_channelPopover presentPopoverFromBarButtonItem:_menuButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+    return;
+    
+    //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    //UIViewController *channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelListViewController"];
+    
+    //[[self navigationController]pushViewController:channelNavigationController animated:NO];
+}
 
 @end
