@@ -8,10 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChanSearchBarViewController : UIViewController <UISearchBarDelegate>
-
+@interface ChanSearchBarViewController : UIViewController 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
-@property id<UISearchBarDelegate> delegate;
 
 @end
