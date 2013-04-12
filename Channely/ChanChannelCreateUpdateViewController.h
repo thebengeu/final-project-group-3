@@ -22,6 +22,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *hashtag;
 
 - (IBAction)createOrUpdate:(id)sender;
-- (IBAction)enter:(id)sender;
+
 
 @end

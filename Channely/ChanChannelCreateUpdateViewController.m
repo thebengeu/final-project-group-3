@@ -69,11 +69,4 @@
     }
 }
 
-- (IBAction)enter:(id)sender {
-    id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
-    ChanDetailViewController *detail = [[rootVC childViewControllers]objectAtIndex:0];
-    
-    [detail startChannel:_channel];
-}
-
 @end

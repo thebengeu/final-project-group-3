@@ -17,6 +17,7 @@ static NSTimeInterval const cDiscoveredEntryTTL = 30.0; // Seconds.
 static NSUInteger const cTopPeers = 5;
 static NSString *const cURLStringFormat = @"http://%@:%d/%@";
 static NSUInteger const cHttpPort = 80;
+static NSUInteger const cChunkMaxDifference = 3;
 
 @interface HLSLoadBalancer ()
 // Internal.
@@ -25,6 +26,7 @@ static NSUInteger const cHttpPort = 80;
 @property (strong) NSNetServiceBrowser *_browser;
 @property (atomic, strong) NSMutableDictionary *_discoveredRecordings;
 @property (strong) NSTimer *_ttlTimer;
+@property (strong) NSMutableSet *_resolvingNetServices;
 
 // Singleton Methods
 - (id) initWithDomain:(NSString *)domain serviceName:(NSString *)name;
@@ -53,6 +55,7 @@ static NSUInteger const cHttpPort = 80;
 @synthesize _browser;
 @synthesize _discoveredRecordings;
 @synthesize _ttlTimer;
+@synthesize _resolvingNetServices;
 
 static HLSLoadBalancer * _internal;
 
@@ -79,6 +82,7 @@ static HLSLoadBalancer * _internal;
         _serviceName = name;
         _domain = domain;
         _discoveredRecordings = [NSMutableDictionary dictionary];
+        _resolvingNetServices = [NSMutableSet set];
         
         [self startDiscovery];
     }
@@ -97,12 +101,19 @@ static HLSLoadBalancer * _internal;
 
 #pragma mark NetService Browser Delegate
 - (void) netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing {    
+    NSLog(@"netservicebrowser found service."); // DEBUG
+    
+    // We need to store a strong reference to the object so that it does not get released when this method returns.
+    [_resolvingNetServices addObject:netService];
+    
     netService.delegate = self;
     [netService resolveWithTimeout:cNetServiceResolveTimeout];
 }
 
 #pragma mark NetService Delegate
 - (void) netServiceDidResolveAddress:(NSNetService *)sender {
+    NSLog(@"net service did resolve address."); // DEBUG
+    
     for (NSData *addrData in sender.addresses) {
         NSString *dd4 = [HLSLoadBalancer dottedDecimalFromSocketAddress:addrData];
         
@@ -114,6 +125,9 @@ static HLSLoadBalancer * _internal;
         NSDictionary *txtRecords = [NSNetService dictionaryFromTXTRecordData:sender.TXTRecordData];
         [txtRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             NSString *availableRecording = (NSString *)key;
+            
+            NSLog(@"%@", availableRecording); // DEBUG
+            
             HLSAdvertisementData *recordingDetails = [HLSAdvertisementData advertisementFromData:(NSData *)obj forPeerWithAddress:dd4];
             
             @synchronized(_discoveredRecordings) {
@@ -131,10 +145,14 @@ static HLSLoadBalancer * _internal;
             }
         }];
     }
+    
+    // Remove the strong reference stored previously to free memory.
+    [_resolvingNetServices removeObject:sender];
 }
 
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
     // Ignore.
+    NSLog(@"did not resolve service.");
 }
 
 #pragma mark Service Timer
@@ -166,6 +184,8 @@ static HLSLoadBalancer * _internal;
     HLSAdvertisementData *selectedData = nil;
     
     @synchronized(_discoveredRecordings) {
+        NSLog(@"%@", _discoveredRecordings); // DEBUG
+        
         NSMutableArray *hostingPeers = [_discoveredRecordings objectForKey:rId];
         
         // Case where a local peer that hosts the content does not exist.
@@ -189,7 +209,11 @@ static HLSLoadBalancer * _internal;
             }];
             
             // Random peer selection for load balancing.
-            NSUInteger peerIndex = arc4random_uniform(cTopPeers);
+            if (hostingPeers.count == 0) {
+                return nil;
+            }
+            NSUInteger topLimit = MIN(cTopPeers, hostingPeers.count);
+            NSUInteger peerIndex = arc4random_uniform(topLimit);
             selectedData = [hostingPeers objectAtIndex:peerIndex];
         }
     }

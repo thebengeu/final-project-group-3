@@ -16,6 +16,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *hashtag;
 
 @property ChanChannel *channel;
-
+- (IBAction)enter:(id)sender;
 
 @end

@@ -86,12 +86,38 @@
     
     [videoThumbnailPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     [videoThumbnailPostMapping addConnectionForRelationship:@"video" connectedBy:@{ @"videoId": @"id" }];
+        
+    RKEntityMapping *slidesPostMapping = [RKEntityMapping mappingForEntityForName:@"SlidesPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [slidesPostMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"_channel":   @"channelId",
+     @"content":    @"content",
+     @"time":       @"createdAt",
+     @"url":        @"url",
+     @"type":       @"type",
+     @"username":   @"username"}];
+    slidesPostMapping.identificationAttributes = @[ @"id" ];
+
+    [slidesPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     
+    RKEntityMapping *slidePostMapping = [RKEntityMapping mappingForEntityForName:@"SlidePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
+    [slidePostMapping addAttributeMappingsFromDictionary:@{
+     @"_id":        @"id",
+     @"_channel":   @"channelId",
+     @"_slidesPost":     @"slidesPostId",
+     @"url":        @"url"}];
+    slidePostMapping.identificationAttributes = @[ @"id" ];
+    
+    [slidePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [slidePostMapping addConnectionForRelationship:@"slidesPost" connectedBy:@{ @"slidesPostId": @"id" }];
+
     RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"image" objectMapping:imagePostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"video" objectMapping:videoPostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"videoThumbnail" objectMapping:videoThumbnailPostMapping]];
+    [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"slides" objectMapping:slidesPostMapping]];
+    [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"slide" objectMapping:slidePostMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping pathPattern:PATH_POSTS_UNIFIED_GET keyPath:nil statusCodes:statusCodes];
     
