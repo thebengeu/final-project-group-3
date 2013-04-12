@@ -44,7 +44,7 @@
 #pragma mark - Init
 - (void)commonInit
 {
-    _columnCount = 2;
+    _columnCount = 4;
     _itemWidth = 140.0f;
     _sectionInset = UIEdgeInsetsZero;
 }

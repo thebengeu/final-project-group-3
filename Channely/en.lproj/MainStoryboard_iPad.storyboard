@@ -575,18 +575,13 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="B2K-lE-h2A">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M1p-V6-ZHr">
-                            <size key="itemSize" width="182" height="173"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="9uQ-ts-pzd" customClass="UICollectionViewWaterfallLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TextCell" id="Oag-Ig-RTF" customClass="ChanTextCell">
-                                <rect key="frame" x="0.0" y="0.0" width="182" height="173"/>
+                                <rect key="frame" x="0.0" y="0.0" width="174" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="182" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="174" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEM-gn-K4x">
@@ -601,10 +596,9 @@
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbK-r9-nIf">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="156" id="EEW-nm-8KH"/>
                                                 <constraint firstAttribute="height" constant="120" id="KWM-W6-lgJ"/>
                                             </constraints>
-                                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="11"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -613,21 +607,23 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="centerX" secondItem="Oag-Ig-RTF" secondAttribute="centerX" type="default" id="D4U-Dg-Gfz"/>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="27" id="XNy-Jc-mnL"/>
-                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="centerX" secondItem="hbK-r9-nIf" secondAttribute="centerX" type="default" id="Yfh-ey-HNb"/>
-                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="11" id="vqw-We-jbK"/>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="centerX" secondItem="Oag-Ig-RTF" secondAttribute="centerX" type="default" id="562-T9-2VP"/>
+                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="2" id="GRe-a5-uqk"/>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="28" id="LeL-T1-xS3"/>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="20" type="default" id="Ufl-ao-eyY"/>
+                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="17" id="x0a-gV-0nN"/>
                                 </constraints>
+                                <size key="customSize" width="174" height="136"/>
                                 <connections>
                                     <outlet property="textView" destination="hbK-r9-nIf" id="ivE-B2-7pV"/>
                                     <outlet property="titleView" destination="LEM-gn-K4x" id="UPq-gR-hCW"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Xg6-95-Zvj" customClass="ChanImageCell">
-                                <rect key="frame" x="195" y="0.0" width="182" height="173"/>
+                                <rect key="frame" x="184" y="0.0" width="158" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="182" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="158" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-fU-x24">
@@ -641,18 +637,19 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="4OF-fU-x24" firstAttribute="centerX" secondItem="Xg6-95-Zvj" secondAttribute="centerX" type="default" id="Btm-LO-hdY"/>
-                                    <constraint firstAttribute="bottom" secondItem="4OF-fU-x24" secondAttribute="bottom" constant="20" type="default" id="CLs-kE-ayK"/>
+                                    <constraint firstItem="4OF-fU-x24" firstAttribute="centerX" secondItem="Xg6-95-Zvj" secondAttribute="centerX" type="default" id="UUM-Rt-SyF"/>
+                                    <constraint firstItem="4OF-fU-x24" firstAttribute="centerY" secondItem="Xg6-95-Zvj" secondAttribute="centerY" type="default" id="Z7A-P0-ISN"/>
                                 </constraints>
+                                <size key="customSize" width="158" height="136"/>
                                 <connections>
                                     <outlet property="imageView" destination="4OF-fU-x24" id="rsa-8J-S1B"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="JmJ-JF-038" customClass="ChanVideoCell">
-                                <rect key="frame" x="391" y="0.0" width="182" height="173"/>
+                                <rect key="frame" x="352" y="0.0" width="165" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="182" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="165" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zx8-Pe-Gf5">
@@ -665,15 +662,16 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="leading" secondItem="JmJ-JF-038" secondAttribute="leading" constant="20" type="default" id="3Zg-oF-4Zq"/>
-                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" constant="20" type="default" id="RxQ-qz-BLS"/>
+                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="leading" secondItem="JmJ-JF-038" secondAttribute="leading" constant="20" type="default" id="9OS-t2-ADU"/>
+                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" constant="3" id="kh8-GY-8kU"/>
                                 </constraints>
+                                <size key="customSize" width="165" height="136"/>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoThumbnailCell" id="KYG-Rc-jPR" customClass="ChanVideoThumbnailCell">
-                                <rect key="frame" x="586" y="0.0" width="182" height="173"/>
+                                <rect key="frame" x="527" y="0.0" width="159" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="182" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="159" height="136"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1db-tF-vKd">
@@ -686,9 +684,10 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1db-tF-vKd" firstAttribute="top" secondItem="KYG-Rc-jPR" secondAttribute="top" constant="20" type="default" id="Ed4-pa-0O8"/>
-                                    <constraint firstItem="1db-tF-vKd" firstAttribute="leading" secondItem="KYG-Rc-jPR" secondAttribute="leading" constant="20" type="default" id="GjI-CK-Eqr"/>
+                                    <constraint firstItem="1db-tF-vKd" firstAttribute="top" secondItem="KYG-Rc-jPR" secondAttribute="top" constant="3" id="a4b-Um-39C"/>
+                                    <constraint firstItem="1db-tF-vKd" firstAttribute="leading" secondItem="KYG-Rc-jPR" secondAttribute="leading" constant="20" type="default" id="dhJ-GU-lCD"/>
                                 </constraints>
+                                <size key="customSize" width="159" height="136"/>
                             </collectionViewCell>
                         </cells>
                         <connections>

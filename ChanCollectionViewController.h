@@ -13,15 +13,20 @@
 #import "ChanImagePost.h"
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
+#import "UICollectionViewWaterfallLayout.h"
 
 @class ChanChannel;
 
-@interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate>
+@interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+
 @property ChanChannel *channel;
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
+ heightForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

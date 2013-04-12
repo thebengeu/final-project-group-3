@@ -11,7 +11,10 @@
 @interface ChanCollectionViewController () {
     NSMutableArray *_objectChanges;
     NSMutableArray *_sectionChanges;
+    
 }
+
+@property (nonatomic, weak) IBOutlet UICollectionViewWaterfallLayout *waterfallLayout;
 
 @end
 
@@ -33,6 +36,11 @@
     // Initialize posts array
     _objectChanges = [NSMutableArray array];
     _sectionChanges = [NSMutableArray array];
+    
+    // Init and update layout
+    _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
+    _waterfallLayout.delegate = self;
+    [self updateLayout];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,6 +85,32 @@
     
     [cell setPostContent:post];
     return cell;
+}
+
+#pragma mark - Waterfall Layout methods
+
+// TODO: cleanup 
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if ([[[post class] description] compare:[ChanTextPost description]] == NSOrderedSame) {
+        return 140.0f;
+    } else if ([[[post class] description] compare:[ChanImagePost description]] == NSOrderedSame) {
+        return 350.0f;
+    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame) {
+        return 140.0f;
+    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame) {
+        return 300.0f;
+    } else {
+        return 140.0f;
+    }
+}
+
+// Used for updating the layout of the collection view when screen orientation changes, etc
+// TODO: update and fix
+-(void)updateLayout {
+    _waterfallLayout.columnCount = 4;
+    _waterfallLayout.itemWidth = 140.0f;
 }
 
 #pragma mark - Fetched results controller
