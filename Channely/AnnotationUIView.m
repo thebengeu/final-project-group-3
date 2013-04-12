@@ -43,6 +43,7 @@
         UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         [self setImage:blank];
+        [self setContentMode:UIViewContentModeScaleAspectFit];
     }
     return self;
 }

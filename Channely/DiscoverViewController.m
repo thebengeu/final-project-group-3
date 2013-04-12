@@ -46,7 +46,7 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"DiscoverChannelContainerSeque"]) {
+    if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
         ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
     }

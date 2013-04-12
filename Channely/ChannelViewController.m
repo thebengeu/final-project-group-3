@@ -33,7 +33,11 @@
 
 @property UIBarButtonItem *createEventButton;
 
+@property UIBarButtonItem *toggleButton;
+
 @property ChanCreateEventViewController *createEventViewController;
+
+@property UIView *currentContent;
 
 @end
 
@@ -65,16 +69,11 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    
-   
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Get posts and populate
-    [self populateChannelPost];
     
     NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
@@ -93,17 +92,23 @@
         self.posts = [NSMutableArray array];
     }
     
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-    [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
-    _postTableViewController.refreshControl = refreshControl;
-    
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
     _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
     [rightBarItems addObject:_createEventButton];
     //  Add more items if needed
+    _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
+    [rightBarItems addObject:_toggleButton];
 
     self.navigationItem.rightBarButtonItems = rightBarItems;
+    
+   }
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    //  Load contents
+    [self toggleChannelLayout];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -117,6 +122,43 @@
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
 }
+
+
+-(void) toggleChannelLayout{
+    CGRect frame = [self contentContainer].frame;
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    if (_currentContent == [_collectionViewController view] && _currentContent != nil){
+        //  To change to ChanCollectionViewController
+
+        if (_postTableViewController == nil){
+            _postTableViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelPostTableViewController"];
+            UIRefreshControl *refreshControl = [UIRefreshControl new];
+            [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
+            _postTableViewController.refreshControl = refreshControl;
+        }
+        
+        [_currentContent removeFromSuperview];
+        _currentContent = [_postTableViewController view];
+        [_toggleButton setTitle:@"Collection"];
+       
+    } else {
+        //  to change to ChannelPostTableViewController
+        
+        if (_collectionViewController == nil)
+            _collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCollectionViewController"];
+        
+        [_currentContent removeFromSuperview];
+        _currentContent = [_collectionViewController view];
+        [_toggleButton setTitle:@"Temporal"];
+    }
+    
+    [self populateChannelPost];
+    _currentContent.frame = frame;
+    [[self view]addSubview:_currentContent];
+}
+
 
 -(void)populateChannelPost
 {

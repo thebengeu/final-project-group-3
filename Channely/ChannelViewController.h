@@ -10,14 +10,19 @@
 #import "ChannelPostTableViewController.h"
 #import "AttachPickerViewController.h"
 #import "ChanCreateEventViewController.h"
+#import "ChanCollectionViewController.h"
 
 @class ChanChannel;
 
 @interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate>
 
+@property (strong, nonatomic) IBOutlet UIView *contentContainer;
+
 @property ChanChannel *channel;
 
 @property ChannelPostTableViewController *postTableViewController;
+
+@property ChanCollectionViewController *collectionViewController;
 
 @property NSMutableArray *posts;
 

@@ -147,7 +147,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    NSLog(@"asd");
     NSString *searchTerm = [searchBar text];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
