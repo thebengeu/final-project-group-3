@@ -6,31 +6,29 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "HLSAdvertisementData.h"
+#import "HLSStreamAdvertisement.h"
 
 static NSString *const cAdFormat = @"%d,%@";
 static NSUInteger const cExpectedDataComponents = 2;
 static NSString *const cProtocolFormat = @"http://%@";
-static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d, found=%@]";
+static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d]";
 
-@interface HLSAdvertisementData ()
+@interface HLSStreamAdvertisement ()
 //Redefinitions.
 @property (readwrite, strong) NSString *hostDD4;
 @property (readwrite, strong) NSString *playlist;
 @property (nonatomic, readwrite) NSUInteger chunkCount;
-@property (readwrite, strong) NSDate *created;
 
 // Private Constructor
 - (id) initWithPlaylist:(NSString *)pl onHost:(NSString *)dd4 withChunkCount:(NSUInteger)count;
 
 @end
 
-@implementation HLSAdvertisementData
+@implementation HLSStreamAdvertisement
 // Redefinitions.
 @synthesize hostDD4;
 @synthesize playlist;
 @synthesize chunkCount;
-@synthesize created;
 
 #pragma mark Static Initialization Only
 // Overriden default init.
@@ -43,14 +41,13 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d, found=%@]"
     if (self = [super init]) {
         playlist = pl;
         chunkCount = count;
-        created = [NSDate date];
         hostDD4 = dd4;
     }
     return self;
 }
 
 #pragma mark External Static Methods
-+ (HLSAdvertisementData *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4 {
++ (HLSStreamAdvertisement *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4 {
     NSString *representativeString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *components = [representativeString componentsSeparatedByString:@","];
     
@@ -58,7 +55,7 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d, found=%@]"
         return nil;
     } else {
         NSUInteger count = [[components objectAtIndex:0] integerValue];
-        return [[HLSAdvertisementData alloc] initWithPlaylist:[components objectAtIndex:1] onHost:dd4 withChunkCount:count];
+        return [[HLSStreamAdvertisement alloc] initWithPlaylist:[components objectAtIndex:1] onHost:dd4 withChunkCount:count];
     }
 }
 
@@ -69,7 +66,7 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d, found=%@]"
 
 #pragma mark Utility
 - (NSString *) description {
-    return [NSString stringWithFormat:cDescFormat, hostDD4, playlist, chunkCount, created];
+    return [NSString stringWithFormat:cDescFormat, hostDD4, playlist, chunkCount];
 }
 
 @end

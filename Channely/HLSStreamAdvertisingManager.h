@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HLSStreamAdvertiser.h"
-#import "HLSAdvertisementData.h"
+#import "HLSStreamAdvertisement.h"
 
 @interface HLSStreamAdvertisingManager : NSObject
 @property (readonly) NSDictionary *advertisements;

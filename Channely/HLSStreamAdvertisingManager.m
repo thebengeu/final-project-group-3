@@ -59,7 +59,7 @@ static HLSStreamAdvertisingManager *_internal;
         [_advertisements removeObjectForKey:(NSString *)rId];
     }
     
-    NSString *packedAd = [HLSAdvertisementData packAdvertisementForChunkCount:count playlist:playlist];
+    NSString *packedAd = [HLSStreamAdvertisement packAdvertisementForChunkCount:count playlist:playlist];
     [_advertisements setObject:packedAd forKey:rId];
     
     [self pushAdvertisements];

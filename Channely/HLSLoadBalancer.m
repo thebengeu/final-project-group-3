@@ -12,7 +12,7 @@ static NSString *const cBonjourDomain = @"local.";
 static NSString *const cAppServiceName = @"_channely._tcp.";
 static NSTimeInterval const cNetServiceResolveTimeout = 5.0; // Seconds.
 static NSString *const cDD4AddressZero = @"0.0.0.0";
-static NSTimeInterval const cServiceTimerInterval = 10.0; // Seconds.
+static NSTimeInterval const cServiceTimerInterval = 15.0; // Seconds.
 static NSTimeInterval const cDiscoveredEntryTTL = 30.0; // Seconds.
 static NSUInteger const cTopPeers = 5;
 static NSString *const cURLStringFormat = @"http://%@:%d/%@";
@@ -25,8 +25,8 @@ static NSUInteger const cChunkMaxDifference = 3;
 @property (strong) NSString *_domain;
 @property (strong) NSNetServiceBrowser *_browser;
 @property (atomic, strong) NSMutableDictionary *_discoveredRecordings;
-@property (strong) NSTimer *_ttlTimer;
-@property (strong) NSMutableSet *_resolvingNetServices;
+@property (strong) NSTimer *_resolveTimer;
+@property (strong) NSMutableSet *_discoveredServices;
 
 // Singleton Methods
 - (id) initWithDomain:(NSString *)domain serviceName:(NSString *)name;
@@ -40,7 +40,9 @@ static NSUInteger const cChunkMaxDifference = 3;
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
 
 // Service Timer
-- (void) ttlTimerDidTick:(NSTimer *)timer;
+- (void) resolveTimerDidTick:(NSTimer *)timer;
+- (void) clearDiscoveredRecordings;
+- (void) resolveDiscoveredServices;
 
 // Utility
 + (void) removeAdvertisementsFromArray:(NSMutableArray *)array olderThan:(NSTimeInterval)limit;
@@ -54,8 +56,8 @@ static NSUInteger const cChunkMaxDifference = 3;
 @synthesize _domain;
 @synthesize _browser;
 @synthesize _discoveredRecordings;
-@synthesize _ttlTimer;
-@synthesize _resolvingNetServices;
+@synthesize _resolveTimer;
+@synthesize _discoveredServices;
 
 static HLSLoadBalancer * _internal;
 
@@ -82,7 +84,7 @@ static HLSLoadBalancer * _internal;
         _serviceName = name;
         _domain = domain;
         _discoveredRecordings = [NSMutableDictionary dictionary];
-        _resolvingNetServices = [NSMutableSet set];
+        _discoveredServices = [NSMutableSet set];
         
         [self startDiscovery];
     }
@@ -96,18 +98,22 @@ static HLSLoadBalancer * _internal;
     
     [_browser searchForServicesOfType:cAppServiceName inDomain:cBonjourDomain];
     
-    _ttlTimer = [NSTimer scheduledTimerWithTimeInterval:cServiceTimerInterval target:self selector:@selector(ttlTimerDidTick:) userInfo:nil repeats:YES];
+    _resolveTimer = [NSTimer scheduledTimerWithTimeInterval:cServiceTimerInterval target:self selector:@selector(resolveTimerDidTick:) userInfo:nil repeats:YES];
 }
 
 #pragma mark NetService Browser Delegate
 - (void) netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing {    
     NSLog(@"netservicebrowser found service."); // DEBUG
     
-    // We need to store a strong reference to the object so that it does not get released when this method returns.
-    [_resolvingNetServices addObject:netService];
+    // Store a reference to the service so we can periodically resolve it.
+    @synchronized(_discoveredServices) {
+        NSLog(@"service=%@", netService);
+        [_discoveredServices addObject:netService];
+    }
     
-    netService.delegate = self;
-    [netService resolveWithTimeout:cNetServiceResolveTimeout];
+    if (!moreServicesComing) {
+        [_browser searchForServicesOfType:cAppServiceName inDomain:cBonjourDomain];
+    }
 }
 
 #pragma mark NetService Delegate
@@ -128,7 +134,7 @@ static HLSLoadBalancer * _internal;
             
             NSLog(@"%@", availableRecording); // DEBUG
             
-            HLSAdvertisementData *recordingDetails = [HLSAdvertisementData advertisementFromData:(NSData *)obj forPeerWithAddress:dd4];
+            HLSStreamAdvertisement *recordingDetails = [HLSStreamAdvertisement advertisementFromData:(NSData *)obj forPeerWithAddress:dd4];
             
             @synchronized(_discoveredRecordings) {
                 NSMutableArray *hostingPeers = [_discoveredRecordings objectForKey:availableRecording];
@@ -145,43 +151,41 @@ static HLSLoadBalancer * _internal;
             }
         }];
     }
-    
-    // Remove the strong reference stored previously to free memory.
-    [_resolvingNetServices removeObject:sender];
 }
 
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
-    // Ignore.
     NSLog(@"did not resolve service.");
+    
+    // If we failed to resolve a service that was previously discovered, remove it from the list of discovered services.
+    [_discoveredServices removeObject:sender];
 }
 
 #pragma mark Service Timer
-- (void) ttlTimerDidTick:(NSTimer *)timer {
-    NSMutableArray *discarded = [NSMutableArray array];
-    
+- (void) resolveTimerDidTick:(NSTimer *)timer {
+    [self clearDiscoveredRecordings];
+    [self resolveDiscoveredServices];
+}
+
+- (void) clearDiscoveredRecordings {
     @synchronized(_discoveredRecordings) {
-        [_discoveredRecordings enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSString *recordingId = (NSString *)key;
-            NSMutableArray *hostingPeers = (NSMutableArray *)obj;
-            
-            @synchronized(hostingPeers) {
-                [HLSLoadBalancer removeAdvertisementsFromArray:hostingPeers olderThan:cDiscoveredEntryTTL];
-            }
-            
-            if (hostingPeers.count == 0) {
-                [discarded addObject:recordingId];
-            }
-        }];
-        
-        for (NSString *key in discarded) {
-            [_discoveredRecordings setObject:nil forKey:key];
-        }
+        [_discoveredRecordings removeAllObjects];
     }
+}
+
+- (void) resolveDiscoveredServices {
+    NSLog(@"re-resolving services.");
+    @synchronized(_discoveredServices) {
+        [_discoveredServices enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+            NSNetService *service = (NSNetService *)obj;
+            [service resolveWithTimeout:cNetServiceResolveTimeout];
+        }];
+    }
+    NSLog(@"finished resolving services.");
 }
 
 #pragma mark Peer Selection
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId {
-    HLSAdvertisementData *selectedData = nil;
+    HLSStreamAdvertisement *selectedData = nil;
     
     @synchronized(_discoveredRecordings) {
         NSLog(@"%@", _discoveredRecordings); // DEBUG
@@ -196,8 +200,8 @@ static HLSLoadBalancer * _internal;
         @synchronized(hostingPeers) {
             // Sort hostingPeers in descending order.
             [hostingPeers sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                HLSAdvertisementData *data1 = (HLSAdvertisementData *)obj1;
-                HLSAdvertisementData *data2 = (HLSAdvertisementData *)obj2;
+                HLSAdvertisementData *data1 = (HLSStreamAdvertisement *)obj1;
+                HLSAdvertisementData *data2 = (HLSStreamAdvertisement *)obj2;
                 
                 if (data1.chunkCount > data2.chunkCount) {
                     return NSOrderedAscending;
@@ -207,6 +211,8 @@ static HLSLoadBalancer * _internal;
                     return NSOrderedDescending;
                 }
             }];
+            
+            NSLog(@"hostingPeers=%@", hostingPeers); // DEBUG
             
             // Random peer selection for load balancing.
             if (hostingPeers.count == 0) {
@@ -228,7 +234,7 @@ static HLSLoadBalancer * _internal;
 + (void) removeAdvertisementsFromArray:(NSMutableArray *)array olderThan:(NSTimeInterval)limit {
     NSMutableArray *discarded = [NSMutableArray array];
     
-    for (HLSAdvertisementData *ad in array) {
+    for (HLSStreamAdvertisement *ad in array) {
         NSTimeInterval age = [ad.created timeIntervalSinceNow];
         if (age > limit) {
             [discarded addObject:ad];

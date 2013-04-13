@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HLSAdvertisementData.h"
+#import "HLSStreamAdvertisement.h"
 
 #include <arpa/inet.h>
 #include <stdlib.h>

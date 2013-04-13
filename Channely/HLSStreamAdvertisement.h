@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HLSAdvertisementData : NSObject
+@interface HLSStreamAdvertisement : NSObject
 @property (readonly, strong) NSString *hostDD4;
 @property (readonly, strong) NSString *playlist;
 @property (nonatomic, readonly) NSUInteger chunkCount;
-@property (readonly, strong) NSDate *created;
 
 - (id) init;
 - (NSString *) description;
 
-+ (HLSAdvertisementData *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4;
++ (HLSStreamAdvertisement *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4;
 + (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl;
 
 @end
