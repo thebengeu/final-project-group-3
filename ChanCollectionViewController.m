@@ -80,14 +80,15 @@ static CGFloat const kCellWidth = 180;
     ChanAbstractCell *cell;
     
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    if ([[[post class] description] compare:[ChanTextPost description]] == NSOrderedSame) {
+    Class postClass = [post class];
+
+    if (postClass == [ChanTextPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TextCell" forIndexPath:indexPath];
-    } else if ([[[post class] description] compare:[ChanImagePost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanImagePost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanVideoPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
-    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanVideoThumbnailPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoThumbnailCell" forIndexPath:indexPath];
     }
     
@@ -100,14 +101,15 @@ static CGFloat const kCellWidth = 180;
 // TODO: cleanup 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Class postClass = [post class];
     
-    if ([[[post class] description] compare:[ChanTextPost description]] == NSOrderedSame) {
+    if (postClass == [ChanTextPost class]) {
         return 140.0f;
-    } else if ([[[post class] description] compare:[ChanImagePost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanImagePost class]) {
         return 350.0f;
-    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanVideoPost class]) {
         return 140.0f;
-    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame) {
+    } else if (postClass == [ChanVideoThumbnailPost class]) {
         return 300.0f;
     } else {
         return 140.0f;
