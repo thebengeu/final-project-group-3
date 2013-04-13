@@ -68,7 +68,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
 
 }
 
-- (NSMutableArray*)postList
+- (NSArray*)postList
 {
     return _postList;
 }
