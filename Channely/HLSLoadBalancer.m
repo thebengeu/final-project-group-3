@@ -153,9 +153,6 @@ static HLSLoadBalancer * _internal;
     @synchronized(_monitoredServices) {
         [_monitoredServices addObject:sender];
     }
-    
-    // Update stored TXT Record Data.
-//    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
 }
 
 - (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict {
