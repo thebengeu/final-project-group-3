@@ -27,7 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //_searchBar.delegate = self;
+    
+    [_searchBar becomeFirstResponder];
 }
 
 @end

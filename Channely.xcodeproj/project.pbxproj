@@ -14,6 +14,11 @@
 		0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A937FBC170F52BB000A4079 /* AnnotationUIView.m */; };
 		0A991D0F1719119C00275B3B /* ChanSearchResultChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D0E1719119C00275B3B /* ChanSearchResultChannelCell.m */; };
 		0A991D12171911B000275B3B /* ChanSearchResultEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */; };
+		0A991D1D17193DF400275B3B /* ChanMenuAnonUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D1C17193DF300275B3B /* ChanMenuAnonUserViewController.m */; };
+		0A991D2017193E0700275B3B /* ChanMenuUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D1F17193E0700275B3B /* ChanMenuUserViewController.m */; };
+		0A991D2A1719486600275B3B /* ChanMenuLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D291719486600275B3B /* ChanMenuLoginViewController.m */; };
+		0A991D2E17194D0100275B3B /* ChanMenuSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D2D17194D0100275B3B /* ChanMenuSignupViewController.m */; };
+		0A991D311719590400275B3B /* ChanAnonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D301719590300275B3B /* ChanAnonUser.m */; };
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
 		0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7216F301B80017FECB /* NetAssociation.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -44,7 +49,6 @@
 		4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */; };
 		4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
-		4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */; };
 		4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
@@ -158,6 +162,16 @@
 		0A991D0E1719119C00275B3B /* ChanSearchResultChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchResultChannelCell.m; path = Channely/ChanSearchResultChannelCell.m; sourceTree = "<group>"; };
 		0A991D10171911B000275B3B /* ChanSearchResultEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSearchResultEventCell.h; path = Channely/ChanSearchResultEventCell.h; sourceTree = "<group>"; };
 		0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchResultEventCell.m; path = Channely/ChanSearchResultEventCell.m; sourceTree = "<group>"; };
+		0A991D1B17193DF300275B3B /* ChanMenuAnonUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuAnonUserViewController.h; path = Channely/ChanMenuAnonUserViewController.h; sourceTree = "<group>"; };
+		0A991D1C17193DF300275B3B /* ChanMenuAnonUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuAnonUserViewController.m; path = Channely/ChanMenuAnonUserViewController.m; sourceTree = "<group>"; };
+		0A991D1E17193E0700275B3B /* ChanMenuUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuUserViewController.h; path = Channely/ChanMenuUserViewController.h; sourceTree = "<group>"; };
+		0A991D1F17193E0700275B3B /* ChanMenuUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuUserViewController.m; path = Channely/ChanMenuUserViewController.m; sourceTree = "<group>"; };
+		0A991D281719486600275B3B /* ChanMenuLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuLoginViewController.h; path = Channely/ChanMenuLoginViewController.h; sourceTree = "<group>"; };
+		0A991D291719486600275B3B /* ChanMenuLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuLoginViewController.m; path = Channely/ChanMenuLoginViewController.m; sourceTree = "<group>"; };
+		0A991D2C17194D0100275B3B /* ChanMenuSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuSignupViewController.h; path = Channely/ChanMenuSignupViewController.h; sourceTree = "<group>"; };
+		0A991D2D17194D0100275B3B /* ChanMenuSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuSignupViewController.m; path = Channely/ChanMenuSignupViewController.m; sourceTree = "<group>"; };
+		0A991D2F1719590300275B3B /* ChanAnonUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAnonUser.h; path = Channely/ChanAnonUser.h; sourceTree = "<group>"; };
+		0A991D301719590300275B3B /* ChanAnonUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnonUser.m; path = Channely/ChanAnonUser.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTimeProtocol.h; sourceTree = "<group>"; };
 		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
@@ -210,8 +224,6 @@
 		4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloadOperation.h; sourceTree = "<group>"; };
 		4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloadOperation.m; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4A4F06DF1711D8C60007A7DF /* ChanMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuViewController.h; path = Channely/ChanMenuViewController.h; sourceTree = "<group>"; };
-		4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuViewController.m; path = Channely/ChanMenuViewController.m; sourceTree = "<group>"; };
 		4A4F06E11711D8C70007A7DF /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanVideoCaptureViewController.h; path = Channely/ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
 		4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanVideoCaptureViewController.m; path = Channely/ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
 		4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
@@ -453,6 +465,39 @@
 			name = CreateEvent;
 			sourceTree = "<group>";
 		};
+		0A991D131719353F00275B3B /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0A991D2B17194CD200275B3B /* User */,
+				0A991D271719482400275B3B /* Anonymous */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		0A991D271719482400275B3B /* Anonymous */ = {
+			isa = PBXGroup;
+			children = (
+				0A991D1B17193DF300275B3B /* ChanMenuAnonUserViewController.h */,
+				0A991D1C17193DF300275B3B /* ChanMenuAnonUserViewController.m */,
+				0A991D281719486600275B3B /* ChanMenuLoginViewController.h */,
+				0A991D291719486600275B3B /* ChanMenuLoginViewController.m */,
+				0A991D2C17194D0100275B3B /* ChanMenuSignupViewController.h */,
+				0A991D2D17194D0100275B3B /* ChanMenuSignupViewController.m */,
+				0A991D2F1719590300275B3B /* ChanAnonUser.h */,
+				0A991D301719590300275B3B /* ChanAnonUser.m */,
+			);
+			name = Anonymous;
+			sourceTree = "<group>";
+		};
+		0A991D2B17194CD200275B3B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0A991D1E17193E0700275B3B /* ChanMenuUserViewController.h */,
+				0A991D1F17193E0700275B3B /* ChanMenuUserViewController.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		0A99938416FD6E1400709D28 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +570,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0A991D131719353F00275B3B /* Menu */,
 				B6AB9B0817191B6200BDEA3B /* Utility */,
 				B63B64B217165DE000885E4B /* Slides */,
 				4ACD251A1715B509001542E8 /* P2P Video Player */,
@@ -537,8 +583,6 @@
 				B66FDCA216EF88A40042A36C /* MainStoryboard_iPad.storyboard */,
 				B66FDCAB16EF88A40042A36C /* ChanDetailViewController.h */,
 				B66FDCAC16EF88A40042A36C /* ChanDetailViewController.m */,
-				4A4F06DF1711D8C60007A7DF /* ChanMenuViewController.h */,
-				4A4F06E01711D8C60007A7DF /* ChanMenuViewController.m */,
 				4AA361FA17100C77009F703E /* ChanRootViewController.h */,
 				4AA361FB17100C77009F703E /* ChanRootViewController.m */,
 			);
@@ -1052,7 +1096,6 @@
 				B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */,
 				0A91BA1217116A0C0095FA01 /* SelectionAnnotation.m in Sources */,
 				0A91BA1517116A580095FA01 /* ChanCreateEventViewController.m in Sources */,
-				4A4F06E31711D8C70007A7DF /* ChanMenuViewController.m in Sources */,
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
 				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
 				0AA2CB3D1713F6A100D8C28F /* HLSLoadBalancer.m in Sources */,
@@ -1080,6 +1123,11 @@
 				B6AB9B0B17191B9200BDEA3B /* UIImage+normalizedOrientation.m in Sources */,
 				0A991D0F1719119C00275B3B /* ChanSearchResultChannelCell.m in Sources */,
 				0A991D12171911B000275B3B /* ChanSearchResultEventCell.m in Sources */,
+				0A991D1D17193DF400275B3B /* ChanMenuAnonUserViewController.m in Sources */,
+				0A991D2017193E0700275B3B /* ChanMenuUserViewController.m in Sources */,
+				0A991D2A1719486600275B3B /* ChanMenuLoginViewController.m in Sources */,
+				0A991D2E17194D0100275B3B /* ChanMenuSignupViewController.m in Sources */,
+				0A991D311719590400275B3B /* ChanAnonUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

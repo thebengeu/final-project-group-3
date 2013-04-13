@@ -35,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[self navigationItem]setTitle:@"Channels"];
 }
 
 
@@ -88,7 +90,10 @@
     }
     ChanChannel *channel = [_channels objectAtIndex:[indexPath row]];
     [cell.channelName setText: [channel name]];
-    [cell.hashtag setText: [channel hashTag]];
+    if ([[channel hashTag]length] > 0)
+        [cell.hashtag setText: [NSString stringWithFormat:@"#%@", [channel hashTag]]];
+    else
+        [cell.hashtag setText:@""];
     cell.channel = [_channels objectAtIndex:[indexPath row]];
     
     return cell;

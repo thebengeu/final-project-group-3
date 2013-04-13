@@ -16,10 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
-- (IBAction)searchButtonPressed:(id)sender;
-
 - (void)startChannel:(ChanChannel*)channel;
-
--(void)showChannelList;
 
 @end

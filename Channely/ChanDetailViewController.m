@@ -8,13 +8,10 @@
 
 #import "ChanDetailViewController.h"
 #import "ChannelViewController.h"
-#import "ChanMenuViewController.h"
 #import "ChanSearchTableViewController.h"
 
-NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
-NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
-CGFloat const cMenuPopoverWidth = 341.;
-CGFloat const cMaxMenuPopoverHeight = 704.;
+NSString *const cMenuSegueIdentifier = @"MenuSegue";
+NSString *const cSearchSegueIdentifier = @"SearchSegue";
 
 @interface ChanDetailViewController ()
 
@@ -22,9 +19,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 @property (weak) UIPopoverController *menuPopover;
 @property UIPopoverController *searchPopover;
-@property UIPopoverController *channelPopover;
-
-- (CGSize) calcMenuPopoverSize;
 
 @end
 
@@ -35,66 +29,30 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     
 }
 
-- (void) didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-    
-}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:cTabBarSegueIdentifier]) {
-        _homeTabController = (UITabBarController *)segue.destinationViewController;
-    } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
+    if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         [_searchPopover dismissPopoverAnimated:YES];
         _searchPopover = nil;
-        [_channelPopover dismissPopoverAnimated:YES];
-        _channelPopover = nil;
-        
-        if (_menuPopover != nil)
-            return;
         
         _menuPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
-        _menuPopover.popoverContentSize = [self calcMenuPopoverSize];
-        _menuPopover.delegate = self;
-        ChanMenuViewController *content = (ChanMenuViewController*)_menuPopover.contentViewController;
-        content.mainController = self;
+    } else if ([segue.identifier isEqualToString:cSearchSegueIdentifier]) {
+        [_menuPopover dismissPopoverAnimated:YES];
+        _menuPopover = nil;
         
-    } 
-}
-
-- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:cTabBarSegueIdentifier]) {
-        return YES;
-    } else if ([identifier isEqualToString:cMenuSegueIdentifier]) {
-        return (_menuPopover == nil);
-    } else {
-        
-        return YES;
+        _searchPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        ChanSearchBarViewController *searchViewController = (ChanSearchBarViewController *) [_searchPopover contentViewController];
+        [searchViewController searchBar].delegate = self;
     }
 }
 
-- (CGSize) calcMenuPopoverSize {
-    CGFloat height = MIN(self.view.bounds.size.height, cMaxMenuPopoverHeight);    
-    return CGSizeMake(cMenuPopoverWidth, height);
-}
-
-- (IBAction)searchButtonPressed:(id)sender {
-    if (_searchPopover != nil)
-        return;
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    ChanSearchBarViewController *searchBarViewController = [storyboard instantiateViewControllerWithIdentifier:@"SearchBarViewController"];
-    [searchBarViewController searchBar].delegate = self;
-    
-    _searchPopover = [[UIPopoverController alloc]initWithContentViewController:searchBarViewController];
-    _searchPopover.delegate = self;
-    [_searchPopover presentPopoverFromBarButtonItem:self.searchButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    [searchBarViewController searchBar].delegate = self;
-
-    [_channelPopover dismissPopoverAnimated:YES];
-    _channelPopover = nil;
-    [_menuPopover dismissPopoverAnimated:YES];
-    _menuPopover = nil;
+- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:cMenuSegueIdentifier]) {
+        return (_menuPopover == nil);
+    } else if ([identifier isEqualToString:cSearchSegueIdentifier]) {
+        return (_searchPopover == nil);
+    }
+    return YES;
 }
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
@@ -103,9 +61,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
         _searchPopover = nil;
     if (popoverController == _menuPopover)
         _menuPopover = nil;
-    if (popoverController == _channelPopover)
-        _channelPopover = nil;
-
 }
 
 - (void)startChannel:(ChanChannel*)channel{
@@ -113,8 +68,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
     _searchPopover = nil;
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
-    [_channelPopover dismissPopoverAnimated:YES];
-    _channelPopover = nil;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
@@ -124,29 +77,9 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 }
 
 
--(void)showChannelList{
-    if (_channelPopover != nil)
-        return;
-    
-    [_searchPopover dismissPopoverAnimated:YES];
-    _searchPopover = nil;
-    [_menuPopover dismissPopoverAnimated:YES];
-    _menuPopover = nil;
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    UIViewController *channelNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"ChanChannelListViewController"];
-    
-    _channelPopover = [[UIPopoverController alloc]initWithContentViewController:channelNavigationController];
-    _channelPopover.delegate = self;
-    
-    [_channelPopover presentPopoverFromBarButtonItem:_menuButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-
-    return;
-}
-
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *searchTerm = [searchBar text];
-    [_searchPopover dismissPopoverAnimated:YES];
+    [_searchPopover dismissPopoverAnimated:NO];
     _searchPopover = nil;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
