@@ -15,5 +15,6 @@
 + (BOOL) createDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
 + (NSString *) fileNameFromURLString:(NSString *)url;
++ (void) removeFileAtPath:(NSString *)path;
 
 @end
