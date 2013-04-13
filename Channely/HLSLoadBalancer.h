@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HLSNetServicePathChunkCountTuple.h"
+#import "HLSDiscoveredRecordings.h"
+#import "HLSStreamAdvertisement.h"
 
 #include <arpa/inet.h>
 #include <stdlib.h>

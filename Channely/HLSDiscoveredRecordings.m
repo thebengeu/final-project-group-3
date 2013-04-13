@@ -30,7 +30,7 @@
 }
 
 #pragma mark External Methods
-- (void) addDiscoveredRecordingId:(NSString *)rId at:(NSString *) addr tuple:(HLSNetServicePathChunkCountTuple *)tuple {
+- (void) addDiscoveredRecordingId:(NSString *)rId at:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple {
     // Add the record in the forward dictionary.
     @synchronized(_ipAddrToRecordingId) {
         NSMutableArray *ipAddrRecord = [_ipAddrToRecordingId objectForKey:addr];

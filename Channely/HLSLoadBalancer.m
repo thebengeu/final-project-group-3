@@ -20,6 +20,7 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 @property (strong) NSNetServiceBrowser *_browser;
 @property (strong) NSMutableSet *_waitingForResolve;
 @property (strong) NSMutableSet *_monitoredServices;
+@property (strong) HLSDiscoveredRecordings *_discovered;
 
 // Singleton Methods
 - (id) initWithDomain:(NSString *)domain serviceName:(NSString *)name;
@@ -31,9 +32,16 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 - (void) netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing;
 - (void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
 - (void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
+- (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing;
 
 - (void) netServiceDidResolveAddress:(NSNetService *)sender;
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
+
+// Logic
+- (void) updateRecordingsDBWithNetService:(NSNetService *)ns forAddress:(NSString *)dd4;
+
+// Utility
++ (NSDictionary *) decodedTXTRecordDictionaryFromNetService:(NSNetService *)ns;
 
 @end
 
@@ -44,6 +52,7 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 @synthesize _browser;
 @synthesize _waitingForResolve;
 @synthesize _monitoredServices;
+@synthesize _discovered;
 
 static HLSLoadBalancer * _internal;
 
@@ -71,6 +80,7 @@ static HLSLoadBalancer * _internal;
         _domain = domain;
         _waitingForResolve = [NSMutableSet set];
         _monitoredServices = [NSMutableSet set];
+        _discovered = [[HLSDiscoveredRecordings alloc] init];
         
         [self startDiscovery];
     }
@@ -108,6 +118,13 @@ static HLSLoadBalancer * _internal;
     NSLog(@"discovery started."); // DEBUG
 }
 
+- (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+//    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:aNetService];
+    NSLog(@"netservice that went offline: %@", aNetService);
+    
+    // TODO
+}
+
 #pragma mark NetService Delegate
 // Note: "A service might resolve to multiple addresses if the computer publishing the service is currently multihoming."
 // Ref: https://developer.apple.com/library/ios/#documentation/Cocoa/Reference/Foundation/Classes/NSNetService_Class/Reference/Reference.html
@@ -121,8 +138,8 @@ static HLSLoadBalancer * _internal;
     }
     
     // If a single address could not be found, then discard the service (Unsupported number of addresses).
-    NSString *dd4 = [HLSLoadBalancer dottedDecimalFromNetService:sender];
-    if (!dd4) {
+    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:sender];
+    if (!ipAddr) {
         return;
     }
     
@@ -132,25 +149,20 @@ static HLSLoadBalancer * _internal;
         [_monitoredServices addObject:sender];
     }
     
-//    for (NSData *addrData in sender.addresses) {
-//        NSString *dd4 = [HLSLoadBalancer dottedDecimalFromSocketAddress:addrData];
-//        
-//        // Skip processing the current address if invalid.
-//        if ([dd4 isEqualToString:cDD4AddressZero]) {
-//            continue;
-//        }
-//        
-//        NSDictionary *txtRecords = [NSNetService dictionaryFromTXTRecordData:sender.TXTRecordData];
-//        [txtRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//            NSString *availableRecording = (NSString *)key;
-//            
-//            NSLog(@"%@", availableRecording); // DEBUG
-//            
-//            HLSStreamAdvertisement *recordingDetails = [HLSStreamAdvertisement advertisementFromData:(NSData *)obj forPeerWithAddress:dd4];
-//            
-//            // TODO
-//        }];
-//    }
+    // Update stored TXT Record Data.
+    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
+}
+
+- (void) updateRecordingsDBWithNetService:(NSNetService *)ns forAddress:(NSString *)dd4 {
+    NSDictionary *advertisedByService = [HLSLoadBalancer decodedTXTRecordDictionaryFromNetService:ns];
+    [advertisedByService enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString *rId = (NSString *)key;
+        HLSStreamAdvertisement *ad = (HLSStreamAdvertisement *)obj;
+        
+        HLSNetServicePathChunkCountTuple *tuple = [[HLSNetServicePathChunkCountTuple alloc] initWithNetService:ns path:ad.playlist count:ad.chunkCount];
+        
+        [_discovered addDiscoveredRecordingId:rId at:dd4 tuple:tuple];
+    }];
 }
 
 // If the service fails to resolve, we discard it.
@@ -160,6 +172,12 @@ static HLSLoadBalancer * _internal;
     @synchronized(_waitingForResolve) {
         [_waitingForResolve removeObject:sender];
     }
+}
+
+- (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
+    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:sender];
+    [_discovered removeDiscoveredFrom:ipAddr];
+    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
 }
 
 #pragma mark Peer Selection
@@ -190,6 +208,22 @@ static HLSLoadBalancer * _internal;
     NSString *dd4 = [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:0]];
     
     return dd4;
+}
+
++ (NSDictionary *) decodedTXTRecordDictionaryFromNetService:(NSNetService *)ns {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    
+    NSDictionary *rawRecords = [NSNetService dictionaryFromTXTRecordData:ns.TXTRecordData];
+    [rawRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString *rId = (NSString *)key;
+        NSString *recordData = [[NSString alloc] initWithData:(NSData *)obj encoding:NSUTF8StringEncoding];
+        
+        HLSStreamAdvertisement *ad = [HLSStreamAdvertisement advertisementFromString:recordData];
+        
+        [result setObject:ad forKey:rId];
+    }];
+    
+    return result;
 }
 
 @end
