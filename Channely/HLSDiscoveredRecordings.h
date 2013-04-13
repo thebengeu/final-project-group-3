@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "HLSNetServicePathChunkCountTuple.h"
-#import "HLSLoadBalancer.h"
 
 @interface HLSDiscoveredRecordings : NSObject
 
 - (id) init;
-- (void) addDiscoveredRecordingId:(NSString *)rId at:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
-- (void) removeDiscoveredFrom:(NSString *)ipAddr;
+- (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
+- (void) removeDiscoveredFromServiceNamed:(NSString *)ipAddr;
 
 @end

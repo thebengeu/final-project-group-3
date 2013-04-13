@@ -10,37 +10,37 @@
 
 @interface HLSDiscoveredRecordings ()
 // Internal.
-@property (strong) NSMutableDictionary *_ipAddrToRecordingId; // (NSString => NSMutableArray[NSString])
+@property (strong) NSMutableDictionary *_nameToRecordingId; // (NSString => NSMutableArray[NSString])
 @property (strong) NSMutableDictionary *_recordingIdToTuple; // (NSString => NSMutableArray[HLS...Tuple])
 
 @end
 
 @implementation HLSDiscoveredRecordings
 // Internal.
-@synthesize _ipAddrToRecordingId;
+@synthesize _nameToRecordingId;
 @synthesize _recordingIdToTuple;
 
 #pragma mark Constructors
 - (id) init {
     if (self = [super init]) {
-        _ipAddrToRecordingId = [NSMutableDictionary dictionary];
+        _nameToRecordingId = [NSMutableDictionary dictionary];
         _recordingIdToTuple = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 #pragma mark External Methods
-- (void) addDiscoveredRecordingId:(NSString *)rId at:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple {
+- (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple {
     // Add the record in the forward dictionary.
-    @synchronized(_ipAddrToRecordingId) {
-        NSMutableArray *ipAddrRecord = [_ipAddrToRecordingId objectForKey:addr];
-        if (!ipAddrRecord) {
-            ipAddrRecord = [NSMutableArray array];
+    @synchronized(_nameToRecordingId) {
+        NSMutableArray *nameRecord = [_nameToRecordingId objectForKey:addr];
+        if (!nameRecord) {
+            nameRecord = [NSMutableArray array];
         }
-        @synchronized(ipAddrRecord) {
-            [ipAddrRecord addObject:rId];
+        @synchronized(nameRecord) {
+            [nameRecord addObject:rId];
         }
-        [_ipAddrToRecordingId setObject:ipAddrRecord forKey:addr];
+        [_nameToRecordingId setObject:nameRecord forKey:addr];
     }
     
     // Add the record in the reverse dictionary.
@@ -56,11 +56,11 @@
     }
 }
 
-- (void) removeDiscoveredFrom:(NSString *)ipAddr {
+- (void) removeDiscoveredFromServiceNamed:(NSString *)name {
     // Get the recording Ids that ipAddr is serving.
     NSMutableArray *served = nil;
-    @synchronized(_ipAddrToRecordingId) {
-        served = [_ipAddrToRecordingId objectForKey:ipAddr];
+    @synchronized(_nameToRecordingId) {
+        served = [_nameToRecordingId objectForKey:name];
     }
     
     // If ipAddr does not exist, do nothing.
@@ -82,8 +82,7 @@
             NSMutableArray *tuplesToRemove = [NSMutableArray array];
             @synchronized(serversHostingRId) {
                 for (HLSNetServicePathChunkCountTuple *tuple in serversHostingRId) {
-                    NSString *dd4 = [HLSLoadBalancer dottedDecimalFromNetService:tuple.netService];
-                    if ([dd4 isEqualToString:ipAddr]) {
+                    if ([tuple.netService.name isEqualToString:name]) {
                         [tuplesToRemove addObject:tuple];
                     }
                 }
@@ -104,8 +103,8 @@
     }}
     
     // Finally, remove the target ipAddr from the forward dictionary.
-    @synchronized(_ipAddrToRecordingId) {
-        [_ipAddrToRecordingId removeObjectForKey:ipAddr];
+    @synchronized(_nameToRecordingId) {
+        [_nameToRecordingId removeObjectForKey:name];
     }
 }
 

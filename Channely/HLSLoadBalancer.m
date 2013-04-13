@@ -161,7 +161,7 @@ static HLSLoadBalancer * _internal;
         
         HLSNetServicePathChunkCountTuple *tuple = [[HLSNetServicePathChunkCountTuple alloc] initWithNetService:ns path:ad.playlist count:ad.chunkCount];
         
-        [_discovered addDiscoveredRecordingId:rId at:dd4 tuple:tuple];
+        [_discovered addDiscoveredRecordingId:rId onServiceNamed:ns.name tuple:tuple];
     }];
 }
 
@@ -175,9 +175,8 @@ static HLSLoadBalancer * _internal;
 }
 
 - (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
-    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:sender];
-    [_discovered removeDiscoveredFrom:ipAddr];
-    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
+    [_discovered removeDiscoveredFromServiceNamed:sender.name];
+    [self updateRecordingsDBWithNetService:sender forAddress:sender.name];
 }
 
 #pragma mark Peer Selection
