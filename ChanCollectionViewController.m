@@ -12,11 +12,7 @@ static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const cSlideSegue = @"slidesSegue";
 
-@interface ChanCollectionViewController () {
-    NSMutableArray *_objectChanges;
-    NSMutableArray *_sectionChanges;
-    
-}
+@interface ChanCollectionViewController ()
 
 @property (nonatomic, weak) IBOutlet UICollectionViewWaterfallLayout *waterfallLayout;
 
@@ -42,10 +38,6 @@ static NSString *const cSlideSegue = @"slidesSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    // Initialize posts array
-    _objectChanges = [NSMutableArray array];
-    _sectionChanges = [NSMutableArray array];
     
     // Set background image
     UIImage *collectionBg = [[UIImage imageNamed:@"collectionbg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -123,7 +115,6 @@ static NSString *const cSlideSegue = @"slidesSegue";
 
 #pragma mark - Waterfall Layout methods
 
-// TODO: complete 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanPost *post = [self.posts objectAtIndex:indexPath.row];
