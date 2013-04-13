@@ -117,7 +117,9 @@ static CGFloat const kCellWidth = 240;
     } else if (postClass == [ChanImagePost class]) {
         return [ChanImageCell getHeightForPost:post];
     } else if (postClass == [ChanVideoPost class]) {
-        return [ChanVideoCell getHeightForPost:post];
+        return 300.0f;
+    } else if (postClass == [ChanVideoThumbnailPost class]) {
+        return 240.0f;
     } else {
         return 0;
     }
