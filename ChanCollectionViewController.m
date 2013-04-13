@@ -142,13 +142,9 @@ static CGFloat const kCellWidth = 180;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-//   NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(channel == %@) AND (type == %@)", self.channel, @"text"];
-//    [fetchRequest setPredicate:predicate];
-    
-    
-//    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"type == %@", @"text"];
-//    [fetchRequest setPredicate:predicate];
-    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
+    [fetchRequest setPredicate:predicate];
+
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     

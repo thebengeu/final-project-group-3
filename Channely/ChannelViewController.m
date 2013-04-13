@@ -157,6 +157,8 @@
         if (_collectionViewController == nil)
             _collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCollectionViewController"];
         
+        _collectionViewController.channel = self.channel;
+        
         [_currentContent removeFromSuperview];
         _currentContent = [_collectionViewController view];
         [_toggleButton setTitle:@"Temporal"];
