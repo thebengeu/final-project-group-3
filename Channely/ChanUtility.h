@@ -12,7 +12,7 @@
 + (NSString *) documentsDirectory;
 + (NSString *) webRootDirectory;
 + (NSString *) videoTempDirectory;
-+ (void) createDirectory:(NSString *)directory;
++ (BOOL) createDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
 + (NSString *) fileNameFromURLString:(NSString *)url;
 

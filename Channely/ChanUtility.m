@@ -24,14 +24,16 @@ static NSString *const cVideoTempDir = @"recording";
     return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:cVideoTempDir];
 }
 
-+ (void) createDirectory:(NSString *)directory {
-    // Create media content directory.
+// Non-destructively creates a directory. If the directory exists, no action is taken.
+// Returns YES if a directory was created, NO if no action was taken.
++ (BOOL) createDirectory:(NSString *)directory {
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
-    if ([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory) {
-        [fm removeItemAtPath:directory error:nil];
+    if (!([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory)) {
+        [fm createDirectoryAtPath:directory withIntermediateDirectories:NO attributes:nil error:nil];
+        return YES;
     }
-    [fm createDirectoryAtPath:directory withIntermediateDirectories:NO attributes:nil error:nil];
+    return NO;
 }
 
 // Removes all files from app's documents directory.

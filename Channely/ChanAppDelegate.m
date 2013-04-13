@@ -139,9 +139,8 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark Recording Temp Directory
 - (void) setupDirectories {
-    // Note: this also clears all exisiting files in the web root.
+    // Note: non-destructive.
     [ChanUtility createDirectory:[ChanUtility webRootDirectory]];
-    
     [ChanUtility createDirectory:[ChanUtility videoTempDirectory]];
 }
 
