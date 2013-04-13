@@ -7,8 +7,17 @@
 //
 
 #import "ChanSearchTableViewController.h"
+#import "ChanChannel.h"
+#import "ChanEvent.h"
+#import "ChanSearchResultChannelCell.h"
+#import "ChanSearchResultEventCell.h"
+#import "ChanDetailViewController.h"
 
 @interface ChanSearchTableViewController ()
+
+@property NSArray *channelSearchResults;
+
+@property NSArray *eventSearchResults;
 
 @end
 
@@ -26,12 +35,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [ChanChannel search:_searchTerm withCompletion:^(NSArray *channels, NSError *error){
+        _channelSearchResults = channels;
+        [[self tableView]reloadData];
+    }];
+    
+    [ChanEvent search:_searchTerm latitude:nil longitude:nil withinDistance:nil withCompletion:^(NSArray *events, NSError *error) {
+        _eventSearchResults = events;
+        [[self tableView]reloadData];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,80 +55,79 @@
 
 #pragma mark - Table view data source
 
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 0 && [_channelSearchResults count] > 0)
+        return @"Channels";
+    else if (section == 1 && [_eventSearchResults count] > 0)
+        return @"Events";
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 117;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if (section == 0)
+        return [_channelSearchResults count];
+    else
+        return [_eventSearchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    int row = [indexPath row];
     
-    // Configure the cell...
-    
-    return cell;
+    if ([indexPath section] == 0){
+        static NSString *CellIdentifier = @"ChannelCell";
+        ChanSearchResultChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        if (!cell)
+            cell = [[ChanSearchResultChannelCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChannelCell"];
+        
+        ChanChannel *channel = [_channelSearchResults objectAtIndex:row];
+        cell.channelName.text = [channel name];
+        cell.hashtag.text = [channel hashTag];
+        
+        return cell;
+    } else {
+        static NSString *CellIdentifier = @"EventCell";
+        ChanSearchResultEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        if (!cell)
+            cell = [[ChanSearchResultEventCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
+
+        ChanEvent *event = [_eventSearchResults objectAtIndex:row];
+        ChanChannel *channel = [event channel];
+        
+        cell.channelName.text = [channel name];
+        cell.eventName.text = [event name];
+        cell.description.text = [event details];
+        
+        return cell;
+    }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    int section = [indexPath section];
+    int row = [indexPath row];
+    
+    id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
+    ChanDetailViewController *detail = [[rootVC childViewControllers]objectAtIndex:0];
+    
+    if (section == 0)
+        [detail startChannel:[_channelSearchResults objectAtIndex:row]];
+    else
+        [detail startChannel:[[_eventSearchResults objectAtIndex:row]channel]];
 }
 
 @end

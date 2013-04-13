@@ -12,6 +12,8 @@
 		0A91BA1517116A580095FA01 /* ChanCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A91BA1417116A580095FA01 /* ChanCreateEventViewController.m */; };
 		0A935F1C1718503B0000D97F /* ChanSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A935F1B1718503B0000D97F /* ChanSearchTableViewController.m */; };
 		0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A937FBC170F52BB000A4079 /* AnnotationUIView.m */; };
+		0A991D0F1719119C00275B3B /* ChanSearchResultChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D0E1719119C00275B3B /* ChanSearchResultChannelCell.m */; };
+		0A991D12171911B000275B3B /* ChanSearchResultEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */; };
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
 		0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7216F301B80017FECB /* NetAssociation.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -152,6 +154,10 @@
 		0A935F1B1718503B0000D97F /* ChanSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchTableViewController.m; path = Channely/ChanSearchTableViewController.m; sourceTree = "<group>"; };
 		0A937FBB170F52BB000A4079 /* AnnotationUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnnotationUIView.h; path = Channely/AnnotationUIView.h; sourceTree = "<group>"; };
 		0A937FBC170F52BB000A4079 /* AnnotationUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnnotationUIView.m; path = Channely/AnnotationUIView.m; sourceTree = "<group>"; };
+		0A991D0D1719119C00275B3B /* ChanSearchResultChannelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSearchResultChannelCell.h; path = Channely/ChanSearchResultChannelCell.h; sourceTree = "<group>"; };
+		0A991D0E1719119C00275B3B /* ChanSearchResultChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchResultChannelCell.m; path = Channely/ChanSearchResultChannelCell.m; sourceTree = "<group>"; };
+		0A991D10171911B000275B3B /* ChanSearchResultEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSearchResultEventCell.h; path = Channely/ChanSearchResultEventCell.h; sourceTree = "<group>"; };
+		0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchResultEventCell.m; path = Channely/ChanSearchResultEventCell.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTimeProtocol.h; sourceTree = "<group>"; };
 		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
@@ -428,6 +434,10 @@
 				82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */,
 				0A935F1A1718503B0000D97F /* ChanSearchTableViewController.h */,
 				0A935F1B1718503B0000D97F /* ChanSearchTableViewController.m */,
+				0A991D0D1719119C00275B3B /* ChanSearchResultChannelCell.h */,
+				0A991D0E1719119C00275B3B /* ChanSearchResultChannelCell.m */,
+				0A991D10171911B000275B3B /* ChanSearchResultEventCell.h */,
+				0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1068,6 +1078,8 @@
 				B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */,
 				0A935F1C1718503B0000D97F /* ChanSearchTableViewController.m in Sources */,
 				B6AB9B0B17191B9200BDEA3B /* UIImage+normalizedOrientation.m in Sources */,
+				0A991D0F1719119C00275B3B /* ChanSearchResultChannelCell.m in Sources */,
+				0A991D12171911B000275B3B /* ChanSearchResultEventCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

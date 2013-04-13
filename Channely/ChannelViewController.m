@@ -95,8 +95,13 @@
     
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
-    _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
-    [rightBarItems addObject:_createEventButton];
+    
+    // If owner, show create event button
+    if ([ChanUser loggedInUser] == [_channel owner]){
+        _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
+        [rightBarItems addObject:_createEventButton];
+    }
+    
     //  Add more items if needed
     _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
     [rightBarItems addObject:_toggleButton];

@@ -10,4 +10,6 @@
 
 @interface ChanChannelOwnedTableController : UITableViewController
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addChannelButton;
+
 @end

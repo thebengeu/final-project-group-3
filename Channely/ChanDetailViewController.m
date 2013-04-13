@@ -9,6 +9,7 @@
 #import "ChanDetailViewController.h"
 #import "ChannelViewController.h"
 #import "ChanMenuViewController.h"
+#import "ChanSearchTableViewController.h"
 
 NSString *const cTabBarSegueIdentifier = @"embeddedTabBarSegue";
 NSString *const cMenuSegueIdentifier = @"popoverMenuSegue";
@@ -17,9 +18,9 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 @interface ChanDetailViewController ()
 
-@property (strong) UITabBarController *_homeTabController;
+@property (strong) UITabBarController *homeTabController;
 
-@property (weak) UIPopoverController *_menuPopover;
+@property (weak) UIPopoverController *menuPopover;
 @property UIPopoverController *searchPopover;
 @property UIPopoverController *channelPopover;
 
@@ -28,9 +29,6 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 @end
 
 @implementation ChanDetailViewController
-@synthesize _homeTabController;
-@synthesize _menuPopover;
-
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +43,7 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:cTabBarSegueIdentifier]) {
-        self._homeTabController = (UITabBarController *)segue.destinationViewController;
+        _homeTabController = (UITabBarController *)segue.destinationViewController;
     } else if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         [_searchPopover dismissPopoverAnimated:YES];
         _searchPopover = nil;
@@ -148,10 +146,13 @@ CGFloat const cMaxMenuPopoverHeight = 704.;
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     NSString *searchTerm = [searchBar text];
+    [_searchPopover dismissPopoverAnimated:YES];
+    _searchPopover = nil;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     UIViewController *searchController = [storyboard instantiateViewControllerWithIdentifier:@"ChanSearchTableViewController"];
     
+    [(ChanSearchTableViewController*)searchController setSearchTerm: searchTerm];
     [[self navigationController]pushViewController:searchController animated:YES];
 }
 
