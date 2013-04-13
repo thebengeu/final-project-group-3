@@ -14,6 +14,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "ChanCreateEventViewController.h"
 #import "ChanEvent.h"
+#import "UIImage+normalizedOrientation.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
@@ -219,7 +220,7 @@
             [channelViewController populateChannelPost];
         }];
     } else {
-        [_channel addImagePostWithContent:[_textInput text] image:_attachedImage withCompletion:^(ChanImagePost *imagePost, NSError *error) {
+        [_channel addImagePostWithContent:[_textInput text] image:[_attachedImage normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
             [[channelViewController textInput]setText:@""];
             [[channelViewController sendPostIndicator]stopAnimating];
             [[channelViewController textInput] setEditable:YES];
