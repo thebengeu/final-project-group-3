@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HLSStreamAdvertisement.h"
+#import "HLSNetServicePathChunkCountTuple.h"
 
 #include <arpa/inet.h>
 #include <stdlib.h>

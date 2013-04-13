@@ -58,8 +58,7 @@
 		4AE16EE4170DF6E500573A4B /* HLSEventPlaylistHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */; };
 		4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* ChanUtility.m */; };
-		4AEE4D581719304A00987486 /* HLSRecordingDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4D571719304A00987486 /* HLSRecordingDB.m */; };
-		4AEE4D5B17193EF600987486 /* HLSPeerDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4D5A17193EF600987486 /* HLSPeerDB.m */; };
+		4AEE4D5E1719838500987486 /* HLSNetServicePathChunkCountTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -235,10 +234,8 @@
 		4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloader.m; sourceTree = "<group>"; };
 		4AE16EE0170DF6E500573A4B /* ChanUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanUtility.h; sourceTree = "<group>"; };
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
-		4AEE4D561719304A00987486 /* HLSRecordingDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSRecordingDB.h; sourceTree = "<group>"; };
-		4AEE4D571719304A00987486 /* HLSRecordingDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSRecordingDB.m; sourceTree = "<group>"; };
-		4AEE4D5917193EF600987486 /* HLSPeerDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPeerDB.h; sourceTree = "<group>"; };
-		4AEE4D5A17193EF600987486 /* HLSPeerDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPeerDB.m; sourceTree = "<group>"; };
+		4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSNetServicePathChunkCountTuple.h; sourceTree = "<group>"; };
+		4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSNetServicePathChunkCountTuple.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -559,7 +556,6 @@
 		4A625AE317102D11000DF8B9 /* Stream Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				4AEE4D5517192FF300987486 /* Data Structures */,
 				4A625AE517102D63000DF8B9 /* HLSStreamAdvertisingManager.h */,
 				4A625AE617102D63000DF8B9 /* HLSStreamAdvertisingManager.m */,
 				4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */,
@@ -567,6 +563,8 @@
 				4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */,
 				0AA2CB3B1713F6A100D8C28F /* HLSLoadBalancer.h */,
 				0AA2CB3C1713F6A100D8C28F /* HLSLoadBalancer.m */,
+				4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */,
+				4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */,
 			);
 			name = "Stream Discovery";
 			sourceTree = "<group>";
@@ -620,17 +618,6 @@
 				4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */,
 			);
 			name = "P2P Video Player";
-			sourceTree = "<group>";
-		};
-		4AEE4D5517192FF300987486 /* Data Structures */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE4D5917193EF600987486 /* HLSPeerDB.h */,
-				4AEE4D5A17193EF600987486 /* HLSPeerDB.m */,
-				4AEE4D561719304A00987486 /* HLSRecordingDB.h */,
-				4AEE4D571719304A00987486 /* HLSRecordingDB.m */,
-			);
-			name = "Data Structures";
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -1048,8 +1035,7 @@
 				B63B64B11716580B00885E4B /* ChanSlidesPost.m in Sources */,
 				B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */,
 				B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */,
-				4AEE4D581719304A00987486 /* HLSRecordingDB.m in Sources */,
-				4AEE4D5B17193EF600987486 /* HLSPeerDB.m in Sources */,
+				4AEE4D5E1719838500987486 /* HLSNetServicePathChunkCountTuple.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
