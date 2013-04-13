@@ -47,8 +47,9 @@ static NSString *const cSlideSegue = @"slidesSegue";
     _objectChanges = [NSMutableArray array];
     _sectionChanges = [NSMutableArray array];
     
-    // Change background to grey
-    self.collectionView.backgroundColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
+    // Set background image
+    UIImage *collectionBg = [[UIImage imageNamed:@"collectionbg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:collectionBg];
     
     // Init and update waterfall layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
