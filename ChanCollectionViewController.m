@@ -39,7 +39,10 @@ static CGFloat const kCellWidth = 180;
     _objectChanges = [NSMutableArray array];
     _sectionChanges = [NSMutableArray array];
     
-    // Init and update layout
+    // Change background to grey
+    self.collectionView.backgroundColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
+    
+    // Init and update waterfall layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     _waterfallLayout.delegate = self;
     [self updateLayout];
@@ -89,7 +92,7 @@ static CGFloat const kCellWidth = 180;
     } else if (postClass == [ChanVideoPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
     } else if (postClass == [ChanVideoThumbnailPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoThumbnailCell" forIndexPath:indexPath];
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     }
     
     [cell setPostContent:post];
@@ -98,33 +101,33 @@ static CGFloat const kCellWidth = 180;
 
 #pragma mark - Waterfall Layout methods
 
-// TODO: cleanup 
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath {
+// TODO: complete 
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Class postClass = [post class];
     
     if (postClass == [ChanTextPost class]) {
         return 140.0f;
     } else if (postClass == [ChanImagePost class]) {
-        return 350.0f;
-    } else if (postClass == [ChanVideoPost class]) {
         return 140.0f;
-    } else if (postClass == [ChanVideoThumbnailPost class]) {
+    } else if (postClass == [ChanVideoPost class]) {
         return 300.0f;
+    } else if (postClass == [ChanVideoThumbnailPost class]) {
+        return 140.0f;
     } else {
         return 140.0f;
     }
 }
 
 // Used for updating the layout of the collection view when screen orientation changes, etc
-// TODO: update and fix
--(void)updateLayout {
+-(void)updateLayout
+{
     _waterfallLayout.columnCount = self.collectionView.bounds.size.width / kCellWidth;
     _waterfallLayout.itemWidth = kCellWidth;
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-                                         duration:(NSTimeInterval)duration
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
 }

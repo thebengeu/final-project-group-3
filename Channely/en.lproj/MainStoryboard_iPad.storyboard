@@ -780,17 +780,18 @@
                                                 <constraint firstAttribute="height" constant="24" id="0BQ-bM-xk5"/>
                                                 <constraint firstAttribute="width" constant="149" id="ca8-9v-tqm"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbK-r9-nIf">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" id="KWM-W6-lgJ"/>
+                                                <constraint firstAttribute="height" constant="101" id="9Xv-6C-Ozf"/>
+                                                <constraint firstAttribute="width" constant="134" id="fVT-LG-kI1"/>
                                             </constraints>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="11"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
@@ -798,11 +799,10 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="centerX" secondItem="Oag-Ig-RTF" secondAttribute="centerX" type="default" id="562-T9-2VP"/>
-                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="2" id="GRe-a5-uqk"/>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="28" id="LeL-T1-xS3"/>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="20" type="default" id="Ufl-ao-eyY"/>
-                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="17" id="x0a-gV-0nN"/>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="15" id="Unx-d1-kGU"/>
+                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="20" type="default" id="ZfH-ka-QA9"/>
+                                    <constraint firstItem="LEM-gn-K4x" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" type="default" id="ZkS-aG-c2D"/>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="20" type="default" id="psD-pq-LX1"/>
                                 </constraints>
                                 <size key="customSize" width="174" height="136"/>
                                 <connections>
@@ -858,29 +858,6 @@
                                     <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" constant="3" id="kh8-GY-8kU"/>
                                 </constraints>
                                 <size key="customSize" width="165" height="136"/>
-                            </collectionViewCell>
-                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoThumbnailCell" id="KYG-Rc-jPR" customClass="ChanVideoThumbnailCell">
-                                <rect key="frame" x="527" y="0.0" width="159" height="136"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="159" height="136"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1db-tF-vKd">
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="1db-tF-vKd" firstAttribute="top" secondItem="KYG-Rc-jPR" secondAttribute="top" constant="3" id="a4b-Um-39C"/>
-                                    <constraint firstItem="1db-tF-vKd" firstAttribute="leading" secondItem="KYG-Rc-jPR" secondAttribute="leading" constant="20" type="default" id="dhJ-GU-lCD"/>
-                                </constraints>
-                                <size key="customSize" width="159" height="136"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -2074,9 +2051,6 @@
                 <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
             </relationships>
-        </class>
-        <class className="ChanVideoThumbnailCell" superclassName="ChanAbstractCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoThumbnailCell.h"/>
         </class>
         <class className="ChanVideoThumbnailPostCell" superclassName="ChanPostCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoThumbnailPostCell.h"/>
