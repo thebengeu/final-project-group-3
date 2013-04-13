@@ -492,7 +492,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-tl-fIH">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="500" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1pc-tl-fIH">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="426" id="Es1-FE-zEB"/>
                                 </constraints>
@@ -821,7 +821,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtA-hn-ZhP">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="129" id="JS4-AM-6As"/>
+                                    <constraint firstAttribute="height" constant="67" id="Ppp-P8-Wwf"/>
                                     <constraint firstAttribute="width" constant="120" id="bw5-SE-2VX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -845,18 +845,18 @@
                         <constraints>
                             <constraint firstItem="yC1-Rf-dd4" firstAttribute="trailing" secondItem="LRv-3l-sIG" secondAttribute="trailing" type="default" id="1va-Rv-Y9s"/>
                             <constraint firstItem="Kk4-Cu-3f2" firstAttribute="leading" secondItem="sjx-Tk-ZgS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2SC-6Z-U0t"/>
+                            <constraint firstAttribute="bottom" secondItem="zcE-Lh-LJQ" secondAttribute="bottom" constant="91" id="2vK-Se-F9E"/>
+                            <constraint firstItem="gtA-hn-ZhP" firstAttribute="top" secondItem="sjx-Tk-ZgS" secondAttribute="top" type="default" id="98S-hA-QJB"/>
                             <constraint firstItem="zcE-Lh-LJQ" firstAttribute="leading" secondItem="LRv-3l-sIG" secondAttribute="leading" constant="302" id="Efr-xV-eox"/>
                             <constraint firstAttribute="trailing" secondItem="Kk4-Cu-3f2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="F5w-Sk-13p"/>
                             <constraint firstItem="Kk4-Cu-3f2" firstAttribute="top" secondItem="gtA-hn-ZhP" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RbG-ZH-88l"/>
-                            <constraint firstItem="gtA-hn-ZhP" firstAttribute="top" secondItem="yC1-Rf-dd4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="btn-wq-XeG"/>
                             <constraint firstAttribute="bottom" secondItem="Kk4-Cu-3f2" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="iTH-LL-u6y"/>
                             <constraint firstAttribute="trailing" secondItem="gtA-hn-ZhP" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="lAM-K6-40b"/>
                             <constraint firstAttribute="bottom" secondItem="sjx-Tk-ZgS" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="pZx-FI-qac"/>
                             <constraint firstItem="yC1-Rf-dd4" firstAttribute="top" secondItem="LRv-3l-sIG" secondAttribute="top" type="default" id="qfC-s2-hrI"/>
                             <constraint firstItem="yC1-Rf-dd4" firstAttribute="leading" secondItem="LRv-3l-sIG" secondAttribute="leading" type="default" id="rMm-MD-n3T"/>
-                            <constraint firstItem="zcE-Lh-LJQ" firstAttribute="centerY" secondItem="sjx-Tk-ZgS" secondAttribute="centerY" type="default" id="uod-RF-sRo"/>
                             <constraint firstItem="gtA-hn-ZhP" firstAttribute="leading" secondItem="sjx-Tk-ZgS" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vtR-sA-YHE"/>
-                            <constraint firstItem="sjx-Tk-ZgS" firstAttribute="top" secondItem="yC1-Rf-dd4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="z0N-nS-eWj"/>
+                            <constraint firstAttribute="bottom" secondItem="yC1-Rf-dd4" secondAttribute="bottom" constant="154" id="yPp-Ts-c3F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p5R-a1-h3d"/>
