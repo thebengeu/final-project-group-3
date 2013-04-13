@@ -123,6 +123,14 @@
                                                   object:nil];
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                                                duration:duration];
+    [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                            duration:duration];
+}
 
 -(void) toggleChannelLayout{
     CGRect frame = [self contentContainer].frame;
