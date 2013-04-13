@@ -19,7 +19,8 @@
     return self;
 }
 
--(void)setPostContent:(id)post {
+- (void)setPostContent:(id)post
+{
     //TODO: is there anything to setup?
 }
 

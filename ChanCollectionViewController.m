@@ -51,7 +51,7 @@ static CGFloat const kCellWidth = 240;
     // Init and update waterfall layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     _waterfallLayout.delegate = self;
-    _waterfallLayout.sectionInset = UIEdgeInsetsMake(0, 12.0f, 0, 12.0f);
+    _waterfallLayout.sectionInset = UIEdgeInsetsMake(10.0f, 12.0f, 0, 12.0f);
     [self updateLayout];
 }
 
@@ -83,7 +83,6 @@ static CGFloat const kCellWidth = 240;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ChanCollectionCell *cell = (ChanCollectionCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"TextCell" forIndexPath:indexPath];
     
     ChanAbstractCell *cell;
     
@@ -101,6 +100,7 @@ static CGFloat const kCellWidth = 240;
     }
     
     [cell setPostContent:post];
+    
     return cell;
 }
 
