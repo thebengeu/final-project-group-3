@@ -119,8 +119,8 @@ static HLSLoadBalancer * _internal;
 }
 
 - (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
-//    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:aNetService];
-    NSLog(@"netservice that went offline: %@", aNetService);
+    NSLog(@"netservice that went offline: %@, %@", aNetService, aNetService.name);
+
     
     // TODO
 }
