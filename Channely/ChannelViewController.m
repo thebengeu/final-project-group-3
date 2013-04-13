@@ -90,6 +90,7 @@
     [rightBarItems addObject:_toggleButton];
 
     self.navigationItem.rightBarButtonItems = rightBarItems;
+    self.navigationItem.title = self.channel.name;
     
    }
 

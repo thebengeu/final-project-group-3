@@ -543,14 +543,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="748" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="3VO-c0-eVp">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Channel Name" translatesAutoresizingMaskIntoConstraints="NO" id="3VO-c0-eVp">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="337" id="DVG-2y-kfa"/>
+                                                <constraint firstAttribute="width" constant="347" id="eZw-bU-ylU"/>
                                                 <constraint firstAttribute="height" constant="54" id="ouG-E6-HuI"/>
                                             </constraints>
                                             <color key="textColor" red="0.79607850313186646" green="0.0" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
@@ -571,15 +571,14 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-gX-ECr">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-gX-ECr">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="311" id="282-lg-Deo"/>
-                                                <constraint firstAttribute="height" constant="78" id="A7b-hE-cMC"/>
+                                                <constraint firstAttribute="width" constant="306" id="NlY-cY-7if"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -615,14 +614,15 @@
                                 <constraints>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="91" id="7ye-77-cli"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="16" id="9WI-mX-d0o"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="84" id="FBV-Xw-JUl"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="49" id="KpG-3d-URT"/>
+                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ji9-cE-tdj"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="Q3p-bF-EJT"/>
-                                    <constraint firstAttribute="trailing" secondItem="OCf-gX-ECr" secondAttribute="trailing" constant="40" id="Srp-co-z9S"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="21" id="cxN-5w-nhM"/>
                                     <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="fbG-RT-gpT"/>
+                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="centerY" secondItem="rNn-5t-cVJ" secondAttribute="centerY" type="default" id="iBv-JP-Ezj"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="49" id="jIC-rt-9JT"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pu5-Nh-juI"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="OCf-gX-ECr" secondAttribute="top" type="default" id="shE-Ak-14t"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="centerX" secondItem="3VO-c0-eVp" secondAttribute="centerX" type="default" id="uMF-r9-mUZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="OCf-gX-ECr" secondAttribute="bottom" constant="20" type="default" id="vWY-XP-Zij"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
