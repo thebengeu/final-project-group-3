@@ -565,6 +565,7 @@
                                             </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="34" id="Amf-3i-qG7"/>
+                                                <constraint firstAttribute="width" constant="337" id="DNZ-Jx-Yxm"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
@@ -577,16 +578,16 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="293" id="Cay-Jb-WCl"/>
-                                                <constraint firstAttribute="height" constant="97" id="Kda-Ad-2hl"/>
+                                                <constraint firstAttribute="width" constant="311" id="282-lg-Deo"/>
+                                                <constraint firstAttribute="height" constant="78" id="A7b-hE-cMC"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="67" id="bUg-OJ-riS"/>
-                                                <constraint firstAttribute="width" constant="66" id="mdl-AK-P3V"/>
+                                                <constraint firstAttribute="height" constant="55" id="GXr-gc-3yF"/>
+                                                <constraint firstAttribute="width" constant="55" id="TWe-Ha-e5r"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Enter" image="mapmarker_red.png">
@@ -612,17 +613,16 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="3BM-8b-NNQ"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="10" id="5Iy-x2-Dfq"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="leading" type="default" id="TYg-3D-5IK"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="VmH-eA-ixZ"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="24" id="Xhd-vF-a2L"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="5" id="hE7-fJ-dQ2"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="11" id="mri-Eq-Lkx"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="Ho4-FB-biZ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="nEk-V2-kXI"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="centerY" secondItem="OCf-gX-ECr" secondAttribute="centerY" type="default" id="uie-XQ-XDT"/>
-                                    <constraint firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="40" id="vmn-XN-2k9"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="yLF-FO-ISi"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="91" id="7ye-77-cli"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="16" id="9WI-mX-d0o"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="84" id="FBV-Xw-JUl"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="49" id="KpG-3d-URT"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="Q3p-bF-EJT"/>
+                                    <constraint firstAttribute="trailing" secondItem="OCf-gX-ECr" secondAttribute="trailing" constant="40" id="Srp-co-z9S"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="21" id="cxN-5w-nhM"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="fbG-RT-gpT"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pu5-Nh-juI"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="OCf-gX-ECr" secondAttribute="top" type="default" id="shE-Ak-14t"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
