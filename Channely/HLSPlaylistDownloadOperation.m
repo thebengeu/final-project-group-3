@@ -99,7 +99,7 @@ static NSString *const cHTMLDebugPageName = @"view.html";
     // We guarantee that the relative path will never contain a comma ',' -
     // otherwise this will violate the precondition of HLSStreamDiscoveryManager.
     NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-    [[HLSStreamDiscoveryManager discoveryManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    [[HLSStreamAdvertisingManager discoveryManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
     
     // DEBUG - create a Safari-viewable HTML page that can be used to display the local stream.
     if (_expectingFirstChunk) {

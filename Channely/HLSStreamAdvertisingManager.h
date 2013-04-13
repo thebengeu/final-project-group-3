@@ -10,7 +10,7 @@
 #import "HLSStreamAdvertiser.h"
 #import "HLSAdvertisementData.h"
 
-@interface HLSStreamDiscoveryManager : NSObject
+@interface HLSStreamAdvertisingManager : NSObject
 @property (readonly) NSDictionary *advertisements;
 
 - (id) init;
@@ -19,7 +19,7 @@
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertising;
 
-+ (HLSStreamDiscoveryManager *) discoveryManager;
-+ (HLSStreamDiscoveryManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
++ (HLSStreamAdvertisingManager *) discoveryManager;
++ (HLSStreamAdvertisingManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 
 @end

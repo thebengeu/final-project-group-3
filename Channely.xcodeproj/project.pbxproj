@@ -48,7 +48,7 @@
 		4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
-		4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */; };
+		4A625AE717102D63000DF8B9 /* HLSStreamAdvertisingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A625AE617102D63000DF8B9 /* HLSStreamAdvertisingManager.m */; };
 		4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA361FB17100C77009F703E /* ChanRootViewController.m */; };
 		4ACD2516171570D9001542E8 /* HLSAdvertisementData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */; };
 		4ACD25191715AF31001542E8 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACD25181715AF31001542E8 /* MediaPlayer.framework */; };
@@ -212,8 +212,8 @@
 		4A59D1DA1705E43D00D04B6F /* ChunkingVideoRecorderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorderDelegate.h; sourceTree = "<group>"; };
 		4A59D1DB1705E43D00D04B6F /* TimedChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedChunkingVideoRecorder.h; sourceTree = "<group>"; };
 		4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedChunkingVideoRecorder.m; sourceTree = "<group>"; };
-		4A625AE517102D63000DF8B9 /* HLSStreamDiscoveryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamDiscoveryManager.h; sourceTree = "<group>"; };
-		4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamDiscoveryManager.m; sourceTree = "<group>"; };
+		4A625AE517102D63000DF8B9 /* HLSStreamAdvertisingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSStreamAdvertisingManager.h; sourceTree = "<group>"; };
+		4A625AE617102D63000DF8B9 /* HLSStreamAdvertisingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSStreamAdvertisingManager.m; sourceTree = "<group>"; };
 		4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSStreamAdvertiser.h; sourceTree = "<group>"; };
 		4AA361F817100A35009F703E /* HLSPlaylistDownloaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloaderDelegate.h; sourceTree = "<group>"; };
 		4AA361FA17100C77009F703E /* ChanRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanRootViewController.h; path = Channely/ChanRootViewController.h; sourceTree = "<group>"; };
@@ -553,8 +553,8 @@
 		4A625AE317102D11000DF8B9 /* Stream Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				4A625AE517102D63000DF8B9 /* HLSStreamDiscoveryManager.h */,
-				4A625AE617102D63000DF8B9 /* HLSStreamDiscoveryManager.m */,
+				4A625AE517102D63000DF8B9 /* HLSStreamAdvertisingManager.h */,
+				4A625AE617102D63000DF8B9 /* HLSStreamAdvertisingManager.m */,
 				4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */,
 				4ACD2514171570D9001542E8 /* HLSAdvertisementData.h */,
 				4ACD2515171570D9001542E8 /* HLSAdvertisementData.m */,
@@ -1004,7 +1004,7 @@
 				4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */,
 				0A937FBD170F52BB000A4079 /* AnnotationUIView.m in Sources */,
 				4AA361FC17100C77009F703E /* ChanRootViewController.m in Sources */,
-				4A625AE717102D63000DF8B9 /* HLSStreamDiscoveryManager.m in Sources */,
+				4A625AE717102D63000DF8B9 /* HLSStreamAdvertisingManager.m in Sources */,
 				4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */,
 				4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */,
 				B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */,

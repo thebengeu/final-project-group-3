@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "HLSStreamDiscoveryManager.h"
+#import "HLSStreamAdvertisingManager.h"
 
-@interface HLSStreamDiscoveryManager ()
+@interface HLSStreamAdvertisingManager ()
 @property (strong) NSMutableDictionary *_advertisements;
 @property (weak) id<HLSStreamAdvertiser> _advertiser;
 
@@ -17,8 +17,8 @@
 
 @end
 
-@implementation HLSStreamDiscoveryManager
-static HLSStreamDiscoveryManager *_internal;
+@implementation HLSStreamAdvertisingManager
+static HLSStreamAdvertisingManager *_internal;
 
 @synthesize _advertiser;
 @synthesize _advertisements;
@@ -28,13 +28,13 @@ static HLSStreamDiscoveryManager *_internal;
     return nil;
 }
 
-+ (HLSStreamDiscoveryManager *) discoveryManager {
++ (HLSStreamAdvertisingManager *) discoveryManager {
     return _internal;
 }
 
-+ (HLSStreamDiscoveryManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
++ (HLSStreamAdvertisingManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
     if (!_internal) {
-        _internal = [[HLSStreamDiscoveryManager alloc] initWithAdvertiser:advertiser];
+        _internal = [[HLSStreamAdvertisingManager alloc] initWithAdvertiser:advertiser];
         return _internal;
     } else {
         return nil;

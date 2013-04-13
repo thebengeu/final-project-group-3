@@ -16,7 +16,7 @@ static NSUInteger const cLocalServerPort = 80;
 @interface ChanAppDelegate ()
 // Internal.
 @property (strong) HTTPServer *_localServer;
-@property (strong) HLSStreamDiscoveryManager *_discoveryManager;
+@property (strong) HLSStreamAdvertisingManager *_discoveryManager;
 @property (strong) HLSLoadBalancer *_loadBalancer;
 
 // Appearance.
@@ -127,7 +127,7 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Stream Discovery Manager
 - (void) setupDiscoveryManager {
-    _discoveryManager = [HLSStreamDiscoveryManager discoveryManagerWithAdvertiser:self];
+    _discoveryManager = [HLSStreamAdvertisingManager discoveryManagerWithAdvertiser:self];
 }
 
 #pragma mark HLS Stream Advertiser Delegate

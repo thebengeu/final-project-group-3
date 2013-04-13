@@ -12,7 +12,7 @@
 #import "NetworkTimeProtocol.h"
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
-#import "HLSStreamDiscoveryManager.h"
+#import "HLSStreamAdvertisingManager.h"
 #import "HLSStreamAdvertiser.h"
 #import "ChanUtility.h"
 #import "HLSStreamSync.h"
