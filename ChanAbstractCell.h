@@ -15,5 +15,6 @@
 @interface ChanAbstractCell : UICollectionViewCell
 
 - (void) setPostContent:(ChanPost*) post;
++ (CGFloat) getHeightForPost:(ChanPost *)post;
 
 @end

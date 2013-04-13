@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ChanTextCell.h"
+#import "ChanImageCell.h"
+#import "ChanVideoCell.h"
 #import "ChanPost.h"
 #import "ChanTextPost.h"
 #import "ChanImagePost.h"

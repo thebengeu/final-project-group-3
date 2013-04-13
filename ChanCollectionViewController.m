@@ -96,8 +96,8 @@ static CGFloat const kCellWidth = 240;
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     } else if (postClass == [ChanVideoPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
-    } else if (postClass == [ChanVideoThumbnailPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath]; 
     }
     
     [cell setPostContent:post];
@@ -113,16 +113,13 @@ static CGFloat const kCellWidth = 240;
     Class postClass = [post class];
     
     if (postClass == [ChanTextPost class]) {
-        return 190.0f;
+        return [ChanTextCell getHeightForPost:post];
     } else if (postClass == [ChanImagePost class]) {
-//        NSLog("%f", [post])
-        return 240.0f;
+        return [ChanImageCell getHeightForPost:post];
     } else if (postClass == [ChanVideoPost class]) {
-        return 300.0f;
-    } else if (postClass == [ChanVideoThumbnailPost class]) {
-        return 240.0f;
+        return [ChanVideoCell getHeightForPost:post];
     } else {
-        return 140.0f;
+        return 0;
     }
 }
 

@@ -24,6 +24,12 @@
     [self.labelView setText:[post content]];
 }
 
++ (CGFloat) getHeightForPost:(ChanPost *)post
+{
+    // TODO: dynamic height
+    return 240.0f;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

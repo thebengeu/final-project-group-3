@@ -81,7 +81,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
     [request setPredicate:predicate];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
@@ -183,10 +183,10 @@
         [_postTableViewController.refreshControl endRefreshing];
         
         self.channel.lastRefreshed = [NSDate date];
-        [self.posts addObjectsFromArray:posts];
         
-//        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
-//        [self.posts filterUsingPredicate:postsPredicate];
+        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
+        posts = [posts filteredArrayUsingPredicate:postsPredicate];
+        [self.posts addObjectsFromArray:posts];
         
         _postTableViewController.postList = self.posts;
         _collectionViewController.posts = self.posts;
