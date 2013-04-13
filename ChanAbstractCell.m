@@ -23,6 +23,13 @@
     //TODO: is there anything to setup?
 }
 
++ (CGFloat) getHeightForPost:(ChanPost *)post
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
