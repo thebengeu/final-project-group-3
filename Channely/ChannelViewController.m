@@ -84,7 +84,7 @@
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
     [request setPredicate:predicate];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
 
     NSError *error;
