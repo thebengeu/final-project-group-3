@@ -38,10 +38,10 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
 
 // Logic
-- (void) updateRecordingsDBWithNetService:(NSNetService *)ns forAddress:(NSString *)dd4;
+- (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict;
 
 // Utility
-+ (NSDictionary *) decodedTXTRecordDictionaryFromNetService:(NSNetService *)ns;
++ (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
 
 @end
 
@@ -152,14 +152,14 @@ static HLSLoadBalancer * _internal;
     }
     
     // Update stored TXT Record Data.
-    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
+//    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
 }
 
-- (void) updateRecordingsDBWithNetService:(NSNetService *)ns forAddress:(NSString *)dd4 {
-    NSDictionary *advertisedByService = [HLSLoadBalancer decodedTXTRecordDictionaryFromNetService:ns];
-    [advertisedByService enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+- (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict {
+    [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *rId = (NSString *)key;
         HLSStreamAdvertisement *ad = (HLSStreamAdvertisement *)obj;
+        NSLog(@"host=%@, advertisement=%@", ns.name, ad);
         
         HLSNetServicePathChunkCountTuple *tuple = [[HLSNetServicePathChunkCountTuple alloc] initWithNetService:ns path:ad.playlist count:ad.chunkCount];
         
@@ -177,15 +177,17 @@ static HLSLoadBalancer * _internal;
 }
 
 - (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
-    NSLog(@"service: %@ updated txtrecords.", sender); // DEBUG
-    
+    NSDictionary *dict = [HLSLoadBalancer decodedTXTRecordDictionaryFromData:data];
     [_discovered removeDiscoveredFromServiceNamed:sender.name];
-    [self updateRecordingsDBWithNetService:sender forAddress:sender.name];
+    [self updateRecordingsDBWithNetServiceNamed:sender adDictionary:dict];
 }
 
 #pragma mark Peer Selection
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId {
-    // TODO
+    NSArray *result = [_discovered netServicesWithRecording:rId];
+    
+    NSLog(@"services hosting this recording: %@", result);
+    
     return nil;
 }
 
@@ -202,10 +204,6 @@ static HLSLoadBalancer * _internal;
 }
 
 + (NSString *) dottedDecimalFromNetService:(NSNetService *)ns {
-//    NSLog(@"address count=%d", ns.addresses.count);
-//    NSLog(@"address0=%@", [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:0]]);
-//    NSLog(@"address1=%@", [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:1]]);
-    
     // Discard service if it has an unsupported number of addresses.
     if (ns.addresses.count != 2) {
         return nil;
@@ -217,13 +215,16 @@ static HLSLoadBalancer * _internal;
     return dd4;
 }
 
-+ (NSDictionary *) decodedTXTRecordDictionaryFromNetService:(NSNetService *)ns {
++ (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data {
+//    NSLog(@"decodedTXTRecordDictionaryFromData:");
+    
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
-    NSDictionary *rawRecords = [NSNetService dictionaryFromTXTRecordData:ns.TXTRecordData];
+    NSDictionary *rawRecords = [NSNetService dictionaryFromTXTRecordData:data];
     [rawRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *rId = (NSString *)key;
         NSString *recordData = [[NSString alloc] initWithData:(NSData *)obj encoding:NSUTF8StringEncoding];
+//        NSLog(@"raw decoded dictionary. id=%@, data=%@", rId, recordData);
         
         HLSStreamAdvertisement *ad = [HLSStreamAdvertisement advertisementFromString:recordData];
         

@@ -29,4 +29,8 @@
     return self;
 }
 
+- (NSString *) description {
+    return [NSString stringWithFormat:@"[netservice=%@, path=%@, count=%d]", netService, relativePath, chunkCount];
+}
+
 @end
