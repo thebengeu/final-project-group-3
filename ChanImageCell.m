@@ -19,8 +19,9 @@
     return self;
 }
 
-- (void)setPostContent:(ChanPost *)post
+- (void)setPost:(ChanPost *)post
 {
+    [super setPost:post];
     [self.imageView setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
     [self.labelView setText:[post content]];
     [self setupBackgroundImage];

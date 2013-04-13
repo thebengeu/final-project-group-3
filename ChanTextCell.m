@@ -19,8 +19,8 @@
     return self;
 }
 
--(void)setPostContent:(ChanPost*)post{
-    [super setPostContent:post];
+-(void)setPost:(ChanPost*)post{
+    [super setPost:post];
     self.textView.text = post.content;
     self.titleView.text = post.username;
     

@@ -21,7 +21,8 @@
     return self;
 }
 
--(void)setPostContent:(ChanPost *)post {
+-(void)setPost:(ChanPost *)post {
+    [super setPost:post];
     ChanSlidesPost *chanSlidesPost = (ChanSlidesPost *)post;
     NSSortDescriptor *urlDescriptor = [[NSSortDescriptor alloc] initWithKey:@"url" ascending:YES];
     NSArray *descriptors = [NSArray arrayWithObject:urlDescriptor];

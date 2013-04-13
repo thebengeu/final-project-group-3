@@ -999,6 +999,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="MJ2-92-XOx" id="sAk-1U-azW"/>
                                     <outlet property="labelView" destination="MTo-8m-CBj" id="tv7-kI-1xX"/>
+                                    <segue destination="Rps-cU-SQ5" kind="modal" identifier="slidesSegue" id="fPp-BV-ZgT"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="JmJ-JF-038" customClass="ChanVideoCell">
@@ -1023,6 +1024,9 @@
                                     <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" constant="18" id="boe-IB-yCd"/>
                                 </constraints>
                                 <size key="customSize" width="165" height="136"/>
+                                <connections>
+                                    <segue destination="mLk-YZ-vAp" kind="modal" identifier="videoPlayerSegue" id="Z6b-uW-ajH"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -1636,6 +1640,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="no3-bt-KPR"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="contentView" destination="fsB-gN-58s" id="UTj-tA-BQF"/>
@@ -1685,6 +1690,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Bk3-7A-xdy"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="scrollView" destination="FLn-Qy-ItD" id="P4y-RT-Nwl"/>
@@ -2269,6 +2275,10 @@
         </class>
         <class className="ChanSlidesCell" superclassName="ChanAbstractCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="ChanSlidesPostCell" superclassName="ChanPostCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesPostCell.h"/>
@@ -2388,6 +2398,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Z6b-uW-ajH"/>
+        <segue reference="fPp-BV-ZgT"/>
         <segue reference="Yc1-jX-CgN"/>
         <segue reference="5jW-HH-phM"/>
     </inferredMetricsTieBreakers>

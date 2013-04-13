@@ -15,5 +15,4 @@
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UILabel *titleView;
 
-- (void) setPostContent:(ChanPost*) post;
 @end

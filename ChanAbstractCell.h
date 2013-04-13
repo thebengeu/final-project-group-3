@@ -14,7 +14,8 @@
 
 @interface ChanAbstractCell : UICollectionViewCell
 
-- (void) setPostContent:(ChanPost*) post;
+@property (strong, nonatomic) ChanPost *post;
+
 + (CGFloat) getHeightForPost:(ChanPost *)post;
 
 - (void) setupBackgroundImage;

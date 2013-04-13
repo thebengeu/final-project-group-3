@@ -16,6 +16,4 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *labelView;
 
--(void) setPostContent:(ChanPost*)post;
-
 @end

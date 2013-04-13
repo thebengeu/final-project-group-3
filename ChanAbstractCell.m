@@ -20,9 +20,9 @@
     return self;
 }
 
-- (void)setPostContent:(id)post
+- (void)setPost:(id)post
 {
-    //TODO: is there anything to setup?
+    _post = post;
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post

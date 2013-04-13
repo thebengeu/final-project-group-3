@@ -17,8 +17,6 @@ static const int kMaxThumbnails = 120;
 
 @implementation ChanVideoCell
 
-@synthesize serverUrl;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,12 +26,11 @@ static const int kMaxThumbnails = 120;
     return self;
 }
 
-- (void)setPostContent:(ChanPost *)post {
-    [super setPostContent:post];
+- (void)setPost:(ChanPost *)post {
+    [super setPost:post];
     [self setupBackgroundImage];
     
     ChanVideoPost *videoPost = (ChanVideoPost*)post;
-    serverUrl = videoPost.url;
 
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime" ascending:NO];
     NSArray * descriptors = [NSArray arrayWithObject:sortDescriptor];

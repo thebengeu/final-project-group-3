@@ -12,8 +12,4 @@
 
 @interface ChanVideoCell : ChanAbstractCell
 
-@property (strong) NSString *serverUrl;
-
--(void)setPostContent:(ChanPost *)post;
-
 @end

@@ -9,6 +9,8 @@
 #import "ChanCollectionViewController.h"
 
 static CGFloat const kCellWidth = 240;
+static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
+static NSString *const cSlideSegue = @"slidesSegue";
 
 @interface ChanCollectionViewController () {
     NSMutableArray *_objectChanges;
@@ -67,6 +69,21 @@ static CGFloat const kCellWidth = 240;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSString * segueName = segue.identifier;
+    if ([segueName isEqualToString:cVideoPlayerSegue]) {
+        ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
+        ChanVideoCell *cell = (ChanVideoCell *)sender;
+        
+        [vpvc setServerURL:((ChanVideoPost *)cell.post).url];
+    } else if ([segueName isEqualToString:cSlideSegue]) {
+        ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
+        ChanSlidesCell *cell = (ChanSlidesCell *)sender;
+        
+        slidesViewController.post = (ChanSlidesPost *)cell.post;
+    }
+}
+
 #pragma mark - Collection View Protocol methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -99,8 +116,7 @@ static CGFloat const kCellWidth = 240;
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SlidesCell" forIndexPath:indexPath]; 
     }
     
-    [cell setPostContent:post];
-    
+    cell.post = post;
     return cell;
 }
 

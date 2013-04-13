@@ -17,6 +17,8 @@
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
 #import "ChanSlidesPost.h"
+#import "ChanVideoPlayerViewController.h"
+#import "ChanSlidesViewController.h"
 #import "UICollectionViewWaterfallLayout.h"
 
 @class ChanChannel;
