@@ -14,6 +14,7 @@ static const CGFloat kThumbnailWidth = 80.0f;
 static const CGFloat kThumbnailHeight = 60.0f;
 static const int kThumbnailsPerRow = 3;
 static const int kMaxThumbnails = 120;
+static const CGFloat kHeaderHeight = 17.0f;
 
 @implementation ChanVideoCell
 
@@ -41,7 +42,11 @@ static const int kMaxThumbnails = 120;
             *stop = YES;
         }
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((idx % kThumbnailsPerRow) * kThumbnailWidth, kThumbnailHeight * (idx / kThumbnailsPerRow), kThumbnailWidth, kThumbnailHeight)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
+            (idx % kThumbnailsPerRow) * kThumbnailWidth,
+            (kThumbnailHeight * (idx / kThumbnailsPerRow)) + kHeaderHeight,
+                kThumbnailWidth,
+                kThumbnailHeight)];
         [imageView setImageWithURL:[NSURL URLWithString:thumbnail.url]];
         [self.contentView addSubview:imageView];
     }];
@@ -51,8 +56,12 @@ static const int kMaxThumbnails = 120;
 {
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
 
-    return MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow));
+    CGFloat min = MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow)) + kHeaderHeight;
     
+    if (min < 140.0f)
+        return 140.0f;
+    else
+        return min;
 }
 
 - (void)setupBackgroundImage
