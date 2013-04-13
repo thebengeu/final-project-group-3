@@ -8,7 +8,7 @@
 
 #import "ChanCollectionViewController.h"
 
-static CGFloat const kCellWidth = 180;
+static CGFloat const kCellWidth = 240;
 
 @interface ChanCollectionViewController () {
     NSMutableArray *_objectChanges;
@@ -45,6 +45,7 @@ static CGFloat const kCellWidth = 180;
     // Init and update waterfall layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     _waterfallLayout.delegate = self;
+    _waterfallLayout.sectionInset = UIEdgeInsetsMake(0, 12.0f, 0, 12.0f);
     [self updateLayout];
 }
 
@@ -108,13 +109,14 @@ static CGFloat const kCellWidth = 180;
     Class postClass = [post class];
     
     if (postClass == [ChanTextPost class]) {
-        return 140.0f;
+        return 190.0f;
     } else if (postClass == [ChanImagePost class]) {
-        return 140.0f;
+//        NSLog("%f", [post])
+        return 240.0f;
     } else if (postClass == [ChanVideoPost class]) {
         return 300.0f;
     } else if (postClass == [ChanVideoThumbnailPost class]) {
-        return 140.0f;
+        return 200.0f;
     } else {
         return 140.0f;
     }
