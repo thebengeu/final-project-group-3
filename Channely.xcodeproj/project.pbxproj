@@ -61,7 +61,6 @@
 		821463CC17172E9200699085 /* ChanImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CB17172E9100699085 /* ChanImageCell.m */; };
 		821463D01717340600699085 /* ChanAbstractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CF1717340600699085 /* ChanAbstractCell.m */; };
 		821463D317173E8100699085 /* ChanVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463D217173E8000699085 /* ChanVideoCell.m */; };
-		821463D61717474300699085 /* ChanVideoThumbnailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463D51717474100699085 /* ChanVideoThumbnailCell.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -244,8 +243,6 @@
 		821463CF1717340600699085 /* ChanAbstractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanAbstractCell.m; sourceTree = "<group>"; };
 		821463D117173E7F00699085 /* ChanVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCell.h; sourceTree = "<group>"; };
 		821463D217173E8000699085 /* ChanVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCell.m; sourceTree = "<group>"; };
-		821463D41717474000699085 /* ChanVideoThumbnailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailCell.h; sourceTree = "<group>"; };
-		821463D51717474100699085 /* ChanVideoThumbnailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailCell.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -623,8 +620,6 @@
 		821463CD17172EA400699085 /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				821463D41717474000699085 /* ChanVideoThumbnailCell.h */,
-				821463D51717474100699085 /* ChanVideoThumbnailCell.m */,
 				821463CE1717340500699085 /* ChanAbstractCell.h */,
 				821463CF1717340600699085 /* ChanAbstractCell.m */,
 				82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */,
@@ -1052,7 +1047,6 @@
 				821463CC17172E9200699085 /* ChanImageCell.m in Sources */,
 				821463D01717340600699085 /* ChanAbstractCell.m in Sources */,
 				821463D317173E8100699085 /* ChanVideoCell.m in Sources */,
-				821463D61717474300699085 /* ChanVideoThumbnailCell.m in Sources */,
 				B6396D091715C469004CEA25 /* _ChanSlidePost.m in Sources */,
 				B6396D0F1715C473004CEA25 /* ChanSlidePost.m in Sources */,
 				B63B64AE1716580000885E4B /* _ChanSlidesPost.m in Sources */,
