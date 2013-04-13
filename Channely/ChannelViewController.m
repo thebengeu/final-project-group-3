@@ -164,6 +164,7 @@
             _collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCollectionViewController"];
         
         _collectionViewController.channel = self.channel;
+        _collectionViewController.posts = self.posts;
         
         [_currentContent removeFromSuperview];
         _currentContent = [_collectionViewController view];
@@ -184,10 +185,11 @@
         self.channel.lastRefreshed = [NSDate date];
         [self.posts addObjectsFromArray:posts];
         
-        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
-        [self.posts filterUsingPredicate:postsPredicate];
+//        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
+//        [self.posts filterUsingPredicate:postsPredicate];
         
-        [_postTableViewController setPostList:self.posts];
+        _postTableViewController.postList = self.posts;
+        _collectionViewController.posts = self.posts;
     }];
 }
 

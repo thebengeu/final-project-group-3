@@ -23,7 +23,8 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
-@property ChanChannel *channel;
+@property (strong, nonatomic) ChanChannel *channel;
+@property (strong, nonatomic) NSArray *posts;
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
