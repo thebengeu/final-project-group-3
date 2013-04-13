@@ -80,7 +80,7 @@
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
     
     // If owner, show create event button
-    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame){
+    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil){
         _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
         [rightBarItems addObject:_createEventButton];
     }
@@ -110,6 +110,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
+    [_createEventPopover dismissPopoverAnimated:YES];
+
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -347,7 +349,6 @@
         frame.origin.y += kbSize.height;
     [[self view]setFrame:frame];
 }
-
 
 
 -(void)createEventButtonPressed{

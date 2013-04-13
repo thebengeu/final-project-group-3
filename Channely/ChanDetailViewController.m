@@ -36,11 +36,13 @@ NSString *const cSearchSegueIdentifier = @"SearchSegue";
         _searchPopover = nil;
         
         _menuPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        _menuPopover.delegate = self;
     } else if ([segue.identifier isEqualToString:cSearchSegueIdentifier]) {
         [_menuPopover dismissPopoverAnimated:YES];
         _menuPopover = nil;
         
         _searchPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
+        _searchPopover.delegate = self;
         ChanSearchBarViewController *searchViewController = (ChanSearchBarViewController *) [_searchPopover contentViewController];
         [searchViewController searchBar].delegate = self;
     }
@@ -57,6 +59,7 @@ NSString *const cSearchSegueIdentifier = @"SearchSegue";
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
+    NSLog(@"asd");
     if (popoverController == _searchPopover)
         _searchPopover = nil;
     if (popoverController == _menuPopover)
