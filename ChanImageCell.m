@@ -19,9 +19,12 @@
     return self;
 }
 
--(void)setPostContent:(ChanPost *)post {
+- (void)setPostContent:(ChanPost *)post
+{
     [self.imageView setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
     [self.labelView setText:[post content]];
+    [self setupBackgroundImage];
+     
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post
@@ -29,6 +32,14 @@
     // TODO: dynamic height
     return 240.0f;
 }
+
+- (void) setupBackgroundImage
+{
+    [super setupBackgroundImage];
+    UIImage *cellImg = [[UIImage imageNamed:@"imagebar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

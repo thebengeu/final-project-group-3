@@ -17,4 +17,6 @@
 - (void) setPostContent:(ChanPost*) post;
 + (CGFloat) getHeightForPost:(ChanPost *)post;
 
+- (void) setupBackgroundImage;
+
 @end

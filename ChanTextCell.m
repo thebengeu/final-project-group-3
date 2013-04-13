@@ -23,7 +23,15 @@
     [super setPostContent:post];
     self.textView.text = post.content;
     self.titleView.text = post.username;
-//    NSLog(@"POST: %@ \n", post.content);
+    
+    [self setupBackgroundImage];
+}
+
+- (void) setupBackgroundImage
+{
+    [super setupBackgroundImage];
+    UIImage *cellImg = [[UIImage imageNamed:@"textbar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post

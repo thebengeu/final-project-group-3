@@ -28,8 +28,9 @@ static const int kMaxThumbnails = 120;
     return self;
 }
 
--(void)setPostContent:(ChanPost *)post {
+- (void)setPostContent:(ChanPost *)post {
     [super setPostContent:post];
+    [self setupBackgroundImage];
     
     ChanVideoPost *videoPost = (ChanVideoPost*)post;
     serverUrl = videoPost.url;
@@ -54,6 +55,14 @@ static const int kMaxThumbnails = 120;
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
 
     return MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow));
+    
+}
+
+- (void)setupBackgroundImage
+{
+    [super setupBackgroundImage];
+    UIImage *cellImg = [[UIImage imageNamed:@"videobar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 /*
