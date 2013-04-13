@@ -15,6 +15,9 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 static NSUInteger const cRandomMax = 5;
 static NSString *const cURLFormat = @"http://%@:%d/%@";
 static NSUInteger const cHttpPort = 80;
+static NSUInteger const cCompleteRecordingBitMask = 0x80000000;
+static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
+static NSUInteger const cMaxSpreadRadius = 5;
 
 @interface HLSLoadBalancer ()
 // Internal.
@@ -45,6 +48,7 @@ static NSUInteger const cHttpPort = 80;
 
 // Utility
 + (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
++ (NSUInteger) totalChunksFromChunkCountOfCompleteRecording:(NSUInteger)chunkCount;
 
 @end
 
@@ -153,9 +157,6 @@ static HLSLoadBalancer * _internal;
     @synchronized(_monitoredServices) {
         [_monitoredServices addObject:sender];
     }
-    
-    // Update stored TXT Record Data.
-//    [self updateRecordingsDBWithNetService:sender forAddress:ipAddr];
 }
 
 - (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict {
@@ -193,6 +194,15 @@ static HLSLoadBalancer * _internal;
     // The client class should handle this by choosing a default source.
     if (result.count == 0) {
         return nil;
+    }
+    
+    // Try and determine the total number of chunks.
+    // TODO - use this for load balancing.
+    NSUInteger totalChunks = 0;
+    NSUInteger topChunkCount = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
+    if (topChunkCount & cCompleteRecordingBitMask) {
+        totalChunks = [HLSLoadBalancer totalChunksFromChunkCountOfCompleteRecording:topChunkCount];
+        NSLog(@"found completed recording. total chunks: %d", totalChunks); // DEBUG
     }
     
     // Randomly pick a peer from the top n.
@@ -244,6 +254,10 @@ static HLSLoadBalancer * _internal;
     }];
     
     return result;
+}
+
++ (NSUInteger) totalChunksFromChunkCountOfCompleteRecording:(NSUInteger)chunkCount {
+    return (chunkCount & cTotalChunksBitMask);
 }
 
 @end
