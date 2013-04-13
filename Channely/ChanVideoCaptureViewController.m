@@ -201,8 +201,8 @@ static NSString *const cButtonStartRecording = @"Start";
     }
     
     NSData *chunkData = [NSData dataWithContentsOfURL:chunk];
-    
-    [_currentRecording addChunkWithData:chunkData duration:duration seqNo:index withCompletion:^(ChanHLSChunk *hlsChunk, NSError *error) {
+    __weak ChanHLSRecording *recording = _currentRecording;
+    [recording addChunkWithData:chunkData duration:duration seqNo:index withCompletion:^(ChanHLSChunk *hlsChunk, NSError *error) {
         if (error) {
             NSLog(@"video capture. in recorderDidStopRecording: REST error.");
             return;
@@ -210,10 +210,11 @@ static NSString *const cButtonStartRecording = @"Start";
         
         // Remove the local mp4 file that is no longer needed.
         [ChanUtility removeFileAtPath:chunk.path];
-    }];
-    
-    [_currentRecording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
-        return;
+        
+        [recording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
+            NSLog(@"Successfully stopped server recording.");
+            return;
+        }];
     }];
 }
 
