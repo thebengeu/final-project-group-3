@@ -46,7 +46,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
     // Init and update waterfall layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     _waterfallLayout.delegate = self;
-    _waterfallLayout.sectionInset = UIEdgeInsetsMake(10.0f, 12.0f, 0, 12.0f);
+    _waterfallLayout.sectionInset = UIEdgeInsetsMake(10.0f, 12.0f, 15.0f, 12.0f);
     [self updateLayout];
 }
 
