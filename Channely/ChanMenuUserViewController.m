@@ -35,7 +35,7 @@
         return;
     }
     
-    [[self navigationItem]setTitle:@"Welcome"];
+    [[self navigationItem]setTitle:@"User"];
     [_username setText:[[ChanUser loggedInUser]name]];
     
 }
@@ -73,11 +73,16 @@
             return;
         }
         
-        //[[ChanUser loggedInUser] setName:[_username text]];
-        ////if ([[_password text]length] > 0)
-          //  [[ChanUser loggedInUser] setPassword:[_password text]];
+        NSString *password = [_password text];
+        if ([password length] == 0)
+            password = nil;
         
-        //[_updateStatus startAnimating];
+        [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
+            [_updateStatus stopAnimating];
+            [_username setText:[[ChanUser loggedInUser]name]];
+        }];
+        
+        [_updateStatus startAnimating];
     }
 }
 
