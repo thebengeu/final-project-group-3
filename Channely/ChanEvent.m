@@ -10,13 +10,16 @@
 
 @implementation ChanEvent
 
-+ (void)search:(CLLocationCoordinate2D)location
-withinDistance:(CLLocationDistance)maxDistance
++ (void)search:(NSString *)name
+      latitude:(NSNumber *)latitude
+     longitude:(NSNumber *)longitude
+withinDistance:(NSNumber *)maxDistance
 withCompletion:(void (^)(NSArray *events, NSError *error))block {
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSNumber numberWithDouble:location.latitude], @"latitude",
-                            [NSNumber numberWithDouble:location.longitude], @"longitude",
-                            [NSNumber numberWithDouble:maxDistance], @"maxDistance",
+                            latitude, @"latitude",
+                            longitude, @"longitude",
+                            maxDistance, @"maxDistance",
+                            name, @"name",
                             nil];
     [[RKObjectManager sharedManager] getObjectsAtPath:PATH_EVENTS_SEARCH parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (block) block([mappingResult array], nil);
