@@ -15,12 +15,12 @@
      longitude:(NSNumber *)longitude
 withinDistance:(NSNumber *)maxDistance
 withCompletion:(void (^)(NSArray *events, NSError *error))block {
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            latitude, @"latitude",
-                            longitude, @"longitude",
-                            maxDistance, @"maxDistance",
-                            name, @"name",
-                            nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    if (latitude) [params setObject:latitude forKey:@"latitude"];
+    if (longitude) [params setObject:longitude forKey:@"longitude"];
+    if (maxDistance) [params setObject:maxDistance forKey:@"maxDistance"];
+    if (name) [params setObject:name forKey:@"name"];
+
     [[RKObjectManager sharedManager] getObjectsAtPath:PATH_EVENTS_SEARCH parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (block) block([mappingResult array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
