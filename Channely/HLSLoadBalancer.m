@@ -121,8 +121,7 @@ static HLSLoadBalancer * _internal;
 - (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
     NSLog(@"netservice that went offline: %@, %@", aNetService, aNetService.name);
 
-    
-    // TODO
+    [_discovered removeDiscoveredFromServiceNamed:aNetService.name];
 }
 
 #pragma mark NetService Delegate
@@ -131,7 +130,9 @@ static HLSLoadBalancer * _internal;
 // We process services with resolved addresses here. The first step is to convert the 4-byte IPv4 address to a string, which is used as a key
 // for multiple dictionaries.
 // We ignore the above multi-homed scenario; if a device is multi-homed, the resolved NSNetService is discarded.
-- (void) netServiceDidResolveAddress:(NSNetService *)sender {
+- (void) netServiceDidResolveAddress:(NSNetService *)sender {   
+    NSLog(@"service: %@ got resolved.", sender); // DEBUG
+    
     // Remove the service from the waiting collection because it has been resolved.
     @synchronized(_waitingForResolve) {
         [_waitingForResolve removeObject:sender];
@@ -144,6 +145,7 @@ static HLSLoadBalancer * _internal;
     }
     
     // Start monitoring this service for TXT record changes.
+    NSLog(@"service delegate: %@", sender.delegate);
     [sender startMonitoring];
     @synchronized(_monitoredServices) {
         [_monitoredServices addObject:sender];
@@ -167,7 +169,7 @@ static HLSLoadBalancer * _internal;
 
 // If the service fails to resolve, we discard it.
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
-    NSLog(@"did not resolve service."); // DEBUG
+    NSLog(@"did not resolve service: %@", sender); // DEBUG
     
     @synchronized(_waitingForResolve) {
         [_waitingForResolve removeObject:sender];
@@ -175,6 +177,8 @@ static HLSLoadBalancer * _internal;
 }
 
 - (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
+    NSLog(@"service: %@ updated txtrecords.", sender); // DEBUG
+    
     [_discovered removeDiscoveredFromServiceNamed:sender.name];
     [self updateRecordingsDBWithNetService:sender forAddress:sender.name];
 }
@@ -198,8 +202,12 @@ static HLSLoadBalancer * _internal;
 }
 
 + (NSString *) dottedDecimalFromNetService:(NSNetService *)ns {
+//    NSLog(@"address count=%d", ns.addresses.count);
+//    NSLog(@"address0=%@", [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:0]]);
+//    NSLog(@"address1=%@", [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:1]]);
+    
     // Discard service if it has an unsupported number of addresses.
-    if (ns.addresses.count != 1) {
+    if (ns.addresses.count != 2) {
         return nil;
     }
     
