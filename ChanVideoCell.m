@@ -10,9 +10,10 @@
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
 
-static const CGFloat kThumbnailWidth = 240.0f;
-static const CGFloat kThumbnailHeight = 180.0f;
-static const int kMaxThumbnails = 10;
+static const CGFloat kThumbnailWidth = 80.0f;
+static const CGFloat kThumbnailHeight = 60.0f;
+static const int kThumbnailsPerRow = 3;
+static const int kMaxThumbnails = 120;
 
 @implementation ChanVideoCell
 
@@ -38,22 +39,21 @@ static const int kMaxThumbnails = 10;
     NSArray *thumbnails  = [[videoPost.thumbnails allObjects] sortedArrayUsingDescriptors:descriptors];
     
     [thumbnails enumerateObjectsUsingBlock:^(ChanVideoThumbnailPost *thumbnail, NSUInteger idx, BOOL *stop) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kThumbnailHeight * idx, kThumbnailWidth, kThumbnailHeight)];
-        [imageView setImageWithURL:[NSURL URLWithString:thumbnail.url]];
-        [self.contentView addSubview:imageView];
-        
-        if (idx >= kMaxThumbnails - 1) {
+        if (idx >= kMaxThumbnails) {
             *stop = YES;
         }
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((idx % kThumbnailsPerRow) * kThumbnailWidth, kThumbnailHeight * (idx / kThumbnailsPerRow), kThumbnailWidth, kThumbnailHeight)];
+        [imageView setImageWithURL:[NSURL URLWithString:thumbnail.url]];
+        [self.contentView addSubview:imageView];
     }];
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post
 {
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
-    
-    // Display max last 10 thumbnails
-    return MIN(kThumbnailHeight * videoPost.thumbnails.count, kThumbnailHeight * kMaxThumbnails);
+
+    return MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow));
 }
 
 /*
