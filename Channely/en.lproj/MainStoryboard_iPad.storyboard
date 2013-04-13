@@ -170,7 +170,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCl-JN-Btk">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="np1-vc-TjB">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -358,11 +358,11 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Channel Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dYQ-rm-1hG">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hashtag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar0-SI-Ra1">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="#" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vVG-KU-BNF">
                                 <constraints>
@@ -2018,7 +2018,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8PK-kj-SKM">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ELN-pV-JGX">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2140,7 +2140,6 @@
         <class className="ChanDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchButtonPressed:"/>
                 <relationship kind="outlet" name="container" candidateClass="UIView"/>
                 <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="searchButton" candidateClass="UIBarButtonItem"/>
@@ -2161,13 +2160,39 @@
                 <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
             </relationships>
         </class>
-        <class className="ChanMenuViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuViewController.h"/>
+        <class className="ChanMenuAnonUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuAnonUserViewController.h"/>
             <relationships>
-                <relationship kind="action" name="channels:"/>
-                <relationship kind="action" name="login:"/>
-                <relationship kind="action" name="signup:"/>
-                <relationship kind="outlet" name="channelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="anonUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuSignupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuSignupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuUserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="update:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updateStatus" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="ChanPostCell" superclassName="UITableViewCell">
