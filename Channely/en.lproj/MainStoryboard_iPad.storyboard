@@ -2071,8 +2071,6 @@
     <resources>
         <image name="mapmarker_red.png" width="88" height="88"/>
     </resources>
-<<<<<<< HEAD
-=======
     <classes>
         <class className="AttachPickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AttachPickerViewController.h"/>
@@ -2318,7 +2316,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
         </class>
     </classes>
->>>>>>> aaa8f34020fb4896caed93e62a21f25f72f636aa
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
