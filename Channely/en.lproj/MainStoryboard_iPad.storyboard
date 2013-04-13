@@ -1003,27 +1003,15 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="JmJ-JF-038" customClass="ChanVideoCell">
-                                <rect key="frame" x="283" y="323" width="165" height="136"/>
+                                <rect key="frame" x="283" y="264" width="260" height="254"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="165" height="136"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="260" height="254"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Video Cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zx8-Pe-Gf5">
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="leading" secondItem="JmJ-JF-038" secondAttribute="leading" constant="20" type="default" id="3mc-rP-H7n"/>
-                                    <constraint firstItem="Zx8-Pe-Gf5" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" constant="18" id="boe-IB-yCd"/>
-                                </constraints>
-                                <size key="customSize" width="165" height="136"/>
+                                <size key="customSize" width="260" height="254"/>
                                 <connections>
                                     <segue destination="mLk-YZ-vAp" kind="modal" identifier="videoPlayerSegue" id="Z6b-uW-ajH"/>
                                 </connections>
