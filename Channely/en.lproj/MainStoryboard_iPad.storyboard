@@ -926,7 +926,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Xg6-95-Zvj" customClass="ChanImageCell">
-                                <rect key="frame" x="253" y="0.0" width="273" height="254"/>
+                                <rect key="frame" x="495" y="0.0" width="273" height="254"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="273" height="254"/>
@@ -963,8 +963,46 @@
                                     <outlet property="labelView" destination="qP7-3Q-YFv" id="Vfv-LO-hFJ"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlidesCell" id="oii-1E-pIV" customClass="ChanSlidesCell">
+                                <rect key="frame" x="0.0" y="264" width="273" height="254"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="273" height="254"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJ2-92-XOx">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="EXR-Cp-bgV"/>
+                                                <constraint firstAttribute="width" constant="240" id="JDP-E3-WKk"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTo-8m-CBj">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="klQ-Vo-fAX"/>
+                                                <constraint firstAttribute="width" constant="225" id="xst-ey-1hc"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="MJ2-92-XOx" firstAttribute="top" secondItem="oii-1E-pIV" secondAttribute="top" constant="10" id="Ooz-y0-YGd"/>
+                                    <constraint firstItem="MJ2-92-XOx" firstAttribute="centerX" secondItem="oii-1E-pIV" secondAttribute="centerX" type="default" id="QT2-CA-epR"/>
+                                    <constraint firstItem="MTo-8m-CBj" firstAttribute="bottom" secondItem="oii-1E-pIV" secondAttribute="bottom" type="default" id="gJf-fi-5H9"/>
+                                    <constraint firstItem="MTo-8m-CBj" firstAttribute="centerX" secondItem="MJ2-92-XOx" secondAttribute="centerX" type="default" id="hWJ-nq-Tum"/>
+                                </constraints>
+                                <size key="customSize" width="273" height="254"/>
+                                <connections>
+                                    <outlet property="imageView" destination="MJ2-92-XOx" id="sAk-1U-azW"/>
+                                    <outlet property="labelView" destination="MTo-8m-CBj" id="tv7-kI-1xX"/>
+                                </connections>
+                            </collectionViewCell>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="JmJ-JF-038" customClass="ChanVideoCell">
-                                <rect key="frame" x="536" y="59" width="165" height="136"/>
+                                <rect key="frame" x="283" y="323" width="165" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="165" height="136"/>
@@ -2071,6 +2109,279 @@
     <resources>
         <image name="mapmarker_red.png" width="88" height="88"/>
     </resources>
+    <classes>
+        <class className="AttachPickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AttachPickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pickImage:"/>
+                <relationship kind="action" name="pickVideo:"/>
+                <relationship kind="action" name="takePhoto:"/>
+            </relationships>
+        </class>
+        <class className="ChanAbstractCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAbstractCell.h"/>
+        </class>
+        <class className="ChanAnnotationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAnnotationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="blueColor:"/>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="clear:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="greenColor:"/>
+                <relationship kind="action" name="redColor:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelCreateUpdateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelCreateUpdateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createOrUpdate:"/>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createUpdateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelOwnedTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelOwnedTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelOwnedTableController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelOwnedTableController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addChannelButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ChanCollectionViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCollectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="waterfallLayout" candidateClass="UICollectionViewWaterfallLayout"/>
+            </relationships>
+        </class>
+        <class className="ChanCreateEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCreateEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="endDateEditingBegin:"/>
+                <relationship kind="action" name="startDateEditingBegin:"/>
+                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="endDateTextField" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="startDateTextField" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ChanDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="container" candidateClass="UIView"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="searchButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ChanImageCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImageCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanImagePostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="drawButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuAnonUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuAnonUserViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="anonUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuSignupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuSignupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuUserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="update:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updateStatus" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanPostCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="timeView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="usernameView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanRootViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanRootViewController.h"/>
+        </class>
+        <class className="ChanSearchBarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchBarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="ChanSearchResultChannelCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchResultChannelCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanSearchResultEventCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchResultEventCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventName" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanSearchTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchTableViewController.h"/>
+        </class>
+        <class className="ChanSlidesCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesCell.h"/>
+        </class>
+        <class className="ChanSlidesPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanSlidesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ChanTextCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanTextPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
+                <relationship kind="action" name="recordingControlButton_Action:"/>
+                <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordingControlButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCell.h"/>
+        </class>
+        <class className="ChanVideoPlayerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoPlayerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoThumbnailPostCell" superclassName="ChanPostCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoThumbnailPostCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelPostTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelPostTableViewController.h"/>
+        </class>
+        <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="locationButtonTapped:"/>
+                <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelUITableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewController.h"/>
+        </class>
+        <class className="ChannelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="attach:"/>
+                <relationship kind="action" name="sendPost:"/>
+                <relationship kind="outlet" name="attachButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="contentContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sendPostIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textInput" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="DiscoverViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiscoverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelListContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewWaterfallLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewWaterfallLayout.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

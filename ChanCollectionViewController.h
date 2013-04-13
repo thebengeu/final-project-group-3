@@ -10,11 +10,13 @@
 #import "ChanTextCell.h"
 #import "ChanImageCell.h"
 #import "ChanVideoCell.h"
+#import "ChanSlidesCell.h"
 #import "ChanPost.h"
 #import "ChanTextPost.h"
 #import "ChanImagePost.h"
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
+#import "ChanSlidesPost.h"
 #import "UICollectionViewWaterfallLayout.h"
 
 @class ChanChannel;

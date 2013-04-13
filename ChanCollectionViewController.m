@@ -96,8 +96,8 @@ static CGFloat const kCellWidth = 240;
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
     } else if (postClass == [ChanVideoPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
-    } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath]; 
+    } else if (postClass == [ChanSlidesPost class]) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SlidesCell" forIndexPath:indexPath]; 
     }
     
     [cell setPostContent:post];
@@ -117,9 +117,9 @@ static CGFloat const kCellWidth = 240;
     } else if (postClass == [ChanImagePost class]) {
         return [ChanImageCell getHeightForPost:post];
     } else if (postClass == [ChanVideoPost class]) {
-        return 300.0f;
-    } else if (postClass == [ChanVideoThumbnailPost class]) {
-        return 240.0f;
+        return [ChanVideoCell getHeightForPost:post];
+    } else if (postClass == [ChanSlidesPost class]) {
+        return [ChanSlidesCell getHeightForPost:post];
     } else {
         return 0;
     }
