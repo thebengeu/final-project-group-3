@@ -24,6 +24,6 @@
 
 @interface ChannelPostTableViewController : UITableViewController
 
-@property NSMutableArray *postList;
+@property NSArray *postList;
 
 @end

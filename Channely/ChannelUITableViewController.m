@@ -67,9 +67,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanEvent *event = [_channelList objectAtIndex:[indexPath row]];
-    ChannelUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChannelCell"];
+    ChannelUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
     if(cell == nil) {
-        cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChannelCell"];
+        cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
     }
     
     [[cell channelNameTextView]setText: event.channel.name];

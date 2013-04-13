@@ -206,6 +206,7 @@
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
     RKResponseDescriptor *channelUpdateDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL_UPDATE keyPath:nil statusCodes:statusCodes];
     RKResponseDescriptor *ownedChannelsDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_OWNED_CHANNELS keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *searchChannelDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL_SEARCH keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
     [requestMapping addAttributeMappingsFromDictionary:@{
@@ -218,6 +219,7 @@
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:channelUpdateDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:ownedChannelsDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:searchChannelDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
     
     return responseMapping;
@@ -270,6 +272,7 @@
      @"accessToken":    @"accessToken"}];
     responseMapping.identificationAttributes = @[ @"id" ];
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_USER keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *userUpdateDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_USER_UPDATE keyPath:nil statusCodes:statusCodes];
     RKResponseDescriptor *oauthResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_GET_ACCESS_TOKEN keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *requestMapping = [RKObjectMapping requestMapping];
@@ -280,6 +283,7 @@
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanUser class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:userUpdateDescriptor];
     [[RKObjectManager sharedManager] addResponseDescriptor:oauthResponseDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
     

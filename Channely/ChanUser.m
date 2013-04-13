@@ -61,6 +61,19 @@ static ChanUser *loggedInUser = nil;
     }];
 }
 
+- (void)updateUser:(NSString *)name password:(NSString *)password withCompletion:(void (^)(ChanUser *user, NSError *error))block
+{
+    self.name = name;
+    self.password = password;
+    
+    [[RKObjectManager sharedManager] putObject:self path:[NSString stringWithFormat:PATH_USER_UPDATE_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        self.password = nil;
+        if (block) block(self, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (block) block(nil, error);
+    }];
+}
+
 - (void)getOwnedChannels:(void (^)(NSArray *channels, NSError *error))block
 {
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:PATH_OWNED_CHANNELS_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

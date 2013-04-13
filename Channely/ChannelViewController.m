@@ -14,6 +14,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "ChanCreateEventViewController.h"
 #import "ChanEvent.h"
+#import "UIImage+normalizedOrientation.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
@@ -33,7 +34,11 @@
 
 @property UIBarButtonItem *createEventButton;
 
+@property UIBarButtonItem *toggleButton;
+
 @property ChanCreateEventViewController *createEventViewController;
+
+@property UIView *currentContent;
 
 @end
 
@@ -54,8 +59,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@", self.channel.name);
-    [self populateChannelPost];
-    //[self populateFakePosts];
     
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -67,43 +70,35 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    
-   
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
-    NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@", self.channel];
-    [request setPredicate:predicate];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:YES];
-    [request setSortDescriptors:@[sortDescriptor]];
-
-    NSError *error;
-    self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&error]];
-    if (self.posts == nil) {
-        self.posts = [NSMutableArray array];
-    }
-    
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-    [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
-    _postTableViewController.refreshControl = refreshControl;
     
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
-    _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
-    [rightBarItems addObject:_createEventButton];
+    
+    // If owner, show create event button
+    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil){
+        _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
+        [rightBarItems addObject:_createEventButton];
+    }
+    
     //  Add more items if needed
+    _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
+    [rightBarItems addObject:_toggleButton];
 
     self.navigationItem.rightBarButtonItems = rightBarItems;
+    self.navigationItem.title = self.channel.name;
+    
+   }
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    //  Load contents
+    [self toggleChannelLayout];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -116,48 +111,57 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
+    [_createEventPopover dismissPopoverAnimated:YES];
+
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                                                duration:duration];
+    [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                            duration:duration];
+}
 
-- (void)populateFakePosts{
-    ChanUser *user1 = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
-    //[user1 setId:@"userid1"];
-    [user1 setName:@"User 1"];
+-(void) toggleChannelLayout{
+    CGRect frame = [self contentContainer].frame;
     
-    ChanUser *user2 = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
-    //[user2 setId:@"userid2"];
-    [user2 setName:@"User 2"];
     
-    //  Posts
-    NSMutableArray *posts = [[NSMutableArray alloc]init];
-    
-    for (int i = 0; i <20; i++){
-        ChanPost *post;
-        if (i % 5 != 0){
-            post = [NSEntityDescription insertNewObjectForEntityForName:@"TextPost" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
-            post.content = [NSString stringWithFormat:@"text %d", i];
-            [post setCreatedAt:[NSDate date]];
-            
-            if (i % 3 == 0)
-                [post setCreator:user1];
-            else
-                [post setCreator:user2];
-        } else {
-            post = [NSEntityDescription insertNewObjectForEntityForName:@"ImagePost" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
-            post.content = [NSString stringWithFormat:@"image %d", i];
-            [(ChanImagePost*)post setUrl:@"http://www.earthtimes.org/newsimage/eating-apples-extended-lifespan-test-animals-10-per-cent_183.jpg"];
-            [post setCreatedAt:[NSDate date]];
-            
-            if (i % 3 == 0)
-                [post setCreator:user1];
-            else
-                [post setCreator:user2];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    if (_currentContent == [_collectionViewController view] && _currentContent != nil){
+        //  To change to ChanCollectionViewController
+
+        if (_postTableViewController == nil){
+            _postTableViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelPostTableViewController"];
+            UIRefreshControl *refreshControl = [UIRefreshControl new];
+            [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
+            _postTableViewController.refreshControl = refreshControl;
         }
-        [posts addObject:post];
+        
+        [_currentContent removeFromSuperview];
+        _currentContent = [_postTableViewController view];
+        [_toggleButton setTitle:@"Collection"];
+       
+    } else {
+        //  to change to ChannelPostTableViewController
+        
+        if (_collectionViewController == nil)
+            _collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCollectionViewController"];
+        
+        _collectionViewController.channel = self.channel;
+        _collectionViewController.posts = self.posts;
+        
+        [_currentContent removeFromSuperview];
+        _currentContent = [_collectionViewController view];
+        [_toggleButton setTitle:@"Temporal"];
     }
-    [self setPosts:posts];
-    [_postTableViewController setPostList:[self posts]];
+    
+    [self populateChannelPost];
+    _currentContent.frame = frame;
+    [[self view]addSubview:_currentContent];
 }
+
 
 -(void)populateChannelPost
 {
@@ -165,12 +169,23 @@
         [_postTableViewController.refreshControl endRefreshing];
         
         self.channel.lastRefreshed = [NSDate date];
-        [self.posts addObjectsFromArray:posts];
         
-        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
-        [self.posts filterUsingPredicate:postsPredicate];
+        NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
         
-        [_postTableViewController setPostList:self.posts];
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
+        [request setPredicate:predicate];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
+        [request setSortDescriptors:@[sortDescriptor]];
+        
+        NSError *err;
+        self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&err]];
+        
+        _postTableViewController.postList = self.posts;
+        _collectionViewController.posts = self.posts;
     }];
 }
 
@@ -208,7 +223,7 @@
             [channelViewController populateChannelPost];
         }];
     } else {
-        [_channel addImagePostWithContent:[_textInput text] image:_attachedImage withCompletion:^(ChanImagePost *imagePost, NSError *error) {
+        [_channel addImagePostWithContent:[_textInput text] image:[_attachedImage normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
             [[channelViewController textInput]setText:@""];
             [[channelViewController sendPostIndicator]stopAnimating];
             [[channelViewController textInput] setEditable:YES];
@@ -335,7 +350,6 @@
         frame.origin.y += kbSize.height;
     [[self view]setFrame:frame];
 }
-
 
 
 -(void)createEventButtonPressed{

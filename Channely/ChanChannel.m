@@ -35,6 +35,18 @@
     }];
 }
 
++ (void)search:(NSString *)name
+withCompletion:(void (^)(NSArray *channels, NSError *error))block {
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
+                            name, @"name",
+                            nil];
+    [[RKObjectManager sharedManager] getObjectsAtPath:PATH_CHANNEL_SEARCH parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (block) block([mappingResult array], nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (block) block(nil, error);
+    }];
+}
+
 - (void)updateChannelWithName:(NSString *)name hashTag:(NSString *)hashTag withCompletion:(void (^)(ChanChannel *channel, NSError *error))block
 {
     self.name = name;
