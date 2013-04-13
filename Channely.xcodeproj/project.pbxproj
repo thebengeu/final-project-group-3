@@ -59,6 +59,7 @@
 		4AE16EE5170DF6E500573A4B /* HLSPlaylistDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */; };
 		4AE16EE6170DF6E500573A4B /* ChanUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE16EE1170DF6E500573A4B /* ChanUtility.m */; };
 		4AEE4D5E1719838500987486 /* HLSNetServicePathChunkCountTuple.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */; };
+		4AEE4D61171985EA00987486 /* HLSDiscoveredRecordings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -236,6 +237,8 @@
 		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanUtility.m; sourceTree = "<group>"; };
 		4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSNetServicePathChunkCountTuple.h; sourceTree = "<group>"; };
 		4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSNetServicePathChunkCountTuple.m; sourceTree = "<group>"; };
+		4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSDiscoveredRecordings.h; sourceTree = "<group>"; };
+		4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSDiscoveredRecordings.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -565,6 +568,8 @@
 				0AA2CB3C1713F6A100D8C28F /* HLSLoadBalancer.m */,
 				4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */,
 				4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */,
+				4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */,
+				4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */,
 			);
 			name = "Stream Discovery";
 			sourceTree = "<group>";
@@ -1036,6 +1041,7 @@
 				B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */,
 				B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */,
 				4AEE4D5E1719838500987486 /* HLSNetServicePathChunkCountTuple.m in Sources */,
+				4AEE4D61171985EA00987486 /* HLSDiscoveredRecordings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

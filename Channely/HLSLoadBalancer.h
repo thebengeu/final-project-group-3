@@ -19,4 +19,8 @@
 + (HLSLoadBalancer *) setupLoadBalancer;
 + (HLSLoadBalancer *) loadBalancer;
 
+// Utility
++ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
++ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
+
 @end

@@ -35,10 +35,6 @@ static NSString *const cDD4AddressZero = @"0.0.0.0";
 - (void) netServiceDidResolveAddress:(NSNetService *)sender;
 - (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
 
-// Utility
-+ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
-+ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
-
 @end
 
 @implementation HLSLoadBalancer
@@ -195,4 +191,5 @@ static HLSLoadBalancer * _internal;
     
     return dd4;
 }
+
 @end
