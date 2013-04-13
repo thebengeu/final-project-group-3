@@ -24,7 +24,7 @@
 
 @property ChanCollectionViewController *collectionViewController;
 
-@property NSMutableArray *posts;
+@property NSArray *posts;
 
 @property (weak, nonatomic) IBOutlet UITextView *textInput;
 

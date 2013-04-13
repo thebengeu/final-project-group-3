@@ -76,23 +76,6 @@
 {
     [super viewDidLoad];
     
-    NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
-    [request setPredicate:predicate];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
-    [request setSortDescriptors:@[sortDescriptor]];
-
-    NSError *error;
-    self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&error]];
-    if (self.posts == nil) {
-        self.posts = [NSMutableArray array];
-    }
-    
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
     
@@ -184,9 +167,19 @@
         
         self.channel.lastRefreshed = [NSDate date];
         
-        NSPredicate *postsPredicate = [NSPredicate predicateWithFormat:@"type = %@ OR type = %@ OR type = %@ OR type = %@", @"text", @"image", @"video", @"slides"];
-        posts = [posts filteredArrayUsingPredicate:postsPredicate];
-        [self.posts addObjectsFromArray:posts];
+        NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:entityDescription];
+        
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
+        [request setPredicate:predicate];
+        
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
+        [request setSortDescriptors:@[sortDescriptor]];
+        
+        NSError *err;
+        self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&err]];
         
         _postTableViewController.postList = self.posts;
         _collectionViewController.posts = self.posts;
