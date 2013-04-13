@@ -97,7 +97,7 @@
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
     
     // If owner, show create event button
-    if ([ChanUser loggedInUser] == [_channel owner]){
+    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame){
         _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
         [rightBarItems addObject:_createEventButton];
     }
