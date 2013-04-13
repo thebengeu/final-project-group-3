@@ -11,6 +11,7 @@
 static NSString *const cAdFormat = @"%d,%@";
 static NSUInteger const cExpectedDataComponents = 2;
 static NSString *const cProtocolFormat = @"http://%@";
+static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d, found=%@]";
 
 @interface HLSAdvertisementData ()
 //Redefinitions.
@@ -64,6 +65,11 @@ static NSString *const cProtocolFormat = @"http://%@";
 + (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl {
     NSString *result = [NSString stringWithFormat:cAdFormat, count, pl];
     return result;
+}
+
+#pragma mark Utility
+- (NSString *) description {
+    return [NSString stringWithFormat:cDescFormat, hostDD4, playlist, chunkCount, created];
 }
 
 @end

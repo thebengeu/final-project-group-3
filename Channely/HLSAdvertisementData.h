@@ -15,6 +15,7 @@
 @property (readonly, strong) NSDate *created;
 
 - (id) init;
+- (NSString *) description;
 
 + (HLSAdvertisementData *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4;
 + (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl;
