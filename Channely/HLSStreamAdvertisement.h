@@ -12,6 +12,7 @@
 @property (readonly, strong) NSString *hostDD4;
 @property (readonly, strong) NSString *playlist;
 @property (nonatomic, readonly) NSUInteger chunkCount;
+@property (readonly, strong) NSString *recordingId;
 
 - (id) init;
 - (NSString *) description;

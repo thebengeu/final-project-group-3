@@ -18,6 +18,7 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d]";
 @property (readwrite, strong) NSString *hostDD4;
 @property (readwrite, strong) NSString *playlist;
 @property (nonatomic, readwrite) NSUInteger chunkCount;
+@property (readwrite, strong) NSString *recordingId;
 
 // Private Constructor
 - (id) initWithPlaylist:(NSString *)pl onHost:(NSString *)dd4 withChunkCount:(NSUInteger)count;
@@ -29,6 +30,7 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d]";
 @synthesize hostDD4;
 @synthesize playlist;
 @synthesize chunkCount;
+@synthesize recordingId;
 
 #pragma mark Static Initialization Only
 // Overriden default init.
@@ -37,17 +39,18 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d]";
 }
 
 #pragma mark Constructors
-- (id) initWithPlaylist:(NSString *)pl onHost:(NSString *)dd4 withChunkCount:(NSUInteger)count {
+- (id) initWithPlaylist:(NSString *)pl onHost:(NSString *)dd4 forRecording:(NSString *)rId withChunkCount:(NSUInteger)count {
     if (self = [super init]) {
         playlist = pl;
         chunkCount = count;
         hostDD4 = dd4;
+        recordingId = rId;
     }
     return self;
 }
 
 #pragma mark External Static Methods
-+ (HLSStreamAdvertisement *) advertisementFromData:(NSData *)data forPeerWithAddress:(NSString *)dd4 {
++ (HLSStreamAdvertisement *) advertisementFromData:(NSData *)data onHost:(NSString *)dd4 withRecordingId:(NSString *)rId {
     NSString *representativeString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSArray *components = [representativeString componentsSeparatedByString:@","];
     
@@ -55,7 +58,7 @@ static NSString *const cDescFormat = @"[ip=%@, playlist=%@, count=%d]";
         return nil;
     } else {
         NSUInteger count = [[components objectAtIndex:0] integerValue];
-        return [[HLSStreamAdvertisement alloc] initWithPlaylist:[components objectAtIndex:1] onHost:dd4 withChunkCount:count];
+        return [[HLSStreamAdvertisement alloc] initWithPlaylist:[components objectAtIndex:1] onHost:dd4 forRecording:rId withChunkCount:count];
     }
 }
 
