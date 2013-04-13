@@ -12,6 +12,9 @@ static NSString *const cBonjourDomain = @"local.";
 static NSString *const cAppServiceName = @"_channely._tcp.";
 static NSTimeInterval const cNetServiceResolveTimeout = 5.0; // Seconds.
 static NSString *const cDD4AddressZero = @"0.0.0.0";
+static NSUInteger const cRandomMax = 5;
+static NSString *const cURLFormat = @"http://%@:%d/%@";
+static NSUInteger const cHttpPort = 80;
 
 @interface HLSLoadBalancer ()
 // Internal.
@@ -186,9 +189,21 @@ static HLSLoadBalancer * _internal;
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId {
     NSArray *result = [_discovered netServicesWithRecording:rId];
     
-    NSLog(@"services hosting this recording: %@", result);
+    // If no peers a hosting that recording, return nil.
+    // The client class should handle this by choosing a default source.
+    if (result.count == 0) {
+        return nil;
+    }
     
-    return nil;
+    // Randomly pick a peer from the top n.
+    NSUInteger randLimit = MIN(result.count, cRandomMax);
+    NSUInteger randIndex = arc4random_uniform(randLimit);
+    
+    HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
+    NSString *hostIpAddr = [HLSLoadBalancer dottedDecimalFromNetService:selectedPeer.netService];
+    NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, cHttpPort, selectedPeer.relativePath];
+    
+    return [NSURL URLWithString:urlStr];
 }
 
 #pragma mark Utility
@@ -216,16 +231,13 @@ static HLSLoadBalancer * _internal;
 }
 
 + (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data {
-//    NSLog(@"decodedTXTRecordDictionaryFromData:");
-    
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
     NSDictionary *rawRecords = [NSNetService dictionaryFromTXTRecordData:data];
     [rawRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *rId = (NSString *)key;
         NSString *recordData = [[NSString alloc] initWithData:(NSData *)obj encoding:NSUTF8StringEncoding];
-//        NSLog(@"raw decoded dictionary. id=%@, data=%@", rId, recordData);
-        
+
         HLSStreamAdvertisement *ad = [HLSStreamAdvertisement advertisementFromString:recordData];
         
         [result setObject:ad forKey:rId];
