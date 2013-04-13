@@ -21,6 +21,7 @@
 
 -(void)setPostContent:(ChanPost *)post {
     [self.imageView setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
+    [self.labelView setText:[post content]];
 }
 
 /*

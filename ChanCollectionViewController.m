@@ -120,7 +120,7 @@ static CGFloat const kCellWidth = 240;
     } else if (postClass == [ChanVideoPost class]) {
         return 300.0f;
     } else if (postClass == [ChanVideoThumbnailPost class]) {
-        return 200.0f;
+        return 240.0f;
     } else {
         return 140.0f;
     }
