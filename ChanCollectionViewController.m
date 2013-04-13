@@ -8,6 +8,8 @@
 
 #import "ChanCollectionViewController.h"
 
+static CGFloat const kCellWidth = 180;
+
 @interface ChanCollectionViewController () {
     NSMutableArray *_objectChanges;
     NSMutableArray *_sectionChanges;
@@ -40,6 +42,12 @@
     // Init and update layout
     _waterfallLayout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
     _waterfallLayout.delegate = self;
+    [self updateLayout];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     [self updateLayout];
 }
 
@@ -109,8 +117,14 @@
 // Used for updating the layout of the collection view when screen orientation changes, etc
 // TODO: update and fix
 -(void)updateLayout {
-    _waterfallLayout.columnCount = 4;
-    _waterfallLayout.itemWidth = 140.0f;
+    _waterfallLayout.columnCount = self.collectionView.bounds.size.width / kCellWidth;
+    _waterfallLayout.itemWidth = kCellWidth;
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+                                         duration:(NSTimeInterval)duration
+{
+    [self updateLayout];
 }
 
 #pragma mark - Fetched results controller
