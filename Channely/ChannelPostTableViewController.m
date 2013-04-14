@@ -54,6 +54,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
         ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
         ChanSlidesPostCell *cell = (ChanSlidesPostCell *)((UIButton *)sender).superview.superview;
         
+        slidesViewController.channel = cell.post.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
     }
 }

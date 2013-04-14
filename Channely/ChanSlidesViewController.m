@@ -112,7 +112,7 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
     if ([segueName isEqualToString:cSlideAnnotationSegue]) {
         ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
         
-        annotationViewController.channel = self.post.channel;
+        annotationViewController.channel = self.channel;
         
         // Use image for annotation from currently displayed UIImageView.
         const CGFloat currPos = self.scrollView.contentOffset.x; // Get current X scrollview position
