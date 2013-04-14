@@ -72,7 +72,7 @@ static NSString *const cButtonStartRecording = @"Start";
     [self startPreviewing];
     
     [self updatePreviewRotationToOrientation];
-    _recorder.previewLayer.frame = self.previewArea.frame;
+    _recorder.previewLayer.frame = self.previewArea.bounds;
 }
 
 - (void) didReceiveMemoryWarning {
@@ -81,8 +81,8 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self updatePreviewRotationToOrientation];
-    _recorder.previewLayer.frame = self.previewArea.frame;
+//    [self updatePreviewRotationToOrientation];
+    _recorder.previewLayer.frame = self.previewArea.bounds;
 }
 
 #pragma mark Event Handlers
@@ -120,21 +120,7 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) updatePreviewRotationToOrientation {
-    CGFloat transformAngle;
-    switch (self.interfaceOrientation) {
-        case UIInterfaceOrientationLandscapeLeft:
-            transformAngle = M_PI / 2.;
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            transformAngle = -M_PI / 2.;
-            break;
-        case UIInterfaceOrientationPortrait:
-            transformAngle = 0.;
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            transformAngle = M_PI;
-            break;
-    }
+    CGFloat transformAngle = -M_PI / 2.;
     CGAffineTransform transform = CGAffineTransformMakeRotation(transformAngle);
     _recorder.previewLayer.affineTransform = transform;
 }
