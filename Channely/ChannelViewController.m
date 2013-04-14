@@ -57,6 +57,8 @@
     return self;
 }
 
+# pragma mark View Lifecycle
+
 - (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"%@", self.channel.name);
@@ -93,7 +95,9 @@
     self.navigationItem.rightBarButtonItems = rightBarItems;
     self.navigationItem.title = self.channel.name;
     
-   }
+    // Setup up posting controls
+    [self setupPostControl];
+}
 
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -115,6 +119,8 @@
     [_createEventPopover dismissPopoverAnimated:YES];
 
 }
+
+# pragma mark Orientation Handlers
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
                                          duration:(NSTimeInterval)duration
@@ -164,6 +170,8 @@
 }
 
 
+
+
 -(void)populateChannelPost
 {
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
@@ -199,6 +207,45 @@
 //        [_postTableViewController setPostList:[self posts]];
     }
       
+}
+
+#pragma mark Post Creation Controls
+
+// Set up the awesome menu for creating posts
+- (void) setupPostControl
+{
+    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
+    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
+    
+    UIImage *textMenuImage = [UIImage imageNamed:@"text_menu_icon"];
+    UIImage *pictureMenuImage = [UIImage imageNamed:@"picture_menu_icon"];
+    UIImage *galleryMenuImage = [UIImage imageNamed:@"gallery_menu_icon"];
+    UIImage *videoMenuImage = [UIImage imageNamed:@"video_menu_icon"];
+    
+    AwesomeMenuItem *textMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:textMenuImage
+        highlightedContentImage:nil];
+    
+    AwesomeMenuItem *pictureMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:pictureMenuImage highlightedContentImage:nil];
+    
+    AwesomeMenuItem *videoMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:videoMenuImage highlightedContentImage:nil];
+    
+    AwesomeMenuItem *galleryMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:galleryMenuImage highlightedContentImage:nil];
+    
+    // TODO: change menu bounds
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, pictureMenuItem, galleryMenuItem, videoMenuItem, nil]];
+    
+    menu.delegate = self;
+    
+    // Todo: set menu options
+    menu.startPoint = CGPointMake(640.0, 848.0);
+//    menu.rotateAngle = 0.0;
+//    menu.menuWholeAngle = M_PI * 2;
+//    menu.timeOffset = 0.036f;
+//    menu.farRadius = 140.0f;
+//    menu.nearRadius = 110.0f;
+//    menu.endRadius = 120.0f;
+    
+    [self.view addSubview:menu];
 }
 
 - (IBAction)attach:(id)sender {
@@ -352,6 +399,8 @@
     [[self view]setFrame:frame];
 }
 
+#pragma mark Event Creation Controls
+
 
 -(void)createEventButtonPressed{
     if (_createEventPopover != nil)
@@ -366,14 +415,27 @@
     [_createEventPopover presentPopoverFromBarButtonItem:_createEventButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-
-
 -(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
     //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
 }
 
-#pragma mark Atatch Picker Controller Delegate
+#pragma mark AwesomeMenu Delegate 
+- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    NSLog(@"Select the index : %d",idx);
+}
+
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
+    NSLog(@"Menu was closed!");
+}
+
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
+    NSLog(@"Menu is open!");
+}
+
+
+#pragma mark Attach Picker Controller Delegate
 - (void) pickImage:(id)sender {
     [_attachPickerPopover dismissPopoverAnimated:NO];
     _attachPickerPopover = nil;
