@@ -48,5 +48,6 @@
 // ChannelViewControllerDelegate Methods
 - (void) launchVideoSegue;
 - (void) updateLayout;
+- (void) populateChannelPost;
 
 @end

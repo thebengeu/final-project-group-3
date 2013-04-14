@@ -107,6 +107,7 @@ static NSString *const cButtonStartRecording = @"Start";
     
     [self dismissViewControllerAnimated:YES completion:^{
         [_delegate updateLayout];
+        [_delegate populateChannelPost];
         return;
     }];
 }
