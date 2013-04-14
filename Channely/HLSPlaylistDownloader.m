@@ -283,7 +283,12 @@ static NSString *const cMediaDirectoryFormat = @"%@";
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
         
-//        NSLog(@"chunk seq:%d duration:%lf downloaded to file:%@", meta.sequenceNumber, meta.duration, meta.path); // DEBUG
+        // Timeout on download error. This implementation does not have the infrastructure to retry a chunk download.
+        // To do this, we need to implement a windowed buffer.
+        if (finishedOp.error && _delegate) {
+            [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
+            return;
+        }
         
         NSString *relativePath = [meta.path lastPathComponent];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];

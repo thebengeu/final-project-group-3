@@ -11,6 +11,7 @@
 
 @interface HLSChunkDownloadOperation : NSOperation
 @property (readonly, strong) HLSChunkDownloadMetaData *meta;
+@property (atomic, readonly) BOOL error;
 
 - (id) initWithURL:(NSURL *)source outputFile:(NSURL *)target meta:(HLSChunkDownloadMetaData *)data;
 
