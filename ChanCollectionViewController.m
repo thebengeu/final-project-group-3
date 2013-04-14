@@ -68,7 +68,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
         ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
         ChanVideoCell *cell = (ChanVideoCell *)sender;
         
-        [vpvc setServerURL:((ChanVideoPost *)cell.post).url];
+        [vpvc setServerURL:((ChanVideoPost *)cell.post).url forChannel:cell.post.channel];
     } else if ([segueName isEqualToString:cSlideSegue]) {
         ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
         ChanSlidesCell *cell = (ChanSlidesCell *)sender;
