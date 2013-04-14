@@ -60,32 +60,32 @@
 {
     if (sender.state == UIGestureRecognizerStateEnded)
     {
-        if (_keyboardShown > 0){
-            [[self view] resignFirstResponder];
-            return;
-        }
-        
         CGPoint location = [sender locationInView:nil]; //Passing nil gives us coordinates in the window
         
         //Then we convert the tap's location into the local view's coordinate system, and test to see if it's in or outside. If outside, dismiss the view.
         
         if (![self.view pointInside:[self.view convertPoint:location fromView:self.view.window] withEvent:nil])
         {
+            if (_keyboardShown > 0){
+                [[self view] endEditing:YES];
+                return;
+            }
+            
             // Remove the recognizer first so it's view.window is valid.
             [self.view.window removeGestureRecognizer:sender];
             [self dismissViewControllerAnimated:YES completion:nil];
-        }
+        }  
     }
 }
 
 
 
 -(void)keyboardDidShow: (NSNotification*)aNotification {
-    _keyboardShown += 1;
+    _keyboardShown = 1;
 }
 
 -(void)keyboardDidHide: (NSNotification*)aNotification  {
-    _keyboardShown -= 1;
+    _keyboardShown = 0;
 }
 
 - (BOOL)disablesAutomaticKeyboardDismissal {

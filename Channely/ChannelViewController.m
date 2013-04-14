@@ -17,6 +17,7 @@
 #import "UIImage+normalizedOrientation.h"
 #import "ChanAnonUser.h"
 #import "ChanTextPostViewController.h"
+#import "ChanImagePostViewController.h"
 
 static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 static NSString *const cTextPostSegue = @"textPostSegue";
@@ -287,10 +288,14 @@ static NSString *const cTextPostSegue = @"textPostSegue";
     if (!image)
         image = info[UIImagePickerControllerOriginalImage];
 
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if (image)
+            [self launchImagePostSegue:image];
+    }];
+    //_attachedImage = image;
+    //[self changeAttachButtonToAttached];
     
-    _attachedImage = image;
-    [self changeAttachButtonToAttached];
+    
 }
 
 -(void)changeAttachButtonToAttached{
@@ -364,7 +369,7 @@ static NSString *const cTextPostSegue = @"textPostSegue";
     [self performSegueWithIdentifier:cTakeVideoSegue sender:self];
 }
 
-- (void)launchTextSegue
+- (void)launchTextPostSegue
 {
     //  Segue didnt work, cant resize
     //[self performSegueWithIdentifier:cTextPostSegue sender:self];
@@ -377,6 +382,28 @@ static NSString *const cTextPostSegue = @"textPostSegue";
     [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
     [controller view].bounds = CGRectMake(0, 0, 500, 300);
 }
+
+-(void)launchImagePicker{
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
+}
+
+
+-(void)launchCameraForImage{
+    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
+}
+
+-(void)launchImagePostSegue: (UIImage*)image{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChanImagePostViewController *controller = (ChanImagePostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanImagePostViewController"];
+    controller.channel = _channel;
+    controller.image = image;
+    
+    [self presentViewController:controller animated:YES completion:nil];
+    [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
+    [controller view].bounds = CGRectMake(0, 0, 500, 300);
+}
+
+
 
 #pragma mark Event Creation Controls
 

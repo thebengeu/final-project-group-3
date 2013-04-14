@@ -208,11 +208,13 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 {
     switch (idx) {
         case 0: // Text Post
-            [_delegate launchTextSegue];
+            [_delegate launchTextPostSegue];
             break;
         case 1: // Gallery Post
+            [_delegate launchImagePicker];
             break;
-        case 2: // Camera 
+        case 2: // Camera
+            [_delegate launchCameraForImage];
             break;
         case 3: // Video
             [_delegate launchVideoSegue];

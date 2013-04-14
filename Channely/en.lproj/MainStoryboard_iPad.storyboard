@@ -2113,7 +2113,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L8-Zq-JNV">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2160,21 +2159,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qmd-ZM-17r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="1209"/>
+            <point key="canvasLocation" x="2600" y="1165"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="LfQ-n2-Jco">
+        <!--Chan Image Post View Controller-->
+        <scene sceneID="Y2F-AS-8x2">
             <objects>
-                <viewController id="T9e-rp-TSG" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nqB-SU-U68">
-                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                <viewController storyboardIdentifier="ChanImagePostViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRg-nD-2Qk" customClass="ChanImagePostViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Upw-Mr-6fK">
+                        <rect key="frame" x="0.0" y="20" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bp-o8-sE1">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" type="user" id="5LZ-u3-rZK"/>
+                                </constraints>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfF-9S-mxR">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU5-D2-sUD">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="sRg-nD-2Qk" eventType="touchUpInside" id="p8O-L8-q8h"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-C1-sab"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwS-1g-FUD">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="dWv-Kf-Kh9"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.79607850309999995" green="0.0" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3Bp-o8-sE1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Mq3-Sg-mdY"/>
+                            <constraint firstItem="KwS-1g-FUD" firstAttribute="leading" secondItem="Upw-Mr-6fK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NRl-Hz-BaA"/>
+                            <constraint firstItem="KwS-1g-FUD" firstAttribute="top" secondItem="yfF-9S-mxR" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="OTX-g9-ogo"/>
+                            <constraint firstItem="MU5-D2-sUD" firstAttribute="leading" secondItem="LkD-C1-sab" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ebv-uu-GLu"/>
+                            <constraint firstItem="3Bp-o8-sE1" firstAttribute="leading" secondItem="KwS-1g-FUD" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hCl-9m-voL"/>
+                            <constraint firstAttribute="bottom" secondItem="MU5-D2-sUD" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="iUc-LX-gPY"/>
+                            <constraint firstItem="KwS-1g-FUD" firstAttribute="bottom" secondItem="3Bp-o8-sE1" secondAttribute="bottom" type="default" id="iWP-wq-tEO"/>
+                            <constraint firstAttribute="trailing" secondItem="MU5-D2-sUD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oGC-rU-GDA"/>
+                            <constraint firstItem="yfF-9S-mxR" firstAttribute="top" secondItem="Upw-Mr-6fK" secondAttribute="top" constant="20" symbolic="YES" type="user" id="oXB-Eg-wrx"/>
+                            <constraint firstItem="MU5-D2-sUD" firstAttribute="top" secondItem="3Bp-o8-sE1" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="qOj-b0-Uf6"/>
+                            <constraint firstItem="3Bp-o8-sE1" firstAttribute="top" secondItem="yfF-9S-mxR" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="wpf-oE-YrS"/>
+                            <constraint firstItem="yfF-9S-mxR" firstAttribute="leading" secondItem="Upw-Mr-6fK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xyp-T3-Y75"/>
+                            <constraint firstAttribute="bottom" secondItem="LkD-C1-sab" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yWQ-tt-tt8"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="300"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="KwS-1g-FUD" id="cdL-Ic-xys"/>
+                        <outlet property="status" destination="LkD-C1-sab" id="Z7T-34-XK3"/>
+                        <outlet property="text" destination="3Bp-o8-sE1" id="no8-ID-JFw"/>
+                        <outlet property="username" destination="yfF-9S-mxR" id="dcA-Mk-P9R"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vkl-Vz-KNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNk-SU-NhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1968" y="1171"/>
         </scene>
     </scenes>
     <resources>
@@ -2268,6 +2326,16 @@
                 <relationship kind="outlet" name="drawButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageContent" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanImagePostViewController" superclassName="ChanPostViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ChanMenuAnonUserViewController" superclassName="UIViewController">
@@ -2390,7 +2458,6 @@
             <relationships>
                 <relationship kind="action" name="backButton_Action:"/>
                 <relationship kind="action" name="recordingControlButton_Action:"/>
-                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
                 <relationship kind="outlet" name="recordingControlButton" candidateClass="UIBarButtonItem"/>
             </relationships>

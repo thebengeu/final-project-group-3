@@ -11,8 +11,17 @@
 @protocol ChannelViewControllerDelegate <NSObject>
 
 - (void) launchVideoSegue;
-- (void) launchTextSegue;
+
+- (void) launchTextPostSegue;
+
+- (void) launchImagePicker;
+
+- (void) launchCameraForImage;
+
+- (void) launchImagePostSegue:(UIImage*)image;
+
 - (void) updateLayout;
+
 - (void) populateChannelPost;
 
 @end
