@@ -88,8 +88,9 @@
 		8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA41719946D00BFB6A9 /* imagebar.png */; };
 		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
-		82EF9E77171A8C4C0043079D /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */; };
 		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
+		82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E7C171A9D290043079D /* AwesomeMenu.m */; };
+		82EF9E80171A9D290043079D /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E7E171A9D290043079D /* AwesomeMenuItem.m */; };
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
@@ -295,9 +296,11 @@
 		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
 		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
-		82EF9E75171A8C4C0043079D /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
-		82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		82EF9E78171A90AC0043079D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		82EF9E7B171A9D290043079D /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
+		82EF9E7C171A9D290043079D /* AwesomeMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenu.m; sourceTree = "<group>"; };
+		82EF9E7D171A9D290043079D /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
+		82EF9E7E171A9D290043079D /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -457,8 +460,7 @@
 				0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */,
 				0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */,
 				0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */,
-				82EF9E75171A8C4C0043079D /* AwesomeMenuItem.h */,
-				82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */,
+				82EF9E7A171A9D290043079D /* AwesomeMenu */,
 			);
 			name = Channel;
 			sourceTree = "<group>";
@@ -722,6 +724,17 @@
 				B6D4D5EE1719938C00C7F538 /* ChanSlidesCell.m */,
 			);
 			name = "Collection View";
+			sourceTree = "<group>";
+		};
+		82EF9E7A171A9D290043079D /* AwesomeMenu */ = {
+			isa = PBXGroup;
+			children = (
+				82EF9E7B171A9D290043079D /* AwesomeMenu.h */,
+				82EF9E7C171A9D290043079D /* AwesomeMenu.m */,
+				82EF9E7D171A9D290043079D /* AwesomeMenuItem.h */,
+				82EF9E7E171A9D290043079D /* AwesomeMenuItem.m */,
+			);
+			path = AwesomeMenu;
 			sourceTree = "<group>";
 		};
 		B63865F41703E28900800FBE /* Model-Custom */ = {
@@ -1171,7 +1184,8 @@
 				0A991D2E17194D0100275B3B /* ChanMenuSignupViewController.m in Sources */,
 				0A991D311719590400275B3B /* ChanAnonUser.m in Sources */,
 				B6D4D5EF1719938C00C7F538 /* ChanSlidesCell.m in Sources */,
-				82EF9E77171A8C4C0043079D /* AwesomeMenuItem.m in Sources */,
+				82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */,
+				82EF9E80171A9D290043079D /* AwesomeMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

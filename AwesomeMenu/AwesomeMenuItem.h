@@ -39,9 +39,6 @@ highlightedContentImage:(UIImage *)hcimg;
 @end
 
 @protocol AwesomeMenuItemDelegate <NSObject>
-
 - (void)AwesomeMenuItemTouchesBegan:(AwesomeMenuItem *)item;
 - (void)AwesomeMenuItemTouchesEnd:(AwesomeMenuItem *)item;
-
-
 @end
