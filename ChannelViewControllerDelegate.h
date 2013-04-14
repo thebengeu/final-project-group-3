@@ -12,6 +12,8 @@
 
 - (void) launchVideoSegue;
 
+- (void) launchTextSegue;
+
 - (void) updateLayout;
 
 @end

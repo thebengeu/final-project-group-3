@@ -16,8 +16,10 @@
 #import "ChanEvent.h"
 #import "UIImage+normalizedOrientation.h"
 #import "ChanAnonUser.h"
+#import "ChanTextPostViewController.h"
 
-static NSString *const cTakeVideoSegue = @"takeVideoSegue"; 
+static NSString *const cTakeVideoSegue = @"takeVideoSegue";
+static NSString *const cTextPostSegue = @"textPostSegue";
 
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
@@ -360,6 +362,20 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 - (void)launchVideoSegue
 {
     [self performSegueWithIdentifier:cTakeVideoSegue sender:self];
+}
+
+- (void)launchTextSegue
+{
+    //  Segue didnt work, cant resize
+    //[self performSegueWithIdentifier:cTextPostSegue sender:self];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
+    controller.channel = _channel;
+    
+    [self presentViewController:controller animated:NO completion:nil];
+    [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
+    [controller view].bounds = CGRectMake(0, 0, 500, 300);
 }
 
 #pragma mark Event Creation Controls

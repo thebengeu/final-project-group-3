@@ -32,7 +32,6 @@
 }
 
 - (IBAction)submit:(id)sender {
-    NSLog(@"asd");
     if ([[_text text]length] > 0){
         ChanTextPostViewController *me = self;
         [[me status]startAnimating];
