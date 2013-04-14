@@ -28,6 +28,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 @property (strong) NSString *_playlistName;
 @property (strong) NSString *_mediaDirectory;
 @property (strong) id<HLSPlaylistDownloaderDelegate> _delegate;
+@property (atomic) BOOL _error;
 
 // Playlist Refresh.
 @property (strong) NSTimer *_refreshTimer;
@@ -54,6 +55,9 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 @property (strong) NSString *_playlistDirectory;
 @property (strong) HLSEventPlaylistHelper *_playlistHelper;
 
+// Utility.
+- (void) stopOperationWithError;
+
 @end
 
 @implementation HLSPlaylistDownloader
@@ -66,6 +70,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 @synthesize _playlistName;
 @synthesize _mediaDirectory;
 @synthesize _delegate;
+@synthesize _error;
 
 // Playlist Refresh.
 @synthesize _refreshTimer;
@@ -93,6 +98,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
         _playlistDirectory = nil;
         isConsumed = NO;
         _mediaDirectory = nil;
+        _error = NO;
         
         // Path computation.
         _baseURL = [playlist URLByDeletingLastPathComponent];
@@ -191,10 +197,15 @@ static NSString *const cMediaDirectoryFormat = @"%@";
         
         if (_delegate) {
             [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
+            
         }
         
-        _shouldFinishWhenQueueEmpty = YES;
-        [timer invalidate];
+//        [_downloadQueue cancelAllOperations];
+//        _error = YES;
+//        _shouldFinishWhenQueueEmpty = YES;
+//        [timer invalidate];
+        
+        [self stopOperationWithError];
     }
 }
 
@@ -283,7 +294,22 @@ static NSString *const cMediaDirectoryFormat = @"%@";
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
         
-//        NSLog(@"chunk seq:%d duration:%lf downloaded to file:%@", meta.sequenceNumber, meta.duration, meta.path); // DEBUG
+        // Timeout on download error. This implementation does not have the infrastructure to retry a chunk download.
+        // To do this, we need to implement a windowed buffer.
+        if (finishedOp.error) {
+            if (_delegate) {
+                [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
+            }
+            
+//            [_downloadQueue cancelAllOperations];
+//            _error = YES;
+//            _shouldFinishWhenQueueEmpty = YES;
+//            [_refreshTimer invalidate];
+            
+            [self stopOperationWithError];
+            
+            return;
+        } 
         
         NSString *relativePath = [meta.path lastPathComponent];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];
@@ -303,6 +329,14 @@ static NSString *const cMediaDirectoryFormat = @"%@";
             }
         }
     }
+}
+
+#pragma mark Utility
+- (void) stopOperationWithError {
+    [_downloadQueue cancelAllOperations];
+    _error = YES;
+    _shouldFinishWhenQueueEmpty = YES;
+    [_refreshTimer invalidate];
 }
 
 @end

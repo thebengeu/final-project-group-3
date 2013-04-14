@@ -16,13 +16,9 @@
 
 @interface HLSLoadBalancer : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 - (id) init;
-- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId;
+- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
 
 + (HLSLoadBalancer *) setupLoadBalancer;
 + (HLSLoadBalancer *) loadBalancer;
-
-// Utility
-+ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
-+ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
 
 @end

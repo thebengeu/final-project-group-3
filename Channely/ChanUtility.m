@@ -36,6 +36,14 @@ static NSString *const cVideoTempDir = @"recording";
     return NO;
 }
 
++ (void) removeDirectory:(NSString *)directory {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    if ([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory) {
+        [fm removeItemAtPath:directory error:nil];
+    }
+}
+
 // Removes all files from app's documents directory.
 // Ref: http://stackoverflow.com/questions/4793278/deleting-all-the-files-in-the-iphone-sandbox-documents-folder
 + (void) clearDirectory:(NSString *)directory {

@@ -80,7 +80,7 @@
 
 #pragma mark P2P Peer Selection
 - (void) selectSource {
-    _selectedURL = [[HLSLoadBalancer loadBalancer] selectBestLocalHostForRecording:_recordingId];
+    _selectedURL = [[HLSLoadBalancer loadBalancer] selectBestLocalHostForRecording:_recordingId default:_serverURL];
 
     // Select the server if no local client exists.
     // TODO - select the server if the local client has too few chunks.

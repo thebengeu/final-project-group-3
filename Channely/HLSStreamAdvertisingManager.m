@@ -28,11 +28,11 @@ static HLSStreamAdvertisingManager *_internal;
     return nil;
 }
 
-+ (HLSStreamAdvertisingManager *) discoveryManager {
++ (HLSStreamAdvertisingManager *) advertisingManager {
     return _internal;
 }
 
-+ (HLSStreamAdvertisingManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
++ (HLSStreamAdvertisingManager *) advertisingManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser {
     if (!_internal) {
         _internal = [[HLSStreamAdvertisingManager alloc] initWithAdvertiser:advertiser];
         return _internal;

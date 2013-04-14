@@ -49,6 +49,8 @@ static NSUInteger const cMaxSpreadRadius = 5;
 // Utility
 + (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
 + (NSUInteger) totalChunksFromChunkCountOfCompleteRecording:(NSUInteger)chunkCount;
++ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
++ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
 
 @end
 
@@ -187,13 +189,14 @@ static HLSLoadBalancer * _internal;
 }
 
 #pragma mark Peer Selection
-- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId {
+- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
     NSArray *result = [_discovered netServicesWithRecording:rId];
     
     // If no peers a hosting that recording, return nil.
     // The client class should handle this by choosing a default source.
+    // Note: This is naive, we should consider more metrics before resorting to the server.
     if (result.count == 0) {
-        return nil;
+        return serverSource;
     }
     
     // Try and determine the total number of chunks.

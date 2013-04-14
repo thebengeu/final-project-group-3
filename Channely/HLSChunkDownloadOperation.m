@@ -13,6 +13,7 @@
 @property (strong) NSURL *_source;
 @property (strong) NSURL *_target;
 @property (readwrite, strong) HLSChunkDownloadMetaData *meta;
+@property (atomic, readwrite) BOOL error;
 
 @end
 
@@ -21,6 +22,7 @@
 @synthesize _source;
 @synthesize _target;
 @synthesize meta;
+@synthesize error;
 
 #pragma mark Constructors
 - (id) initWithURL:(NSURL *)source outputFile:(NSURL *)target meta:(HLSChunkDownloadMetaData *)data {
@@ -35,6 +37,10 @@
 #pragma mark Logic
 - (void) main {
     NSData *downloadedData = [NSData dataWithContentsOfURL:_source];
+    
+    // Report failure or success of download if the variable is set.
+    error = (!downloadedData);
+    
     [downloadedData writeToURL:_target atomically:YES];
 }
 
