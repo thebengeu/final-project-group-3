@@ -18,21 +18,14 @@
 #import "ChanAnonUser.h"
 #import "ChanTextPostViewController.h"
 #import "ChanImagePostViewController.h"
+#import "ChanVideoCaptureViewController.h"
 
 static NSString *const cTakeVideoSegue = @"takeVideoSegue";
-static NSString *const cTextPostSegue = @"textPostSegue";
-
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
 @property UIPopoverController *imagePickerPopover;
-@property UIPopoverController *attachPickerPopover;
-@property AttachPickerViewController *attachPickerViewController;
-@property UIImage *attachedImage;
 
-@property UILongPressGestureRecognizer *attachButtonLongPressGestureRecognizer;
-
-@property UIAlertView *deleteAttachmentAlertView;
 @property UIPopoverController *createEventPopover;
 @property UIBarButtonItem *createEventButton;
 @property UIBarButtonItem *toggleButton;
@@ -189,7 +182,7 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 // Based on type, displays image picker, video picker, or camera
 - (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type
 {
-    if (!self.imagePickerPopover && [UIImagePickerController isSourceTypeAvailable:sourceType]){
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]){
         NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
         if ([availableMediaTypes containsObject:(NSString*)kUTTypeImage]) {
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
@@ -202,10 +195,11 @@ static NSString *const cTextPostSegue = @"textPostSegue";
             picker.delegate = self;
             
             if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
-                
-                self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
-                [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-                self.imagePickerPopover.delegate = self;
+                if (self.imagePickerPopover == nil){
+                    self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
+                    [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                    self.imagePickerPopover.delegate = self;
+                }
                 
             } else {
                 [self presentViewController:picker animated:YES completion:nil];
@@ -234,9 +228,6 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 
 - (void)launchTextPostSegue
 {
-    //  Segue didnt work, cant resize
-    //[self performSegueWithIdentifier:cTextPostSegue sender:self];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
     controller.channel = _channel;
@@ -290,6 +281,14 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 
 - (ChanChannel *) underlyingChannel {
     return self.channel;
+}
+
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
+    if (popoverController == self.imagePickerPopover)
+        self.imagePickerPopover = nil;
+    if (popoverController == self.createEventPopover)
+        self.createEventPopover = nil;
 }
 
 @end

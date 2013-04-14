@@ -2176,6 +2176,9 @@
                 <relationship kind="outlet" name="addChannelButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
+        <class className="ChanCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCollectionView.h"/>
+        </class>
         <class className="ChanCollectionViewController" superclassName="UICollectionViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCollectionViewController.h"/>
             <relationships>

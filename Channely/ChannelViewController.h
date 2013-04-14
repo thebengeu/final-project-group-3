@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ChannelPostTableViewController.h"
-#import "AttachPickerViewController.h"
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
 
@@ -29,12 +28,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
-
 - (void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
 
 // ChannelViewControllerDelegate Methods
 - (void) launchVideoSegue;
-- (void) launchTextSegue;
+- (void) launchTextPostSegue;
+- (void) launchImagePostSegue:(UIImage *)image;
+- (void) launchCameraForImage;
+- (void) launchImagePicker;
 - (void) updateLayout;
 - (void) populateChannelPost;
 
