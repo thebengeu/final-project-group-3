@@ -75,7 +75,7 @@ static NSString *const cOutputFilePathFormat = @"%@/chunk%d.mp4";
     [_session addInput:(AVCaptureInput *)[self getCameraInput]];    // Attach video stream.
     [_session addInput:(AVCaptureInput *)[self getMicInput]];       // Attach audio stream.
     [_session commitConfiguration];
-    
+
     [_session startRunning];
     
     previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
@@ -103,6 +103,9 @@ static NSString *const cOutputFilePathFormat = @"%@/chunk%d.mp4";
     NSURL *initialChunk = [self newChunkUrlInDirectory:_recordingDirectory];
     _movieFileOutput = [[AVCaptureMovieFileOutput alloc] init];
     [_session addOutput:_movieFileOutput];
+    for (AVCaptureConnection *conn in _movieFileOutput.connections) {
+        conn.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+    }
     [_movieFileOutput startRecordingToOutputFileURL: initialChunk recordingDelegate:self];
     
     isRecording = YES;
