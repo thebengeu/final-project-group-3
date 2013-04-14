@@ -466,7 +466,7 @@
                                 </segue>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Menu" id="v1I-kR-xvx">
+                        <barButtonItem key="rightBarButtonItem" image="user.png" id="v1I-kR-xvx">
                             <connections>
                                 <segue destination="dE3-om-zLK" kind="popover" identifier="MenuSegue" popoverAnchorBarButtonItem="v1I-kR-xvx" id="RE1-it-zsj">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -2103,6 +2103,7 @@
     </scenes>
     <resources>
         <image name="mapmarker_red.png" width="88" height="88"/>
+        <image name="user.png" width="23" height="22"/>
     </resources>
     <classes>
         <class className="AttachPickerViewController" superclassName="UIViewController">

@@ -88,6 +88,8 @@
 		8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA41719946D00BFB6A9 /* imagebar.png */; };
 		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
+		82EF9E77171A8C4C0043079D /* AwesomeMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */; };
+		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
@@ -257,12 +259,12 @@
 		4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSEventPlaylistHelper.m; sourceTree = "<group>"; };
 		4AE16EDE170DF6E500573A4B /* HLSPlaylistDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloader.h; sourceTree = "<group>"; };
 		4AE16EDF170DF6E500573A4B /* HLSPlaylistDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloader.m; sourceTree = "<group>"; };
+		4AE16EE0170DF6E500573A4B /* ChanUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanUtility.h; path = Channely/ChanUtility.h; sourceTree = "<group>"; };
+		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanUtility.m; path = Channely/ChanUtility.m; sourceTree = "<group>"; };
 		4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSNetServicePathChunkCountTuple.h; sourceTree = "<group>"; };
 		4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSNetServicePathChunkCountTuple.m; sourceTree = "<group>"; };
 		4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSDiscoveredRecordings.h; sourceTree = "<group>"; };
 		4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSDiscoveredRecordings.m; sourceTree = "<group>"; };
-		4AE16EE0170DF6E500573A4B /* ChanUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanUtility.h; path = Channely/ChanUtility.h; sourceTree = "<group>"; };
-		4AE16EE1170DF6E500573A4B /* ChanUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanUtility.m; path = Channely/ChanUtility.m; sourceTree = "<group>"; };
 		821463C4171671EB00699085 /* ChanTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTextCell.h; sourceTree = "<group>"; };
 		821463C5171671EB00699085 /* ChanTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTextCell.m; sourceTree = "<group>"; };
 		821463C71716950B00699085 /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
@@ -293,6 +295,9 @@
 		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
 		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
+		82EF9E75171A8C4C0043079D /* AwesomeMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenuItem.h; sourceTree = "<group>"; };
+		82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeMenuItem.m; sourceTree = "<group>"; };
+		82EF9E78171A90AC0043079D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -452,6 +457,8 @@
 				0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */,
 				0AA2476717086A3500E5A4C0 /* AttachPickerViewController.h */,
 				0AA2476817086A3500E5A4C0 /* AttachPickerViewController.m */,
+				82EF9E75171A8C4C0043079D /* AwesomeMenuItem.h */,
+				82EF9E76171A8C4C0043079D /* AwesomeMenuItem.m */,
 			);
 			name = Channel;
 			sourceTree = "<group>";
@@ -857,6 +864,7 @@
 				824E964117113BD100E96418 /* icon.png */,
 				824E963F17113B8C00E96418 /* icon@2x.png */,
 				824E963D17113B1A00E96418 /* icon-small@2x.png */,
+				82EF9E78171A90AC0043079D /* user.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1022,6 +1030,7 @@
 				8270DCA317198E6900BFB6A9 /* textbar.png in Resources */,
 				8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */,
 				82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */,
+				82EF9E79171A90AD0043079D /* user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1162,6 +1171,7 @@
 				0A991D2E17194D0100275B3B /* ChanMenuSignupViewController.m in Sources */,
 				0A991D311719590400275B3B /* ChanAnonUser.m in Sources */,
 				B6D4D5EF1719938C00C7F538 /* ChanSlidesCell.m in Sources */,
+				82EF9E77171A8C4C0043079D /* AwesomeMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
