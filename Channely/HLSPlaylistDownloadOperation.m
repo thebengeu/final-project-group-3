@@ -129,8 +129,20 @@ static NSUInteger const cCompleteStreamShift = 31;
     // Ignore.
 }
 
+// The timeout condition is triggered when some error occured during a playlist download. The resultant stream
+// is not guaranteed to be playable, and the software must stop advertising the stream over P2P.
+// We also clear the downloaded files to save space.
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream {
-    // Ignore.
+    // Stop advertising.
+    HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager discoveryManager];
+    if ([am isAdvertisingRecordingId:_recordingId]) {
+        [am stopAdvertisingRecordingId:_recordingId];
+    }
+    
+    // Clear folder.
+    [ChanUtility removeDirectory:_downloadDirectory];
+    
+    [self finish];
 }
 
 @end

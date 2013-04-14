@@ -10,6 +10,7 @@
 #import "HLSPlaylistDownloader.h"
 #import "HLSPlaylistDownloaderDelegate.h"
 #import "HLSStreamAdvertisingManager.h"
+#import "ChanUtility.h"
 
 @interface HLSPlaylistDownloadOperation : NSOperation <HLSPlaylistDownloaderDelegate>
 @property (atomic, readonly) BOOL isExecuting;
