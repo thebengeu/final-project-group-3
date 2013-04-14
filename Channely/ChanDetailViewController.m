@@ -59,7 +59,6 @@ NSString *const cSearchSegueIdentifier = @"SearchSegue";
 
 - (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    NSLog(@"asd");
     if (popoverController == _searchPopover)
         _searchPopover = nil;
     if (popoverController == _menuPopover)
