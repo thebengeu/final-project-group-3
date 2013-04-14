@@ -10,7 +10,7 @@
 
 static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
 
-CGImageRef UIGetScreenImage(void); // Private API. Fuck Apple.
+CGImageRef UIGetScreenImage(void); // Private API.
 
 @interface ChanVideoPlayerViewController ()
 @property (nonatomic) BOOL _parametersSet;
@@ -129,8 +129,21 @@ CGImageRef UIGetScreenImage(void); // Private API. Fuck Apple.
 }
 
 #pragma mark Screenshot
+// Ref: http://stackoverflow.com/questions/2507220/code-example-for-iphone-uigetscreenimage
+// Discussion: The underlying CALayer for MPMoviePlayerController.view does not fully implement QuartzCore methods
+// for rendering an image of itself, and its sublayers, to a Context. We can determine which HLS chunk the user
+// requested a screenshot in by considering the current playback time, and subtracting the length of chunks [0..n)
+// until the remainder is less than the length of chunk n, which we conclude to be the current chunk. However, iOS
+// cannot natively playback (and hence requestTumbnail from).ts MPEG transport streams, and since we do not store
+// the raw .mp4 files locally, we cannot apply this technique to get a screenshot on the device itself.
+// It would appear that the only way to get a screenshot is to make a callback to the server asynchronously, and
+// wait for ffmpeg to process the file server-side. There is no easy way to coordinate this with the real-time UI
+// for annotation.
+// Note: The following private API precludes AppStore deployment.
+// Footnote: fxck apple.
 - (UIImage *) getMediaPlayerScreenshot {
-    NSLog(@"%@", [_player.view.layer class]);
+//    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.bounds.origin.x, self.contentView.bounds.origin.y, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
+//    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height);
     
     CGImageRef screen = UIGetScreenImage();
     UIImage* screenImage = [UIImage imageWithCGImage:screen];

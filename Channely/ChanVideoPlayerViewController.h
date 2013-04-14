@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <QuartzCore/QuartzCore.h>
 #import "ChanChannel.h"
 #import "ChanUtility.h"
 #import "HLSLoadBalancer.h"
