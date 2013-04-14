@@ -100,7 +100,7 @@ static NSUInteger const cCompleteStreamShift = 31;
     // We guarantee that the relative path will never contain a comma ',' -
     // otherwise this will violate the precondition of HLSStreamDiscoveryManager.
     NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-    [[HLSStreamAdvertisingManager discoveryManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
     
     // DEBUG - create a Safari-viewable HTML page that can be used to display the local stream.
     if (_expectingFirstChunk) {
@@ -120,7 +120,7 @@ static NSUInteger const cCompleteStreamShift = 31;
     // Set bit-flag in chunkCount to indicate that a stream is complete.
     _chunkCount = (_chunkCount | (1 << cCompleteStreamShift));
     NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-    [[HLSStreamAdvertisingManager discoveryManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
     
     [self finish];
 }
@@ -134,7 +134,7 @@ static NSUInteger const cCompleteStreamShift = 31;
 // We also clear the downloaded files to save space.
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream {
     // Stop advertising.
-    HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager discoveryManager];
+    HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager advertisingManager];
     if ([am isAdvertisingRecordingId:_recordingId]) {
         [am stopAdvertisingRecordingId:_recordingId];
     }

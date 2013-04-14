@@ -19,7 +19,7 @@
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertising;
 
-+ (HLSStreamAdvertisingManager *) discoveryManager;
-+ (HLSStreamAdvertisingManager *) discoveryManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
++ (HLSStreamAdvertisingManager *) advertisingManager;
++ (HLSStreamAdvertisingManager *) advertisingManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 
 @end
