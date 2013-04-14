@@ -117,8 +117,8 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     _createPostMenu.menuWholeAngle = M_PI * 6/7; // Menu span
     _createPostMenu.endRadius = 140.0f; // Radius of expanded menu
     // Bounce animation
-    _createPostMenu.farRadius = 140.0f;
-    _createPostMenu.nearRadius = 110.0f;
+    _createPostMenu.farRadius = 160.0f;
+    _createPostMenu.nearRadius = 120.0f;
     
     _createPostMenu.layer.zPosition = 100;
     
