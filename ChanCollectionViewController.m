@@ -11,6 +11,10 @@
 static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const cSlideSegue = @"slidesSegue";
+static CGFloat const kPostMenuLandscapeX = 955.0;
+static CGFloat const kPostMenuLandscapeY = 645.0;
+static CGFloat const kPostMenuPortraitX = 700.0;
+static CGFloat const kPostMenuPortraitY = 900.0;
 
 @interface ChanCollectionViewController ()
 
@@ -81,6 +85,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
     }
 }
 
+#pragma mark Create Menu functions
 
 // Set up the awesome menu for creating posts
 - (void) addPostControl
@@ -101,23 +106,32 @@ static NSString *const cSlideSegue = @"slidesSegue";
     AwesomeMenuItem *videoMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:videoMenuImage highlightedContentImage:nil];
     
     AwesomeMenuItem *galleryMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:galleryMenuImage highlightedContentImage:nil];
+
+     _createPostMenu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, galleryMenuItem, pictureMenuItem, videoMenuItem, nil]];
     
-    // TODO: change menu bounds
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, galleryMenuItem, pictureMenuItem, videoMenuItem, nil]];
+    _createPostMenu.delegate = self;
     
-    menu.delegate = self;
-    
-    menu.startPoint = CGPointMake(700.0, 900.0);
-    menu.rotateAngle = M_PI * 23/16; // Menu location
-    menu.menuWholeAngle = M_PI * 6/7; // Menu span
-    menu.endRadius = 140.0f; // Radius of expanded menu
+    _createPostMenu.startPoint = [self getCreateMenuStartPoint:self.interfaceOrientation];
+    _createPostMenu.rotateAngle = M_PI * 23/16; // Menu location
+    _createPostMenu.menuWholeAngle = M_PI * 6/7; // Menu span
+    _createPostMenu.endRadius = 140.0f; // Radius of expanded menu
     // Bounce animation
-    menu.farRadius = 140.0f;
-    menu.nearRadius = 110.0f;
+    _createPostMenu.farRadius = 140.0f;
+    _createPostMenu.nearRadius = 110.0f;
     
-    menu.layer.zPosition = 100;
+    _createPostMenu.layer.zPosition = 100;
     
-    [self.view addSubview:menu];
+    [self.view addSubview:_createPostMenu];
+}
+
+// Returns the Create Menu's origin point given the UIInterfaceOrientation
+- (CGPoint)getCreateMenuStartPoint: (UIInterfaceOrientation) interfaceOrientation
+{
+    if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
+        return CGPointMake(kPostMenuLandscapeX, kPostMenuLandscapeY);
+    } else {
+        return CGPointMake(kPostMenuPortraitX, kPostMenuPortraitY);
+    }
 }
 
 #pragma mark - Collection View Protocol methods
@@ -186,8 +200,9 @@ static NSString *const cSlideSegue = @"slidesSegue";
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
+    
+    _createPostMenu.startPoint = [self getCreateMenuStartPoint:toInterfaceOrientation];
 }
-
 
 #pragma mark AwesomeMenu Delegate
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx

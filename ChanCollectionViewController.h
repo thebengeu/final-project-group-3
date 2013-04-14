@@ -35,6 +35,7 @@
 
 @property (strong, nonatomic) ChanChannel *channel;
 @property (strong, nonatomic) NSArray *posts;
+@property (strong, nonatomic) AwesomeMenu *createPostMenu;
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
