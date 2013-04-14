@@ -11,13 +11,10 @@
 #import "AttachPickerViewController.h"
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
-#import "AwesomeMenu.h"
-#import "AwesomeMenuItem.h"
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
-    AwesomeMenuDelegate>
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentContainer;
 

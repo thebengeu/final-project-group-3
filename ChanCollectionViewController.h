@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "ChanTextCell.h"
 #import "ChanImageCell.h"
 #import "ChanVideoCell.h"
@@ -20,10 +21,13 @@
 #import "ChanVideoPlayerViewController.h"
 #import "ChanSlidesViewController.h"
 #import "UICollectionViewWaterfallLayout.h"
+#import "AwesomeMenuItem.h"
+#import "AwesomeMenu.h"
 
 @class ChanChannel;
 
-@interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout>
+@interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
+    AwesomeMenuDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

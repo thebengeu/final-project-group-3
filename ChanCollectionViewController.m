@@ -48,6 +48,9 @@ static NSString *const cSlideSegue = @"slidesSegue";
     _waterfallLayout.delegate = self;
     _waterfallLayout.sectionInset = UIEdgeInsetsMake(10.0f, 12.0f, 15.0f, 12.0f);
     [self updateLayout];
+    
+    // Add post button
+    [self addPostControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -76,6 +79,45 @@ static NSString *const cSlideSegue = @"slidesSegue";
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
     }
+}
+
+
+// Set up the awesome menu for creating posts
+- (void) addPostControl
+{
+    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem@2x.png"];
+    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted@2x.png"];
+    
+    UIImage *textMenuImage = [UIImage imageNamed:@"text_menu_icon"];
+    UIImage *pictureMenuImage = [UIImage imageNamed:@"picture_menu_icon"];
+    UIImage *galleryMenuImage = [UIImage imageNamed:@"gallery_menu_icon"];
+    UIImage *videoMenuImage = [UIImage imageNamed:@"video_menu_icon"];
+    
+    AwesomeMenuItem *textMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:textMenuImage
+                                                   highlightedContentImage:nil];
+    
+    AwesomeMenuItem *pictureMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:pictureMenuImage highlightedContentImage:nil];
+    
+    AwesomeMenuItem *videoMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:videoMenuImage highlightedContentImage:nil];
+    
+    AwesomeMenuItem *galleryMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:galleryMenuImage highlightedContentImage:nil];
+    
+    // TODO: change menu bounds
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, galleryMenuItem, pictureMenuItem, videoMenuItem, nil]];
+    
+    menu.delegate = self;
+    
+    menu.startPoint = CGPointMake(700.0, 900.0);
+    menu.rotateAngle = M_PI * 23/16; // Menu location
+    menu.menuWholeAngle = M_PI * 6/7; // Menu span
+    menu.endRadius = 140.0f; // Radius of expanded menu
+    // Bounce animation
+    menu.farRadius = 140.0f;
+    menu.nearRadius = 110.0f;
+    
+    menu.layer.zPosition = 100;
+    
+    [self.view addSubview:menu];
 }
 
 #pragma mark - Collection View Protocol methods
@@ -144,6 +186,21 @@ static NSString *const cSlideSegue = @"slidesSegue";
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
+}
+
+
+#pragma mark AwesomeMenu Delegate
+- (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    NSLog(@"Select the index : %d",idx);
+}
+
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
+    NSLog(@"Menu was closed!");
+}
+
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
+    NSLog(@"Menu is open!");
 }
 
 @end
