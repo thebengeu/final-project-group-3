@@ -80,8 +80,14 @@ static NSUInteger const cLocalServerPort = 80;
     return YES;
 }
 
-#pragma mark Appearance
+#pragma mark Appearance Customizations 
 - (void) customizeAppearance {
+    [self customizeNavButtonsAppearance];
+    [self customizeNavBarAppearance];
+}
+
+- (void) customizeNavBarAppearance
+{
     // Create resizable images
     UIImage *gradientImg44 = [[UIImage imageNamed:@"top_gradient_44"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     UIImage *gradientImg32 = [[UIImage imageNamed:@"top_gradient_32"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -90,7 +96,7 @@ static NSUInteger const cLocalServerPort = 80;
     [[UINavigationBar appearance] setBackgroundImage:gradientImg44 forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setBackgroundImage:gradientImg32 forBarMetrics:UIBarMetricsLandscapePhone];
     
-    //Set background image for all UIBar
+    //Set background image for all UIBars
     [[UIToolbar appearance] setBackgroundImage:gradientImg44 forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     
     [[UINavigationBar appearance] setTitleTextAttributes:
@@ -104,7 +110,10 @@ static NSUInteger const cLocalServerPort = 80;
       [UIFont fontWithName:@"Avenir" size:0.0],
       UITextAttributeFont,
       nil]];
-    
+}
+
+- (void) customizeNavButtonsAppearance
+{
     // Change the appearance of back button
     UIImage *backButtonImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 8)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
