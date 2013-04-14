@@ -27,11 +27,12 @@
     [recognizer setNumberOfTapsRequired:1];
     recognizer.cancelsTouchesInView = NO; //So the user can still interact with controls in the modal view
     [self.view.window addGestureRecognizer:recognizer];
-    _keyboardShown = 0;
-        
+            
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     // register for keyboard notifications
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardDidShow:)
@@ -42,6 +43,7 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
+    _keyboardShown = 0;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
