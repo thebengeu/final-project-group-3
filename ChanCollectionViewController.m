@@ -208,26 +208,21 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 #pragma mark AwesomeMenu Delegate
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
-    if (idx == 0){
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
-        controller.channel = _channel;
-        
-        [self presentViewController:controller animated:NO completion:nil];
-        [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
-        [controller view].bounds = CGRectMake(0, 0, 500, 300);
+    switch (idx) {
+        case 0: // Text Post
+            break;
+        case 1: // Gallery Post
+            break;
+        case 2: // Camera 
+            break;
+        case 3: // Video
+            [_delegate launchVideoSegue];
+            break;
+        default:
+            break;
     }
-    
+        
     NSLog(@"Select the index : %d",idx);
 }
-
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-    NSLog(@"Menu was closed!");
-}
-
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-    NSLog(@"Menu is open!");
-}
-
 
 @end

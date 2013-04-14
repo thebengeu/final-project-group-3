@@ -14,7 +14,8 @@
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate>
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
+    ChannelViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentContainer;
 
@@ -42,6 +43,8 @@
 
 - (void)pickVideo:(id)sender;
 
--(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
+- (void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
+
+- (void) launchVideoSegue;
 
 @end
