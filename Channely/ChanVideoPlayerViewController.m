@@ -8,6 +8,8 @@
 
 #import "ChanVideoPlayerViewController.h"
 
+static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
+
 @interface ChanVideoPlayerViewController ()
 @property (nonatomic) BOOL _parametersSet;
 @property (strong) NSURL *_serverURL;
@@ -15,12 +17,16 @@
 @property (strong) NSURL *_selectedURL;
 @property (strong) MPMoviePlayerController *_player;
 @property (nonatomic) BOOL _firstLoad;
+@property (strong) ChanChannel *_channel;
 
 // P2P Peer Selection.
 - (void) selectSource;
 
 // Media Player.
 - (void) attachPlayer;
+
+// Screenshot.
+- (UIImage *) getMediaPlayerScreenshot;
 
 @end
 
@@ -31,6 +37,7 @@
 @synthesize _selectedURL;
 @synthesize _player;
 @synthesize _firstLoad;
+@synthesize _channel;
 
 #pragma mark View Controller Methods
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -66,11 +73,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:cAnnotationSegueId]) {
+        ChanAnnotationViewController *vc = (ChanAnnotationViewController *)segue.destinationViewController;
+        vc.channel = _channel;
+        vc.image = [self getMediaPlayerScreenshot];
+    }
+}
+
 #pragma mark One Time Use Methods
-- (void) setServerURL:(NSString *)url {
+- (void) setServerURL:(NSString *)url forChannel:(ChanChannel *)channel {
     if (!_parametersSet) {
         _recordingId = [ChanUtility fileNameFromURLString:url];
         _serverURL = [NSURL URLWithString:url];
+        _channel = channel;
         _parametersSet = YES;
         _firstLoad = YES;
         
@@ -108,6 +124,21 @@
     [self dismissViewControllerAnimated:YES completion:^{
         return;
     }];
+}
+
+#pragma mark Screenshot
+- (UIImage *) getMediaPlayerScreenshot {
+    _player.controlStyle = MPMovieControlStyleNone;
+    
+    UIGraphicsBeginImageContext(self.contentView.bounds.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.contentView.layer renderInContext:context];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    _player.controlStyle = MPMovieControlStyleDefault;
+    
+    return screenshot;
 }
 
 @end
