@@ -15,6 +15,7 @@
 #import "ChanCreateEventViewController.h"
 #import "ChanEvent.h"
 #import "UIImage+normalizedOrientation.h"
+#import "ChanAnonUser.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
@@ -216,14 +217,14 @@
     [_textInput setEditable:NO];
     ChannelViewController *channelViewController = self;
     if (_attachedImage == nil){
-        [_channel addTextPostWithContent:[_textInput text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
+        [_channel addTextPostWithContent:[_textInput text] username:[ChanAnonUser name] withCompletion:^(ChanTextPost *textPost, NSError *error) {
             [[channelViewController textInput]setText:@""];
             [[channelViewController sendPostIndicator]stopAnimating];
             [[channelViewController textInput] setEditable:YES];
             [channelViewController populateChannelPost];
         }];
     } else {
-        [_channel addImagePostWithContent:[_textInput text] image:[_attachedImage normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
+        [_channel addImagePostWithContent:[_textInput text] username:[ChanAnonUser name] image:[_attachedImage normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
             [[channelViewController textInput]setText:@""];
             [[channelViewController sendPostIndicator]stopAnimating];
             [[channelViewController textInput] setEditable:YES];

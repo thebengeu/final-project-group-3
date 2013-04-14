@@ -15,8 +15,10 @@
                 until:(NSDate *)until
        withCompletion:(void (^)(NSArray *posts, NSError *error))block;
 - (void)addTextPostWithContent:(NSString *)content
+                      username:(NSString *)username
                 withCompletion:(void (^)(ChanTextPost *textPost, NSError *error))block;
 - (void)addImagePostWithContent:(NSString *)content
+                       username:(NSString *)username
                           image:(UIImage *)image
                  withCompletion:(void (^)(ChanImagePost *imagePost, NSError *error))block;
 - (void)addEventWithName:(NSString *)name

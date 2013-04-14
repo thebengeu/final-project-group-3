@@ -7,6 +7,7 @@
 //
 
 #import "ChanAnnotationViewController.h"
+#import "ChanAnonUser.h"
 
 @interface ChanAnnotationViewController ()
 
@@ -68,7 +69,7 @@
 
 - (IBAction)done:(id)sender {
     id me = self;
-    [_channel addImagePostWithContent:[_textContent text] image:[self mergeAnnotation] withCompletion:^(ChanImagePost *imagePost, NSError *error){
+    [_channel addImagePostWithContent:[_textContent text] username:[ChanAnonUser name] image:[self mergeAnnotation] withCompletion:^(ChanImagePost *imagePost, NSError *error){
         [me dismissViewControllerAnimated:YES completion:nil];
     }];
 }

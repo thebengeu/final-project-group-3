@@ -102,10 +102,10 @@
     
     RKEntityMapping *slidePostMapping = [RKEntityMapping mappingForEntityForName:@"SlidePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [slidePostMapping addAttributeMappingsFromDictionary:@{
-     @"_id":        @"id",
-     @"_channel":   @"channelId",
-     @"_slidesPost":     @"slidesPostId",
-     @"url":        @"url"}];
+     @"_id":            @"id",
+     @"_channel":       @"channelId",
+     @"_slidesPost":    @"slidesPostId",
+     @"url":            @"url"}];
     slidePostMapping.identificationAttributes = @[ @"id" ];
     
     [slidePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
@@ -124,13 +124,15 @@
     RKObjectMapping *textPostRequestMapping = [RKObjectMapping requestMapping];
     [textPostRequestMapping addAttributeMappingsFromDictionary:@{
      @"channel.id": @"_channel",
-     @"content":  @"content"}];
+     @"username":   @"username",
+     @"content":    @"content"}];
     RKRequestDescriptor *textPostRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:textPostRequestMapping objectClass:[ChanTextPost class] rootKeyPath:nil];
     
     RKObjectMapping *imagePostRequestMapping = [RKObjectMapping requestMapping];
     [imagePostRequestMapping addAttributeMappingsFromDictionary:@{
      @"channel.id": @"_channel",
-     @"content":  @"content"}];
+     @"username":   @"username",
+     @"content":    @"content"}];
     RKRequestDescriptor *imagePostRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:imagePostRequestMapping objectClass:[ChanImagePost class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];

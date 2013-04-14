@@ -77,10 +77,12 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
 }
 
 - (void)addTextPostWithContent:(NSString *)content
+                      username:(NSString *)username
                 withCompletion:(void (^)(ChanTextPost *textPost, NSError *error))block
 {
     ChanTextPost *textPost = [NSEntityDescription insertNewObjectForEntityForName:@"TextPost" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     textPost.content = content;
+    textPost.username = username;
     [self addPostsObject:textPost];
     
     [[RKObjectManager sharedManager] postObject:textPost path:[NSString stringWithFormat:PATH_POST_TEXT_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -91,11 +93,13 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
 }
 
 - (void)addImagePostWithContent:(NSString *)content
+                       username:(NSString *)username
                           image:(UIImage *)image
                  withCompletion:(void (^)(ChanImagePost *imagePost, NSError *error))block
 {
     ChanImagePost *imagePost = [NSEntityDescription insertNewObjectForEntityForName:@"ImagePost" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     imagePost.content = content;
+    imagePost.username = username;
     [self addPostsObject:imagePost];
     
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:imagePost method:RKRequestMethodPOST path:[NSString stringWithFormat:PATH_POST_IMAGE_FORMAT, self.id] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
