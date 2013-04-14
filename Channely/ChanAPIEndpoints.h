@@ -24,7 +24,9 @@ static NSString *const PATH_EVENTS_POST = @"/events";
 static NSString *const PATH_EVENTS_SEARCH = @"/events/search";
 
 // Post Endpoints
+static NSString *const PATH_POST_TEXT = @"/channels/:channelID/posts/text";
 static NSString *const PATH_POST_TEXT_FORMAT = @"/channels/%@/posts/text";
+static NSString *const PATH_POST_IMAGE = @"/channels/:channelID/posts/image";
 static NSString *const PATH_POST_IMAGE_FORMAT = @"/channels/%@/posts/image";
 static NSString *const PATH_DELETE_TEXT_FORMAT = @"/posts/text/%@";
 static NSString *const PATH_DELETE_IMAGE_FORMAT = @"/posts/text/%@";

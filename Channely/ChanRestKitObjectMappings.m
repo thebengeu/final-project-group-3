@@ -120,6 +120,8 @@
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"slide" objectMapping:slidePostMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:dynamicMapping pathPattern:PATH_POSTS_UNIFIED_GET keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *textPostDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:textPostMapping pathPattern:PATH_POST_TEXT keyPath:nil statusCodes:statusCodes];
+    RKResponseDescriptor *imagePostDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:imagePostMapping pathPattern:PATH_POST_IMAGE keyPath:nil statusCodes:statusCodes];
     
     RKObjectMapping *textPostRequestMapping = [RKObjectMapping requestMapping];
     [textPostRequestMapping addAttributeMappingsFromDictionary:@{
@@ -136,6 +138,8 @@
     RKRequestDescriptor *imagePostRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:imagePostRequestMapping objectClass:[ChanImagePost class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:textPostDescriptor];
+    [[RKObjectManager sharedManager] addResponseDescriptor:imagePostDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:textPostRequestDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:imagePostRequestDescriptor];
 }
