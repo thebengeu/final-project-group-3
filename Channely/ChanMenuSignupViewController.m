@@ -38,29 +38,27 @@
 
 - (IBAction)submit:(id)sender {
     if (![_status isAnimating]){
-        if ([[_username text]length] == 0 || [[_password text]length] == 0){
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Signup"
-                                                             message:@"Invalid username or password"
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Ok"
-                                                   otherButtonTitles:nil];
-            alert.alertViewStyle = UIAlertViewStyleDefault;
+        if ([[_username text]length] == 0 || [[_password text]length] == 0) {
+            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
+            __weak AHAlertView *weakA = alert;
+            [alert setCancelButtonTitle:@"OK" block:^{
+                weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+            }];
             [alert show];
             return;
         }
         
         [ChanUser createUserWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
             [_status stopAnimating];
-            if (error != nil){
-                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Signup"
-                                                                 message:@"Invalid username or password"
-                                                                delegate:self
-                                                       cancelButtonTitle:@"Ok"
-                                                       otherButtonTitles:nil];
-                alert.alertViewStyle = UIAlertViewStyleDefault;
+            if (error != nil) {
+                AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
+                __weak AHAlertView *weakA = alert;
+                [alert setCancelButtonTitle:@"OK" block:^{
+                    weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                }];
                 [alert show];
             } else {
-                [[self navigationController]popViewControllerAnimated:YES];
+                [[self navigationController] popViewControllerAnimated:YES];
             }
         }];
         

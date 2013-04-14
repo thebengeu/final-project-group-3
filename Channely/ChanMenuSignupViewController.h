@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AHAlertView.h"
 
 @interface ChanMenuSignupViewController : UIViewController
 

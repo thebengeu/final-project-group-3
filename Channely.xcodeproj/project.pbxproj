@@ -110,6 +110,7 @@
 		82EF9EA2171AAB420043079D /* video_menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E9E171AAB420043079D /* video_menu_icon.png */; };
 		82EF9EA3171AAB420043079D /* text_menu_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E9F171AAB420043079D /* text_menu_icon.png */; };
 		82EF9EA5171AABC60043079D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EF9EA4171AABC60043079D /* QuartzCore.framework */; };
+		82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9EB0171B15CC0043079D /* AHAlertView.m */; };
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
@@ -343,6 +344,8 @@
 		82EF9E9F171AAB420043079D /* text_menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_menu_icon.png; sourceTree = "<group>"; };
 		82EF9EA4171AABC60043079D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelViewControllerDelegate.h; sourceTree = "<group>"; };
+		82EF9EAF171B15CC0043079D /* AHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHAlertView.h; sourceTree = "<group>"; };
+		82EF9EB0171B15CC0043079D /* AHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHAlertView.m; sourceTree = "<group>"; };
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -1006,6 +1009,8 @@
 				4AE16EE1170DF6E500573A4B /* ChanUtility.m */,
 				B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */,
 				B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */,
+				82EF9EAF171B15CC0043079D /* AHAlertView.h */,
+				82EF9EB0171B15CC0043079D /* AHAlertView.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1302,6 +1307,7 @@
 				0AA7A6DB171B085F00F7BEE4 /* ChanTextPostViewController.m in Sources */,
 				0AA7A6DE171B087900F7BEE4 /* ChanPostViewController.m in Sources */,
 				0AA7A6E2171B0D6C00F7BEE4 /* ChanImagePostViewController.m in Sources */,
+				82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
