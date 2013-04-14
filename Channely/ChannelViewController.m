@@ -17,32 +17,26 @@
 #import "UIImage+normalizedOrientation.h"
 #import "ChanAnonUser.h"
 
+static NSString *const cTakeVideoSegue = @"takeVideoSegue"; 
+
+
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
 @property UIPopoverController *imagePickerPopover;
-
 @property UIPopoverController *attachPickerPopover;
-
 @property AttachPickerViewController *attachPickerViewController;
-
 @property UIImage *attachedImage;
 
 @property UILongPressGestureRecognizer *attachButtonLongPressGestureRecognizer;
 
 @property UIAlertView *deleteAttachmentAlertView;
-
 @property UIPopoverController *createEventPopover;
-
 @property UIBarButtonItem *createEventButton;
-
 @property UIBarButtonItem *toggleButton;
-
 @property ChanCreateEventViewController *createEventViewController;
-
 @property UIView *currentContent;
 
 @end
-
 
 
 @implementation ChannelViewController
@@ -93,6 +87,7 @@
     [rightBarItems addObject:_toggleButton];
 
     self.navigationItem.rightBarButtonItems = rightBarItems;
+    // Set channel name
     self.navigationItem.title = self.channel.name;
 }
 
@@ -100,7 +95,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     //  Load contents
     [self toggleChannelLayout];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -128,6 +122,7 @@
                                             duration:duration];
 }
 
+// Select the right layout to use for the channel
 -(void) toggleChannelLayout{
     CGRect frame = [self contentContainer].frame;
     
@@ -155,6 +150,7 @@
         
         _collectionViewController.channel = self.channel;
         _collectionViewController.posts = self.posts;
+        _collectionViewController.delegate = self;
         
         [_currentContent removeFromSuperview];
         _currentContent = [_collectionViewController view];
@@ -165,9 +161,6 @@
     _currentContent.frame = frame;
     [[self view]addSubview:_currentContent];
 }
-
-
-
 
 -(void)populateChannelPost
 {
@@ -202,6 +195,10 @@
         _postTableViewController = childViewController;
 //        [[_postTableViewController tableView]reloadData];
 //        [_postTableViewController setPostList:[self posts]];
+    } else if ([segueName isEqualToString:cTakeVideoSegue]) {
+        ChanVideoCaptureViewController *destination = segue.destinationViewController;
+        
+        destination.parentChannel = [self underlyingChannel];
     }
       
 }
@@ -360,8 +357,12 @@
     [[self view]setFrame:frame];
 }
 
-#pragma mark Event Creation Controls
+- (void)launchVideoSegue
+{
+    [self performSegueWithIdentifier:cTakeVideoSegue sender:self];
+}
 
+#pragma mark Event Creation Controls
 
 -(void)createEventButtonPressed{
     if (_createEventPopover != nil)

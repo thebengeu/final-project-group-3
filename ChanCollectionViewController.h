@@ -26,12 +26,18 @@
 
 @class ChanChannel;
 
+@protocol ChannelViewControllerDelegate <NSObject>
+
+- (void) launchVideoSegue;
+
+@end
+
 @interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
     AwesomeMenuDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
+@property (weak, nonatomic) id<ChannelViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) ChanChannel *channel;
 @property (strong, nonatomic) NSArray *posts;

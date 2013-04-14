@@ -207,15 +207,21 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 #pragma mark AwesomeMenu Delegate
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
+    switch (idx) {
+        case 0: // Text Post
+            break;
+        case 1: // Gallery Post
+            break;
+        case 2: // Camera 
+            break;
+        case 3: // Video
+            [_delegate launchVideoSegue];
+            break;
+        default:
+            break;
+    }
+        
     NSLog(@"Select the index : %d",idx);
-}
-
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-    NSLog(@"Menu was closed!");
-}
-
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-    NSLog(@"Menu is open!");
 }
 
 @end
