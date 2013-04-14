@@ -14,7 +14,7 @@
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, AttachPickerControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
     ChannelViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentContainer;
@@ -27,21 +27,8 @@
 
 @property NSArray *posts;
 
-@property (weak, nonatomic) IBOutlet UITextView *textInput;
-
 @property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *sendPostIndicator;
-
-- (IBAction)attach:(id)sender;
-
-- (IBAction)sendPost:(id)sender;
-
-- (void)pickImage:(id)sender;
-
-- (void)takePhoto:(id)sender;
-
-- (void)pickVideo:(id)sender;
 
 - (void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
 

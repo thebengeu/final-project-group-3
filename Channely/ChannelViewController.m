@@ -56,21 +56,6 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 
 # pragma mark View Lifecycle
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    NSLog(@"%@", self.channel.name);
-    
-    // register for keyboard notifications
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidShow:)
-                                                 name:UIKeyboardDidShowNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardDidHide:)
-                                                 name:UIKeyboardDidHideNotification
-                                               object:nil];
-}
 
 - (void)viewDidLoad
 {
@@ -103,15 +88,7 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 - (void)viewWillDisappear:(BOOL)animated
 {
     // unregister for keyboard notifications while not visible.
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardDidShowNotification
-                                                  object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIKeyboardDidHideNotification
-                                                  object:nil];
     [_createEventPopover dismissPopoverAnimated:YES];
-
 }
 
 # pragma mark Orientation Handlers
@@ -209,40 +186,6 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 #pragma mark Post Creation Controls
 
 
-- (IBAction)attach:(id)sender {
-    if(!_attachPickerPopover && !_attachedImage) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-        _attachPickerViewController = [storyboard instantiateViewControllerWithIdentifier:@"AttachPickerViewController"];
-        [_attachPickerViewController setDelegate:self];
-        _attachPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_attachPickerViewController];
-        [_attachPickerPopover setDelegate:self];
-        [_attachPickerPopover presentPopoverFromRect:_attachButton.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
-}
-
-- (IBAction)sendPost:(id)sender {
-    [_sendPostIndicator startAnimating];
-    [_textInput setEditable:NO];
-    ChannelViewController *channelViewController = self;
-    if (_attachedImage == nil){
-        [_channel addTextPostWithContent:[_textInput text] username:[ChanAnonUser name] withCompletion:^(ChanTextPost *textPost, NSError *error) {
-            [[channelViewController textInput]setText:@""];
-            [[channelViewController sendPostIndicator]stopAnimating];
-            [[channelViewController textInput] setEditable:YES];
-            [channelViewController populateChannelPost];
-        }];
-    } else {
-        [_channel addImagePostWithContent:[_textInput text] username:[ChanAnonUser name] image:[_attachedImage normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
-            [[channelViewController textInput]setText:@""];
-            [[channelViewController sendPostIndicator]stopAnimating];
-            [[channelViewController textInput] setEditable:YES];
-            [channelViewController setAttachedImage:nil];
-            [channelViewController changeAttachButtonToDefault];
-            [channelViewController populateChannelPost];
-        }];
-    }
-}
-
 // Based on type, displays image picker, video picker, or camera
 - (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type
 {
@@ -271,17 +214,6 @@ static NSString *const cTextPostSegue = @"textPostSegue";
     }
 }
 
-- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
-{
-    if (popoverController == _imagePickerPopover)
-        _imagePickerPopover = nil;
-    else if (popoverController == _attachPickerPopover)
-        _attachPickerPopover = nil;
-    else if ([popoverController isEqual: _createEventPopover])
-        _createEventPopover = nil;
-}
-
-
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = info[UIImagePickerControllerEditedImage];
@@ -292,77 +224,8 @@ static NSString *const cTextPostSegue = @"textPostSegue";
         if (image)
             [self launchImagePostSegue:image];
     }];
-    //_attachedImage = image;
-    //[self changeAttachButtonToAttached];
-    
-    
 }
 
--(void)changeAttachButtonToAttached{
-    [_attachButton setBackgroundImage:_attachedImage forState:UIControlStateNormal];
-    [_attachButton setTitle:@"" forState:UIControlStateNormal];
-    
-    //  Delete gesture
-    _attachButtonLongPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(confirmRemoveAttachedImage)];
-    [_attachButtonLongPressGestureRecognizer setMinimumPressDuration:1];
-    [_attachButton addGestureRecognizer:_attachButtonLongPressGestureRecognizer];
-}
-
--(void)changeAttachButtonToDefault{
-    [_attachButton setBackgroundImage:nil forState:UIControlStateNormal];
-    [_attachButton setTitle:@"Attach" forState:UIControlStateNormal];
-    if (_attachButtonLongPressGestureRecognizer != nil){
-        [_attachButton removeGestureRecognizer:_attachButtonLongPressGestureRecognizer];
-        _attachButtonLongPressGestureRecognizer = nil;
-        [_attachButton setSelected:NO];
-        [_attachButton setHighlighted:NO];
-    }
-}
-
--(void)confirmRemoveAttachedImage{
-    if (_deleteAttachmentAlertView == nil){
-        _deleteAttachmentAlertView = [[UIAlertView alloc] initWithTitle:@"Attachment"
-                                                    message:@"Delete the attachment?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Ok"
-                                          otherButtonTitles:@"Cancel", nil];
-        [_deleteAttachmentAlertView show];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (_deleteAttachmentAlertView == alertView){
-        if (buttonIndex == 0)
-            [self changeAttachButtonToDefault];
-        _deleteAttachmentAlertView = nil;
-        _attachedImage = nil;
-    }
-}
-
-
--(void)keyboardDidShow: (NSNotification*)aNotification {
-    // Animate the current view out of the way
-    CGRect frame = [self view].frame;
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
-        frame.origin.y -= kbSize.width;
-    else
-        frame.origin.y -= kbSize.height;
-    [[self view]setFrame:frame];
-}
-
--(void)keyboardDidHide: (NSNotification*)aNotification  {
-    // Animate the current view out of the way
-    CGRect frame = [self view].frame;
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    if (UIDeviceOrientationIsLandscape(self.interfaceOrientation))
-        frame.origin.y += kbSize.width;
-    else
-        frame.origin.y += kbSize.height;
-    [[self view]setFrame:frame];
-}
 
 - (void)launchVideoSegue
 {
@@ -423,25 +286,6 @@ static NSString *const cTextPostSegue = @"textPostSegue";
 -(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
     //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
-}
-
-#pragma mark Attach Picker Controller Delegate
-- (void) pickImage:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
-}
-
-- (void) takePhoto:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
-}
-
-- (void) pickVideo:(id)sender {
-    [_attachPickerPopover dismissPopoverAnimated:NO];
-    _attachPickerPopover = nil;
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeMovie]];
 }
 
 - (ChanChannel *) underlyingChannel {
