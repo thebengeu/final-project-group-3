@@ -82,7 +82,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
-    }
+    } 
 }
 
 #pragma mark Create Menu functions
@@ -208,6 +208,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 {
     switch (idx) {
         case 0: // Text Post
+            [_delegate launchTextSegue];
             break;
         case 1: // Gallery Post
             break;

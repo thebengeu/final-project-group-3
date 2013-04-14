@@ -11,6 +11,7 @@
 @protocol ChannelViewControllerDelegate <NSObject>
 
 - (void) launchVideoSegue;
+- (void) launchTextSegue;
 - (void) updateLayout;
 - (void) populateChannelPost;
 

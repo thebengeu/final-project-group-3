@@ -33,6 +33,8 @@
 		0AA798B5171009F300632E22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B4171009F300632E22 /* CFNetwork.framework */; };
 		0AA798B917100A6F00632E22 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798B817100A6F00632E22 /* libxml2.dylib */; };
 		0AA798BB17100B4E00632E22 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA798BA17100B4E00632E22 /* libxml2.2.dylib */; };
+		0AA7A6DB171B085F00F7BEE4 /* ChanTextPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6DA171B085F00F7BEE4 /* ChanTextPostViewController.m */; };
+		0AA7A6DE171B087900F7BEE4 /* ChanPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6DD171B087900F7BEE4 /* ChanPostViewController.m */; };
 		0AA8E1461715D5DF0010F99A /* ChanChannelOwnedTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1451715D5DF0010F99A /* ChanChannelOwnedTableController.m */; };
 		0AA8E1491715D73E0010F99A /* ChanChannelOwnedTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1481715D73E0010F99A /* ChanChannelOwnedTableCell.m */; };
 		0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535021705D29100E437F9 /* ChanImagePostCell.m */; };
@@ -219,6 +221,10 @@
 		0AA798B4171009F300632E22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0AA798B817100A6F00632E22 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		0AA798BA17100B4E00632E22 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		0AA7A6D9171B085F00F7BEE4 /* ChanTextPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanTextPostViewController.h; path = Channely/ChanTextPostViewController.h; sourceTree = "<group>"; };
+		0AA7A6DA171B085F00F7BEE4 /* ChanTextPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanTextPostViewController.m; path = Channely/ChanTextPostViewController.m; sourceTree = "<group>"; };
+		0AA7A6DC171B087900F7BEE4 /* ChanPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanPostViewController.h; path = Channely/ChanPostViewController.h; sourceTree = "<group>"; };
+		0AA7A6DD171B087900F7BEE4 /* ChanPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanPostViewController.m; path = Channely/ChanPostViewController.m; sourceTree = "<group>"; };
 		0AA8E1441715D5DF0010F99A /* ChanChannelOwnedTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanChannelOwnedTableController.h; path = Channely/ChanChannelOwnedTableController.h; sourceTree = "<group>"; };
 		0AA8E1451715D5DF0010F99A /* ChanChannelOwnedTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanChannelOwnedTableController.m; path = Channely/ChanChannelOwnedTableController.m; sourceTree = "<group>"; };
 		0AA8E1471715D73E0010F99A /* ChanChannelOwnedTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelOwnedTableCell.h; sourceTree = "<group>"; };
@@ -484,6 +490,7 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				0AA7A6D8171B084E00F7BEE4 /* Post */,
 				82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */,
 				0AF5351F1705D39100E437F9 /* ChannelViewController.h */,
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
@@ -613,6 +620,17 @@
 				0A937FBC170F52BB000A4079 /* AnnotationUIView.m */,
 			);
 			name = Annotation;
+			sourceTree = "<group>";
+		};
+		0AA7A6D8171B084E00F7BEE4 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				0AA7A6DC171B087900F7BEE4 /* ChanPostViewController.h */,
+				0AA7A6DD171B087900F7BEE4 /* ChanPostViewController.m */,
+				0AA7A6D9171B085F00F7BEE4 /* ChanTextPostViewController.h */,
+				0AA7A6DA171B085F00F7BEE4 /* ChanTextPostViewController.m */,
+			);
+			name = Post;
 			sourceTree = "<group>";
 		};
 		0AA8E1431715D5B60010F99A /* ChannelOwned */ = {
@@ -875,7 +893,6 @@
 		B66FDC7916EF88A30042A36C = {
 			isa = PBXGroup;
 			children = (
-				82EF9EA4171AABC60043079D /* QuartzCore.framework */,
 				B66FDC8D16EF88A30042A36C /* Channely */,
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
@@ -897,6 +914,7 @@
 		B66FDC8416EF88A30042A36C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82EF9EA4171AABC60043079D /* QuartzCore.framework */,
 				4ACD25181715AF31001542E8 /* MediaPlayer.framework */,
 				0AA798B4171009F300632E22 /* CFNetwork.framework */,
 				0AA798B2171009EA00632E22 /* Security.framework */,
@@ -1276,6 +1294,8 @@
 				B6D4D5EF1719938C00C7F538 /* ChanSlidesCell.m in Sources */,
 				82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */,
 				82EF9E80171A9D290043079D /* AwesomeMenuItem.m in Sources */,
+				0AA7A6DB171B085F00F7BEE4 /* ChanTextPostViewController.m in Sources */,
+				0AA7A6DE171B087900F7BEE4 /* ChanPostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
