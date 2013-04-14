@@ -10,6 +10,8 @@
 
 static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
 
+CGImageRef UIGetScreenImage(void); // Private API. Fuck Apple.
+
 @interface ChanVideoPlayerViewController ()
 @property (nonatomic) BOOL _parametersSet;
 @property (strong) NSURL *_serverURL;
@@ -128,17 +130,13 @@ static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
 
 #pragma mark Screenshot
 - (UIImage *) getMediaPlayerScreenshot {
-    _player.controlStyle = MPMovieControlStyleNone;
+    NSLog(@"%@", [_player.view.layer class]);
     
-    UIGraphicsBeginImageContext(self.contentView.bounds.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self.contentView.layer renderInContext:context];
-    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    CGImageRef screen = UIGetScreenImage();
+    UIImage* screenImage = [UIImage imageWithCGImage:screen];
+    CGImageRelease(screen);
     
-    _player.controlStyle = MPMovieControlStyleDefault;
-    
-    return screenshot;
+    return screenImage;
 }
 
 @end
