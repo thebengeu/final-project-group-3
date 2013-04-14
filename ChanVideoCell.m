@@ -36,7 +36,11 @@ static const CGFloat kHeaderHeight = 17.0f;
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime" ascending:NO];
     NSArray * descriptors = [NSArray arrayWithObject:sortDescriptor];
     NSArray *thumbnails  = [[videoPost.thumbnails allObjects] sortedArrayUsingDescriptors:descriptors];
-    
+
+    for (UIView *subview in self.contentView.subviews) {
+        [subview removeFromSuperview];
+    }
+
     [thumbnails enumerateObjectsUsingBlock:^(ChanVideoThumbnailPost *thumbnail, NSUInteger idx, BOOL *stop) {
         if (idx >= kMaxThumbnails) {
             *stop = YES;
