@@ -1887,6 +1887,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="VUa-VV-Xhe" id="rZC-O3-pdQ"/>
                         <outlet property="previewArea" destination="Gcz-Ny-9oH" id="YGL-U1-8bw"/>
                         <outlet property="recordingControlButton" destination="jz8-Wt-ufU" id="n40-dp-wym"/>
                     </connections>
@@ -2301,6 +2302,7 @@
             <relationships>
                 <relationship kind="action" name="backButton_Action:"/>
                 <relationship kind="action" name="recordingControlButton_Action:"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
                 <relationship kind="outlet" name="recordingControlButton" candidateClass="UIBarButtonItem"/>
             </relationships>

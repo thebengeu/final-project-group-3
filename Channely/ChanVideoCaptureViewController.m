@@ -156,6 +156,7 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) startRecording {
+    self.backButton.enabled = NO;
     [_recorder startTimedRecordingToDirectory:[ChanUtility videoTempDirectory] chunkInterval:cChunkPeriod];
     
     _isRecording = YES;
@@ -215,6 +216,7 @@ static NSString *const cButtonStartRecording = @"Start";
         
         [recording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
             NSLog(@"Successfully stopped server recording.");
+            self.backButton.enabled = YES;
             return;
         }];
     }];

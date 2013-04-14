@@ -21,6 +21,7 @@
 // Storyboard.
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *recordingControlButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) id<ChannelViewControllerDelegate> delegate;
 
 
