@@ -196,13 +196,12 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 {
     _waterfallLayout.columnCount = self.collectionView.bounds.size.width / kCellWidth;
     _waterfallLayout.itemWidth = kCellWidth;
+    _createPostMenu.startPoint = [self getCreateMenuStartPoint:self.interfaceOrientation];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
-    
-    _createPostMenu.startPoint = [self getCreateMenuStartPoint:toInterfaceOrientation];
 }
 
 #pragma mark AwesomeMenu Delegate

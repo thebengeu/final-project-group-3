@@ -45,6 +45,8 @@
 
 - (void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
 
+// ChannelViewControllerDelegate Methods
 - (void) launchVideoSegue;
+- (void) updateLayout;
 
 @end
