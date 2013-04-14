@@ -112,6 +112,7 @@
 		82EF9EA5171AABC60043079D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EF9EA4171AABC60043079D /* QuartzCore.framework */; };
 		82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9EB0171B15CC0043079D /* AHAlertView.m */; };
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
+		B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B624F776171B18DE00E181F2 /* ChanCollectionView.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -349,6 +350,8 @@
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B624F775171B18DE00E181F2 /* ChanCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionView.h; sourceTree = "<group>"; };
+		B624F776171B18DE00E181F2 /* ChanCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionView.m; sourceTree = "<group>"; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
 		B6386665170466D700800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
@@ -783,6 +786,8 @@
 				821463D217173E8000699085 /* ChanVideoCell.m */,
 				B6D4D5ED1719938C00C7F538 /* ChanSlidesCell.h */,
 				B6D4D5EE1719938C00C7F538 /* ChanSlidesCell.m */,
+				B624F775171B18DE00E181F2 /* ChanCollectionView.h */,
+				B624F776171B18DE00E181F2 /* ChanCollectionView.m */,
 			);
 			name = "Collection View";
 			sourceTree = "<group>";
@@ -1308,6 +1313,7 @@
 				0AA7A6DE171B087900F7BEE4 /* ChanPostViewController.m in Sources */,
 				0AA7A6E2171B0D6C00F7BEE4 /* ChanImagePostViewController.m in Sources */,
 				82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */,
+				B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

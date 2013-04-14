@@ -7,6 +7,7 @@
 //
 
 #import "ChanCollectionViewController.h"
+#import "ChanCollectionView.h"
 
 static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
@@ -176,18 +177,26 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 {
     ChanPost *post = [self.posts objectAtIndex:indexPath.row];
     Class postClass = [post class];
+    CGFloat height;
     
     if (postClass == [ChanTextPost class]) {
-        return [ChanTextCell getHeightForPost:post];
+        height = [ChanTextCell getHeightForPost:post];
     } else if (postClass == [ChanImagePost class]) {
-        return [ChanImageCell getHeightForPost:post];
+        height = [ChanImageCell getHeightForPost:post];
     } else if (postClass == [ChanVideoPost class]) {
-        return [ChanVideoCell getHeightForPost:post];
+        height = [ChanVideoCell getHeightForPost:post];
     } else if (postClass == [ChanSlidesPost class]) {
-        return [ChanSlidesCell getHeightForPost:post];
+        height = [ChanSlidesCell getHeightForPost:post];
     } else {
-        return 0;
+        height = 0;
     }
+    
+    ChanCollectionView *chanCollectionView = (ChanCollectionView *)collectionView;
+    if (height > chanCollectionView.maxCellHeight) {
+        chanCollectionView.maxCellHeight = height;
+    }
+    
+    return height;
 }
 
 // Used for updating the layout of the collection view when screen orientation changes, etc
