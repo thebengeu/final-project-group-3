@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "UITextViewField.h"
 
 @protocol ChanCreateEventViewControllerDelegate
 
@@ -22,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *eventNameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *startDateTextField;
 @property (weak, nonatomic) IBOutlet UIButton *endDateTextField;
-@property (weak, nonatomic) IBOutlet UITextViewField *descriptionTextViewField;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextViewField;
 
 - (IBAction)startDateEditingBegin:(id)sender;
 - (IBAction)endDateEditingBegin:(id)sender;

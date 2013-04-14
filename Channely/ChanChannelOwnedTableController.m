@@ -11,6 +11,7 @@
 #import "ChanChannelOwnedTableCell.h"
 #import "ChanChannel.h"
 #import "ChanChannelCreateUpdateViewController.h"
+#import "ChanDetailViewController.h"
 
 @interface ChanChannelOwnedTableController ()
 
@@ -34,6 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[self navigationItem]setTitle:@"Channels"];
 }
 
 
@@ -56,7 +59,7 @@
     } else if ([segueName isEqualToString: @"UpdateChannelSegue"]){
         ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *) [segue destinationViewController];
         channelCreateUpdateViewController.isUpdateChannel = YES;
-        channelCreateUpdateViewController.channel = [(ChanChannelOwnedTableCell*)sender channel];
+        channelCreateUpdateViewController.channel = [(ChanChannelOwnedTableCell*)[[sender superview]superview] channel];
     }
 }
 
@@ -87,7 +90,10 @@
     }
     ChanChannel *channel = [_channels objectAtIndex:[indexPath row]];
     [cell.channelName setText: [channel name]];
-    [cell.hashtag setText: [channel hashTag]];
+    if ([[channel hashTag]length] > 0)
+        [cell.hashtag setText: [NSString stringWithFormat:@"#%@", [channel hashTag]]];
+    else
+        [cell.hashtag setText:@""];
     cell.channel = [_channels objectAtIndex:[indexPath row]];
     
     return cell;
@@ -96,8 +102,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Used segue instead
+    int row = [indexPath row];
+    id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
+    ChanDetailViewController *detail = [[rootVC childViewControllers]objectAtIndex:0];
     
+    [detail startChannel:[_channels objectAtIndex:row]];
 }
 
 @end

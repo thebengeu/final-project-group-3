@@ -17,6 +17,7 @@ static NSString *const CLIENT_SECRET = @"bRst9AEPfEst6UN7UGZdGzuiemzcl7";
 static NSString *const PATH_CHANNEL = @"/channels";
 static NSString *const PATH_CHANNEL_UPDATE = @"/channels/:channelID";
 static NSString *const PATH_CHANNEL_UPDATE_FORMAT = @"/channels/%@";
+static NSString *const PATH_CHANNEL_SEARCH = @"/channels/search";
 
 // Event Endpoints
 static NSString *const PATH_EVENTS_POST = @"/events";
@@ -39,6 +40,8 @@ static NSString *const PATH_ADD_CHUNK_FORMAT = @"/hls/recordings/%@/chunks";
 
 // User Endpoints
 static NSString *const PATH_USER = @"/users";
+static NSString *const PATH_USER_UPDATE = @"/users/:userID";
+static NSString *const PATH_USER_UPDATE_FORMAT = @"/users/%@";
 static NSString *const PATH_OWNED_CHANNELS = @"/users/:userID/channels";
 static NSString *const PATH_OWNED_CHANNELS_FORMAT = @"/users/%@/channels";
 

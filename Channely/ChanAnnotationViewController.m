@@ -43,13 +43,15 @@
 
     
     //  Set images and annotation view
-    [_imageView setImage:_image];
-    
-    //  [_imageView frame] is 0,0,0,0 for some reason. Blame @ ios.
-    _annotationView = [[AnnotationUIView alloc]initWithFrame:CGRectMake(144, 0, 880, 660)];
+    [_imageView setImage:_image];  
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    _annotationView = [[AnnotationUIView alloc]initWithFrame:[_imageView frame]];
     [_annotationView setMarkerColor:[UIColor redColor]];
     [[self view]addSubview:_annotationView];
     [[self view]bringSubviewToFront:_annotationView];
+    [[self view]setContentMode:UIViewContentModeScaleAspectFit];
 }
 
 

@@ -54,6 +54,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
         ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
         ChanSlidesPostCell *cell = (ChanSlidesPostCell *)((UIButton *)sender).superview.superview;
         
+        slidesViewController.channel = cell.post.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
     }
 }
@@ -68,7 +69,7 @@ static NSString *const cSlideSegue = @"slidesSegue";
 
 }
 
-- (NSMutableArray*)postList
+- (NSArray*)postList
 {
     return _postList;
 }
@@ -91,29 +92,30 @@ static NSString *const cSlideSegue = @"slidesSegue";
 {
     ChanPost *post = [_postList objectAtIndex:[indexPath row]];
     ChanPostCell *cell;
+    Class postClass = [post class];
     
     //  Match according to post type
-    if ([[[post class]description] compare:[ChanTextPost description]] == NSOrderedSame){
+    if (postClass == [ChanTextPost class]){
        cell = [tableView dequeueReusableCellWithIdentifier:@"ChanTextPostCell"];
         if(cell == nil) {
             cell = [[ChanTextPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanTextPostCell"];
         }
-    } else if ([[[post class]description] compare:[ChanImagePost description]] == NSOrderedSame){
+    } else if (postClass == [ChanImagePost class]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChanImagePostCell"];
         if(cell == nil) {
             cell = [[ChanImagePostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanImagePostCell"];
         }
-    } else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame){
+    } else if (postClass == [ChanVideoPost class]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChanVideoPostCell"];
         if(cell == nil) {
             cell = [[ChanVideoPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanVideoPostCell"];
         }
-    } else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame){
+    } else if (postClass == [ChanVideoThumbnailPost class]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChanVideoThumbnailPost"];
         if(cell == nil) {
             cell = [[ChanVideoThumbnailPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanVideoThumbnailPost"];
         }
-    } else if ([[[post class]description] compare:[ChanSlidesPost description]] == NSOrderedSame){
+    } else if (postClass == [ChanSlidesPost class]){
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChanSlidesPostCell"];
         if(cell == nil) {
             cell = [[ChanSlidesPostCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanSlidesPostCell"];
@@ -133,19 +135,20 @@ static NSString *const cSlideSegue = @"slidesSegue";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanPost *post = [_postList objectAtIndex:[indexPath row]];
+    Class postClass = [post class];
     
-    if ([[[post class]description] compare:[ChanTextPost description]] == NSOrderedSame){
+    if (postClass == [ChanTextPost class]){
         //CGSize size = [[post content] sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14] constrainedToSize:CGSizeMake(75, [tableView frame].size.width)];
         return 100;
         //return size.height + 25;
     }
-    else if ([[[post class]description] compare:[ChanImagePost description]] == NSOrderedSame)
+    else if (postClass == [ChanImagePost class])
         return 233;
-    else if ([[[post class]description] compare:[ChanVideoPost description]] == NSOrderedSame)
+    else if (postClass == [ChanVideoPost class])
         return 233;
-    else if ([[[post class]description] compare:[ChanVideoThumbnailPost description]] == NSOrderedSame)
+    else if (postClass == [ChanVideoThumbnailPost class])
         return 0;
-    else if ([[[post class]description] compare:[ChanSlidesPost description]] == NSOrderedSame)
+    else if (postClass == [ChanSlidesPost class])
         return 233;
     return 0;
 }

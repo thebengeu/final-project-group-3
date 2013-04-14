@@ -9,7 +9,6 @@
 #import "ChanChannelCreateUpdateViewController.h"
 #import "ChanChannel.h"
 #import "ChanDetailViewController.h"
-#import "ChanMenuViewController.h"
 
 @interface ChanChannelCreateUpdateViewController ()
 
