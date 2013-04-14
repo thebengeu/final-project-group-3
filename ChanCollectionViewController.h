@@ -20,17 +20,12 @@
 #import "ChanSlidesPost.h"
 #import "ChanVideoPlayerViewController.h"
 #import "ChanSlidesViewController.h"
+#import "ChannelViewControllerDelegate.h"
 #import "UICollectionViewWaterfallLayout.h"
 #import "AwesomeMenuItem.h"
 #import "AwesomeMenu.h"
 
 @class ChanChannel;
-
-@protocol ChannelViewControllerDelegate <NSObject>
-
-- (void) launchVideoSegue;
-
-@end
 
 @interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
     AwesomeMenuDelegate>
