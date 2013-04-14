@@ -106,6 +106,7 @@ static NSString *const cButtonStartRecording = @"Start";
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     
     [self dismissViewControllerAnimated:YES completion:^{
+        [_delegate updateLayout];
         return;
     }];
 }
