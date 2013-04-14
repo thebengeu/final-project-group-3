@@ -339,6 +339,7 @@
 		82EF9E9E171AAB420043079D /* video_menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video_menu_icon.png; sourceTree = "<group>"; };
 		82EF9E9F171AAB420043079D /* text_menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_menu_icon.png; sourceTree = "<group>"; };
 		82EF9EA4171AABC60043079D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelViewControllerDelegate.h; sourceTree = "<group>"; };
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -489,7 +490,7 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				0AA7A6C7171AD1D600F7BEE4 /* Posts */,
+				82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */,
 				0AF5351F1705D39100E437F9 /* ChannelViewController.h */,
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
 				0AA8E1431715D5B60010F99A /* ChannelOwned */,
