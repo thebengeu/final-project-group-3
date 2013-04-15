@@ -15,6 +15,7 @@
 #import "ChanAnnotationViewController.h"
 
 @interface ChanVideoPlayerViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *urlLabel;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (void) setServerURL:(NSString *)url forChannel:(ChanChannel *)channel;

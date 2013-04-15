@@ -9,6 +9,7 @@
 #import "ChanVideoPlayerViewController.h"
 
 static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
+static NSString *const cMetaFormat = @"id:%@ from %@";
 
 CGImageRef UIGetScreenImage(void); // Private API.
 
@@ -61,6 +62,8 @@ CGImageRef UIGetScreenImage(void); // Private API.
         return;
     }
     
+    self.urlLabel.title = [NSString stringWithFormat:cMetaFormat, _recordingId, _selectedURL.host];
+    
     if (!_parametersSet) {
         NSLog(@"Race condition in VideoPlayerViewController!");
     }
@@ -79,6 +82,12 @@ CGImageRef UIGetScreenImage(void); // Private API.
     if ([segue.identifier isEqualToString:cAnnotationSegueId]) {
         ChanAnnotationViewController *vc = (ChanAnnotationViewController *)segue.destinationViewController;
         vc.image = [self getMediaPlayerScreenshot];
+    }
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if (_player) {
+        _player.view.frame = self.contentView.bounds;
     }
 }
 
@@ -122,6 +131,8 @@ CGImageRef UIGetScreenImage(void); // Private API.
 
 #pragma mark Event Handlers
 - (IBAction) backButton_Action:(id)sender {
+    [_player stop];
+    
     [self dismissViewControllerAnimated:YES completion:^{
         return;
     }];
