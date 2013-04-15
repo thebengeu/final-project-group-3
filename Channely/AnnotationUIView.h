@@ -20,7 +20,7 @@
 
 @property CGFloat markerSize;
 
--(UIImage*)screenshot;
+@property UIImage *originalImage;
 
 -(void)clear;
 

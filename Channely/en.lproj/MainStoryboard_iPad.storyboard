@@ -1587,22 +1587,11 @@
         <!--Chan Annotation View Controller-->
         <scene sceneID="8Bo-u9-FqN">
             <objects>
-                <viewController id="Bm4-it-aNF" customClass="ChanAnnotationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChanAnnotationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bm4-it-aNF" customClass="ChanAnnotationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Xt-aX-s7f">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="611" verticalHuggingPriority="557" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ogO-Ph-BVi">
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="546" type="user" id="czR-Yr-qwc"/>
-                                </constraints>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="479" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgd-ch-QuM">
-                                <color key="backgroundColor" red="0.83695652173913038" green="0.83695652173913038" blue="0.83695652173913038" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="me7-ec-lMy">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="mT0-TE-X54"/>
@@ -1621,8 +1610,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHJ-Lz-Xzz">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="30x-j2-De7"/>
                                     <constraint firstAttribute="width" constant="84" id="Ip2-t7-NYt"/>
+                                    <constraint firstAttribute="height" constant="40" id="cWD-yc-hzm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Cancel">
@@ -1703,44 +1692,40 @@
                                     <action selector="blueColor:" destination="Bm4-it-aNF" eventType="touchUpInside" id="jWh-Dj-9Bk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsE-Ap-2QD" customClass="AnnotationUIView"/>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="me7-ec-lMy" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="212-Dw-XxZ"/>
-                            <constraint firstAttribute="trailing" secondItem="sgd-ch-QuM" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4yg-E8-lGu"/>
+                            <constraint firstAttribute="bottom" secondItem="Jgs-o4-hKC" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="4zj-NK-L8g"/>
                             <constraint firstItem="cHJ-Lz-Xzz" firstAttribute="leading" secondItem="2Xt-aX-s7f" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="9ID-7L-MWo"/>
-                            <constraint firstItem="7wv-R5-nO5" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="CxC-fi-i1K"/>
-                            <constraint firstItem="zwA-xW-tQe" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Fqb-y9-5Ff"/>
+                            <constraint firstItem="rQg-LD-uyI" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Azh-BO-lxF"/>
+                            <constraint firstAttribute="bottom" secondItem="cHJ-Lz-Xzz" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="DOA-f5-gxZ"/>
+                            <constraint firstAttribute="bottom" secondItem="7wv-R5-nO5" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="JU5-zP-aYv"/>
+                            <constraint firstItem="gsE-Ap-2QD" firstAttribute="leading" secondItem="2Xt-aX-s7f" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JhU-XC-Akw"/>
+                            <constraint firstItem="7wv-R5-nO5" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KZz-fe-dDF"/>
+                            <constraint firstAttribute="trailing" secondItem="gsE-Ap-2QD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LNC-BU-LT0"/>
                             <constraint firstItem="zwA-xW-tQe" firstAttribute="leading" secondItem="cHJ-Lz-Xzz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Lv9-AJ-BcJ"/>
-                            <constraint firstAttribute="trailing" secondItem="ogO-Ph-BVi" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="NSa-e7-Mgm"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="Jgs-o4-hKC" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="P7h-0J-kxS"/>
-                            <constraint firstAttribute="bottom" secondItem="sgd-ch-QuM" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Sqo-nC-Osh"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="rQg-LD-uyI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Xic-3C-wPN"/>
-                            <constraint firstItem="cHJ-Lz-Xzz" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ZEC-zn-iYZ"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="zwA-xW-tQe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="cwa-U2-p6d"/>
-                            <constraint firstItem="rQg-LD-uyI" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fzE-Le-O3x"/>
+                            <constraint firstItem="gsE-Ap-2QD" firstAttribute="top" secondItem="2Xt-aX-s7f" secondAttribute="top" constant="20" symbolic="YES" type="default" id="TUX-Wx-T3E"/>
+                            <constraint firstItem="zwA-xW-tQe" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="U6Y-pz-ggI"/>
+                            <constraint firstItem="Jgs-o4-hKC" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WLi-XH-GKg"/>
+                            <constraint firstAttribute="bottom" secondItem="zwA-xW-tQe" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XjM-7f-JH0"/>
+                            <constraint firstItem="cHJ-Lz-Xzz" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eHb-PJ-Iua"/>
                             <constraint firstAttribute="trailing" secondItem="me7-ec-lMy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="iUU-p9-Icm"/>
                             <constraint firstItem="7wv-R5-nO5" firstAttribute="leading" secondItem="zwA-xW-tQe" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ivW-jo-dAb"/>
-                            <constraint firstItem="ogO-Ph-BVi" firstAttribute="leading" secondItem="2Xt-aX-s7f" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jcA-iA-0Y3"/>
                             <constraint firstItem="Jgs-o4-hKC" firstAttribute="leading" secondItem="7wv-R5-nO5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jmg-ph-OEL"/>
-                            <constraint firstItem="Jgs-o4-hKC" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="mYL-xT-NhU"/>
-                            <constraint firstItem="ogO-Ph-BVi" firstAttribute="top" secondItem="2Xt-aX-s7f" secondAttribute="top" constant="20" symbolic="YES" type="default" id="mtF-60-JIj"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="7wv-R5-nO5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qP9-5B-slP"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="leading" secondItem="2Xt-aX-s7f" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="uN7-fg-C0l"/>
-                            <constraint firstItem="me7-ec-lMy" firstAttribute="top" secondItem="ogO-Ph-BVi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="v5j-kr-ubT"/>
-                            <constraint firstItem="sgd-ch-QuM" firstAttribute="top" secondItem="cHJ-Lz-Xzz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vGd-O3-DUg"/>
+                            <constraint firstAttribute="bottom" secondItem="me7-ec-lMy" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="mO6-Y4-P1t"/>
+                            <constraint firstAttribute="bottom" secondItem="rQg-LD-uyI" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="tte-CM-T3b"/>
+                            <constraint firstItem="me7-ec-lMy" firstAttribute="top" secondItem="gsE-Ap-2QD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="uO6-18-Woo"/>
                             <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="Jgs-o4-hKC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="z3R-2b-zm6"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="ogO-Ph-BVi" id="C8A-gT-2Mc"/>
-                        <outlet property="textContent" destination="sgd-ch-QuM" id="UVu-zL-fjp"/>
+                        <outlet property="annotationView" destination="gsE-Ap-2QD" id="edh-ag-I2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcB-Ga-Xua" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5670" y="-946"/>
+            <point key="canvasLocation" x="5738" y="-948"/>
         </scene>
         <!--Chan Video Capture View Controller-->
         <scene sceneID="nAC-xZ-2Re">
@@ -2138,6 +2123,9 @@
         <image name="user.png" width="23" height="22"/>
     </resources>
     <classes>
+        <class className="AnnotationUIView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnnotationUIView.h"/>
+        </class>
         <class className="ChanAbstractCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAbstractCell.h"/>
         </class>
@@ -2150,8 +2138,7 @@
                 <relationship kind="action" name="done:"/>
                 <relationship kind="action" name="greenColor:"/>
                 <relationship kind="action" name="redColor:"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="textContent" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="annotationView" candidateClass="AnnotationUIView"/>
             </relationships>
         </class>
         <class className="ChanChannelCreateUpdateViewController" superclassName="UIViewController">
@@ -2434,9 +2421,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="Yc1-jX-CgN"/>
         <segue reference="5jW-HH-phM"/>
         <segue reference="Z6b-uW-ajH"/>
         <segue reference="fPp-BV-ZgT"/>
-        <segue reference="dya-kM-f2k"/>
     </inferredMetricsTieBreakers>
 </document>

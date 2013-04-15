@@ -10,11 +10,12 @@
 #import "ChannelPostTableViewController.h"
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
+#import "ChanPostViewController.h"
 
 @class ChanChannel;
 
 @interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
-    ChannelViewControllerDelegate>
+    ChannelViewControllerDelegate, ChanAnnotationViewControllerDelegate, ChanPostViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentContainer;
 
@@ -36,6 +37,7 @@
 - (void) launchImagePostSegue:(UIImage *)image;
 - (void) launchCameraForImage;
 - (void) launchImagePicker;
+- (void) launchAnnotationForImagePost:(UIImage *)image;
 - (void) updateLayout;
 - (void) populateChannelPost;
 

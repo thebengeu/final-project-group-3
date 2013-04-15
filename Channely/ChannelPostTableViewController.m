@@ -43,7 +43,6 @@ static NSString *const cSlideSegue = @"slidesSegue";
         ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
         ChanImagePostCell *cell = (ChanImagePostCell*)[[((UIButton*)sender)superview] superview];
         
-        annotationViewController.channel = [[cell post] channel];
         annotationViewController.image = [[cell imageContent]image];
     } else if ([segueName isEqualToString:cVideoPlayerSegue]) {
         ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;

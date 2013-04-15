@@ -10,21 +10,23 @@
 #import "ChanChannel.h"
 #import "AnnotationUIView.h"
 
+@protocol ChanAnnotationViewControllerDelegate
+
+- (void) didFinishAnnotation:(UIImage*)image;
+
+@end
+
 @interface ChanAnnotationViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
-
-@property AnnotationUIView *annotationView;
+@property (strong, nonatomic) IBOutlet AnnotationUIView *annotationView;
 
 @property UIImage *image;
-@property ChanChannel *channel;
+
+@property id<ChanAnnotationViewControllerDelegate> delegate;
 
 - (IBAction)redColor:(id)sender;
 - (IBAction)greenColor:(id)sender;
 - (IBAction)blueColor:(id)sender;
-
-
-@property (weak, nonatomic) IBOutlet UITextView *textContent;
 
 - (IBAction)done:(id)sender;
 - (IBAction)cancel:(id)sender;

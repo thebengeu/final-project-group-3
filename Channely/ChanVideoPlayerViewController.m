@@ -78,7 +78,6 @@ CGImageRef UIGetScreenImage(void); // Private API.
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:cAnnotationSegueId]) {
         ChanAnnotationViewController *vc = (ChanAnnotationViewController *)segue.destinationViewController;
-        vc.channel = _channel;
         vc.image = [self getMediaPlayerScreenshot];
     }
 }

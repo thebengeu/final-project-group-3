@@ -22,39 +22,58 @@
 
 @implementation AnnotationUIView
 
--(id)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
+@synthesize originalImage = _originalImage;
+
+- (id) init{
+    self = [super init];
     if (self){
-        //[self setBackgroundColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:0.1]];
-        [self setUserInteractionEnabled:YES];
-        _currentStrokePoints = [[NSMutableArray alloc]init];
-        _strokesPoints = [[NSMutableArray alloc]init];
-        _strokeSizes = [[NSMutableArray alloc]init];
-        _strokeColors = [[NSMutableArray alloc]init];
-        
-        UIPanGestureRecognizer *draw = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(draw:)];
-        [draw setMaximumNumberOfTouches:1];
-        [self addGestureRecognizer:draw];
-        
-        _markerColor = [UIColor redColor];
-        _markerSize = (CGFloat)3.0;
-        
-        UIGraphicsBeginImageContextWithOptions(frame.size, NO, 0.0);
-        UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        [self setImage:blank];
-        [self setContentMode:UIViewContentModeScaleAspectFit];
+        [self setup];
     }
     return self;
 }
 
--(void)clear{
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self){
+        [self setup];
+    }
+    return self;
+}
+
+- (void)setup{
+    [self setUserInteractionEnabled:YES];
+    _currentStrokePoints = [[NSMutableArray alloc]init];
+    _strokesPoints = [[NSMutableArray alloc]init];
+    _strokeSizes = [[NSMutableArray alloc]init];
+    _strokeColors = [[NSMutableArray alloc]init];
+    
+    UIPanGestureRecognizer *draw = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(draw:)];
+    [draw setMaximumNumberOfTouches:1];
+    [self addGestureRecognizer:draw];
+    
+    _markerColor = [UIColor redColor];
+    _markerSize = (CGFloat)3.0;
+    
     UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
     UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [self setImage:blank];
-
+    [self setContentMode:UIViewContentModeScaleAspectFit];
 }
+
+-(void)setOriginalImage:(UIImage *)originalImage{
+    _originalImage = originalImage;
+    self.image = originalImage;
+}
+
+- (UIImage*)originalImage{
+    return _originalImage;
+}
+
+-(void)clear{
+    [self setImage:_originalImage];
+}
+
 
 -(float)pointToDist:(CGPoint) p{
     return sqrt(p.x * p.x + p.y * p.y);
@@ -136,8 +155,8 @@
 }
 
 -(void)setupDrawContext{
-    UIGraphicsBeginImageContext(self.frame.size);
-    [self.image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    UIGraphicsBeginImageContext(self.image.size);
+    [self.image drawInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
     CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), [_markerColor CGColor]);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
@@ -146,24 +165,17 @@
 
 -(void)drawCanvasLineSegmentFromPoint:(CGPoint)previousPoint toPoint:(CGPoint)point withSize:(float)size{
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), size);
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), previousPoint.x, previousPoint.y);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x, point.y);
+    CGFloat offsetX = (self.frame.size.width - self.image.size.width)/2.0;
+    CGFloat offsetY = (self.frame.size.height - self.image.size.height)/2.0;
+
+    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), previousPoint.x-offsetX, previousPoint.y-offsetY);
+    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x-offsetX, point.y-offsetY);
 }
 
 -(void)doneDrawContext{
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     self.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-}
-
--(UIImage*)screenshot{
-    CGRect rect = [self bounds];
-    UIGraphicsBeginImageContextWithOptions(rect.size,NO,0.0f);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [self.layer renderInContext:context];
-    UIImage *capturedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return capturedImage;
 }
 
 @end

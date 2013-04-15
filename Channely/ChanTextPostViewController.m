@@ -37,7 +37,9 @@
         [[me status]startAnimating];
         [_channel addTextPostWithContent:[_text text] username:[_username text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
             [[me status]stopAnimating];
-            [me dismissViewControllerAnimated:YES completion:nil];
+            [me dismissViewControllerAnimated:YES completion:^{
+                [[me delegate]didPost:[me channel]];
+            }];
         }];
     }
 }

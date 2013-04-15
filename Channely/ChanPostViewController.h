@@ -11,9 +11,16 @@
 #import "ChanUser.h"
 #import "ChanAnonUser.h"
 
+@protocol ChanPostViewControllerDelegate
+
+- (void) didPost:(ChanChannel*)channel;
+
+@end
+
 @interface ChanPostViewController : UIViewController
 
 @property ChanChannel *channel;
 @property UITapGestureRecognizer *tapBehindRecognizer;
+@property id<ChanPostViewControllerDelegate> delegate;
 
 @end

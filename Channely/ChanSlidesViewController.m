@@ -131,7 +131,6 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
     if ([segueName isEqualToString:cSlideAnnotationSegue]) {
         ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
         
-        annotationViewController.channel = self.channel;
         
         // Use image for annotation from currently displayed UIImageView.
         annotationViewController.image = [(UIImageView*)[self.scrollView viewWithTag:self.zone] image];

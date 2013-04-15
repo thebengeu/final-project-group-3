@@ -20,6 +20,8 @@
 
 - (void) launchImagePostSegue:(UIImage*)image;
 
+- (void) launchAnnotationForImagePost:(UIImage *)image;
+
 - (void) updateLayout;
 
 - (void) populateChannelPost;

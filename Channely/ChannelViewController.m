@@ -19,6 +19,7 @@
 #import "ChanTextPostViewController.h"
 #import "ChanImagePostViewController.h"
 #import "ChanVideoCaptureViewController.h"
+#import "ChanAnnotationViewController.h"
 
 static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
@@ -231,19 +232,35 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
     controller.channel = _channel;
-    
+    controller.delegate = self;
+
     [self presentViewController:controller animated:NO completion:nil];
     [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
     [controller view].bounds = CGRectMake(0, 0, 500, 300);
 }
 
--(void)launchImagePicker{
+- (void)launchImagePicker
+{
     [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
 }
 
 
--(void)launchCameraForImage{
+- (void)launchCameraForImage
+{
     [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
+}
+
+- (void)launchAnnotationForImagePost:(UIImage*)image{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChanAnnotationViewController *controller = (ChanAnnotationViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanAnnotationViewController"];
+    [controller setImage:image];
+    controller.delegate = self;
+    
+    [self presentViewController:controller animated:NO completion:nil];
+}
+
+- (void) didFinishAnnotation:(UIImage*)image{
+    [self launchImagePostSegue:image];
 }
 
 -(void)launchImagePostSegue: (UIImage*)image{
@@ -251,6 +268,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     ChanImagePostViewController *controller = (ChanImagePostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanImagePostViewController"];
     controller.channel = _channel;
     controller.image = image;
+    controller.delegate = self;
     
     [self presentViewController:controller animated:YES completion:nil];
     [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
@@ -289,6 +307,10 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         self.imagePickerPopover = nil;
     if (popoverController == self.createEventPopover)
         self.createEventPopover = nil;
+}
+
+- (void)didPost:(ChanChannel *)channel{
+    [self populateChannelPost];
 }
 
 @end
