@@ -14,5 +14,6 @@
 @interface ChanPostViewController : UIViewController
 
 @property ChanChannel *channel;
+@property UITapGestureRecognizer *tapBehindRecognizer;
 
 @end

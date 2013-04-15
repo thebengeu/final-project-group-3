@@ -22,11 +22,11 @@
     [super viewDidAppear:animated];
 	// Do any additional setup after loading the view.
     
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapBehind:)];
+    self.tapBehindRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapBehind:)];
     
-    [recognizer setNumberOfTapsRequired:1];
-    recognizer.cancelsTouchesInView = NO; //So the user can still interact with controls in the modal view
-    [self.view.window addGestureRecognizer:recognizer];
+    [self.tapBehindRecognizer setNumberOfTapsRequired:1];
+    self.tapBehindRecognizer.cancelsTouchesInView = NO; //So the user can still interact with controls in the modal view
+    [self.view.window addGestureRecognizer:self.tapBehindRecognizer];
             
 }
 
@@ -56,6 +56,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidHideNotification
                                                   object:nil];
+    [self.view.window removeGestureRecognizer:self.tapBehindRecognizer];
 }
 
 - (void)handleTapBehind:(UITapGestureRecognizer *)sender
@@ -72,9 +73,7 @@
                 [[self view] endEditing:YES];
                 return;
             }
-            
-            // Remove the recognizer first so it's view.window is valid.
-            [self.view.window removeGestureRecognizer:sender];
+
             [self dismissViewControllerAnimated:YES completion:nil];
         }  
     }
