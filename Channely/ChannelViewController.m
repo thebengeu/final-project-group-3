@@ -162,6 +162,10 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         
         _postTableViewController.postList = self.posts;
         _collectionViewController.posts = self.posts;
+
+        // Refresh posts after 10 seconds
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(populateChannelPost) object:nil];
+        [self performSelector:@selector(populateChannelPost) withObject:nil afterDelay:10.0];
     }];
 }
 
