@@ -9,6 +9,9 @@
 #ifndef Channely_ChanAPIEndpoints_h
 #define Channely_ChanAPIEndpoints_h
 
+// Twitter
+static NSString *const TWITTER_BEARER_TOKEN = @"AAAAAAAAAAAAAAAAAAAAAPb8PwAAAAAAFYE6kyCqLkP3cFPLIF5yv0mH3pE%3D5uqvmdF7pxOthWs2zY25tehPnBEOboL9hU3YQBccc";
+
 // Client ID / Secret
 static NSString *const CLIENT_ID = @"515d95a2d529fbbb18000001";
 static NSString *const CLIENT_SECRET = @"bRst9AEPfEst6UN7UGZdGzuiemzcl7";

@@ -3,6 +3,7 @@
 #import "ChanTextPost.h"
 #import "ChanAPIEndpoints.h"
 #import "ChanEvent.h"
+#import "ChanTwitterPost.h"
 
 @interface ChanChannel ()
 
@@ -138,6 +139,21 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (block) block(nil, error);
     }];
+}
+
+- (void)getTweetsWithCompletion:(void (^)(NSArray *tweets, NSError *error))block
+{
+    if (self.hashTag) {
+        [ChanTwitterPost getTweetsWithHashTag:[NSString stringWithFormat:@"#%@", self.hashTag] WithCompletion:^(NSArray *tweets, NSError *error) {
+            for (ChanTwitterPost* twitterPost in tweets) {
+                twitterPost.type = @"twitter";
+                [self addPostsObject:twitterPost];
+            }
+            if (block) block(tweets, error);
+        }];
+    } else {
+        if (block) block(nil, nil);
+    }
 }
 
 @end

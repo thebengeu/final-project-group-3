@@ -7,6 +7,7 @@
 //
 
 #import "ChanAppDelegate.h"
+#import "ChanTwitterPost.h"
 
 static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 static NSString *const cLocalServerLoadKey = @"_lsload";
@@ -51,6 +52,9 @@ static NSUInteger const cLocalServerPort = 80;
     NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
     
     [managedObjectStore createManagedObjectContexts];
+    
+    // Configure a managed object cache to ensure we do not create duplicate objects
+    managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
     
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];

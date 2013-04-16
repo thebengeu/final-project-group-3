@@ -5,8 +5,6 @@
 #import "ChanPost.h"
 
 extern const struct ChanTwitterPostAttributes {
-	__unsafe_unretained NSString *jsonData;
-	__unsafe_unretained NSString *url;
 } ChanTwitterPostAttributes;
 
 extern const struct ChanTwitterPostRelationships {
@@ -15,8 +13,6 @@ extern const struct ChanTwitterPostRelationships {
 extern const struct ChanTwitterPostFetchedProperties {
 } ChanTwitterPostFetchedProperties;
 
-
-@class NSObject;
 
 
 @interface ChanTwitterPostID : NSManagedObjectID {}
@@ -32,26 +28,6 @@ extern const struct ChanTwitterPostFetchedProperties {
 
 
 
-@property (nonatomic, strong) id jsonData;
-
-
-
-//- (BOOL)validateJsonData:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* url;
-
-
-
-//- (BOOL)validateUrl:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 
 @end
 
@@ -60,18 +36,6 @@ extern const struct ChanTwitterPostFetchedProperties {
 @end
 
 @interface _ChanTwitterPost (CoreDataGeneratedPrimitiveAccessors)
-
-
-- (id)primitiveJsonData;
-- (void)setPrimitiveJsonData:(id)value;
-
-
-
-
-- (NSString*)primitiveUrl;
-- (void)setPrimitiveUrl:(NSString*)value;
-
-
 
 
 @end

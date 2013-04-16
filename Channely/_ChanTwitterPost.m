@@ -4,8 +4,6 @@
 #import "_ChanTwitterPost.h"
 
 const struct ChanTwitterPostAttributes ChanTwitterPostAttributes = {
-	.jsonData = @"jsonData",
-	.url = @"url",
 };
 
 const struct ChanTwitterPostRelationships ChanTwitterPostRelationships = {
@@ -43,20 +41,6 @@ const struct ChanTwitterPostFetchedProperties ChanTwitterPostFetchedProperties =
 
 	return keyPaths;
 }
-
-
-
-
-@dynamic jsonData;
-
-
-
-
-
-
-@dynamic url;
-
-
 
 
 

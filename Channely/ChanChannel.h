@@ -27,4 +27,6 @@
                startTime:(NSDate *)startTime
                  endTime:(NSDate *)endTime
           withCompletion:(void (^)(ChanEvent *event, NSError *error))block;
+- (void)getTweetsWithCompletion:(void (^)(NSArray *tweets, NSError *error))block;
+
 @end

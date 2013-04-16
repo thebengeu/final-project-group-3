@@ -65,10 +65,7 @@
         <relationship name="slides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SlidePost" inverseName="slidesPost" inverseEntity="SlidePost" syncable="YES"/>
     </entity>
     <entity name="TextPost" representedClassName="ChanTextPost" parentEntity="Post" syncable="YES"/>
-    <entity name="TwitterPost" representedClassName="ChanTwitterPost" parentEntity="Post" syncable="YES">
-        <attribute name="jsonData" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
+    <entity name="TwitterPost" representedClassName="ChanTwitterPost" parentEntity="Post" syncable="YES"/>
     <entity name="User" representedClassName="ChanUser" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -99,7 +96,7 @@
         <element name="SlidePost" positionX="520" positionY="143" width="128" height="75"/>
         <element name="SlidesPost" positionX="342" positionY="143" width="128" height="75"/>
         <element name="TextPost" positionX="378" positionY="234" width="128" height="43"/>
-        <element name="TwitterPost" positionX="198" positionY="494" width="128" height="73"/>
+        <element name="TwitterPost" positionX="198" positionY="494" width="128" height="45"/>
         <element name="User" positionX="34" positionY="270" width="128" height="133"/>
         <element name="VideoPost" positionX="376" positionY="378" width="128" height="103"/>
         <element name="VideoThumbnailPost" positionX="549" positionY="288" width="128" height="88"/>

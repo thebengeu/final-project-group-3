@@ -64,6 +64,10 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     [super viewWillAppear:animated];
     [self updateLayout];
     [self refreshPosts];
+    
+    // TODO: decide some interval for auto refresh. Conservatively load once
+    // now just to test, don't want to hit Twitter's rate limit while testing.
+    [self refreshTwitterPosts];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -113,6 +117,11 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 - (void)stopRefreshingPosts
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshPosts) object:nil];
+}
+
+- (void)refreshTwitterPosts
+{
+    [self.channel getTweetsWithCompletion:nil];
 }
 
 #pragma mark Create Menu functions
@@ -195,6 +204,8 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
     } else if (postClass == [ChanSlidesPost class]) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SlidesCell" forIndexPath:indexPath]; 
+    } else if (postClass == [ChanTwitterPost class]) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TwitterCell" forIndexPath:indexPath]; 
     }
     
     cell.post = post;
@@ -217,6 +228,8 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         height = [ChanVideoCell getHeightForPost:post];
     } else if (postClass == [ChanSlidesPost class]) {
         height = [ChanSlidesCell getHeightForPost:post];
+    } else if (postClass == [ChanTwitterPost class]) {
+        height = [ChanTwitterCell getHeightForPost:post];
     } else {
         height = 0;
     }
@@ -279,7 +292,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides", @"twitter"];
     [fetchRequest setPredicate:predicate];
 
     [fetchRequest setFetchBatchSize:50];

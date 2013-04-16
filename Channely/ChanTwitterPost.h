@@ -1,5 +1,9 @@
 #import "_ChanTwitterPost.h"
 
 @interface ChanTwitterPost : _ChanTwitterPost {}
-// Custom logic goes here.
+
+@property (readonly) NSString* url;
+
++ (void)getTweetsWithHashTag:(NSString *)hashtag WithCompletion:(void (^)(NSArray *tweets, NSError *error))block;
+
 @end
