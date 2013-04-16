@@ -67,13 +67,12 @@
 
 - (IBAction)update:(id)sender {
     if (![_updateStatus isAnimating]){
-        if ([[_username text]length] == 0){
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Update"
-                                                             message:@"Invalid username"
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Ok"
-                                                   otherButtonTitles:nil];
-            alert.alertViewStyle = UIAlertViewStyleDefault;
+        if ([[_username text]length] == 0) {
+            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Update" message:@"Invalid username"];
+            __weak AHAlertView *weakA = alert;
+            [alert setCancelButtonTitle:@"OK" block:^{
+                weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+            }];
             [alert show];
             return;
         }

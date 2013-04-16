@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AHAlertView.h"
 #import "ChanChannel.h"
 #import "BButton.h"
 

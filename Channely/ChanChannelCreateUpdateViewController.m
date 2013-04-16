@@ -47,13 +47,13 @@
 
 
 - (IBAction)createOrUpdate:(id)sender {
-    if ([[_channelName text]length] == 0){
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Oops"
-                                                          message:@"Channel Name must not be empty"
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
-        [message show];
+    if ([[_channelName text]length] == 0) {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Oops" message:@"Channel Name must not be empty"];
+        __weak AHAlertView *weakA = alert;
+        [alert setCancelButtonTitle:@"OK" block:^{
+            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
         return;
     }
     

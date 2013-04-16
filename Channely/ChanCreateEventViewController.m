@@ -159,23 +159,23 @@
 }
 
 - (IBAction)createEvent:(id)sender {
-    if ([[_eventNameTextField text]length] == 0){
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Create Event"
-                                                          message:@"Please enter an event name."
-                                                         delegate:nil
-                                                cancelButtonTitle:@"Ok"
-                                                otherButtonTitles:nil];
-        [message show];
+    if ([[_eventNameTextField text]length] == 0) {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Create Event" message:@"Please enter an event name."];
+        __weak AHAlertView *weakA = alert;
+        [alert setCancelButtonTitle:@"OK" block:^{
+            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
         return;
     }
     
-    if ([_startDate compare:_endDate] == NSOrderedDescending){
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Create Event"
-                                                          message:@"Start date is later than end date."
-                                                         delegate:nil
-                                                cancelButtonTitle:@"Ok"
-                                                otherButtonTitles:nil];
-        [message show];
+    if ([_startDate compare:_endDate] == NSOrderedDescending) {
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Create Event" message:@"Start date is later than end date."];
+        __weak AHAlertView *weakA = alert;
+        [alert setCancelButtonTitle:@"OK" block:^{
+            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+        }];
+        [alert show];
         return;
     }
     
