@@ -25,12 +25,6 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 
 @implementation ChanCollectionViewController
 
-- (void)setPosts:(NSArray *)posts
-{
-    _posts = posts;
-    [self.collectionView reloadData];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -139,14 +133,15 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.posts.count;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 // UICollectionViewDataSource protocol methods
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 1;
+    return [[self.fetchedResultsController sections] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -154,7 +149,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     
     ChanAbstractCell *cell;
     
-    ChanPost *post = [self.posts objectAtIndex:indexPath.row];
+    ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Class postClass = [post class];
 
     if (postClass == [ChanTextPost class]) {
@@ -175,7 +170,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChanPost *post = [self.posts objectAtIndex:indexPath.row];
+    ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Class postClass = [post class];
     CGFloat height;
     
@@ -233,6 +228,47 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     }
         
     NSLog(@"Select the index : %d",idx);
+}
+
+#pragma mark - Fetched results controller
+
+- (NSFetchedResultsController *)fetchedResultsController
+{
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    self.managedObjectContext = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
+    [fetchRequest setPredicate:predicate];
+
+    [fetchRequest setFetchBatchSize:50];
+
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.fetchedResultsController performFetch:&error]) {
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	}
+    
+    return _fetchedResultsController;
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.collectionView reloadData];
 }
 
 @end
