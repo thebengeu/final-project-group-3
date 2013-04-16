@@ -141,8 +141,11 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
         [_postTableViewController.refreshControl endRefreshing];
         
-        self.channel.lastRefreshed = [NSDate date];
-        
+        if (posts.count) {
+            ChanPost *post = (ChanPost *)[posts lastObject];
+            self.channel.lastRefreshed = post.createdAt;
+        }
+
         NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
         NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
