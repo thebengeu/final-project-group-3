@@ -8,6 +8,7 @@
 
 #import "ChanCollectionViewController.h"
 #import "ChanCollectionView.h"
+#import "ChanRefreshControl.h"
 
 static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
@@ -51,10 +52,9 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     // Add post button
     [self addPostControl];
     
-    self.refreshControl = [UIRefreshControl new];
+    self.refreshControl = [ChanRefreshControl new];
     [self.refreshControl addTarget:self action:@selector(refreshPosts)
                   forControlEvents:UIControlEventValueChanged];
-    self.refreshControl.tintColor = [UIColor redColor];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Posts"];
     [self.collectionView addSubview:self.refreshControl];
 }

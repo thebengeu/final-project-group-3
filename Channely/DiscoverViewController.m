@@ -14,6 +14,7 @@
 #import "ChannelViewController.h"
 #import "ChanEvent.h"
 #import "ChanChannel.h"
+#import "ChanRefreshControl.h"
 
 @interface DiscoverViewController ()
 
@@ -39,8 +40,9 @@
     //  Force first update
     firstUpdate = false;
     
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    UIRefreshControl *refreshControl = [ChanRefreshControl new];
     [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Events"];
     self.channelTableViewController.refreshControl = refreshControl;
 }
 

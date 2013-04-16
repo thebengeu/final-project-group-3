@@ -109,6 +109,7 @@
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
 		B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B624F776171B18DE00E181F2 /* ChanCollectionView.m */; };
 		B6269864171D423E00A42599 /* ChanTwitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6269863171D423E00A42599 /* ChanTwitterCell.m */; };
+		B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B6269867171D4D9D00A42599 /* ChanRefreshControl.m */; };
 		B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386663170466D700800FBE /* ChanHLSChunk.m */; };
 		B6386667170466D700800FBE /* ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386666170466D700800FBE /* ChanImagePost.m */; };
 		B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386669170466D700800FBE /* ChanTwitterPost.m */; };
@@ -338,6 +339,8 @@
 		B6269862171D423E00A42599 /* ChanTwitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanTwitterCell.h; path = Channely/ChanTwitterCell.h; sourceTree = "<group>"; };
 		B6269863171D423E00A42599 /* ChanTwitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanTwitterCell.m; path = Channely/ChanTwitterCell.m; sourceTree = "<group>"; };
 		B6269865171D4B0900A42599 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		B6269866171D4D9B00A42599 /* ChanRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRefreshControl.h; sourceTree = "<group>"; };
+		B6269867171D4D9D00A42599 /* ChanRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRefreshControl.m; sourceTree = "<group>"; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
 		B6386665170466D700800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
@@ -969,6 +972,8 @@
 		B6AB9B0817191B6200BDEA3B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				B6269866171D4D9B00A42599 /* ChanRefreshControl.h */,
+				B6269867171D4D9D00A42599 /* ChanRefreshControl.m */,
 				4AE16EE0170DF6E500573A4B /* ChanUtility.h */,
 				4AE16EE1170DF6E500573A4B /* ChanUtility.m */,
 				B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */,
@@ -1266,6 +1271,7 @@
 				82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */,
 				B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */,
 				B6269864171D423E00A42599 /* ChanTwitterCell.m in Sources */,
+				B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
