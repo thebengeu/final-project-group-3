@@ -275,8 +275,6 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         default:
             break;
     }
-        
-    NSLog(@"Select the index : %d",idx);
 }
 
 #pragma mark - Fetched results controller

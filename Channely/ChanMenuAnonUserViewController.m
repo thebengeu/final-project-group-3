@@ -38,6 +38,7 @@
     }
     
     [_anonUsername setText:[ChanAnonUser name]];
+    [self.navigationItem setTitle:[ChanAnonUser name]];
 }
 
 - (void) viewWillAppear:(BOOL)animated{

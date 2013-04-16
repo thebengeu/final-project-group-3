@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="1606" y="-2775"/>
         </scene>
-        <!--Chan Menu Anon User View Controller - Anonymous User-->
+        <!--Chan Menu Anon User View Controller-->
         <scene sceneID="r8o-rx-TpD">
             <objects>
                 <viewController storyboardIdentifier="ChanMenuAnonUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PLu-7g-xXX" customClass="ChanMenuAnonUserViewController" sceneMemberID="viewController">
@@ -149,7 +149,7 @@
                             <constraint firstAttribute="bottom" secondItem="Mhz-I7-yuY" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="zlG-HN-jrz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Anonymous User" id="1qh-nE-5jM"/>
+                    <navigationItem key="navigationItem" id="1qh-nE-5jM"/>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -1629,6 +1629,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAnnotationViewController.h"/>
             <relationships>
                 <relationship kind="action" name="blueColor:"/>
+                <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="clear:"/>
                 <relationship kind="action" name="done:"/>
                 <relationship kind="action" name="greenColor:"/>

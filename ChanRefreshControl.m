@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        self.tintColor = kChannelyRed;
+        self.tintColor = kChannelyGray;
     }
     return self;
 }
@@ -25,7 +25,7 @@
     
     NSMutableAttributedString *mutableAttributedTitle = [[NSMutableAttributedString alloc] initWithAttributedString:attributedTitle];
     [mutableAttributedTitle addAttribute:NSForegroundColorAttributeName
-                            value:kChannelyRed
+                            value:kChannelyGray
                             range:NSMakeRange(0, attributedTitle.length)];
     [super setAttributedTitle:mutableAttributedTitle];
 }

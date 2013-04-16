@@ -67,6 +67,7 @@
 		821463CC17172E9200699085 /* ChanImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CB17172E9100699085 /* ChanImageCell.m */; };
 		821463D01717340600699085 /* ChanAbstractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CF1717340600699085 /* ChanAbstractCell.m */; };
 		821463D317173E8100699085 /* ChanVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463D217173E8000699085 /* ChanVideoCell.m */; };
+		821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 821E47F2171D83850043608B /* SLGlowingTextField.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -287,6 +288,8 @@
 		821463CF1717340600699085 /* ChanAbstractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanAbstractCell.m; sourceTree = "<group>"; };
 		821463D117173E7F00699085 /* ChanVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCell.h; sourceTree = "<group>"; };
 		821463D217173E8000699085 /* ChanVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCell.m; sourceTree = "<group>"; };
+		821E47F1171D83850043608B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
+		821E47F2171D83850043608B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -980,6 +983,8 @@
 				B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */,
 				82EF9EAF171B15CC0043079D /* AHAlertView.h */,
 				82EF9EB0171B15CC0043079D /* AHAlertView.m */,
+				821E47F1171D83850043608B /* SLGlowingTextField.h */,
+				821E47F2171D83850043608B /* SLGlowingTextField.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1272,6 +1277,7 @@
 				B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */,
 				B6269864171D423E00A42599 /* ChanTwitterCell.m in Sources */,
 				B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */,
+				821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
