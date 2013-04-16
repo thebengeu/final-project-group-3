@@ -57,14 +57,19 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     self.refreshControl.tintColor = [UIColor redColor];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Posts"];
     [self.collectionView addSubview:self.refreshControl];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateLayout];
     [self refreshPosts];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-    [self updateLayout];
+    [super viewWillDisappear:animated];
+    [self stopRefreshingPosts];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,7 +94,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     } 
 }
 
--(void)refreshPosts
+- (void)refreshPosts
 {
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
         [self.refreshControl endRefreshing];
@@ -100,9 +105,14 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         }
         
         // Refresh posts after 10 seconds
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshPosts) object:nil];
+        [self stopRefreshingPosts];
         [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:10.0];
     }];
+}
+
+- (void)stopRefreshingPosts
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshPosts) object:nil];
 }
 
 #pragma mark Create Menu functions
