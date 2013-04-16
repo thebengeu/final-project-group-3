@@ -68,6 +68,10 @@
 		821463D01717340600699085 /* ChanAbstractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CF1717340600699085 /* ChanAbstractCell.m */; };
 		821463D317173E8100699085 /* ChanVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463D217173E8000699085 /* ChanVideoCell.m */; };
 		821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 821E47F2171D83850043608B /* SLGlowingTextField.m */; };
+		82394494171DA1C100C9A6D8 /* BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239448D171DA1C100C9A6D8 /* BButton.m */; };
+		82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */; };
+		82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82394491171DA1C100C9A6D8 /* FontAwesome.ttf */; };
+		82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394493171DA1C100C9A6D8 /* UIColor+BButton.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -291,6 +295,13 @@
 		821463D217173E8000699085 /* ChanVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCell.m; sourceTree = "<group>"; };
 		821E47F1171D83850043608B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
 		821E47F2171D83850043608B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
+		8239448C171DA1C100C9A6D8 /* BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BButton.h; sourceTree = "<group>"; };
+		8239448D171DA1C100C9A6D8 /* BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BButton.m; sourceTree = "<group>"; };
+		8239448E171DA1C100C9A6D8 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		82394491171DA1C100C9A6D8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		82394492171DA1C100C9A6D8 /* UIColor+BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BButton.h"; sourceTree = "<group>"; };
+		82394493171DA1C100C9A6D8 /* UIColor+BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BButton.m"; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -759,6 +770,28 @@
 			name = "Collection View";
 			sourceTree = "<group>";
 		};
+		8239448B171DA1C100C9A6D8 /* BButton */ = {
+			isa = PBXGroup;
+			children = (
+				8239448C171DA1C100C9A6D8 /* BButton.h */,
+				8239448D171DA1C100C9A6D8 /* BButton.m */,
+				8239448E171DA1C100C9A6D8 /* NSString+FontAwesome.h */,
+				8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */,
+				82394490171DA1C100C9A6D8 /* resources */,
+				82394492171DA1C100C9A6D8 /* UIColor+BButton.h */,
+				82394493171DA1C100C9A6D8 /* UIColor+BButton.m */,
+			);
+			path = BButton;
+			sourceTree = "<group>";
+		};
+		82394490171DA1C100C9A6D8 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				82394491171DA1C100C9A6D8 /* FontAwesome.ttf */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		82EF9E7A171A9D290043079D /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1023,7 @@
 				821E47F2171D83850043608B /* SLGlowingTextField.m */,
 				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
 				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
+				8239448B171DA1C100C9A6D8 /* BButton */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1141,6 +1175,7 @@
 				82EF9EA1171AAB420043079D /* picture_menu_icon.png in Resources */,
 				82EF9EA2171AAB420043079D /* video_menu_icon.png in Resources */,
 				82EF9EA3171AAB420043079D /* text_menu_icon.png in Resources */,
+				82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1319,9 @@
 				B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */,
 				821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */,
 				B610DA7F171D957000BE38A7 /* UIColor+Channely.m in Sources */,
+				82394494171DA1C100C9A6D8 /* BButton.m in Sources */,
+				82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */,
+				82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
