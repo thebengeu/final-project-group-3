@@ -7,3 +7,10 @@
 //
 
 #define kChannelyRed [UIColor colorWithRed:0.792 green:0.031 blue:0.078 alpha:1]
+
+typedef enum {
+    kTextMenuItem,
+    kPictureMenuItem,
+    kVideoMenuItem,
+    kGalleryMenuItem
+} kAwesomeMenuItems;

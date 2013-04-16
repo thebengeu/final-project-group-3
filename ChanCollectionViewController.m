@@ -9,6 +9,7 @@
 #import "ChanCollectionViewController.h"
 #import "ChanCollectionView.h"
 #import "ChanRefreshControl.h"
+#import "Constants.h"
 
 static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
@@ -259,16 +260,16 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     switch (idx) {
-        case 0: // Text Post
+        case kTextMenuItem: // Text Post
             [_delegate launchTextPostSegue];
             break;
-        case 1: // Gallery Post
+        case kPictureMenuItem: // Gallery Post
             [_delegate launchImagePicker];
             break;
-        case 2: // Camera
+        case kVideoMenuItem: // Camera
             [_delegate launchCameraForImage];
             break;
-        case 3: // Video
+        case kGalleryMenuItem: // Video
             [_delegate launchVideoSegue];
             break;
         default:
