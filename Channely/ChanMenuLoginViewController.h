@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "AHAlertView.h"
+#import "BButton.h"
 
 @interface ChanMenuLoginViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *username;
-
 @property (strong, nonatomic) IBOutlet UITextField *password;
+
+@property (weak, nonatomic) IBOutlet BButton *submitButton;
 
 - (IBAction)submit:(id)sender;
 

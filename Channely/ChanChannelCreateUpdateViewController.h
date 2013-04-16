@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChanChannel.h"
+#import "BButton.h"
 
 @interface ChanChannelCreateUpdateViewController : UIViewController
 
@@ -15,10 +16,9 @@
 
 @property ChanChannel *channel;
 
-@property (strong, nonatomic) IBOutlet UIButton *createUpdateButton;
+@property (strong, nonatomic) IBOutlet BButton *createUpdateButton;
 
 @property (strong, nonatomic) IBOutlet UITextField *channelName;
-
 @property (strong, nonatomic) IBOutlet UITextField *hashtag;
 
 - (IBAction)createOrUpdate:(id)sender;

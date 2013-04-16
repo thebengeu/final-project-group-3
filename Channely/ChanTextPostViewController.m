@@ -29,6 +29,8 @@
     
     _username.text = name;
     
+    // Launch the keyboard with focus on textarea
+    [_text becomeFirstResponder];
 }
 
 - (IBAction)submit:(id)sender {

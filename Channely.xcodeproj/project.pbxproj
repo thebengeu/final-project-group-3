@@ -68,6 +68,10 @@
 		821463D01717340600699085 /* ChanAbstractCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463CF1717340600699085 /* ChanAbstractCell.m */; };
 		821463D317173E8100699085 /* ChanVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 821463D217173E8000699085 /* ChanVideoCell.m */; };
 		821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 821E47F2171D83850043608B /* SLGlowingTextField.m */; };
+		82394494171DA1C100C9A6D8 /* BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239448D171DA1C100C9A6D8 /* BButton.m */; };
+		82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */; };
+		82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82394491171DA1C100C9A6D8 /* FontAwesome.ttf */; };
+		82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394493171DA1C100C9A6D8 /* UIColor+BButton.m */; };
 		824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963D17113B1A00E96418 /* icon-small@2x.png */; };
 		824E964017113B8C00E96418 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E963F17113B8C00E96418 /* icon@2x.png */; };
 		824E964217113BD100E96418 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 824E964117113BD100E96418 /* icon.png */; };
@@ -176,7 +180,7 @@
 
 /* Begin PBXFileReference section */
 		0A5F5E9C1715DC9200687A26 /* ChanChannelCreateUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanChannelCreateUpdateViewController.h; path = Channely/ChanChannelCreateUpdateViewController.h; sourceTree = "<group>"; };
-		0A5F5E9D1715DC9200687A26 /* ChanChannelCreateUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanChannelCreateUpdateViewController.m; path = Channely/ChanChannelCreateUpdateViewController.m; sourceTree = "<group>"; };
+		0A5F5E9D1715DC9200687A26 /* ChanChannelCreateUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ChanChannelCreateUpdateViewController.m; path = Channely/ChanChannelCreateUpdateViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0A91BA1017116A0C0095FA01 /* SelectionAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectionAnnotation.h; path = Channely/SelectionAnnotation.h; sourceTree = "<group>"; };
 		0A91BA1117116A0C0095FA01 /* SelectionAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectionAnnotation.m; path = Channely/SelectionAnnotation.m; sourceTree = "<group>"; };
 		0A91BA1317116A580095FA01 /* ChanCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanCreateEventViewController.h; path = Channely/ChanCreateEventViewController.h; sourceTree = "<group>"; };
@@ -190,13 +194,13 @@
 		0A991D10171911B000275B3B /* ChanSearchResultEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSearchResultEventCell.h; path = Channely/ChanSearchResultEventCell.h; sourceTree = "<group>"; };
 		0A991D11171911B000275B3B /* ChanSearchResultEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSearchResultEventCell.m; path = Channely/ChanSearchResultEventCell.m; sourceTree = "<group>"; };
 		0A991D1B17193DF300275B3B /* ChanMenuAnonUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuAnonUserViewController.h; path = Channely/ChanMenuAnonUserViewController.h; sourceTree = "<group>"; };
-		0A991D1C17193DF300275B3B /* ChanMenuAnonUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuAnonUserViewController.m; path = Channely/ChanMenuAnonUserViewController.m; sourceTree = "<group>"; };
+		0A991D1C17193DF300275B3B /* ChanMenuAnonUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ChanMenuAnonUserViewController.m; path = Channely/ChanMenuAnonUserViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0A991D1E17193E0700275B3B /* ChanMenuUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuUserViewController.h; path = Channely/ChanMenuUserViewController.h; sourceTree = "<group>"; };
-		0A991D1F17193E0700275B3B /* ChanMenuUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuUserViewController.m; path = Channely/ChanMenuUserViewController.m; sourceTree = "<group>"; };
+		0A991D1F17193E0700275B3B /* ChanMenuUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ChanMenuUserViewController.m; path = Channely/ChanMenuUserViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0A991D281719486600275B3B /* ChanMenuLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuLoginViewController.h; path = Channely/ChanMenuLoginViewController.h; sourceTree = "<group>"; };
-		0A991D291719486600275B3B /* ChanMenuLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuLoginViewController.m; path = Channely/ChanMenuLoginViewController.m; sourceTree = "<group>"; };
+		0A991D291719486600275B3B /* ChanMenuLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ChanMenuLoginViewController.m; path = Channely/ChanMenuLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0A991D2C17194D0100275B3B /* ChanMenuSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanMenuSignupViewController.h; path = Channely/ChanMenuSignupViewController.h; sourceTree = "<group>"; };
-		0A991D2D17194D0100275B3B /* ChanMenuSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanMenuSignupViewController.m; path = Channely/ChanMenuSignupViewController.m; sourceTree = "<group>"; };
+		0A991D2D17194D0100275B3B /* ChanMenuSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ChanMenuSignupViewController.m; path = Channely/ChanMenuSignupViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0A991D2F1719590300275B3B /* ChanAnonUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAnonUser.h; path = Channely/ChanAnonUser.h; sourceTree = "<group>"; };
 		0A991D301719590300275B3B /* ChanAnonUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnonUser.m; path = Channely/ChanAnonUser.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -291,6 +295,13 @@
 		821463D217173E8000699085 /* ChanVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCell.m; sourceTree = "<group>"; };
 		821E47F1171D83850043608B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
 		821E47F2171D83850043608B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
+		8239448C171DA1C100C9A6D8 /* BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		8239448D171DA1C100C9A6D8 /* BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8239448E171DA1C100C9A6D8 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		82394491171DA1C100C9A6D8 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		82394492171DA1C100C9A6D8 /* UIColor+BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BButton.h"; sourceTree = "<group>"; };
+		82394493171DA1C100C9A6D8 /* UIColor+BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BButton.m"; sourceTree = "<group>"; };
 		824E963D17113B1A00E96418 /* icon-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-small@2x.png"; path = "../icon-small@2x.png"; sourceTree = "<group>"; };
 		824E963F17113B8C00E96418 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		824E964117113BD100E96418 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -759,6 +770,28 @@
 			name = "Collection View";
 			sourceTree = "<group>";
 		};
+		8239448B171DA1C100C9A6D8 /* BButton */ = {
+			isa = PBXGroup;
+			children = (
+				8239448C171DA1C100C9A6D8 /* BButton.h */,
+				8239448D171DA1C100C9A6D8 /* BButton.m */,
+				8239448E171DA1C100C9A6D8 /* NSString+FontAwesome.h */,
+				8239448F171DA1C100C9A6D8 /* NSString+FontAwesome.m */,
+				82394490171DA1C100C9A6D8 /* resources */,
+				82394492171DA1C100C9A6D8 /* UIColor+BButton.h */,
+				82394493171DA1C100C9A6D8 /* UIColor+BButton.m */,
+			);
+			path = BButton;
+			sourceTree = "<group>";
+		};
+		82394490171DA1C100C9A6D8 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				82394491171DA1C100C9A6D8 /* FontAwesome.ttf */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		82EF9E7A171A9D290043079D /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1023,7 @@
 				821E47F2171D83850043608B /* SLGlowingTextField.m */,
 				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
 				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
+				8239448B171DA1C100C9A6D8 /* BButton */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1141,6 +1175,7 @@
 				82EF9EA1171AAB420043079D /* picture_menu_icon.png in Resources */,
 				82EF9EA2171AAB420043079D /* video_menu_icon.png in Resources */,
 				82EF9EA3171AAB420043079D /* text_menu_icon.png in Resources */,
+				82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1319,9 @@
 				B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */,
 				821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */,
 				B610DA7F171D957000BE38A7 /* UIColor+Channely.m in Sources */,
+				82394494171DA1C100C9A6D8 /* BButton.m in Sources */,
+				82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */,
+				82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

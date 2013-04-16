@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BButton.h"
 
 @interface ChanMenuUserViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *username;
-
 @property (strong, nonatomic) IBOutlet UITextField *password;
+
+@property (weak, nonatomic) IBOutlet BButton *editChannelButton;
+@property (weak, nonatomic) IBOutlet BButton *logoutButton;
+@property (weak, nonatomic) IBOutlet BButton *updateButton;
 
 - (IBAction)update:(id)sender;
 
