@@ -7,7 +7,7 @@
 //
 
 #import "ChanRefreshControl.h"
-#import "Constants.h"
+#import "UIColor+Channely.h"
 
 @implementation ChanRefreshControl
 
@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        self.tintColor = kChannelyGray;
+        self.tintColor = [UIColor channelyGray];
     }
     return self;
 }
@@ -25,7 +25,7 @@
     
     NSMutableAttributedString *mutableAttributedTitle = [[NSMutableAttributedString alloc] initWithAttributedString:attributedTitle];
     [mutableAttributedTitle addAttribute:NSForegroundColorAttributeName
-                            value:kChannelyGray
+                            value:[UIColor channelyGray]
                             range:NSMakeRange(0, attributedTitle.length)];
     [super setAttributedTitle:mutableAttributedTitle];
 }

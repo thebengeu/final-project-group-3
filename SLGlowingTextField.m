@@ -16,6 +16,7 @@
 
 #import "SLGlowingTextField.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIColor+Channely.h"
 
 @interface SLGlowingTextField () {
 	UIColor *_backgroundColor;
@@ -39,7 +40,7 @@
 	
 	if (!self.glowingColor)
 	{
-		self.glowingColor = kChannelyRed;
+		self.glowingColor = [UIColor channelyRed];
 	}
 	
 	if (!self.borderColor)
