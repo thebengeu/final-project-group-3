@@ -337,6 +337,7 @@
 		B624F776171B18DE00E181F2 /* ChanCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionView.m; sourceTree = "<group>"; };
 		B6269862171D423E00A42599 /* ChanTwitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanTwitterCell.h; path = Channely/ChanTwitterCell.h; sourceTree = "<group>"; };
 		B6269863171D423E00A42599 /* ChanTwitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanTwitterCell.m; path = Channely/ChanTwitterCell.m; sourceTree = "<group>"; };
+		B6269865171D4B0900A42599 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B6386662170466D600800FBE /* ChanHLSChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSChunk.h; sourceTree = "<group>"; };
 		B6386663170466D700800FBE /* ChanHLSChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSChunk.m; sourceTree = "<group>"; };
 		B6386665170466D700800FBE /* ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanImagePost.h; sourceTree = "<group>"; };
@@ -915,6 +916,7 @@
 				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
+				B6269865171D4B0900A42599 /* Constants.h */,
 				B66FDCA516EF88A40042A36C /* Channely.xcdatamodeld */,
 				B66FDC8E16EF88A30042A36C /* Supporting Files */,
 			);
