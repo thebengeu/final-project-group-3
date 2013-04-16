@@ -38,6 +38,7 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+BButton.h"
 #import "NSString+FontAwesome.h"
+#import "UIColor+Channely.h"
 
 typedef enum {
     BButtonTypeDefault = 0,
@@ -50,7 +51,8 @@ typedef enum {
     BButtonTypeTwitter,
     BButtonTypeFacebook,
     BButtonTypePurple,
-    BButtonTypeGray
+    BButtonTypeGray,
+    BButtonTypeChan
 } BButtonType;
 
 

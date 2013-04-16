@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	
-    [_submitButton setType:BButtonTypeDanger];
+    [_submitButton setType:BButtonTypeChan];
 }
 
 

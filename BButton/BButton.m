@@ -262,6 +262,9 @@
         case BButtonTypeGray:
             newColor = [UIColor colorWithRed:0.60f green:0.60f blue:0.60f alpha:1.00f];
             break;
+        case BButtonTypeChan:
+            newColor = [UIColor channelyRed];
+            break;
         case BButtonTypeDefault:
         default:
             newColor = [UIColor colorWithRed:0.85f green:0.85f blue:0.85f alpha:1.00f];

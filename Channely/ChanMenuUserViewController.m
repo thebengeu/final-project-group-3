@@ -42,7 +42,7 @@
     // Set button styles
     [_editChannelButton setType:BButtonTypeWarning];
     [_logoutButton setType:BButtonTypeInverse];
-    [_updateButton setType:BButtonTypeDanger];
+    [_updateButton setType:BButtonTypeChan];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

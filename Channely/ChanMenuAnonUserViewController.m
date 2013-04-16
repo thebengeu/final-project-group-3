@@ -42,7 +42,7 @@
     [self.navigationItem setTitle: @"User Settings"];
     
     // Set button styles
-    [_loginButton setType:BButtonTypeDanger];
+    [_loginButton setType:BButtonTypeChan];
     [_signupButton setType:BButtonTypeInverse];
 
 //    _loginButton.frame = CGRectMake(20, 286, 360, 44);

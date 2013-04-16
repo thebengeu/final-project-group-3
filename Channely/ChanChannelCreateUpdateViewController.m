@@ -32,7 +32,7 @@
     [super viewDidLoad];
 	
     // Set button style
-    [_createUpdateButton setType:BButtonTypeDanger];
+    [_createUpdateButton setType:BButtonTypeChan];
     
     
     if (_isUpdateChannel){
