@@ -105,9 +105,9 @@ static NSString *const cButtonStartRecording = @"Start";
     // We assume that the 'back' button is the only way to exit the camera software.
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     
+    ChanVideoCaptureViewController *me = self;
     [self dismissViewControllerAnimated:YES completion:^{
-        [_delegate updateLayout];
-        [_delegate populateChannelPost];
+        [_delegate didPost:me.parentChannel];
         return;
     }];
 }

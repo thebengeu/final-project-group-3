@@ -50,6 +50,8 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     
     // Add post button
     [self addPostControl];
+    
+    [self refreshPosts];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -78,6 +80,20 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
     } 
+}
+
+-(void)refreshPosts
+{
+    [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
+        if (posts.count) {
+            ChanPost *post = (ChanPost *)[posts lastObject];
+            self.channel.lastRefreshed = post.createdAt;
+        }
+        
+        // Refresh posts after 10 seconds
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(refreshPosts) object:nil];
+        [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:10.0];
+    }];
 }
 
 #pragma mark Create Menu functions

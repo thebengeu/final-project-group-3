@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChannelPostTableViewController.h"
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
 #import "ChanPostViewController.h"
@@ -21,11 +20,7 @@
 
 @property ChanChannel *channel;
 
-@property ChannelPostTableViewController *postTableViewController;
-
 @property ChanCollectionViewController *collectionViewController;
-
-@property NSArray *posts;
 
 @property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
@@ -38,7 +33,5 @@
 - (void) launchCameraForImage;
 - (void) launchImagePicker;
 - (void) launchAnnotationForImagePost:(UIImage *)image;
-- (void) updateLayout;
-- (void) populateChannelPost;
 
 @end

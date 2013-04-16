@@ -15,14 +15,14 @@
 #import "ChanChannel.h"
 #import "ChanHLSChunk.h"
 #import "ChanUtility.h"
-#import "ChannelViewControllerDelegate.h"
+#import "ChanPostViewController.h"
 
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 // Storyboard.
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *recordingControlButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
-@property (weak, nonatomic) id<ChannelViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<ChanPostViewControllerDelegate> delegate;
 
 
 // External.

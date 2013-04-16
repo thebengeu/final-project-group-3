@@ -65,18 +65,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     }
     
     //  Add more items if needed
-    _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
-    [rightBarItems addObject:_toggleButton];
+//    _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
+//    [rightBarItems addObject:_toggleButton];
 
     self.navigationItem.rightBarButtonItems = rightBarItems;
     // Set channel name
     self.navigationItem.title = self.channel.name;
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    //  Load contents
-    [self toggleChannelLayout];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -96,86 +90,13 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
                                             duration:duration];
 }
 
-// Select the right layout to use for the channel
--(void) toggleChannelLayout{
-    CGRect frame = [self contentContainer].frame;
-    
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    if (_currentContent == [_collectionViewController view] && _currentContent != nil){
-        //  To change to ChanCollectionViewController
-
-        if (_postTableViewController == nil){
-            _postTableViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelPostTableViewController"];
-            UIRefreshControl *refreshControl = [UIRefreshControl new];
-            [refreshControl addTarget:self action:@selector(populateChannelPost) forControlEvents:UIControlEventValueChanged];
-            _postTableViewController.refreshControl = refreshControl;
-        }
-        
-        [_currentContent removeFromSuperview];
-        _currentContent = [_postTableViewController view];
-        [_toggleButton setTitle:@"Collection"];
-       
-    } else {
-        //  to change to ChannelPostTableViewController
-        
-        if (_collectionViewController == nil)
-            _collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCollectionViewController"];
-        
-        _collectionViewController.channel = self.channel;
-        _collectionViewController.posts = self.posts;
-        _collectionViewController.delegate = self;
-        
-        [_currentContent removeFromSuperview];
-        _currentContent = [_collectionViewController view];
-        [_toggleButton setTitle:@"Temporal"];
-    }
-    
-    [self populateChannelPost];
-    _currentContent.frame = frame;
-    [[self view]addSubview:_currentContent];
-}
-
--(void)populateChannelPost
-{
-    [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
-        [_postTableViewController.refreshControl endRefreshing];
-        
-        if (posts.count) {
-            ChanPost *post = (ChanPost *)[posts lastObject];
-            self.channel.lastRefreshed = post.createdAt;
-        }
-
-        NSManagedObjectContext *moc = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:moc];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        [request setEntity:entityDescription];
-        
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides"];
-        [request setPredicate:predicate];
-        
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
-        [request setSortDescriptors:@[sortDescriptor]];
-        
-        NSError *err;
-        self.posts = [NSMutableArray arrayWithArray:[moc executeFetchRequest:request error:&err]];
-        
-        _postTableViewController.postList = self.posts;
-        _collectionViewController.posts = self.posts;
-
-        // Refresh posts after 10 seconds
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(populateChannelPost) object:nil];
-        [self performSelector:@selector(populateChannelPost) withObject:nil afterDelay:10.0];
-    }];
-}
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"PostTableSegue"]) {
-        ChannelPostTableViewController * childViewController = (ChannelPostTableViewController *) [segue destinationViewController];
-        _postTableViewController = childViewController;
-//        [[_postTableViewController tableView]reloadData];
-//        [_postTableViewController setPostList:[self posts]];
+    if ([segueName isEqualToString: @"CollectionViewSegue"]) {
+        ChanCollectionViewController * childViewController = (ChanCollectionViewController *) [segue destinationViewController];
+        _collectionViewController = childViewController;
+        _collectionViewController.channel = self.channel;
+        _collectionViewController.delegate = self;
     } else if ([segueName isEqualToString:cTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
         
@@ -317,7 +238,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 }
 
 - (void)didPost:(ChanChannel *)channel{
-    [self populateChannelPost];
+    [self.collectionViewController refreshPosts];
 }
 
 @end

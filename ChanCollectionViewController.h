@@ -41,5 +41,6 @@
 -(CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
  heightForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (void)refreshPosts;
 
 @end

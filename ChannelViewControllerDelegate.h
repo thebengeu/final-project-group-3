@@ -22,8 +22,4 @@
 
 - (void) launchAnnotationForImagePost:(UIImage *)image;
 
-- (void) updateLayout;
-
-- (void) populateChannelPost;
-
 @end

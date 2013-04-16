@@ -37,10 +37,6 @@
 		0AA7A6E2171B0D6C00F7BEE4 /* ChanImagePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6E1171B0D6C00F7BEE4 /* ChanImagePostViewController.m */; };
 		0AA8E1461715D5DF0010F99A /* ChanChannelOwnedTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1451715D5DF0010F99A /* ChanChannelOwnedTableController.m */; };
 		0AA8E1491715D73E0010F99A /* ChanChannelOwnedTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1481715D73E0010F99A /* ChanChannelOwnedTableCell.m */; };
-		0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535021705D29100E437F9 /* ChanImagePostCell.m */; };
-		0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535041705D29100E437F9 /* ChanPostCell.m */; };
-		0AF535091705D29100E437F9 /* ChanTextPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535061705D29100E437F9 /* ChanTextPostCell.m */; };
-		0AF5350C1705D2E700E437F9 /* ChannelPostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */; };
 		0AF535111705D2F500E437F9 /* ChannelUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5350E1705D2F500E437F9 /* ChannelUITableViewCell.m */; };
 		0AF535121705D2F500E437F9 /* ChannelUITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535101705D2F500E437F9 /* ChannelUITableViewController.m */; };
 		0AF535151705D32800E437F9 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF535141705D32800E437F9 /* DiscoverViewController.m */; };
@@ -128,7 +124,6 @@
 		B63B64AE1716580000885E4B /* _ChanSlidesPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64AD1716580000885E4B /* _ChanSlidesPost.m */; };
 		B63B64B11716580B00885E4B /* ChanSlidesPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B01716580B00885E4B /* ChanSlidesPost.m */; };
 		B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B417165E0B00885E4B /* ChanSlidesViewController.m */; };
-		B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63B64B71716610000885E4B /* ChanSlidesPostCell.m */; };
 		B66FDC8616EF88A30042A36C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8516EF88A30042A36C /* UIKit.framework */; };
 		B66FDC8816EF88A30042A36C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8716EF88A30042A36C /* Foundation.framework */; };
 		B66FDC8A16EF88A30042A36C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66FDC8916EF88A30042A36C /* CoreGraphics.framework */; };
@@ -151,8 +146,6 @@
 		B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */; };
 		B6AB9B0B17191B9200BDEA3B /* UIImage+normalizedOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
-		B6BCD8C11713D5AD004DC80D /* ChanVideoPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */; };
-		B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */; };
 		B6D4D5EF1719938C00C7F538 /* ChanSlidesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D4D5EE1719938C00C7F538 /* ChanSlidesCell.m */; };
 		B6F480201706C80F0005029D /* _ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800B1706C80F0005029D /* _ChanChannel.m */; };
 		B6F480211706C80F0005029D /* _ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800D1706C80F0005029D /* _ChanEvent.m */; };
@@ -232,14 +225,6 @@
 		0AA8E1471715D73E0010F99A /* ChanChannelOwnedTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelOwnedTableCell.h; sourceTree = "<group>"; };
 		0AA8E1481715D73E0010F99A /* ChanChannelOwnedTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanChannelOwnedTableCell.m; sourceTree = "<group>"; };
 		0ABB364816FC16A500436E06 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0AF535011705D29100E437F9 /* ChanImagePostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanImagePostCell.h; path = Channely/ChanImagePostCell.h; sourceTree = "<group>"; };
-		0AF535021705D29100E437F9 /* ChanImagePostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanImagePostCell.m; path = Channely/ChanImagePostCell.m; sourceTree = "<group>"; };
-		0AF535031705D29100E437F9 /* ChanPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanPostCell.h; path = Channely/ChanPostCell.h; sourceTree = "<group>"; };
-		0AF535041705D29100E437F9 /* ChanPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanPostCell.m; path = Channely/ChanPostCell.m; sourceTree = "<group>"; };
-		0AF535051705D29100E437F9 /* ChanTextPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanTextPostCell.h; path = Channely/ChanTextPostCell.h; sourceTree = "<group>"; };
-		0AF535061705D29100E437F9 /* ChanTextPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanTextPostCell.m; path = Channely/ChanTextPostCell.m; sourceTree = "<group>"; };
-		0AF5350A1705D2E600E437F9 /* ChannelPostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelPostTableViewController.h; path = Channely/ChannelPostTableViewController.h; sourceTree = "<group>"; };
-		0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelPostTableViewController.m; path = Channely/ChannelPostTableViewController.m; sourceTree = "<group>"; };
 		0AF5350D1705D2F500E437F9 /* ChannelUITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelUITableViewCell.h; path = Channely/ChannelUITableViewCell.h; sourceTree = "<group>"; };
 		0AF5350E1705D2F500E437F9 /* ChannelUITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelUITableViewCell.m; path = Channely/ChannelUITableViewCell.m; sourceTree = "<group>"; };
 		0AF5350F1705D2F500E437F9 /* ChannelUITableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelUITableViewController.h; path = Channely/ChannelUITableViewController.h; sourceTree = "<group>"; };
@@ -381,8 +366,6 @@
 		B63B64B01716580B00885E4B /* ChanSlidesPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidesPost.m; sourceTree = "<group>"; };
 		B63B64B317165E0B00885E4B /* ChanSlidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanSlidesViewController.h; path = Channely/ChanSlidesViewController.h; sourceTree = "<group>"; };
 		B63B64B417165E0B00885E4B /* ChanSlidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanSlidesViewController.m; path = Channely/ChanSlidesViewController.m; sourceTree = "<group>"; };
-		B63B64B61716610000885E4B /* ChanSlidesPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSlidesPostCell.h; sourceTree = "<group>"; };
-		B63B64B71716610000885E4B /* ChanSlidesPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidesPostCell.m; sourceTree = "<group>"; };
 		B66FDC8216EF88A30042A36C /* Channely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Channely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B66FDC8516EF88A30042A36C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B66FDC8716EF88A30042A36C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -415,10 +398,6 @@
 		B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+normalizedOrientation.m"; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
 		B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanRestKitObjectMappings.m; sourceTree = "<group>"; };
-		B6BCD8BF1713D5AC004DC80D /* ChanVideoPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoPostCell.h; sourceTree = "<group>"; };
-		B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoPostCell.m; sourceTree = "<group>"; };
-		B6BCD8C21713D5BE004DC80D /* ChanVideoThumbnailPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailPostCell.h; sourceTree = "<group>"; };
-		B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailPostCell.m; sourceTree = "<group>"; };
 		B6D4D5ED1719938C00C7F538 /* ChanSlidesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSlidesCell.h; sourceTree = "<group>"; };
 		B6D4D5EE1719938C00C7F538 /* ChanSlidesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSlidesCell.m; sourceTree = "<group>"; };
 		B6F4800A1706C80F0005029D /* _ChanChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanChannel.h; sourceTree = "<group>"; };
@@ -502,10 +481,7 @@
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
 				0AA8E1431715D5B60010F99A /* ChannelOwned */,
 				0A91BA0F171169C10095FA01 /* CreateEvent */,
-				0AA3938317043E3B00A35814 /* Cells - To Be Deleted */,
 				821463CD17172EA400699085 /* Collection View */,
-				0AF5350A1705D2E600E437F9 /* ChannelPostTableViewController.h */,
-				0AF5350B1705D2E600E437F9 /* ChannelPostTableViewController.m */,
 				82EF9E7A171A9D290043079D /* AwesomeMenu */,
 			);
 			name = Channel;
@@ -594,25 +570,6 @@
 				0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */,
 			);
 			name = IosNtp;
-			sourceTree = "<group>";
-		};
-		0AA3938317043E3B00A35814 /* Cells - To Be Deleted */ = {
-			isa = PBXGroup;
-			children = (
-				0AF535011705D29100E437F9 /* ChanImagePostCell.h */,
-				0AF535021705D29100E437F9 /* ChanImagePostCell.m */,
-				0AF535031705D29100E437F9 /* ChanPostCell.h */,
-				0AF535041705D29100E437F9 /* ChanPostCell.m */,
-				0AF535051705D29100E437F9 /* ChanTextPostCell.h */,
-				0AF535061705D29100E437F9 /* ChanTextPostCell.m */,
-				B6BCD8BF1713D5AC004DC80D /* ChanVideoPostCell.h */,
-				B6BCD8C01713D5AD004DC80D /* ChanVideoPostCell.m */,
-				B6BCD8C21713D5BE004DC80D /* ChanVideoThumbnailPostCell.h */,
-				B6BCD8C31713D5BE004DC80D /* ChanVideoThumbnailPostCell.m */,
-				B63B64B61716610000885E4B /* ChanSlidesPostCell.h */,
-				B63B64B71716610000885E4B /* ChanSlidesPostCell.m */,
-			);
-			name = "Cells - To Be Deleted";
 			sourceTree = "<group>";
 		};
 		0AA64A6B1714772B00239C0F /* Annotation */ = {
@@ -1228,10 +1185,6 @@
 				B6386685170467A500800FBE /* ChanEvent.m in Sources */,
 				B6386688170467E400800FBE /* ChanPost.m in Sources */,
 				B638668B170467E400800FBE /* ChanUser.m in Sources */,
-				0AF535071705D29100E437F9 /* ChanImagePostCell.m in Sources */,
-				0AF535081705D29100E437F9 /* ChanPostCell.m in Sources */,
-				0AF535091705D29100E437F9 /* ChanTextPostCell.m in Sources */,
-				0AF5350C1705D2E700E437F9 /* ChannelPostTableViewController.m in Sources */,
 				0AF535111705D2F500E437F9 /* ChannelUITableViewCell.m in Sources */,
 				0AF535121705D2F500E437F9 /* ChannelUITableViewController.m in Sources */,
 				0AF535151705D32800E437F9 /* DiscoverViewController.m in Sources */,
@@ -1269,8 +1222,6 @@
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
 				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
 				0AA2CB3D1713F6A100D8C28F /* HLSLoadBalancer.m in Sources */,
-				B6BCD8C11713D5AD004DC80D /* ChanVideoPostCell.m in Sources */,
-				B6BCD8C41713D5BE004DC80D /* ChanVideoThumbnailPostCell.m in Sources */,
 				0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */,
 				4ACD2516171570D9001542E8 /* HLSStreamAdvertisement.m in Sources */,
 				82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */,
@@ -1288,7 +1239,6 @@
 				B63B64AE1716580000885E4B /* _ChanSlidesPost.m in Sources */,
 				B63B64B11716580B00885E4B /* ChanSlidesPost.m in Sources */,
 				B63B64B517165E0B00885E4B /* ChanSlidesViewController.m in Sources */,
-				B63B64B81716610000885E4B /* ChanSlidesPostCell.m in Sources */,
 				4AEE4D5E1719838500987486 /* HLSNetServicePathChunkCountTuple.m in Sources */,
 				4AEE4D61171985EA00987486 /* HLSDiscoveredRecordings.m in Sources */,
 				0A935F1C1718503B0000D97F /* ChanSearchTableViewController.m in Sources */,
