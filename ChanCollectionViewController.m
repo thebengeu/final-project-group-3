@@ -51,6 +51,13 @@ static CGFloat const kPostMenuPortraitY = 900.0;
     // Add post button
     [self addPostControl];
     
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(refreshPosts)
+                  forControlEvents:UIControlEventValueChanged];
+    self.refreshControl.tintColor = [UIColor redColor];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Posts"];
+    [self.collectionView addSubview:self.refreshControl];
+    
     [self refreshPosts];
 }
 
@@ -85,6 +92,8 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 -(void)refreshPosts
 {
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
+        [self.refreshControl endRefreshing];
+        
         if (posts.count) {
             ChanPost *post = (ChanPost *)[posts lastObject];
             self.channel.lastRefreshed = post.createdAt;
