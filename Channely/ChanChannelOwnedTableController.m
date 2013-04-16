@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    [[self navigationItem]setTitle:@"Channels"];
+    [[self navigationItem] setTitle:@"Channels"];
 }
 
 
