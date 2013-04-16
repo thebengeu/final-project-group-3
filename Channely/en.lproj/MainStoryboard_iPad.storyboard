@@ -26,9 +26,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoE-8L-4oI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoE-8L-4oI" customClass="BButton">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="78" id="iJ5-Yg-IhB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="78" type="user" id="5ZL-sz-GIl"/>
+                                    <constraint firstAttribute="width" constant="78" type="user" id="iJ5-Yg-IhB"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="wjA-Sp-KOk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Logout">
@@ -42,7 +44,11 @@
                                     <action selector="logout:" destination="7C4-oV-osf" eventType="touchUpInside" id="s7A-IM-bsp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgq-xJ-NU3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgq-xJ-NU3" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" type="user" id="Mhd-7I-woO"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="loc-8U-PTG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Edit Channels">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,7 +61,11 @@
                                     <segue destination="YGG-gb-KXL" kind="push" id="nNZ-10-Hdu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-UK-AI6">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0X-UK-AI6" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="C7N-7s-akU"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="NJp-D1-Fea"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Update">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,14 +95,14 @@
                             <constraint firstItem="t0w-0c-GEO" firstAttribute="leading" secondItem="3u0-ot-v8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="69h-PA-stQ"/>
                             <constraint firstAttribute="bottom" secondItem="S6G-xs-6Qz" secondAttribute="bottom" constant="25" id="7yM-tX-F30"/>
                             <constraint firstItem="t0w-0c-GEO" firstAttribute="top" secondItem="xAN-bU-jlI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="BmK-mN-fa9"/>
-                            <constraint firstItem="Hgq-xJ-NU3" firstAttribute="leading" secondItem="3u0-ot-v8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GLV-g0-fW4"/>
+                            <constraint firstItem="Hgq-xJ-NU3" firstAttribute="leading" secondItem="3u0-ot-v8t" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="GLV-g0-fW4"/>
                             <constraint firstItem="Hgq-xJ-NU3" firstAttribute="top" secondItem="3u0-ot-v8t" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Imh-be-FJg"/>
                             <constraint firstItem="O0X-UK-AI6" firstAttribute="top" secondItem="uoE-8L-4oI" secondAttribute="top" type="default" id="O0k-T7-CBS"/>
                             <constraint firstItem="i74-LU-Qre" firstAttribute="top" secondItem="t0w-0c-GEO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Q1Y-Oi-cR1"/>
                             <constraint firstItem="uoE-8L-4oI" firstAttribute="leading" secondItem="3u0-ot-v8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Qok-2s-xmE"/>
                             <constraint firstItem="i74-LU-Qre" firstAttribute="leading" secondItem="3u0-ot-v8t" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vzc-RE-Oy9"/>
                             <constraint firstAttribute="trailing" secondItem="t0w-0c-GEO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ahH-p1-126"/>
-                            <constraint firstAttribute="trailing" secondItem="Hgq-xJ-NU3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="arA-xf-kQM"/>
+                            <constraint firstAttribute="trailing" secondItem="Hgq-xJ-NU3" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="arA-xf-kQM"/>
                             <constraint firstAttribute="bottom" secondItem="i74-LU-Qre" secondAttribute="bottom" constant="76" id="dDn-0d-B9m"/>
                             <constraint firstAttribute="trailing" secondItem="i74-LU-Qre" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ezp-bW-eWB"/>
                             <constraint firstItem="O0X-UK-AI6" firstAttribute="leading" secondItem="S6G-xs-6Qz" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="msJ-TK-2jr"/>
@@ -104,7 +114,10 @@
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="editChannelButton" destination="Hgq-xJ-NU3" id="oLO-sG-fTa"/>
+                        <outlet property="logoutButton" destination="uoE-8L-4oI" id="WXe-dD-0g5"/>
                         <outlet property="password" destination="i74-LU-Qre" id="iic-63-Bqc"/>
+                        <outlet property="updateButton" destination="O0X-UK-AI6" id="QDL-DU-pud"/>
                         <outlet property="updateStatus" destination="S6G-xs-6Qz" id="fzO-oh-5L3"/>
                         <outlet property="username" destination="t0w-0c-GEO" id="2fC-oc-4eu"/>
                     </connections>
@@ -131,7 +144,11 @@
                                     <outlet property="delegate" destination="PLu-7g-xXX" id="u1s-Ia-NoD"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7No-gy-uui">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7No-gy-uui" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="GKU-f9-5J9"/>
+                                    <constraint firstAttribute="width" constant="360" type="user" id="Wpe-So-fHu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,7 +161,11 @@
                                     <segue destination="65U-UZ-tfL" kind="push" identifier="LoginSegue" id="OSO-Dk-yeN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhz-I7-yuY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhz-I7-yuY" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="360" type="user" id="GCf-8u-PkG"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="bDy-Cn-Jvc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Signup">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -167,12 +188,12 @@
                         <constraints>
                             <constraint firstItem="ra8-Ge-1A3" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0R2-9H-xPj"/>
                             <constraint firstItem="ra8-Ge-1A3" firstAttribute="top" secondItem="6z3-in-UEp" secondAttribute="top" constant="20" symbolic="YES" type="default" id="OF8-EB-hsi"/>
-                            <constraint firstAttribute="trailing" secondItem="7No-gy-uui" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="OU1-L4-hgt"/>
-                            <constraint firstItem="Mhz-I7-yuY" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eMb-pz-P1i"/>
-                            <constraint firstItem="7No-gy-uui" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="hWB-9O-Wjz"/>
+                            <constraint firstAttribute="trailing" secondItem="7No-gy-uui" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="OU1-L4-hgt"/>
+                            <constraint firstItem="Mhz-I7-yuY" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="eMb-pz-P1i"/>
+                            <constraint firstItem="7No-gy-uui" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="hWB-9O-Wjz"/>
                             <constraint firstItem="U8j-Cu-huk" firstAttribute="leading" secondItem="6z3-in-UEp" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="jaf-YZ-uaG"/>
                             <constraint firstAttribute="trailing" secondItem="U8j-Cu-huk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nRG-nc-LF6"/>
-                            <constraint firstAttribute="trailing" secondItem="Mhz-I7-yuY" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nw7-hy-Xu4"/>
+                            <constraint firstAttribute="trailing" secondItem="Mhz-I7-yuY" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="nw7-hy-Xu4"/>
                             <constraint firstItem="Mhz-I7-yuY" firstAttribute="top" secondItem="7No-gy-uui" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="oHn-tl-Ywx"/>
                             <constraint firstItem="U8j-Cu-huk" firstAttribute="top" secondItem="ra8-Ge-1A3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="onS-cb-Tq8"/>
                             <constraint firstAttribute="bottom" secondItem="Mhz-I7-yuY" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="zlG-HN-jrz"/>
@@ -183,6 +204,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="anonUsername" destination="U8j-Cu-huk" id="7CZ-yU-gD0"/>
+                        <outlet property="loginButton" destination="7No-gy-uui" id="yUo-G7-5D9"/>
+                        <outlet property="signupButton" destination="Mhz-I7-yuY" id="zAJ-Uf-YUK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLU-1C-cfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,7 +231,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJz-Gg-oRc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJz-Gg-oRc" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="7LL-XQ-zDa"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="H9Q-6T-hTE"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -244,6 +271,7 @@
                     <connections>
                         <outlet property="password" destination="np1-vc-TjB" id="BUs-uc-Jep"/>
                         <outlet property="status" destination="R8Y-x1-guD" id="VZk-sq-52u"/>
+                        <outlet property="submitButton" destination="wJz-Gg-oRc" id="TtK-Ah-TFT"/>
                         <outlet property="username" destination="tCl-JN-Btk" id="DOx-Ki-sB0"/>
                     </connections>
                 </viewController>
@@ -406,7 +434,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R49-JU-BR3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R49-JU-BR3" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="JhK-Hz-hN8"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="RAt-ZJ-19W"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Update">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1518,7 +1550,11 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maW-gD-UJS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maW-gD-UJS" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="C71-Uq-B2T"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="c7r-It-b12"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1565,6 +1601,7 @@
                     <connections>
                         <outlet property="password" destination="ELN-pV-JGX" id="NIk-e0-DCa"/>
                         <outlet property="status" destination="ap3-Jo-RaS" id="Bjr-nl-kgv"/>
+                        <outlet property="submitButton" destination="maW-gD-UJS" id="l4P-Fm-hHl"/>
                         <outlet property="username" destination="8PK-kj-SKM" id="mIc-zG-pJy"/>
                     </connections>
                 </viewController>
@@ -1716,6 +1753,9 @@
         <class className="AnnotationUIView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AnnotationUIView.h"/>
         </class>
+        <class className="BButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BButton.h"/>
+        </class>
         <class className="ChanAbstractCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAbstractCell.h"/>
         </class>
@@ -1736,7 +1776,7 @@
             <relationships>
                 <relationship kind="action" name="createOrUpdate:"/>
                 <relationship kind="outlet" name="channelName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="createUpdateButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="createUpdateButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="hashtag" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1804,6 +1844,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuAnonUserViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="anonUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="signupButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
@@ -1813,6 +1855,7 @@
                 <relationship kind="action" name="submit:"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1822,6 +1865,7 @@
                 <relationship kind="action" name="submit:"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -1830,7 +1874,10 @@
             <relationships>
                 <relationship kind="action" name="logout:"/>
                 <relationship kind="action" name="update:"/>
+                <relationship kind="outlet" name="editChannelButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updateButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="updateStatus" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>

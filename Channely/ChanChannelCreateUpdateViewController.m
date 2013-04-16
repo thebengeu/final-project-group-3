@@ -30,7 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	
+    // Set button style
+    [_createUpdateButton setType:BButtonTypeDanger];
     
     
     if (_isUpdateChannel){

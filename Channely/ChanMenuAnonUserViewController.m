@@ -37,17 +37,26 @@
         return;
     }
     
+    // Set navbar items
     [_anonUsername setText:[ChanAnonUser name]];
-    [self.navigationItem setTitle:[ChanAnonUser name]];
+    [self.navigationItem setTitle: @"User Settings"];
+    
+    // Set button styles
+    [_loginButton setType:BButtonTypeDanger];
+    [_signupButton setType:BButtonTypeInverse];
+
+//    _loginButton.frame = CGRectMake(20, 286, 360, 44);
+  
 }
 
-- (void) viewWillAppear:(BOOL)animated{
+- (void) viewWillAppear:(BOOL)animated
+{
     if ([ChanUser loggedInUser] != nil)
         [self switchToUserViewController];
 }
 
-
-- (void) switchToUserViewController{
+- (void) switchToUserViewController
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChanMenuUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanMenuUserViewController"];
     

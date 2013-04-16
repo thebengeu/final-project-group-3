@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BButton.h"
+#import "UIColor+Channely.h"
 
 @interface ChanMenuAnonUserViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *anonUsername;
+@property (weak, nonatomic) IBOutlet BButton *loginButton;
+@property (weak, nonatomic) IBOutlet BButton *signupButton;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *status;
 

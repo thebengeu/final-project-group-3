@@ -35,9 +35,14 @@
         return;
     }
     
-    [[self navigationItem]setTitle:@"User"];
-    [_username setText:[[ChanUser loggedInUser]name]];
+    // Set Navbar items
+    [[self navigationItem] setTitle:@"User Settings"];
+    [_username setText:[[ChanUser loggedInUser] name]];
     
+    // Set button styles
+    [_editChannelButton setType:BButtonTypeWarning];
+    [_logoutButton setType:BButtonTypeInverse];
+    [_updateButton setType:BButtonTypeDanger];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
