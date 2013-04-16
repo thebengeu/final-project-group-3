@@ -19,7 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Setup button styles
+    [_postButton setType:BButtonTypeChan];
     
     NSString *name;
     if ([ChanUser loggedInUser] == nil)

@@ -19,7 +19,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// Setup button styles
+    [_postButton setType:BButtonTypeChan];
     
     NSString *name;
     if ([ChanUser loggedInUser] == nil)
@@ -28,7 +29,10 @@
         name = [[ChanUser loggedInUser]name];
     
     _username.text = name;
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
     // Launch the keyboard with focus on textarea
     [_text becomeFirstResponder];
 }

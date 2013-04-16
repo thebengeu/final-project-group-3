@@ -64,10 +64,6 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         [rightBarItems addObject:_createEventButton];
     }
     
-    //  Add more items if needed
-//    _toggleButton = [[UIBarButtonItem alloc]initWithTitle:@"Temporal" style:UIBarButtonItemStylePlain target:self action:@selector(toggleChannelLayout)];
-//    [rightBarItems addObject:_toggleButton];
-
     self.navigationItem.rightBarButtonItems = rightBarItems;
     // Set channel name
     self.navigationItem.title = self.channel.name;

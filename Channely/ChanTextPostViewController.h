@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BButton.h"
 #import "ChanPostViewController.h"
 
 @interface ChanTextPostViewController : ChanPostViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *username;
-
 @property (strong, nonatomic) IBOutlet UITextView *text;
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *status;
+@property (weak, nonatomic) IBOutlet BButton *postButton;
 
 - (IBAction)submit:(id)sender;
 
