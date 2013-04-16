@@ -108,6 +108,7 @@
 		82EF9EA5171AABC60043079D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EF9EA4171AABC60043079D /* QuartzCore.framework */; };
 		82EF9EB1171B15CC0043079D /* AHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9EB0171B15CC0043079D /* AHAlertView.m */; };
 		82F6D4AB1715B282006A1AA4 /* ChanCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */; };
+		B610DA7F171D957000BE38A7 /* UIColor+Channely.m in Sources */ = {isa = PBXBuildFile; fileRef = B610DA7E171D957000BE38A7 /* UIColor+Channely.m */; };
 		B624F777171B18DE00E181F2 /* ChanCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B624F776171B18DE00E181F2 /* ChanCollectionView.m */; };
 		B6269864171D423E00A42599 /* ChanTwitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6269863171D423E00A42599 /* ChanTwitterCell.m */; };
 		B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B6269867171D4D9D00A42599 /* ChanRefreshControl.m */; };
@@ -337,6 +338,8 @@
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		B610DA7D171D957000BE38A7 /* UIColor+Channely.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Channely.h"; sourceTree = "<group>"; };
+		B610DA7E171D957000BE38A7 /* UIColor+Channely.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Channely.m"; sourceTree = "<group>"; };
 		B624F775171B18DE00E181F2 /* ChanCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionView.h; sourceTree = "<group>"; };
 		B624F776171B18DE00E181F2 /* ChanCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionView.m; sourceTree = "<group>"; };
 		B6269862171D423E00A42599 /* ChanTwitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanTwitterCell.h; path = Channely/ChanTwitterCell.h; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 				82EF9EB0171B15CC0043079D /* AHAlertView.m */,
 				821E47F1171D83850043608B /* SLGlowingTextField.h */,
 				821E47F2171D83850043608B /* SLGlowingTextField.m */,
+				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
+				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1278,6 +1283,7 @@
 				B6269864171D423E00A42599 /* ChanTwitterCell.m in Sources */,
 				B6269868171D4D9E00A42599 /* ChanRefreshControl.m in Sources */,
 				821E47F3171D83850043608B /* SLGlowingTextField.m in Sources */,
+				B610DA7F171D957000BE38A7 /* UIColor+Channely.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
