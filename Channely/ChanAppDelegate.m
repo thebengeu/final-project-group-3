@@ -18,7 +18,7 @@ static NSUInteger const cLocalServerPort = 80;
 // Internal.
 @property (strong) HTTPServer *_localServer;
 @property (strong) HLSStreamAdvertisingManager *_advertisingManager;
-@property (strong) HLSLoadBalancer *_loadBalancer;
+@property (strong) HLSPeerDiscovery *_loadBalancer;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -33,6 +33,8 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"did finish launching!");
+    
     // Set UI customizations
     [self customizeAppearance];
     
@@ -82,6 +84,16 @@ static NSUInteger const cLocalServerPort = 80;
     [self setupLoadBalancer];
     
     return YES;
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    [[HLSStreamAdvertisingManager advertisingManager] resumeAdvertising];
+}
+
+- (void) applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    NSLog(@"went background!");
 }
 
 #pragma mark Appearance Customizations 
@@ -150,6 +162,12 @@ static NSUInteger const cLocalServerPort = 80;
     }
 }
 
+- (void) republishBonjour {
+    if (_localServer) {
+        [_localServer republishBonjour];
+    }
+}
+
 #pragma mark Recording Temp Directory
 - (void) setupDirectories {
     // Note: non-destructive.
@@ -164,7 +182,7 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Load Balancer
 - (void) setupLoadBalancer {
-    _loadBalancer = [HLSLoadBalancer setupLoadBalancer];
+    _loadBalancer = [HLSPeerDiscovery setupPeerDiscovery];
 }
 
 

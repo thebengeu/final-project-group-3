@@ -79,6 +79,10 @@ static HLSStreamAdvertisingManager *_internal;
     [self pushAdvertisements];
 }
 
+- (void) resumeAdvertising {
+    [_advertiser republishBonjour];
+}
+
 - (void) stopAdvertising {
     _advertisements = [NSMutableDictionary dictionary];
     

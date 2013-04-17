@@ -106,13 +106,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
 
 #pragma mark P2P Peer Selection
 - (void) selectSource {
-    _selectedURL = [[HLSLoadBalancer loadBalancer] selectBestLocalHostForRecording:_recordingId default:_serverURL];
-
-    // Select the server if no local client exists.
-    // TODO - select the server if the local client has too few chunks.
-    if (!_selectedURL) {
-        _selectedURL = _serverURL;
-    }
+    _selectedURL = [HLSLoadBalancer selectBestLocalHostForRecording:_recordingId default:_serverURL];
     
     NSLog(@"selected source=%@", _selectedURL);
 
