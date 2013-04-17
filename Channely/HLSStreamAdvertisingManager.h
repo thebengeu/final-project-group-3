@@ -17,6 +17,7 @@
 - (void) updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count;
 - (BOOL) isAdvertisingRecordingId:(NSString *)rId;
 - (void) stopAdvertisingRecordingId:(NSString *)rId;
+- (void) resumeAdvertising;
 - (void) stopAdvertising;
 
 + (HLSStreamAdvertisingManager *) advertisingManager;

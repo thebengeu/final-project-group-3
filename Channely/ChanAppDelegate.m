@@ -33,6 +33,8 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"did finish launching!");
+    
     // Set UI customizations
     [self customizeAppearance];
     
@@ -82,6 +84,16 @@ static NSUInteger const cLocalServerPort = 80;
     [self setupLoadBalancer];
     
     return YES;
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    [[HLSStreamAdvertisingManager advertisingManager] resumeAdvertising];
+}
+
+- (void) applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    NSLog(@"went background!");
 }
 
 #pragma mark Appearance Customizations 
@@ -147,6 +159,12 @@ static NSUInteger const cLocalServerPort = 80;
 - (void) setAdvertiserDictionary:(NSDictionary *)dict {
     if (_localServer) {
         [_localServer setTXTRecordDictionary:dict];
+    }
+}
+
+- (void) republishBonjour {
+    if (_localServer) {
+        [_localServer republishBonjour];
     }
 }
 
