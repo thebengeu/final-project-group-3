@@ -14,11 +14,11 @@
 #include <arpa/inet.h>
 #include <stdlib.h>
 
-@interface HLSLoadBalancer : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
+@interface HLSPeerDiscovery : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 - (id) init;
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
 
-+ (HLSLoadBalancer *) setupLoadBalancer;
-+ (HLSLoadBalancer *) loadBalancer;
++ (HLSPeerDiscovery *) setupPeerDiscovery;
++ (HLSPeerDiscovery *) peerDiscovery;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "HLSLoadBalancer.h"
+#import "HLSPeerDiscovery.h"
 
 static NSString *const cBonjourDomain = @"local.";
 static NSString *const cAppServiceName = @"_channely._tcp.";
@@ -19,7 +19,7 @@ static NSUInteger const cCompleteRecordingBitMask = 0x80000000;
 static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
 static NSUInteger const cMaxSpreadRadius = 5;
 
-@interface HLSLoadBalancer ()
+@interface HLSPeerDiscovery ()
 // Internal.
 @property (strong) NSString *_serviceName;
 @property (strong) NSString *_domain;
@@ -54,7 +54,7 @@ static NSUInteger const cMaxSpreadRadius = 5;
 
 @end
 
-@implementation HLSLoadBalancer
+@implementation HLSPeerDiscovery
 // Internal.
 @synthesize _serviceName;
 @synthesize _domain;
@@ -63,17 +63,17 @@ static NSUInteger const cMaxSpreadRadius = 5;
 @synthesize _monitoredServices;
 @synthesize _discovered;
 
-static HLSLoadBalancer * _internal;
+static HLSPeerDiscovery * _internal;
 
 #pragma mark Singleton Methods
-+ (HLSLoadBalancer *) setupLoadBalancer {
++ (HLSPeerDiscovery *) setupPeerDiscovery {
     if (!_internal) {
-        _internal = [[HLSLoadBalancer alloc] initWithDomain:cBonjourDomain serviceName:cAppServiceName];
+        _internal = [[HLSPeerDiscovery alloc] initWithDomain:cBonjourDomain serviceName:cAppServiceName];
     }
     return _internal;
 }
 
-+ (HLSLoadBalancer *) loadBalancer {
++ (HLSPeerDiscovery *) peerDiscovery {
     return _internal;
 }
 
@@ -148,7 +148,7 @@ static HLSLoadBalancer * _internal;
     }
     
     // If a single address could not be found, then discard the service (Unsupported number of addresses).
-    NSString *ipAddr = [HLSLoadBalancer dottedDecimalFromNetService:sender];
+    NSString *ipAddr = [HLSPeerDiscovery dottedDecimalFromNetService:sender];
     if (!ipAddr) {
         return;
     }
@@ -183,7 +183,7 @@ static HLSLoadBalancer * _internal;
 }
 
 - (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
-    NSDictionary *dict = [HLSLoadBalancer decodedTXTRecordDictionaryFromData:data];
+    NSDictionary *dict = [HLSPeerDiscovery decodedTXTRecordDictionaryFromData:data];
     [_discovered removeDiscoveredFromServiceNamed:sender.name];
     [self updateRecordingsDBWithNetServiceNamed:sender adDictionary:dict];
 }
@@ -204,7 +204,7 @@ static HLSLoadBalancer * _internal;
     NSUInteger totalChunks = 0;
     NSUInteger topChunkCount = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
     if (topChunkCount & cCompleteRecordingBitMask) {
-        totalChunks = [HLSLoadBalancer totalChunksFromChunkCountOfCompleteRecording:topChunkCount];
+        totalChunks = [HLSPeerDiscovery totalChunksFromChunkCountOfCompleteRecording:topChunkCount];
         NSLog(@"found completed recording. total chunks: %d", totalChunks); // DEBUG
     }
     
@@ -213,7 +213,7 @@ static HLSLoadBalancer * _internal;
     NSUInteger randIndex = arc4random_uniform(randLimit);
     
     HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
-    NSString *hostIpAddr = [HLSLoadBalancer dottedDecimalFromNetService:selectedPeer.netService];
+    NSString *hostIpAddr = [HLSPeerDiscovery dottedDecimalFromNetService:selectedPeer.netService];
     NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, cHttpPort, selectedPeer.relativePath];
     
     return [NSURL URLWithString:urlStr];
@@ -238,7 +238,7 @@ static HLSLoadBalancer * _internal;
     }
     
     // The first element of sender.addresses represents the IPv4 address. Parse it.
-    NSString *dd4 = [HLSLoadBalancer dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:0]];
+    NSString *dd4 = [HLSPeerDiscovery dottedDecimalFromSocketAddress:(NSData *)[ns.addresses objectAtIndex:0]];
     
     return dd4;
 }

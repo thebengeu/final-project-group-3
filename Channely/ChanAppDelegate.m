@@ -18,7 +18,7 @@ static NSUInteger const cLocalServerPort = 80;
 // Internal.
 @property (strong) HTTPServer *_localServer;
 @property (strong) HLSStreamAdvertisingManager *_advertisingManager;
-@property (strong) HLSLoadBalancer *_loadBalancer;
+@property (strong) HLSPeerDiscovery *_loadBalancer;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -164,7 +164,7 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Load Balancer
 - (void) setupLoadBalancer {
-    _loadBalancer = [HLSLoadBalancer setupLoadBalancer];
+    _loadBalancer = [HLSPeerDiscovery setupPeerDiscovery];
 }
 
 
