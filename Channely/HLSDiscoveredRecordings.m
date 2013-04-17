@@ -108,7 +108,7 @@
     }
 }
 
-- (NSArray *) netServicesWithRecording:(NSString *)rId {
+- (NSMutableArray *) netServicesWithRecording:(NSString *)rId {
     NSMutableArray *array = nil;
     @synchronized(_recordingIdToTuple) {
         array = [_recordingIdToTuple objectForKey:rId];
@@ -118,22 +118,9 @@
         return nil;
     }
     
-    NSArray *result = nil;
-    @synchronized(array) {
-        [array sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            HLSNetServicePathChunkCountTuple *tuple1 = (HLSNetServicePathChunkCountTuple *)obj1;
-            HLSNetServicePathChunkCountTuple *tuple2 = (HLSNetServicePathChunkCountTuple *)obj2;
-            
-            if (tuple1.chunkCount > tuple2.chunkCount) {
-                return NSOrderedAscending;
-            } else if (tuple1.chunkCount == tuple2.chunkCount) {
-                return NSOrderedSame;
-            } else {
-                return NSOrderedDescending;
-            }
-        }];
-        
-        result = [NSArray arrayWithArray:array];
+    NSMutableArray *result = nil;
+    @synchronized(array) {        
+        result = [NSMutableArray arrayWithArray:array];
     }
     
     return result;

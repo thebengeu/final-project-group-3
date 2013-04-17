@@ -14,6 +14,6 @@
 - (id) init;
 - (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
 - (void) removeDiscoveredFromServiceNamed:(NSString *)ipAddr;
-- (NSArray *) netServicesWithRecording:(NSString *)rId;
+- (NSMutableArray *) netServicesWithRecording:(NSString *)rId;
 
 @end

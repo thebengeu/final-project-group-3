@@ -190,12 +190,27 @@ static HLSPeerDiscovery * _internal;
 
 #pragma mark Peer Selection
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
-    NSArray *result = [_discovered netServicesWithRecording:rId];
+    // Retrieve a list of peers hosting rId.
+    NSMutableArray *result = [_discovered netServicesWithRecording:rId];
     
     // If no peers a hosting that recording, return the default source.
     if (result.count == 0) {
         return serverSource;
     }
+    
+    // Sort the list.
+    [result sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        HLSNetServicePathChunkCountTuple *tuple1 = (HLSNetServicePathChunkCountTuple *)obj1;
+        HLSNetServicePathChunkCountTuple *tuple2 = (HLSNetServicePathChunkCountTuple *)obj2;
+        
+        if (tuple1.chunkCount > tuple2.chunkCount) {
+            return NSOrderedAscending;
+        } else if (tuple1.chunkCount == tuple2.chunkCount) {
+            return NSOrderedSame;
+        } else {
+            return NSOrderedDescending;
+        }
+    }];
     
     // Determine if a recording is complete, and the top number of chunks at the time of query.
     BOOL completeRecordingExists = NO;
@@ -230,6 +245,25 @@ static HLSPeerDiscovery * _internal;
     NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, cHttpPort, selectedPeer.relativePath];
     
     return [NSURL URLWithString:urlStr];
+}
+
+// There is no need to sort the array if we only want to test if the recording is complete.
+- (BOOL) recordingIsComplete:(NSString *)rId {
+    // Retrieve a list of peers hosting rId.
+    NSMutableArray *result = [_discovered netServicesWithRecording:rId];
+    
+    // If no peers a hosting that recording, we define it as incomplete.
+    if (result.count == 0) {
+        return NO;
+    }
+    
+    for (HLSNetServicePathChunkCountTuple *peer in result) {
+        if (peer.chunkCount & cCompleteRecordingBitMask) {
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark Utility
