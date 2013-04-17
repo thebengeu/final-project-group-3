@@ -8,6 +8,8 @@
 
 #import "HLSStreamSync.h"
 
+static NSString *const cPlaylistFilenameFormat = @"%@.m3u8";
+
 @interface HLSStreamSync ()
 // Internal.
 @property (strong) NSString *_baseDirectory;
@@ -69,6 +71,12 @@ static HLSStreamSync *_internal;
     
     HLSPlaylistDownloadOperation *operation = [[HLSPlaylistDownloadOperation alloc] initWithStreamId:sId forPlaylist:playlist toDirectory:streamDir];
     [_opQueue addOperation:operation];
+}
+
+- (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId {
+    NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
+    NSString *playlistPath = [streamDir stringByAppendingPathComponent:[NSString stringWithFormat:cPlaylistFilenameFormat, sId]];
+    return ([ChanUtility directoryExists:streamDir] && [HLSEventPlaylistHelper playlistIsComplete:playlistPath]);
 }
 
 @end

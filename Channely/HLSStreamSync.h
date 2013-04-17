@@ -15,6 +15,7 @@
 - (id) init;
 - (NSUInteger) operationCount;
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist;
+- (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId;
 
 + (HLSStreamSync *) streamSync;
 + (HLSStreamSync *) setupStreamSyncWithBaseDirectory:(NSString *)dir;
