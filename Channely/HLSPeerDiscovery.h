@@ -16,8 +16,11 @@
 
 @interface HLSPeerDiscovery : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 - (id) init;
-- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
+
 - (BOOL) recordingIsComplete:(NSString *)rId;
+- (NSArray *) sortedPeersForRecording:(NSString *)rId;
+
++ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
 
 + (HLSPeerDiscovery *) setupPeerDiscovery;
 + (HLSPeerDiscovery *) peerDiscovery;

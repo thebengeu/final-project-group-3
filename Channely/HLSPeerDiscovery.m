@@ -12,12 +12,7 @@ static NSString *const cBonjourDomain = @"local.";
 static NSString *const cAppServiceName = @"_channely._tcp.";
 static NSTimeInterval const cNetServiceResolveTimeout = 5.0; // Seconds.
 static NSString *const cDD4AddressZero = @"0.0.0.0";
-static NSUInteger const cRandomMax = 5;
-static NSString *const cURLFormat = @"http://%@:%d/%@";
-static NSUInteger const cHttpPort = 80;
-static NSUInteger const cCompleteRecordingBitMask = 0x80000000;
-static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
-static NSUInteger const cMaxSpreadRadius = 5;
+static NSUInteger const cCompleteRecordingBitMask = 0x80000000; // Duplicated constant in HLSLoadBalancer.m
 
 @interface HLSPeerDiscovery ()
 // Internal.
@@ -48,9 +43,7 @@ static NSUInteger const cMaxSpreadRadius = 5;
 
 // Utility
 + (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
-+ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount;
 + (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
-+ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
 
 @end
 
@@ -188,65 +181,7 @@ static HLSPeerDiscovery * _internal;
     [self updateRecordingsDBWithNetServiceNamed:sender adDictionary:dict];
 }
 
-#pragma mark Peer Selection
-- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
-    // Retrieve a list of peers hosting rId.
-    NSMutableArray *result = [_discovered netServicesWithRecording:rId];
-    
-    // If no peers a hosting that recording, return the default source.
-    if (result.count == 0) {
-        return serverSource;
-    }
-    
-    // Sort the list.
-    [result sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        HLSNetServicePathChunkCountTuple *tuple1 = (HLSNetServicePathChunkCountTuple *)obj1;
-        HLSNetServicePathChunkCountTuple *tuple2 = (HLSNetServicePathChunkCountTuple *)obj2;
-        
-        if (tuple1.chunkCount > tuple2.chunkCount) {
-            return NSOrderedAscending;
-        } else if (tuple1.chunkCount == tuple2.chunkCount) {
-            return NSOrderedSame;
-        } else {
-            return NSOrderedDescending;
-        }
-    }];
-    
-    // Determine if a recording is complete, and the top number of chunks at the time of query.
-    BOOL completeRecordingExists = NO;
-    NSUInteger firstChunkField = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
-    if (firstChunkField & cCompleteRecordingBitMask) {
-        completeRecordingExists = YES;
-        NSLog(@"found completed recording."); // DEBUG
-    }
-    NSUInteger topChunkCount = [HLSPeerDiscovery totalChunksFromChunkField:firstChunkField];
-    
-    // If the recording is complete, we randomly pick a peer from the set of peers with the full recording.
-    // Since the array is sorted, we scan through from index 1, stopping at the last index with a full recording.
-    // Otherwise, we randomly pick a peer whose chunk count is within a defined spread radius of the top chunk count.
-    // Since the array is sorted, we scan through from index 1, stopping when the above condition fails for the
-    // first time.
-    NSUInteger randLimit;
-    for (randLimit = 1; randLimit < result.count; randLimit++) {
-        HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
-        if (completeRecordingExists && peer.chunkCount != topChunkCount) {
-            break;
-        } else if ((topChunkCount - peer.chunkCount) > cMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
-            break;
-        }
-    }
-    
-    // Randomly pick a peer from the top n.
-    // arc4random_uniform returns a random unint less than limit
-    NSUInteger randIndex = arc4random_uniform(randLimit);
-    
-    HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
-    NSString *hostIpAddr = [HLSPeerDiscovery dottedDecimalFromNetService:selectedPeer.netService];
-    NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, cHttpPort, selectedPeer.relativePath];
-    
-    return [NSURL URLWithString:urlStr];
-}
-
+#pragma mark External
 // There is no need to sort the array if we only want to test if the recording is complete.
 - (BOOL) recordingIsComplete:(NSString *)rId {
     // Retrieve a list of peers hosting rId.
@@ -264,6 +199,32 @@ static HLSPeerDiscovery * _internal;
     }
     
     return NO;
+}
+
+- (NSArray *) sortedPeersForRecording:(NSString *)rId {
+    // Retrieve a list of peers hosting rId.
+    NSMutableArray *result = [_discovered netServicesWithRecording:rId];
+    
+    // If no peers a hosting that recording, return the default source.
+    if (!result || result.count == 0) {
+        return nil;
+    }
+    
+    // Sort the list.
+    [result sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        HLSNetServicePathChunkCountTuple *tuple1 = (HLSNetServicePathChunkCountTuple *)obj1;
+        HLSNetServicePathChunkCountTuple *tuple2 = (HLSNetServicePathChunkCountTuple *)obj2;
+        
+        if (tuple1.chunkCount > tuple2.chunkCount) {
+            return NSOrderedAscending;
+        } else if (tuple1.chunkCount == tuple2.chunkCount) {
+            return NSOrderedSame;
+        } else {
+            return NSOrderedDescending;
+        }
+    }];
+    
+    return (NSArray *)result;
 }
 
 #pragma mark Utility
@@ -304,10 +265,6 @@ static HLSPeerDiscovery * _internal;
     }];
     
     return result;
-}
-
-+ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount {
-    return (chunkCount & cTotalChunksBitMask);
 }
 
 @end

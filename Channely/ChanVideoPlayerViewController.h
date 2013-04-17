@@ -13,6 +13,7 @@
 #import "HLSPeerDiscovery.h"
 #import "HLSStreamSync.h"
 #import "ChanAnnotationViewController.h"
+#import "HLSLoadBalancer.h"
 
 @interface ChanVideoPlayerViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *urlLabel;

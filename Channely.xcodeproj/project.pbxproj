@@ -47,6 +47,7 @@
 		4A2C2BAF1710473700CB25D4 /* HLSStreamSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */; };
 		4A2C2BB217104FC500CB25D4 /* HLSPlaylistDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */; };
 		4A33C83C16F207AD009BA571 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A33C83B16F207AD009BA571 /* AVFoundation.framework */; };
+		4A355892171EE3C900AFE2B2 /* HLSLoadBalancer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A355891171EE3C900AFE2B2 /* HLSLoadBalancer.m */; };
 		4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */; };
 		4A59D1DD1705E43D00D04B6F /* ChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1D91705E43D00D04B6F /* ChunkingVideoRecorder.m */; };
 		4A59D1DE1705E43D00D04B6F /* TimedChunkingVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59D1DC1705E43D00D04B6F /* TimedChunkingVideoRecorder.m */; };
@@ -251,6 +252,8 @@
 		4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloadOperation.h; sourceTree = "<group>"; };
 		4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPlaylistDownloadOperation.m; sourceTree = "<group>"; };
 		4A33C83B16F207AD009BA571 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4A355890171EE3C900AFE2B2 /* HLSLoadBalancer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSLoadBalancer.h; sourceTree = "<group>"; };
+		4A355891171EE3C900AFE2B2 /* HLSLoadBalancer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSLoadBalancer.m; sourceTree = "<group>"; };
 		4A4F06E11711D8C70007A7DF /* ChanVideoCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanVideoCaptureViewController.h; path = Channely/ChanVideoCaptureViewController.h; sourceTree = "<group>"; };
 		4A4F06E21711D8C70007A7DF /* ChanVideoCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanVideoCaptureViewController.m; path = Channely/ChanVideoCaptureViewController.m; sourceTree = "<group>"; };
 		4A59D1D81705E43D00D04B6F /* ChunkingVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChunkingVideoRecorder.h; sourceTree = "<group>"; };
@@ -690,6 +693,8 @@
 				4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */,
 				4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */,
 				4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */,
+				4A355890171EE3C900AFE2B2 /* HLSLoadBalancer.h */,
+				4A355891171EE3C900AFE2B2 /* HLSLoadBalancer.m */,
 			);
 			name = "Stream Discovery";
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				82394494171DA1C100C9A6D8 /* BButton.m in Sources */,
 				82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */,
 				82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */,
+				4A355892171EE3C900AFE2B2 /* HLSLoadBalancer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
