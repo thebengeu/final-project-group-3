@@ -216,7 +216,7 @@ static HLSPeerDiscovery * _internal;
         HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
         if (completeRecordingExists && peer.chunkCount != topChunkCount) {
             break;
-        } else if ((topChunkCount - peer.chunkCount) > cMaxSpreadRadius) {
+        } else if ((topChunkCount - peer.chunkCount) > cMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
             break;
         }
     }
