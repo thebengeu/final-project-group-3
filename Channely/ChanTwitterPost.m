@@ -38,7 +38,6 @@
     operation.managedObjectCache = [[RKManagedObjectStore defaultStore] managedObjectCache];
     
     [operation setCompletionBlockWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
-        NSLog(@"The public timeline Tweets: %@", [result array]);
         if (block) block([result array], nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         if (block) block(nil, error);
