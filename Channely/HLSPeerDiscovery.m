@@ -48,7 +48,7 @@ static NSUInteger const cMaxSpreadRadius = 5;
 
 // Utility
 + (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
-+ (NSUInteger) totalChunksFromChunkCountOfCompleteRecording:(NSUInteger)chunkCount;
++ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount;
 + (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
 + (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
 
@@ -192,24 +192,45 @@ static HLSPeerDiscovery * _internal;
 - (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
     NSArray *result = [_discovered netServicesWithRecording:rId];
     
-    // If no peers a hosting that recording, return nil.
-    // The client class should handle this by choosing a default source.
-    // Note: This is naive, we should consider more metrics before resorting to the server.
+    // If no peers a hosting that recording, return the default source.
     if (result.count == 0) {
         return serverSource;
     }
     
-    // Try and determine the total number of chunks.
-    // TODO - use this for load balancing.
-    NSUInteger totalChunks = 0;
-    NSUInteger topChunkCount = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
-    if (topChunkCount & cCompleteRecordingBitMask) {
-        totalChunks = [HLSPeerDiscovery totalChunksFromChunkCountOfCompleteRecording:topChunkCount];
-        NSLog(@"found completed recording. total chunks: %d", totalChunks); // DEBUG
+    // Determine if a recording is complete, and the top number of chunks at the time of query.
+    BOOL completeRecordingExists = NO;
+    NSUInteger firstChunkField = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
+    if (firstChunkField & cCompleteRecordingBitMask) {
+        completeRecordingExists = YES;
+        NSLog(@"found completed recording."); // DEBUG
+    }
+    NSUInteger topChunkCount = [HLSPeerDiscovery totalChunksFromChunkField:firstChunkField];
+    
+    NSUInteger randLimit;
+    if (completeRecordingExists) {
+        // If the recording is complete, we randomly pick a peer from the set of peers with the full recording.
+        // Since the array is sorted, we scan through from index 1, stopping at the last index with a full recording.
+        for (randLimit = 1; randLimit < result.count; randLimit++) {
+            HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
+            if (peer.chunkCount != topChunkCount) {
+                break;
+            }
+        }
+    } else {
+        // Otherwise, we randomly pick a peer whose chunk count is within a defined spread radius of the top chunk count.
+        // Since the array is sorted, we scan through from index 1, stopping when the above condition fails for the
+        // first time.
+        for (randLimit = 1; randLimit < result.count; randLimit++) {
+            HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
+            NSUInteger difference = topChunkCount - peer.chunkCount;
+            if (difference > cMaxSpreadRadius) {
+                break;
+            }
+        }
     }
     
     // Randomly pick a peer from the top n.
-    NSUInteger randLimit = MIN(result.count, cRandomMax);
+    // arc4random_uniform returns a random unint less than limit
     NSUInteger randIndex = arc4random_uniform(randLimit);
     
     HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
@@ -259,7 +280,7 @@ static HLSPeerDiscovery * _internal;
     return result;
 }
 
-+ (NSUInteger) totalChunksFromChunkCountOfCompleteRecording:(NSUInteger)chunkCount {
++ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount {
     return (chunkCount & cTotalChunksBitMask);
 }
 
