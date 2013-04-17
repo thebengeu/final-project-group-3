@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "HLSPlaylistDownloadOperation.h"
 #import "ChanUtility.h"
+#import "HLSEventPlaylistHelper.h"
+#import "HLSStreamAdvertisingManager.h"
 
 @interface HLSStreamSync : NSObject
 - (id) init;
 - (NSUInteger) operationCount;
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist;
+- (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId;
+- (void) recheckExistingStreams;
 
 + (HLSStreamSync *) streamSync;
 + (HLSStreamSync *) setupStreamSyncWithBaseDirectory:(NSString *)dir;

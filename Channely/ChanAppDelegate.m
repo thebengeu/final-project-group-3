@@ -19,6 +19,7 @@ static NSUInteger const cLocalServerPort = 80;
 @property (strong) HTTPServer *_localServer;
 @property (strong) HLSStreamAdvertisingManager *_advertisingManager;
 @property (strong) HLSPeerDiscovery *_loadBalancer;
+@property (strong) HLSStreamSync *_streamSync;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -30,6 +31,7 @@ static NSUInteger const cLocalServerPort = 80;
 @synthesize _localServer;
 @synthesize _advertisingManager;
 @synthesize _loadBalancer;
+@synthesize _streamSync;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -79,16 +81,20 @@ static NSUInteger const cLocalServerPort = 80;
     [self setupDirectories];
     
     [self setupHttpServer];
-    [self setupDiscoveryManager];
+    [self setupAdvertisingManager];
     [self setupStreamSync];
-    [self setupLoadBalancer];
+    [self setupPeerDiscovery];
     
     return YES;
 }
 
 - (void) applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
-    [[HLSStreamAdvertisingManager advertisingManager] resumeAdvertising];
+    [_advertisingManager resumeAdvertising];
+    
+    // Note: This method might take some time to execute.
+    // TODO - Test for edge case where app goes to suspend when stream is downloading, and then resumed.
+    [_streamSync recheckExistingStreams];
 }
 
 - (void) applicationDidEnterBackground:(UIApplication *)application {
@@ -150,8 +156,8 @@ static NSUInteger const cLocalServerPort = 80;
     [_localServer start:nil];
 }
 
-#pragma mark HLS Stream Discovery Manager
-- (void) setupDiscoveryManager {
+#pragma mark HLS Stream Advertising Manager
+- (void) setupAdvertisingManager {
     _advertisingManager = [HLSStreamAdvertisingManager advertisingManagerWithAdvertiser:self];
 }
 
@@ -177,11 +183,14 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Stream Sync
 - (void) setupStreamSync {
-    [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+    _streamSync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+    
+    // Note: This method might take some time to execute.
+    [_streamSync recheckExistingStreams];
 }
 
-#pragma mark HLS Load Balancer
-- (void) setupLoadBalancer {
+#pragma mark HLS Peer Discovery
+- (void) setupPeerDiscovery {
     _loadBalancer = [HLSPeerDiscovery setupPeerDiscovery];
 }
 

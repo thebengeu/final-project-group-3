@@ -13,6 +13,7 @@ static NSUInteger const cMaxSpreadRadius = 5;
 static NSString *const cURLFormat = @"http://%@:%d/%@";
 static NSUInteger const cHttpPort = 80;
 static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
+static NSString *const cLocalhost = @"127.0.0.1";
 
 @interface HLSLoadBalancer ()
 + (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount;
@@ -21,7 +22,17 @@ static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
 
 @implementation HLSLoadBalancer
 + (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
+    // If a complete device-local source exists, always select it.
+    if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId:rId]) {
+        NSString *relativePath = [rId stringByAppendingPathComponent:[serverSource lastPathComponent]];
+        NSString *localURLStr = [NSString stringWithFormat:cURLFormat, cLocalhost, cHttpPort, relativePath];
+        return [NSURL URLWithString:localURLStr];
+    }
+    
+    // Otherwise, get a list of peers who have the recording.
     NSArray *result = [[HLSPeerDiscovery peerDiscovery] sortedPeersForRecording:rId];
+    
+    // If nobody has the recording, use the default server source.
     if (!result) {
         return serverSource;
     }

@@ -12,7 +12,7 @@ static NSString *const cKVOIsExecuting = @"isExecuting";
 static NSString *const cKVOIsFinished = @"isFinished";
 static NSString *const cHTMLDebugPageFormat = @"<!DOCTYPE html><html><head><title>Local Stream View</title></head><body><div><video src=\"%@.m3u8\" controls autoplay></video></div></body></html>";
 static NSString *const cHTMLDebugPageName = @"view.html";
-static NSUInteger const cCompleteStreamShift = 31;
+static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.m
 
 @interface HLSPlaylistDownloadOperation ()
 // Internal.
