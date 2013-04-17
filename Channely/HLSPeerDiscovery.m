@@ -206,26 +206,18 @@ static HLSPeerDiscovery * _internal;
     }
     NSUInteger topChunkCount = [HLSPeerDiscovery totalChunksFromChunkField:firstChunkField];
     
+    // If the recording is complete, we randomly pick a peer from the set of peers with the full recording.
+    // Since the array is sorted, we scan through from index 1, stopping at the last index with a full recording.
+    // Otherwise, we randomly pick a peer whose chunk count is within a defined spread radius of the top chunk count.
+    // Since the array is sorted, we scan through from index 1, stopping when the above condition fails for the
+    // first time.
     NSUInteger randLimit;
-    if (completeRecordingExists) {
-        // If the recording is complete, we randomly pick a peer from the set of peers with the full recording.
-        // Since the array is sorted, we scan through from index 1, stopping at the last index with a full recording.
-        for (randLimit = 1; randLimit < result.count; randLimit++) {
-            HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
-            if (peer.chunkCount != topChunkCount) {
-                break;
-            }
-        }
-    } else {
-        // Otherwise, we randomly pick a peer whose chunk count is within a defined spread radius of the top chunk count.
-        // Since the array is sorted, we scan through from index 1, stopping when the above condition fails for the
-        // first time.
-        for (randLimit = 1; randLimit < result.count; randLimit++) {
-            HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
-            NSUInteger difference = topChunkCount - peer.chunkCount;
-            if (difference > cMaxSpreadRadius) {
-                break;
-            }
+    for (randLimit = 1; randLimit < result.count; randLimit++) {
+        HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
+        if (completeRecordingExists && peer.chunkCount != topChunkCount) {
+            break;
+        } else if ((topChunkCount - peer.chunkCount) > cMaxSpreadRadius) {
+            break;
         }
     }
     
