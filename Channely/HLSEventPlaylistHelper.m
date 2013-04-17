@@ -13,6 +13,7 @@ static NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT
 static NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
 static NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
 static NSUInteger const cDefaultSequenceNumber = 0;
+static NSString *const cHash = @"#";
 
 @interface HLSEventPlaylistHelper ()
 // Internal.
@@ -90,6 +91,26 @@ static NSUInteger const cDefaultSequenceNumber = 0;
     
     plContents = [plContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return [plContents hasSuffix:cPlaylistTrailerFormat];
+}
+
++ (NSUInteger) playlistChunkCount:(NSString *)path {
+    NSError *error = nil;
+    NSString *plContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        return NO;
+    }
+    
+    plContents = [plContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSArray *lines = [plContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    NSUInteger count = 0;
+    for (NSString *line in lines) {
+        if (![line hasPrefix:cHash]) {
+            count++;
+        }
+    }
+    
+    return count;
 }
 
 @end

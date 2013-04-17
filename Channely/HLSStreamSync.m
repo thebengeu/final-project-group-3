@@ -9,6 +9,7 @@
 #import "HLSStreamSync.h"
 
 static NSString *const cPlaylistFilenameFormat = @"%@.m3u8";
+static NSUInteger const cCompleteStreamShift = 31;
 
 @interface HLSStreamSync ()
 // Internal.
@@ -77,6 +78,48 @@ static HLSStreamSync *_internal;
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
     NSString *playlistPath = [streamDir stringByAppendingPathComponent:[NSString stringWithFormat:cPlaylistFilenameFormat, sId]];
     return ([ChanUtility directoryExists:streamDir] && [HLSEventPlaylistHelper playlistIsComplete:playlistPath]);
+}
+
+- (void) recheckExistingStreams {
+    NSLog(@"rechecking existing streams and performing prune of partial streams."); // DEBUG.
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSArray *items = [fm contentsOfDirectoryAtPath:_baseDirectory error:nil];
+    for (NSString *itemPath in items) {
+        NSString *fullItemPath = [_baseDirectory stringByAppendingPathComponent:itemPath];
+        
+        NSLog(@"Checking item:%@", fullItemPath); // DEBUG.
+        
+        BOOL isDir = NO;
+        [fm fileExistsAtPath:fullItemPath isDirectory:&isDir];
+        
+        if (!isDir) {
+            NSLog(@"not a directory:%@. removing.", fullItemPath); // DEBUG.
+            
+            [fm removeItemAtPath:fullItemPath error:nil];
+            continue;
+        }
+        
+        NSString *sId = itemPath;
+        HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager advertisingManager];
+        if ([self completeLocalStreamExistsForStreamId:sId]) {
+            NSLog(@"found existing complete stream: %@. re-advertising.", sId); // DEBUG.
+            
+            NSString *playlistRelativePath = [sId stringByAppendingPathComponent:[NSString stringWithFormat:cPlaylistFilenameFormat, sId]];
+            NSUInteger chunkCount = [HLSEventPlaylistHelper playlistChunkCount:playlistRelativePath];
+            NSUInteger countField = (1 << cCompleteStreamShift) | chunkCount;
+            
+            [am updateAdvertisementForPlaylist:playlistRelativePath asRecordingId:sId withChunkCount:countField];
+        } else {
+            NSLog(@"removing incomplete stream."); // DEBUG.
+            
+            if ([am isAdvertisingRecordingId:sId]) {
+                [am stopAdvertisingRecordingId:sId];
+            }
+            [fm removeItemAtPath:fullItemPath error:nil];
+        }
+    }
 }
 
 @end
