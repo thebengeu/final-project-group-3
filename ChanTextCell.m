@@ -7,6 +7,7 @@
 //
 
 #import "ChanTextCell.h"
+#import "Constants.h"
 
 @implementation ChanTextCell
 
@@ -36,7 +37,10 @@
 
 + (CGFloat) getHeightForPost:(ChanPost *)post
 {
-    return 190.0f;
+    CGSize sizeWithFont = [post.content sizeWithFont:[UIFont fontWithName:kTextCellContentFontName size:kTextCellContentFontSize]
+                                   constrainedToSize:CGSizeMake(kTextCellContentMaxWidth, kTextCellContentMaxHeight)
+                                       lineBreakMode:NSLineBreakByWordWrapping];
+    return sizeWithFont.height + kTextCellContentVerticalMargins;
 }
 
 /*

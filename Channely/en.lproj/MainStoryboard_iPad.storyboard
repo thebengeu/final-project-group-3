@@ -916,7 +916,6 @@
                                         <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbK-r9-nIf">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="154" id="Vmp-GP-cLr"/>
                                                 <constraint firstAttribute="width" constant="200" id="jfP-1j-tP0"/>
                                             </constraints>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -928,10 +927,11 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="40" type="user" id="6Pg-Q0-zbh"/>
                                     <constraint firstItem="hbK-r9-nIf" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="15" id="Fjy-3V-tzS"/>
+                                    <constraint firstAttribute="bottom" secondItem="hbK-r9-nIf" secondAttribute="bottom" constant="20" type="default" id="nIq-vq-Avq"/>
                                     <constraint firstItem="LEM-gn-K4x" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="17" id="q6U-It-znA"/>
                                     <constraint firstItem="LEM-gn-K4x" firstAttribute="leading" secondItem="Oag-Ig-RTF" secondAttribute="leading" constant="23" id="u84-Lx-dmE"/>
-                                    <constraint firstItem="hbK-r9-nIf" firstAttribute="top" secondItem="Oag-Ig-RTF" secondAttribute="top" constant="35" id="xal-dM-s0N"/>
                                 </constraints>
                                 <size key="customSize" width="243" height="213"/>
                                 <connections>
@@ -939,28 +939,27 @@
                                     <outlet property="titleView" destination="LEM-gn-K4x" id="UPq-gR-hCW"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TwitterCell" id="j8O-ec-UZH" customClass="ChanTwitterCell">
+                            <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TwitterCell" id="80k-Ne-4jd" customClass="ChanTwitterCell">
                                 <rect key="frame" x="525" y="0.0" width="243" height="213"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="243" height="213"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P73-UK-ukr">
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNA-MQ-6wD">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="149" id="WT9-x5-t2y"/>
-                                                <constraint firstAttribute="height" constant="24" id="kY2-Ii-5nf"/>
+                                                <constraint firstAttribute="width" constant="149" id="PHt-dp-Qr9"/>
+                                                <constraint firstAttribute="height" constant="24" id="fgQ-dv-nc4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOc-0x-Elr">
+                                        <textView clipsSubviews="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wp-uL-xZA">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="IHp-rx-Wab"/>
-                                                <constraint firstAttribute="height" constant="154" id="qbT-XD-LTN"/>
+                                                <constraint firstAttribute="width" constant="200" id="ZCY-9e-Vqw"/>
                                             </constraints>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -971,15 +970,16 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="bOc-0x-Elr" firstAttribute="top" secondItem="j8O-ec-UZH" secondAttribute="top" constant="35" id="0gx-iz-Mkv"/>
-                                    <constraint firstItem="P73-UK-ukr" firstAttribute="top" secondItem="j8O-ec-UZH" secondAttribute="top" constant="17" id="Q7O-Wc-0RO"/>
-                                    <constraint firstItem="P73-UK-ukr" firstAttribute="leading" secondItem="j8O-ec-UZH" secondAttribute="leading" constant="23" id="wq9-4b-cuT"/>
-                                    <constraint firstItem="bOc-0x-Elr" firstAttribute="leading" secondItem="j8O-ec-UZH" secondAttribute="leading" constant="15" id="ylC-t0-D0s"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Wp-uL-xZA" secondAttribute="bottom" constant="20" type="default" id="7Pl-3B-KJC"/>
+                                    <constraint firstItem="lNA-MQ-6wD" firstAttribute="leading" secondItem="80k-Ne-4jd" secondAttribute="leading" constant="23" id="QQt-0N-Bx7"/>
+                                    <constraint firstItem="6Wp-uL-xZA" firstAttribute="top" secondItem="80k-Ne-4jd" secondAttribute="top" constant="40" type="user" id="kRQ-GQ-wkv"/>
+                                    <constraint firstItem="6Wp-uL-xZA" firstAttribute="leading" secondItem="80k-Ne-4jd" secondAttribute="leading" constant="15" id="leU-ZZ-ytz"/>
+                                    <constraint firstItem="lNA-MQ-6wD" firstAttribute="top" secondItem="80k-Ne-4jd" secondAttribute="top" constant="17" id="qrf-yv-pN8"/>
                                 </constraints>
                                 <size key="customSize" width="243" height="213"/>
                                 <connections>
-                                    <outlet property="textView" destination="bOc-0x-Elr" id="w2D-IQ-5YF"/>
-                                    <outlet property="titleView" destination="P73-UK-ukr" id="h47-ML-0b5"/>
+                                    <outlet property="textView" destination="6Wp-uL-xZA" id="b6B-gc-WgE"/>
+                                    <outlet property="titleView" destination="lNA-MQ-6wD" id="UIV-r0-CRQ"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Xg6-95-Zvj" customClass="ChanImageCell">
