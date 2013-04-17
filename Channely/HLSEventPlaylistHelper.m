@@ -75,10 +75,21 @@ static NSUInteger const cDefaultSequenceNumber = 0;
         return;
     }
     
-    // NSLog(@"%@", _buffer); // Debug.
-    
     NSData *data = [_buffer dataUsingEncoding:NSUTF8StringEncoding];
     [data writeToURL:_fileName atomically:YES];
+}
+
+#pragma mark Static Methods
++ (BOOL) playlistIsComplete:(NSString *)path {
+    NSError *error = nil;
+    NSString *plContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    
+    if (error) {
+        return NO;
+    }
+    
+    plContents = [plContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return [plContents hasSuffix:cPlaylistTrailerFormat];
 }
 
 @end

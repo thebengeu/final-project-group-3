@@ -58,6 +58,13 @@ static HLSStreamSync *_internal;
 
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist {
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
+//    NSString *playlistPath = [streamDir stringByAppendingPathComponent:[playlist lastPathComponent]];
+    
+    if ([ChanUtility directoryExists:streamDir]) {
+        NSLog(@"files for local stream exists, not syncing.");
+        return;
+    }
+    
     [ChanUtility createDirectory:streamDir];
     
     HLSPlaylistDownloadOperation *operation = [[HLSPlaylistDownloadOperation alloc] initWithStreamId:sId forPlaylist:playlist toDirectory:streamDir];

@@ -16,6 +16,7 @@
 + (void) removeDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
 + (NSString *) fileNameFromURLString:(NSString *)url;
-+ (void) removeFileAtPath:(NSString *)path;
++ (void) removeItemAtPath:(NSString *)path;
++ (BOOL) directoryExists:(NSString *)directory;
 
 @end
