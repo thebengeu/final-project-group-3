@@ -76,6 +76,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 {
     [super viewWillDisappear:animated];
     [self stopRefreshingPosts];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
