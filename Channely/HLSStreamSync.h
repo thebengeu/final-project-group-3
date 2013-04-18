@@ -11,8 +11,9 @@
 #import "ChanUtility.h"
 #import "HLSEventPlaylistHelper.h"
 #import "HLSStreamAdvertisingManager.h"
+#import "HLSPlaylistDownloadOperationDelegate.h"
 
-@interface HLSStreamSync : NSObject
+@interface HLSStreamSync : NSObject <HLSPlaylistDownloadOperationDelegate>
 - (id) init;
 - (NSUInteger) operationCount;
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist;
