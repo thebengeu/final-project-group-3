@@ -60,6 +60,9 @@
     [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
     [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
     [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
+    
+    // Setup create button style
+    [_createButton setType:BButtonTypeChan];
 }
 
 

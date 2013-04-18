@@ -29,14 +29,16 @@
         name = [[ChanUser loggedInUser]name];
     
     _username.text = name;
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-    // Launch the keyboard with focus on textarea
-    [_text becomeFirstResponder];
+    // Set background
+    UIImage *backgroundImg = [[UIImage imageNamed:@"custom-dialog-background"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 18, 12, 18) resizingMode:UIImageResizingModeStretch];
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [backgroundImg drawInRect:self.view.bounds];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:img];
 }
 
 - (IBAction)submit:(id)sender {
