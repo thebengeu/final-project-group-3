@@ -43,6 +43,7 @@
     if ([[_text text]length] > 0){
         ChanTextPostViewController *me = self;
         [[me status]startAnimating];
+        [self hideKeyboard];
         [_channel addTextPostWithContent:[_text text] username:[_username text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
             [[me status]stopAnimating];
             [me dismissViewControllerAnimated:YES completion:^{

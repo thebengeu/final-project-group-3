@@ -35,7 +35,7 @@
 - (IBAction)submit:(id)sender {
     ChanImagePostViewController *me = self;
     [[me status]startAnimating];
-    
+    [self hideKeyboard];
     [_channel addImagePostWithContent:[_text text] username:[_username text] image:_image withCompletion:^(ChanImagePost *imagePost, NSError *error) {
         [[me status]stopAnimating];
         [me dismissViewControllerAnimated:YES completion:^{

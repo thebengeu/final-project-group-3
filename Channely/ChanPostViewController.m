@@ -94,5 +94,12 @@
     return NO;
 }
 
+- (void)hideKeyboard {
+    if (_keyboardShown > 0){
+        [[self view] endEditing:YES];
+        return;
+    }
+}
+
 
 @end

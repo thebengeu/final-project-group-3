@@ -73,6 +73,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 {
     // unregister for keyboard notifications while not visible.
     [_createEventPopover dismissPopoverAnimated:YES];
+    [_imagePickerPopover dismissPopoverAnimated:YES];
 }
 
 # pragma mark Orientation Handlers
@@ -140,8 +141,9 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         image = info[UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
-    picker = nil;
-    
+    [_imagePickerPopover dismissPopoverAnimated:YES];
+    _imagePickerPopover = nil;
+
     if (image)
         [self launchImagePostSegue:image];
 }

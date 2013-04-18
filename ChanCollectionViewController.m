@@ -97,6 +97,7 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
+        slidesViewController.delegate = self.delegate;
     } 
 }
 

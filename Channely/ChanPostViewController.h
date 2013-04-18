@@ -23,4 +23,6 @@
 @property UITapGestureRecognizer *tapBehindRecognizer;
 @property id<ChanPostViewControllerDelegate> delegate;
 
+- (void) hideKeyboard;
+
 @end

@@ -41,6 +41,14 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    //  Bar items
+    NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Annotate" style:UIBarButtonItemStylePlain target:self action:@selector(annotate)];
+    [rightBarItems addObject:doneButton];
+    
+    self.navigationItem.rightBarButtonItems = rightBarItems;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -70,6 +78,7 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
     self.imageView3.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView3.tag = 3;
     [self.scrollView addSubview:self.imageView3];
+    
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -126,21 +135,16 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
     [self updateNextPrevImages];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString:cSlideAnnotationSegue]) {
-        ChanAnnotationViewController * annotationViewController = (ChanAnnotationViewController *) [segue destinationViewController];
-        
-        
-        // Use image for annotation from currently displayed UIImageView.
-        annotationViewController.image = [(UIImageView*)[self.scrollView viewWithTag:self.zone] image];
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Annotation
+- (void) annotate {
+    [[self delegate]launchAnnotationForImagePost:[(UIImageView*)[self.scrollView viewWithTag:self.zone] image]];
 }
 
 #pragma mark Event Handlers
