@@ -20,10 +20,12 @@ PODS:
   - RestKit/ObjectMapping (0.20.1dev)
   - RestKit/Support (0.20.1dev)
   - SOCKit (1.1)
+  - SVProgressHUD (HEAD based on 0.9)
 
 DEPENDENCIES:
   - CocoaHTTPServer (~> 2.3)
   - RestKit (from `https://github.com/RestKit/RestKit.git`, commit `75fbe7d`)
+  - SVProgressHUD (HEAD)
 
 EXTERNAL SOURCES:
   RestKit:
@@ -37,5 +39,6 @@ SPEC CHECKSUMS:
   CocoaLumberjack: d73e1e317ced14ab930797dda6c17156ff17aaa1
   RestKit: 73556a95d61d4967f962b34d4ce1c68edbdfb372
   SOCKit: ed67aeeca4a697b63a933229e53f4670d5b9300f
+  SVProgressHUD: 03d4845ec8e64591726428a08236c6a5489d45f8
 
 COCOAPODS: 0.18.1

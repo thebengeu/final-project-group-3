@@ -12,3 +12,4 @@
 #define __POD_RestKit_ObjectMapping
 #define __POD_RestKit_Support
 #define __POD_SOCKit
+#define __POD_SVProgressHUD
