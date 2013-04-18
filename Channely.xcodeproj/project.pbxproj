@@ -290,6 +290,7 @@
 		4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSNetServicePathChunkCountTuple.m; sourceTree = "<group>"; };
 		4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSDiscoveredRecordings.h; sourceTree = "<group>"; };
 		4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSDiscoveredRecordings.m; sourceTree = "<group>"; };
+		4AF03952171FD421009DF7EB /* HLSPlaylistDownloadOperationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLSPlaylistDownloadOperationDelegate.h; sourceTree = "<group>"; };
 		821463C4171671EB00699085 /* ChanTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTextCell.h; sourceTree = "<group>"; };
 		821463C5171671EB00699085 /* ChanTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTextCell.m; sourceTree = "<group>"; };
 		821463C71716950B00699085 /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
@@ -720,6 +721,7 @@
 				4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */,
 				4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */,
 				4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */,
+				4AF03952171FD421009DF7EB /* HLSPlaylistDownloadOperationDelegate.h */,
 			);
 			name = "Stream Downloader";
 			sourceTree = "<group>";
