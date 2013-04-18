@@ -63,6 +63,11 @@
     
     // Setup create button style
     [_createButton setType:BButtonTypeChan];
+    
+    // Setup placeholder for SSTextView
+    _descriptionTextViewField.placeholder = @"Description";
+    _descriptionTextViewField.layer.borderWidth = 1.0f;
+    _descriptionTextViewField.layer.borderColor = [[UIColor channelyGray] CGColor];
 }
 
 
@@ -206,11 +211,6 @@
 
     }
 }
-
-
-
-
-
 
 -(void)zoomToFitMapAnnotations:(MKMapView*)mapView{
     if([mapView.annotations count] == 0)

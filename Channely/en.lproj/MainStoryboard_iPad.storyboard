@@ -1408,8 +1408,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-h0-xmD">
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-h0-xmD" customClass="SSTextView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="pMN-14-kj9"/>
                                 </constraints>
@@ -1483,11 +1483,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GFI-XE-Dip" firstAttribute="bottom" secondItem="xQY-rH-8Rf" secondAttribute="bottom" type="default" id="0HM-n0-UPY"/>
-                            <constraint firstItem="hKz-3X-fMT" firstAttribute="bottom" secondItem="paY-Gw-plI" secondAttribute="bottom" type="default" id="3Wd-N8-ngf"/>
                             <constraint firstItem="GFI-XE-Dip" firstAttribute="top" secondItem="xQY-rH-8Rf" secondAttribute="top" type="default" id="3hV-SC-tcV"/>
                             <constraint firstItem="paY-Gw-plI" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="86G-v9-tAr"/>
+                            <constraint firstItem="GFI-XE-Dip" firstAttribute="top" secondItem="ihe-h0-xmD" secondAttribute="top" type="default" id="8Ua-j7-6kf"/>
                             <constraint firstAttribute="bottom" secondItem="mqt-Ok-tN6" secondAttribute="bottom" constant="185" type="user" id="EhJ-EJ-ILJ"/>
-                            <constraint firstAttribute="bottom" secondItem="GFI-XE-Dip" secondAttribute="bottom" constant="82" id="F1p-w0-oEt"/>
+                            <constraint firstItem="v6I-oS-lcH" firstAttribute="top" secondItem="xQY-rH-8Rf" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="H6R-wE-rKL"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="trailing" secondItem="paY-Gw-plI" secondAttribute="trailing" type="default" id="IGj-tu-zJV"/>
                             <constraint firstItem="hKz-3X-fMT" firstAttribute="leading" secondItem="paY-Gw-plI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="JSw-3S-FzM"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="KgH-Su-a2z"/>
@@ -1496,14 +1496,14 @@
                             <constraint firstItem="mqt-Ok-tN6" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vqp-4f-Ztk"/>
                             <constraint firstItem="zYE-ju-NE1" firstAttribute="leading" secondItem="hKz-3X-fMT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YOx-uP-vzk"/>
                             <constraint firstItem="zYE-ju-NE1" firstAttribute="leading" secondItem="GFI-XE-Dip" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="c6H-z3-E6D"/>
-                            <constraint firstAttribute="bottom" secondItem="v6I-oS-lcH" secondAttribute="bottom" constant="29" id="ec1-Qb-APe"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="top" secondItem="paY-Gw-plI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f5H-fM-6sa"/>
-                            <constraint firstItem="zYE-ju-NE1" firstAttribute="bottom" secondItem="hKz-3X-fMT" secondAttribute="bottom" type="default" id="ffo-JS-VAP"/>
+                            <constraint firstItem="xQY-rH-8Rf" firstAttribute="top" secondItem="zYE-ju-NE1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f5p-cF-WyZ"/>
                             <constraint firstItem="mqt-Ok-tN6" firstAttribute="top" secondItem="Vf0-2L-r5g" secondAttribute="top" constant="14" type="user" id="kxm-KA-XwV"/>
+                            <constraint firstItem="xQY-rH-8Rf" firstAttribute="leading" secondItem="GFI-XE-Dip" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="nBL-VI-fDp"/>
                             <constraint firstAttribute="trailing" secondItem="xQY-rH-8Rf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nQ0-5L-uvr"/>
+                            <constraint firstItem="GFI-XE-Dip" firstAttribute="top" secondItem="hKz-3X-fMT" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tZa-QC-yer"/>
                             <constraint firstAttribute="trailing" secondItem="v6I-oS-lcH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uDC-S7-ifx"/>
                             <constraint firstItem="hKz-3X-fMT" firstAttribute="top" secondItem="zYE-ju-NE1" secondAttribute="top" type="default" id="uGK-Dq-2jA"/>
-                            <constraint firstItem="xQY-rH-8Rf" firstAttribute="leading" secondItem="hKz-3X-fMT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="yaQ-O8-xTc"/>
                             <constraint firstAttribute="trailing" secondItem="zYE-ju-NE1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zfb-sr-PA8"/>
                         </constraints>
                     </view>
@@ -1832,7 +1832,7 @@
                 <relationship kind="action" name="endDateEditingBegin:"/>
                 <relationship kind="action" name="startDateEditingBegin:"/>
                 <relationship kind="outlet" name="createButton" candidateClass="BButton"/>
-                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="SSTextView"/>
                 <relationship kind="outlet" name="endDateTextField" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
@@ -2033,6 +2033,9 @@
         </class>
         <class className="SLGlowingTextField" superclassName="UITextField">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
+        </class>
+        <class className="SSTextView" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTextView.h"/>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
