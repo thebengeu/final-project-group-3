@@ -41,14 +41,6 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:img];
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    // Launch the keyboard with focus on textarea
-    [_text becomeFirstResponder];
-}
-
 - (IBAction)submit:(id)sender {
     if ([[_text text]length] > 0){
         ChanTextPostViewController *me = self;
