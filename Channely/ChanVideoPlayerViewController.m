@@ -7,6 +7,8 @@
 //
 
 #import "ChanVideoPlayerViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ChanVideoInfoViewController.h"
 
 static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
 static NSString *const cMetaFormat = @"id:%@ from %@";
@@ -21,6 +23,8 @@ CGImageRef UIGetScreenImage(void); // Private API.
 @property (strong) MPMoviePlayerController *_player;
 @property (nonatomic) BOOL _firstLoad;
 @property (strong) ChanChannel *_channel;
+@property UIPopoverController *infoPopover;
+@property UIBarButtonItem *infoButton;
 
 // P2P Peer Selection.
 - (void) selectSource;
@@ -54,28 +58,35 @@ CGImageRef UIGetScreenImage(void); // Private API.
 - (void) viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    //  Bar items for annotation
+    NSMutableArray *rightBarItems = [[NSMutableArray alloc]initWithArray:[self navigationItem].rightBarButtonItems];
+    
+    UIBarButtonItem *annotateButton = [[UIBarButtonItem alloc]initWithTitle:@"Annotate" style:UIBarButtonItemStylePlain target:self action:@selector(annotate)];
+    [rightBarItems addObject:annotateButton];
+    
+    _infoButton = [[UIBarButtonItem alloc]initWithTitle:@"Info" style:UIBarButtonItemStylePlain target:self action:@selector(info)];
+    [rightBarItems addObject:_infoButton];
+    
+    self.navigationItem.rightBarButtonItems = rightBarItems;
 }
 
 // Note: There may be a race condition here if the parent does not call setServerURL: before the view appears.
 - (void) viewDidAppear:(BOOL)animated {
-    if (!_firstLoad) {
-        return;
+    if (_firstLoad) {
+        if (!_parametersSet) {
+            NSLog(@"Race condition in VideoPlayerViewController!");
+        }
+    
+        [self attachPlayer];
+        _firstLoad = NO;
     }
-    
-    self.urlLabel.title = [NSString stringWithFormat:cMetaFormat, _recordingId, _selectedURL.host];
-    
-    if (!_parametersSet) {
-        NSLog(@"Race condition in VideoPlayerViewController!");
-    }
-    
-    [self attachPlayer];
-    
-    _firstLoad = NO;
 }
 
-- (void) didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [_infoPopover dismissPopoverAnimated:YES];
+    _infoPopover = nil;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -106,13 +117,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
 
 #pragma mark P2P Peer Selection
 - (void) selectSource {
-    _selectedURL = [[HLSLoadBalancer loadBalancer] selectBestLocalHostForRecording:_recordingId default:_serverURL];
-
-    // Select the server if no local client exists.
-    // TODO - select the server if the local client has too few chunks.
-    if (!_selectedURL) {
-        _selectedURL = _serverURL;
-    }
+    _selectedURL = [HLSLoadBalancer selectBestLocalHostForRecording:_recordingId default:_serverURL];
     
     NSLog(@"selected source=%@", _selectedURL);
 
@@ -123,20 +128,46 @@ CGImageRef UIGetScreenImage(void); // Private API.
 #pragma mark Media Player
 - (void) attachPlayer {
     _player = [[MPMoviePlayerController alloc] initWithContentURL:_selectedURL];
+    
     _player.view.frame = self.contentView.bounds;
     [self.contentView addSubview:_player.view];
     [_player play];
-    [_player setFullscreen:YES animated:YES];
+    
+    _player.controlStyle = MPMovieControlStyleEmbedded;
 }
 
-#pragma mark Event Handlers
-- (IBAction) backButton_Action:(id)sender {
-    [_player stop];
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        return;
-    }];
+
+#pragma mark Annotation
+- (void) annotate {
+    //  Pause if video is not streaming
+    if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId :_recordingId] == YES)
+        [_player pause];
+    [[self delegate]launchAnnotationForImagePost:[self getMediaPlayerScreenshot]];
 }
+
+#pragma mark Info
+- (void) info {
+    if (_infoPopover != nil)
+        return;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    ChanVideoInfoViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ChanVideoInfoViewController"];
+    controller.recordingIdText = _recordingId;
+    controller.hostText = _selectedURL.host;
+    controller.resolutionText = [NSString stringWithFormat:@"%fx%f", [_player naturalSize].width, [_player naturalSize].height];
+    
+    _infoPopover = [[UIPopoverController alloc]initWithContentViewController:controller];
+    _infoPopover.delegate = self;
+    [_infoPopover presentPopoverFromBarButtonItem:_infoButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+#pragma mark Info
+- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+    if (_infoPopover == popoverController)
+        _infoPopover = nil;
+}
+
+
 
 #pragma mark Screenshot
 // Ref: http://stackoverflow.com/questions/2507220/code-example-for-iphone-uigetscreenimage
@@ -156,10 +187,51 @@ CGImageRef UIGetScreenImage(void); // Private API.
 //    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height);
     
     CGImageRef screen = UIGetScreenImage();
-    UIImage* screenImage = [UIImage imageWithCGImage:screen];
-    CGImageRelease(screen);
+    UIImageOrientation orientation = UIImageOrientationUp;
+    switch (([[UIApplication sharedApplication] statusBarOrientation])) {
+        case UIInterfaceOrientationLandscapeLeft:
+            orientation = UIImageOrientationRight;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            orientation = UIImageOrientationLeft;
+            break;
+        case UIInterfaceOrientationPortrait:
+            orientation = UIImageOrientationUp;
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            orientation = UIImageOrientationDown;
+            break;
+        default:
+            break;
+    }
     
-    return screenImage;
+    CGRect playerFrame = [_player view].frame;
+    CGSize videoSize = [_player naturalSize];
+    CGPoint position = CGPointMake(0, 64);  //  Hardcoded navigation bar size + status bar size
+    
+    CGFloat scale;
+    CGRect frame;
+    scale = MIN(playerFrame.size.width/videoSize.width, playerFrame.size.height/videoSize.height);
+    videoSize.width *= scale;
+    videoSize.height *= scale;
+    
+    if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))
+        frame = CGRectMake((playerFrame.size.width-videoSize.width)/2.0 + position.x,
+                           (playerFrame.size.height-videoSize.height)/2.0 + position.y,
+                           videoSize.width,
+                           videoSize.height);
+    else
+        frame = CGRectMake((playerFrame.size.height-videoSize.height)/2.0 + position.x,
+                           (playerFrame.size.width-videoSize.width)/2.0,    //  Yet another hardcode
+                           videoSize.height,
+                           videoSize.width);
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect(screen, frame);
+    UIImage* outImage = [UIImage imageWithCGImage:imageRef scale:1 orientation:orientation];
+
+    CGImageRelease(screen);
+    CGImageRelease(imageRef);
+    return outImage;
 }
 
 @end

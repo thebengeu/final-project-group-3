@@ -10,5 +10,6 @@
 
 @protocol HLSStreamAdvertiser <NSObject>
 - (void) setAdvertiserDictionary:(NSDictionary *)dict;
+- (void)republishBonjour;
 
 @end

@@ -41,10 +41,19 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:img];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Launch the keyboard with focus on textarea
+    [_text becomeFirstResponder];
+}
+
 - (IBAction)submit:(id)sender {
     if ([[_text text]length] > 0){
         ChanTextPostViewController *me = self;
         [[me status]startAnimating];
+        [self hideKeyboard];
         [_channel addTextPostWithContent:[_text text] username:[_username text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
             [[me status]stopAnimating];
             [me dismissViewControllerAnimated:YES completion:^{

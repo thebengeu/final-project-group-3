@@ -73,6 +73,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 {
     // unregister for keyboard notifications while not visible.
     [_createEventPopover dismissPopoverAnimated:YES];
+    [_imagePickerPopover dismissPopoverAnimated:YES];
 }
 
 # pragma mark Orientation Handlers
@@ -95,7 +96,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         _collectionViewController.delegate = self;
     } else if ([segueName isEqualToString:cTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
-        
+        destination.delegate = self;
         destination.parentChannel = [self underlyingChannel];
     }
       
@@ -138,11 +139,13 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if (!image)
         image = info[UIImagePickerControllerOriginalImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    [_imagePickerPopover dismissPopoverAnimated:YES];
+    _imagePickerPopover = nil;
 
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (image)
-            [self launchImagePostSegue:image];
-    }];
+    if (image)
+        [self launchImagePostSegue:image];
 }
 
 
@@ -180,10 +183,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [controller setImage:image];
     controller.delegate = self;
     
-    [self presentViewController:controller animated:NO completion:nil];
+    [[self navigationController]pushViewController:controller animated:YES];
+    //[self presentViewController:controller animated:NO completion:nil];
 }
 
 - (void) didFinishAnnotation:(UIImage*)image{
+    [[self navigationController]popViewControllerAnimated:YES];
     [self launchImagePostSegue:image];
 }
 

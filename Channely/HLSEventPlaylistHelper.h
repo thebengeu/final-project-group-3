@@ -15,4 +15,7 @@
 - (void) appendItem:(NSString *)path withDuration:(CGFloat)duration withTitle:(NSString *)title;
 - (void) endPlaylist;
 
++ (BOOL) playlistIsComplete:(NSString *)path;
++ (NSUInteger) playlistChunkCount:(NSString *)path;
+
 @end

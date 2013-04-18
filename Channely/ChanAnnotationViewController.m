@@ -29,6 +29,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [_annotationView setOriginalImage:_image];
+    
+    //  Bar items
+    NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    [rightBarItems addObject:doneButton];
+    
+    self.navigationItem.rightBarButtonItems = rightBarItems;
 }
 
 - (void) setImage:(UIImage *)image
@@ -43,9 +51,7 @@
 
 
 - (IBAction)done:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [[self delegate]didFinishAnnotation:[_annotationView image]];
-    }];
+    [[self delegate]didFinishAnnotation:[_annotationView image]];
 }
 
 
@@ -64,12 +70,6 @@
 - (IBAction)clear:(id)sender {
     [_annotationView clear];
 }
-
-- (IBAction)cancel:(id)sender {
-    [_annotationView setImage:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 
 @end

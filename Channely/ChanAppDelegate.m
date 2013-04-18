@@ -18,7 +18,8 @@ static NSUInteger const cLocalServerPort = 80;
 // Internal.
 @property (strong) HTTPServer *_localServer;
 @property (strong) HLSStreamAdvertisingManager *_advertisingManager;
-@property (strong) HLSLoadBalancer *_loadBalancer;
+@property (strong) HLSPeerDiscovery *_loadBalancer;
+@property (strong) HLSStreamSync *_streamSync;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -30,9 +31,12 @@ static NSUInteger const cLocalServerPort = 80;
 @synthesize _localServer;
 @synthesize _advertisingManager;
 @synthesize _loadBalancer;
+@synthesize _streamSync;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"did finish launching!");
+    
     // Set UI customizations
     [self customizeAppearance];
     
@@ -77,11 +81,25 @@ static NSUInteger const cLocalServerPort = 80;
     [self setupDirectories];
     
     [self setupHttpServer];
-    [self setupDiscoveryManager];
+    [self setupAdvertisingManager];
     [self setupStreamSync];
-    [self setupLoadBalancer];
+    [self setupPeerDiscovery];
     
     return YES;
+}
+
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    [_advertisingManager resumeAdvertising];
+    
+    // Note: This method might take some time to execute.
+    // TODO - Test for edge case where app goes to suspend when stream is downloading, and then resumed.
+    [_streamSync recheckExistingStreams];
+}
+
+- (void) applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
+    NSLog(@"went background!");
 }
 
 #pragma mark Appearance Customizations 
@@ -138,8 +156,8 @@ static NSUInteger const cLocalServerPort = 80;
     [_localServer start:nil];
 }
 
-#pragma mark HLS Stream Discovery Manager
-- (void) setupDiscoveryManager {
+#pragma mark HLS Stream Advertising Manager
+- (void) setupAdvertisingManager {
     _advertisingManager = [HLSStreamAdvertisingManager advertisingManagerWithAdvertiser:self];
 }
 
@@ -147,6 +165,12 @@ static NSUInteger const cLocalServerPort = 80;
 - (void) setAdvertiserDictionary:(NSDictionary *)dict {
     if (_localServer) {
         [_localServer setTXTRecordDictionary:dict];
+    }
+}
+
+- (void) republishBonjour {
+    if (_localServer) {
+        [_localServer republishBonjour];
     }
 }
 
@@ -159,12 +183,15 @@ static NSUInteger const cLocalServerPort = 80;
 
 #pragma mark HLS Stream Sync
 - (void) setupStreamSync {
-    [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+    _streamSync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
+    
+    // Note: This method might take some time to execute.
+    [_streamSync recheckExistingStreams];
 }
 
-#pragma mark HLS Load Balancer
-- (void) setupLoadBalancer {
-    _loadBalancer = [HLSLoadBalancer setupLoadBalancer];
+#pragma mark HLS Peer Discovery
+- (void) setupPeerDiscovery {
+    _loadBalancer = [HLSPeerDiscovery setupPeerDiscovery];
 }
 
 

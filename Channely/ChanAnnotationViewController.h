@@ -29,7 +29,6 @@
 - (IBAction)blueColor:(id)sender;
 
 - (IBAction)done:(id)sender;
-- (IBAction)cancel:(id)sender;
 - (IBAction)clear:(id)sender;
 
 @end

@@ -1,24 +1,16 @@
 //
-//  ChanPeerSelection.h
+//  HLSLoadBalancer.h
 //  Channely
 //
-//  Created by k on 9/4/13.
+//  Created by Camillus Gerard Cai on 17/4/13.
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "HLSNetServicePathChunkCountTuple.h"
-#import "HLSDiscoveredRecordings.h"
-#import "HLSStreamAdvertisement.h"
+#import <Foundation/Foundation.h>
+#import "HLSPeerDiscovery.h"
+#import "HLSStreamSync.h"
 
-#include <arpa/inet.h>
-#include <stdlib.h>
-
-@interface HLSLoadBalancer : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
-- (id) init;
-- (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
-
-+ (HLSLoadBalancer *) setupLoadBalancer;
-+ (HLSLoadBalancer *) loadBalancer;
+@interface HLSLoadBalancer : NSObject
++ (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
 
 @end

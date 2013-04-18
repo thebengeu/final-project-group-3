@@ -177,7 +177,7 @@ static NSString *const cButtonStartRecording = @"Start";
         }
         
         // Remove the local mp4 file that is no longer needed.
-        [ChanUtility removeFileAtPath:chunk.path];
+        [ChanUtility removeItemAtPath:chunk.path];
     }];
 }
 
@@ -198,7 +198,7 @@ static NSString *const cButtonStartRecording = @"Start";
         }
         
         // Remove the local mp4 file that is no longer needed.
-        [ChanUtility removeFileAtPath:chunk.path];
+        [ChanUtility removeItemAtPath:chunk.path];
         
         [recording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
             NSLog(@"Successfully stopped server recording.");

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChannelViewControllerDelegate.h"
 
 @class ChanChannel;
 @class ChanSlidesPost;
@@ -25,6 +26,8 @@
 @property NSInteger zone;
 @property CGFloat pageWidth;
 @property CGFloat pageHeight;
+
+@property id<ChannelViewControllerDelegate> delegate;
 
 - (IBAction)backButton_Action:(id)sender;
 

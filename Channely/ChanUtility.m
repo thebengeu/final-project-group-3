@@ -28,8 +28,7 @@ static NSString *const cVideoTempDir = @"recording";
 // Returns YES if a directory was created, NO if no action was taken.
 + (BOOL) createDirectory:(NSString *)directory {
     NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL isDirectory = NO;
-    if (!([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory)) {
+    if (![ChanUtility directoryExists:directory]) {
         [fm createDirectoryAtPath:directory withIntermediateDirectories:NO attributes:nil error:nil];
         return YES;
     }
@@ -38,8 +37,7 @@ static NSString *const cVideoTempDir = @"recording";
 
 + (void) removeDirectory:(NSString *)directory {
     NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL isDirectory = NO;
-    if ([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory) {
+    if ([ChanUtility directoryExists:directory]) {
         [fm removeItemAtPath:directory error:nil];
     }
 }
@@ -70,13 +68,23 @@ static NSString *const cVideoTempDir = @"recording";
     return [[url lastPathComponent] stringByDeletingPathExtension];
 }
 
-+ (void) removeFileAtPath:(NSString *)path {
++ (void) removeItemAtPath:(NSString *)path {
     NSFileManager *fm = [NSFileManager defaultManager];
     
     NSError *error = nil;
     [fm removeItemAtPath:path error:&error];
     if (error) {
         NSLog(@"Could not remove %@.", path);
+    }
+}
+
++ (BOOL) directoryExists:(NSString *)directory {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL isDirectory = NO;
+    if ([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory) {
+        return YES;
+    } else {
+        return NO;
     }
 }
 

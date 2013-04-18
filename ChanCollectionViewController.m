@@ -90,12 +90,14 @@ static CGFloat const kPostMenuPortraitY = 900.0;
         ChanVideoCell *cell = (ChanVideoCell *)sender;
         
         [vpvc setServerURL:((ChanVideoPost *)cell.post).url forChannel:cell.post.channel];
+        vpvc.delegate = self.delegate;
     } else if ([segueName isEqualToString:cSlideSegue]) {
         ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
         ChanSlidesCell *cell = (ChanSlidesCell *)sender;
         
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
+        slidesViewController.delegate = self.delegate;
     } 
 }
 
