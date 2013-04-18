@@ -33,6 +33,8 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     // Launch the keyboard with focus on textarea
     [_text becomeFirstResponder];
 }
