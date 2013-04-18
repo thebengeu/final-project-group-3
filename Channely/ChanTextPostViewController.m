@@ -31,12 +31,6 @@
     _username.text = name;
 }
 
-- (void) viewDidAppear:(BOOL)animated
-{
-    // Launch the keyboard with focus on textarea
-    [_text becomeFirstResponder];
-}
-
 - (IBAction)submit:(id)sender {
     if ([[_text text]length] > 0){
         ChanTextPostViewController *me = self;
