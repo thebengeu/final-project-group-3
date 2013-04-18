@@ -29,6 +29,16 @@
         name = [[ChanUser loggedInUser]name];
     
     _username.text = name;
+    
+    // Set background
+    UIImage *backgroundImg = [[UIImage imageNamed:@"custom-dialog-background"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 18, 12, 18) resizingMode:UIImageResizingModeStretch];
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [backgroundImg drawInRect:self.view.bounds];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:img];
 }
 
 - (IBAction)submit:(id)sender {

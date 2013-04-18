@@ -88,6 +88,7 @@
 		8270DC99171937B800BFB6A9 /* videobar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DC98171937B800BFB6A9 /* videobar.png */; };
 		8270DCA317198E6900BFB6A9 /* textbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA217198E6900BFB6A9 /* textbar.png */; };
 		8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA41719946D00BFB6A9 /* imagebar.png */; };
+		82A02C11171FCEB700CA4B11 /* custom-dialog-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */; };
 		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
 		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
@@ -318,6 +319,7 @@
 		8270DC98171937B800BFB6A9 /* videobar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videobar.png; sourceTree = "<group>"; };
 		8270DCA217198E6900BFB6A9 /* textbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textbar.png; sourceTree = "<group>"; };
 		8270DCA41719946D00BFB6A9 /* imagebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagebar.png; sourceTree = "<group>"; };
+		82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom-dialog-background.png"; sourceTree = "<group>"; };
 		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
 		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 				824E964117113BD100E96418 /* icon.png */,
 				824E963F17113B8C00E96418 /* icon@2x.png */,
 				824E963D17113B1A00E96418 /* icon-small@2x.png */,
+				82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */,
 				82EF9E93171AA5FC0043079D /* Navbar Images */,
 				82EF9E82171AA5D20043079D /* Posting Menu Images */,
 				82EF9E81171AA59D0043079D /* Collection Backgrounds */,
@@ -1176,6 +1179,7 @@
 				82EF9EA2171AAB420043079D /* video_menu_icon.png in Resources */,
 				82EF9EA3171AAB420043079D /* text_menu_icon.png in Resources */,
 				82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */,
+				82A02C11171FCEB700CA4B11 /* custom-dialog-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
