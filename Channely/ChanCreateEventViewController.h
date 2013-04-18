@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "AHAlertView.h"
+#import "BButton.h"
 
 @protocol ChanCreateEventViewControllerDelegate
 
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *startDateTextField;
 @property (weak, nonatomic) IBOutlet UIButton *endDateTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextViewField;
+@property (weak, nonatomic) IBOutlet BButton *createButton;
 
 - (IBAction)startDateEditingBegin:(id)sender;
 - (IBAction)endDateEditingBegin:(id)sender;
