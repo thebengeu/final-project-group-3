@@ -13,7 +13,6 @@
 + (NSString *) webRootDirectory;
 + (NSString *) videoTempDirectory;
 + (BOOL) createDirectory:(NSString *)directory;
-+ (void) removeDirectory:(NSString *)directory;
 + (void) clearDirectory:(NSString *)directory;
 + (NSString *) fileNameFromURLString:(NSString *)url;
 + (void) removeItemAtPath:(NSString *)path;

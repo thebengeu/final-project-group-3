@@ -11,11 +11,14 @@
 #import "HLSPlaylistDownloaderDelegate.h"
 #import "HLSStreamAdvertisingManager.h"
 #import "ChanUtility.h"
+#import "HLSPlaylistDownloadOperationDelegate.h"
 
 @interface HLSPlaylistDownloadOperation : NSOperation <HLSPlaylistDownloaderDelegate>
 @property (atomic, readonly) BOOL isExecuting;
 @property (atomic, readonly) BOOL isFinished;
+@property (strong) NSString *recordingId;
+@property (readonly, weak) id<HLSPlaylistDownloadOperationDelegate> delegate;
 
-- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir;
+- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del;
 
 @end

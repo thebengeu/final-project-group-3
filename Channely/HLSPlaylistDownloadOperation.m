@@ -16,7 +16,6 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
 
 @interface HLSPlaylistDownloadOperation ()
 // Internal.
-@property (strong) NSString *_recordingId;
 @property (strong) NSURL *_playlistURL;
 @property (strong) NSString *_downloadDirectory;
 @property (strong) HLSPlaylistDownloader *_worker;
@@ -26,12 +25,13 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
 // Redefinitions.
 @property (atomic, readwrite) BOOL isExecuting;
 @property (atomic, readwrite) BOOL isFinished;
+@property (readwrite, weak) id<HLSPlaylistDownloadOperationDelegate> delegate;
 
 @end
 
 @implementation HLSPlaylistDownloadOperation
 // Internal.
-@synthesize _recordingId;
+@synthesize recordingId;
 @synthesize _playlistURL;
 @synthesize _downloadDirectory;
 @synthesize _worker;
@@ -41,16 +41,18 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
 // Redefinitions.
 @synthesize isExecuting;
 @synthesize isFinished;
+@synthesize delegate;
 
 #pragma mark Constructors
-- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir {
+- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del {
     if (self = [super init]) {
         isExecuting = NO;
         isFinished = NO;
         
-        _recordingId = rId;
+        recordingId = rId;
         _playlistURL = playlistURL;
         _downloadDirectory = dir;
+        delegate = del;
         
         _worker = [[HLSPlaylistDownloader alloc] initWithPlaylist:_playlistURL delegate:self];
     }
@@ -80,6 +82,9 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     [self willChangeValueForKey:cKVOIsExecuting];
     isExecuting = YES;
     [self didChangeValueForKey:cKVOIsExecuting];
+    if (delegate) {
+        [delegate playlistDownloadOperationDidStart:self];
+    }
 }
 
 - (void) finish {
@@ -91,6 +96,10 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     
     [self didChangeValueForKey:cKVOIsExecuting];
     [self didChangeValueForKey:cKVOIsFinished];
+    
+    if (delegate) {
+        [delegate playlistDownloadOperationDidFinish:self];
+    }
 }
 
 #pragma mark Playlist Downloader Delegate
@@ -99,14 +108,14 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     
     // We guarantee that the relative path will never contain a comma ',' -
     // otherwise this will violate the precondition of HLSStreamDiscoveryManager.
-    NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    NSString *localPlaylistRelativePath = [recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
+    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:recordingId withChunkCount:_chunkCount];
     
     // DEBUG - create a Safari-viewable HTML page that can be used to display the local stream.
     if (_expectingFirstChunk) {
         NSLog(@"sync: first chunk downloaded");
         
-        NSString *pageContent = [NSString stringWithFormat:cHTMLDebugPageFormat, _recordingId];
+        NSString *pageContent = [NSString stringWithFormat:cHTMLDebugPageFormat, recordingId];
         NSString *pagePath = [_downloadDirectory stringByAppendingPathComponent:cHTMLDebugPageName];
         [pageContent writeToFile:pagePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
@@ -119,8 +128,8 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     
     // Set bit-flag in chunkCount to indicate that a stream is complete.
     _chunkCount = (_chunkCount | (1 << cCompleteStreamShift));
-    NSString *localPlaylistRelativePath = [_recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
-    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:_recordingId withChunkCount:_chunkCount];
+    NSString *localPlaylistRelativePath = [recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
+    [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:recordingId withChunkCount:_chunkCount];
     
     [self finish];
 }
@@ -135,12 +144,12 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
 - (void) playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream {
     // Stop advertising.
     HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager advertisingManager];
-    if ([am isAdvertisingRecordingId:_recordingId]) {
-        [am stopAdvertisingRecordingId:_recordingId];
+    if ([am isAdvertisingRecordingId:recordingId]) {
+        [am stopAdvertisingRecordingId:recordingId];
     }
     
     // Clear folder.
-    [ChanUtility removeDirectory:_downloadDirectory];
+    [ChanUtility removeItemAtPath:_downloadDirectory];
     
     [self finish];
 }

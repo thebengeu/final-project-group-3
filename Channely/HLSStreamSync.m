@@ -15,8 +15,12 @@ static NSUInteger const cCompleteStreamShift = 31;
 // Internal.
 @property (strong) NSString *_baseDirectory;
 @property (strong) NSOperationQueue *_opQueue;
+@property (strong) NSMutableArray *_runningOps;
+@property (strong) NSMutableArray *_waitingOps;
 
 - (id) initWithBaseDirectory:(NSString *)dir;
+- (BOOL) recordingIdInWaitQueue:(NSString *)rId;
+- (BOOL) recordingIdIsRunning:(NSString *)rId;
 
 @end
 
@@ -25,6 +29,8 @@ static HLSStreamSync *_internal;
 
 @synthesize _baseDirectory;
 @synthesize _opQueue;
+@synthesize _runningOps;
+@synthesize _waitingOps;
 
 #pragma mark Singleton
 - (id) init {
@@ -49,7 +55,8 @@ static HLSStreamSync *_internal;
     if (self = [super init]) {
         _baseDirectory = dir;
         _opQueue = [[NSOperationQueue alloc] init];
-        
+        _runningOps = [NSMutableArray array];
+        _waitingOps = [NSMutableArray array];
     }
     return self;
 }
@@ -61,17 +68,26 @@ static HLSStreamSync *_internal;
 
 - (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist {
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
-//    NSString *playlistPath = [streamDir stringByAppendingPathComponent:[playlist lastPathComponent]];
     
     if ([ChanUtility directoryExists:streamDir]) {
-        NSLog(@"files for local stream exists, not syncing.");
-        return;
+        if ([self completeLocalStreamExistsForStreamId:sId]) {
+            NSLog(@"complete stream exists. not redownloading."); // DEBUG.
+            return;
+        } else if ([self recordingIdInWaitQueue:sId] || [self recordingIdIsRunning:sId]) {
+            NSLog(@"stream is currently downloading or in download queue. not redownloading."); // DEBUG.
+            return;
+        } else {
+            NSLog(@"incomplete stream. pruning and redownloading."); // DEBUG.
+            [ChanUtility removeItemAtPath:streamDir];
+        }
     }
     
+    // Non-destructive.
     [ChanUtility createDirectory:streamDir];
     
-    HLSPlaylistDownloadOperation *operation = [[HLSPlaylistDownloadOperation alloc] initWithStreamId:sId forPlaylist:playlist toDirectory:streamDir];
+    HLSPlaylistDownloadOperation *operation = [[HLSPlaylistDownloadOperation alloc] initWithStreamId:sId forPlaylist:playlist toDirectory:streamDir delegate:self];
     [_opQueue addOperation:operation];
+    [_waitingOps addObject:operation];
 }
 
 - (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId {
@@ -120,6 +136,35 @@ static HLSStreamSync *_internal;
             [fm removeItemAtPath:fullItemPath error:nil];
         }
     }
+}
+
+#pragma mark Logic
+- (BOOL) recordingIdInWaitQueue:(NSString *)rId {
+    for (HLSPlaylistDownloadOperation *op in _waitingOps) {
+        if ([op.recordingId isEqualToString:rId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL) recordingIdIsRunning:(NSString *)rId {
+    for (HLSPlaylistDownloadOperation *op in _runningOps) {
+        if ([op.recordingId isEqualToString:rId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+#pragma mark HLS Playlist Download Operation Delegate
+- (void) playlistDownloadOperationDidFinish:(HLSPlaylistDownloadOperation *)operation {
+    [_runningOps removeObject:operation];
+}
+
+- (void) playlistDownloadOperationDidStart:(HLSPlaylistDownloadOperation *)operation {
+    [_waitingOps removeObject:operation];
+    [_runningOps addObject:operation];
 }
 
 @end
