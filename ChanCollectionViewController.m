@@ -10,6 +10,7 @@
 #import "ChanCollectionView.h"
 #import "ChanRefreshControl.h"
 #import "Constants.h"
+#import "SVProgressHUD.h"
 
 static CGFloat const kCellWidth = 240;
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
@@ -181,7 +182,15 @@ static CGFloat const kPostMenuPortraitY = 900.0;
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    NSUInteger numberOfObjects = [sectionInfo numberOfObjects];
+
+    if (numberOfObjects == 0) {
+        [SVProgressHUD show];
+    } else {
+        [SVProgressHUD dismiss];
+    }
+    
+    return numberOfObjects;
 }
 
 // UICollectionViewDataSource protocol methods

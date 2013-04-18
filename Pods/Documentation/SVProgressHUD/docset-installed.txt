@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/beng/Library/Developer/Shared/Documentation/DocSets/org.cocoapods.svprogresshud.SVProgressHUD-HEAD-based-on-0.9.docset
+Time: 2013-04-18 07:47:40 +0000
