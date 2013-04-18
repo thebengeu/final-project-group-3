@@ -35,6 +35,7 @@
 		0AA7A6DB171B085F00F7BEE4 /* ChanTextPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6DA171B085F00F7BEE4 /* ChanTextPostViewController.m */; };
 		0AA7A6DE171B087900F7BEE4 /* ChanPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6DD171B087900F7BEE4 /* ChanPostViewController.m */; };
 		0AA7A6E2171B0D6C00F7BEE4 /* ChanImagePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7A6E1171B0D6C00F7BEE4 /* ChanImagePostViewController.m */; };
+		0AA86AC0171FAFA5004889BE /* ChanVideoInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA86ABF171FAFA5004889BE /* ChanVideoInfoViewController.m */; };
 		0AA8E1461715D5DF0010F99A /* ChanChannelOwnedTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1451715D5DF0010F99A /* ChanChannelOwnedTableController.m */; };
 		0AA8E1491715D73E0010F99A /* ChanChannelOwnedTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA8E1481715D73E0010F99A /* ChanChannelOwnedTableCell.m */; };
 		0AF535111705D2F500E437F9 /* ChannelUITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF5350E1705D2F500E437F9 /* ChannelUITableViewCell.m */; };
@@ -229,6 +230,8 @@
 		0AA7A6DD171B087900F7BEE4 /* ChanPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanPostViewController.m; path = Channely/ChanPostViewController.m; sourceTree = "<group>"; };
 		0AA7A6E0171B0D6B00F7BEE4 /* ChanImagePostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanImagePostViewController.h; path = Channely/ChanImagePostViewController.h; sourceTree = "<group>"; };
 		0AA7A6E1171B0D6C00F7BEE4 /* ChanImagePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanImagePostViewController.m; path = Channely/ChanImagePostViewController.m; sourceTree = "<group>"; };
+		0AA86ABE171FAFA5004889BE /* ChanVideoInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanVideoInfoViewController.h; path = Channely/ChanVideoInfoViewController.h; sourceTree = "<group>"; };
+		0AA86ABF171FAFA5004889BE /* ChanVideoInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanVideoInfoViewController.m; path = Channely/ChanVideoInfoViewController.m; sourceTree = "<group>"; };
 		0AA8E1441715D5DF0010F99A /* ChanChannelOwnedTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanChannelOwnedTableController.h; path = Channely/ChanChannelOwnedTableController.h; sourceTree = "<group>"; };
 		0AA8E1451715D5DF0010F99A /* ChanChannelOwnedTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanChannelOwnedTableController.m; path = Channely/ChanChannelOwnedTableController.m; sourceTree = "<group>"; };
 		0AA8E1471715D73E0010F99A /* ChanChannelOwnedTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanChannelOwnedTableCell.h; sourceTree = "<group>"; };
@@ -502,10 +505,10 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				0AA7A6D8171B084E00F7BEE4 /* Post */,
 				82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */,
 				0AF5351F1705D39100E437F9 /* ChannelViewController.h */,
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
+				0AA7A6D8171B084E00F7BEE4 /* Post */,
 				0AA8E1431715D5B60010F99A /* ChannelOwned */,
 				0A91BA0F171169C10095FA01 /* CreateEvent */,
 				821463CD17172EA400699085 /* Collection View */,
@@ -744,6 +747,8 @@
 		4ACD251A1715B509001542E8 /* P2P Video Player */ = {
 			isa = PBXGroup;
 			children = (
+				0AA86ABE171FAFA5004889BE /* ChanVideoInfoViewController.h */,
+				0AA86ABF171FAFA5004889BE /* ChanVideoInfoViewController.m */,
 				4ACD251B1715B572001542E8 /* ChanVideoPlayerViewController.h */,
 				4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */,
 			);
@@ -1328,6 +1333,7 @@
 				82394495171DA1C100C9A6D8 /* NSString+FontAwesome.m in Sources */,
 				82394497171DA1C100C9A6D8 /* UIColor+BButton.m in Sources */,
 				4A355892171EE3C900AFE2B2 /* HLSLoadBalancer.m in Sources */,
+				0AA86AC0171FAFA5004889BE /* ChanVideoInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,13 +14,14 @@
 #import "HLSStreamSync.h"
 #import "ChanAnnotationViewController.h"
 #import "HLSLoadBalancer.h"
+#import "ChannelViewControllerDelegate.h"
 
-@interface ChanVideoPlayerViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *urlLabel;
+
+@interface ChanVideoPlayerViewController : UIViewController <UIPopoverControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (void) setServerURL:(NSString *)url forChannel:(ChanChannel *)channel;
 
-- (IBAction)backButton_Action:(id)sender;
+@property id<ChannelViewControllerDelegate> delegate;
 
 @end

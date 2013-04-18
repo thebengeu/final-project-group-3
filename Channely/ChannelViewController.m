@@ -95,7 +95,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
         _collectionViewController.delegate = self;
     } else if ([segueName isEqualToString:cTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
-        
+        destination.delegate = self;
         destination.parentChannel = [self underlyingChannel];
     }
       
@@ -138,11 +138,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     UIImage *image = info[UIImagePickerControllerEditedImage];
     if (!image)
         image = info[UIImagePickerControllerOriginalImage];
-
-    [picker dismissViewControllerAnimated:YES completion:^{
-        if (image)
-            [self launchImagePostSegue:image];
-    }];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    picker = nil;
+    
+    if (image)
+        [self launchImagePostSegue:image];
 }
 
 

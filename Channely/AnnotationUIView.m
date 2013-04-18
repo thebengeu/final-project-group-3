@@ -161,7 +161,6 @@
     CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), [_markerColor CGColor]);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-
 }
 
 -(void)drawCanvasLineSegmentFromPoint:(CGPoint)previousPoint toPoint:(CGPoint)point withSize:(float)size{
