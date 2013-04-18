@@ -61,6 +61,7 @@
     [self setContentMode:UIViewContentModeScaleAspectFit];
 }
 
+
 -(void)setOriginalImage:(UIImage *)originalImage{
     _originalImage = originalImage;
     self.image = originalImage;
@@ -165,11 +166,12 @@
 
 -(void)drawCanvasLineSegmentFromPoint:(CGPoint)previousPoint toPoint:(CGPoint)point withSize:(float)size{
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), size);
-    CGFloat offsetX = (self.frame.size.width - self.image.size.width)/2.0;
-    CGFloat offsetY = (self.frame.size.height - self.image.size.height)/2.0;
-
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), previousPoint.x-offsetX, previousPoint.y-offsetY);
-    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x-offsetX, point.y-offsetY);
+    CGFloat ratio = MIN(self.frame.size.width/self.image.size.width, self.frame.size.height/self.image.size.height);
+    CGFloat offsetX = MAX((self.frame.size.width/ratio - self.image.size.width)/2.0,0);
+    CGFloat offsetY = MAX((self.frame.size.height/ratio - self.image.size.height)/2.0,0);
+   
+    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), previousPoint.x/ratio - offsetX, previousPoint.y/ratio - offsetY);
+    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x/ratio - offsetX, point.y/ratio - offsetY);
 }
 
 -(void)doneDrawContext{

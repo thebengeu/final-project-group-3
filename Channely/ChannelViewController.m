@@ -180,10 +180,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [controller setImage:image];
     controller.delegate = self;
     
-    [self presentViewController:controller animated:NO completion:nil];
+    [[self navigationController]pushViewController:controller animated:YES];
+    //[self presentViewController:controller animated:NO completion:nil];
 }
 
 - (void) didFinishAnnotation:(UIImage*)image{
+    [[self navigationController]popViewControllerAnimated:YES];
     [self launchImagePostSegue:image];
 }
 
