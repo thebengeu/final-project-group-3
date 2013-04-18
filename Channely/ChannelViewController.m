@@ -140,12 +140,18 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     if (!image)
         image = info[UIImagePickerControllerOriginalImage];
     
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    [_imagePickerPopover dismissPopoverAnimated:YES];
-    _imagePickerPopover = nil;
+    [picker dismissViewControllerAnimated:YES completion:^{
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+            [self launchImagePostSegue:image];
+    }];
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum){
+        [_imagePickerPopover dismissPopoverAnimated:YES];
+        _imagePickerPopover = nil;
 
-    if (image)
-        [self launchImagePostSegue:image];
+        if (image)
+            [self launchImagePostSegue:image];
+    }
 }
 
 
@@ -183,11 +189,22 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [controller setImage:image];
     controller.delegate = self;
     
-    [[self navigationController]pushViewController:controller animated:YES];
-    //[self presentViewController:controller animated:NO completion:nil];
+    [UIView animateWithDuration:0.75
+                     animations:^{
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                         [[self navigationController]pushViewController:controller animated:NO];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                     }];
+    
 }
 
 - (void) didFinishAnnotation:(UIImage*)image{
+    [UIView animateWithDuration:0.75
+                     animations:^{
+                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
+                     }];
+    
     [[self navigationController]popViewControllerAnimated:YES];
     [self launchImagePostSegue:image];
 }

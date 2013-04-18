@@ -23,4 +23,5 @@
 @property (weak, nonatomic) IBOutlet BButton *postButton;
 
 - (IBAction)submit:(id)sender;
+
 @end

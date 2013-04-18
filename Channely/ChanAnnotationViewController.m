@@ -37,6 +37,7 @@
     [rightBarItems addObject:doneButton];
     
     self.navigationItem.rightBarButtonItems = rightBarItems;
+    self.navigationItem.title = @"Annotate";
 }
 
 - (void) setImage:(UIImage *)image

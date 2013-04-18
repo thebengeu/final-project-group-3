@@ -48,6 +48,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidShowNotification
@@ -95,10 +96,8 @@
 }
 
 - (void)hideKeyboard {
-    if (_keyboardShown > 0){
+    if (_keyboardShown > 0)
         [[self view] endEditing:YES];
-        return;
-    }
 }
 
 

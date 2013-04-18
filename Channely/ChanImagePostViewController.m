@@ -7,6 +7,7 @@
 //
 
 #import "ChanImagePostViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ChanImagePostViewController ()
 
@@ -30,6 +31,13 @@
     
     _username.text = name;
     _imageView.image = _image;
+    [_imageView layer].borderColor = [UIColor whiteColor].CGColor;
+    [_imageView layer].borderWidth = 2.0f;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [_text becomeFirstResponder];
 }
 
 - (IBAction)submit:(id)sender {

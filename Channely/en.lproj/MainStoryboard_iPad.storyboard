@@ -1690,8 +1690,8 @@
         <!--Chan Image Post View Controller-->
         <scene sceneID="Y2F-AS-8x2">
             <objects>
-                <viewController storyboardIdentifier="ChanImagePostViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRg-nD-2Qk" customClass="ChanImagePostViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" id="Upw-Mr-6fK">
+                <viewController storyboardIdentifier="ChanImagePostViewController" autoresizesArchivedViewToFullSize="NO" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRg-nD-2Qk" customClass="ChanImagePostViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" id="Upw-Mr-6fK">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1724,7 +1724,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="submit:" destination="sRg-nD-2Qk" eventType="touchUpInside" id="p8O-L8-q8h"/>
+                                    <action selector="submit:" destination="sRg-nD-2Qk" eventType="touchUpInside" id="8bj-cw-H4a"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-C1-sab"/>
@@ -1759,13 +1759,13 @@
                         <outlet property="imageView" destination="KwS-1g-FUD" id="cdL-Ic-xys"/>
                         <outlet property="postButton" destination="MU5-D2-sUD" id="gIe-dl-wZl"/>
                         <outlet property="status" destination="LkD-C1-sab" id="Z7T-34-XK3"/>
-                        <outlet property="text" destination="3Bp-o8-sE1" id="no8-ID-JFw"/>
+                        <outlet property="text" destination="3Bp-o8-sE1" id="ZYD-G4-dh8"/>
                         <outlet property="username" destination="yfF-9S-mxR" id="dcA-Mk-P9R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNk-SU-NhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1968" y="1171"/>
+            <point key="canvasLocation" x="2027" y="1080"/>
         </scene>
     </scenes>
     <resources>
