@@ -10,6 +10,7 @@
 
 static NSString *const cPlaylistFilenameFormat = @"%@.m3u8";
 static NSUInteger const cCompleteStreamShift = 31;
+static NSTimeInterval const cMaxStreamAge = 1209600; // Seconds. 14 days.
 
 @interface HLSStreamSync ()
 // Internal.
@@ -101,6 +102,7 @@ static HLSStreamSync *_internal;
     
     NSFileManager *fm = [NSFileManager defaultManager];
     
+    // Iterate through all items in the web root.
     NSArray *items = [fm contentsOfDirectoryAtPath:_baseDirectory error:nil];
     for (NSString *itemPath in items) {
         NSString *fullItemPath = [_baseDirectory stringByAppendingPathComponent:itemPath];
@@ -110,6 +112,8 @@ static HLSStreamSync *_internal;
         BOOL isDir = NO;
         [fm fileExistsAtPath:fullItemPath isDirectory:&isDir];
         
+        // Only directories with names corresponding to an sId.
+        // Remove an item if it is not a directory.
         if (!isDir) {
             NSLog(@"not a directory:%@. removing.", fullItemPath); // DEBUG.
             
@@ -126,8 +130,19 @@ static HLSStreamSync *_internal;
             NSUInteger chunkCount = [HLSEventPlaylistHelper playlistChunkCount:playlistRelativePath];
             NSUInteger countField = (1 << cCompleteStreamShift) | chunkCount;
             
+            // If the stream is complete, remove it if it is too old.
+            NSDictionary *attrs = [fm attributesOfItemAtPath:fullItemPath error:nil];
+            NSDate *modDate = [attrs objectForKey:NSFileModificationDate];
+            NSTimeInterval dateDiff = [modDate timeIntervalSinceNow];
+            if (dateDiff > cMaxStreamAge) {
+                NSLog(@"stream is too old. age:%lf. removing.", dateDiff);
+                [fm removeItemAtPath:fullItemPath error:nil];
+            }
+            
+            // Otherwise, advertise it.
             [am updateAdvertisementForPlaylist:playlistRelativePath asRecordingId:sId withChunkCount:countField];
         } else {
+            // If a stream is incomplete, remove it anyway.
             NSLog(@"removing incomplete stream."); // DEBUG.
             
             if ([am isAdvertisingRecordingId:sId]) {
