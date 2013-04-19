@@ -8,6 +8,7 @@
 
 #import "ChanImagePostViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImage+normalizedOrientation.h"
 
 @interface ChanImagePostViewController ()
 
@@ -44,7 +45,7 @@
     ChanImagePostViewController *me = self;
     [[me status]startAnimating];
     [self hideKeyboard];
-    [_channel addImagePostWithContent:[_text text] username:[_username text] image:_image withCompletion:^(ChanImagePost *imagePost, NSError *error) {
+    [_channel addImagePostWithContent:[_text text] username:[_username text] image:[_image normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
         [[me status]stopAnimating];
         [me dismissViewControllerAnimated:YES completion:^{
             [[me delegate]didPost:[me channel]];
