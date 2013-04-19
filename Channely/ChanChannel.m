@@ -143,7 +143,7 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
 
 - (void)getTweetsWithCompletion:(void (^)(NSArray *tweets, NSError *error))block
 {
-    if (self.hashTag) {
+    if (self.hashTag.length > 1) {
         [ChanTwitterPost getTweetsWithHashTag:[NSString stringWithFormat:@"#%@", self.hashTag] WithCompletion:^(NSArray *tweets, NSError *error) {
             for (ChanTwitterPost* twitterPost in tweets) {
                 twitterPost.type = @"twitter";
