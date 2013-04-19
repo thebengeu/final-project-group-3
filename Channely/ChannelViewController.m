@@ -7,19 +7,10 @@
 //
 
 #import "ChannelViewController.h"
-#import "ChanChannel.h"
-#import "ChanUser.h"
-#import "ChanPost.h"
-#import "ChanImagePost.h"
-#import <MobileCoreServices/MobileCoreServices.h>
 #import "ChanCreateEventViewController.h"
-#import "ChanEvent.h"
-#import "UIImage+normalizedOrientation.h"
-#import "ChanAnonUser.h"
 #import "ChanTextPostViewController.h"
 #import "ChanImagePostViewController.h"
 #import "ChanVideoCaptureViewController.h"
-#import "ChanAnnotationViewController.h"
 
 static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
