@@ -20,4 +20,8 @@
     return self;
 }
 
+- (NSString*) title{
+    return _eventName;
+}
+
 @end
