@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "DiscoverViewController.h"
-#import "ChanSearchBarViewController.h"
 #import "ChanChannel.h"
 
 @interface ChanDetailViewController : UIViewController <UITabBarDelegate, UIPopoverControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *searchButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 - (void)startChannel:(ChanChannel*)channel;

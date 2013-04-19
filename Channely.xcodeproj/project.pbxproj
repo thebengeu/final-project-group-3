@@ -92,7 +92,6 @@
 		8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA41719946D00BFB6A9 /* imagebar.png */; };
 		82A02C11171FCEB700CA4B11 /* custom-dialog-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */; };
 		82A02C14171FE66800CA4B11 /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A02C13171FE66800CA4B11 /* SSTextView.m */; };
-		82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
 		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
 		82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E7C171A9D290043079D /* AwesomeMenu.m */; };
@@ -330,8 +329,6 @@
 		82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom-dialog-background.png"; sourceTree = "<group>"; };
 		82A02C12171FE66800CA4B11 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
 		82A02C13171FE66800CA4B11 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
-		82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanSearchBarViewController.h; sourceTree = "<group>"; };
-		82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanSearchBarViewController.m; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
 		82EF9E78171A90AC0043079D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		82EF9E7B171A9D290043079D /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
@@ -526,8 +523,6 @@
 		0A7423BC1705490B00644070 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				82E58E64171329A500E52F11 /* ChanSearchBarViewController.h */,
-				82E58E65171329A500E52F11 /* ChanSearchBarViewController.m */,
 				0A935F1A1718503B0000D97F /* ChanSearchTableViewController.h */,
 				0A935F1B1718503B0000D97F /* ChanSearchTableViewController.m */,
 				0A991D0D1719119C00275B3B /* ChanSearchResultChannelCell.h */,
@@ -1298,7 +1293,6 @@
 				0A91BA1217116A0C0095FA01 /* SelectionAnnotation.m in Sources */,
 				0A91BA1517116A580095FA01 /* ChanCreateEventViewController.m in Sources */,
 				4A4F06E41711D8C70007A7DF /* ChanVideoCaptureViewController.m in Sources */,
-				82E58E66171329A600E52F11 /* ChanSearchBarViewController.m in Sources */,
 				0AA2CB3D1713F6A100D8C28F /* HLSPeerDiscovery.m in Sources */,
 				0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */,
 				4ACD2516171570D9001542E8 /* HLSStreamAdvertisement.m in Sources */,
