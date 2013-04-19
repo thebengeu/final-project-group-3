@@ -98,7 +98,7 @@
 
 
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {NSLog(@"asd");
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *selectionIdentifier = @"Selection";
     MKPinAnnotationView *annotationView;
     
@@ -237,7 +237,9 @@
     region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
     region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
     region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2; // Add a little extra space on the sides
+    region.span.latitudeDelta = MAX(region.span.latitudeDelta, 0.005);
     region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2; // Add a little extra space on the sides
+    region.span.latitudeDelta = MAX(region.span.longitudeDelta, 0.005);
     
     region = [mapView regionThatFits:region];
     [mapView setRegion:region animated:YES];
