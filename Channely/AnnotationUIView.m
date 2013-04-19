@@ -17,6 +17,8 @@
 @property NSMutableArray *strokeSizes;
 @property NSMutableArray *strokeColors;
 
+@property CGFloat scale;
+
 @end
 
 
@@ -93,6 +95,8 @@
         [self addPointAndDraw:point];
         [self addPointAndDraw:point];
         [self addPointAndDraw:point];
+        
+        _scale = [self contentScaleFactor];
     }
     
     if (gesture.state == UIGestureRecognizerStateChanged) {
@@ -164,7 +168,7 @@
 }
 
 -(void)drawCanvasLineSegmentFromPoint:(CGPoint)previousPoint toPoint:(CGPoint)point withSize:(float)size{
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), size);
+    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), size/_scale);
     CGFloat ratio = MIN(self.frame.size.width/self.image.size.width, self.frame.size.height/self.image.size.height);
     CGFloat offsetX = MAX((self.frame.size.width/ratio - self.image.size.width)/2.0,0);
     CGFloat offsetY = MAX((self.frame.size.height/ratio - self.image.size.height)/2.0,0);
@@ -177,6 +181,25 @@
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     self.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+}
+
+
+-(CGFloat)contentScaleFactor
+{
+    CGFloat widthScale = self.bounds.size.width / self.image.size.width;
+    CGFloat heightScale = self.bounds.size.height / self.image.size.height;
+    
+    if (self.contentMode == UIViewContentModeScaleToFill) {
+        return (widthScale==heightScale) ? widthScale : NAN;
+    }
+    if (self.contentMode == UIViewContentModeScaleAspectFit) {
+        return MIN(widthScale, heightScale);
+    }
+    if (self.contentMode == UIViewContentModeScaleAspectFill) {
+        return MAX(widthScale, heightScale);
+    }
+    return 1.0;
+    
 }
 
 @end
