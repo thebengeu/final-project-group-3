@@ -32,6 +32,8 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     _searchBar.delegate = self;
     
     [self navigationItem].leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
+    
+    // Constraint needed to fix size..
 }
 
 

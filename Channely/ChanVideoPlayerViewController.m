@@ -154,7 +154,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
     ChanVideoInfoViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ChanVideoInfoViewController"];
     controller.recordingIdText = _recordingId;
     controller.hostText = _selectedURL.host;
-    controller.resolutionText = [NSString stringWithFormat:@"%fx%f", [_player naturalSize].width, [_player naturalSize].height];
+    controller.resolutionText = [NSString stringWithFormat:@"%.0fx%.0f", [_player naturalSize].width, [_player naturalSize].height];
     
     _infoPopover = [[UIPopoverController alloc]initWithContentViewController:controller];
     _infoPopover.delegate = self;
