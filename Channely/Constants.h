@@ -17,7 +17,7 @@ typedef enum {
 static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const cSlideSegue = @"slidesSegue";
 
-// Collection VView
+// Collection View
 static CGFloat const kCellWidth = 240.0f;
 
 // Post Menu
