@@ -979,26 +979,21 @@
                                     <outlet property="labelView" destination="qP7-3Q-YFv" id="Vfv-LO-hFJ"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlidesCell" id="oii-1E-pIV" customClass="ChanSlidesCell">
-                                <rect key="frame" x="0.0" y="270" width="273" height="254"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlidesCell" id="UqZ-tO-xlB" customClass="ChanSlidesCell">
+                                <rect key="frame" x="0.0" y="270" width="240" height="260"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="273" height="254"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="260"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJ2-92-XOx">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="200" id="EXR-Cp-bgV"/>
-                                                <constraint firstAttribute="width" constant="240" id="JDP-E3-WKk"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTo-8m-CBj">
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7D-b6-ar7"/>
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qk1-e7-tfZ">
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="klQ-Vo-fAX"/>
-                                                <constraint firstAttribute="width" constant="225" id="xst-ey-1hc"/>
+                                                <constraint firstAttribute="width" constant="225" id="SKC-hn-Rbu"/>
+                                                <constraint firstAttribute="height" constant="21" id="VkI-6c-RSx"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1006,20 +1001,22 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="MJ2-92-XOx" firstAttribute="top" secondItem="oii-1E-pIV" secondAttribute="top" constant="10" id="Ooz-y0-YGd"/>
-                                    <constraint firstItem="MJ2-92-XOx" firstAttribute="centerX" secondItem="oii-1E-pIV" secondAttribute="centerX" type="default" id="QT2-CA-epR"/>
-                                    <constraint firstItem="MTo-8m-CBj" firstAttribute="bottom" secondItem="oii-1E-pIV" secondAttribute="bottom" type="default" id="gJf-fi-5H9"/>
-                                    <constraint firstItem="MTo-8m-CBj" firstAttribute="centerX" secondItem="MJ2-92-XOx" secondAttribute="centerX" type="default" id="hWJ-nq-Tum"/>
+                                    <constraint firstItem="y7D-b6-ar7" firstAttribute="top" secondItem="UqZ-tO-xlB" secondAttribute="top" constant="17" type="user" id="Yif-Vu-gvU"/>
+                                    <constraint firstItem="Qk1-e7-tfZ" firstAttribute="centerX" secondItem="y7D-b6-ar7" secondAttribute="centerX" type="default" id="afn-m6-VEj"/>
+                                    <constraint firstItem="y7D-b6-ar7" firstAttribute="leading" secondItem="UqZ-tO-xlB" secondAttribute="leading" type="default" id="fS2-h5-eei"/>
+                                    <constraint firstAttribute="bottom" secondItem="y7D-b6-ar7" secondAttribute="bottom" constant="23" type="user" id="iOr-8L-Gfz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qk1-e7-tfZ" secondAttribute="bottom" type="user" id="vJD-WS-3Fm"/>
+                                    <constraint firstItem="y7D-b6-ar7" firstAttribute="trailing" secondItem="UqZ-tO-xlB" secondAttribute="trailing" type="default" id="z4r-za-cH8"/>
                                 </constraints>
-                                <size key="customSize" width="273" height="254"/>
+                                <size key="customSize" width="240" height="260"/>
                                 <connections>
-                                    <outlet property="imageView" destination="MJ2-92-XOx" id="sAk-1U-azW"/>
-                                    <outlet property="labelView" destination="MTo-8m-CBj" id="tv7-kI-1xX"/>
-                                    <segue destination="Rps-cU-SQ5" kind="push" identifier="slidesSegue" id="fPp-BV-ZgT"/>
+                                    <outlet property="imageView" destination="y7D-b6-ar7" id="Ux7-GS-tll"/>
+                                    <outlet property="labelView" destination="Qk1-e7-tfZ" id="QSK-Ak-9rg"/>
+                                    <segue destination="Rps-cU-SQ5" kind="push" identifier="slidesSegue" id="8fz-f1-5Jh"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="JmJ-JF-038" customClass="ChanVideoCell">
-                                <rect key="frame" x="283" y="270" width="260" height="254"/>
+                                <rect key="frame" x="250" y="273" width="260" height="254"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="254"/>
