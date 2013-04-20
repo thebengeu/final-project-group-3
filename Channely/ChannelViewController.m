@@ -231,9 +231,9 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 }
 
 -(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
-    //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
+    ChannelViewController *me = self;
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:^(ChanEvent *event, NSError *error) {
-        [_createEventPopover dismissPopoverAnimated:YES];
+        [[me createEventPopover] dismissPopoverAnimated:YES];
         [SVProgressHUD setAnimationDuration:1.5];
         [SVProgressHUD showSuccessWithStatus:@"Event created"];
     }];
