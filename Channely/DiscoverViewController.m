@@ -17,15 +17,17 @@
 #import "ChanRefreshControl.h"
 
 @interface DiscoverViewController ()
+- (void) layoutFromCurrentOrientation;
+- (void) layoutPortrait;
+- (void) layoutLandscape;
 
 @end
 
-@implementation DiscoverViewController{
+@implementation DiscoverViewController {
     Boolean firstUpdate;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
@@ -46,7 +48,7 @@
     self.channelTableViewController.refreshControl = refreshControl;
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
         ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
@@ -59,11 +61,11 @@
     
 }
 
--(void) populateTableWithChannel{
+-(void) populateTableWithChannel {
     [_channelTableViewController setChannelList:_channelList];
 }
 
--(void) populateMapWithChannelAnnotation{
+-(void) populateMapWithChannelAnnotation {
     [_mapView removeAnnotations:[_mapView annotations]];
     
     //  Channel nearby
@@ -115,7 +117,7 @@
     }];
 }
 
--(void)zoomToFitMapAnnotations:(MKMapView*)mapView{
+-(void)zoomToFitMapAnnotations:(MKMapView*)mapView {
     if([mapView.annotations count] == 0)
         return;
     
@@ -203,8 +205,7 @@
 }
 
 
--(void)selectMapAnnotationForChannel: (id)cell
-{
+-(void)selectMapAnnotationForChannel:(id)cell {
     ChannelUITableViewCell *currCell = (ChannelUITableViewCell*) cell;
     NSString *selectedEventID = currCell.event.id;
     
@@ -220,5 +221,36 @@
     }
 }
 
+#pragma mark Rotation Methods
+- (void) layoutFromCurrentOrientation {
+    UIDeviceOrientation currentOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(currentOrientation)) {
+        [self layoutLandscape];
+    } else if (UIDeviceOrientationIsPortrait(currentOrientation)) {
+        [self layoutPortrait];
+    } else {
+        NSLog(@"discover view controller: encountered a weird orientation.");
+    }
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [self layoutFromCurrentOrientation];
+}
+
+- (void) layoutPortrait {
+    CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
+    self.mapView.frame = mapFrame;
+    
+    CGRect listFrame = CGRectMake(0., 426., 768., 534.);
+    self.channelListContainer.frame = listFrame;
+}
+
+- (void) layoutLandscape {
+    CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
+    self.mapView.frame = mapFrame;
+    
+    CGRect listFrame = CGRectMake(424., 0., 600., 768.);
+    self.channelListContainer.frame = listFrame;
+}
 
 @end
