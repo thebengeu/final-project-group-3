@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChanChannel.h"
 #import "AnnotationUIView.h"
+#import "BButton.h"
 
 @protocol ChanAnnotationViewControllerDelegate
 
@@ -21,6 +22,14 @@
 @property (strong, nonatomic) IBOutlet AnnotationUIView *annotationView;
 
 @property UIImage *image;
+
+@property (weak, nonatomic) IBOutlet BButton *clearButton;
+@property (weak, nonatomic) IBOutlet BButton *redoButton;
+@property (weak, nonatomic) IBOutlet BButton *undoButton;
+@property (weak, nonatomic) IBOutlet BButton *greenButton;
+@property (weak, nonatomic) IBOutlet BButton *blueButton;
+@property (weak, nonatomic) IBOutlet BButton *redButton;
+
 
 @property id<ChanAnnotationViewControllerDelegate> delegate;
 

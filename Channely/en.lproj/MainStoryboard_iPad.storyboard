@@ -1190,13 +1190,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsE-Ap-2QD" customClass="AnnotationUIView">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwA-xW-tQe">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwA-xW-tQe" customClass="BButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Kd2-Mz-fCO"/>
+                                            <constraint firstAttribute="width" constant="54" id="hCQ-QD-ZiP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Clear">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -1206,14 +1206,15 @@
                                             <action selector="clear:" destination="Bm4-it-aNF" eventType="touchUpInside" id="LdW-D6-PCv"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wv-R5-nO5">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wv-R5-nO5" customClass="BButton">
                                         <color key="backgroundColor" red="1" green="0.047118742970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="cPx-PE-2h3"/>
+                                            <constraint firstAttribute="height" constant="44" id="Ngm-H7-vAl"/>
+                                            <constraint firstAttribute="width" constant="44" id="thI-mn-uMH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Red">
-                                            <color key="titleColor" red="1" green="0.047118742970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -1223,14 +1224,13 @@
                                             <action selector="redColor:" destination="Bm4-it-aNF" eventType="touchUpInside" id="tTe-nh-nBs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQg-LD-uyI">
-                                        <color key="backgroundColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQg-LD-uyI" customClass="BButton">
+                                        <color key="backgroundColor" red="0.40000000596046448" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Uvn-bs-tAA"/>
+                                            <constraint firstAttribute="width" constant="44" id="gLj-00-pAU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Green">
-                                            <color key="titleColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -1240,15 +1240,14 @@
                                             <action selector="greenColor:" destination="Bm4-it-aNF" eventType="touchUpInside" id="8pX-b7-6CO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-Gd-bJb">
-                                        <color key="backgroundColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-Gd-bJb" customClass="BButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="43" id="opx-gN-be9"/>
+                                            <constraint firstAttribute="width" constant="54" id="GHb-Ks-3Ta"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Undo">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1257,10 +1256,9 @@
                                             <action selector="undo:" destination="Bm4-it-aNF" eventType="touchUpInside" id="C8a-R5-wjn"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5g1-Bx-xI7">
-                                        <color key="backgroundColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5g1-Bx-xI7" customClass="BButton">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="43" id="EJV-zi-rGU"/>
+                                            <constraint firstAttribute="width" constant="54" id="7p4-fo-3DP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Redo">
@@ -1274,11 +1272,14 @@
                                             <action selector="redo:" destination="Bm4-it-aNF" eventType="touchUpInside" id="9HB-yN-JbE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgs-o4-hKC">
-                                        <color key="backgroundColor" red="0.0" green="0.13331220739999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgs-o4-hKC" customClass="BButton">
+                                        <color key="backgroundColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="cSM-Ue-aZb"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Blue">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -1290,19 +1291,23 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="7wv-R5-nO5" firstAttribute="leading" secondItem="zwA-xW-tQe" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2a9-hu-Sbu"/>
-                                    <constraint firstAttribute="bottom" secondItem="7wv-R5-nO5" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="3af-vi-BZK"/>
-                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="Jgs-o4-hKC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="3cY-vf-ac6"/>
-                                    <constraint firstAttribute="bottom" secondItem="Jgs-o4-hKC" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="8cO-QZ-6xX"/>
-                                    <constraint firstItem="zwA-xW-tQe" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MoI-6h-0pm"/>
-                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="164" id="OAA-AG-dMg"/>
-                                    <constraint firstItem="Jgs-o4-hKC" firstAttribute="leading" secondItem="7wv-R5-nO5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RGA-it-bTT"/>
-                                    <constraint firstAttribute="bottom" secondItem="5g1-Bx-xI7" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="WPe-fW-ZPS"/>
-                                    <constraint firstItem="5g1-Bx-xI7" firstAttribute="leading" secondItem="LHl-Gd-bJb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ym4-gI-NSa"/>
-                                    <constraint firstAttribute="bottom" secondItem="zwA-xW-tQe" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="ZIj-yG-lfe"/>
-                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="leading" secondItem="rQg-LD-uyI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hfI-2Y-qvv"/>
-                                    <constraint firstAttribute="bottom" secondItem="rQg-LD-uyI" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="iZf-qW-TVf"/>
-                                    <constraint firstAttribute="bottom" secondItem="LHl-Gd-bJb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="xDk-ET-pNC"/>
+                                    <constraint firstItem="zwA-xW-tQe" firstAttribute="bottom" secondItem="5g1-Bx-xI7" secondAttribute="bottom" type="default" id="1uE-U4-xro"/>
+                                    <constraint firstAttribute="trailing" secondItem="zwA-xW-tQe" secondAttribute="trailing" constant="6" id="3Ip-Lb-E6a"/>
+                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="top" secondItem="5g1-Bx-xI7" secondAttribute="top" type="default" id="80B-DV-d3p"/>
+                                    <constraint firstAttribute="trailing" secondItem="5g1-Bx-xI7" secondAttribute="trailing" constant="82" id="KNs-RP-tlX"/>
+                                    <constraint firstItem="5g1-Bx-xI7" firstAttribute="leading" secondItem="LHl-Gd-bJb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="LUF-Os-fDl"/>
+                                    <constraint firstItem="Jgs-o4-hKC" firstAttribute="bottom" secondItem="7wv-R5-nO5" secondAttribute="bottom" type="default" id="PbN-N1-xa0"/>
+                                    <constraint firstItem="7wv-R5-nO5" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="25" id="Wcg-PX-xwI"/>
+                                    <constraint firstItem="Jgs-o4-hKC" firstAttribute="top" secondItem="7wv-R5-nO5" secondAttribute="top" type="default" id="d12-hz-f8c"/>
+                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="bottom" secondItem="5g1-Bx-xI7" secondAttribute="bottom" type="default" id="eVv-h1-Fq4"/>
+                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="top" secondItem="rQg-LD-uyI" secondAttribute="top" type="default" id="fvL-5e-9YR"/>
+                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="bottom" secondItem="Jgs-o4-hKC" secondAttribute="bottom" type="default" id="hKu-Ed-ErA"/>
+                                    <constraint firstItem="5g1-Bx-xI7" firstAttribute="top" secondItem="zwA-xW-tQe" secondAttribute="top" type="default" id="k8C-FZ-xhm"/>
+                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="150" id="l0E-PQ-MTL"/>
+                                    <constraint firstItem="Jgs-o4-hKC" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="87" id="l9F-Lk-unO"/>
+                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="top" secondItem="Jgs-o4-hKC" secondAttribute="top" type="default" id="rkb-xP-axe"/>
+                                    <constraint firstAttribute="bottom" secondItem="7wv-R5-nO5" secondAttribute="bottom" constant="19" id="uFh-Rg-F4L"/>
+                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="bottom" secondItem="rQg-LD-uyI" secondAttribute="bottom" type="default" id="wbh-cm-VAW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1316,6 +1321,12 @@
                     </view>
                     <connections>
                         <outlet property="annotationView" destination="gsE-Ap-2QD" id="edh-ag-I2c"/>
+                        <outlet property="blueButton" destination="Jgs-o4-hKC" id="xFD-Nf-upJ"/>
+                        <outlet property="clearButton" destination="zwA-xW-tQe" id="krZ-Yi-6Wo"/>
+                        <outlet property="greenButton" destination="rQg-LD-uyI" id="VQ4-ny-Sh8"/>
+                        <outlet property="redButton" destination="7wv-R5-nO5" id="EH5-Lw-hEs"/>
+                        <outlet property="redoButton" destination="5g1-Bx-xI7" id="P2p-nb-f9T"/>
+                        <outlet property="undoButton" destination="LHl-Gd-bJb" id="VC5-Es-vSw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcB-Ga-Xua" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1803,6 +1814,12 @@
                 <relationship kind="action" name="redo:"/>
                 <relationship kind="action" name="undo:"/>
                 <relationship kind="outlet" name="annotationView" candidateClass="AnnotationUIView"/>
+                <relationship kind="outlet" name="blueButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="clearButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="greenButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="redButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="redoButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="undoButton" candidateClass="BButton"/>
             </relationships>
         </class>
         <class className="ChanChannelCreateUpdateViewController" superclassName="UIViewController">
@@ -2049,9 +2066,6 @@
         </class>
         <class className="UICollectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="UICollectionViewWaterfallLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewWaterfallLayout.h"/>

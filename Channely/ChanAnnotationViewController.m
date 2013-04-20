@@ -27,7 +27,17 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void) viewDidLoad
+{
+    // Setup button styles
+    [_clearButton setType:BButtonTypeGray];
+    [_redButton setType:BButtonTypeDanger];
+    [_blueButton setType:BButtonTypePrimary];
+    [_greenButton setType:BButtonTypeSuccess];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [_annotationView setOriginalImage:_image];
     
     //  Bar items
