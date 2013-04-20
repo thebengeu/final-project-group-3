@@ -10,4 +10,6 @@
 
 @interface ChanRootViewController : UINavigationController
 
+@property BOOL forceLandscape;
+
 @end

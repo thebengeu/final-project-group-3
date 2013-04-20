@@ -22,6 +22,7 @@
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
+		0A9EAEF817229FB2001B5DD7 /* ChanViewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EAEF717229FB2001B5DD7 /* ChanViewPostViewController.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2CB3D1713F6A100D8C28F /* HLSPeerDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2CB3C1713F6A100D8C28F /* HLSPeerDiscovery.m */; };
 		0AA64A6E1714774A00239C0F /* ChanAnnotationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA64A6D1714774A00239C0F /* ChanAnnotationViewController.m */; };
@@ -209,6 +210,8 @@
 		0A991D301719590300275B3B /* ChanAnonUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnonUser.m; path = Channely/ChanAnonUser.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
+		0A9EAEF617229FB2001B5DD7 /* ChanViewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanViewPostViewController.h; path = Channely/ChanViewPostViewController.h; sourceTree = "<group>"; };
+		0A9EAEF717229FB2001B5DD7 /* ChanViewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanViewPostViewController.m; path = Channely/ChanViewPostViewController.m; sourceTree = "<group>"; };
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2CB3B1713F6A100D8C28F /* HLSPeerDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPeerDiscovery.h; sourceTree = "<group>"; };
 		0AA2CB3C1713F6A100D8C28F /* HLSPeerDiscovery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSPeerDiscovery.m; sourceTree = "<group>"; };
@@ -506,6 +509,7 @@
 		0A7423BB170548FC00644070 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				0A9EAEF517229EB2001B5DD7 /* ViewPost */,
 				82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */,
 				0AF5351F1705D39100E437F9 /* ChannelViewController.h */,
 				0AF535201705D39100E437F9 /* ChannelViewController.m */,
@@ -584,6 +588,15 @@
 				0AF535191705D34300E437F9 /* LocationAnnotation.m */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		0A9EAEF517229EB2001B5DD7 /* ViewPost */ = {
+			isa = PBXGroup;
+			children = (
+				0A9EAEF617229FB2001B5DD7 /* ChanViewPostViewController.h */,
+				0A9EAEF717229FB2001B5DD7 /* ChanViewPostViewController.m */,
+			);
+			name = ViewPost;
 			sourceTree = "<group>";
 		};
 		0AA64A6B1714772B00239C0F /* Annotation */ = {
@@ -1336,6 +1349,7 @@
 				0AA86AC0171FAFA5004889BE /* ChanVideoInfoViewController.m in Sources */,
 				82A02C14171FE66800CA4B11 /* SSTextView.m in Sources */,
 				82A907E61722677E0001F489 /* TimeScroller.m in Sources */,
+				0A9EAEF817229FB2001B5DD7 /* ChanViewPostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

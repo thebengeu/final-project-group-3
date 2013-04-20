@@ -72,6 +72,7 @@
     <entity name="User" representedClassName="ChanUser" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loggedIn" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="channels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Channel" inverseName="owner" inverseEntity="Channel" syncable="YES"/>
@@ -100,7 +101,7 @@
         <element name="SlidesPost" positionX="342" positionY="143" width="128" height="75"/>
         <element name="TextPost" positionX="378" positionY="234" width="128" height="43"/>
         <element name="TwitterPost" positionX="198" positionY="494" width="128" height="45"/>
-        <element name="User" positionX="34" positionY="270" width="128" height="133"/>
+        <element name="User" positionX="34" positionY="270" width="128" height="150"/>
         <element name="VideoPost" positionX="376" positionY="378" width="128" height="103"/>
         <element name="VideoThumbnailPost" positionX="549" positionY="288" width="128" height="88"/>
     </elements>

@@ -52,7 +52,7 @@
         
         [ChanUser createUserWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
             [_status stopAnimating];
-            if (error != nil) {
+            if (error) {
                 AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
                 __weak AHAlertView *weakA = alert;
                 [alert setCancelButtonTitle:@"OK" block:^{
@@ -60,9 +60,20 @@
                 }];
                 [alert show];
             } else {
-                [[self navigationController] popViewControllerAnimated:YES];
-                [SVProgressHUD setAnimationDuration:1.5];
-                [SVProgressHUD showSuccessWithStatus:@"Welcome!"];
+                [ChanUser getAccessTokenWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
+                    if (error) {
+                        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Error while logging in"];
+                        __weak AHAlertView *weakA = alert;
+                        [alert setCancelButtonTitle:@"OK" block:^{
+                            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+                        }];
+                        [alert show];
+                    } else {
+                        [[self navigationController] popViewControllerAnimated:YES];
+                        [SVProgressHUD setAnimationDuration:1.5];
+                        [SVProgressHUD showSuccessWithStatus:@"Welcome!"];
+                    }
+                }];
             }
         }];
         

@@ -28,9 +28,27 @@
 
 }
 
-- (void) viewDidAppear:(BOOL)animated {
 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
 }
+
+// iOS6
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+// iOS6
+- (NSUInteger)supportedInterfaceOrientations {
+    if (_forceLandscape)
+        return UIInterfaceOrientationMaskLandscape;
+    else
+        return [super supportedInterfaceOrientations];
+}
+
+
 
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
