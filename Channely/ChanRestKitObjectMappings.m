@@ -116,6 +116,7 @@
      @"_id":            @"id",
      @"_channel":       @"channelId",
      @"_slidesPost":    @"slidesPostId",
+     @"time":           @"createdAt",
      @"thumbUrl":       @"thumbUrl",
      @"width":          @"width",
      @"height":         @"height",
