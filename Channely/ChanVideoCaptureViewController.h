@@ -20,9 +20,9 @@
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 // Storyboard.
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *recordingControlButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (strong, nonatomic) IBOutlet UIButton *recordingButton;
 @property (weak, nonatomic) id<ChanPostViewControllerDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UITextView *liveText;
 
 
 // External.
@@ -30,7 +30,6 @@
 @property (atomic, readonly) BOOL isExpectingFirstChunk;
 
 - (IBAction)recordingControlButton_Action:(id)sender;
-- (IBAction)backButton_Action:(id)sender;
 
 // REST API
 - (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording;
