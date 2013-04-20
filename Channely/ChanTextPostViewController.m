@@ -53,9 +53,13 @@
         [self hideKeyboard];
         [_channel addTextPostWithContent:[_text text] username:[_username text] withCompletion:^(ChanTextPost *textPost, NSError *error) {
             [[me status]stopAnimating];
-            [me dismissViewControllerAnimated:YES completion:^{
-                [[me delegate]didPost:[me channel]];
-            }];
+            
+            if (error == nil)
+                [me dismissViewControllerAnimated:YES completion:^{
+                    [[me delegate]didPost:[me channel]];
+                }];
+            else
+                [super showErrorDialog];
         }];
     }
 }

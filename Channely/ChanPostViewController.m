@@ -100,5 +100,11 @@
         [[self view] endEditing:YES];
 }
 
+- (void) showErrorDialog{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Error sending post" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+    return;
+}
+
 
 @end

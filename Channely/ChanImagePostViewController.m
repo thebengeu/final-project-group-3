@@ -47,9 +47,13 @@
     [self hideKeyboard];
     [_channel addImagePostWithContent:[_text text] username:[_username text] image:[_image normalizedImage] withCompletion:^(ChanImagePost *imagePost, NSError *error) {
         [[me status]stopAnimating];
-        [me dismissViewControllerAnimated:YES completion:^{
-            [[me delegate]didPost:[me channel]];
-        }];
+        
+        if (error == nil)
+            [me dismissViewControllerAnimated:YES completion:^{
+                [[me delegate]didPost:[me channel]];
+            }];
+        else
+            [super showErrorDialog];
     }];
 }
 

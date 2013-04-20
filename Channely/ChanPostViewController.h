@@ -24,5 +24,6 @@
 @property id<ChanPostViewControllerDelegate> delegate;
 
 - (void) hideKeyboard;
+- (void) showErrorDialog;
 
 @end
