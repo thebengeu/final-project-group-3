@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 #import <HTTPServer.h>
-#import "NetworkTimeProtocol.h"
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
 #import "HLSStreamAdvertisingManager.h"

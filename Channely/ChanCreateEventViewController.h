@@ -12,6 +12,7 @@
 #import "AHAlertView.h"
 #import "BButton.h"
 #import "SSTextView.h"
+#import "SelectionAnnotation.h"
 
 @protocol ChanCreateEventViewControllerDelegate
 

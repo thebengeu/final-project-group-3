@@ -9,6 +9,7 @@
 #import "ChanChannelCreateUpdateViewController.h"
 #import "ChanChannel.h"
 #import "ChanDetailViewController.h"
+#include "SVProgressHUD.h"
 
 @interface ChanChannelCreateUpdateViewController ()
 
@@ -60,11 +61,15 @@
     if (_isUpdateChannel){
         id me = self;
         [_channel updateChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error){
+            [SVProgressHUD setAnimationDuration:1.5];
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ updated", [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
     }else {
         id me = self;
         [ChanChannel addChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error){
+            [SVProgressHUD setAnimationDuration:1.5];
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ created", [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
     }

@@ -21,9 +21,6 @@
 		0A991D311719590400275B3B /* ChanAnonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D301719590300275B3B /* ChanAnonUser.m */; };
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
-		0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7216F301B80017FECB /* NetAssociation.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
-		0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7416F301B80017FECB /* NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
-		0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
 		0AA2CB3D1713F6A100D8C28F /* HLSPeerDiscovery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA2CB3C1713F6A100D8C28F /* HLSPeerDiscovery.m */; };
@@ -209,14 +206,6 @@
 		0A991D2F1719590300275B3B /* ChanAnonUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAnonUser.h; path = Channely/ChanAnonUser.h; sourceTree = "<group>"; };
 		0A991D301719590300275B3B /* ChanAnonUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnonUser.m; path = Channely/ChanAnonUser.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTimeProtocol.h; sourceTree = "<group>"; };
-		0A9C9E7116F301B80017FECB /* NetAssociation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetAssociation.h; sourceTree = "<group>"; };
-		0A9C9E7216F301B80017FECB /* NetAssociation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetAssociation.m; sourceTree = "<group>"; };
-		0A9C9E7316F301B80017FECB /* NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkClock.h; sourceTree = "<group>"; };
-		0A9C9E7416F301B80017FECB /* NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkClock.m; sourceTree = "<group>"; };
-		0A9C9E7516F301B80017FECB /* NSDate+NetworkClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NetworkClock.h"; sourceTree = "<group>"; };
-		0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NetworkClock.m"; sourceTree = "<group>"; };
-		0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
 		0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0AA2CB3B1713F6A100D8C28F /* HLSPeerDiscovery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSPeerDiscovery.h; sourceTree = "<group>"; };
@@ -593,21 +582,6 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		0A9C9E6F16F301A50017FECB /* IosNtp */ = {
-			isa = PBXGroup;
-			children = (
-				0A9C9E7016F301B80017FECB /* NetworkTimeProtocol.h */,
-				0A9C9E7116F301B80017FECB /* NetAssociation.h */,
-				0A9C9E7216F301B80017FECB /* NetAssociation.m */,
-				0A9C9E7316F301B80017FECB /* NetworkClock.h */,
-				0A9C9E7416F301B80017FECB /* NetworkClock.m */,
-				0A9C9E7516F301B80017FECB /* NSDate+NetworkClock.h */,
-				0A9C9E7616F301B80017FECB /* NSDate+NetworkClock.m */,
-				0A9C9E7716F301B80017FECB /* SynthesizeSingleton.h */,
-			);
-			name = IosNtp;
-			sourceTree = "<group>";
-		};
 		0AA64A6B1714772B00239C0F /* Annotation */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,7 +956,6 @@
 				B6F480091706C7F50005029D /* Model-Generated */,
 				B63865F51703E3DF00800FBE /* API */,
 				0ABB364A16FC19A200436E06 /* UI */,
-				0A9C9E6F16F301A50017FECB /* IosNtp */,
 				B66FDC9616EF88A30042A36C /* ChanAppDelegate.h */,
 				B66FDC9716EF88A30042A36C /* ChanAppDelegate.m */,
 				B6269865171D4B0900A42599 /* Constants.h */,
@@ -1261,9 +1234,6 @@
 				B66FDC9816EF88A30042A36C /* ChanAppDelegate.m in Sources */,
 				B66FDCA716EF88A40042A36C /* Channely.xcdatamodeld in Sources */,
 				B66FDCAD16EF88A40042A36C /* ChanDetailViewController.m in Sources */,
-				0A9C9E7816F301B90017FECB /* NetAssociation.m in Sources */,
-				0A9C9E7916F301B90017FECB /* NetworkClock.m in Sources */,
-				0A9C9E7A16F301B90017FECB /* NSDate+NetworkClock.m in Sources */,
 				B6386664170466D700800FBE /* ChanHLSChunk.m in Sources */,
 				B6386667170466D700800FBE /* ChanImagePost.m in Sources */,
 				B638666A170466D700800FBE /* ChanTwitterPost.m in Sources */,

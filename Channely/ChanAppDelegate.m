@@ -52,8 +52,15 @@ static NSUInteger const cLocalServerPort = 22;
     // Initialize the Core Data stack
     [managedObjectStore createPersistentStoreCoordinator];
     
-    NSPersistentStore __unused *persistentStore = [managedObjectStore addInMemoryPersistentStore:&error];
-    NSAssert(persistentStore, @"Failed to add persistent store: %@", error);
+    NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
+#ifdef DEBUG
+    NSLog(@"Core Data store path = \"%@\"", path);
+#endif
+    
+    NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
+    if (!persistentStore) {
+        RKLogError(@"Failed adding persistent store at path '%@': %@", path, error);
+    }
     
     [managedObjectStore createManagedObjectContexts];
     
@@ -73,9 +80,6 @@ static NSUInteger const cLocalServerPort = 22;
     
     [ChanRestKitObjectMappings setup];
     //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    
-    //  Start NTP
-    [NetworkClock sharedNetworkClock];
     
     // Setup directory structure for recording and serving
     [self setupDirectories];
