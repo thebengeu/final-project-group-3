@@ -10,6 +10,7 @@
 #import "ChanUser.h"
 #import "ChanMenuUserViewController.h"
 #import "ChanAnonUser.h"
+#import "SVProgressHUD.h"
 
 @interface ChanMenuAnonUserViewController ()
 

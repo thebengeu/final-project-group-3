@@ -8,6 +8,7 @@
 
 #import "ChanMenuSignupViewController.h"
 #import "ChanUser.h"
+#import "SVProgressHUD.h"
 
 @interface ChanMenuSignupViewController ()
 
@@ -60,6 +61,8 @@
                 [alert show];
             } else {
                 [[self navigationController] popViewControllerAnimated:YES];
+                [SVProgressHUD setAnimationDuration:1.5];
+                [SVProgressHUD showSuccessWithStatus:@"Welcome!"];
             }
         }];
         

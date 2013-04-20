@@ -9,6 +9,7 @@
 #import "ChanMenuUserViewController.h"
 #import "ChanMenuAnonUserViewController.h"
 #import "ChanUser.h"
+#import "SVProgressHUD.h"
 
 @interface ChanMenuUserViewController ()
 
@@ -84,6 +85,8 @@
         [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
             [_updateStatus stopAnimating];
             [_username setText:[[ChanUser loggedInUser]name]];
+            [SVProgressHUD setAnimationDuration:1.5];
+            [SVProgressHUD showSuccessWithStatus:@"Updated"];
         }];
         
         [_updateStatus startAnimating];
@@ -93,5 +96,7 @@
 - (IBAction)logout:(id)sender {
     [ChanUser logout];
     [self switchToAnonUserViewController];
+    [SVProgressHUD setAnimationDuration:1.5];
+    [SVProgressHUD showSuccessWithStatus:@"Logged out"];
 }
 @end

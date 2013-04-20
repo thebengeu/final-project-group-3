@@ -7,6 +7,7 @@
 //
 
 #import "ChanCreateEventViewController.h"
+#import "SVProgressHUD.h"
 
 @interface ChanCreateEventViewController ()
 

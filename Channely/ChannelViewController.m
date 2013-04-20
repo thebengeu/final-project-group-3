@@ -11,6 +11,7 @@
 #import "ChanTextPostViewController.h"
 #import "ChanImagePostViewController.h"
 #import "ChanVideoCaptureViewController.h"
+#import "SVProgressHUD.h"
 
 static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
@@ -158,7 +159,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     controller.channel = _channel;
     controller.delegate = self;
 
-    [self presentViewController:controller animated:NO completion:nil];
+    [self presentViewController:controller animated:YES completion:nil];
     [controller view].superview.bounds = CGRectMake(0, 0, 500, 234);
     [controller view].bounds = CGRectMake(0, 0, 500, 244);
 }
@@ -231,7 +232,11 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 -(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
     //NSLog(@"To create Event: %@ %f %f %@ %@ %@", eventName, lat, lon, description, startDate, endDate);
-    [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:nil];
+    [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:^(ChanEvent *event, NSError *error) {
+        [_createEventPopover dismissPopoverAnimated:YES];
+        [SVProgressHUD setAnimationDuration:1.5];
+        [SVProgressHUD showSuccessWithStatus:@"Event created"];
+    }];
 }
 
 - (ChanChannel *) underlyingChannel {
@@ -248,6 +253,8 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 - (void)didPost:(ChanChannel *)channel{
     [self.collectionViewController refreshPosts];
+    [SVProgressHUD setAnimationDuration:1.5];
+    [SVProgressHUD showSuccessWithStatus:@"Posted"];
 }
 
 @end
