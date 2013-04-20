@@ -14,6 +14,8 @@
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
+@property NSString *eventName;
+
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord;
 
 @end

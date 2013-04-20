@@ -31,6 +31,7 @@
 - (IBAction)startDateEditingBegin:(id)sender;
 - (IBAction)endDateEditingBegin:(id)sender;
 - (IBAction)createEvent:(id)sender;
+- (IBAction)eventNameChanged:(id)sender;
 
 @property NSDate *startDate;
 @property NSDate *endDate;

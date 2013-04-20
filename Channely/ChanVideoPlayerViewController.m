@@ -154,7 +154,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
     ChanVideoInfoViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ChanVideoInfoViewController"];
     controller.recordingIdText = _recordingId;
     controller.hostText = _selectedURL.host;
-    controller.resolutionText = [NSString stringWithFormat:@"%fx%f", [_player naturalSize].width, [_player naturalSize].height];
+    controller.resolutionText = [NSString stringWithFormat:@"%.0fx%.0f", [_player naturalSize].width, [_player naturalSize].height];
     
     _infoPopover = [[UIPopoverController alloc]initWithContentViewController:controller];
     _infoPopover.delegate = self;
@@ -187,6 +187,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
 //    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height);
     
     CGImageRef screen = UIGetScreenImage();
+    
     UIImageOrientation orientation = UIImageOrientationUp;
     switch (([[UIApplication sharedApplication] statusBarOrientation])) {
         case UIInterfaceOrientationLandscapeLeft:
@@ -207,7 +208,11 @@ CGImageRef UIGetScreenImage(void); // Private API.
     
     CGRect playerFrame = [_player view].frame;
     CGSize videoSize = [_player naturalSize];
-    CGPoint position = CGPointMake(0, 64);  //  Hardcoded navigation bar size + status bar size
+    CGFloat offset = [[[self navigationController]navigationBar ]frame].size.height + [[UIApplication sharedApplication] statusBarFrame].size.height;
+    CGPoint position = CGPointMake(0, offset);  //  Hardcoded navigation bar size + status bar size
+    
+    playerFrame.size.width *= [[UIScreen mainScreen] scale];
+    playerFrame.size.height *= [[UIScreen mainScreen] scale];
     
     CGFloat scale;
     CGRect frame;

@@ -79,6 +79,7 @@
     
     //  Self location
     _selection = [[SelectionAnnotation alloc]initWithCoordinate:_location];
+    _selection.eventName = _eventNameTextField.text;
     [_map addAnnotation:_selection];
     [self zoomToFitMapAnnotations:_map];
     _annotationCreated = YES;
@@ -87,18 +88,37 @@
 - (void) selectedPoint:(UITapGestureRecognizer *)gestureRecognizer {
     CLLocationCoordinate2D coordinate = [self.map convertPoint:[gestureRecognizer locationInView:self.map] toCoordinateFromView:self.map];
 
+    [self updateAnnotation:coordinate];
+}
+
+- (void) updateAnnotation: (CLLocationCoordinate2D)coordinate{
     [_map removeAnnotations:[_map annotations]];
     _location = coordinate;
     _selection = [[SelectionAnnotation alloc]initWithCoordinate:_location];
+    _selection.eventName = _eventNameTextField.text;
     [_map addAnnotation:_selection];
     
+    
     [_map setCenterCoordinate:coordinate animated:YES];
+    
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [_map selectAnnotation:_selection animated:YES];
+    });
+};
+
+
+- (void) updateAnnotation{
+    _selection = [[SelectionAnnotation alloc]initWithCoordinate:_location];
+    _selection.eventName = _eventNameTextField.text;
+    [_map addAnnotation:_selection];
+    
+    [_map selectAnnotation:_selection animated:YES];
 }
 
 
-
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {NSLog(@"asd");
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     static NSString *selectionIdentifier = @"Selection";
     MKPinAnnotationView *annotationView;
     
@@ -110,7 +130,7 @@
             annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorGreen;
         annotationView.enabled = YES;
-        annotationView.canShowCallout = NO;
+        annotationView.canShowCallout = YES;
     }
     
     return annotationView;
@@ -191,6 +211,12 @@
 }
 
 
+- (IBAction)eventNameChanged:(id)sender{
+    if (sender == _eventNameTextField)
+        [self updateAnnotation];
+}
+
+
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
     if ([popoverController isEqual:_startDatePopoverController]){
         _startDate = [_startDateDatePicker date];
@@ -237,7 +263,9 @@
     region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
     region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
     region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.2; // Add a little extra space on the sides
+    region.span.latitudeDelta = MAX(region.span.latitudeDelta, 0.005);
     region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2; // Add a little extra space on the sides
+    region.span.latitudeDelta = MAX(region.span.longitudeDelta, 0.005);
     
     region = [mapView regionThatFits:region];
     [mapView setRegion:region animated:YES];

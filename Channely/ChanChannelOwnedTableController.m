@@ -37,18 +37,14 @@
     [super viewDidLoad];
     
     [[self navigationItem] setTitle:@"Channels"];
-}
-
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    
     
     [[ChanUser loggedInUser]getOwnedChannels:^(NSArray *channels, NSError *error){
         _channels = [NSMutableArray arrayWithArray:channels];
         [[self tableView]reloadData];
+        [[self tableView]setHidden:NO];
     }];
 }
-
 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
