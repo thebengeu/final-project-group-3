@@ -26,9 +26,13 @@
     [ChanRestKitObjectMappings setupPostMappings];
     [ChanRestKitObjectMappings setupHLSMappings];
     
-    // Update date format so that we can parse Twitter dates properly
+    // Add date formatter so that we can parse Twitter dates properly
     // Wed Sep 29 15:31:08 +0000 2010
     [RKObjectMapping addDefaultDateFormatterForString:@"E MMM d HH:mm:ss Z y" inTimeZone:nil];
+    
+    // Add date formatter for millisecond resolution
+    // 2013-04-20T04:52:21.925Z
+    [RKObjectMapping addDefaultDateFormatterForString:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" inTimeZone:nil];
 }
 
 + (void)setupPostMappings
