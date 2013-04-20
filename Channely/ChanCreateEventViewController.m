@@ -7,8 +7,6 @@
 //
 
 #import "ChanCreateEventViewController.h"
-#import "SelectionAnnotation.h"
-#import "NetworkTimeProtocol.h"
 
 @interface ChanCreateEventViewController ()
 
@@ -46,8 +44,8 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [_locationManager startUpdatingLocation];
     
-    _startDate = [NSDate networkDate];
-    _endDate = [[NSDate networkDate]dateByAddingTimeInterval:60*60];
+    _startDate = [NSDate date];
+    _endDate = [[NSDate date]dateByAddingTimeInterval:60*60];
     
 	// Do any additional setup after loading the view.
     

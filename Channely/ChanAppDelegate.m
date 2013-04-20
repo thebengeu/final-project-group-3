@@ -74,9 +74,6 @@ static NSUInteger const cLocalServerPort = 22;
     [ChanRestKitObjectMappings setup];
     //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
-    //  Start NTP
-    [NetworkClock sharedNetworkClock];
-    
     // Setup directory structure for recording and serving
     [self setupDirectories];
     
