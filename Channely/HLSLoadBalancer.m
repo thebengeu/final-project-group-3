@@ -47,23 +47,25 @@ static NSString *const cLocalhost = @"127.0.0.1";
     }
     NSUInteger topChunkCount = [HLSLoadBalancer totalChunksFromChunkField:firstChunkField];
     
-    
     // If the recording is complete, we build the set of peers with the full recording.
     // Since the array is sorted, we scan through from index 1, stopping at the last index with a full recording.
     // Otherwise, we build the set of peers whose chunk count is within a defined spread radius of the top chunk count.
     // Since the array is sorted, we scan through from index 1, stopping when the above condition fails for the
     // first time.
     NSMutableArray *sourcePool = [NSMutableArray array];
-    for (NSUInteger randLimit = 1; randLimit < result.count; randLimit++) {
+    for (NSUInteger randLimit = 0; randLimit < result.count; randLimit++) {
         HLSNetServicePathChunkCountTuple *peer = (HLSNetServicePathChunkCountTuple *)[result objectAtIndex:randLimit];
-        if (completeRecordingExists && peer.chunkCount != topChunkCount) {
+        NSUInteger chunkCount = [HLSLoadBalancer totalChunksFromChunkField:peer.chunkCount];
+        
+        if (completeRecordingExists && chunkCount != topChunkCount) {
             break;
-        } else if ((topChunkCount - peer.chunkCount) > cMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
+        } else if ((topChunkCount - chunkCount) > cMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
             break;
         } else {
             [sourcePool addObject:peer];
         }
     }
+    NSLog(@"sourcePool:%@", sourcePool); // DEBUG.
     
     NSURL *selectedURL = nil;
     BOOL peerReachable = NO;
@@ -83,7 +85,8 @@ static NSString *const cLocalhost = @"127.0.0.1";
         // Test if the peer is reachable by attempting to download the playlist.
         selectedURL = [NSURL URLWithString:urlStr];
         NSError *error;
-        if ([selectedURL checkResourceIsReachableAndReturnError:&error]) {
+        [NSString stringWithContentsOfURL:selectedURL encoding:NSUTF8StringEncoding error:&error];
+        if (!error) {
             NSLog(@"playlist:%@ was reachable. returning.", [selectedURL absoluteString]); // DEBUG.
             peerReachable = YES;
         } else {

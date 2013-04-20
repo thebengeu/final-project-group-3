@@ -17,6 +17,8 @@
 @property NSMutableArray *strokeSizes;
 @property NSMutableArray *strokeColors;
 
+@property NSInteger currentStrokeIndex;
+
 @property CGFloat scale;
 
 @end
@@ -61,6 +63,8 @@
     UIGraphicsEndImageContext();
     [self setImage:blank];
     [self setContentMode:UIViewContentModeScaleAspectFit];
+    
+    _currentStrokeIndex = 0;
 }
 
 
@@ -75,6 +79,9 @@
 
 -(void)clear{
     [self setImage:_originalImage];
+    [_strokeColors removeAllObjects];
+    [_strokeSizes removeAllObjects];
+    [_strokesPoints removeAllObjects];
 }
 
 
@@ -112,9 +119,16 @@
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
         [self addPointAndDraw:point];
-        [[self strokesPoints]addObject:_currentStrokePoints];
-        [[self strokeSizes]addObject:[NSNumber numberWithFloat: _markerSize]];
-        [[self strokeColors]addObject: _markerColor];
+        if (_currentStrokeIndex < [_strokesPoints count]){
+            [_strokesPoints replaceObjectAtIndex:_currentStrokeIndex withObject:_currentStrokePoints];
+            [_strokeSizes replaceObjectAtIndex:_currentStrokeIndex withObject:[NSNumber numberWithFloat: _markerSize]];
+            [_strokeColors replaceObjectAtIndex:_currentStrokeIndex withObject: _markerColor];
+        } else {
+            [_strokesPoints addObject:_currentStrokePoints];
+            [_strokeSizes addObject:[NSNumber numberWithFloat:_markerSize]];
+            [_strokeColors addObject:_markerColor];
+        }
+        _currentStrokeIndex++;
     }
 }
          
@@ -122,7 +136,7 @@
     [_currentStrokePoints addObject:[NSValue valueWithCGPoint:point]];
     [self setupDrawContext];
     [self drawStrokeSection:[_currentStrokePoints count]-1];
-    [self doneDrawContext];
+    [self doneDrawContext: YES];
 }
 
 -(void)drawStrokeSection:(int) i{
@@ -177,12 +191,30 @@
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x/ratio - offsetX, point.y/ratio - offsetY);
 }
 
--(void)doneDrawContext{
+-(void)doneDrawContext:(BOOL)refreshImage{
     CGContextStrokePath(UIGraphicsGetCurrentContext());
-    self.image = UIGraphicsGetImageFromCurrentImageContext();
+    if (refreshImage)
+        self.image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 }
 
+
+- (void)undo{
+    if (_currentStrokeIndex == 0)
+        return;
+    
+    [self setImage:_originalImage];
+    _currentStrokeIndex--;
+    
+    for (int i = 0; i < _currentStrokeIndex; i++){
+        _currentStrokePoints = [_strokesPoints objectAtIndex:i];
+        _markerColor = [_strokeColors objectAtIndex:i];
+        _markerSize = [[_strokeSizes objectAtIndex:i] floatValue];
+        
+        [self setupDrawContext];
+        
+    }
+}
 
 -(CGFloat)contentScaleFactor
 {

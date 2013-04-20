@@ -12,14 +12,6 @@
 #import "Constants.h"
 #import "SVProgressHUD.h"
 
-static CGFloat const kCellWidth = 240;
-static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
-static NSString *const cSlideSegue = @"slidesSegue";
-static CGFloat const kPostMenuLandscapeX = 955.0;
-static CGFloat const kPostMenuLandscapeY = 645.0;
-static CGFloat const kPostMenuPortraitX = 700.0;
-static CGFloat const kPostMenuPortraitY = 900.0;
-
 @interface ChanCollectionViewController ()
 
 @property (nonatomic, weak) IBOutlet UICollectionViewWaterfallLayout *waterfallLayout;

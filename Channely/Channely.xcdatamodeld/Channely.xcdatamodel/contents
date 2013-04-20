@@ -40,7 +40,10 @@
         <relationship name="chunks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HLSChunk" inverseName="recording" inverseEntity="HLSChunk" syncable="YES"/>
     </entity>
     <entity name="ImagePost" representedClassName="ChanImagePost" parentEntity="Post" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="thumbUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="InstagramPost" representedClassName="ChanInstagramPost" parentEntity="Post" syncable="YES">
         <attribute name="jsonData" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -90,7 +93,7 @@
         <element name="Event" positionX="36" positionY="89" width="128" height="163"/>
         <element name="HLSChunk" positionX="27" positionY="459" width="128" height="103"/>
         <element name="HLSRecording" positionX="-135" positionY="462" width="117" height="150"/>
-        <element name="ImagePost" positionX="378" positionY="306" width="128" height="58"/>
+        <element name="ImagePost" positionX="378" positionY="306" width="128" height="105"/>
         <element name="InstagramPost" positionX="340" positionY="494" width="128" height="73"/>
         <element name="Post" positionX="196" positionY="311" width="128" height="148"/>
         <element name="SlidePost" positionX="520" positionY="143" width="128" height="75"/>
