@@ -28,12 +28,10 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     [super viewDidLoad];
     
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(-5.0, 0.0, 240.0, 44.0)];
-    _searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _searchBar.autoresizingMask = UIViewAutoresizingNone;
     _searchBar.delegate = self;
     
     [self navigationItem].leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
-    
-    // Constraint needed to fix size..
 }
 
 
