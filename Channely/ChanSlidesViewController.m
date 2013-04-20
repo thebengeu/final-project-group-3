@@ -65,6 +65,8 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
     [self.scrollView addSubview:self.imageView1];
     
     if (self.slides.count) {
+        self.selectedPage = 0;
+        self.zone = 1;
         ChanSlidePost* firstSlide = [self.slides objectAtIndex:0];
         [self.imageView1 setImageWithURL:[NSURL URLWithString:firstSlide.url]];
     }
@@ -101,7 +103,7 @@ static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
 {
     const CGFloat currPos = self.scrollView.contentOffset.x; // Get current X scrollview position
     self.selectedPage = lroundf(currPos * (1.0f / self.pageWidth)); // Compute selected page
-    self.zone = 1 + (self.selectedPage % 3); // Current zone : 0 - 1 - 2
+    self.zone = 1 + (self.selectedPage % 3); // Current zone : 1 - 2 - 3
     
     const NSInteger nextPage = self.selectedPage + 1;
     const NSInteger prevPage = self.selectedPage - 1;
