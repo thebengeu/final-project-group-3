@@ -9,6 +9,7 @@
 #import "ChanSlidesCell.h"
 #import "ChanSlidesPost.h"
 #import "ChanSlidePost.h"
+#import "Constants.h"
 
 @implementation ChanSlidesCell
 
@@ -21,25 +22,43 @@
     return self;
 }
 
--(void)setPost:(ChanPost *)post {
-    [super setPost:post];
++ (ChanSlidePost *)firstSlide:(ChanPost *)post
+{
     ChanSlidesPost *chanSlidesPost = (ChanSlidesPost *)post;
     NSSortDescriptor *urlDescriptor = [[NSSortDescriptor alloc] initWithKey:@"url" ascending:YES];
     NSArray *descriptors = [NSArray arrayWithObject:urlDescriptor];
     NSArray *slides = [[chanSlidesPost.slides allObjects] sortedArrayUsingDescriptors:descriptors];
     
-    if (slides.count) {
-        ChanSlidePost* firstSlide = [slides objectAtIndex:0];
-        [self.imageView setImageWithURL:[NSURL URLWithString:firstSlide.url]];
+    return slides.count ? [slides objectAtIndex:0] : nil;
+}
+
+-(void)setPost:(ChanPost *)post {
+    [super setPost:post];
+
+    ChanSlidePost* firstSlide = [ChanSlidesCell firstSlide:post];
+    if (firstSlide) {
+        [self.imageView setImageWithURL:[NSURL URLWithString:firstSlide.thumbUrl]];
     }
 
     [self.labelView setText:[post content]];
+    [self setupBackgroundImage];
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post
 {
-    // TODO: dynamic height
-    return 240.0f;
+    ChanSlidePost* firstSlide = [ChanSlidesCell firstSlide:post];
+    if (firstSlide) {
+        return firstSlide.thumbHeight + kSlidesCellThumbnailVerticalMargins;
+    } else {
+        return kSlidesCellDefaultHeight;
+    }
+}
+
+- (void) setupBackgroundImage
+{
+    [super setupBackgroundImage];
+    UIImage *cellImg = [[UIImage imageNamed:@"imagebar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 /*

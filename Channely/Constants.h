@@ -36,3 +36,7 @@ static const CGFloat kTextCellContentVerticalMargins = 70.0f;
 // Image Cell
 static const CGFloat kImageCellThumbnailWidth = kCellWidth;
 static const CGFloat kImageCellThumbnailVerticalMargins = 40.0f;
+
+// Slides Cell
+static const CGFloat kSlidesCellThumbnailVerticalMargins = kImageCellThumbnailVerticalMargins;
+static const CGFloat kSlidesCellDefaultHeight = 260.0f;

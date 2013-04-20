@@ -82,6 +82,7 @@
     [_strokeColors removeAllObjects];
     [_strokeSizes removeAllObjects];
     [_strokesPoints removeAllObjects];
+    _currentStrokeIndex = 0;
 }
 
 
@@ -206,7 +207,7 @@
 
 
 - (void)undo{
-    if (_currentStrokeIndex == 0)
+    if (_currentStrokeIndex <= 0)
         return;
     
     [self setImage:_originalImage];
