@@ -12,7 +12,7 @@
 static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 static NSString *const cLocalServerLoadKey = @"_lsload";
 static NSString *const cApplicationTypeName = @"_channely._tcp.";
-static NSUInteger const cLocalServerPort = 80;
+static NSUInteger const cLocalServerPort = 22;
 
 @interface ChanAppDelegate ()
 // Internal.

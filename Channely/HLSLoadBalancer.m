@@ -11,7 +11,7 @@
 static NSUInteger const cCompleteRecordingBitMask = 0x80000000;
 static NSUInteger const cMaxSpreadRadius = 5;
 static NSString *const cURLFormat = @"http://%@:%d/%@";
-static NSUInteger const cHttpPort = 80;
+static NSUInteger const cHttpPort = 22;
 static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
 static NSString *const cLocalhost = @"127.0.0.1";
 
@@ -31,6 +31,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     
     // Otherwise, get a list of peers who have the recording.
     NSArray *result = [[HLSPeerDiscovery peerDiscovery] sortedPeersForRecording:rId];
+    NSLog(@"%@", result);
     
     // If nobody has the recording, use the default server source.
     if (!result) {

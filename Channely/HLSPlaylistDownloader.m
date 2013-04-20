@@ -157,7 +157,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     NSError *downloadError = nil;
     _curPlaylist = [NSString stringWithContentsOfURL:_playlistURL encoding:NSUTF8StringEncoding error:&downloadError];
     if (downloadError) {
-        NSLog(@"download error");
+        NSLog(@"PlaylistDownloader/refreshTimer_Tick/download error:%@", downloadError);
         
         // Increment timeout timer.
         _intervalsSinceLastChange++;
