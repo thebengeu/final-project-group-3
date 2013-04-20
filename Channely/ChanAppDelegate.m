@@ -107,9 +107,24 @@ static NSUInteger const cLocalServerPort = 22;
 - (void) applicationDidEnterBackground:(UIApplication *)application {
     NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
     NSLog(@"went background!");
+    [self saveContext];
 }
 
-#pragma mark Appearance Customizations 
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [self saveContext];
+}
+
+- (void)saveContext
+{
+    NSError *error;
+    NSManagedObjectContext *managedObjectContext = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+    if ([managedObjectContext hasChanges] && ![managedObjectContext saveToPersistentStore:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
+}
+
+#pragma mark Appearance Customizations
 - (void) customizeAppearance {
     [self customizeNavButtonsAppearance];
     [self customizeNavBarAppearance];
