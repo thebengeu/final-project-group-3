@@ -6,6 +6,7 @@
 const struct ChanUserAttributes ChanUserAttributes = {
 	.accessToken = @"accessToken",
 	.id = @"id",
+	.loggedIn = @"loggedIn",
 	.name = @"name",
 	.password = @"password",
 };
@@ -44,6 +45,11 @@ const struct ChanUserFetchedProperties ChanUserFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"loggedInValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"loggedIn"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
@@ -60,6 +66,32 @@ const struct ChanUserFetchedProperties ChanUserFetchedProperties = {
 
 @dynamic id;
 
+
+
+
+
+
+@dynamic loggedIn;
+
+
+
+- (BOOL)loggedInValue {
+	NSNumber *result = [self loggedIn];
+	return [result boolValue];
+}
+
+- (void)setLoggedInValue:(BOOL)value_ {
+	[self setLoggedIn:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveLoggedInValue {
+	NSNumber *result = [self primitiveLoggedIn];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveLoggedInValue:(BOOL)value_ {
+	[self setPrimitiveLoggedIn:[NSNumber numberWithBool:value_]];
+}
 
 
 

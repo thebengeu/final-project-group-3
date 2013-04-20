@@ -7,6 +7,7 @@
 extern const struct ChanUserAttributes {
 	__unsafe_unretained NSString *accessToken;
 	__unsafe_unretained NSString *id;
+	__unsafe_unretained NSString *loggedIn;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *password;
 } ChanUserAttributes;
@@ -21,6 +22,7 @@ extern const struct ChanUserFetchedProperties {
 
 @class ChanChannel;
 @class ChanPost;
+
 
 
 
@@ -55,6 +57,20 @@ extern const struct ChanUserFetchedProperties {
 
 
 //- (BOOL)validateId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* loggedIn;
+
+
+
+@property BOOL loggedInValue;
+- (BOOL)loggedInValue;
+- (void)setLoggedInValue:(BOOL)value_;
+
+//- (BOOL)validateLoggedIn:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -122,6 +138,15 @@ extern const struct ChanUserFetchedProperties {
 
 - (NSString*)primitiveId;
 - (void)setPrimitiveId:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveLoggedIn;
+- (void)setPrimitiveLoggedIn:(NSNumber*)value;
+
+- (BOOL)primitiveLoggedInValue;
+- (void)setPrimitiveLoggedInValue:(BOOL)value_;
 
 
 

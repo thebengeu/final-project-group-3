@@ -8,6 +8,7 @@
 
 #import "ChanAppDelegate.h"
 #import "ChanTwitterPost.h"
+#import "ChanUser.h"
 
 static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 static NSString *const cLocalServerLoadKey = @"_lsload";
@@ -81,6 +82,8 @@ static NSUInteger const cLocalServerPort = 22;
     [ChanRestKitObjectMappings setup];
     //    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     
+    [self autoLogin];
+    
     // Setup directory structure for recording and serving
     [self setupDirectories];
     
@@ -147,6 +150,28 @@ static NSUInteger const cLocalServerPort = 22;
     // Change the appearance of other navigation buttons
     UIImage *barButtonImage = [[UIImage imageNamed:@"button_normal"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 6)];
     [[UIBarButtonItem appearance] setBackgroundImage:barButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
+
+- (void)autoLogin
+{
+    NSManagedObjectContext *managedObjectContext = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *array = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (array == nil) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    } else if (array.count == 1) {
+        ChanUser *user = [array objectAtIndex:0];
+        [ChanUser login:user];
+    } else if (array.count > 1) {
+        NSLog(@"%d users logged in. This should never happen.", array.count);
+    }
 }
 
 #pragma mark Http Server

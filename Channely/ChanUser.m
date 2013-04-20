@@ -18,8 +18,16 @@ static ChanUser *loggedInUser = nil;
     return loggedInUser;
 }
 
++ (void)login:(ChanUser *)user
+{
+    user.loggedInValue = YES;
+    [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", user.accessToken]];
+    loggedInUser = user;
+}
+
 + (void)logout
 {
+    loggedInUser.loggedInValue = NO;
     loggedInUser = nil;
     [[RKObjectManager sharedManager].HTTPClient clearAuthorizationHeader];
 }
@@ -51,8 +59,26 @@ static ChanUser *loggedInUser = nil;
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:username password:password];
     
     [[RKObjectManager sharedManager] postObject:user path:PATH_GET_ACCESS_TOKEN parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        loggedInUser = user;
-        [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", loggedInUser.accessToken]];
+        // Logout any other possibly logged in users
+        NSManagedObjectContext *managedObjectContext = [[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:managedObjectContext];
+        [fetchRequest setEntity:entity];
+        
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
+        [fetchRequest setPredicate:predicate];
+        
+        NSError *error;
+        NSArray *array = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        if (array == nil) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        } else if (array.count) {
+            for (ChanUser *chanUser in array) {
+                chanUser.loggedInValue = NO;
+            }
+        }
+        
+        [ChanUser login:user];
         
         if (block) block(user, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
