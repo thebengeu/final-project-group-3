@@ -121,12 +121,13 @@
 
 - (void)captureTableViewAndScrollBar
 {
-    _tableView = [self.delegate tableViewForTimeScroller:self];
+    _collectionView = [self.delegate collectionViewForTimeScroller:self];
     
     self.frame = CGRectMake(CGRectGetWidth(self.frame) - 10.0f, 0.0f, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
     
-    for (id subview in [_tableView subviews])
+    for (id subview in [_collectionView subviews])
     {
+        // Look for the scrollbar
         if ([subview isKindOfClass:[UIImageView class]])
         {
             UIImageView *imageView = (UIImageView *)subview;
@@ -136,13 +137,13 @@
                 imageView.clipsToBounds = NO;
                 [imageView addSubview:self];
                 _scrollBar = imageView;
-                _saved_tableview_size = _tableView.frame.size;
+                _saved_tableview_size = _collectionView.frame.size;
             }
         }
     }
 }
 
-- (void)updateDisplayWithCell:(UITableViewCell *)cell
+- (void)updateDisplayWithCell:(UICollectionViewCell *)cell
 {
     NSDate *date = [self.delegate dateForCell:cell];
     
@@ -374,9 +375,9 @@
     } completion:nil];
 }
 
-- (void)scrollViewDidScroll
+- (void)scrollViewDidScroll:(UICollectionViewCell*) cell
 {
-    if (!_tableView || !_scrollBar)
+    if (!_collectionView || !_scrollBar)
     {
         [self captureTableViewAndScrollBar];
     }
@@ -397,9 +398,8 @@
                             CGRectGetHeight(_backgroundView.frame));
     
     CGPoint point = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    point = [_scrollBar convertPoint:point toView:_tableView];
+    point = [_scrollBar convertPoint:point toView:_collectionView];
     
-    UITableViewCell* cell=[_tableView cellForRowAtIndexPath:[_tableView indexPathForRowAtPoint:point]];
     if (cell) {
         [self updateDisplayWithCell:cell];
         if (![self alpha])
@@ -427,9 +427,9 @@
         return;
     }
     
-    CGRect newFrame = [_scrollBar convertRect:self.frame toView:_tableView.superview];
+    CGRect newFrame = [_scrollBar convertRect:self.frame toView:_collectionView.superview];
     self.frame = newFrame;
-    [_tableView.superview addSubview:self];
+    [_collectionView.superview addSubview:self];
     
     [UIView animateWithDuration:0.3f delay:1.0f options:UIViewAnimationOptionBeginFromCurrentState  animations:^{
         
@@ -442,7 +442,7 @@
 
 - (void)scrollViewWillBeginDragging
 {
-    if (!_tableView || !_scrollBar)
+    if (!_collectionView || !_scrollBar)
     {
         [self captureTableViewAndScrollBar];
     }
@@ -475,7 +475,7 @@
 
 - (void)invalidate
 {
-    _tableView = nil;
+    _collectionView = nil;
     _scrollBar = nil;
     [self removeFromSuperview];
 }
@@ -483,9 +483,9 @@
 
 - (void)checkChanges
 {
-    if (!_tableView ||
-        _saved_tableview_size.height != _tableView.frame.size.height ||
-        _saved_tableview_size.width != _tableView.frame.size.width)
+    if (!_collectionView ||
+        _saved_tableview_size.height != _collectionView.frame.size.height ||
+        _saved_tableview_size.width != _collectionView.frame.size.width)
     {
         [self invalidate];
     }

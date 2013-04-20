@@ -51,6 +51,9 @@
                   forControlEvents:UIControlEventValueChanged];
     self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Posts"];
     [self.collectionView addSubview:self.refreshControl];
+    
+    // Setup time scroller
+    _timeScroller = [[TimeScroller alloc] initWithDelegate:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -195,7 +198,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     ChanAbstractCell *cell;
     
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -215,6 +217,39 @@
     
     cell.post = post;
     return cell;
+}
+
+#pragma mark - Time Scroller methods
+
+- (UICollectionView *)collectionViewForTimeScroller:(TimeScroller *)timeScroller
+{
+    return self.collectionView;
+}
+
+- (NSDate *)dateForCell:(UICollectionViewCell *)cell
+{
+    ChanAbstractCell *tempCell = (ChanAbstractCell *) cell;
+    return tempCell.post.createdAt;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSArray *visibles = [self.collectionView visibleCells];
+    UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
+    [_timeScroller scrollViewDidScroll:cell];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [_timeScroller scrollViewDidEndDecelerating];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [_timeScroller scrollViewWillBeginDragging];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        [_timeScroller scrollViewDidEndDecelerating];
+    }
 }
 
 #pragma mark - Waterfall Layout methods
