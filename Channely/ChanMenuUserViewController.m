@@ -85,6 +85,7 @@
         [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
             [_updateStatus stopAnimating];
             [_username setText:[[ChanUser loggedInUser]name]];
+            [_password setText:@""];
             [SVProgressHUD setAnimationDuration:1.5];
             [SVProgressHUD showSuccessWithStatus:@"Updated"];
         }];
