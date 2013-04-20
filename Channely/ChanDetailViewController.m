@@ -68,13 +68,32 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     [[self navigationController]pushViewController:channelViewController animated:YES];
 }
 
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
+    [self searchBarExpandAnimateWith:70];
+}
+
+- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self searchBarExpandAnimateWith:-70];
+}
+
+- (void) searchBarExpandAnimateWith:(int)width
+{
+    [UIView animateWithDuration:0.3
+                     animations:^ {
+                         CGRect newBounds = _searchBar.frame;
+                         newBounds.size.width += width;
+                         _searchBar.frame = newBounds;
+                         [_searchBar layoutSubviews];
+                     }];
 }
 
 
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
     NSString *searchTerm = [searchBar text];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
