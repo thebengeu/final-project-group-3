@@ -7,6 +7,7 @@
 //
 
 #import "ChanVideoCaptureViewController.h"
+#import "ChanRootViewController.h"
 
 static CGFloat const cChunkPeriod = 10.0f; // Duration of each chunk in seconds.
 static NSString *const cButtonStopRecording = @"Stop";
@@ -64,6 +65,14 @@ static NSString *const cButtonStartRecording = @"Record";
     _isRecording = NO;
     
     [self updateRecordingControlButtonState];
+    
+    //  #1 Force not to rotate to portrait
+    [(ChanRootViewController*)[self navigationController] setForceLandscape:YES];
+    
+    //  Hack to force switch rotation (refresh orientation) if it is portrait
+    UIViewController *mVC = [[UIViewController alloc] init];
+    [self presentViewController:mVC animated:NO completion:nil];
+    [mVC dismissViewControllerAnimated:NO completion:nil];
 }
 
 
@@ -77,10 +86,17 @@ static NSString *const cButtonStartRecording = @"Record";
     _recorder.previewLayer.frame = self.previewArea.bounds;
 }
 
+
+- (void) viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [(ChanRootViewController*)[self navigationController] setForceLandscape:NO];
+}
+
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 //    [self updatePreviewRotationToOrientation];
