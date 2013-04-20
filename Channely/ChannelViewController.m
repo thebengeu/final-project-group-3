@@ -159,7 +159,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     controller.delegate = self;
 
     [self presentViewController:controller animated:NO completion:nil];
-    [controller view].superview.bounds = CGRectMake(0, 0, 500, 244);
+    [controller view].superview.bounds = CGRectMake(0, 0, 500, 234);
     [controller view].bounds = CGRectMake(0, 0, 500, 244);
 }
 
@@ -208,7 +208,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     controller.delegate = self;
     
     [self presentViewController:controller animated:YES completion:nil];
-    [controller view].superview.bounds = CGRectMake(0, 0, 500, 300);
+    [controller view].superview.bounds = CGRectMake(0, 0, 500, 290);
     [controller view].bounds = CGRectMake(0, 0, 500, 300);
 }
 
