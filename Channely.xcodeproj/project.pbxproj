@@ -92,6 +92,8 @@
 		8270DCA51719946D00BFB6A9 /* imagebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8270DCA41719946D00BFB6A9 /* imagebar.png */; };
 		82A02C11171FCEB700CA4B11 /* custom-dialog-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */; };
 		82A02C14171FE66800CA4B11 /* SSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A02C13171FE66800CA4B11 /* SSTextView.m */; };
+		82A907E3172267770001F489 /* TimeScroller.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82A907E2172267770001F489 /* TimeScroller.bundle */; };
+		82A907E61722677E0001F489 /* TimeScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A907E51722677E0001F489 /* TimeScroller.m */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
 		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
 		82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E7C171A9D290043079D /* AwesomeMenu.m */; };
@@ -329,6 +331,9 @@
 		82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom-dialog-background.png"; sourceTree = "<group>"; };
 		82A02C12171FE66800CA4B11 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
 		82A02C13171FE66800CA4B11 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
+		82A907E2172267770001F489 /* TimeScroller.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TimeScroller.bundle; sourceTree = "<group>"; };
+		82A907E41722677E0001F489 /* TimeScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScroller.h; sourceTree = "<group>"; };
+		82A907E51722677E0001F489 /* TimeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeScroller.m; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
 		82EF9E78171A90AC0043079D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		82EF9E7B171A9D290043079D /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
@@ -804,6 +809,16 @@
 			path = resources;
 			sourceTree = "<group>";
 		};
+		82A907E1172267690001F489 /* TimeScroller */ = {
+			isa = PBXGroup;
+			children = (
+				82A907E41722677E0001F489 /* TimeScroller.h */,
+				82A907E51722677E0001F489 /* TimeScroller.m */,
+				82A907E2172267770001F489 /* TimeScroller.bundle */,
+			);
+			name = TimeScroller;
+			sourceTree = "<group>";
+		};
 		82EF9E7A171A9D290043079D /* AwesomeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1038,6 +1053,7 @@
 				82A02C13171FE66800CA4B11 /* SSTextView.m */,
 				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
 				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
+				82A907E1172267690001F489 /* TimeScroller */,
 				8239448B171DA1C100C9A6D8 /* BButton */,
 			);
 			name = Utility;
@@ -1192,6 +1208,7 @@
 				82EF9EA3171AAB420043079D /* text_menu_icon.png in Resources */,
 				82394496171DA1C100C9A6D8 /* FontAwesome.ttf in Resources */,
 				82A02C11171FCEB700CA4B11 /* custom-dialog-background.png in Resources */,
+				82A907E3172267770001F489 /* TimeScroller.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1340,6 +1357,7 @@
 				4A355892171EE3C900AFE2B2 /* HLSLoadBalancer.m in Sources */,
 				0AA86AC0171FAFA5004889BE /* ChanVideoInfoViewController.m in Sources */,
 				82A02C14171FE66800CA4B11 /* SSTextView.m in Sources */,
+				82A907E61722677E0001F489 /* TimeScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
