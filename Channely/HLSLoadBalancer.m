@@ -84,7 +84,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
         selectedURL = [NSURL URLWithString:urlStr];
         NSError *error;
         if ([selectedURL checkResourceIsReachableAndReturnError:&error]) {
-            NSLog(@"playlist:%@ was reachable. returning."); // DEBUG.
+            NSLog(@"playlist:%@ was reachable. returning.", [selectedURL absoluteString]); // DEBUG.
             peerReachable = YES;
         } else {
             NSLog(@"playlist could not be reached. error:%@", error); // DEBUG.
