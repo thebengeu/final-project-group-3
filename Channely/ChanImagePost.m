@@ -1,6 +1,6 @@
 #import "ChanImagePost.h"
 #import "ChanAPIEndpoints.h"
-
+#import "Constants.h"
 
 @interface ChanImagePost ()
 
@@ -10,6 +10,16 @@
 
 
 @implementation ChanImagePost
+
+- (CGFloat)thumbWidth
+{
+    return kImageCellThumbnailWidth;
+}
+
+- (CGFloat)thumbHeight
+{
+    return kImageCellThumbnailWidth / self.widthValue * self.heightValue;
+}
 
 - (void)deleteWithCompletion:(void (^)(ChanImagePost *imagePost, NSError *error))block
 {

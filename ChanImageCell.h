@@ -13,7 +13,7 @@
 
 @interface ChanImageCell : ChanAbstractCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *labelView;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UILabel *labelView;
 
 @end

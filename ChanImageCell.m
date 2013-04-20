@@ -7,6 +7,7 @@
 //
 
 #import "ChanImageCell.h"
+#import "Constants.h"
 
 @implementation ChanImageCell
 
@@ -30,8 +31,8 @@
 
 + (CGFloat) getHeightForPost:(ChanPost *)post
 {
-    // TODO: dynamic height
-    return 240.0f;
+    ChanImagePost *imagePost = (ChanImagePost *)post;
+    return imagePost.thumbHeight + kImageCellThumbnailVerticalMargins;
 }
 
 - (void) setupBackgroundImage

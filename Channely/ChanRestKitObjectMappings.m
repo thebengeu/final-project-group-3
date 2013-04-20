@@ -54,6 +54,9 @@
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
+     @"thumbUrl":   @"thumbUrl",
+     @"width":      @"width",
+     @"height":     @"height",
      @"type":       @"type",
      @"username":   @"username"}];
     imagePostMapping.identificationAttributes = @[ @"id" ];
@@ -109,6 +112,9 @@
      @"_id":            @"id",
      @"_channel":       @"channelId",
      @"_slidesPost":    @"slidesPostId",
+     @"thumbUrl":       @"thumbUrl",
+     @"width":          @"width",
+     @"height":         @"height",
      @"url":            @"url"}];
     slidePostMapping.identificationAttributes = @[ @"id" ];
     
