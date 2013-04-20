@@ -26,7 +26,7 @@
     [self.imageView setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)post url]]];
     [self.labelView setText:[post content]];
     [self setupBackgroundImage];
-     
+    
 }
 
 + (CGFloat) getHeightForPost:(ChanPost *)post

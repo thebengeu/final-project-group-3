@@ -232,21 +232,25 @@
     return tempCell.post.createdAt;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
     NSArray *visibles = [self.collectionView visibleCells];
     UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
     [_timeScroller scrollViewDidScroll:cell];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
     [_timeScroller scrollViewDidEndDecelerating];
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
     [_timeScroller scrollViewWillBeginDragging];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
     if (!decelerate) {
         [_timeScroller scrollViewDidEndDecelerating];
     }

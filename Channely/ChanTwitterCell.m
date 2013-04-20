@@ -31,7 +31,7 @@
 - (void) setupBackgroundImage
 {
     [super setupBackgroundImage];
-    UIImage *cellImg = [[UIImage imageNamed:@"textbar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
+    UIImage *cellImg = [[UIImage imageNamed:@"twitterbar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
