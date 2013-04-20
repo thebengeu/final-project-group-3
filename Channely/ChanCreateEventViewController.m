@@ -71,7 +71,7 @@
     
     // Setup border for map view
     _map.layer.borderColor = [UIColor channelyGray].CGColor;
-    _map.layer.borderWidth = 0.1f;
+    _map.layer.borderWidth = 1.0;
 }
 
 
