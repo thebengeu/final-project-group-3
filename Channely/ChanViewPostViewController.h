@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanPost.h"
 
 @interface ChanViewPostViewController : UIViewController
+
+@property UITapGestureRecognizer *tapBehindRecognizer;
+
+@property ChanPost *post;
 
 @end

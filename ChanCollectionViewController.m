@@ -11,6 +11,7 @@
 #import "ChanRefreshControl.h"
 #import "Constants.h"
 #import "SVProgressHUD.h"
+#import "ChanViewTextPostViewController.h"
 
 @interface ChanCollectionViewController ()
 
@@ -95,7 +96,12 @@
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
         slidesViewController.delegate = self.delegate;
-    } 
+    } else if ([segueName isEqualToString:cTextSegue]){
+        ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
+        
+        ChanTextCell *cell = (ChanTextCell *)sender;
+        textViewController.post = cell.post;
+    }
 }
 
 - (void)refreshPosts
