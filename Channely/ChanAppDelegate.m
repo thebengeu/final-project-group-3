@@ -9,6 +9,7 @@
 #import "ChanAppDelegate.h"
 #import "ChanTwitterPost.h"
 #import "ChanUser.h"
+#import "ChanUtility.h"
 
 static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
 static NSString *const cLocalServerLoadKey = @"_lsload";
@@ -52,6 +53,9 @@ static NSUInteger const cLocalServerPort = 22;
     
     // Initialize the Core Data stack
     [managedObjectStore createPersistentStoreCoordinator];
+    
+    // Clear if having issues with persistent store when data model changes
+//    [ChanUtility clearDirectory:RKApplicationDataDirectory()];
     
     NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
 #ifdef DEBUG
