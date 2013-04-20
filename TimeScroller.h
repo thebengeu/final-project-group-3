@@ -20,8 +20,8 @@
 
 @required
 
-- (UITableView *)tableViewForTimeScroller:(TimeScroller *)timeScroller;
-- (NSDate *)dateForCell:(UITableViewCell *)cell;
+- (UICollectionView *)collectionViewForTimeScroller:(TimeScroller *)timeScroller;
+- (NSDate *)dateForCell:(UICollectionViewCell *)cell;
 
 @end
 
@@ -29,7 +29,7 @@
     
     @protected
     id <TimeScrollerDelegate> __unsafe_unretained _delegate;
-    UITableView *_tableView;
+    UICollectionView *_collectionView;
     UIImageView *_scrollBar;
     UILabel *_timeLabel;
     UILabel *_dateLabel;
@@ -46,7 +46,7 @@
 @property (nonatomic, copy) NSCalendar *calendar;
 
 - (id)initWithDelegate:(id <TimeScrollerDelegate>)delegate;
-- (void)scrollViewDidScroll;
+- (void)scrollViewDidScroll:(UICollectionViewCell*) cell;
 - (void)scrollViewDidEndDecelerating;
 - (void)scrollViewWillBeginDragging;
 

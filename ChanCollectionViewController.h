@@ -26,14 +26,16 @@
 #import "UICollectionViewWaterfallLayout.h"
 #import "AwesomeMenuItem.h"
 #import "AwesomeMenu.h"
+#import "TimeScroller.h"
 
 @class ChanChannel;
 
 @interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
-    AwesomeMenuDelegate>
+    AwesomeMenuDelegate, TimeScrollerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) TimeScroller *timeScroller;
 @property (weak, nonatomic) id<ChannelViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) ChanChannel *channel;
