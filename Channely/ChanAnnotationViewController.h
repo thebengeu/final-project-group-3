@@ -30,5 +30,8 @@
 
 - (IBAction)done:(id)sender;
 - (IBAction)clear:(id)sender;
+- (IBAction)undo:(id)sender;
+- (IBAction)redo:(id)sender;
+
 
 @end

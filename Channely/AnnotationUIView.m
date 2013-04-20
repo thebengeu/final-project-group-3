@@ -119,22 +119,25 @@
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
         [self addPointAndDraw:point];
-        if (_currentStrokeIndex < [_strokesPoints count]){
-            [_strokesPoints replaceObjectAtIndex:_currentStrokeIndex withObject:_currentStrokePoints];
-            [_strokeSizes replaceObjectAtIndex:_currentStrokeIndex withObject:[NSNumber numberWithFloat: _markerSize]];
-            [_strokeColors replaceObjectAtIndex:_currentStrokeIndex withObject: _markerColor];
-        } else {
-            [_strokesPoints addObject:_currentStrokePoints];
-            [_strokeSizes addObject:[NSNumber numberWithFloat:_markerSize]];
-            [_strokeColors addObject:_markerColor];
+        
+        //  Clear stored redos after current index
+        while (_currentStrokeIndex < [_strokesPoints count]){
+            [_strokesPoints removeLastObject];
+            [_strokeSizes removeLastObject];
+            [_strokeColors removeLastObject];
         }
-        _currentStrokeIndex++;
+        
+        [_strokesPoints addObject:_currentStrokePoints];
+        [_strokeSizes addObject:[NSNumber numberWithFloat:_markerSize]];
+        [_strokeColors addObject:_markerColor];
+        
+        _currentStrokeIndex = [_strokesPoints count];
     }
 }
          
 -(void)addPointAndDraw:(CGPoint)point{
     [_currentStrokePoints addObject:[NSValue valueWithCGPoint:point]];
-    [self setupDrawContext];
+    [self setupDrawContext:YES];
     [self drawStrokeSection:[_currentStrokePoints count]-1];
     [self doneDrawContext: YES];
 }
@@ -173,9 +176,11 @@
     [self drawCanvasLineSegmentFromPoint:previousPoint toPoint:midPoint2 withSize:_markerSize];
 }
 
--(void)setupDrawContext{
-    UIGraphicsBeginImageContextWithOptions(self.image.size, YES, [[UIScreen mainScreen] scale]);
-    [self.image drawInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
+-(void)setupDrawContext: (BOOL)newImage{
+    if (newImage){
+        UIGraphicsBeginImageContextWithOptions(self.image.size, YES, [[UIScreen mainScreen] scale]);
+        [self.image drawInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
+    }
     CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), [_markerColor CGColor]);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
@@ -191,11 +196,12 @@
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), point.x/ratio - offsetX, point.y/ratio - offsetY);
 }
 
--(void)doneDrawContext:(BOOL)refreshImage{
+-(void)doneDrawContext:(BOOL)lastStroke{
     CGContextStrokePath(UIGraphicsGetCurrentContext());
-    if (refreshImage)
+    if (lastStroke){
         self.image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+        UIGraphicsEndImageContext();
+    }
 }
 
 
@@ -211,9 +217,38 @@
         _markerColor = [_strokeColors objectAtIndex:i];
         _markerSize = [[_strokeSizes objectAtIndex:i] floatValue];
         
-        [self setupDrawContext];
+        if (i == 0)
+            [self setupDrawContext:YES];
+        else
+            [self setupDrawContext:NO];
         
+        for (int j = 0; j < [_currentStrokePoints count]; j++)
+            [self drawStrokeSection:j];
+        
+        if (i == _currentStrokeIndex-1)
+            [self doneDrawContext:YES];
+        else
+            [self doneDrawContext:NO];
     }
+    
+}
+
+- (void) redo {
+    if (_currentStrokeIndex >= [_strokeSizes count])
+        return;
+    
+    _currentStrokePoints = [_strokesPoints objectAtIndex:_currentStrokeIndex];
+    _markerColor = [_strokeColors objectAtIndex:_currentStrokeIndex];
+    _markerSize = [[_strokeSizes objectAtIndex:_currentStrokeIndex] floatValue];
+    
+    [self setupDrawContext:YES];
+    
+    for (int j = 0; j < [_currentStrokePoints count]; j++)
+        [self drawStrokeSection:j];
+    
+    [self doneDrawContext:YES];
+    
+    _currentStrokeIndex++;
 }
 
 -(CGFloat)contentScaleFactor

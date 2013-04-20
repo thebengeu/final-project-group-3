@@ -72,5 +72,13 @@
     [_annotationView clear];
 }
 
+- (IBAction)undo:(id)sender {
+    [_annotationView undo];
+}
+
+- (IBAction)redo:(id)sender {
+    [_annotationView redo];
+}
+
 
 @end

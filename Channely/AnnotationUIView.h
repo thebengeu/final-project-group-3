@@ -23,5 +23,7 @@
 @property UIImage *originalImage;
 
 -(void)clear;
+-(void)undo;
+-(void)redo;
 
 @end

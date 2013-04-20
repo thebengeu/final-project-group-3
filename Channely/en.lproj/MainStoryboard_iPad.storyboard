@@ -1196,7 +1196,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwA-xW-tQe">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Kd2-Mz-fCO"/>
-                                            <constraint firstAttribute="height" constant="40" id="sXS-Gw-6cY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Clear">
@@ -1244,11 +1243,42 @@
                                             <action selector="greenColor:" destination="Bm4-it-aNF" eventType="touchUpInside" id="8pX-b7-6CO"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHl-Gd-bJb">
+                                        <color key="backgroundColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="opx-gN-be9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Undo">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undo:" destination="Bm4-it-aNF" eventType="touchUpInside" id="C8a-R5-wjn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5g1-Bx-xI7">
+                                        <color key="backgroundColor" red="0.01006578575" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="43" id="EJV-zi-rGU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Redo">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redo:" destination="Bm4-it-aNF" eventType="touchUpInside" id="9HB-yN-JbE"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgs-o4-hKC">
                                         <color key="backgroundColor" red="0.0" green="0.13331220739999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="Vco-1i-dfj"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Blue">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1268,12 +1298,14 @@
                                     <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="Jgs-o4-hKC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="3cY-vf-ac6"/>
                                     <constraint firstAttribute="bottom" secondItem="Jgs-o4-hKC" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="8cO-QZ-6xX"/>
                                     <constraint firstItem="zwA-xW-tQe" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MoI-6h-0pm"/>
+                                    <constraint firstItem="rQg-LD-uyI" firstAttribute="leading" secondItem="gsE-Ap-2QD" secondAttribute="leading" constant="164" id="OAA-AG-dMg"/>
                                     <constraint firstItem="Jgs-o4-hKC" firstAttribute="leading" secondItem="7wv-R5-nO5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RGA-it-bTT"/>
+                                    <constraint firstAttribute="bottom" secondItem="5g1-Bx-xI7" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="WPe-fW-ZPS"/>
+                                    <constraint firstItem="5g1-Bx-xI7" firstAttribute="leading" secondItem="LHl-Gd-bJb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ym4-gI-NSa"/>
                                     <constraint firstAttribute="bottom" secondItem="zwA-xW-tQe" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="ZIj-yG-lfe"/>
-                                    <constraint firstItem="7wv-R5-nO5" firstAttribute="top" secondItem="zwA-xW-tQe" secondAttribute="top" type="default" id="hZd-FK-kdB"/>
+                                    <constraint firstItem="LHl-Gd-bJb" firstAttribute="leading" secondItem="rQg-LD-uyI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hfI-2Y-qvv"/>
                                     <constraint firstAttribute="bottom" secondItem="rQg-LD-uyI" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="iZf-qW-TVf"/>
-                                    <constraint firstItem="7wv-R5-nO5" firstAttribute="top" secondItem="Jgs-o4-hKC" secondAttribute="top" type="default" id="mak-Cc-dXj"/>
-                                    <constraint firstItem="Jgs-o4-hKC" firstAttribute="top" secondItem="rQg-LD-uyI" secondAttribute="top" type="default" id="tlH-xl-v6d"/>
+                                    <constraint firstAttribute="bottom" secondItem="LHl-Gd-bJb" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="xDk-ET-pNC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1761,6 +1793,8 @@
                 <relationship kind="action" name="done:"/>
                 <relationship kind="action" name="greenColor:"/>
                 <relationship kind="action" name="redColor:"/>
+                <relationship kind="action" name="redo:"/>
+                <relationship kind="action" name="undo:"/>
                 <relationship kind="outlet" name="annotationView" candidateClass="AnnotationUIView"/>
             </relationships>
         </class>
