@@ -10,7 +10,7 @@
 
 static CGFloat const cChunkPeriod = 10.0f; // Duration of each chunk in seconds.
 static NSString *const cButtonStopRecording = @"Stop";
-static NSString *const cButtonStartRecording = @"Start";
+static NSString *const cButtonStartRecording = @"Record";
 
 @interface ChanVideoCaptureViewController ()
 // Redefinitions.
@@ -20,6 +20,7 @@ static NSString *const cButtonStartRecording = @"Start";
 @property (strong) TimedChunkingVideoRecorder *_recorder;
 @property (nonatomic) BOOL _isRecording;
 @property (strong) ChanHLSRecording *_currentRecording;
+@property NSTimer *liveTextTimer;
 
 // UI Utility
 - (void) updateRecordingControlButtonState;
@@ -64,6 +65,7 @@ static NSString *const cButtonStartRecording = @"Start";
     
     [self updateRecordingControlButtonState];
 }
+
 
 - (void) viewDidAppear:(BOOL)animated {
     // Prevent device from going to sleep.
@@ -115,9 +117,9 @@ static NSString *const cButtonStartRecording = @"Start";
 #pragma mark UI Utility
 - (void) updateRecordingControlButtonState {
     if (_isRecording) {
-        self.recordingControlButton.title = cButtonStopRecording;
+        [self.recordingButton setTitle:cButtonStopRecording forState:UIControlStateNormal];
     } else {
-        self.recordingControlButton.title = cButtonStartRecording;
+        [self.recordingButton setTitle:cButtonStartRecording forState:UIControlStateNormal];
     }
 }
 
@@ -131,7 +133,7 @@ static NSString *const cButtonStartRecording = @"Start";
 - (void) startPreviewing {
     AVCaptureVideoPreviewLayer *layer = [_recorder startPreview];
     
-    layer.videoGravity = AVLayerVideoGravityResizeAspect;
+    layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [self.previewArea.layer addSublayer:layer];
     
     NSLog(@"start previewing. channelid=%@, target=%@ target.layer=%@ preview.layer=%@", parentChannel.id, self.previewArea, self.previewArea.layer, layer); // DEBUG
@@ -142,16 +144,26 @@ static NSString *const cButtonStartRecording = @"Start";
 }
 
 - (void) startRecording {
-    self.backButton.enabled = NO;
+    [self navigationController].navigationBar.userInteractionEnabled = NO;
     [_recorder startTimedRecordingToDirectory:[ChanUtility videoTempDirectory] chunkInterval:cChunkPeriod];
     
     _isRecording = YES;
+    _liveTextTimer = [NSTimer scheduledTimerWithTimeInterval:0.7 target:self selector:@selector(toggleLiveText) userInfo:nil repeats:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [self navigationController].navigationBar.alpha = 0;
 }
 
 - (void) stopRecording {
+    [_liveTextTimer invalidate];
+    _liveTextTimer = nil;
+    [_liveText setHidden:YES];
     [_recorder stopRecording];
     
     _isRecording = NO;
+}
+
+- (void) toggleLiveText{
+    [_liveText setHidden:![_liveText isHidden]];
 }
 
 #pragma mark Chunking Video Recorder Delegate
@@ -202,7 +214,11 @@ static NSString *const cButtonStartRecording = @"Start";
         
         [recording stopRecordingWithEndDate:[NSDate date] endSeqNo:index withCompletion:^(ChanHLSRecording *hlsRecording, NSError *error) {
             NSLog(@"Successfully stopped server recording.");
-            self.backButton.enabled = YES;
+            [self navigationController].navigationBar.userInteractionEnabled = YES;
+            [self navigationController].navigationBar.alpha = 1.0;
+    
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+
             return;
         }];
     }];
