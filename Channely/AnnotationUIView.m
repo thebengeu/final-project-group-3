@@ -160,7 +160,7 @@
 }
 
 -(void)setupDrawContext{
-    UIGraphicsBeginImageContext(self.image.size);
+    UIGraphicsBeginImageContextWithOptions(self.image.size, YES, [[UIScreen mainScreen] scale]);
     [self.image drawInRect:CGRectMake(0, 0, self.image.size.width, self.image.size.height)];
     CGContextSetStrokeColorWithColor(UIGraphicsGetCurrentContext(), [_markerColor CGColor]);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);

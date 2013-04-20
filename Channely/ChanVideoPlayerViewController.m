@@ -80,8 +80,10 @@ CGImageRef UIGetScreenImage(void); // Private API.
     
         [self attachPlayer];
         _firstLoad = NO;
-    }
+    } else
+        _player.view.frame = self.contentView.bounds;
 }
+
 
 
 -(void) viewWillDisappear:(BOOL)animated{
@@ -232,7 +234,7 @@ CGImageRef UIGetScreenImage(void); // Private API.
                            videoSize.width);
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(screen, frame);
-    UIImage* outImage = [UIImage imageWithCGImage:imageRef scale:1 orientation:orientation];
+    UIImage* outImage = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:orientation];
 
     CGImageRelease(screen);
     CGImageRelease(imageRef);
