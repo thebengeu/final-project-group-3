@@ -8,6 +8,7 @@ extern const struct ChanPostAttributes {
 	__unsafe_unretained NSString *channelId;
 	__unsafe_unretained NSString *content;
 	__unsafe_unretained NSString *createdAt;
+	__unsafe_unretained NSString *creatorId;
 	__unsafe_unretained NSString *id;
 	__unsafe_unretained NSString *type;
 	__unsafe_unretained NSString *username;
@@ -23,6 +24,7 @@ extern const struct ChanPostFetchedProperties {
 
 @class ChanChannel;
 @class ChanUser;
+
 
 
 
@@ -69,6 +71,16 @@ extern const struct ChanPostFetchedProperties {
 
 
 //- (BOOL)validateCreatedAt:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* creatorId;
+
+
+
+//- (BOOL)validateCreatorId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -142,6 +154,12 @@ extern const struct ChanPostFetchedProperties {
 
 - (NSDate*)primitiveCreatedAt;
 - (void)setPrimitiveCreatedAt:(NSDate*)value;
+
+
+
+
+- (NSString*)primitiveCreatorId;
+- (void)setPrimitiveCreatorId:(NSString*)value;
 
 
 

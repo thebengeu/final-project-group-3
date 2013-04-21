@@ -53,6 +53,7 @@
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="creatorId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -96,7 +97,7 @@
         <element name="HLSRecording" positionX="-135" positionY="462" width="117" height="150"/>
         <element name="ImagePost" positionX="378" positionY="306" width="128" height="105"/>
         <element name="InstagramPost" positionX="340" positionY="494" width="128" height="73"/>
-        <element name="Post" positionX="196" positionY="311" width="128" height="148"/>
+        <element name="Post" positionX="196" positionY="311" width="128" height="180"/>
         <element name="SlidePost" positionX="520" positionY="143" width="128" height="75"/>
         <element name="SlidesPost" positionX="342" positionY="143" width="128" height="75"/>
         <element name="TextPost" positionX="378" positionY="234" width="128" height="43"/>

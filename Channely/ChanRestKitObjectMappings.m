@@ -43,6 +43,7 @@
     [textPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"_channel":   @"channelId",
+     @"owner":      @"creatorId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"type":       @"type",
@@ -50,11 +51,13 @@
     textPostMapping.identificationAttributes = @[ @"id" ];
 
     [textPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [textPostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
     RKEntityMapping *imagePostMapping = [RKEntityMapping mappingForEntityForName:@"ImagePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [imagePostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"_channel":   @"channelId",
+     @"owner":      @"creatorId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
@@ -66,11 +69,13 @@
     imagePostMapping.identificationAttributes = @[ @"id" ];
     
     [imagePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [imagePostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
     RKEntityMapping *videoPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [videoPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":            @"id",
      @"_channel":       @"channelId",
+     @"owner":          @"creatorId",
      @"content":        @"content",
      @"time":           @"createdAt",
      @"startDate":      @"startTime",
@@ -81,6 +86,7 @@
     videoPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [videoPostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
     RKEntityMapping *videoThumbnailPostMapping = [RKEntityMapping mappingForEntityForName:@"VideoThumbnailPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [videoThumbnailPostMapping addAttributeMappingsFromDictionary:@{
@@ -102,6 +108,7 @@
     [slidesPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
      @"_channel":   @"channelId",
+     @"owner":      @"creatorId",
      @"content":    @"content",
      @"time":       @"createdAt",
      @"url":        @"url",
@@ -110,6 +117,7 @@
     slidesPostMapping.identificationAttributes = @[ @"id" ];
 
     [slidesPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
+    [slidesPostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
     RKEntityMapping *slidePostMapping = [RKEntityMapping mappingForEntityForName:@"SlidePost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [slidePostMapping addAttributeMappingsFromDictionary:@{

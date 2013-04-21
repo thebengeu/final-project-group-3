@@ -32,7 +32,7 @@ static NSString *const PATH_POST_TEXT_FORMAT = @"/channels/%@/posts/text";
 static NSString *const PATH_POST_IMAGE = @"/channels/:channelID/posts/image";
 static NSString *const PATH_POST_IMAGE_FORMAT = @"/channels/%@/posts/image";
 static NSString *const PATH_DELETE_TEXT_FORMAT = @"/posts/text/%@";
-static NSString *const PATH_DELETE_IMAGE_FORMAT = @"/posts/text/%@";
+static NSString *const PATH_DELETE_IMAGE_FORMAT = @"/posts/image/%@";
 static NSString *const PATH_POSTS_UNIFIED_GET = @"/channels/:channelID/posts";
 static NSString *const PATH_POSTS_UNIFIED_GET_FORMAT = @"/channels/%@/posts";
 
