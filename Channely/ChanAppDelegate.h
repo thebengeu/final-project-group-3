@@ -16,6 +16,7 @@
 #import "ChanUtility.h"
 #import "HLSStreamSync.h"
 #import "HLSPeerDiscovery.h"
+#import "ChanNavigationControlManager.h"
 
 @interface ChanAppDelegate : UIResponder <UIApplicationDelegate, HLSStreamAdvertiser>
 @property (strong, nonatomic) UIWindow *window;

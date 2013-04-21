@@ -48,6 +48,13 @@
     self.channelTableViewController.refreshControl = refreshControl;
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSLog(@"discover view controller view did appear");
+    [self layoutFromCurrentOrientation];
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString * segueName = segue.identifier;
     if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
@@ -223,17 +230,16 @@
 
 #pragma mark Rotation Methods
 - (void) layoutFromCurrentOrientation {
-    UIDeviceOrientation currentOrientation = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsLandscape(currentOrientation)) {
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    NSLog(@"currentOrientation=%d", currentOrientation);
+    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
         [self layoutLandscape];
-    } else if (UIDeviceOrientationIsPortrait(currentOrientation)) {
+    } else if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
         [self layoutPortrait];
-    } else {
-        NSLog(@"discover view controller: encountered a weird orientation.");
     }
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {    
     [self layoutFromCurrentOrientation];
 }
 

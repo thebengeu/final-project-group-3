@@ -17,7 +17,7 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        self.delegate = [ChanNavigationControlManager instance];
     }
     return self;
 }
@@ -25,11 +25,6 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-
 }
 
 - (void) didReceiveMemoryWarning {
