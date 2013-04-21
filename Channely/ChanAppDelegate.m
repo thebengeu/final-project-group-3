@@ -22,6 +22,7 @@ static NSUInteger const cLocalServerPort = 22;
 @property (strong) HLSStreamAdvertisingManager *_advertisingManager;
 @property (strong) HLSPeerDiscovery *_loadBalancer;
 @property (strong) HLSStreamSync *_streamSync;
+@property (strong) ChanNavigationControlManager *_navigationManager;
 
 // Appearance.
 - (void) customizeAppearance;
@@ -34,6 +35,7 @@ static NSUInteger const cLocalServerPort = 22;
 @synthesize _advertisingManager;
 @synthesize _loadBalancer;
 @synthesize _streamSync;
+@synthesize _navigationManager;
 
 #pragma mark AppDelegate Methods
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -95,6 +97,8 @@ static NSUInteger const cLocalServerPort = 22;
     [self setupAdvertisingManager];
     [self setupStreamSync];
     [self setupPeerDiscovery];
+    
+    _navigationManager = [ChanNavigationControlManager instance];
     
     return YES;
 }

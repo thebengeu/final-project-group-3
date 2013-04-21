@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanNavigationControlManager.h"
 
 @interface ChanRootViewController : UINavigationController
 
