@@ -34,6 +34,7 @@
     [self.view.window removeGestureRecognizer:self.tapBehindRecognizer];
 }
 
+
 - (void)handleTapBehind:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded)

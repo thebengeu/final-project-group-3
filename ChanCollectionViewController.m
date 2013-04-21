@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "SVProgressHUD.h"
 #import "ChanViewTextPostViewController.h"
+#import "ChanViewImagePostViewController.h"
 
 @interface ChanCollectionViewController ()
 
@@ -100,7 +101,13 @@
         ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
         
         ChanTextCell *cell = (ChanTextCell *)sender;
-        textViewController.post = cell.post;
+        textViewController.post = (ChanPost *)cell.post;
+    } else if ([segueName isEqualToString:cImageSegue]){
+        ChanViewImagePostViewController *imageViewController = (ChanViewImagePostViewController *)segue.destinationViewController;
+        
+        ChanTextCell *cell = (ChanTextCell *)sender;
+        imageViewController.post = (ChanPost *)cell.post;
+        imageViewController.delegate = self.delegate;
     }
 }
 
