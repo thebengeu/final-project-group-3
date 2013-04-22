@@ -81,6 +81,15 @@ static const CGFloat kImageCellThumbnailVerticalMargins = 40.0f;
 static const CGFloat kSlidesCellThumbnailVerticalMargins = kImageCellThumbnailVerticalMargins;
 static const CGFloat kSlidesCellDefaultHeight = 260.0f;
 
+// Video Cell
+static const CGFloat kVideoCellThumbnailWidth = 80.0f;
+static const CGFloat kVideoCellThumbnailHeight = 60.0f;
+static const CGFloat kVideoCellThumbnailRightMargin = 1.0f;
+static const CGFloat kVideoCellThumbnailBottomMargin = 1.0f;
+static const int kVideoCellThumbnailsPerRow = 3;
+static const int kVideoCellMaxThumbnails = 120;
+static const CGFloat kVideoCellHeaderHeight = 18.0f;
+
 // Annotation View
 static const CGFloat kMarkerSize = 3.0f;
 static const NSInteger kMarkerMinSegment = 8;

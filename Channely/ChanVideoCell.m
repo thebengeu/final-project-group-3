@@ -9,12 +9,7 @@
 #import "ChanVideoCell.h"
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
-
-static const CGFloat kThumbnailWidth = 80.0f;
-static const CGFloat kThumbnailHeight = 60.0f;
-static const int kThumbnailsPerRow = 3;
-static const int kMaxThumbnails = 120;
-static const CGFloat kHeaderHeight = 17.0f;
+#import "Constants.h"
 
 @implementation ChanVideoCell
 
@@ -34,15 +29,15 @@ static const CGFloat kHeaderHeight = 17.0f;
     }
     
     [thumbnails enumerateObjectsUsingBlock:^(ChanVideoThumbnailPost *thumbnail, NSUInteger idx, BOOL *stop) {
-        if (idx >= kMaxThumbnails) {
+        if (idx >= kVideoCellMaxThumbnails) {
             *stop = YES;
         }
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
-                                                                               (idx % kThumbnailsPerRow) * kThumbnailWidth,
-                                                                               (kThumbnailHeight * (idx / kThumbnailsPerRow)) + kHeaderHeight,
-                                                                               kThumbnailWidth,
-                                                                               kThumbnailHeight)];
+                                                                               (idx % kVideoCellThumbnailsPerRow) * kVideoCellThumbnailWidth,
+                                                                               (kVideoCellThumbnailHeight * (idx / kVideoCellThumbnailsPerRow)) + kVideoCellHeaderHeight,
+                                                                               kVideoCellThumbnailWidth - kVideoCellThumbnailRightMargin,
+                                                                               kVideoCellThumbnailHeight - kVideoCellThumbnailBottomMargin)];
         [imageView setImageWithURL:[NSURL URLWithString:thumbnail.url]];
         [self.contentView addSubview:imageView];
     }];
@@ -52,7 +47,8 @@ static const CGFloat kHeaderHeight = 17.0f;
 {
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
     
-    CGFloat min = MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow)) + kHeaderHeight;
+    CGFloat min = MIN(kVideoCellThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kVideoCellThumbnailsPerRow),
+                      kVideoCellThumbnailHeight * ceil(kVideoCellMaxThumbnails / (float)kVideoCellThumbnailsPerRow)) + kVideoCellHeaderHeight;
     
     if (min < 140.0f) return 140.0f;
     else return min;
