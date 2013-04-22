@@ -301,8 +301,8 @@
 		821463CF1717340600699085 /* ChanAbstractCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanAbstractCell.m; sourceTree = "<group>"; };
 		821463D117173E7F00699085 /* ChanVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoCell.h; sourceTree = "<group>"; };
 		821463D217173E8000699085 /* ChanVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoCell.m; sourceTree = "<group>"; };
-		821E47F1171D83850043608B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGlowingTextField.h; sourceTree = "<group>"; };
-		821E47F2171D83850043608B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGlowingTextField.m; sourceTree = "<group>"; };
+		821E47F1171D83850043608B /* SLGlowingTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLGlowingTextField.h; path = Channely/SLGlowingTextField.h; sourceTree = "<group>"; };
+		821E47F2171D83850043608B /* SLGlowingTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLGlowingTextField.m; path = Channely/SLGlowingTextField.m; sourceTree = "<group>"; };
 		8239448C171DA1C100C9A6D8 /* BButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		8239448D171DA1C100C9A6D8 /* BButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		8239448E171DA1C100C9A6D8 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 		8270DCA217198E6900BFB6A9 /* textbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textbar.png; sourceTree = "<group>"; };
 		8270DCA41719946D00BFB6A9 /* imagebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imagebar.png; sourceTree = "<group>"; };
 		82A02C10171FCEB700CA4B11 /* custom-dialog-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "custom-dialog-background.png"; sourceTree = "<group>"; };
-		82A02C12171FE66800CA4B11 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTextView.h; sourceTree = "<group>"; };
-		82A02C13171FE66800CA4B11 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTextView.m; sourceTree = "<group>"; };
+		82A02C12171FE66800CA4B11 /* SSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSTextView.h; path = Channely/SSTextView.h; sourceTree = "<group>"; };
+		82A02C13171FE66800CA4B11 /* SSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSTextView.m; path = Channely/SSTextView.m; sourceTree = "<group>"; };
 		82A907E2172267770001F489 /* TimeScroller.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TimeScroller.bundle; sourceTree = "<group>"; };
 		82A907E41722677E0001F489 /* TimeScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeScroller.h; sourceTree = "<group>"; };
 		82A907E51722677E0001F489 /* TimeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeScroller.m; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		82EF9E9F171AAB420043079D /* text_menu_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_menu_icon.png; sourceTree = "<group>"; };
 		82EF9EA4171AABC60043079D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		82EF9EA6171AF9380043079D /* ChannelViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ChannelViewControllerDelegate.h; path = Channely/ChannelViewControllerDelegate.h; sourceTree = "<group>"; };
-		82EF9EAF171B15CC0043079D /* AHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHAlertView.h; sourceTree = "<group>"; };
-		82EF9EB0171B15CC0043079D /* AHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHAlertView.m; sourceTree = "<group>"; };
+		82EF9EAF171B15CC0043079D /* AHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AHAlertView.h; path = Channely/AHAlertView.h; sourceTree = "<group>"; };
+		82EF9EB0171B15CC0043079D /* AHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AHAlertView.m; path = Channely/AHAlertView.m; sourceTree = "<group>"; };
 		82F6D4A91715B281006A1AA4 /* ChanCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanCollectionViewController.h; sourceTree = "<group>"; };
 		82F6D4AA1715B281006A1AA4 /* ChanCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanCollectionViewController.m; sourceTree = "<group>"; };
 		97663AA3EF11435B88CF1377 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -517,7 +517,6 @@
 				0AA8E1431715D5B60010F99A /* ChannelOwned */,
 				0A91BA0F171169C10095FA01 /* CreateEvent */,
 				821463CD17172EA400699085 /* Collection View */,
-				82EF9E7A171A9D290043079D /* AwesomeMenu */,
 			);
 			name = Channel;
 			sourceTree = "<group>";
@@ -643,6 +642,7 @@
 		0ABB364A16FC19A200436E06 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B6A6C7FF172566E7009C4B3E /* Libraries */,
 				0A991D131719353F00275B3B /* Menu */,
 				B6AB9B0817191B6200BDEA3B /* Utility */,
 				B63B64B217165DE000885E4B /* Slides */,
@@ -810,8 +810,7 @@
 				82394492171DA1C100C9A6D8 /* UIColor+BButton.h */,
 				82394493171DA1C100C9A6D8 /* UIColor+BButton.m */,
 			);
-			name = BButton;
-			path = ../BButton;
+			path = BButton;
 			sourceTree = "<group>";
 		};
 		82394490171DA1C100C9A6D8 /* resources */ = {
@@ -830,6 +829,7 @@
 				82A907E2172267770001F489 /* TimeScroller.bundle */,
 			);
 			name = TimeScroller;
+			path = Channely;
 			sourceTree = "<group>";
 		};
 		82EF9E7A171A9D290043079D /* AwesomeMenu */ = {
@@ -1048,6 +1048,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B6A6C7FF172566E7009C4B3E /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				82EF9E7A171A9D290043079D /* AwesomeMenu */,
+				8239448B171DA1C100C9A6D8 /* BButton */,
+				82A907E1172267690001F489 /* TimeScroller */,
+				82EF9EAF171B15CC0043079D /* AHAlertView.h */,
+				82EF9EB0171B15CC0043079D /* AHAlertView.m */,
+				821E47F1171D83850043608B /* SLGlowingTextField.h */,
+				821E47F2171D83850043608B /* SLGlowingTextField.m */,
+				82A02C12171FE66800CA4B11 /* SSTextView.h */,
+				82A02C13171FE66800CA4B11 /* SSTextView.m */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		B6AB9B0817191B6200BDEA3B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,16 +1073,8 @@
 				4AE16EE1170DF6E500573A4B /* ChanUtility.m */,
 				B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */,
 				B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */,
-				82EF9EAF171B15CC0043079D /* AHAlertView.h */,
-				82EF9EB0171B15CC0043079D /* AHAlertView.m */,
-				821E47F1171D83850043608B /* SLGlowingTextField.h */,
-				821E47F2171D83850043608B /* SLGlowingTextField.m */,
-				82A02C12171FE66800CA4B11 /* SSTextView.h */,
-				82A02C13171FE66800CA4B11 /* SSTextView.m */,
 				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
 				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
-				82A907E1172267690001F489 /* TimeScroller */,
-				8239448B171DA1C100C9A6D8 /* BButton */,
 			);
 			name = Utility;
 			path = Channely;
