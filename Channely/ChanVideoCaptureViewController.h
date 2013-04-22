@@ -24,7 +24,6 @@
 @property (weak, nonatomic) id<ChanPostViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextView *liveText;
 
-
 // External.
 @property (strong) ChanChannel *parentChannel;
 @property (atomic, readonly) BOOL isExpectingFirstChunk;

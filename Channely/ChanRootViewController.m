@@ -13,6 +13,8 @@
 @end
 
 @implementation ChanRootViewController
+@synthesize forceLandscape;
+
 #pragma mark View Controller Methods
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -28,10 +30,7 @@
 
 }
 
-
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return YES;
 }
 
@@ -42,7 +41,7 @@
 
 // iOS6
 - (NSUInteger)supportedInterfaceOrientations {
-    if (_forceLandscape)
+    if (forceLandscape)
         return UIInterfaceOrientationMaskLandscape;
     else
         return [super supportedInterfaceOrientations];
