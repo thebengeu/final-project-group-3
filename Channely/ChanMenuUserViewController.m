@@ -10,7 +10,7 @@
 #import "ChanMenuAnonUserViewController.h"
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
-#import "AHAlertView.h"
+#import "AHAlertView+Channely.h"
 #import "BButton.h"
 #import "Constants.h"
 
@@ -63,12 +63,7 @@
 {
     if (![_updateStatus isAnimating]) {
         if ([[_username text]length] == 0) {
-            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Update" message:@"Invalid username"];
-            __weak AHAlertView *weakA = alert;
-            [alert setCancelButtonTitle:@"OK" block:^{
-                weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-            }];
-            [alert show];
+            [AHAlertView showTumbleAlertWithTitle:kUserMenuUpdateAlertTitle message:kUserMenuUpdateInvalidUsernameMessage];
             return;
         }
         

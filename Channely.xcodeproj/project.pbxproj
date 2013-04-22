@@ -158,6 +158,7 @@
 		B66FDCC316EF88A40042A36C /* ChannelyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B66FDCC216EF88A40042A36C /* ChannelyTests.m */; };
 		B6892F7C1711541C007C71C9 /* _ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7B1711541C007C71C9 /* _ChanVideoThumbnailPost.m */; };
 		B6892F7F17115426007C71C9 /* ChanVideoThumbnailPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */; };
+		B6A6C80217256874009C4B3E /* AHAlertView+Channely.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A6C80117256873009C4B3E /* AHAlertView+Channely.m */; };
 		B6AB9B0B17191B9200BDEA3B /* UIImage+normalizedOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */; };
 		B6BC272A1707D97500A783A8 /* ChanRestKitObjectMappings.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BC27291707D97500A783A8 /* ChanRestKitObjectMappings.m */; };
 		B6D4D5EF1719938C00C7F538 /* ChanSlidesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D4D5EE1719938C00C7F538 /* ChanSlidesCell.m */; };
@@ -430,6 +431,8 @@
 		B6892F7D17115426007C71C9 /* ChanVideoThumbnailPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanVideoThumbnailPost.h; sourceTree = "<group>"; };
 		B6892F7E17115426007C71C9 /* ChanVideoThumbnailPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoThumbnailPost.m; sourceTree = "<group>"; };
 		B68B818F170D57C3001B6986 /* ChanAPIEndpoints.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChanAPIEndpoints.h; sourceTree = "<group>"; };
+		B6A6C80017256872009C4B3E /* AHAlertView+Channely.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AHAlertView+Channely.h"; sourceTree = "<group>"; };
+		B6A6C80117256873009C4B3E /* AHAlertView+Channely.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AHAlertView+Channely.m"; sourceTree = "<group>"; };
 		B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+normalizedOrientation.h"; sourceTree = "<group>"; };
 		B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+normalizedOrientation.m"; sourceTree = "<group>"; };
 		B6BC27281707D97500A783A8 /* ChanRestKitObjectMappings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanRestKitObjectMappings.h; sourceTree = "<group>"; };
@@ -1067,14 +1070,16 @@
 		B6AB9B0817191B6200BDEA3B /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				B6A6C80017256872009C4B3E /* AHAlertView+Channely.h */,
+				B6A6C80117256873009C4B3E /* AHAlertView+Channely.m */,
 				B6269866171D4D9B00A42599 /* ChanRefreshControl.h */,
 				B6269867171D4D9D00A42599 /* ChanRefreshControl.m */,
 				4AE16EE0170DF6E500573A4B /* ChanUtility.h */,
 				4AE16EE1170DF6E500573A4B /* ChanUtility.m */,
-				B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */,
-				B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */,
 				B610DA7D171D957000BE38A7 /* UIColor+Channely.h */,
 				B610DA7E171D957000BE38A7 /* UIColor+Channely.m */,
+				B6AB9B0917191B9200BDEA3B /* UIImage+normalizedOrientation.h */,
+				B6AB9B0A17191B9200BDEA3B /* UIImage+normalizedOrientation.m */,
 			);
 			name = Utility;
 			path = Channely;
@@ -1377,6 +1382,7 @@
 				0A9EAEF817229FB2001B5DD7 /* ChanViewPostViewController.m in Sources */,
 				0A9EAEFB1722B2B7001B5DD7 /* ChanViewTextPostViewController.m in Sources */,
 				0A95BD911723A9DD0065E388 /* ChanViewImagePostViewController.m in Sources */,
+				B6A6C80217256874009C4B3E /* AHAlertView+Channely.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

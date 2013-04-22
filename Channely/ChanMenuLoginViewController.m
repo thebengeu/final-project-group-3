@@ -9,8 +9,9 @@
 #import "ChanMenuLoginViewController.h"
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
-#import "AHAlertView.h"
+#import "AHAlertView+Channely.h"
 #import "BButton.h"
+#import "Constants.h"
 
 @implementation ChanMenuLoginViewController
 
@@ -25,24 +26,14 @@
 {
     if (![_status isAnimating]) {
         if ([[_username text]length] == 0 || [[_password text]length] == 0) {
-            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Invalid username or password"];
-            __weak AHAlertView *weakA = alert;
-            [alert setCancelButtonTitle:@"OK" block:^{
-                weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-            }];
-            [alert show];
+            [AHAlertView showTumbleAlertWithTitle:kUserMenuLoginAlertTitle message:kUserMenuAlertInvalidUsernamePasswordMessage];
             return;
         }
         
         [ChanUser getAccessTokenWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
             [_status stopAnimating];
             if (error != nil) {
-                AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Invalid Username or Password"];
-                __weak AHAlertView *weakA = alert;
-                [alert setCancelButtonTitle:@"OK" block:^{
-                    weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-                }];
-                [alert show];
+                [AHAlertView showTumbleAlertWithTitle:kUserMenuLoginAlertTitle message:kUserMenuAlertInvalidUsernamePasswordMessage];
             } else {
                 [[self navigationController]popViewControllerAnimated:YES];
                 [SVProgressHUD showSuccessWithStatus:@"Welcome back"];

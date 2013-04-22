@@ -11,7 +11,7 @@
 #import "ChanDetailViewController.h"
 #include "SVProgressHUD.h"
 #import "Constants.h"
-#import "AHAlertView.h"
+#import "AHAlertView+Channely.h"
 #import "ChanChannel.h"
 #import "BButton.h"
 
@@ -48,12 +48,7 @@
 - (IBAction)createOrUpdate:(id)sender
 {
     if ([[_channelName text]length] == 0) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateChannelEmptyChannelNameAlertTitle message:kCreateChannelEmptyChannelNameAlertMessage];
-        __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:kOkButtonTitle block:^{
-            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-        }];
-        [alert show];
+        [AHAlertView showTumbleAlertWithTitle:kCreateChannelEmptyChannelNameAlertTitle message:kCreateChannelEmptyChannelNameAlertMessage];
         return;
     }
     

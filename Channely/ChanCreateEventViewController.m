@@ -9,7 +9,7 @@
 #import "ChanCreateEventViewController.h"
 #import "SVProgressHUD.h"
 #import "Constants.h"
-#import "AHAlertView.h"
+#import "AHAlertView+Channely.h"
 #import "BButton.h"
 #import "SSTextView.h"
 #import "SelectionAnnotation.h"
@@ -191,22 +191,12 @@
 - (IBAction)createEvent:(id)sender
 {
     if ([[_eventNameTextField text]length] == 0) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidTitleMessage];
-        __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:kOkButtonTitle block:^{
-            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-        }];
-        [alert show];
+        [AHAlertView showTumbleAlertWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidTitleMessage];
         return;
     }
     
     if ([_startDate compare:_endDate] == NSOrderedDescending) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidDateMessage];
-        __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:kOkButtonTitle block:^{
-            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-        }];
-        [alert show];
+        [AHAlertView showTumbleAlertWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidDateMessage];
         return;
     }
     

@@ -187,3 +187,10 @@ static NSString *const kSearchBarPlaceholder = @"Search Channely";
 static NSString *const kOverrideClassMessage = @"You must override %@ in a subclass";
 static NSString *const kUnexpectedTypeConstantMessage = @"Unexpected type constant %d";
 
+// User Menu
+static NSString *const kUserMenuLoginAlertTitle = @"Login";
+static NSString *const kUserMenuLoginErrorTitle = @"Error while logging in";
+static NSString *const kUserMenuSignupAlertTitle = @"Signup";
+static NSString *const kUserMenuAlertInvalidUsernamePasswordMessage = @"Invalid Username or Password";
+static NSString *const kUserMenuUpdateAlertTitle = @"Update";
+static NSString *const kUserMenuUpdateInvalidUsernameMessage = @"Invalid username";

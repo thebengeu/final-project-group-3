@@ -9,8 +9,9 @@
 #import "ChanMenuSignupViewController.h"
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
-#import "AHAlertView.h"
+#import "AHAlertView+Channely.h"
 #import "BButton.h"
+#import "Constants.h"
 
 @implementation ChanMenuSignupViewController
 
@@ -25,33 +26,18 @@
 {
     if (![_status isAnimating]) {
         if ([[_username text]length] == 0 || [[_password text]length] == 0) {
-            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
-            __weak AHAlertView *weakA = alert;
-            [alert setCancelButtonTitle:@"OK" block:^{
-                weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-            }];
-            [alert show];
+            [AHAlertView showTumbleAlertWithTitle:kUserMenuSignupAlertTitle message:kUserMenuAlertInvalidUsernamePasswordMessage];
             return;
         }
         
         [ChanUser createUserWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
             [_status stopAnimating];
             if (error) {
-                AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
-                __weak AHAlertView *weakA = alert;
-                [alert setCancelButtonTitle:@"OK" block:^{
-                    weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-                }];
-                [alert show];
+                [AHAlertView showTumbleAlertWithTitle:kUserMenuSignupAlertTitle message:kUserMenuAlertInvalidUsernamePasswordMessage];
             } else {
                 [ChanUser getAccessTokenWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
                     if (error) {
-                        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Error while logging in"];
-                        __weak AHAlertView *weakA = alert;
-                        [alert setCancelButtonTitle:@"OK" block:^{
-                            weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
-                        }];
-                        [alert show];
+                        [AHAlertView showTumbleAlertWithTitle:kUserMenuLoginAlertTitle message:kUserMenuLoginErrorTitle];
                     } else {
                         [[self navigationController] popViewControllerAnimated:YES];
                         [SVProgressHUD showSuccessWithStatus:@"Welcome!"];
