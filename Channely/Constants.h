@@ -97,6 +97,10 @@ static NSUInteger const kMaxSpreadRadius = 5;
 // Chunking Video Recorder
 static NSString *const kOutputFilePathFormat = @"%@/chunk%d.mp4";
 
+// Directories
+static NSString *const kWebRootDir = @"www";
+static NSString *const kVideoTempDir = @"recording";
+
 // NSOperation
 static NSString *const kKVOIsExecuting = @"isExecuting";
 static NSString *const kKVOIsFinished = @"isFinished";

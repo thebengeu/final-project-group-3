@@ -8,20 +8,17 @@
 
 #import "ChanUtility.h"
 
-static NSString *const cWebRootDir = @"www";
-static NSString *const cVideoTempDir = @"recording";
-
 @implementation ChanUtility
 + (NSString *) documentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
 + (NSString *) webRootDirectory {
-    return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:cWebRootDir];
+    return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:kWebRootDir];
 }
 
 + (NSString *) videoTempDirectory {
-    return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:cVideoTempDir];
+    return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:kVideoTempDir];
 }
 
 // Non-destructively creates a directory. If the directory exists, no action is taken.
