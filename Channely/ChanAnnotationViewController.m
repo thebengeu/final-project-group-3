@@ -28,6 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [_annotationView setOriginalImage:_image];
+    [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypeDanger]];
     
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
@@ -63,17 +64,17 @@
 
 - (IBAction)redColor:(id)sender
 {
-    [_annotationView setMarkerColor:[UIColor redColor]];
+    [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypeDanger]];
 }
 
 - (IBAction)greenColor:(id)sender
 {
-    [_annotationView setMarkerColor:[UIColor greenColor]];
+    [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypeSuccess]];
 }
 
 - (IBAction)blueColor:(id)sender
 {
-    [_annotationView setMarkerColor:[UIColor blueColor]];
+    [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypePrimary]];
 }
 
 - (IBAction)clear:(id)sender

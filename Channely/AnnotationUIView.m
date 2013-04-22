@@ -84,7 +84,16 @@
 - (void)setOriginalImage:(UIImage *)originalImage
 {
     _originalImage = originalImage;
-    self.image = originalImage;
+    CGFloat scale = 1;
+    if ([_originalImage size].width > kAnnotationImageMaxSize)
+        scale = MIN(scale, kAnnotationImageMaxSize/[_originalImage size].width);
+    if ([_originalImage size].height > kAnnotationImageMaxSize)
+        scale = MIN(scale, kAnnotationImageMaxSize/[_originalImage size].height);
+    if (scale < 1){
+        _originalImage = [self imageWithImage:_originalImage scaledToSize:CGSizeMake([_originalImage size].width*scale, [_originalImage size].height*scale)];
+    }
+    
+    self.image = _originalImage;
 }
 
 - (UIImage *)originalImage
@@ -323,6 +332,20 @@
         return MAX(widthScale, heightScale);
     }
     return 1.0;
+}
+
+/*
+ 
+ Resize image
+ 
+ */
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, screenScale);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end

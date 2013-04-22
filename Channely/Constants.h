@@ -97,6 +97,7 @@ static const CGFloat kVideoCellHeaderHeight = 18.0f;
 static const CGFloat kMarkerSize = 3.0f;
 static const NSInteger kMarkerMinSegment = 8;
 static const NSInteger kMarkerMaxSegment = 32;
+static const CGFloat kAnnotationImageMaxSize = 640.0;
 
 //  Discover View Controller
 static const NSInteger kDistanceFilterMetres = 10;
