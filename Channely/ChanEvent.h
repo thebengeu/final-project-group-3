@@ -1,5 +1,3 @@
-#import <CoreLocation/CLLocation.h>
-
 #import "_ChanEvent.h"
 
 @interface ChanEvent : _ChanEvent {}

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+
 @interface SelectionAnnotation : NSObject <MKAnnotation> {
     CLLocationCoordinate2D coordinate;
 }

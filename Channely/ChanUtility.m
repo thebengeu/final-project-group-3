@@ -7,6 +7,7 @@
 //
 
 #import "ChanUtility.h"
+#import "Constants.h"
 
 @implementation ChanUtility
 + (NSString *)documentsDirectory

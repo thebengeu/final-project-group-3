@@ -8,6 +8,11 @@
 
 #import "ChanTextPostViewController.h"
 #import "Constants.h"
+#import "ChanUser.h"
+#import "ChanAnonUser.h"
+#import "ChanTextPost.h"
+#import "ChanChannel.h"
+#import "BButton.h"
 
 @implementation ChanTextPostViewController
 

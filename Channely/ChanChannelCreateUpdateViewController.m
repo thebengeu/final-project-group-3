@@ -11,6 +11,9 @@
 #import "ChanDetailViewController.h"
 #include "SVProgressHUD.h"
 #import "Constants.h"
+#import "AHAlertView.h"
+#import "ChanChannel.h"
+#import "BButton.h"
 
 @implementation ChanChannelCreateUpdateViewController
 

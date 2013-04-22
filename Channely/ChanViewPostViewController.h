@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanPost.h"
+
+@class ChanPost;
 
 @interface ChanViewPostViewController : UIViewController
 

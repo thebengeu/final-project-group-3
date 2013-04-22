@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BButton.h"
-#import "UIColor+Channely.h"
+
+@class BButton;
 
 @interface ChanMenuAnonUserViewController : UIViewController <UITextFieldDelegate>
 

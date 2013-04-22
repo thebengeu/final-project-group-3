@@ -11,6 +11,9 @@
 #import "ChanMenuUserViewController.h"
 #import "ChanAnonUser.h"
 #import "SVProgressHUD.h"
+#import "Constants.h"
+#import "BButton.h"
+#import "UIColor+Channely.h"
 
 @implementation ChanMenuAnonUserViewController
 

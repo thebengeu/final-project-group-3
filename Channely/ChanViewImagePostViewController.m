@@ -10,6 +10,8 @@
 #import "ChanImagePost.h"
 #import "SVProgressHUD.h"
 #import "ChanUser.h"
+#import "ChannelViewController.h"
+#import "BButton.h"
 
 @implementation ChanViewImagePostViewController
 

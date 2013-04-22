@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AHAlertView.h"
-#import "BButton.h"
+
+@class BButton;
 
 @interface ChanMenuSignupViewController : UIViewController
 

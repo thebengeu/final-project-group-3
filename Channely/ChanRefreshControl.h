@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColor+Channely.h"
 
 @interface ChanRefreshControl : UIRefreshControl
 

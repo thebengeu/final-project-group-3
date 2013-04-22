@@ -13,6 +13,8 @@
 #import "ChanVideoCaptureViewController.h"
 #import "SVProgressHUD.h"
 #import "Constants.h"
+#import "ChanUser.h"
+#import "ChanChannel.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 

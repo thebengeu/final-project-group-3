@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BButton.h"
 #import "ChanPostViewController.h"
+
+@class BButton;
 
 @interface ChanImagePostViewController : ChanPostViewController
 

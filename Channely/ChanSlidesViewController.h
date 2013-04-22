@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChannelViewControllerDelegate.h"
-#import "Constants.h"
 
 @class ChanChannel;
 @class ChanSlidesPost;
+@protocol ChannelViewControllerDelegate;
 
 @interface ChanSlidesViewController : UIViewController <UIScrollViewDelegate>
 

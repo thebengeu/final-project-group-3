@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
-#import "TimedChunkingVideoRecorder.h"
 #import "ChunkingVideoRecorderDelegate.h"
-#import "HLSStreamSync.h"
-#import "ChanHLSRecording.h"
-#import "ChanChannel.h"
-#import "ChanHLSChunk.h"
-#import "ChanUtility.h"
-#import "ChanPostViewController.h"
+
+@class ChanChannel;
+@class ChanHLSRecording;
+@class ChanHLSChunk;
+@protocol ChanPostViewControllerDelegate;
 
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 // Storyboard.

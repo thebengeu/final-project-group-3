@@ -8,6 +8,7 @@
 
 #import "ChanTwitterCell.h"
 #import "Constants.h"
+#import "ChanPost.h"
 
 @implementation ChanTwitterCell
 

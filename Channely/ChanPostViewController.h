@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanChannel.h"
-#import "ChanUser.h"
-#import "ChanAnonUser.h"
+
+@class ChanChannel;
 
 @protocol ChanPostViewControllerDelegate
 

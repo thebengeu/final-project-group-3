@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import <MapKit/MapKit.h>
-#import "AHAlertView.h"
-#import "BButton.h"
-#import "SSTextView.h"
-#import "SelectionAnnotation.h"
+
+@class BButton;
+@class SSTextView;
 
 @protocol ChanCreateEventViewControllerDelegate
 

@@ -6,9 +6,18 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "ChanVideoPlayerViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import "ChanVideoPlayerViewController.h"
 #import "ChanVideoInfoViewController.h"
+#import "ChanChannel.h"
+#import "ChanUtility.h"
+#import "HLSPeerDiscovery.h"
+#import "HLSStreamSync.h"
+#import "ChanAnnotationViewController.h"
+#import "HLSLoadBalancer.h"
+#import "ChannelViewControllerDelegate.h"
 
 static NSString *const cAnnotationSegueId = @"annotationFromMPlayerSegue";
 static NSString *const cMetaFormat = @"id:%@ from %@";

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanChannel.h"
+
+@class ChanChannel;
 
 @interface ChanChannelOwnedTableCell : UITableViewCell
 

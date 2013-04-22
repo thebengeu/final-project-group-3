@@ -6,9 +6,13 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
-#import "ChanImagePostViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ChanImagePostViewController.h"
 #import "UIImage+normalizedOrientation.h"
+#import "ChanUser.h"
+#import "ChanAnonUser.h"
+#import "ChanChannel.h"
+#import "BButton.h"
 
 @implementation ChanImagePostViewController
 

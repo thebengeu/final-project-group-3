@@ -10,6 +10,9 @@
 #import "ChanMenuAnonUserViewController.h"
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
+#import "AHAlertView.h"
+#import "BButton.h"
+#import "Constants.h"
 
 @interface ChanMenuUserViewController ()
 

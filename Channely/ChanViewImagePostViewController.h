@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ChanViewPostViewController.h"
-#import "ChannelViewController.h"
-#import "BButton.h"
+
+@class BButton;
+@protocol ChannelViewControllerDelegate;
 
 @interface ChanViewImagePostViewController : ChanViewPostViewController
 

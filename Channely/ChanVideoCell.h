@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ChanAbstractCell.h"
-#import "ChanVideoPost.h"
 
 @interface ChanVideoCell : ChanAbstractCell
 

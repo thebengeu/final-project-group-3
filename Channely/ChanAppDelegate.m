@@ -6,10 +6,18 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import <HTTPServer.h>
 #import "ChanAppDelegate.h"
 #import "ChanTwitterPost.h"
 #import "ChanUser.h"
 #import "ChanUtility.h"
+#import "ChanRestKitObjectMappings.h"
+#import "ChanAPIEndpoints.h"
+#import "HLSStreamAdvertisingManager.h"
+#import "HLSStreamAdvertiser.h"
+#import "ChanUtility.h"
+#import "HLSStreamSync.h"
+#import "HLSPeerDiscovery.h"
 
 @interface ChanAppDelegate ()
 // Internal.

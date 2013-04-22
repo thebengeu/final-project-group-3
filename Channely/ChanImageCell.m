@@ -8,6 +8,8 @@
 
 #import "ChanImageCell.h"
 #import "Constants.h"
+#import "ChanPost.h"
+#import "ChanImagePost.h"
 
 @implementation ChanImageCell
 

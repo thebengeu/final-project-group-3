@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanChannel.h"
-#import "AnnotationUIView.h"
-#import "BButton.h"
+
+@class AnnotationUIView;
+@class BButton;
 
 @protocol ChanAnnotationViewControllerDelegate
 

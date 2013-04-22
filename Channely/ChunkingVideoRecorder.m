@@ -7,6 +7,7 @@
 //
 
 #import "ChunkingVideoRecorder.h"
+#import "ChunkingVideoRecorderDelegate.h"
 
 @interface ChunkingVideoRecorder ()
 // Redefinitions.

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Constants.h"
 
 @interface ChanUtility : NSObject
 + (NSString *)documentsDirectory;

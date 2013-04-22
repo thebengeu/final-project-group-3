@@ -8,27 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "ChanTextCell.h"
-#import "ChanImageCell.h"
-#import "ChanVideoCell.h"
-#import "ChanSlidesCell.h"
-#import "ChanTwitterCell.h"
-#import "ChanPost.h"
-#import "ChanTextPost.h"
-#import "ChanImagePost.h"
-#import "ChanVideoPost.h"
-#import "ChanVideoThumbnailPost.h"
-#import "ChanSlidesPost.h"
-#import "ChanTwitterPost.h"
-#import "ChanVideoPlayerViewController.h"
-#import "ChanSlidesViewController.h"
-#import "ChannelViewControllerDelegate.h"
 #import "UICollectionViewWaterfallLayout.h"
-#import "AwesomeMenuItem.h"
 #import "AwesomeMenu.h"
 #import "TimeScroller.h"
 
 @class ChanChannel;
+@protocol ChannelViewControllerDelegate;
 
 @interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
 AwesomeMenuDelegate, TimeScrollerDelegate>

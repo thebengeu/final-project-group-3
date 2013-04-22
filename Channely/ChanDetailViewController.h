@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DiscoverViewController.h"
-#import "ChanChannel.h"
+
+@class ChanChannel;
 
 @interface ChanDetailViewController : UIViewController <UITabBarDelegate, UIPopoverControllerDelegate, UISearchBarDelegate>
 @property (strong, nonatomic) IBOutlet UIView *container;

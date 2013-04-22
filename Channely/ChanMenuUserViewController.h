@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AHAlertView.h"
-#import "BButton.h"
-#import "Constants.h"
+
+@class BButton;
 
 @interface ChanMenuUserViewController : UIViewController
 

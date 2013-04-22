@@ -8,6 +8,7 @@
 
 #import "ChanTextCell.h"
 #import "Constants.h"
+#import "ChanPost.h"
 
 @implementation ChanTextCell
 

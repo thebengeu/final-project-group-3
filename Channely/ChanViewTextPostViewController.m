@@ -10,6 +10,7 @@
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
 #import "ChanTextPost.h"
+#import "BButton.h"
 
 @implementation ChanViewTextPostViewController
 

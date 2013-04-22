@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChanAnnotationViewController.h"
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
 #import "ChanPostViewController.h"
-#import "ChanRootViewController.h"
+#import "ChannelViewControllerDelegate.h"
 
 @class ChanChannel;
+@class ChanCollectionViewController;
 
 @interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
 ChannelViewControllerDelegate, ChanAnnotationViewControllerDelegate, ChanPostViewControllerDelegate>

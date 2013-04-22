@@ -6,8 +6,17 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "ChanVideoCaptureViewController.h"
 #import "ChanRootViewController.h"
+#import "TimedChunkingVideoRecorder.h"
+#import "ChunkingVideoRecorderDelegate.h"
+#import "HLSStreamSync.h"
+#import "ChanHLSRecording.h"
+#import "ChanChannel.h"
+#import "ChanHLSChunk.h"
+#import "ChanUtility.h"
+#import "ChanPostViewController.h"
 
 static CGFloat const cChunkPeriod = 10.0f; // Duration of each chunk in seconds.
 static NSString *const cButtonStopRecording = @"Stop";

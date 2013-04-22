@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanPost.h"
+
+@class ChanPost;
 
 // This is the abstract class for the collection cells used in the ChanCollectionViewController
 // This should not be instantiated; use one of the child classes

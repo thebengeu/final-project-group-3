@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
-#import "ChanChannel.h"
-#import "ChanUtility.h"
-#import "HLSPeerDiscovery.h"
-#import "HLSStreamSync.h"
-#import "ChanAnnotationViewController.h"
-#import "HLSLoadBalancer.h"
-#import "ChannelViewControllerDelegate.h"
 
+@class ChanChannel;
+@protocol ChannelViewControllerDelegate;
 
 @interface ChanVideoPlayerViewController : UIViewController <UIPopoverControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;

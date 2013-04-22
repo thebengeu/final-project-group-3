@@ -9,6 +9,8 @@
 #import "ChanMenuSignupViewController.h"
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
+#import "AHAlertView.h"
+#import "BButton.h"
 
 @implementation ChanMenuSignupViewController
 

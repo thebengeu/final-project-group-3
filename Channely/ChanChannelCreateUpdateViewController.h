@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AHAlertView.h"
-#import "ChanChannel.h"
-#import "BButton.h"
+
+@class ChanChannel;
+@class BButton;
 
 @interface ChanChannelCreateUpdateViewController : UIViewController
 
