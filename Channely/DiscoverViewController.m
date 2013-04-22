@@ -19,6 +19,7 @@
 
 static NSTimeInterval const kRotationDuration = 0.5;
 static NSTimeInterval const kRotationDelay = 0.0;
+static CGFloat const kLandscapeOrientationHeight = 704.0;
 
 @interface DiscoverViewController ()
 - (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
@@ -261,10 +262,10 @@ static NSTimeInterval const kRotationDelay = 0.0;
 }
 
 - (void) layoutLandscape {
-    CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
+    CGRect mapFrame = CGRectMake(0., 0., 424., kLandscapeOrientationHeight);
     self.mapView.frame = mapFrame;
     
-    CGRect listFrame = CGRectMake(424., 0., 600., 768.);
+    CGRect listFrame = CGRectMake(424., 0., 600., kLandscapeOrientationHeight);
     self.channelListContainer.frame = listFrame;
 }
 
