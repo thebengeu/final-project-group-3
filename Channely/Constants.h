@@ -48,3 +48,6 @@ static const CGFloat kSlidesCellDefaultHeight = 260.0f;
 static const CGFloat kMarkerSize = 3.0f;
 static const NSInteger kMarkerMinSegment = 8;
 static const NSInteger kMarkerMaxSegment = 32;
+
+//  Discover View Controller
+static const NSInteger kDistanceFilterMetres = 10;

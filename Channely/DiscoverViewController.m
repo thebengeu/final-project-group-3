@@ -15,6 +15,7 @@
 #import "ChanEvent.h"
 #import "ChanChannel.h"
 #import "ChanRefreshControl.h"
+#import "Constants.h"
 
 @interface DiscoverViewController ()
 - (void) layoutFromCurrentOrientation;
@@ -33,7 +34,7 @@
 
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.distanceFilter = kDistanceFilterMetres;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [_locationManager startUpdatingLocation];
     _mapView.delegate = self;
@@ -95,19 +96,14 @@
     [self zoomToFitMapAnnotations:_mapView];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    _location = newLocation.coordinate;
-    
-    // TODO: introduce threshold for requerying?
-    if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
-        newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
-        NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    _location = [(CLLocation*)[locations lastObject] coordinate];
+    NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
         
-        // search for nearby events within 100 km
-        [self refreshEvents];
-    }
+    // search for nearby events within 100 km
+    [self refreshEvents];
 }
+
 
 - (void)refreshEvents
 {
