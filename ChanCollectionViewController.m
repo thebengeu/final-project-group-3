@@ -84,31 +84,31 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString:cVideoPlayerSegue]) {
+    if ([segueName isEqualToString:kVideoPlayerSegue]) {
         ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
         ChanVideoCell *cell = (ChanVideoCell *)sender;
         
         [vpvc setServerURL:((ChanVideoPost *)cell.post).url forChannel:cell.post.channel];
         vpvc.delegate = self.delegate;
-    } else if ([segueName isEqualToString:cSlideSegue]) {
+    } else if ([segueName isEqualToString:kSlideSegue]) {
         ChanSlidesViewController *slidesViewController = (ChanSlidesViewController *)segue.destinationViewController;
         ChanSlidesCell *cell = (ChanSlidesCell *)sender;
         
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
         slidesViewController.delegate = self.delegate;
-    } else if ([segueName isEqualToString:cTextSegue]){
+    } else if ([segueName isEqualToString:kTextSegue]){
         ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
         
         ChanTextCell *cell = (ChanTextCell *)sender;
         textViewController.post = (ChanPost *)cell.post;
-    } else if ([segueName isEqualToString:cImageSegue]){
+    } else if ([segueName isEqualToString:kImageSegue]){
         ChanViewImagePostViewController *imageViewController = (ChanViewImagePostViewController *)segue.destinationViewController;
         
         ChanTextCell *cell = (ChanTextCell *)sender;
         imageViewController.post = (ChanPost *)cell.post;
         imageViewController.delegate = self.delegate;
-    } else if ([segueName isEqualToString:cTweetSegue]) {
+    } else if ([segueName isEqualToString:kTweetSegue]) {
         ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
         
         ChanTwitterCell *cell = (ChanTwitterCell *)sender;
@@ -118,6 +118,7 @@
 
 - (void)refreshPosts
 {
+    [self refreshTwitterPosts];
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
         [self.refreshControl endRefreshing];
         
@@ -126,9 +127,9 @@
             self.channel.lastRefreshed = post.createdAt;
         }
         
-        // Refresh posts after 10 seconds
+        // Refresh posts after kPostsRefreshInterval seconds
         [self stopRefreshingPosts];
-        [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:10.0];
+        [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:kPostsRefreshIntervalSecs];
     }];
 }
 
@@ -139,7 +140,14 @@
 
 - (void)refreshTwitterPosts
 {
-    [self.channel getTweetsWithCompletion:nil];
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSSecondCalendarUnit fromDate:self.twitterLastRefreshed toDate:now options:0];
+
+    if (components.second >= kTwitterRefreshIntervalSecs) {
+        self.twitterLastRefreshed = now;
+        [self.channel getTweetsWithCompletion:nil];
+    }
 }
 
 #pragma mark Create Menu functions

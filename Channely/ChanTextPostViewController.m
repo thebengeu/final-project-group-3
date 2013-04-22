@@ -21,12 +21,13 @@
     [super viewDidLoad];
 	// Setup button styles
     [_postButton setType:BButtonTypeChan];
+    [_cancelButton setType:BButtonTypeInverse];
     
     NSString *name;
     if ([ChanUser loggedInUser] == nil)
         name = [ChanAnonUser name];
     else
-        name = [[ChanUser loggedInUser]name];
+        name = [[ChanUser loggedInUser] name];
     
     _username.text = name;
     
@@ -62,6 +63,10 @@
                 [super showErrorDialog];
         }];
     }
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

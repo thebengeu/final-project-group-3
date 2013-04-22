@@ -23,6 +23,7 @@
     [super viewDidLoad];
 	// Setup button styles
     [_postButton setType:BButtonTypeChan];
+    [_cancelButton setType:BButtonTypeInverse];
     
     NSString *name;
     if ([ChanUser loggedInUser] == nil)
@@ -55,6 +56,10 @@
         else
             [super showErrorDialog];
     }];
+}
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

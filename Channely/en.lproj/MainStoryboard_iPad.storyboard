@@ -1792,17 +1792,37 @@
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-Xd-n5C"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zya-tQ-1AS" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="5gj-ZX-ydI"/>
+                                    <constraint firstAttribute="width" constant="73" id="jwM-W8-tce"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="Eod-7L-yem" eventType="touchUpInside" id="6N0-Vd-3Qk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="7L8-Zq-JNV" firstAttribute="top" secondItem="iNU-26-Hgt" secondAttribute="top" constant="16" id="1oq-Jr-b9g"/>
+                            <constraint firstAttribute="bottom" secondItem="GpM-Tm-rw9" secondAttribute="bottom" constant="13" type="user" id="28s-Pn-Pnn"/>
                             <constraint firstAttribute="trailing" secondItem="Ezr-GV-E6v" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="5jy-Ws-Dcl"/>
+                            <constraint firstItem="zya-tQ-1AS" firstAttribute="leading" secondItem="iNU-26-Hgt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="87B-W7-G9M"/>
                             <constraint firstItem="GpM-Tm-rw9" firstAttribute="leading" secondItem="SQ2-Xd-n5C" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="FC8-cN-l10"/>
                             <constraint firstItem="Ezr-GV-E6v" firstAttribute="leading" secondItem="iNU-26-Hgt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Q9j-Tm-aab"/>
                             <constraint firstAttribute="trailing" secondItem="GpM-Tm-rw9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Yba-aY-79p"/>
                             <constraint firstItem="7L8-Zq-JNV" firstAttribute="leading" secondItem="iNU-26-Hgt" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZiC-Rk-zDo"/>
                             <constraint firstItem="Ezr-GV-E6v" firstAttribute="top" secondItem="7L8-Zq-JNV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gOd-Me-MQN"/>
-                            <constraint firstAttribute="bottom" secondItem="GpM-Tm-rw9" secondAttribute="bottom" constant="13" id="hBJ-Ix-U2s"/>
                             <constraint firstItem="SQ2-Xd-n5C" firstAttribute="centerY" secondItem="GpM-Tm-rw9" secondAttribute="centerY" type="default" id="hmd-WL-PCj"/>
+                            <constraint firstAttribute="bottom" secondItem="zya-tQ-1AS" secondAttribute="bottom" constant="13" type="user" id="m3T-P7-FUy"/>
+                            <constraint firstItem="zya-tQ-1AS" firstAttribute="baseline" secondItem="GpM-Tm-rw9" secondAttribute="baseline" type="user" id="mCm-hw-QZA"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1810,6 +1830,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="zya-tQ-1AS" id="olw-fj-o1A"/>
                         <outlet property="postButton" destination="GpM-Tm-rw9" id="E4r-qm-v9h"/>
                         <outlet property="status" destination="SQ2-Xd-n5C" id="VrR-II-vtK"/>
                         <outlet property="text" destination="Ezr-GV-E6v" id="p3F-sH-3yw"/>
@@ -1866,22 +1887,41 @@
                                     <constraint firstAttribute="width" constant="180" id="dWv-Kf-Kh9"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C6N-B7-FPt" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" type="user" id="5t2-ej-cma"/>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="PI1-Nq-jlC"/>
+                                    <constraint firstAttribute="width" constant="73" id="fkq-K8-jVZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="sRg-nD-2Qk" eventType="touchUpInside" id="qh5-tZ-dMA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="C6N-B7-FPt" secondAttribute="bottom" constant="15" id="3h5-pC-jaV"/>
+                            <constraint firstItem="3Bp-o8-sE1" firstAttribute="bottom" secondItem="KwS-1g-FUD" secondAttribute="bottom" type="default" id="4X8-1W-YAj"/>
+                            <constraint firstItem="MU5-D2-sUD" firstAttribute="bottom" secondItem="LkD-C1-sab" secondAttribute="bottom" type="default" id="AIi-h4-4NF"/>
+                            <constraint firstItem="MU5-D2-sUD" firstAttribute="baseline" secondItem="C6N-B7-FPt" secondAttribute="baseline" type="default" id="LBB-BH-zfJ"/>
                             <constraint firstAttribute="trailing" secondItem="3Bp-o8-sE1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Mq3-Sg-mdY"/>
                             <constraint firstItem="KwS-1g-FUD" firstAttribute="leading" secondItem="Upw-Mr-6fK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NRl-Hz-BaA"/>
                             <constraint firstItem="KwS-1g-FUD" firstAttribute="top" secondItem="yfF-9S-mxR" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="OTX-g9-ogo"/>
+                            <constraint firstItem="C6N-B7-FPt" firstAttribute="leading" secondItem="Upw-Mr-6fK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eU5-Cr-xMi"/>
                             <constraint firstItem="MU5-D2-sUD" firstAttribute="leading" secondItem="LkD-C1-sab" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ebv-uu-GLu"/>
                             <constraint firstItem="3Bp-o8-sE1" firstAttribute="leading" secondItem="KwS-1g-FUD" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hCl-9m-voL"/>
-                            <constraint firstAttribute="bottom" secondItem="MU5-D2-sUD" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="iUc-LX-gPY"/>
-                            <constraint firstItem="KwS-1g-FUD" firstAttribute="bottom" secondItem="3Bp-o8-sE1" secondAttribute="bottom" type="default" id="iWP-wq-tEO"/>
                             <constraint firstAttribute="trailing" secondItem="MU5-D2-sUD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oGC-rU-GDA"/>
                             <constraint firstItem="yfF-9S-mxR" firstAttribute="top" secondItem="Upw-Mr-6fK" secondAttribute="top" constant="20" symbolic="YES" type="user" id="oXB-Eg-wrx"/>
-                            <constraint firstItem="MU5-D2-sUD" firstAttribute="top" secondItem="3Bp-o8-sE1" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="qOj-b0-Uf6"/>
                             <constraint firstItem="3Bp-o8-sE1" firstAttribute="top" secondItem="yfF-9S-mxR" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="wpf-oE-YrS"/>
                             <constraint firstItem="yfF-9S-mxR" firstAttribute="leading" secondItem="Upw-Mr-6fK" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xyp-T3-Y75"/>
-                            <constraint firstAttribute="bottom" secondItem="LkD-C1-sab" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yWQ-tt-tt8"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1889,6 +1929,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="C6N-B7-FPt" id="ZPI-Yj-aDf"/>
                         <outlet property="imageView" destination="KwS-1g-FUD" id="cdL-Ic-xys"/>
                         <outlet property="postButton" destination="MU5-D2-sUD" id="gIe-dl-wZl"/>
                         <outlet property="status" destination="LkD-C1-sab" id="Z7T-34-XK3"/>
@@ -2113,7 +2154,9 @@
         <class className="ChanImagePostViewController" superclassName="ChanPostViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="postButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
@@ -2211,7 +2254,9 @@
         <class className="ChanTextPostViewController" superclassName="ChanPostViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="postButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="text" candidateClass="UITextView"/>

@@ -14,14 +14,18 @@ typedef enum {
 } kAwesomeMenuItems;
 
 // Segue
-static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
-static NSString *const cSlideSegue = @"slidesSegue";
-static NSString *const cTextSegue = @"textSegue";
-static NSString *const cImageSegue = @"imageSegue";
-static NSString *const cTweetSegue = @"tweetSegue";
+static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
+static NSString *const kSlideSegue = @"slidesSegue";
+static NSString *const kTextSegue = @"textSegue";
+static NSString *const kImageSegue = @"imageSegue";
+static NSString *const kTweetSegue = @"tweetSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
+
+// Refresh Intervals
+static CGFloat const kPostsRefreshIntervalSecs = 10.0f;
+static NSUInteger const kTwitterRefreshIntervalSecs = 60;
 
 // Post Menu
 static CGFloat const kPostMenuLandscapeX = 955.0f;
@@ -48,3 +52,6 @@ static const CGFloat kSlidesCellDefaultHeight = 260.0f;
 static const CGFloat kMarkerSize = 3.0f;
 static const NSInteger kMarkerMinSegment = 8;
 static const NSInteger kMarkerMaxSegment = 32;
+
+//  Discover View Controller
+static const NSInteger kDistanceFilterMetres = 10;
