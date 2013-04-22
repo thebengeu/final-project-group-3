@@ -246,39 +246,24 @@ static NSTimeInterval const kRotationDelay = 0.0;
     [self layoutForOrientation:currentOrientation];
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self layoutFromCurrentOrientation];
-}
-
-- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-//    NSLog(@"will rotate to interface orientation:%d", toInterfaceOrientation);
-//    [self layoutForOrientation:toInterfaceOrientation];
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self layoutForOrientation:toInterfaceOrientation];
 }
 
 - (void) layoutPortrait {
-    UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseIn;
-    [UIView animateWithDuration:kRotationDuration delay:kRotationDelay options:options animations:^{
-        CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
-        self.mapView.frame = mapFrame;
-        
-        CGRect listFrame = CGRectMake(0., 426., 768., 534.);
-        self.channelListContainer.frame = listFrame;
-    } completion:^(BOOL finished) {
-        return;
-    }];
+    CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
+    self.mapView.frame = mapFrame;
+    
+    CGRect listFrame = CGRectMake(0., 426., 768., 534.);
+    self.channelListContainer.frame = listFrame;
 }
 
 - (void) layoutLandscape {
-    UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseIn;
-    [UIView animateWithDuration:kRotationDuration delay:kRotationDelay options:options animations:^{
-        CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
-        self.mapView.frame = mapFrame;
-        
-        CGRect listFrame = CGRectMake(424., 0., 600., 768.);
-        self.channelListContainer.frame = listFrame;
-    } completion:^(BOOL finished) {
-        return;
-    }];
+    CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
+    self.mapView.frame = mapFrame;
+    
+    CGRect listFrame = CGRectMake(424., 0., 600., 768.);
+    self.channelListContainer.frame = listFrame;
 }
 
 @end
