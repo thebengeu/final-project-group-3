@@ -51,6 +51,8 @@ static NSTimeInterval const kRotationDelay = 0.0;
     [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Events"];
     self.channelTableViewController.refreshControl = refreshControl;
+    
+    ((UIImageView *)self.view).image = [UIImage imageNamed:@"collectionbg.png"];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
