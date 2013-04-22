@@ -35,6 +35,8 @@
     [_date setText:[[self.post createdAt] description]];
     [_username setText:[self.post username]];
     
+    // Style delete button
+    [_deleteButton setType:BButtonTypeInverse];
     if (self.post.creator != nil
         && [[ChanUser loggedInUser].id compare:self.post.creator.id] == NSOrderedSame
         && [ChanUser loggedInUser].id != nil)

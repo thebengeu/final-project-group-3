@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChanViewPostViewController.h"
+#import "BButton.h"
 
 @interface ChanViewTextPostViewController : ChanViewPostViewController
 
@@ -19,7 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *text;
 
-@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
+@property (strong, nonatomic) IBOutlet BButton *deleteButton;
 
 - (IBAction)deletePost:(id)sender;
 
