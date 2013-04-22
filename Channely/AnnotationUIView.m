@@ -116,7 +116,7 @@
     return sqrt(p.x * p.x + p.y * p.y);
 }
 
-- (float)distanceBetweenTwoPoints:(CGPoint)first:(CGPoint)second
+- (float)distanceBetweenTwoPoints:(CGPoint)first second:(CGPoint)second
 {
     return sqrt(pow(first.x - second.x, 2.0) + pow(first.y - second.y, 2.0));
 }
@@ -144,7 +144,7 @@
         //! skip points that are too close
         float eps = 1.5f;
         if ([_currentStrokePoints count] > 0) {
-            float length = [self distanceBetweenTwoPoints:point:[(NSValue *)[_currentStrokePoints lastObject] CGPointValue]];
+            float length = [self distanceBetweenTwoPoints:point second:[(NSValue *)[_currentStrokePoints lastObject] CGPointValue]];
             if (length < eps) return;
         }
         [self addPointAndDraw:point];
@@ -199,7 +199,7 @@
     CGPoint midPoint1 = CGPointMake((prev1.x + prev2.x) / 2.0, (prev1.y + prev2.y) / 2.0);
     CGPoint midPoint2 = CGPointMake((cur.x + prev1.x) / 2.0, (cur.y + prev1.y) / 2.0);
     int segmentDistance = 2;
-    float distance = [self distanceBetweenTwoPoints:midPoint1:midPoint2];
+    float distance = [self distanceBetweenTwoPoints:midPoint1 second:midPoint2];
     int numberOfSegments = MIN(kMarkerMaxSegment, MAX(floorf(distance / segmentDistance), kMarkerMinSegment));
     
     float t = 0.0f;

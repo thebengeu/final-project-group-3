@@ -20,7 +20,7 @@
 
 @interface ChannelUITableViewController : UITableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style:(NSMutableArray *)channelList;
+- (id)initWithStyle:(UITableViewStyle)style channelList:(NSMutableArray *)channelList;
 
 - (void)selectMapAnnotationForChannel:(id)cell;
 

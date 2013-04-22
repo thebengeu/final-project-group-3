@@ -83,7 +83,7 @@ static const NSInteger kMarkerMaxSegment = 32;
 static const NSInteger kDistanceFilterMetres = 10;
 
 // HTTP Live Streaming Advertisement
-static NSUInteger kCompleteStreamShift = 31; // The right-shift offset for the bit-flag indicating if a stream is complete.
+static NSUInteger const kCompleteStreamShift = 31; // The right-shift offset for the bit-flag indicating if a stream is complete.
 static NSUInteger const kCompleteRecordingBitMask = 0x80000000; // Duplicated constant in HLSLoadBalancer.m
 static NSUInteger const kTotalChunksBitMask = 0x7FFFFFFF;
 

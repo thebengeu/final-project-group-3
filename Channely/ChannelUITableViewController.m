@@ -20,7 +20,7 @@
 
 @synthesize channelList = _channelList;
 
-- (id)initWithStyle:(UITableViewStyle)style:(NSMutableArray *)channelList
+- (id)initWithStyle:(UITableViewStyle)style channelList:(NSMutableArray *)channelList
 {
     self = [super initWithStyle:style];
     if (self) {
