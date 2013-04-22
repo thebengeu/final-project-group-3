@@ -100,6 +100,7 @@ static const NSInteger kMarkerMaxSegment = 32;
 
 //  Discover View Controller
 static const NSInteger kDistanceFilterMetres = 10;
+static const CGFloat kEventsSearchRadiusInMetres = 1000.0f;
 
 // HTTP Live Streaming Advertisement
 static NSUInteger const kCompleteStreamShift = 31; // The right-shift offset for the bit-flag indicating if a stream is complete.

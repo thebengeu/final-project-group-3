@@ -109,8 +109,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 {
     _location = [(CLLocation *)[locations lastObject] coordinate];
     NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
-    
-    // search for nearby events within 100 km
+
     [self refreshEvents];
 }
 
@@ -119,7 +118,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     [ChanEvent  search:nil
               latitude:[NSNumber numberWithDouble:self.location.latitude]
              longitude:[NSNumber numberWithDouble:self.location.longitude]
-        withinDistance:[NSNumber numberWithDouble:1000.0]
+        withinDistance:[NSNumber numberWithDouble:kEventsSearchRadiusInMetres]
          occurDateTime:[NSDate date]
         withCompletion:^(NSArray *events, NSError *error) {
             [self.channelTableViewController.refreshControl endRefreshing];
