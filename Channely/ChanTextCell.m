@@ -12,23 +12,19 @@
 
 @implementation ChanTextCell
 
+- (NSString *)backgroundImageName
+{
+    return @"textbar";
+}
+
 - (void)setPost:(ChanPost *)post
 {
     [super setPost:post];
     self.textView.text = post.content;
     self.titleView.text = post.username;
-    
-    [self setupBackgroundImage];
-    
+
     // Disable user interactions for the textview, so that touch events go to the cell
     [self.textView setUserInteractionEnabled:NO];
-}
-
-- (void)setupBackgroundImage
-{
-    [super setupBackgroundImage];
-    UIImage *cellImg = [[UIImage imageNamed:@"textbar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
-    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 + (CGFloat)getHeightForPost:(ChanPost *)post

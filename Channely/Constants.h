@@ -66,6 +66,9 @@ static CGFloat const kPostMenuLandscapeY = 645.0f;
 static CGFloat const kPostMenuPortraitX = 700.0f;
 static CGFloat const kPostMenuPortraitY = 900.0f;
 
+// Collection View Cells
+static const CGFloat kCellBackgroundImageHeight = 18.0f;
+
 // Text Cell
 static NSString *const kTextCellContentFontName = @"Helvetica Neue";
 static const CGFloat kTextCellContentFontSize = 14.0f;

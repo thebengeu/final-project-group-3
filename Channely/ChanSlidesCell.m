@@ -23,6 +23,11 @@
     return slides.count ? [slides objectAtIndex:0] : nil;
 }
 
+- (NSString *)backgroundImageName
+{
+    return @"slidebar";
+}
+
 - (void)setPost:(ChanPost *)post
 {
     [super setPost:post];
@@ -33,7 +38,6 @@
     }
     
     [self.labelView setText:[post content]];
-    [self setupBackgroundImage];
 }
 
 + (CGFloat)getHeightForPost:(ChanPost *)post
@@ -44,13 +48,6 @@
     } else {
         return kSlidesCellDefaultHeight;
     }
-}
-
-- (void)setupBackgroundImage
-{
-    [super setupBackgroundImage];
-    UIImage *cellImg = [[UIImage imageNamed:@"slidebar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
-    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 @end

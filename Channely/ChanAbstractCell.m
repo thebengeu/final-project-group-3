@@ -15,6 +15,7 @@
 - (void)setPost:(id)post
 {
     _post = post;
+    [self setupBackgroundImage];
 }
 
 + (CGFloat)getHeightForPost:(ChanPost *)post
@@ -31,6 +32,8 @@
     self.layer.shadowRadius = 2;
     self.layer.shadowOpacity = 0.2;
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+    UIImage *cellImg = [[UIImage imageNamed:self.backgroundImageName] resizableImageWithCapInsets:UIEdgeInsetsMake(kCellBackgroundImageHeight, 0, 0, 0)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 @end

@@ -15,10 +15,9 @@
 
 @interface ChanAbstractCell : UICollectionViewCell
 
+@property (readonly) NSString *backgroundImageName;
 @property (strong, nonatomic) ChanPost *post;
 
 + (CGFloat)getHeightForPost:(ChanPost *)post;
-
-- (void)setupBackgroundImage;
 
 @end

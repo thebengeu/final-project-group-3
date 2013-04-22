@@ -13,10 +13,14 @@
 
 @implementation ChanVideoCell
 
+- (NSString *)backgroundImageName
+{
+    return @"videobar";
+}
+
 - (void)setPost:(ChanPost *)post
 {
     [super setPost:post];
-    [self setupBackgroundImage];
     
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
     
@@ -52,13 +56,6 @@
     
     if (min < 140.0f) return 140.0f;
     else return min;
-}
-
-- (void)setupBackgroundImage
-{
-    [super setupBackgroundImage];
-    UIImage *cellImg = [[UIImage imageNamed:@"videobar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
-    self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
 @end
