@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "ChanAbstractCell.h"
+#import "Constants.h"
 
 @implementation ChanAbstractCell
 

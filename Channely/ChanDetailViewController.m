@@ -9,6 +9,7 @@
 #import "ChanDetailViewController.h"
 #import "ChannelViewController.h"
 #import "ChanSearchTableViewController.h"
+#import "Constants.h"
 
 @interface ChanDetailViewController ()
 
