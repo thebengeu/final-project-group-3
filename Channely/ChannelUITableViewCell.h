@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *channelNameTextView;
 @property (weak, nonatomic) IBOutlet UITextView *eventNameTextView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextView *distanceTextView;
 
 @property (weak, nonatomic) ChanEvent *event;
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;

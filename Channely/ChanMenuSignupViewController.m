@@ -70,7 +70,6 @@
                         [alert show];
                     } else {
                         [[self navigationController] popViewControllerAnimated:YES];
-                        [SVProgressHUD setAnimationDuration:1.5];
                         [SVProgressHUD showSuccessWithStatus:@"Welcome!"];
                     }
                 }];

@@ -129,7 +129,6 @@
 		B638666D170466D700800FBE /* ChanChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B638666C170466D700800FBE /* ChanChannel.m */; };
 		B6386676170466D700800FBE /* ChanVideoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386675170466D700800FBE /* ChanVideoPost.m */; };
 		B6386679170466D700800FBE /* ChanHLSRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386678170466D700800FBE /* ChanHLSRecording.m */; };
-		B638667C170466D800800FBE /* ChanInstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B638667B170466D800800FBE /* ChanInstagramPost.m */; };
 		B6386682170466D800800FBE /* ChanTextPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386681170466D800800FBE /* ChanTextPost.m */; };
 		B6386685170467A500800FBE /* ChanEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386684170467A500800FBE /* ChanEvent.m */; };
 		B6386688170467E400800FBE /* ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6386687170467E400800FBE /* ChanPost.m */; };
@@ -167,7 +166,6 @@
 		B6F480221706C80F0005029D /* _ChanHLSChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4800F1706C80F0005029D /* _ChanHLSChunk.m */; };
 		B6F480231706C80F0005029D /* _ChanHLSRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F480111706C80F0005029D /* _ChanHLSRecording.m */; };
 		B6F480241706C80F0005029D /* _ChanImagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F480131706C80F0005029D /* _ChanImagePost.m */; };
-		B6F480251706C80F0005029D /* _ChanInstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F480151706C80F0005029D /* _ChanInstagramPost.m */; };
 		B6F480261706C80F0005029D /* _ChanPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F480171706C80F0005029D /* _ChanPost.m */; };
 		B6F480271706C80F0005029D /* _ChanTextPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F480191706C80F0005029D /* _ChanTextPost.m */; };
 		B6F480281706C80F0005029D /* _ChanTwitterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F4801B1706C80F0005029D /* _ChanTwitterPost.m */; };
@@ -386,8 +384,6 @@
 		B6386675170466D700800FBE /* ChanVideoPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanVideoPost.m; sourceTree = "<group>"; };
 		B6386677170466D700800FBE /* ChanHLSRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanHLSRecording.h; sourceTree = "<group>"; };
 		B6386678170466D700800FBE /* ChanHLSRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanHLSRecording.m; sourceTree = "<group>"; };
-		B638667A170466D800800FBE /* ChanInstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanInstagramPost.h; sourceTree = "<group>"; };
-		B638667B170466D800800FBE /* ChanInstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanInstagramPost.m; sourceTree = "<group>"; };
 		B6386680170466D800800FBE /* ChanTextPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanTextPost.h; sourceTree = "<group>"; };
 		B6386681170466D800800FBE /* ChanTextPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChanTextPost.m; sourceTree = "<group>"; };
 		B6386683170467A500800FBE /* ChanEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChanEvent.h; sourceTree = "<group>"; };
@@ -450,8 +446,6 @@
 		B6F480111706C80F0005029D /* _ChanHLSRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanHLSRecording.m; sourceTree = "<group>"; };
 		B6F480121706C80F0005029D /* _ChanImagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanImagePost.h; sourceTree = "<group>"; };
 		B6F480131706C80F0005029D /* _ChanImagePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanImagePost.m; sourceTree = "<group>"; };
-		B6F480141706C80F0005029D /* _ChanInstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanInstagramPost.h; sourceTree = "<group>"; };
-		B6F480151706C80F0005029D /* _ChanInstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanInstagramPost.m; sourceTree = "<group>"; };
 		B6F480161706C80F0005029D /* _ChanPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanPost.h; sourceTree = "<group>"; };
 		B6F480171706C80F0005029D /* _ChanPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ChanPost.m; sourceTree = "<group>"; };
 		B6F480181706C80F0005029D /* _ChanTextPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ChanTextPost.h; sourceTree = "<group>"; };
@@ -912,8 +906,6 @@
 				B6386684170467A500800FBE /* ChanEvent.m */,
 				B6386680170466D800800FBE /* ChanTextPost.h */,
 				B6386681170466D800800FBE /* ChanTextPost.m */,
-				B638667A170466D800800FBE /* ChanInstagramPost.h */,
-				B638667B170466D800800FBE /* ChanInstagramPost.m */,
 				B6386677170466D700800FBE /* ChanHLSRecording.h */,
 				B6386678170466D700800FBE /* ChanHLSRecording.m */,
 				B6386674170466D700800FBE /* ChanVideoPost.h */,
@@ -1096,8 +1088,6 @@
 				B6F480111706C80F0005029D /* _ChanHLSRecording.m */,
 				B6F480121706C80F0005029D /* _ChanImagePost.h */,
 				B6F480131706C80F0005029D /* _ChanImagePost.m */,
-				B6F480141706C80F0005029D /* _ChanInstagramPost.h */,
-				B6F480151706C80F0005029D /* _ChanInstagramPost.m */,
 				B6F480161706C80F0005029D /* _ChanPost.h */,
 				B6F480171706C80F0005029D /* _ChanPost.m */,
 				B6F480181706C80F0005029D /* _ChanTextPost.h */,
@@ -1287,7 +1277,6 @@
 				B638666D170466D700800FBE /* ChanChannel.m in Sources */,
 				B6386676170466D700800FBE /* ChanVideoPost.m in Sources */,
 				B6386679170466D700800FBE /* ChanHLSRecording.m in Sources */,
-				B638667C170466D800800FBE /* ChanInstagramPost.m in Sources */,
 				B6386682170466D800800FBE /* ChanTextPost.m in Sources */,
 				B6386685170467A500800FBE /* ChanEvent.m in Sources */,
 				B6386688170467E400800FBE /* ChanPost.m in Sources */,
@@ -1305,7 +1294,6 @@
 				B6F480221706C80F0005029D /* _ChanHLSChunk.m in Sources */,
 				B6F480231706C80F0005029D /* _ChanHLSRecording.m in Sources */,
 				B6F480241706C80F0005029D /* _ChanImagePost.m in Sources */,
-				B6F480251706C80F0005029D /* _ChanInstagramPost.m in Sources */,
 				B6F480261706C80F0005029D /* _ChanPost.m in Sources */,
 				B6F480271706C80F0005029D /* _ChanTextPost.m in Sources */,
 				B6F480281706C80F0005029D /* _ChanTwitterPost.m in Sources */,
