@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "ChannelUITableViewCell.h"
 
 @protocol DiscoverUITableViewControllerDelegate <NSObject, DiscoverUITableCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (CLLocationCoordinate2D)location;
 
 @end
 
