@@ -8,10 +8,10 @@
 
 #import "HLSStreamAdvertisement.h"
 
-static NSString *const cAdFormat = @"%d,%@";
-static NSUInteger const cExpectedDataComponents = 2;
-static NSString *const cProtocolFormat = @"http://%@";
-static NSString *const cDescFormat = @"[playlist=%@, count=%d]";
+static NSString *const kAdFormat = @"%d,%@";
+static NSUInteger const kExpectedDataComponents = 2;
+static NSString *const kProtocolFormat = @"http://%@";
+static NSString *const kDescFormat = @"[playlist=%@, count=%d]";
 
 @interface HLSStreamAdvertisement ()
 //Redefinitions.
@@ -47,7 +47,7 @@ static NSString *const cDescFormat = @"[playlist=%@, count=%d]";
 + (HLSStreamAdvertisement *) advertisementFromString:(NSString *)str {
     NSArray *components = [str componentsSeparatedByString:@","];
     
-    if (components.count != cExpectedDataComponents) {
+    if (components.count != kExpectedDataComponents) {
         return nil;
     } else {
         NSUInteger count = [[components objectAtIndex:0] integerValue];
@@ -56,13 +56,13 @@ static NSString *const cDescFormat = @"[playlist=%@, count=%d]";
 }
 
 + (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl {
-    NSString *result = [NSString stringWithFormat:cAdFormat, count, pl];
+    NSString *result = [NSString stringWithFormat:kAdFormat, count, pl];
     return result;
 }
 
 #pragma mark Utility
 - (NSString *) description {
-    return [NSString stringWithFormat:cDescFormat, playlist, chunkCount];
+    return [NSString stringWithFormat:kDescFormat, playlist, chunkCount];
 }
 
 @end

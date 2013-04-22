@@ -11,6 +11,7 @@
 #import "HLSChunkDownloadMetaData.h"
 #import "HLSEventPlaylistHelper.h"
 #import "HLSPlaylistDownloaderDelegate.h"
+#import "Constants.h"
 
 @interface HLSPlaylistDownloader : NSObject
 @property (atomic, readonly) BOOL isConsumed;

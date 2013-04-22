@@ -12,6 +12,7 @@
 #import "HLSEventPlaylistHelper.h"
 #import "HLSStreamAdvertisingManager.h"
 #import "HLSPlaylistDownloadOperationDelegate.h"
+#import "Constants.h"
 
 @interface HLSStreamSync : NSObject <HLSPlaylistDownloadOperationDelegate>
 - (id) init;

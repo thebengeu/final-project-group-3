@@ -8,12 +8,6 @@
 
 #import "HLSPlaylistDownloadOperation.h"
 
-static NSString *const cKVOIsExecuting = @"isExecuting";
-static NSString *const cKVOIsFinished = @"isFinished";
-static NSString *const cHTMLDebugPageFormat = @"<!DOCTYPE html><html><head><title>Local Stream View</title></head><body><div><video src=\"%@.m3u8\" controls autoplay></video></div></body></html>";
-static NSString *const cHTMLDebugPageName = @"view.html";
-static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.m
-
 @interface HLSPlaylistDownloadOperation ()
 // Internal.
 @property (strong) NSURL *_playlistURL;
@@ -79,23 +73,23 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     
     [_worker downloadToDirectory:_downloadDirectory];
     
-    [self willChangeValueForKey:cKVOIsExecuting];
+    [self willChangeValueForKey:kKVOIsExecuting];
     isExecuting = YES;
-    [self didChangeValueForKey:cKVOIsExecuting];
+    [self didChangeValueForKey:kKVOIsExecuting];
     if (delegate) {
         [delegate playlistDownloadOperationDidStart:self];
     }
 }
 
 - (void) finish {
-    [self willChangeValueForKey:cKVOIsExecuting];
-    [self willChangeValueForKey:cKVOIsFinished];
+    [self willChangeValueForKey:kKVOIsExecuting];
+    [self willChangeValueForKey:kKVOIsFinished];
     
     isExecuting = NO;
     isFinished = YES;
     
-    [self didChangeValueForKey:cKVOIsExecuting];
-    [self didChangeValueForKey:cKVOIsFinished];
+    [self didChangeValueForKey:kKVOIsExecuting];
+    [self didChangeValueForKey:kKVOIsFinished];
     
     if (delegate) {
         [delegate playlistDownloadOperationDidFinish:self];
@@ -115,8 +109,8 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     if (_expectingFirstChunk) {
         NSLog(@"sync: first chunk downloaded");
         
-        NSString *pageContent = [NSString stringWithFormat:cHTMLDebugPageFormat, recordingId];
-        NSString *pagePath = [_downloadDirectory stringByAppendingPathComponent:cHTMLDebugPageName];
+        NSString *pageContent = [NSString stringWithFormat:kDebugPageMarkup, recordingId];
+        NSString *pagePath = [_downloadDirectory stringByAppendingPathComponent:kDebugPageName];
         [pageContent writeToFile:pagePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
         _expectingFirstChunk = NO;
@@ -127,7 +121,7 @@ static NSUInteger const cCompleteStreamShift = 31; // Repeated in HLSStreamSync.
     NSLog(@"sync complete"); // DEBUG
     
     // Set bit-flag in chunkCount to indicate that a stream is complete.
-    _chunkCount = (_chunkCount | (1 << cCompleteStreamShift));
+    _chunkCount = (_chunkCount | (1 << kCompleteStreamShift));
     NSString *localPlaylistRelativePath = [recordingId stringByAppendingPathComponent:[_playlistURL lastPathComponent]];
     [[HLSStreamAdvertisingManager advertisingManager] updateAdvertisementForPlaylist:localPlaylistRelativePath asRecordingId:recordingId withChunkCount:_chunkCount];
     

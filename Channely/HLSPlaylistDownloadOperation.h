@@ -12,7 +12,11 @@
 #import "HLSStreamAdvertisingManager.h"
 #import "ChanUtility.h"
 #import "HLSPlaylistDownloadOperationDelegate.h"
+#import "Constants.h"
 
+// This operation downloads a playlist and all its constituent chunks, while at all times
+// maintaining the invariant that an incomplete playlist should always be valid according to
+// the HLS standard.
 @interface HLSPlaylistDownloadOperation : NSOperation <HLSPlaylistDownloaderDelegate>
 @property (atomic, readonly) BOOL isExecuting;
 @property (atomic, readonly) BOOL isFinished;

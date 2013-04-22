@@ -8,15 +8,13 @@
 
 #import "HLSPlaylistDownloader.h"
 
-static NSTimeInterval const cRefreshInterval = 5.0; // Time in seconds.
-static NSUInteger const cStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
-static NSString *const cHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
-static NSString *const cHLSEndListPrefix = @"#EXT-X-ENDLIST";
-static NSString *const cHLSChunkPrefix = @"#EXTINF:";
-static NSString *const cHLSMetaPrefix = @"#";
-static NSString *const cKVOIsFinished = @"isFinished";
-static NSString *const cKVOOperation = @"operations";
-static NSString *const cMediaDirectoryFormat = @"%@";
+static NSTimeInterval const kRefreshInterval = 5.0; // Time in seconds.
+static NSUInteger const kStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
+static NSString *const kHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
+static NSString *const kHLSEndListPrefix = @"#EXT-X-ENDLIST";
+static NSString *const kHLSChunkPrefix = @"#EXTINF:";
+static NSString *const kHLSMetaPrefix = @"#";
+static NSString *const kMediaDirectoryFormat = @"%@";
 
 @interface HLSPlaylistDownloader ()
 // Redefinitions.
@@ -142,7 +140,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     _playlistURL = [_baseURL URLByAppendingPathComponent:_playlistFileName];
     _intervalsSinceLastChange = 0;
     
-    _refreshTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:cRefreshInterval target:self selector:@selector(refreshTimer_Tick:) userInfo:nil repeats:YES];
+    _refreshTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:kRefreshInterval target:self selector:@selector(refreshTimer_Tick:) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_refreshTimer forMode:NSDefaultRunLoopMode];
     
     if (_delegate) {
@@ -191,7 +189,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     }
     
     // Check for timeout condition.
-    if (_intervalsSinceLastChange >= cStreamTimeoutFactor) {
+    if (_intervalsSinceLastChange >= kStreamTimeoutFactor) {
         // Timeout condition.
 //        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
         
@@ -217,23 +215,23 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     
     NSArray *lines = [diff componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     for (NSString *line in lines) {
-        if ([line hasPrefix:cHLSTargetDurationPrefix]) {
-            NSString *infString = [line substringFromIndex:cHLSTargetDurationPrefix.length];
+        if ([line hasPrefix:kHLSTargetDurationPrefix]) {
+            NSString *infString = [line substringFromIndex:kHLSTargetDurationPrefix.length];
             NSUInteger targetDuration = [self targetDurationFromInfString:infString];
             
             [_playlistHelper beginPlaylistWithTargetInterval:targetDuration];
-        } else if ([line hasPrefix:cHLSEndListPrefix]) {
+        } else if ([line hasPrefix:kHLSEndListPrefix]) {
 //            NSLog(@"stream ended"); // DEBUG
             
             hasLengthOfNextChunk = NO;
             
             containsEndTag = YES;
-        } else if ([line hasPrefix:cHLSChunkPrefix]) {
-            NSString *infString = [line substringFromIndex:cHLSChunkPrefix.length];
+        } else if ([line hasPrefix:kHLSChunkPrefix]) {
+            NSString *infString = [line substringFromIndex:kHLSChunkPrefix.length];
 
             hasLengthOfNextChunk = YES;
             lengthOfNextChunk = [self chunkDurationFromInfString:infString];
-        } else if ([line hasPrefix:cHLSMetaPrefix]) {
+        } else if ([line hasPrefix:kHLSMetaPrefix]) {
             hasLengthOfNextChunk = NO;
             
             // Ignore.
@@ -267,7 +265,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 - (void) setupDownloadQueue {
     _downloadQueue = [[NSOperationQueue alloc] init];
     _downloadQueue.maxConcurrentOperationCount = 1; // Set to 1 to avoid (out of) ordering issues.
-    [_downloadQueue addObserver:self forKeyPath:cKVOOperation options:NSKeyValueObservingOptionNew context:nil];
+    [_downloadQueue addObserver:self forKeyPath:kKVOOperation options:NSKeyValueObservingOptionNew context:nil];
     
     _chunkSequenceNumber = 0;
 }
@@ -281,7 +279,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
     
     HLSChunkDownloadMetaData *meta = [[HLSChunkDownloadMetaData alloc] initWithSequence:curSeqNo URL:fileURL duration:length];
     HLSChunkDownloadOperation *operation = [[HLSChunkDownloadOperation alloc] initWithURL:url outputFile:fileURL meta:meta];
-    [operation addObserver:self forKeyPath:cKVOIsFinished options:0 context:nil];
+    [operation addObserver:self forKeyPath:kKVOIsFinished options:0 context:nil];
     
     [_downloadQueue addOperation:operation];
 }
@@ -290,7 +288,7 @@ static NSString *const cMediaDirectoryFormat = @"%@";
 // The didDownloadChunk delegate will be fired, but the chunk file will not be written.
 // Note: There may be a slight timing error where didFinishDownloading is called before the last chunk is written.
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([object class] == [HLSChunkDownloadOperation class] && [keyPath isEqualToString:cKVOIsFinished]) {
+    if ([object class] == [HLSChunkDownloadOperation class] && [keyPath isEqualToString:kKVOIsFinished]) {
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
         
@@ -318,8 +316,8 @@ static NSString *const cMediaDirectoryFormat = @"%@";
             [_delegate playlistDownloader:self didDownloadNewChunkForRemoteStream:_playlistURL];
         }
         
-        [finishedOp removeObserver:self forKeyPath:cKVOIsFinished];
-    } else if ([object class] == [NSOperationQueue class] && [keyPath isEqualToString:cKVOOperation]) {
+        [finishedOp removeObserver:self forKeyPath:kKVOIsFinished];
+    } else if ([object class] == [NSOperationQueue class] && [keyPath isEqualToString:kKVOOperation]) {
         NSArray *queueState = (NSArray *)[change valueForKey:NSKeyValueChangeNewKey];
         if (_shouldFinishWhenQueueEmpty && queueState.count == 0) {
             [_playlistHelper endPlaylist];

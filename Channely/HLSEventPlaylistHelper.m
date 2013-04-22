@@ -9,11 +9,11 @@
 #import "HLSEventPlaylistHelper.h"
 
 // Note: #EXT-X-TARGETDURATION must be an (unsigned) integral value, whereas the actual length of a clip in #EXTINF may be a decimal value.
-static NSString *const cPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%d\n#EXT-X-MEDIA-SEQUENCE:%d\n";
-static NSString *const cPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
-static NSString *const cPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
-static NSUInteger const cDefaultSequenceNumber = 0;
-static NSString *const cHash = @"#";
+static NSString *const kPlaylistHeaderFormat = @"#EXTM3U\n#EXT-X-VERSION:3\n#EXT-X-PLAYLIST-TYPE:EVENT\n#EXT-X-TARGETDURATION:%d\n#EXT-X-MEDIA-SEQUENCE:%d\n";
+static NSString *const kPlaylistMediaItemFormat = @"#EXTINF:%lf,%@\n%@\n";
+static NSString *const kPlaylistTrailerFormat = @"#EXT-X-ENDLIST";
+static NSUInteger const kDefaultSequenceNumber = 0;
+static NSString *const kHash = @"#";
 
 @interface HLSEventPlaylistHelper ()
 // Internal.
@@ -44,7 +44,7 @@ static NSString *const cHash = @"#";
 - (void) beginPlaylistWithTargetInterval:(NSUInteger)period {
     _targetInterval = period;
     _buffer = [[NSMutableString alloc] init];
-    [_buffer appendFormat:cPlaylistHeaderFormat, _targetInterval, cDefaultSequenceNumber];
+    [_buffer appendFormat:kPlaylistHeaderFormat, _targetInterval, kDefaultSequenceNumber];
 }
 
 - (void) appendItem:(NSString *)path withDuration:(CGFloat)duration {
@@ -56,7 +56,7 @@ static NSString *const cHash = @"#";
         return;
     }
     
-    [_buffer appendFormat:cPlaylistMediaItemFormat, duration, title, path];
+    [_buffer appendFormat:kPlaylistMediaItemFormat, duration, title, path];
     [self writeBufferToFile];
 }
 
@@ -65,7 +65,7 @@ static NSString *const cHash = @"#";
         return;
     }
     
-    [_buffer appendString:cPlaylistTrailerFormat];
+    [_buffer appendString:kPlaylistTrailerFormat];
     [self writeBufferToFile];
 }
 
@@ -90,7 +90,7 @@ static NSString *const cHash = @"#";
     }
     
     plContents = [plContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    return [plContents hasSuffix:cPlaylistTrailerFormat];
+    return [plContents hasSuffix:kPlaylistTrailerFormat];
 }
 
 + (NSUInteger) playlistChunkCount:(NSString *)path {
@@ -105,7 +105,7 @@ static NSString *const cHash = @"#";
     NSArray *lines = [plContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSUInteger count = 0;
     for (NSString *line in lines) {
-        if (![line hasPrefix:cHash]) {
+        if (![line hasPrefix:kHash]) {
             count++;
         }
     }

@@ -194,7 +194,7 @@
     _localServer.port = kLocalServerPort;
     _localServer.documentRoot = [ChanUtility webRootDirectory];
     
-    _localServer.type = kApplicationTypeName;
+    _localServer.type = kAppServiceName;
     
     [_localServer start:nil];
 }

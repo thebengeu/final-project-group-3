@@ -25,7 +25,8 @@ typedef enum {
 
 // Server
 static NSString *const kServerAddress = @"https://upthetreehouse.com:10000";
-static NSString *const kApplicationTypeName = @"_channely._tcp.";
+static NSString *const kBonjourDomain = @"local.";
+static NSString *const kAppServiceName = @"_channely._tcp.";
 static NSUInteger const kLocalServerPort = 22;
 
 // Segue
@@ -70,3 +71,31 @@ static const NSInteger kMarkerMaxSegment = 32;
 
 //  Discover View Controller
 static const NSInteger kDistanceFilterMetres = 10;
+
+// HTTP Live Streaming Advertisement
+static NSUInteger kCompleteStreamShift = 31; // The right-shift offset for the bit-flag indicating if a stream is complete.
+static NSUInteger const kCompleteRecordingBitMask = 0x80000000; // Duplicated constant in HLSLoadBalancer.m
+static NSUInteger const kTotalChunksBitMask = 0x7FFFFFFF;
+
+// HTTP Live Streaming Local Stream Copy
+static NSString *const kDebugPageMarkup = @"<!DOCTYPE html><html><head><title>Local Stream View</title></head><body><div><video src=\"%@.m3u8\" controls autoplay></video></div></body></html>";
+static NSString *const kDebugPageName = @"view.html";
+
+// Stream Persistence
+static NSTimeInterval const kMaxStreamAge = 1209600; // Seconds. 14 days.
+
+// Peer Discovery
+static NSTimeInterval const kNetServiceResolveTimeout = 5.0; // Seconds.
+
+// P2P Distribution
+static NSUInteger const kMaxSpreadRadius = 5;
+
+// Chunking Video Recorder
+static NSString *const kOutputFilePathFormat = @"%@/chunk%d.mp4";
+
+// NSOperation
+static NSString *const kKVOIsExecuting = @"isExecuting";
+static NSString *const kKVOIsFinished = @"isFinished";
+
+// NSOperationQueue
+static NSString *const kKVOOperation = @"operations";

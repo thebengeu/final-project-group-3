@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ChunkingVideoRecorderDelegate.h"
+#import "Constants.h"
 
 @interface ChunkingVideoRecorder : NSObject <AVCaptureFileOutputRecordingDelegate>
 @property (weak) id<ChunkingVideoRecorderDelegate> delegate;
