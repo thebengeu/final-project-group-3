@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChanNavigationControlManager.h"
 
-@interface ChanRootViewController : UINavigationController
+@interface ChanRootViewController : UINavigationController <UINavigationControllerDelegate>
 @property BOOL forceLandscape;
 
 @end

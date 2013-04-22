@@ -19,7 +19,7 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.delegate = [ChanNavigationControlManager instance];
+        self.delegate = self;
     }
     return self;
 }
@@ -30,16 +30,10 @@
 
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-    return YES;
-}
-
-// iOS6
 - (BOOL)shouldAutorotate {
     return YES;
 }
 
-// iOS6
 - (NSUInteger)supportedInterfaceOrientations {
     if (forceLandscape)
         return UIInterfaceOrientationMaskLandscape;
@@ -47,11 +41,18 @@
         return [super supportedInterfaceOrientations];
 }
 
-
-
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark UI Navigation View Controller Delegate
+- (void) navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [viewController viewDidAppear:animated];
+}
+
+- (void) navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [viewController viewWillAppear:animated];
 }
 
 @end
