@@ -62,7 +62,7 @@
     cell.eventNameTextView.text = event.name;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"dd/MM/yyyy hh:mm a"];
+    [dateFormat setDateFormat:kDateFormat];
     cell.startDateTimeTextView.text = [dateFormat stringFromDate:event.startTime];
     cell.endDateTimeTextView.text = [dateFormat stringFromDate:event.endTime];
     

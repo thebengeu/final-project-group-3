@@ -16,4 +16,8 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *description;
 
+@property (strong, nonatomic) IBOutlet UITextView *startDate;
+
+@property (strong, nonatomic) IBOutlet UITextView *endDate;
+
 @end

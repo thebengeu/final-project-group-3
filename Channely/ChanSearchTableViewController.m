@@ -89,6 +89,10 @@
         cell.channelName.text = [channel name];
         cell.eventName.text = [event name];
         cell.description.text = [event details];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:kDateFormat];
+        cell.startDate.text = [dateFormat stringFromDate:event.startTime];
+        cell.endDate.text = [dateFormat stringFromDate:event.endTime];
         
         return cell;
     }
