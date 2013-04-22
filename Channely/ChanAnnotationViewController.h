@@ -18,19 +18,14 @@
 @end
 
 @interface ChanAnnotationViewController : UIViewController
-
 @property (strong, nonatomic) IBOutlet AnnotationUIView *annotationView;
-
 @property UIImage *image;
-
 @property (weak, nonatomic) IBOutlet BButton *clearButton;
 @property (weak, nonatomic) IBOutlet BButton *redoButton;
 @property (weak, nonatomic) IBOutlet BButton *undoButton;
 @property (weak, nonatomic) IBOutlet BButton *greenButton;
 @property (weak, nonatomic) IBOutlet BButton *blueButton;
 @property (weak, nonatomic) IBOutlet BButton *redButton;
-
-
 @property id<ChanAnnotationViewControllerDelegate> delegate;
 
 - (IBAction)redColor:(id)sender;
