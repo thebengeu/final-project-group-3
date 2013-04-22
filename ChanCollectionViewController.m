@@ -140,11 +140,15 @@
 
 - (void)refreshTwitterPosts
 {
+    NSDateComponents *components;
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:NSSecondCalendarUnit fromDate:self.twitterLastRefreshed toDate:now options:0];
-
-    if (components.second >= kTwitterRefreshIntervalSecs) {
+    
+    if (self.twitterLastRefreshed) {
+        components = [calendar components:NSSecondCalendarUnit fromDate:self.twitterLastRefreshed toDate:now options:0];
+    }
+    
+    if (!self.twitterLastRefreshed || components.second >= kTwitterRefreshIntervalSecs) {
         self.twitterLastRefreshed = now;
         [self.channel getTweetsWithCompletion:nil];
     }
