@@ -34,13 +34,14 @@
     // Set button style
     [_createUpdateButton setType:BButtonTypeChan];
     
-    
     if (_isUpdateChannel) {
         [_channelName setText:[_channel name]];
         [_hashtag setText:[_channel hashTag]];
+        [_deleteButton setType:BButtonTypeInverse];
     } else {
         [_createUpdateButton setTitle: kCreateChannelButtonTitle forState:UIControlStateNormal];
         [[self navigationItem] setTitle: kCreateChannelNavigationTitle];
+        [_deleteButton removeFromSuperview];
     }
 }
 
@@ -69,6 +70,24 @@
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
     }
+}
+
+- (IBAction)deleteChannel:(id)sender {
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Delete Channel" message:[NSString stringWithFormat:@"Are you sure you want to delete %@?", [_channel name]]];
+    __weak AHAlertView *weakA = alert;
+    [alert setCancelButtonTitle:kCancelButtonTitle block:^{
+        weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
+    }];
+    
+    NSString *channelName = [_channel name];
+    [alert addButtonWithTitle:kOkButtonTitle block:^{
+        [_channel deleteWithCompletion:^(ChanChannel *channel, NSError *error) {
+            weakA.dismissalStyle = AHAlertViewDismissalStyleZoomOut;
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:kDeleteChannelCompletedMessageFormat, channelName]];
+            [[self navigationController]popViewControllerAnimated:YES];
+        }];
+    }];
+    [alert show];
 }
 
 @end

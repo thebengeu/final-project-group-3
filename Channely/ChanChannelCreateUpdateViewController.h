@@ -11,18 +11,20 @@
 @class ChanChannel;
 @class BButton;
 
-@interface ChanChannelCreateUpdateViewController : UIViewController
+@interface ChanChannelCreateUpdateViewController : UIViewController <UIAlertViewDelegate>
 
 @property BOOL isUpdateChannel;
 
 @property ChanChannel *channel;
 
 @property (strong, nonatomic) IBOutlet BButton *createUpdateButton;
+@property (strong, nonatomic) IBOutlet BButton *deleteButton;
 
 @property (strong, nonatomic) IBOutlet UITextField *channelName;
 @property (strong, nonatomic) IBOutlet UITextField *hashtag;
 
 - (IBAction)createOrUpdate:(id)sender;
 
+- (IBAction)deleteChannel:(id)sender;
 
 @end

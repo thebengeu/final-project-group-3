@@ -38,7 +38,10 @@
     [super viewDidLoad];
     
     [[self navigationItem] setTitle: kChannelOwnedNavigationTitle];
-    
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     
     [[ChanUser loggedInUser]getOwnedChannels:^(NSArray *channels, NSError *error) {
         _channels = [NSMutableArray arrayWithArray:channels];

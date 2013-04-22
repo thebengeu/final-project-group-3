@@ -153,6 +153,7 @@ static NSString *const kPostDeletionErrorMessage = @"Error deleting post";
 
 //  Alert
 static NSString *const kOkButtonTitle = @"Ok";
+static NSString *const kCancelButtonTitle = @"Cancel";
 
 // Channel Owned
 static NSString *const kChannelOwnedNavigationTitle = @"Channels";
@@ -165,6 +166,7 @@ static NSString *const kCreateChannelEmptyChannelNameAlertTitle = @"Oops";
 static NSString *const kCreateChannelEmptyChannelNameAlertMessage = @"Channel Name must not be empty";
 static NSString *const kUpdateChannelCompletedMessageFormat = @"Updated %@";
 static NSString *const kCreateChannelCompletedMessageFormat = @"Created %@";
+static NSString *const kDeleteChannelCompletedMessageFormat = @"Deleted %@";
 
 // Create Event
 static NSString *const kDateFormat = @"dd/MM/yyyy hh:mm a";

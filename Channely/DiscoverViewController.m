@@ -119,7 +119,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     [ChanEvent  search:nil
               latitude:[NSNumber numberWithDouble:self.location.latitude]
              longitude:[NSNumber numberWithDouble:self.location.longitude]
-        withinDistance:[NSNumber numberWithDouble:100000.0]
+        withinDistance:[NSNumber numberWithDouble:1000.0]
          occurDateTime:[NSDate date]
         withCompletion:^(NSArray *events, NSError *error) {
             [self.channelTableViewController.refreshControl endRefreshing];
