@@ -234,7 +234,6 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     ChannelViewController *me = self;
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:^(ChanEvent *event, NSError *error) {
         [[me createEventPopover] dismissPopoverAnimated:YES];
-        [SVProgressHUD setAnimationDuration:1.5];
         [SVProgressHUD showSuccessWithStatus:@"Event created"];
     }];
 }
@@ -253,7 +252,6 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 - (void)didPost:(ChanChannel *)channel{
     [self.collectionViewController refreshPosts];
-    [SVProgressHUD setAnimationDuration:1.5];
     [SVProgressHUD showSuccessWithStatus:@"Posted"];
 }
 

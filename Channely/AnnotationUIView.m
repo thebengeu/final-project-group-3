@@ -8,6 +8,7 @@
 
 #import "AnnotationUIView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Constants.h"
 
 @interface AnnotationUIView ()
 
@@ -61,7 +62,7 @@
     [self addGestureRecognizer:draw];
     
     _markerColor = [UIColor redColor];
-    _markerSize = (CGFloat)3.0;
+    _markerSize = kMarkerSize;
     
     UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
     UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
@@ -192,7 +193,7 @@
     CGPoint midPoint2 = CGPointMake((cur.x+prev1.x)/2.0, (cur.y+prev1.y)/2.0);
     int segmentDistance = 2;
     float distance = [self distanceBetweenTwoPoints: midPoint1 :midPoint2];
-    int numberOfSegments = MIN(32, MAX(floorf(distance / segmentDistance), 8));
+    int numberOfSegments = MIN(kMarkerMaxSegment, MAX(floorf(distance / segmentDistance), kMarkerMinSegment));
     
     float t = 0.0f;
     float step = 1.0f / (float)numberOfSegments;

@@ -87,7 +87,6 @@
             [_updateStatus stopAnimating];
             [_username setText:[[ChanUser loggedInUser]name]];
             [_password setText:@""];
-            [SVProgressHUD setAnimationDuration:1.5];
             [SVProgressHUD showSuccessWithStatus:@"Updated"];
         }];
         
@@ -98,7 +97,6 @@
 - (IBAction)logout:(id)sender {
     [ChanUser logout];
     [self switchToAnonUserViewController];
-    [SVProgressHUD setAnimationDuration:1.5];
     [SVProgressHUD showSuccessWithStatus:@"Logged out"];
 }
 @end
