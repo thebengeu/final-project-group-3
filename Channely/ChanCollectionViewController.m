@@ -154,7 +154,7 @@
         case kTwitterPost:
             return ChanTwitterCell.class;
         default:
-            NSLog(@"Unexpected type constant %d", post.typeConstant);
+            NSLog(kUnexpectedTypeConstantMessage, post.typeConstant);
             return nil;
     }
 }

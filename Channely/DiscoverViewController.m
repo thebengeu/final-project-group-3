@@ -61,17 +61,16 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 {
     [super viewDidAppear:animated];
     
-    NSLog(@"discover view controller view did appear");
     [self layoutFromCurrentOrientation];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueName = segue.identifier;
-    if ([segueName isEqualToString:@"DiscoverChannelContainerSegue"]) {
+    if ([segueName isEqualToString:kDiscoverChannelContainerSegue]) {
         ChannelUITableViewController *childViewController = (ChannelUITableViewController *)[segue destinationViewController];
         _channelTableViewController = childViewController;
-    } else if ([[segue identifier] isEqualToString:@"ChannelSegue"]) {
+    } else if ([[segue identifier] isEqualToString:kChannelSegue]) {
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         vc.channel = [[sender event] channel];
     }
@@ -172,18 +171,16 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    static NSString *locationIdentifier = @"MyLocation";
-    static NSString *channelIdentifier = @"ChannelLocation";
     MKPinAnnotationView *annotationView;
     
     if ([annotation isKindOfClass:[LocationAnnotation class]]) {
-        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:locationIdentifier];
-        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:locationIdentifier];
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:kMyLocationMapAnnotation];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kMyLocationMapAnnotation];
         else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorGreen;
     } else if ([annotation isKindOfClass:[ChannelAnnotation class]]) {
-        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:channelIdentifier];
-        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:channelIdentifier];
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:kChannelLocationMapAnnotation];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kChannelLocationMapAnnotation];
         else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorRed;
     }
@@ -197,7 +194,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChannelUITableViewCell *cell = (ChannelUITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"ChannelSegue" sender:cell];
+    [self performSegueWithIdentifier:kChannelSegue sender:cell];
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view

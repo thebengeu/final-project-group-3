@@ -35,6 +35,8 @@ static NSString *const kMenuUserVCName = @"ChanMenuUserViewController";
 static NSString *const kChanAnnotationVCName = @"ChanAnnotationViewController";
 static NSString *const kChanImagePostVC = @"ChanImagePostViewController";
 static NSString *const kChanCreateEventVC = @"ChanCreateEventViewController";
+static NSString *const kChanSearchTableVC = @"ChanSearchTableViewController";
+static NSString *const kChannelVC = @"ChannelViewController";
 
 // Segue
 static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
@@ -47,6 +49,9 @@ static NSString *const kCollectionViewSegue = @"CollectionViewSegue";
 static NSString *const kTakeVideoSegue = @"takeVideoSegue";
 static NSString *const kCreateChannelSegue = @"CreateChannelSegue";
 static NSString *const kUpdateChannelSegue = @"UpdateChannelSegue";
+static NSString *const kDiscoverChannelContainerSegue = @"DiscoverChannelContainerSegue";
+static NSString *const kChannelSegue = @"ChannelSegue";
+static NSString *const kMenuSegue = @"MenuSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
@@ -156,3 +161,15 @@ static NSString *const kSelectedMapAnnotationTitle = @"Selection";
 static NSString *const kCreateEventAlertTitle = @"Create Event";
 static NSString *const kCreateEventInvalidTitleMessage = @"Please enter an event name.";
 static NSString *const kCreateEventInvalidDateMessage = @"Invalid dates.";
+
+//  Discover View Controller
+static NSString *const kMyLocationMapAnnotation = @"MyLocation";
+static NSString *const kChannelLocationMapAnnotation = @"ChannelLocation";
+
+// ChanDetail View Controller
+static NSString *const kSearchBarPlaceholder = @"Search Channely";
+
+// Errors
+static NSString *const kOverrideClassMessage = @"You must override %@ in a subclass";
+static NSString *const kUnexpectedTypeConstantMessage = @"Unexpected type constant %d";
+

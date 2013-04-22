@@ -24,13 +24,4 @@
     else return [super supportedInterfaceOrientations];
 }
 
-//#pragma mark UI Navigation View Controller Delegate
-//- (void) navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    [viewController viewDidAppear:animated];
-//}
-//
-//- (void) navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    [viewController viewWillAppear:animated];
-//}
-
 @end

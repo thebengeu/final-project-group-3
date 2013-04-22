@@ -10,8 +10,6 @@
 #import "ChannelViewController.h"
 #import "ChanSearchTableViewController.h"
 
-NSString *const cMenuSegueIdentifier = @"MenuSegue";
-
 @interface ChanDetailViewController ()
 
 @property (strong) UITabBarController *homeTabController;
@@ -30,7 +28,7 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(-5.0, 0.0, 200.0, 44.0)];
     _searchBar.autoresizingMask = UIViewAutoresizingNone;
-    _searchBar.placeholder = @"Search Channely";
+    _searchBar.placeholder = kSearchBarPlaceholder;
     _searchBar.delegate = self;
     
     [self navigationItem].leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
@@ -38,7 +36,7 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
+    if ([segue.identifier isEqualToString:kMenuSegue]) {
         _menuPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
         _menuPopover.delegate = self;
         [_searchBar endEditing:YES];
@@ -47,7 +45,7 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
 {
-    if ([identifier isEqualToString:cMenuSegueIdentifier]) {
+    if ([identifier isEqualToString:kMenuSegue]) {
         return (_menuPopover == nil);
     }
     return YES;
@@ -63,8 +61,8 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChannelViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    ChannelViewController *channelViewController = [storyboard instantiateViewControllerWithIdentifier:kChannelVC];
     channelViewController.channel = channel;
     
     [[self navigationController]pushViewController:channelViewController animated:YES];
@@ -97,8 +95,8 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
 {
     NSString *searchTerm = [searchBar text];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    UIViewController *searchController = [storyboard instantiateViewControllerWithIdentifier:@"ChanSearchTableViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    UIViewController *searchController = [storyboard instantiateViewControllerWithIdentifier:kChanSearchTableVC];
     
     [(ChanSearchTableViewController *)searchController setSearchTerm : searchTerm];
     

@@ -19,7 +19,7 @@
 + (CGFloat)getHeightForPost:(ChanPost *)post
 {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                   reason:[NSString stringWithFormat:kOverrideClassMessage, NSStringFromSelector(_cmd)]
                                  userInfo:nil];
 }
 
