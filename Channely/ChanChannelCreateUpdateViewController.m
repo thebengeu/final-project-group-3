@@ -10,6 +10,7 @@
 #import "ChanChannel.h"
 #import "ChanDetailViewController.h"
 #include "SVProgressHUD.h"
+#import "Constants.h"
 
 @implementation ChanChannelCreateUpdateViewController
 
@@ -35,17 +36,17 @@
         [_channelName setText:[_channel name]];
         [_hashtag setText:[_channel hashTag]];
     } else {
-        [_createUpdateButton setTitle:@"Create" forState:UIControlStateNormal];
-        [[self navigationItem] setTitle:@"Create Channel"];
+        [_createUpdateButton setTitle: kCreateChannelButtonTitle forState:UIControlStateNormal];
+        [[self navigationItem] setTitle: kCreateChannelNavigationTitle];
     }
 }
 
 - (IBAction)createOrUpdate:(id)sender
 {
     if ([[_channelName text]length] == 0) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Oops" message:@"Channel Name must not be empty"];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateChannelEmptyChannelNameAlertTitle message:kCreateChannelEmptyChannelNameAlertMessage];
         __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:@"OK" block:^{
+        [alert setCancelButtonTitle:kOkButtonTitle block:^{
             weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
         }];
         [alert show];
@@ -55,13 +56,13 @@
     if (_isUpdateChannel) {
         id me = self;
         [_channel updateChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error) {
-            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ updated", [channel name]]];
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:kUpdateChannelCompletedMessageFormat, [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
     } else {
         id me = self;
         [ChanChannel addChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error) {
-            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ created", [channel name]]];
+            [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:kCreateChannelCompletedMessageFormat, [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
     }

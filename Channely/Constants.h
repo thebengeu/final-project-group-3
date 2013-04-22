@@ -45,6 +45,8 @@ static NSString *const kTweetSegue = @"tweetSegue";
 static NSString *const kSlideAnnotationSegue = @"SlideAnnotationSegue";
 static NSString *const kCollectionViewSegue = @"CollectionViewSegue";
 static NSString *const kTakeVideoSegue = @"takeVideoSegue";
+static NSString *const kCreateChannelSegue = @"CreateChannelSegue";
+static NSString *const kUpdateChannelSegue = @"UpdateChannelSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
@@ -129,6 +131,28 @@ static NSString *const kPostPostedMessage = @"Posted";
 static NSString *const kPostErrorTitle = @"Oops";
 static NSString *const kPostErrorMessage = @"Error sending post";
 static NSString *const kTextPostCustomBackgroundPath = @"custom-dialog-background";
+static NSString *const kPostDeletedMessage = @"Post deleted";
+static NSString *const kPostDeletionErrorMessage = @"Error deleting post";
 
 //  Alert
 static NSString *const kOkButtonTitle = @"Ok";
+
+// Channel Owned
+static NSString *const kChannelOwnedNavigationTitle = @"Channels";
+static NSString *const kChannelOwnedTableCell = @"ChanChannelOwnedTableCell";
+
+// Create Channel
+static NSString *const kCreateChannelButtonTitle = @"Create";
+static NSString *const kCreateChannelNavigationTitle = @"Create Channel";
+static NSString *const kCreateChannelEmptyChannelNameAlertTitle = @"Oops";
+static NSString *const kCreateChannelEmptyChannelNameAlertMessage = @"Channel Name must not be empty";
+static NSString *const kUpdateChannelCompletedMessageFormat = @"Updated %@";
+static NSString *const kCreateChannelCompletedMessageFormat = @"Created %@";
+
+// Create Event
+static NSString *const kCreateEventDateFormat = @"MM/dd/yyyy hh:mma";
+static NSString *const kCreateEventDescriptionPlaceholder = @"Description";
+static NSString *const kSelectedMapAnnotationTitle = @"Selection";
+static NSString *const kCreateEventAlertTitle = @"Create Event";
+static NSString *const kCreateEventInvalidTitleMessage = @"Please enter an event name.";
+static NSString *const kCreateEventInvalidDateMessage = @"Invalid dates.";

@@ -41,10 +41,10 @@
         [(ChanTextPost *)[self post] deleteWithCompletion :^(ChanTextPost *textPost, NSError *error) {
             if (error != nil) {
                 [SVProgressHUD setAnimationDuration:1.5];
-                [SVProgressHUD showErrorWithStatus:@"Error occurred"];
+                [SVProgressHUD showErrorWithStatus: kPostDeletionErrorMessage];
             } else {
                 [SVProgressHUD setAnimationDuration:1.5];
-                [SVProgressHUD showSuccessWithStatus:@"Post deleted"];
+                [SVProgressHUD showSuccessWithStatus: kPostDeletedMessage];
                 [self dismissViewControllerAnimated:YES completion:NO];
             }
         }];

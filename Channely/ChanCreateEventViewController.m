@@ -8,6 +8,7 @@
 
 #import "ChanCreateEventViewController.h"
 #import "SVProgressHUD.h"
+#import "Constants.h"
 
 @interface ChanCreateEventViewController ()
 
@@ -56,7 +57,7 @@
     
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
+    [dateFormat setDateFormat: kCreateEventDateFormat];
     [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
     [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
     
@@ -64,7 +65,7 @@
     [_createButton setType:BButtonTypeChan];
     
     // Setup placeholder for SSTextView
-    _descriptionTextViewField.placeholder = @"Description";
+    _descriptionTextViewField.placeholder = kCreateEventDescriptionPlaceholder;
     _descriptionTextViewField.layer.borderWidth = 1.0f;
     _descriptionTextViewField.layer.borderColor = [[UIColor channelyGray] CGColor];
     
@@ -123,12 +124,11 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    static NSString *selectionIdentifier = @"Selection";
     MKPinAnnotationView *annotationView;
     
     if ([annotation isKindOfClass:[SelectionAnnotation class]]) {
-        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:selectionIdentifier];
-        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:selectionIdentifier];
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:kSelectedMapAnnotationTitle];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kSelectedMapAnnotationTitle];
         else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorGreen;
         annotationView.enabled = YES;
@@ -187,9 +187,9 @@
 - (IBAction)createEvent:(id)sender
 {
     if ([[_eventNameTextField text]length] == 0) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Create Event" message:@"Please enter an event name."];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidTitleMessage];
         __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:@"OK" block:^{
+        [alert setCancelButtonTitle:kOkButtonTitle block:^{
             weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
         }];
         [alert show];
@@ -197,9 +197,9 @@
     }
     
     if ([_startDate compare:_endDate] == NSOrderedDescending) {
-        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Create Event" message:@"Start date is later than end date."];
+        AHAlertView *alert = [[AHAlertView alloc] initWithTitle:kCreateEventAlertTitle message:kCreateEventInvalidDateMessage];
         __weak AHAlertView *weakA = alert;
-        [alert setCancelButtonTitle:@"OK" block:^{
+        [alert setCancelButtonTitle:kOkButtonTitle block:^{
             weakA.dismissalStyle = AHAlertViewDismissalStyleTumble;
         }];
         [alert show];
@@ -222,7 +222,7 @@
         _startDatePopoverController = nil;
         _startDateDatePicker = nil;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
+        [dateFormat setDateFormat:kCreateEventDateFormat];
         [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
     } else if ([popoverController isEqual:_endDatePopoverController]) {
         _endDate = [_endDateDatePicker date];
@@ -230,7 +230,7 @@
         _endDatePopoverController = nil;
         _endDateDatePicker = nil;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
+        [dateFormat setDateFormat:kCreateEventDateFormat];
         [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
     }
 }

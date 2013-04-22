@@ -12,6 +12,7 @@
 #import "ChanChannel.h"
 #import "ChanChannelCreateUpdateViewController.h"
 #import "ChanDetailViewController.h"
+#import "Constants.h"
 
 @interface ChanChannelOwnedTableController ()
 
@@ -36,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    [[self navigationItem] setTitle:@"Channels"];
+    [[self navigationItem] setTitle: kChannelOwnedNavigationTitle];
     
     
     [[ChanUser loggedInUser]getOwnedChannels:^(NSArray *channels, NSError *error) {
@@ -49,10 +50,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSString *segueName = segue.identifier;
-    if ([segueName isEqualToString:@"CreateChannelSegue"]) {
+    if ([segueName isEqualToString: kCreateChannelSegue]) {
         ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *)[segue destinationViewController];
         channelCreateUpdateViewController.isUpdateChannel = NO;
-    } else if ([segueName isEqualToString:@"UpdateChannelSegue"]) {
+    } else if ([segueName isEqualToString: kUpdateChannelSegue]) {
         ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *)[segue destinationViewController];
         channelCreateUpdateViewController.isUpdateChannel = YES;
         channelCreateUpdateViewController.channel = [(ChanChannelOwnedTableCell *)[[sender superview]superview] channel];
@@ -80,10 +81,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ChanChannelOwnedTableCell";
-    ChanChannelOwnedTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ChanChannelOwnedTableCell *cell = [tableView dequeueReusableCellWithIdentifier: kChannelOwnedTableCell forIndexPath:indexPath];
     if (!cell) {
-        cell = [[ChanChannelOwnedTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanChannelOwnedTableCell"];
+        cell = [[ChanChannelOwnedTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier: kChannelOwnedTableCell];
     }
     ChanChannel *channel = [_channels objectAtIndex:[indexPath row]];
     [cell.channelName setText:[channel name]];
