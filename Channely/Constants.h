@@ -108,3 +108,9 @@ static NSString *const kKVOIsFinished = @"isFinished";
 
 // NSOperationQueue
 static NSString *const kKVOOperation = @"operations";
+
+// Search
+static NSString *const kSearchChannelCell = @"ChannelCell";
+static NSString *const kSearchEventCell = @"EventCell";
+static NSString *const kSearchChannelSectionName = @"Channels";
+static NSString *const kSearchEventSectionName = @"Events";
