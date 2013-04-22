@@ -10,6 +10,11 @@
 
 @implementation ChanPost
 
-// Custom logic goes here.
+- (ChanPostType)typeConstant
+{
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                   reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+                                 userInfo:nil];
+}
 
 @end

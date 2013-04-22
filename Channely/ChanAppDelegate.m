@@ -11,11 +11,6 @@
 #import "ChanUser.h"
 #import "ChanUtility.h"
 
-static NSString *const _SERVER_ADDR = @"https://upthetreehouse.com:10000";
-static NSString *const cLocalServerLoadKey = @"_lsload";
-static NSString *const cApplicationTypeName = @"_channely._tcp.";
-static NSUInteger const cLocalServerPort = 22;
-
 @interface ChanAppDelegate ()
 // Internal.
 @property (strong) HTTPServer *_localServer;
@@ -76,7 +71,7 @@ static NSUInteger const cLocalServerPort = 22;
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
     
     // Configure the object manager
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:_SERVER_ADDR]];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:kServerAddress]];
     objectManager.managedObjectStore = managedObjectStore;
     [objectManager.HTTPClient setDefaultHeader:@"clientId" value:CLIENT_ID];
     [objectManager.HTTPClient setDefaultHeader:@"clientSecret" value:CLIENT_SECRET];
@@ -196,10 +191,10 @@ static NSUInteger const cLocalServerPort = 22;
 #pragma mark Http Server
 - (void) setupHttpServer {
     _localServer = [[HTTPServer alloc] init];
-    _localServer.port = cLocalServerPort;
+    _localServer.port = kLocalServerPort;
     _localServer.documentRoot = [ChanUtility webRootDirectory];
     
-    _localServer.type = cApplicationTypeName;
+    _localServer.type = kApplicationTypeName;
     
     [_localServer start:nil];
 }
