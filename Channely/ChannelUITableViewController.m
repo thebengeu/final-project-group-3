@@ -75,6 +75,13 @@
     [[cell channelNameTextView]setText: event.channel.name];
     [[cell eventNameTextView]setText: event.name];
     [[cell descriptionTextView]setText: event.details];
+    
+    CLLocationCoordinate2D currentLocationCoords = [self.delegate location];
+    CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentLocationCoords.latitude longitude:currentLocationCoords.longitude];
+    CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude:event.latitudeValue longitude:event.longitudeValue];
+    CLLocationDistance distance = [eventLocation distanceFromLocation:currentLocation];
+    [[cell distanceTextView]setText: [NSString stringWithFormat:@"%.1f km", distance / 1000]];
+    
     cell.event = event;
     [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
     

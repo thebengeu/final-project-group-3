@@ -18,6 +18,7 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const cSlideSegue = @"slidesSegue";
 static NSString *const cTextSegue = @"textSegue";
 static NSString *const cImageSegue = @"imageSegue";
+static NSString *const cTweetSegue = @"tweetSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
@@ -42,3 +43,8 @@ static const CGFloat kImageCellThumbnailVerticalMargins = 40.0f;
 // Slides Cell
 static const CGFloat kSlidesCellThumbnailVerticalMargins = kImageCellThumbnailVerticalMargins;
 static const CGFloat kSlidesCellDefaultHeight = 260.0f;
+
+// Annotation View
+static const CGFloat kMarkerSize = 3.0f;
+static const NSInteger kMarkerMinSegment = 8;
+static const NSInteger kMarkerMaxSegment = 32;

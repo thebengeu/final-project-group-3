@@ -8,6 +8,7 @@
 
 #import "AnnotationUIView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Constants.h"
 
 @interface AnnotationUIView ()
 
@@ -44,6 +45,11 @@
     return self;
 }
 
+/*
+ 
+ Setup the view controller
+ 
+ */
 - (void)setup{
     [self setUserInteractionEnabled:YES];
     _currentStrokePoints = [[NSMutableArray alloc]init];
@@ -56,7 +62,7 @@
     [self addGestureRecognizer:draw];
     
     _markerColor = [UIColor redColor];
-    _markerSize = (CGFloat)3.0;
+    _markerSize = kMarkerSize;
     
     UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);
     UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
@@ -67,7 +73,11 @@
     _currentStrokeIndex = 0;
 }
 
-
+/*
+ 
+ Adds a line segment between 2 user touch input points
+ 
+ */
 -(void)setOriginalImage:(UIImage *)originalImage{
     _originalImage = originalImage;
     self.image = originalImage;
@@ -77,6 +87,12 @@
     return _originalImage;
 }
 
+
+/*
+ 
+ Reset the image to before any annotations were made
+ 
+ */
 -(void)clear{
     [self setImage:_originalImage];
     [_strokeColors removeAllObjects];
@@ -86,6 +102,11 @@
 }
 
 
+/*
+ 
+ Maths functions for drawing calculations
+ 
+ */
 -(float)pointToDist:(CGPoint) p{
     return sqrt(p.x * p.x + p.y * p.y);
 }
@@ -94,6 +115,11 @@
     return sqrt(pow(first.x-second.x,2.0) + pow(first.y-second.y, 2.0));
 }
 
+/*
+ 
+ Handle user touch gesture for drawing
+ 
+ */
 - (void)draw:(UIGestureRecognizer *)gesture{
     CGPoint point = [gesture locationInView:self];
     
@@ -135,7 +161,12 @@
         _currentStrokeIndex = [_strokesPoints count];
     }
 }
-         
+
+/*
+ 
+ Adds a line segment between 2 user touch input points
+ 
+ */
 -(void)addPointAndDraw:(CGPoint)point{
     [_currentStrokePoints addObject:[NSValue valueWithCGPoint:point]];
     [self setupDrawContext:YES];
@@ -143,6 +174,11 @@
     [self doneDrawContext: YES];
 }
 
+/*
+ 
+ Draws a line segment between 2 user touch input points (For Quartz code)
+ 
+ */
 -(void)drawStrokeSection:(int) i{
     if (i < 2)
         return;
@@ -157,7 +193,7 @@
     CGPoint midPoint2 = CGPointMake((cur.x+prev1.x)/2.0, (cur.y+prev1.y)/2.0);
     int segmentDistance = 2;
     float distance = [self distanceBetweenTwoPoints: midPoint1 :midPoint2];
-    int numberOfSegments = MIN(32, MAX(floorf(distance / segmentDistance), 8));
+    int numberOfSegments = MIN(kMarkerMaxSegment, MAX(floorf(distance / segmentDistance), kMarkerMinSegment));
     
     float t = 0.0f;
     float step = 1.0f / (float)numberOfSegments;
@@ -177,6 +213,11 @@
     [self drawCanvasLineSegmentFromPoint:previousPoint toPoint:midPoint2 withSize:_markerSize];
 }
 
+/*
+ 
+ Setup the draw context by taking the image and putting it as the CGContext
+ 
+ */
 -(void)setupDrawContext: (BOOL)newImage{
     if (newImage){
         UIGraphicsBeginImageContextWithOptions(self.image.size, YES, [[UIScreen mainScreen] scale]);
@@ -205,14 +246,16 @@
     }
 }
 
-
 - (void)undo{
+    //  Ensure that there are moves to undo
     if (_currentStrokeIndex <= 0)
         return;
     
+    //  Reset the image
     [self setImage:_originalImage];
     _currentStrokeIndex--;
     
+    //  Redraw the points before
     for (int i = 0; i < _currentStrokeIndex; i++){
         _currentStrokePoints = [_strokesPoints objectAtIndex:i];
         _markerColor = [_strokeColors objectAtIndex:i];
@@ -235,6 +278,7 @@
 }
 
 - (void) redo {
+    //  Redo the next stroke
     if (_currentStrokeIndex >= [_strokeSizes count])
         return;
     
@@ -244,6 +288,7 @@
     
     [self setupDrawContext:YES];
     
+    //  Draw each stroke section
     for (int j = 0; j < [_currentStrokePoints count]; j++)
         [self drawStrokeSection:j];
     
@@ -252,6 +297,11 @@
     _currentStrokeIndex++;
 }
 
+/*
+ 
+ Determine the scale factor of an image and the imageView
+ 
+ */
 -(CGFloat)contentScaleFactor
 {
     CGFloat widthScale = self.bounds.size.width / self.image.size.width;
