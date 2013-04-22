@@ -606,14 +606,13 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="83" id="0Ri-Az-HFS"/>
                                                 <constraint firstAttribute="height" constant="34" id="pVz-jY-s3d"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -636,7 +635,7 @@
                                                 <action selector="locationButtonTapped:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="Ejf-lx-rb2"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="  Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="117" id="48Q-np-Azm"/>
                                                 <constraint firstAttribute="height" constant="14" id="Wfz-65-ac4"/>
@@ -649,16 +648,17 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="22P-dZ-Iq2"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6mr-p3-U74"/>
                                     <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" type="default" id="8Wj-A7-YLF"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="9C3-6O-srn"/>
-                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" type="default" id="Iaq-fo-Xu9"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="39" id="BX7-jB-hly"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="centerX" secondItem="Ah0-Q4-Wrb" secondAttribute="centerX" type="default" id="FuW-gg-5Us"/>
                                     <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="15" id="TGD-Ms-bzG"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="UuZ-1u-Po8"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="bottom" secondItem="LkH-L5-43l" secondAttribute="bottom" type="default" id="W9R-qe-S0h"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="cY9-5a-hwg"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="iVn-yw-wN9"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="leading" type="default" id="Wdn-uy-3at"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bwF-cH-haX"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vAP-ze-fVm"/>
+                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="x2P-AA-6s7"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
