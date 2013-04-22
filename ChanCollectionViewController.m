@@ -359,7 +359,7 @@
             [_delegate launchTextPostSegue];
             break;
         case kPictureMenuItem: // Gallery Post
-            [_delegate launchImagePicker];
+            [_delegate launchImagePicker: _createPostMenu.addButton.frame];
             break;
         case kVideoMenuItem: // Camera
             [_delegate launchCameraForImage];
