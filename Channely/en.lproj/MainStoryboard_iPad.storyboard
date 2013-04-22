@@ -139,7 +139,7 @@
                                     <constraint firstAttribute="height" constant="42" id="0Oh-jT-WoO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="PLu-7g-xXX" id="u1s-Ia-NoD"/>
                                 </connections>
@@ -424,7 +424,7 @@
                                     <constraint firstAttribute="height" constant="42" id="0K1-I4-je8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Hashtag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar0-SI-Ra1" customClass="SLGlowingTextField">
                                 <constraints>
@@ -585,8 +585,8 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="347" id="eZw-bU-ylU"/>
-                                                <constraint firstAttribute="height" constant="54" id="ouG-E6-HuI"/>
+                                                <constraint firstAttribute="height" constant="48" id="2hk-gE-6zg"/>
+                                                <constraint firstAttribute="width" constant="342" id="FIP-SX-Qp9"/>
                                             </constraints>
                                             <color key="textColor" red="0.79607850313186646" green="0.0" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
@@ -599,8 +599,8 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="34" id="Amf-3i-qG7"/>
-                                                <constraint firstAttribute="width" constant="337" id="DNZ-Jx-Yxm"/>
+                                                <constraint firstAttribute="width" constant="337" id="Kla-2x-JIW"/>
+                                                <constraint firstAttribute="height" constant="25" id="i0O-xg-64a"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
@@ -613,29 +613,17 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="83" id="XNI-81-8Jt"/>
+                                                <constraint firstAttribute="width" constant="83" id="0Ri-Az-HFS"/>
                                                 <constraint firstAttribute="height" constant="34" id="pVz-jY-s3d"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-gX-ECr">
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <accessibility key="accessibilityConfiguration">
-                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                                                <bool key="isElement" value="NO"/>
-                                            </accessibility>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="306" id="NlY-cY-7if"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="GXr-gc-3yF"/>
-                                                <constraint firstAttribute="width" constant="55" id="TWe-Ha-e5r"/>
+                                                <constraint firstAttribute="width" constant="56" id="PFY-fA-wow"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Enter" image="mapmarker_red.png">
@@ -650,8 +638,8 @@
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="110" id="AUy-nl-18u"/>
-                                                <constraint firstAttribute="height" constant="21" id="McI-aA-Les"/>
+                                                <constraint firstAttribute="width" constant="117" id="48Q-np-Azm"/>
+                                                <constraint firstAttribute="height" constant="14" id="Wfz-65-ac4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -661,23 +649,19 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0VB-rf-ZNs"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C8E-uw-gEq"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="22P-dZ-Iq2"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" type="default" id="8Wj-A7-YLF"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="9C3-6O-srn"/>
                                     <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" type="default" id="Iaq-fo-Xu9"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ji9-cE-tdj"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="20" type="default" id="NzA-tx-5Qz"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="16" id="OZM-gJ-OCJ"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="Q3p-bF-EJT"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="21" id="cxN-5w-nhM"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="fbG-RT-gpT"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="49" id="jIC-rt-9JT"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pu5-Nh-juI"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="centerX" secondItem="3VO-c0-eVp" secondAttribute="centerX" type="default" id="uMF-r9-mUZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="OCf-gX-ECr" secondAttribute="bottom" constant="20" type="default" id="vWY-XP-Zij"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="15" id="TGD-Ms-bzG"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="UuZ-1u-Po8"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="bottom" secondItem="LkH-L5-43l" secondAttribute="bottom" type="default" id="W9R-qe-S0h"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="cY9-5a-hwg"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="iVn-yw-wN9"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vAP-ze-fVm"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
-                                    <outlet property="descriptionTextView" destination="OCf-gX-ECr" id="uTR-tY-nQl"/>
                                     <outlet property="distanceTextView" destination="Ah0-Q4-Wrb" id="aPU-jc-BS3"/>
                                     <outlet property="eventNameTextView" destination="Ho4-FB-biZ" id="E61-Ez-FLY"/>
                                 </connections>
@@ -1526,7 +1510,7 @@
                                     <constraint firstAttribute="height" constant="42" id="S2N-De-t0Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                 <connections>
                                     <action selector="eventNameChanged:" destination="PRe-Zr-qQH" eventType="editingChanged" id="OhA-Ha-pA6"/>
                                 </connections>
@@ -2062,6 +2046,319 @@
         <image name="text_menu_icon.png" width="24" height="24"/>
         <image name="user.png" width="23" height="22"/>
     </resources>
+    <classes>
+        <class className="AnnotationUIView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnnotationUIView.h"/>
+        </class>
+        <class className="BButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BButton.h"/>
+        </class>
+        <class className="ChanAbstractCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAbstractCell.h"/>
+        </class>
+        <class className="ChanAnnotationViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanAnnotationViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="blueColor:"/>
+                <relationship kind="action" name="clear:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="greenColor:"/>
+                <relationship kind="action" name="redColor:"/>
+                <relationship kind="action" name="redo:"/>
+                <relationship kind="action" name="undo:"/>
+                <relationship kind="outlet" name="annotationView" candidateClass="AnnotationUIView"/>
+                <relationship kind="outlet" name="blueButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="clearButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="greenButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="redButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="redoButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="undoButton" candidateClass="BButton"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelCreateUpdateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelCreateUpdateViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createOrUpdate:"/>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createUpdateButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelOwnedTableCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelOwnedTableCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanChannelOwnedTableController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanChannelOwnedTableController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addChannelButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ChanCollectionView" superclassName="UICollectionView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCollectionView.h"/>
+        </class>
+        <class className="ChanCollectionViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCollectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="waterfallLayout" candidateClass="UICollectionViewWaterfallLayout"/>
+            </relationships>
+        </class>
+        <class className="ChanCreateEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanCreateEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="endDateEditingBegin:"/>
+                <relationship kind="action" name="eventNameChanged:"/>
+                <relationship kind="action" name="startDateEditingBegin:"/>
+                <relationship kind="outlet" name="createButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="descriptionTextViewField" candidateClass="SSTextView"/>
+                <relationship kind="outlet" name="endDateTextField" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="eventNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="map" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="startDateTextField" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ChanDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="container" candidateClass="UIView"/>
+                <relationship kind="outlet" name="menuButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ChanImageCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImageCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanImagePostViewController" superclassName="ChanPostViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanImagePostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="postButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuAnonUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuAnonUserViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="anonUsername" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="signupButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuLoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuLoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuSignupViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuSignupViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanMenuUserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanMenuUserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="update:"/>
+                <relationship kind="outlet" name="editChannelButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="updateButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="updateStatus" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanPostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanPostViewController.h"/>
+        </class>
+        <class className="ChanRootViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanRootViewController.h"/>
+        </class>
+        <class className="ChanSearchResultChannelCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchResultChannelCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="hashtag" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanSearchResultEventCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchResultEventCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventName" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanSearchTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSearchTableViewController.h"/>
+        </class>
+        <class className="ChanSlidesCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="labelView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanSlidesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanSlidesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ChanTextCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanTextPostViewController" superclassName="ChanPostViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTextPostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="submit:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="postButton" candidateClass="BButton"/>
+                <relationship kind="outlet" name="status" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanTwitterCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanTwitterCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="recordingControlButton_Action:"/>
+                <relationship kind="outlet" name="liveText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recordingButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoCell" superclassName="ChanAbstractCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCell.h"/>
+        </class>
+        <class className="ChanVideoInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="host" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="recordingId" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="resolution" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ChanVideoPlayerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoPlayerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ChanViewImagePostViewController" superclassName="ChanViewPostViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanViewImagePostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="annotate:"/>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="action" name="deletePost:"/>
+                <relationship kind="outlet" name="date" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChanViewPostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanViewPostViewController.h"/>
+        </class>
+        <class className="ChanViewTextPostViewController" superclassName="ChanViewPostViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanViewTextPostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+                <relationship kind="action" name="deletePost:"/>
+                <relationship kind="outlet" name="date" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="text" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="username" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelUITableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewCell.h"/>
+            <relationships>
+                <relationship kind="action" name="locationButtonTapped:"/>
+                <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="distanceTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="ChannelUITableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelUITableViewController.h"/>
+        </class>
+        <class className="ChannelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChannelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="attachButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="contentContainer" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="DiscoverViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DiscoverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="channelListContainer" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SLGlowingTextField" superclassName="UITextField">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SLGlowingTextField.h"/>
+        </class>
+        <class className="SSTextView" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSTextView.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewWaterfallLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewWaterfallLayout.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
