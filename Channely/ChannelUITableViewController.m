@@ -11,6 +11,7 @@
 #import "ChannelViewController.h"
 #import "ChanEvent.h"
 #import "ChanChannel.h"
+#import "Constants.h"
 
 @interface ChannelUITableViewController ()
 
