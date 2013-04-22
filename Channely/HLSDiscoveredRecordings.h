@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "HLSNetServicePathChunkCountTuple.h"
 
+// This class implements a bidirectional map.
 @interface HLSDiscoveredRecordings : NSObject
-
 - (id) init;
 - (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
 - (void) removeDiscoveredFromServiceNamed:(NSString *)ipAddr;

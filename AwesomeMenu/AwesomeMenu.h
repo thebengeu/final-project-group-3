@@ -23,7 +23,7 @@
     BOOL _isAnimating;
 }
 @property (nonatomic, copy) NSArray *menusArray;
-@property (nonatomic, getter = isExpanding) BOOL expanding;
+@property (nonatomic) BOOL expanding;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
 
 @property (nonatomic, strong) UIImage *image;
@@ -40,6 +40,7 @@
 @property (nonatomic, assign) CGFloat menuWholeAngle;
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
+- (BOOL) isExpanding;
 
 - (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
 @end

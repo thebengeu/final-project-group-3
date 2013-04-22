@@ -8,11 +8,7 @@
 
 #import "HLSPeerDiscovery.h"
 
-static NSString *const cBonjourDomain = @"local.";
-static NSString *const cAppServiceName = @"_channely._tcp.";
-static NSTimeInterval const cNetServiceResolveTimeout = 5.0; // Seconds.
-static NSString *const cDD4AddressZero = @"0.0.0.0";
-static NSUInteger const cCompleteRecordingBitMask = 0x80000000; // Duplicated constant in HLSLoadBalancer.m
+static NSString *const kDD4AddressZero = @"0.0.0.0";
 
 @interface HLSPeerDiscovery ()
 // Internal.
@@ -61,7 +57,7 @@ static HLSPeerDiscovery * _internal;
 #pragma mark Singleton Methods
 + (HLSPeerDiscovery *) setupPeerDiscovery {
     if (!_internal) {
-        _internal = [[HLSPeerDiscovery alloc] initWithDomain:cBonjourDomain serviceName:cAppServiceName];
+        _internal = [[HLSPeerDiscovery alloc] initWithDomain:kBonjourDomain serviceName:kAppServiceName];
     }
     return _internal;
 }
@@ -93,7 +89,7 @@ static HLSPeerDiscovery * _internal;
 - (void) startDiscovery {
     _browser = [[NSNetServiceBrowser alloc] init];
     _browser.delegate = self;
-    [_browser searchForServicesOfType:cAppServiceName inDomain:cBonjourDomain];
+    [_browser searchForServicesOfType:kAppServiceName inDomain:kBonjourDomain];
 }
 
 #pragma mark NetService Browser Delegate
@@ -107,13 +103,13 @@ static HLSPeerDiscovery * _internal;
     }
     
     netService.delegate = self;
-    [netService resolveWithTimeout:cNetServiceResolveTimeout];
+    [netService resolveWithTimeout:kNetServiceResolveTimeout];
 }
 
 - (void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
     NSLog(@"discovery stopped. restarting."); // DEBUG
     
-    [_browser searchForServicesOfType:cAppServiceName inDomain:cBonjourDomain];
+    [_browser searchForServicesOfType:kAppServiceName inDomain:kBonjourDomain];
 }
 
 - (void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
@@ -193,7 +189,7 @@ static HLSPeerDiscovery * _internal;
     }
     
     for (HLSNetServicePathChunkCountTuple *peer in result) {
-        if (peer.chunkCount & cCompleteRecordingBitMask) {
+        if (peer.chunkCount & kCompleteRecordingBitMask) {
             return YES;
         }
     }

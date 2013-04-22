@@ -139,7 +139,7 @@
                                     <constraint firstAttribute="height" constant="42" id="0Oh-jT-WoO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="PLu-7g-xXX" id="u1s-Ia-NoD"/>
                                 </connections>
@@ -424,7 +424,7 @@
                                     <constraint firstAttribute="height" constant="42" id="0K1-I4-je8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Hashtag" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ar0-SI-Ra1" customClass="SLGlowingTextField">
                                 <constraints>
@@ -523,7 +523,7 @@
         <scene sceneID="z73-81-IWT">
             <objects>
                 <viewController storyboardIdentifier="DiscoverViewController" title="Discover" providesPresentationContextTransitionStyle="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OGg-I2-UC3" customClass="DiscoverViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yN9-uP-K6p">
+                    <view key="view" contentMode="scaleToFill" id="yN9-uP-K6p" customClass="UIImageView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -585,8 +585,8 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="347" id="eZw-bU-ylU"/>
-                                                <constraint firstAttribute="height" constant="54" id="ouG-E6-HuI"/>
+                                                <constraint firstAttribute="height" constant="48" id="2hk-gE-6zg"/>
+                                                <constraint firstAttribute="width" constant="342" id="FIP-SX-Qp9"/>
                                             </constraints>
                                             <color key="textColor" red="0.79607850313186646" green="0.0" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
@@ -599,43 +599,30 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="34" id="Amf-3i-qG7"/>
-                                                <constraint firstAttribute="width" constant="337" id="DNZ-Jx-Yxm"/>
+                                                <constraint firstAttribute="width" constant="337" id="Kla-2x-JIW"/>
+                                                <constraint firstAttribute="height" constant="25" id="i0O-xg-64a"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="83" id="XNI-81-8Jt"/>
                                                 <constraint firstAttribute="height" constant="34" id="pVz-jY-s3d"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="OCf-gX-ECr">
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <accessibility key="accessibilityConfiguration">
-                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                                                <bool key="isElement" value="NO"/>
-                                            </accessibility>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="306" id="NlY-cY-7if"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <button contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkH-L5-43l">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="GXr-gc-3yF"/>
-                                                <constraint firstAttribute="width" constant="55" id="TWe-Ha-e5r"/>
+                                                <constraint firstAttribute="width" constant="56" id="PFY-fA-wow"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <state key="normal" title="Enter" image="mapmarker_red.png">
@@ -648,10 +635,10 @@
                                                 <action selector="locationButtonTapped:" destination="rNn-5t-cVJ" eventType="touchUpInside" id="Ejf-lx-rb2"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="  Current Event:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyG-61-Scb">
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="110" id="AUy-nl-18u"/>
-                                                <constraint firstAttribute="height" constant="21" id="McI-aA-Les"/>
+                                                <constraint firstAttribute="width" constant="117" id="48Q-np-Azm"/>
+                                                <constraint firstAttribute="height" constant="14" id="Wfz-65-ac4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -661,23 +648,20 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0VB-rf-ZNs"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="C8E-uw-gEq"/>
-                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" type="default" id="Iaq-fo-Xu9"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Ji9-cE-tdj"/>
-                                    <constraint firstItem="OCf-gX-ECr" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="20" type="default" id="NzA-tx-5Qz"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="16" id="OZM-gJ-OCJ"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="Q3p-bF-EJT"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="21" id="cxN-5w-nhM"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ho4-FB-biZ" secondAttribute="bottom" constant="21" id="fbG-RT-gpT"/>
-                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="49" id="jIC-rt-9JT"/>
-                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="pu5-Nh-juI"/>
-                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="centerX" secondItem="3VO-c0-eVp" secondAttribute="centerX" type="default" id="uMF-r9-mUZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="OCf-gX-ECr" secondAttribute="bottom" constant="20" type="default" id="vWY-XP-Zij"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6mr-p3-U74"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" type="default" id="8Wj-A7-YLF"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="39" id="BX7-jB-hly"/>
+                                    <constraint firstItem="LkH-L5-43l" firstAttribute="centerX" secondItem="Ah0-Q4-Wrb" secondAttribute="centerX" type="default" id="FuW-gg-5Us"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="15" id="TGD-Ms-bzG"/>
+                                    <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="UuZ-1u-Po8"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="bottom" secondItem="LkH-L5-43l" secondAttribute="bottom" type="default" id="W9R-qe-S0h"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="leading" type="default" id="Wdn-uy-3at"/>
+                                    <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bwF-cH-haX"/>
+                                    <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vAP-ze-fVm"/>
+                                    <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="x2P-AA-6s7"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
-                                    <outlet property="descriptionTextView" destination="OCf-gX-ECr" id="uTR-tY-nQl"/>
                                     <outlet property="distanceTextView" destination="Ah0-Q4-Wrb" id="aPU-jc-BS3"/>
                                     <outlet property="eventNameTextView" destination="Ho4-FB-biZ" id="E61-Ez-FLY"/>
                                 </connections>
@@ -1523,7 +1507,7 @@
                                     <constraint firstAttribute="height" constant="42" id="S2N-De-t0Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                 <connections>
                                     <action selector="eventNameChanged:" destination="PRe-Zr-qQH" eventType="editingChanged" id="OhA-Ha-pA6"/>
                                 </connections>

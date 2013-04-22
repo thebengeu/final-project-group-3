@@ -41,7 +41,7 @@
         [[self tableView]reloadData];
     }];
     
-    [ChanEvent search:_searchTerm latitude:nil longitude:nil withinDistance:nil withCompletion:^(NSArray *events, NSError *error) {
+    [ChanEvent search:_searchTerm latitude:nil longitude:nil withinDistance:nil occurDateTime:nil withCompletion:^(NSArray *events, NSError *error) {
         _eventSearchResults = events;
         [[self tableView]reloadData];
     }];

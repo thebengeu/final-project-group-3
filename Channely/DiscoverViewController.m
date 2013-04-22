@@ -15,8 +15,14 @@
 #import "ChanEvent.h"
 #import "ChanChannel.h"
 #import "ChanRefreshControl.h"
+#import "Constants.h"
+
+static NSTimeInterval const kRotationDuration = 0.5;
+static NSTimeInterval const kRotationDelay = 0.0;
+static CGFloat const kLandscapeOrientationHeight = 704.0;
 
 @interface DiscoverViewController ()
+- (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
 - (void) layoutFromCurrentOrientation;
 - (void) layoutPortrait;
 - (void) layoutLandscape;
@@ -33,7 +39,7 @@
 
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.distanceFilter = kDistanceFilterMetres;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [_locationManager startUpdatingLocation];
     _mapView.delegate = self;
@@ -46,6 +52,8 @@
     [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Events"];
     self.channelTableViewController.refreshControl = refreshControl;
+    
+    ((UIImageView *)self.view).image = [UIImage imageNamed:@"collectionbg.png"];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -60,12 +68,10 @@
     if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
         ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
-    }
-    if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
+    } else if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         vc.channel = [[sender event] channel];
     }
-    
 }
 
 -(void) populateTableWithChannel {
@@ -95,19 +101,14 @@
     [self zoomToFitMapAnnotations:_mapView];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    _location = newLocation.coordinate;
-    
-    // TODO: introduce threshold for requerying?
-    if (newLocation.coordinate.latitude != oldLocation.coordinate.latitude ||
-        newLocation.coordinate.longitude != oldLocation.coordinate.longitude) {
-        NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    _location = [(CLLocation*)[locations lastObject] coordinate];
+    NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
         
-        // search for nearby events within 100 km
-        [self refreshEvents];
-    }
+    // search for nearby events within 100 km
+    [self refreshEvents];
 }
+
 
 - (void)refreshEvents
 {
@@ -115,6 +116,7 @@
              latitude:[NSNumber numberWithDouble:self.location.latitude]
             longitude:[NSNumber numberWithDouble:self.location.longitude]
        withinDistance:[NSNumber numberWithDouble:100000.0]
+         occurDateTime:[NSDate date]
        withCompletion:^(NSArray *events, NSError *error) {
         [self.channelTableViewController.refreshControl endRefreshing];
         
@@ -235,18 +237,21 @@
 }
 
 #pragma mark Rotation Methods
-- (void) layoutFromCurrentOrientation {
-    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    NSLog(@"currentOrientation=%d", currentOrientation);
-    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
+- (void) layoutForOrientation:(UIInterfaceOrientation)orientation {
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
         [self layoutLandscape];
-    } else if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
+    } else if (UIInterfaceOrientationIsPortrait(orientation)) {
         [self layoutPortrait];
     }
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {    
-    [self layoutFromCurrentOrientation];
+- (void) layoutFromCurrentOrientation {
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    [self layoutForOrientation:currentOrientation];
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self layoutForOrientation:toInterfaceOrientation];
 }
 
 - (void) layoutPortrait {
@@ -258,10 +263,10 @@
 }
 
 - (void) layoutLandscape {
-    CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
+    CGRect mapFrame = CGRectMake(0., 0., 424., kLandscapeOrientationHeight);
     self.mapView.frame = mapFrame;
     
-    CGRect listFrame = CGRectMake(424., 0., 600., 768.);
+    CGRect listFrame = CGRectMake(424., 0., 600., kLandscapeOrientationHeight);
     self.channelListContainer.frame = listFrame;
 }
 

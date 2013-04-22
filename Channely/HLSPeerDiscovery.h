@@ -10,6 +10,7 @@
 #import "HLSNetServicePathChunkCountTuple.h"
 #import "HLSDiscoveredRecordings.h"
 #import "HLSStreamAdvertisement.h"
+#import "Constants.h"
 
 #include <arpa/inet.h>
 #include <stdlib.h>

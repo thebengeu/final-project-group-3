@@ -8,9 +8,7 @@
 
 #import "HLSStreamSync.h"
 
-static NSString *const cPlaylistFilenameFormat = @"%@.m3u8";
-static NSUInteger const cCompleteStreamShift = 31;
-static NSTimeInterval const cMaxStreamAge = 1209600; // Seconds. 14 days.
+static NSString *const kPlaylistFilenameFormat = @"%@.m3u8";
 
 @interface HLSStreamSync ()
 // Internal.
@@ -93,7 +91,7 @@ static HLSStreamSync *_internal;
 
 - (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId {
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
-    NSString *playlistPath = [streamDir stringByAppendingPathComponent:[NSString stringWithFormat:cPlaylistFilenameFormat, sId]];
+    NSString *playlistPath = [streamDir stringByAppendingPathComponent:[NSString stringWithFormat:kPlaylistFilenameFormat, sId]];
     return ([ChanUtility directoryExists:streamDir] && [HLSEventPlaylistHelper playlistIsComplete:playlistPath]);
 }
 
@@ -126,15 +124,15 @@ static HLSStreamSync *_internal;
         if ([self completeLocalStreamExistsForStreamId:sId]) {
             NSLog(@"found existing complete stream: %@. re-advertising.", sId); // DEBUG.
             
-            NSString *playlistRelativePath = [sId stringByAppendingPathComponent:[NSString stringWithFormat:cPlaylistFilenameFormat, sId]];
+            NSString *playlistRelativePath = [sId stringByAppendingPathComponent:[NSString stringWithFormat:kPlaylistFilenameFormat, sId]];
             NSUInteger chunkCount = [HLSEventPlaylistHelper playlistChunkCount:playlistRelativePath];
-            NSUInteger countField = (1 << cCompleteStreamShift) | chunkCount;
+            NSUInteger countField = (1 << kCompleteStreamShift) | chunkCount;
             
             // If the stream is complete, remove it if it is too old.
             NSDictionary *attrs = [fm attributesOfItemAtPath:fullItemPath error:nil];
             NSDate *modDate = [attrs objectForKey:NSFileModificationDate];
             NSTimeInterval dateDiff = [modDate timeIntervalSinceNow];
-            if (dateDiff > cMaxStreamAge) {
+            if (dateDiff > kMaxStreamAge) {
                 NSLog(@"stream is too old. age:%lf. removing.", dateDiff);
                 [fm removeItemAtPath:fullItemPath error:nil];
             }

@@ -11,6 +11,11 @@
 
 @implementation ChanImagePost
 
+- (ChanPostType)typeConstant
+{
+    return kImagePost;
+}
+
 - (CGFloat)thumbWidth
 {
     return kImageCellThumbnailWidth;

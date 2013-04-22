@@ -8,11 +8,7 @@
 
 #import "HLSLoadBalancer.h"
 
-static NSUInteger const cCompleteRecordingBitMask = 0x80000000;
-static NSUInteger const cMaxSpreadRadius = 5;
 static NSString *const cURLFormat = @"http://%@:%d/%@";
-static NSUInteger const cHttpPort = 22;
-static NSUInteger const cTotalChunksBitMask = 0x7FFFFFFF;
 static NSString *const cLocalhost = @"127.0.0.1";
 
 @interface HLSLoadBalancer ()
@@ -25,7 +21,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     // If a complete device-local source exists, always select it.
     if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId:rId]) {
         NSString *relativePath = [rId stringByAppendingPathComponent:[serverSource lastPathComponent]];
-        NSString *localURLStr = [NSString stringWithFormat:cURLFormat, cLocalhost, cHttpPort, relativePath];
+        NSString *localURLStr = [NSString stringWithFormat:cURLFormat, cLocalhost, kLocalServerPort, relativePath];
         return [NSURL URLWithString:localURLStr];
     }
     
@@ -41,7 +37,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     // Determine if a recording is complete, and the top number of chunks at the time of query.
     BOOL completeRecordingExists = NO;
     NSUInteger firstChunkField = ((HLSNetServicePathChunkCountTuple *)[result objectAtIndex:0]).chunkCount;
-    if (firstChunkField & cCompleteRecordingBitMask) {
+    if (firstChunkField & kCompleteRecordingBitMask) {
         completeRecordingExists = YES;
         NSLog(@"found completed recording."); // DEBUG
     }
@@ -59,7 +55,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
         
         if (completeRecordingExists && chunkCount != topChunkCount) {
             break;
-        } else if ((topChunkCount - chunkCount) > cMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
+        } else if ((topChunkCount - chunkCount) > kMaxSpreadRadius) { // ( {difference} > cMaxSpreadRadius )
             break;
         } else {
             [sourcePool addObject:peer];
@@ -80,7 +76,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
         NSUInteger randIndex = arc4random_uniform(sourcePool.count);
         HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
         NSString *hostIpAddr = [HLSPeerDiscovery dottedDecimalFromNetService:selectedPeer.netService];
-        NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, cHttpPort, selectedPeer.relativePath];
+        NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, kLocalServerPort, selectedPeer.relativePath];
         
         // Test if the peer is reachable by attempting to download the playlist.
         selectedURL = [NSURL URLWithString:urlStr];
@@ -99,7 +95,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
 }
 
 + (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount {
-    return (chunkCount & cTotalChunksBitMask);
+    return (chunkCount & kTotalChunksBitMask);
 }
 
 @end

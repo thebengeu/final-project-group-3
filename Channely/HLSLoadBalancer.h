@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HLSPeerDiscovery.h"
 #import "HLSStreamSync.h"
+#import "Constants.h"
 
 @interface HLSLoadBalancer : NSObject
 + (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
