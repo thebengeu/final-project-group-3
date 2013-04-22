@@ -20,6 +20,7 @@ static NSString *const CLIENT_SECRET = @"bRst9AEPfEst6UN7UGZdGzuiemzcl7";
 static NSString *const PATH_CHANNEL = @"/channels";
 static NSString *const PATH_CHANNEL_UPDATE = @"/channels/:channelID";
 static NSString *const PATH_CHANNEL_UPDATE_FORMAT = @"/channels/%@";
+static NSString *const PATH_CHANNEL_DELETE_FORMAT = @"/channels/%@";
 static NSString *const PATH_CHANNEL_SEARCH = @"/channels/search";
 
 // Event Endpoints

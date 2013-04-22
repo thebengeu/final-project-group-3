@@ -54,6 +54,15 @@
     }];
 }
 
+- (void)deleteWithCompletion:(void (^)(ChanChannel *channel, NSError *error))block
+{
+    [[RKObjectManager sharedManager] deleteObject:self path:[NSString stringWithFormat:PATH_CHANNEL_DELETE_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        if (block) block(self, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (block) block(nil, error);
+    }];
+}
+
 - (void)getPostsSince:(NSDate *)since
                 until:(NSDate *)until
        withCompletion:(void (^)(NSArray *posts, NSError *error))block

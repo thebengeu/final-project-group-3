@@ -11,6 +11,7 @@
 + (void)search:(NSString *)name withCompletion:(void (^)(NSArray *channels, NSError *error))block;
 
 - (void)updateChannelWithName:(NSString *)name hashTag:(NSString *)hashTag withCompletion:(void (^)(ChanChannel *channel, NSError *error))block;
+- (void)deleteWithCompletion:(void (^)(ChanChannel *channel, NSError *error))block;
 - (void)getPostsSince:(NSDate *)since
                 until:(NSDate *)until
        withCompletion:(void (^)(NSArray *posts, NSError *error))block;
