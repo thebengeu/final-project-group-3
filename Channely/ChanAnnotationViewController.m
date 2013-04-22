@@ -66,6 +66,12 @@
 }
 
 
+/*
+ 
+ Palette functions
+ 
+ */
+
 - (IBAction)redColor:(id)sender {
     [_annotationView setMarkerColor:[UIColor redColor]];
 }

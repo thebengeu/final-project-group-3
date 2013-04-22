@@ -90,6 +90,7 @@
     //  Self location
     LocationAnnotation *locationAnnotation = [[LocationAnnotation alloc]initWithCoordinate:_location];
     [_mapView addAnnotation:locationAnnotation];
+    [_mapView selectAnnotation:locationAnnotation animated:YES];
     
     [self zoomToFitMapAnnotations:_mapView];
 }
@@ -124,6 +125,11 @@
     }];
 }
 
+/*
+ 
+ Fit the map to contain all anotations with some padding
+ 
+ */
 -(void)zoomToFitMapAnnotations:(MKMapView*)mapView {
     if([mapView.annotations count] == 0)
         return;

@@ -20,7 +20,7 @@
 }
 
 - (NSString *)title {
-    return @"Me";
+    return @"You are here";
 }
 
 @end
