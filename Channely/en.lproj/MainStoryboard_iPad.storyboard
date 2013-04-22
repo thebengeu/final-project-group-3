@@ -586,7 +586,6 @@
                                             </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="48" id="2hk-gE-6zg"/>
-                                                <constraint firstAttribute="width" constant="342" id="FIP-SX-Qp9"/>
                                             </constraints>
                                             <color key="textColor" red="0.79607850313186646" green="0.0" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
                                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="34"/>
@@ -613,8 +612,8 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="208" id="5i6-Sn-e9q"/>
                                                 <constraint firstAttribute="height" constant="25" id="696-7H-yk7"/>
+                                                <constraint firstAttribute="width" constant="228" id="Ddi-Yh-yym"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
@@ -691,10 +690,11 @@
                                 <constraints>
                                     <constraint firstItem="SzL-au-8qE" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="4" id="1gN-im-CZu"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6mr-p3-U74"/>
-                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="trailing" secondItem="SzL-au-8qE" secondAttribute="trailing" type="default" id="7p7-7L-SX2"/>
                                     <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" type="default" id="8Wj-A7-YLF"/>
+                                    <constraint firstAttribute="trailing" secondItem="FPE-S9-Qsz" secondAttribute="trailing" constant="20" type="default" id="Cbg-1P-Oz3"/>
                                     <constraint firstItem="FPE-S9-Qsz" firstAttribute="bottom" secondItem="fX1-KY-mzw" secondAttribute="bottom" type="default" id="FFB-t7-Rh1"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="centerX" secondItem="Ah0-Q4-Wrb" secondAttribute="centerX" type="default" id="FuW-gg-5Us"/>
+                                    <constraint firstAttribute="trailing" secondItem="SzL-au-8qE" secondAttribute="trailing" constant="20" type="default" id="LNe-uE-pjG"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="UuZ-1u-Po8"/>
                                     <constraint firstItem="SzL-au-8qE" firstAttribute="leading" secondItem="17i-ae-21d" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Vrl-OR-hvs"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="bottom" secondItem="LkH-L5-43l" secondAttribute="bottom" type="default" id="W9R-qe-S0h"/>
