@@ -14,11 +14,11 @@ typedef enum {
 } kAwesomeMenuItems;
 
 // Segue
-static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
-static NSString *const cSlideSegue = @"slidesSegue";
-static NSString *const cTextSegue = @"textSegue";
-static NSString *const cImageSegue = @"imageSegue";
-static NSString *const cTweetSegue = @"tweetSegue";
+static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
+static NSString *const kSlideSegue = @"slidesSegue";
+static NSString *const kTextSegue = @"textSegue";
+static NSString *const kImageSegue = @"imageSegue";
+static NSString *const kTweetSegue = @"tweetSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
