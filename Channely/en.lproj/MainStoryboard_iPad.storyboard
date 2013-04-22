@@ -912,7 +912,7 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="149" id="PHt-dp-Qr9"/>
-                                                <constraint firstAttribute="height" constant="24" id="fgQ-dv-nc4"/>
+                                                <constraint firstAttribute="height" constant="21" id="k4v-RT-S6X"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -933,16 +933,17 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="6Wp-uL-xZA" secondAttribute="bottom" constant="20" type="default" id="7Pl-3B-KJC"/>
+                                    <constraint firstItem="lNA-MQ-6wD" firstAttribute="top" secondItem="80k-Ne-4jd" secondAttribute="top" constant="20" type="default" id="OBT-N3-opx"/>
                                     <constraint firstItem="lNA-MQ-6wD" firstAttribute="leading" secondItem="80k-Ne-4jd" secondAttribute="leading" constant="23" id="QQt-0N-Bx7"/>
                                     <constraint firstItem="6Wp-uL-xZA" firstAttribute="top" secondItem="80k-Ne-4jd" secondAttribute="top" constant="40" type="user" id="kRQ-GQ-wkv"/>
                                     <constraint firstItem="6Wp-uL-xZA" firstAttribute="leading" secondItem="80k-Ne-4jd" secondAttribute="leading" constant="15" id="leU-ZZ-ytz"/>
-                                    <constraint firstItem="lNA-MQ-6wD" firstAttribute="top" secondItem="80k-Ne-4jd" secondAttribute="top" constant="17" id="qrf-yv-pN8"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Wp-uL-xZA" secondAttribute="bottom" constant="20" type="default" id="mVM-Ji-4uh"/>
                                 </constraints>
                                 <size key="customSize" width="243" height="213"/>
                                 <connections>
                                     <outlet property="textView" destination="6Wp-uL-xZA" id="b6B-gc-WgE"/>
                                     <outlet property="titleView" destination="lNA-MQ-6wD" id="UIV-r0-CRQ"/>
+                                    <segue destination="Cbe-4d-Kde" kind="modal" identifier="tweetSegue" id="olw-2z-8Cn"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Xg6-95-Zvj" customClass="ChanImageCell">
@@ -2009,6 +2010,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="olw-2z-8Cn"/>
         <segue reference="5jW-HH-phM"/>
     </inferredMetricsTieBreakers>
 </document>

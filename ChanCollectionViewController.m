@@ -108,6 +108,11 @@
         ChanTextCell *cell = (ChanTextCell *)sender;
         imageViewController.post = (ChanPost *)cell.post;
         imageViewController.delegate = self.delegate;
+    } else if ([segueName isEqualToString:cTweetSegue]) {
+        ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
+        
+        ChanTwitterCell *cell = (ChanTwitterCell *)sender;
+        textViewController.post = (ChanPost *)cell.post;
     }
 }
 

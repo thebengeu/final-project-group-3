@@ -31,11 +31,13 @@
     [super viewWillAppear:animated];
 	// Do any additional setup after loading the view.
     
-    [_text setText:[[self post] content]];
-    [_date setText:[[[self post]createdAt] description]];
-    [_username setText:[[self post] username]];
+    [_text setText:[self.post content]];
+    [_date setText:[[self.post createdAt] description]];
+    [_username setText:[self.post username]];
     
-    if ([[ChanUser loggedInUser].id compare:[[self post] creator].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil)
+    if (self.post.creator != nil
+        && [[ChanUser loggedInUser].id compare:self.post.creator.id] == NSOrderedSame
+        && [ChanUser loggedInUser].id != nil)
         [_deleteButton setHidden:NO];
     else
         [_deleteButton setHidden:YES];
@@ -46,16 +48,18 @@
 }
 
 - (IBAction)deletePost:(id)sender {
-    [(ChanTextPost*)[self post] deleteWithCompletion:^(ChanTextPost *textPost, NSError *error) {
-        if (error != nil){
-            [SVProgressHUD setAnimationDuration:1.5];
-            [SVProgressHUD showSuccessWithStatus:@"Error occurred"];
-        } else {
-            [SVProgressHUD setAnimationDuration:1.5];
-            [SVProgressHUD showSuccessWithStatus:@"Post deleted"];
-            [self dismissViewControllerAnimated:YES completion:NO];
-        }
-    }];
+    if ([self.post class] == [ChanTextPost class]) {
+        [(ChanTextPost*)[self post] deleteWithCompletion:^(ChanTextPost *textPost, NSError *error) {
+            if (error != nil){
+                [SVProgressHUD setAnimationDuration:1.5];
+                [SVProgressHUD showErrorWithStatus:@"Error occurred"];
+            } else {
+                [SVProgressHUD setAnimationDuration:1.5];
+                [SVProgressHUD showSuccessWithStatus:@"Post deleted"];
+                [self dismissViewControllerAnimated:YES completion:NO];
+            }
+        }];
+    }
 }
 
 @end

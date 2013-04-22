@@ -18,6 +18,7 @@ static NSString *const cVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const cSlideSegue = @"slidesSegue";
 static NSString *const cTextSegue = @"textSegue";
 static NSString *const cImageSegue = @"imageSegue";
+static NSString *const cTweetSegue = @"tweetSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
