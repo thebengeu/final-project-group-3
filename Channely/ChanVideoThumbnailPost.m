@@ -10,6 +10,9 @@
 
 @implementation ChanVideoThumbnailPost
 
-// Custom logic goes here.
+- (ChanPostType)typeConstant
+{
+    return kVideoThumbnailPost;
+}
 
 @end

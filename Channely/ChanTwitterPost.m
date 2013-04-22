@@ -11,6 +11,11 @@
 
 @implementation ChanTwitterPost
 
+- (ChanPostType)typeConstant
+{
+    return kTwitterPost;
+}
+
 - (NSString *)url
 {
     return [NSString stringWithFormat:@"https://twitter.com/%@/status/%@", self.username, self.id];

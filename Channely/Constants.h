@@ -13,6 +13,16 @@ typedef enum {
     kGalleryMenuItem
 } kAwesomeMenuItems;
 
+typedef enum {
+    kTextPost,
+    kImagePost,
+    kVideoPost,
+    kVideoThumbnailPost,
+    kSlidesPost,
+    kSlidePost,
+    kTwitterPost
+} ChanPostType;
+
 // Segue
 static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const kSlideSegue = @"slidesSegue";

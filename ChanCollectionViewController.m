@@ -67,10 +67,6 @@
     [super viewWillAppear:animated];
     [self updateLayout];
     [self refreshPosts];
-    
-    // TODO: decide some interval for auto refresh. Conservatively load once
-    // now just to test, don't want to hit Twitter's rate limit while testing.
-    [self refreshTwitterPosts];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -154,6 +150,44 @@
     }
 }
 
+- (Class)cellClassForPost:(ChanPost *)post
+{
+    switch (post.typeConstant) {
+        case kTextPost:
+            return ChanTextCell.class;
+        case kImagePost:
+            return ChanImageCell.class;
+        case kVideoPost:
+            return ChanVideoCell.class;
+        case kSlidesPost:
+            return ChanSlidesCell.class;
+        case kTwitterPost:
+            return ChanTwitterCell.class;
+        default:
+            NSLog(@"Unexpected type constant %d", post.typeConstant);
+            return nil;
+    }
+}
+
+- (NSString *)reuseIdentifierForPost:(ChanPost *)post
+{
+    switch (post.typeConstant) {
+        case kTextPost:
+            return @"TextCell";
+        case kImagePost:
+            return @"ImageCell";
+        case kVideoPost:
+            return @"VideoCell";
+        case kSlidesPost:
+            return @"SlidesCell";
+        case kTwitterPost:
+            return @"TwitterCell";
+        default:
+            NSLog(@"Unexpected type constant %d", post.typeConstant);
+            return nil;
+    }
+}
+
 #pragma mark Create Menu functions
 
 // Set up the awesome menu for creating posts
@@ -228,23 +262,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChanAbstractCell *cell;
-    
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    Class postClass = [post class];
-
-    if (postClass == [ChanTextPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TextCell" forIndexPath:indexPath];
-    } else if (postClass == [ChanImagePost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCell" forIndexPath:indexPath];
-    } else if (postClass == [ChanVideoPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"VideoCell" forIndexPath:indexPath];
-    } else if (postClass == [ChanSlidesPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SlidesCell" forIndexPath:indexPath]; 
-    } else if (postClass == [ChanTwitterPost class]) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TwitterCell" forIndexPath:indexPath]; 
-    }
-    
+    ChanAbstractCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self reuseIdentifierForPost:post] forIndexPath:indexPath];
     cell.post = post;
     return cell;
 }
@@ -291,23 +310,8 @@
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    Class postClass = [post class];
-    CGFloat height;
-    
-    if (postClass == [ChanTextPost class]) {
-        height = [ChanTextCell getHeightForPost:post];
-    } else if (postClass == [ChanImagePost class]) {
-        height = [ChanImageCell getHeightForPost:post];
-    } else if (postClass == [ChanVideoPost class]) {
-        height = [ChanVideoCell getHeightForPost:post];
-    } else if (postClass == [ChanSlidesPost class]) {
-        height = [ChanSlidesCell getHeightForPost:post];
-    } else if (postClass == [ChanTwitterPost class]) {
-        height = [ChanTwitterCell getHeightForPost:post];
-    } else {
-        height = 0;
-    }
-    
+    CGFloat height = [[self cellClassForPost:post] getHeightForPost:post];
+        
     ChanCollectionView *chanCollectionView = (ChanCollectionView *)collectionView;
     if (height > chanCollectionView.maxCellHeight) {
         chanCollectionView.maxCellHeight = height;
