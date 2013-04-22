@@ -39,6 +39,7 @@ static NSString *const kSlideSegue = @"slidesSegue";
 static NSString *const kTextSegue = @"textSegue";
 static NSString *const kImageSegue = @"imageSegue";
 static NSString *const kTweetSegue = @"tweetSegue";
+static NSString *const kSlideAnnotationSegue = @"SlideAnnotationSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;

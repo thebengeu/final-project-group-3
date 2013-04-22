@@ -11,8 +11,6 @@
 #import "ChanSlidePost.h"
 #import "ChanAnnotationViewController.h"
 
-static NSString *const cSlideAnnotationSegue = @"SlideAnnotationSegue";
-
 @interface ChanSlidesViewController ()
 
 @end
