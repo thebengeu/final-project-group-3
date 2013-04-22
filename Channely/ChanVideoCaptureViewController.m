@@ -87,7 +87,6 @@ static NSString *const cButtonStartRecording = @"Record";
     [super viewWillDisappear:animated];
     
     ((ChanRootViewController *)[self navigationController]).forceLandscape = NO;
-    [self forceRotationRefresh];
 }
 
 - (void) didReceiveMemoryWarning {

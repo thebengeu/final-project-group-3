@@ -10,6 +10,7 @@
 #import "ChanCreateEventViewController.h"
 #import "ChanCollectionViewController.h"
 #import "ChanPostViewController.h"
+#import "ChanRootViewController.h"
 
 @class ChanChannel;
 
