@@ -5,13 +5,6 @@
 #import "ChanEvent.h"
 #import "ChanTwitterPost.h"
 
-@interface ChanChannel ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanChannel
 
 + (void)getAllChannelsWithCompletion:(void (^)(NSArray *channels, NSError *error))block

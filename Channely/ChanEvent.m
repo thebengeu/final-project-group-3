@@ -1,13 +1,6 @@
 #import "ChanEvent.h"
 #import "ChanAPIEndpoints.h"
 
-@interface ChanEvent ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanEvent
 
 + (void)    search:(NSString *)name

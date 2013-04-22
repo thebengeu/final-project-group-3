@@ -11,10 +11,6 @@
 #import "ChanSlidePost.h"
 #import "ChanAnnotationViewController.h"
 
-@interface ChanSlidesViewController ()
-
-@end
-
 @implementation ChanSlidesViewController
 
 #pragma mark Setters
@@ -26,15 +22,6 @@
 }
 
 #pragma mark View Controller Methods
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

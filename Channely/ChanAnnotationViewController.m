@@ -9,22 +9,9 @@
 #import "ChanAnnotationViewController.h"
 #import "ChanAnonUser.h"
 
-@interface ChanAnnotationViewController ()
-
-@end
-
 @implementation ChanAnnotationViewController
 
 @synthesize image = _image;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {

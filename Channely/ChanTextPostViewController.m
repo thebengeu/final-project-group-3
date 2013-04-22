@@ -9,10 +9,6 @@
 #import "ChanTextPostViewController.h"
 #import "Constants.h"
 
-@interface ChanTextPostViewController ()
-
-@end
-
 @implementation ChanTextPostViewController
 
 @synthesize channel = _channel;

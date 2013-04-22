@@ -13,15 +13,6 @@
 
 @implementation ChanSlidesCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 + (ChanSlidePost *)firstSlide:(ChanPost *)post
 {
     ChanSlidesPost *chanSlidesPost = (ChanSlidesPost *)post;
@@ -61,14 +52,5 @@
     UIImage *cellImg = [[UIImage imageNamed:@"slidebar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

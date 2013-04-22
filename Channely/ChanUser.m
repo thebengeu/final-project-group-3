@@ -2,13 +2,6 @@
 #import "ChanAPIEndpoints.h"
 #import "ChanChannel.h"
 
-
-@interface ChanUser ()
-
-// Private interface goes here.
-
-@end
-
 static ChanUser *loggedInUser = nil;
 
 @implementation ChanUser

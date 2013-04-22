@@ -8,11 +8,6 @@
 
 #import "ChanViewPostViewController.h"
 
-@interface ChanViewPostViewController ()
-
-@end
-
-
 @implementation ChanViewPostViewController
 
 - (void)viewDidAppear:(BOOL)animated

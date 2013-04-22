@@ -11,10 +11,6 @@
 #import "ChanDetailViewController.h"
 #include "SVProgressHUD.h"
 
-@interface ChanChannelCreateUpdateViewController ()
-
-@end
-
 @implementation ChanChannelCreateUpdateViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

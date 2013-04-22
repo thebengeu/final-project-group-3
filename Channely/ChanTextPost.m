@@ -1,13 +1,6 @@
 #import "ChanTextPost.h"
 #import "ChanAPIEndpoints.h"
 
-@interface ChanTextPost ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanTextPost
 
 - (ChanPostType)typeConstant

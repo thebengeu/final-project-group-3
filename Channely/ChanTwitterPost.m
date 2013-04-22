@@ -1,14 +1,6 @@
 #import "ChanTwitterPost.h"
 #import "ChanAPIEndpoints.h"
 
-
-@interface ChanTwitterPost ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanTwitterPost
 
 - (ChanPostType)typeConstant

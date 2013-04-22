@@ -29,17 +29,7 @@
 
 @implementation ChannelViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 # pragma mark View Lifecycle
-
 
 - (void)viewDidLoad
 {

@@ -10,20 +10,7 @@
 #import "ChanUser.h"
 #import "SVProgressHUD.h"
 
-@interface ChanMenuLoginViewController ()
-
-@end
-
 @implementation ChanMenuLoginViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {

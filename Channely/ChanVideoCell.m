@@ -18,15 +18,6 @@ static const CGFloat kHeaderHeight = 17.0f;
 
 @implementation ChanVideoCell
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)setPost:(ChanPost *)post
 {
     [super setPost:post];
@@ -73,14 +64,5 @@ static const CGFloat kHeaderHeight = 17.0f;
     UIImage *cellImg = [[UIImage imageNamed:@"videobar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

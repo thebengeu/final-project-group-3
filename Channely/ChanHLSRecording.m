@@ -2,13 +2,6 @@
 #import "ChanHLSChunk.h"
 #import "ChanAPIEndpoints.h"
 
-@interface ChanHLSRecording ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanHLSRecording
 
 + (void)createRecordingWithStartDate:(NSDate *)startDate

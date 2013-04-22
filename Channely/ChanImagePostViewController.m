@@ -10,10 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+normalizedOrientation.h"
 
-@interface ChanImagePostViewController ()
-
-@end
-
 @implementation ChanImagePostViewController
 
 @synthesize channel = _channel;

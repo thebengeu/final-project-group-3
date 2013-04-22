@@ -2,13 +2,6 @@
 #import "ChanAPIEndpoints.h"
 #import "Constants.h"
 
-@interface ChanImagePost ()
-
-// Private interface goes here.
-
-@end
-
-
 @implementation ChanImagePost
 
 - (ChanPostType)typeConstant
