@@ -695,14 +695,8 @@
 				4A625AE517102D63000DF8B9 /* HLSStreamAdvertisingManager.h */,
 				4A625AE617102D63000DF8B9 /* HLSStreamAdvertisingManager.m */,
 				4A625AE817102D77000DF8B9 /* HLSStreamAdvertiser.h */,
-				4ACD2514171570D9001542E8 /* HLSStreamAdvertisement.h */,
-				4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */,
 				0AA2CB3B1713F6A100D8C28F /* HLSPeerDiscovery.h */,
 				0AA2CB3C1713F6A100D8C28F /* HLSPeerDiscovery.m */,
-				4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */,
-				4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */,
-				4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */,
-				4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */,
 				4A355890171EE3C900AFE2B2 /* HLSLoadBalancer.h */,
 				4A355891171EE3C900AFE2B2 /* HLSLoadBalancer.m */,
 			);
@@ -712,10 +706,7 @@
 		4A625AE417102D42000DF8B9 /* Stream Downloader */ = {
 			isa = PBXGroup;
 			children = (
-				4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */,
-				4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */,
-				4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */,
-				4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */,
+				4AD30ADA1724F7E700DCD0A5 /* Operations */,
 				4AE16EDC170DF6E500573A4B /* HLSEventPlaylistHelper.h */,
 				4AE16EDD170DF6E500573A4B /* HLSEventPlaylistHelper.m */,
 				4AE16EDE170DF6E500573A4B /* HLSPlaylistDownloader.h */,
@@ -723,9 +714,6 @@
 				4AA361F817100A35009F703E /* HLSPlaylistDownloaderDelegate.h */,
 				4A2C2BAD1710473700CB25D4 /* HLSStreamSync.h */,
 				4A2C2BAE1710473700CB25D4 /* HLSStreamSync.m */,
-				4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */,
-				4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */,
-				4AF03952171FD421009DF7EB /* HLSPlaylistDownloadOperationDelegate.h */,
 			);
 			name = "Stream Downloader";
 			sourceTree = "<group>";
@@ -733,6 +721,7 @@
 		4A8933D017059CF5004D6E53 /* Http Live Streaming */ = {
 			isa = PBXGroup;
 			children = (
+				4AD30AD91724F7D400DCD0A5 /* Data Structures */,
 				4A625AE417102D42000DF8B9 /* Stream Downloader */,
 				4A625AE317102D11000DF8B9 /* Stream Discovery */,
 				4A8933D117059D00004D6E53 /* Timed Video Chunking */,
@@ -761,6 +750,33 @@
 				4ACD251C1715B572001542E8 /* ChanVideoPlayerViewController.m */,
 			);
 			name = "P2P Video Player";
+			sourceTree = "<group>";
+		};
+		4AD30AD91724F7D400DCD0A5 /* Data Structures */ = {
+			isa = PBXGroup;
+			children = (
+				4AE16ED8170DF6E500573A4B /* HLSChunkDownloadMetaData.h */,
+				4AE16ED9170DF6E500573A4B /* HLSChunkDownloadMetaData.m */,
+				4AEE4D5C1719838400987486 /* HLSNetServicePathChunkCountTuple.h */,
+				4AEE4D5D1719838400987486 /* HLSNetServicePathChunkCountTuple.m */,
+				4ACD2514171570D9001542E8 /* HLSStreamAdvertisement.h */,
+				4ACD2515171570D9001542E8 /* HLSStreamAdvertisement.m */,
+				4AEE4D5F171985EA00987486 /* HLSDiscoveredRecordings.h */,
+				4AEE4D60171985EA00987486 /* HLSDiscoveredRecordings.m */,
+			);
+			name = "Data Structures";
+			sourceTree = "<group>";
+		};
+		4AD30ADA1724F7E700DCD0A5 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				4A2C2BB017104FC400CB25D4 /* HLSPlaylistDownloadOperation.h */,
+				4A2C2BB117104FC400CB25D4 /* HLSPlaylistDownloadOperation.m */,
+				4AE16EDA170DF6E500573A4B /* HLSChunkDownloadOperation.h */,
+				4AE16EDB170DF6E500573A4B /* HLSChunkDownloadOperation.m */,
+				4AF03952171FD421009DF7EB /* HLSPlaylistDownloadOperationDelegate.h */,
+			);
+			name = Operations;
 			sourceTree = "<group>";
 		};
 		821463CD17172EA400699085 /* Collection View */ = {
