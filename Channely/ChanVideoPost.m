@@ -10,6 +10,9 @@
 
 @implementation ChanVideoPost
 
-// Custom logic goes here.
+- (ChanPostType)typeConstant
+{
+    return kVideoPost;
+}
 
 @end

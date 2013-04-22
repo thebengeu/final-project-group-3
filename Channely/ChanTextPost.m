@@ -10,6 +10,11 @@
 
 @implementation ChanTextPost
 
+- (ChanPostType)typeConstant
+{
+    return kTextPost;
+}
+
 - (void)deleteWithCompletion:(void (^)(ChanTextPost *textPost, NSError *error))block
 {
     [[RKObjectManager sharedManager] deleteObject:self path:[NSString stringWithFormat:PATH_DELETE_TEXT_FORMAT, self.id] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

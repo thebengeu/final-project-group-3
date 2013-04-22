@@ -10,6 +10,9 @@
 
 @implementation ChanSlidesPost
 
-// Custom logic goes here.
+- (ChanPostType)typeConstant
+{
+    return kSlidesPost;
+}
 
 @end

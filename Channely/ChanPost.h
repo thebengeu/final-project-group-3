@@ -1,5 +1,8 @@
 #import "_ChanPost.h"
+#import "Constants.h"
 
 @interface ChanPost : _ChanPost {}
-// Custom logic goes here.
+
+@property (readonly) ChanPostType typeConstant;
+
 @end
