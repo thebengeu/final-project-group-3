@@ -71,10 +71,14 @@
     if(cell == nil) {
         cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
     }
+
+    cell.channelNameTextView.text = event.channel.name;
+    cell.eventNameTextView.text = event.name;
     
-    [[cell channelNameTextView]setText: event.channel.name];
-    [[cell eventNameTextView]setText: event.name];
-    [[cell descriptionTextView]setText: event.details];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd/MM/yyyy hh:mm a"];
+    cell.startDateTimeTextView.text = [dateFormat stringFromDate:event.startTime];
+    cell.endDateTimeTextView.text = [dateFormat stringFromDate:event.endTime];
     
     CLLocationCoordinate2D currentLocationCoords = [self.delegate location];
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentLocationCoords.latitude longitude:currentLocationCoords.longitude];
