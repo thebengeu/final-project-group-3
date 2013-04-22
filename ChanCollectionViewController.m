@@ -253,8 +253,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSArray *visibles = [self.collectionView visibleCells];
-    UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
-    [_timeScroller scrollViewDidScroll:cell];
+    if (visibles.count != 0) {
+        UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
+        [_timeScroller scrollViewDidScroll:cell];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
