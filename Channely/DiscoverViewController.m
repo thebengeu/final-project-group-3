@@ -18,6 +18,7 @@
 #import "Constants.h"
 
 @interface DiscoverViewController ()
+- (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
 - (void) layoutFromCurrentOrientation;
 - (void) layoutPortrait;
 - (void) layoutLandscape;
@@ -61,12 +62,10 @@
     if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
         ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
         _channelTableViewController = childViewController;
-    }
-    if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
+    } else if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         vc.channel = [[sender event] channel];
     }
-    
 }
 
 -(void) populateTableWithChannel {
@@ -231,34 +230,46 @@
 }
 
 #pragma mark Rotation Methods
-- (void) layoutFromCurrentOrientation {
-    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
-    NSLog(@"currentOrientation=%d", currentOrientation);
-    if (UIInterfaceOrientationIsLandscape(currentOrientation)) {
+- (void) layoutForOrientation:(UIInterfaceOrientation)orientation {
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
         [self layoutLandscape];
-    } else if (UIInterfaceOrientationIsPortrait(currentOrientation)) {
+    } else if (UIInterfaceOrientationIsPortrait(orientation)) {
         [self layoutPortrait];
     }
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {    
+- (void) layoutFromCurrentOrientation {
+    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    [self layoutForOrientation:currentOrientation];
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [self layoutFromCurrentOrientation];
 }
 
+- (void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    NSLog(@"will rotate to interface orientation:%d", toInterfaceOrientation);
+//    [self layoutForOrientation:toInterfaceOrientation];
+}
+
 - (void) layoutPortrait {
-    CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
-    self.mapView.frame = mapFrame;
-    
-    CGRect listFrame = CGRectMake(0., 426., 768., 534.);
-    self.channelListContainer.frame = listFrame;
+    [UIView animateWithDuration:1.0 animations:^{
+        CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
+        self.mapView.frame = mapFrame;
+        
+        CGRect listFrame = CGRectMake(0., 426., 768., 534.);
+        self.channelListContainer.frame = listFrame;
+    }];
 }
 
 - (void) layoutLandscape {
-    CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
-    self.mapView.frame = mapFrame;
-    
-    CGRect listFrame = CGRectMake(424., 0., 600., 768.);
-    self.channelListContainer.frame = listFrame;
+    [UIView animateWithDuration:1.0 animations:^{
+        CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
+        self.mapView.frame = mapFrame;
+        
+        CGRect listFrame = CGRectMake(424., 0., 600., 768.);
+        self.channelListContainer.frame = listFrame;
+    }];
 }
 
 @end
