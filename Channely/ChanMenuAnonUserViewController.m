@@ -56,8 +56,8 @@
 
 - (void) switchToUserViewController
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    ChanMenuUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanMenuUserViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    ChanMenuUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:kMenuUserVCName];
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];
     

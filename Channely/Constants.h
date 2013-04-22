@@ -29,6 +29,10 @@ static NSString *const kBonjourDomain = @"local.";
 static NSString *const kAppServiceName = @"_channely._tcp.";
 static NSUInteger const kLocalServerPort = 22;
 
+// Storyboard
+static NSString *const kStoryboardName = @"MainStoryboard_iPad";
+static NSString *const kMenuUserVCName = @"ChanMenuUserViewController";
+
 // Segue
 static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const kSlideSegue = @"slidesSegue";
