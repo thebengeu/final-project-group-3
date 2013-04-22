@@ -21,7 +21,9 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *status;
 
 @property (weak, nonatomic) IBOutlet BButton *postButton;
+@property (weak, nonatomic) IBOutlet BButton *cancelButton;
 
 - (IBAction)submit:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end
