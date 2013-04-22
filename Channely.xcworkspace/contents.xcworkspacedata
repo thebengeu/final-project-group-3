@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:loc.gpx">
+      location = "group:Channely/loc.gpx">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
