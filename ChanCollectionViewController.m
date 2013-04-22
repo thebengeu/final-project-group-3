@@ -18,6 +18,10 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionViewWaterfallLayout *waterfallLayout;
 
+@property BOOL awesomeMenuIsOpen;
+
+@property BOOL awesomeMenuShouldReopen;
+
 @end
 
 @implementation ChanCollectionViewController
@@ -323,6 +327,18 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
+    if (_awesomeMenuIsOpen == YES){
+        _awesomeMenuShouldReopen = YES;
+        [_createPostMenu setExpanding:NO];
+    } else
+        _awesomeMenuShouldReopen = NO;
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    if (_awesomeMenuShouldReopen){
+        [_createPostMenu setExpanding:YES];
+    }
 }
 
 #pragma mark AwesomeMenu Delegate
@@ -344,6 +360,14 @@
         default:
             break;
     }
+}
+
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu{
+    _awesomeMenuIsOpen = NO;
+}
+
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu{
+    _awesomeMenuIsOpen = YES;
 }
 
 #pragma mark - Fetched results controller
