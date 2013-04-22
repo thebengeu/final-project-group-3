@@ -32,6 +32,9 @@ static NSUInteger const kLocalServerPort = 22;
 // Storyboard
 static NSString *const kStoryboardName = @"MainStoryboard_iPad";
 static NSString *const kMenuUserVCName = @"ChanMenuUserViewController";
+static NSString *const kChanAnnotationVCName = @"ChanAnnotationViewController";
+static NSString *const kChanImagePostVC = @"ChanImagePostViewController";
+static NSString *const kChanCreateEventVC = @"ChanCreateEventViewController";
 
 // Segue
 static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
@@ -40,6 +43,8 @@ static NSString *const kTextSegue = @"textSegue";
 static NSString *const kImageSegue = @"imageSegue";
 static NSString *const kTweetSegue = @"tweetSegue";
 static NSString *const kSlideAnnotationSegue = @"SlideAnnotationSegue";
+static NSString *const kCollectionViewSegue = @"CollectionViewSegue";
+static NSString *const kTakeVideoSegue = @"takeVideoSegue";
 
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
@@ -114,3 +119,16 @@ static NSString *const kSearchChannelCell = @"ChannelCell";
 static NSString *const kSearchEventCell = @"EventCell";
 static NSString *const kSearchChannelSectionName = @"Channels";
 static NSString *const kSearchEventSectionName = @"Events";
+
+// Channel View Controller
+static NSString *const kCreateEventButtonTitle = @"Create Event";
+static NSString *const kEventCreatedMessage = @"Event created";
+static NSString *const kPostPostedMessage = @"Posted";
+
+// Post
+static NSString *const kPostErrorTitle = @"Oops";
+static NSString *const kPostErrorMessage = @"Error sending post";
+static NSString *const kTextPostCustomBackgroundPath = @"custom-dialog-background";
+
+//  Alert
+static NSString *const kOkButtonTitle = @"Ok";
