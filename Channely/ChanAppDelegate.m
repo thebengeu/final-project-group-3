@@ -53,9 +53,7 @@
 //    [ChanUtility clearDirectory:RKApplicationDataDirectory()];
     
     NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
-#ifdef DEBUG
     NSLog(@"Core Data store path = \"%@\"", path);
-#endif
     
     NSPersistentStore *persistentStore = [managedObjectStore addSQLitePersistentStoreAtPath:path fromSeedDatabaseAtPath:nil withConfiguration:nil options:nil error:&error];
     if (!persistentStore) {
