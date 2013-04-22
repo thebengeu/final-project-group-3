@@ -17,6 +17,9 @@
 #import "ChanRefreshControl.h"
 #import "Constants.h"
 
+static NSTimeInterval const kRotationDuration = 0.5;
+static NSTimeInterval const kRotationDelay = 0.0;
+
 @interface DiscoverViewController ()
 - (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
 - (void) layoutFromCurrentOrientation;
@@ -253,22 +256,28 @@
 }
 
 - (void) layoutPortrait {
-    [UIView animateWithDuration:1.0 animations:^{
+    UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseIn;
+    [UIView animateWithDuration:kRotationDuration delay:kRotationDelay options:options animations:^{
         CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
         self.mapView.frame = mapFrame;
         
         CGRect listFrame = CGRectMake(0., 426., 768., 534.);
         self.channelListContainer.frame = listFrame;
+    } completion:^(BOOL finished) {
+        return;
     }];
 }
 
 - (void) layoutLandscape {
-    [UIView animateWithDuration:1.0 animations:^{
+    UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseIn;
+    [UIView animateWithDuration:kRotationDuration delay:kRotationDelay options:options animations:^{
         CGRect mapFrame = CGRectMake(0., 0., 424., 768.);
         self.mapView.frame = mapFrame;
         
         CGRect listFrame = CGRectMake(424., 0., 600., 768.);
         self.channelListContainer.frame = listFrame;
+    } completion:^(BOOL finished) {
+        return;
     }];
 }
 
