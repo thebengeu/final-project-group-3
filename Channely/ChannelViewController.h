@@ -32,7 +32,7 @@
 - (void) launchTextPostSegue;
 - (void) launchImagePostSegue:(UIImage *)image;
 - (void) launchCameraForImage;
-- (void) launchImagePicker;
+- (void) launchImagePicker: (CGRect)frame;
 - (void) launchAnnotationForImagePost:(UIImage *)image;
 
 @end

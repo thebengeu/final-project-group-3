@@ -83,6 +83,14 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
                                                                 duration:duration];
     [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
                                             duration:duration];
+
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    //  Reload imagepicker popover
+    if (_imagePickerPopover != nil){
+        [self.imagePickerPopover presentPopoverFromRect:[[_collectionViewController createPostMenu]addButton ].frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -104,7 +112,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 
 // Based on type, displays image picker, video picker, or camera
-- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type
+- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type frame:(CGRect)frame
 {
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]){
         NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
@@ -121,7 +129,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
             if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
                 if (self.imagePickerPopover == nil){
                     self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
-                    [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                    [self.imagePickerPopover presentPopoverFromRect:frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     self.imagePickerPopover.delegate = self;
                 }
                 
@@ -170,15 +178,15 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [controller view].bounds = CGRectMake(0, 0, 500, 244);
 }
 
-- (void)launchImagePicker
+- (void)launchImagePicker: (CGRect)frame
 {
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage] frame:frame];
 }
 
 
 - (void)launchCameraForImage
 {
-    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
+    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil frame:CGRectZero];
 }
 
 - (void)launchAnnotationForImagePost:(UIImage*)image{

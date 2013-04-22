@@ -288,8 +288,10 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSArray *visibles = [self.collectionView visibleCells];
-    UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
-    [_timeScroller scrollViewDidScroll:cell];
+    if (visibles.count != 0) {
+        UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
+        [_timeScroller scrollViewDidScroll:cell];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -357,7 +359,7 @@
             [_delegate launchTextPostSegue];
             break;
         case kPictureMenuItem: // Gallery Post
-            [_delegate launchImagePicker];
+            [_delegate launchImagePicker: _createPostMenu.addButton.frame];
             break;
         case kVideoMenuItem: // Camera
             [_delegate launchCameraForImage];
