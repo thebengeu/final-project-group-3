@@ -37,7 +37,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) TimeScroller *timeScroller;
 @property (weak, nonatomic) id<ChannelViewControllerDelegate> delegate;
-
+@property (strong, nonatomic) NSDate *twitterLastRefreshed;
 @property (strong, nonatomic) ChanChannel *channel;
 @property (strong, nonatomic) NSArray *posts;
 @property (strong, nonatomic) AwesomeMenu *createPostMenu;

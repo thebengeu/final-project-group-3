@@ -118,6 +118,7 @@
 
 - (void)refreshPosts
 {
+    [self refreshTwitterPosts];
     [self.channel getPostsSince:self.channel.lastRefreshed until:nil withCompletion:^(NSArray *posts, NSError *error) {
         [self.refreshControl endRefreshing];
         
@@ -126,9 +127,9 @@
             self.channel.lastRefreshed = post.createdAt;
         }
         
-        // Refresh posts after 10 seconds
+        // Refresh posts after kPostsRefreshInterval seconds
         [self stopRefreshingPosts];
-        [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:10.0];
+        [self performSelector:@selector(refreshPosts) withObject:nil afterDelay:kPostsRefreshIntervalSecs];
     }];
 }
 
@@ -139,7 +140,14 @@
 
 - (void)refreshTwitterPosts
 {
-    [self.channel getTweetsWithCompletion:nil];
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSSecondCalendarUnit fromDate:self.twitterLastRefreshed toDate:now options:0];
+
+    if (components.second >= kTwitterRefreshIntervalSecs) {
+        self.twitterLastRefreshed = now;
+        [self.channel getTweetsWithCompletion:nil];
+    }
 }
 
 #pragma mark Create Menu functions

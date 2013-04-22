@@ -23,6 +23,10 @@ static NSString *const kTweetSegue = @"tweetSegue";
 // Collection View
 static CGFloat const kCellWidth = 240.0f;
 
+// Refresh Intervals
+static CGFloat const kPostsRefreshIntervalSecs = 10.0f;
+static NSUInteger const kTwitterRefreshIntervalSecs = 60;
+
 // Post Menu
 static CGFloat const kPostMenuLandscapeX = 955.0f;
 static CGFloat const kPostMenuLandscapeY = 645.0f;
