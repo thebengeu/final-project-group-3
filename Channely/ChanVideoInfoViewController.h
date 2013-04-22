@@ -9,17 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ChanVideoInfoViewController : UIViewController
-
 @property (strong, nonatomic) IBOutlet UITextField *resolution;
-
 @property (strong, nonatomic) IBOutlet UITextField *host;
-
 @property (strong, nonatomic) IBOutlet UITextField *recordingId;
-
 @property NSString *resolutionText;
-
 @property NSString *hostText;
-
 @property NSString *recordingIdText;
 
 @end

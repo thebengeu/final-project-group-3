@@ -55,7 +55,7 @@
 
 
 - (void) switchToAnonUserViewController{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
     ChanMenuAnonUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanMenuAnonUserViewController"];
     
     NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[self.navigationController viewControllers]];

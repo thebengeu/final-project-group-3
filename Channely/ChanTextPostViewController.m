@@ -7,6 +7,7 @@
 //
 
 #import "ChanTextPostViewController.h"
+#import "Constants.h"
 
 @interface ChanTextPostViewController ()
 
@@ -32,7 +33,7 @@
     _username.text = name;
     
     // Set background
-    UIImage *backgroundImg = [[UIImage imageNamed:@"custom-dialog-background"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 18, 12, 18) resizingMode:UIImageResizingModeStretch];
+    UIImage *backgroundImg = [[UIImage imageNamed:kTextPostCustomBackgroundPath] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 18, 12, 18) resizingMode:UIImageResizingModeStretch];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     [backgroundImg drawInRect:self.view.bounds];

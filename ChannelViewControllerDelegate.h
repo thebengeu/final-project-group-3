@@ -14,7 +14,7 @@
 
 - (void) launchTextPostSegue;
 
-- (void) launchImagePicker;
+- (void) launchImagePicker: (CGRect)frame;
 
 - (void) launchCameraForImage;
 

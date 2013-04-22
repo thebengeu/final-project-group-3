@@ -7,7 +7,7 @@
 //
 
 #import "ChanPostViewController.h"
-
+#import "Constants.h"
 
 @interface ChanPostViewController ()
 
@@ -101,7 +101,7 @@
 }
 
 - (void) showErrorDialog{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Error sending post" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kPostErrorTitle message:kPostErrorMessage delegate:nil cancelButtonTitle:kOkButtonTitle otherButtonTitles: nil];
     [alert show];
     return;
 }

@@ -606,6 +606,33 @@
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Event StartDateTime" translatesAutoresizingMaskIntoConstraints="NO" id="SzL-au-8qE">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="208" id="5i6-Sn-e9q"/>
+                                                <constraint firstAttribute="height" constant="25" id="696-7H-yk7"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Event EndDateTime" translatesAutoresizingMaskIntoConstraints="NO" id="FPE-S9-Qsz">
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="4M5-09-FA1"/>
+                                            </constraints>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -613,6 +640,7 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="94" id="Pnm-K7-Tko"/>
                                                 <constraint firstAttribute="height" constant="34" id="pVz-jY-s3d"/>
                                             </constraints>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -644,26 +672,50 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="From:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17i-ae-21d">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="1gc-eb-fDH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX1-KY-mzw">
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="SzL-au-8qE" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="4" id="1gN-im-CZu"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="6mr-p3-U74"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="trailing" secondItem="SzL-au-8qE" secondAttribute="trailing" type="default" id="7p7-7L-SX2"/>
                                     <constraint firstItem="Ho4-FB-biZ" firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" type="default" id="8Wj-A7-YLF"/>
-                                    <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="39" id="BX7-jB-hly"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="bottom" secondItem="fX1-KY-mzw" secondAttribute="bottom" type="default" id="FFB-t7-Rh1"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="centerX" secondItem="Ah0-Q4-Wrb" secondAttribute="centerX" type="default" id="FuW-gg-5Us"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="15" id="TGD-Ms-bzG"/>
                                     <constraint firstItem="3VO-c0-eVp" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="6" id="UuZ-1u-Po8"/>
+                                    <constraint firstItem="SzL-au-8qE" firstAttribute="leading" secondItem="17i-ae-21d" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Vrl-OR-hvs"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="bottom" secondItem="LkH-L5-43l" secondAttribute="bottom" type="default" id="W9R-qe-S0h"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="leading" type="default" id="Wdn-uy-3at"/>
+                                    <constraint firstItem="17i-ae-21d" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aJ0-NJ-odm"/>
+                                    <constraint firstItem="SzL-au-8qE" firstAttribute="bottom" secondItem="17i-ae-21d" secondAttribute="bottom" type="default" id="aQO-rG-jqd"/>
                                     <constraint firstItem="Ho4-FB-biZ" firstAttribute="leading" secondItem="Ah0-Q4-Wrb" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bwF-cH-haX"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="32" id="f03-zh-4vw"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="leading" secondItem="SzL-au-8qE" secondAttribute="leading" type="default" id="kq0-SC-m5X"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="15" id="nmk-cl-739"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="3VO-c0-eVp" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vAP-ze-fVm"/>
                                     <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="20" type="default" id="x2P-AA-6s7"/>
+                                    <constraint firstItem="fX1-KY-mzw" firstAttribute="leading" secondItem="3VO-c0-eVp" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="xX3-Dx-1o1"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="leading" secondItem="fX1-KY-mzw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zqT-0T-Vsy"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="channelNameTextView" destination="3VO-c0-eVp" id="I3D-YC-qow"/>
                                     <outlet property="distanceTextView" destination="Ah0-Q4-Wrb" id="aPU-jc-BS3"/>
+                                    <outlet property="endDateTimeTextView" destination="FPE-S9-Qsz" id="tts-Ix-52l"/>
                                     <outlet property="eventNameTextView" destination="Ho4-FB-biZ" id="E61-Ez-FLY"/>
+                                    <outlet property="startDateTimeTextView" destination="SzL-au-8qE" id="86X-63-LLv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2311,9 +2363,10 @@
             <relationships>
                 <relationship kind="action" name="locationButtonTapped:"/>
                 <relationship kind="outlet" name="channelNameTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="descriptionTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="distanceTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="endDateTimeTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="eventNameTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="startDateTimeTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="ChannelUITableViewController" superclassName="UITableViewController">

@@ -7,7 +7,7 @@
 //
 
 #import "ChanRefreshControl.h"
-#import "UIColor+Channely.h"
+
 
 @implementation ChanRefreshControl
 

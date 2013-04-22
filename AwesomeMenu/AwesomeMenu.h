@@ -17,7 +17,6 @@
     NSArray *_menusArray;
     int _flag;
     NSTimer *_timer;
-    AwesomeMenuItem *_addButton;
     
     id<AwesomeMenuDelegate> __weak _delegate;
     BOOL _isAnimating;
@@ -25,6 +24,7 @@
 @property (nonatomic, copy) NSArray *menusArray;
 @property (nonatomic) BOOL expanding;
 @property (nonatomic, weak) id<AwesomeMenuDelegate> delegate;
+@property AwesomeMenuItem *addButton;
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *highlightedImage;

@@ -12,8 +12,7 @@
 #import "ChanImagePostViewController.h"
 #import "ChanVideoCaptureViewController.h"
 #import "SVProgressHUD.h"
-
-static NSString *const cTakeVideoSegue = @"takeVideoSegue";
+#import "Constants.h"
 
 @interface ChannelViewController () <UIPopoverControllerDelegate>
 
@@ -52,7 +51,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     
     // If owner, show create event button
     if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil){
-        _createEventButton = [[UIBarButtonItem alloc]initWithTitle:@"Create Event" style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
+        _createEventButton = [[UIBarButtonItem alloc]initWithTitle:kCreateEventButtonTitle style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
         [rightBarItems addObject:_createEventButton];
     }
     
@@ -83,16 +82,24 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
                                                                 duration:duration];
     [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
                                             duration:duration];
+
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    //  Reload imagepicker popover
+    if (_imagePickerPopover != nil){
+        [self.imagePickerPopover presentPopoverFromRect:[[_collectionViewController createPostMenu]addButton ].frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"CollectionViewSegue"]) {
+    if ([segueName isEqualToString: kCollectionViewSegue]) {
         ChanCollectionViewController * childViewController = (ChanCollectionViewController *) [segue destinationViewController];
         _collectionViewController = childViewController;
         _collectionViewController.channel = self.channel;
         _collectionViewController.delegate = self;
-    } else if ([segueName isEqualToString:cTakeVideoSegue]) {
+    } else if ([segueName isEqualToString: kTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
         destination.delegate = self;
         destination.parentChannel = [self underlyingChannel];
@@ -104,7 +111,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 
 // Based on type, displays image picker, video picker, or camera
-- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type
+- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type frame:(CGRect)frame
 {
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]){
         NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
@@ -121,7 +128,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
             if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
                 if (self.imagePickerPopover == nil){
                     self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
-                    [self.imagePickerPopover presentPopoverFromRect:sender.frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                    [self.imagePickerPopover presentPopoverFromRect:frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     self.imagePickerPopover.delegate = self;
                 }
                 
@@ -155,12 +162,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 - (void)launchVideoSegue
 {
-    [self performSegueWithIdentifier:cTakeVideoSegue sender:self];
+    [self performSegueWithIdentifier: kTakeVideoSegue sender:self];
 }
 
 - (void)launchTextPostSegue
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: kStoryboardName bundle:nil];
     ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
     controller.channel = _channel;
     controller.delegate = self;
@@ -170,20 +177,20 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [controller view].bounds = CGRectMake(0, 0, 500, 244);
 }
 
-- (void)launchImagePicker
+- (void)launchImagePicker: (CGRect)frame
 {
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage]];
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage] frame:frame];
 }
 
 
 - (void)launchCameraForImage
 {
-    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil];
+    [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil frame:CGRectZero];
 }
 
 - (void)launchAnnotationForImagePost:(UIImage*)image{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    ChanAnnotationViewController *controller = (ChanAnnotationViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanAnnotationViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    ChanAnnotationViewController *controller = (ChanAnnotationViewController*)[storyboard instantiateViewControllerWithIdentifier: kChanAnnotationVCName];
     [controller setImage:image];
     controller.delegate = self;
     
@@ -208,8 +215,8 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 }
 
 -(void)launchImagePostSegue: (UIImage*)image{
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    ChanImagePostViewController *controller = (ChanImagePostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanImagePostViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    ChanImagePostViewController *controller = (ChanImagePostViewController*)[storyboard instantiateViewControllerWithIdentifier: kChanImagePostVC];
     controller.channel = _channel;
     controller.image = image;
     controller.delegate = self;
@@ -227,8 +234,8 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     if (_createEventPopover != nil)
         return;
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    _createEventViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanCreateEventViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    _createEventViewController = [storyboard instantiateViewControllerWithIdentifier: kChanCreateEventVC];
     [_createEventViewController setDelegate:self];
     
     _createEventPopover = [[UIPopoverController alloc]initWithContentViewController:_createEventViewController];
@@ -240,7 +247,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     ChannelViewController *me = self;
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:^(ChanEvent *event, NSError *error) {
         [[me createEventPopover] dismissPopoverAnimated:YES];
-        [SVProgressHUD showSuccessWithStatus:@"Event created"];
+        [SVProgressHUD showSuccessWithStatus: kEventCreatedMessage];
     }];
 }
 
@@ -258,7 +265,7 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
 
 - (void)didPost:(ChanChannel *)channel{
     [self.collectionViewController refreshPosts];
-    [SVProgressHUD showSuccessWithStatus:@"Posted"];
+    [SVProgressHUD showSuccessWithStatus: kPostPostedMessage];
 }
 
 @end

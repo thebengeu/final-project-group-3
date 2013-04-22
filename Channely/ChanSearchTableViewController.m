@@ -12,6 +12,7 @@
 #import "ChanSearchResultChannelCell.h"
 #import "ChanSearchResultEventCell.h"
 #import "ChanDetailViewController.h"
+#import "Constants.h"
 
 @interface ChanSearchTableViewController ()
 
@@ -57,9 +58,9 @@
 
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section == 0 && [_channelSearchResults count] > 0)
-        return @"Channels";
+        return kSearchChannelSectionName;
     else if (section == 1 && [_eventSearchResults count] > 0)
-        return @"Events";
+        return kSearchEventSectionName;
     
     return nil;
 }
@@ -87,10 +88,9 @@
     int row = [indexPath row];
     
     if ([indexPath section] == 0){
-        static NSString *CellIdentifier = @"ChannelCell";
-        ChanSearchResultChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        ChanSearchResultChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchChannelCell forIndexPath:indexPath];
         if (!cell)
-            cell = [[ChanSearchResultChannelCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChannelCell"];
+            cell = [[ChanSearchResultChannelCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchChannelCell];
         
         ChanChannel *channel = [_channelSearchResults objectAtIndex:row];
         cell.channelName.text = [channel name];
@@ -98,10 +98,9 @@
         
         return cell;
     } else {
-        static NSString *CellIdentifier = @"EventCell";
-        ChanSearchResultEventCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        ChanSearchResultEventCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchEventCell forIndexPath:indexPath];
         if (!cell)
-            cell = [[ChanSearchResultEventCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
+            cell = [[ChanSearchResultEventCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchEventCell];
 
         ChanEvent *event = [_eventSearchResults objectAtIndex:row];
         ChanChannel *channel = [event channel];
