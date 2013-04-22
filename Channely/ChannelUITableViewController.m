@@ -59,8 +59,8 @@
         cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
     }
     
-    cell.channelNameTextView.text = event.channel.name;
-    cell.eventNameTextView.text = event.name;
+    cell.channelNameLabel.text = event.channel.name;
+    cell.eventNameLabel.text = event.name;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:kDateFormat];

@@ -18,8 +18,10 @@
 
 @interface ChannelUITableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextView *channelNameTextView;
-@property (weak, nonatomic) IBOutlet UITextView *eventNameTextView;
+@property (strong, nonatomic) IBOutlet UILabel *channelNameLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *eventNameLabel;
+
 @property (weak, nonatomic) IBOutlet UITextView *distanceTextView;
 @property (weak, nonatomic) IBOutlet UITextView *startDateTimeTextView;
 @property (weak, nonatomic) IBOutlet UITextView *endDateTimeTextView;
