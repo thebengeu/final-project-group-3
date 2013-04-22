@@ -23,6 +23,11 @@ typedef enum {
     kTwitterPost
 } ChanPostType;
 
+// Server
+static NSString *const kServerAddress = @"https://upthetreehouse.com:10000";
+static NSString *const kApplicationTypeName = @"_channely._tcp.";
+static NSUInteger const kLocalServerPort = 22;
+
 // Segue
 static NSString *const kVideoPlayerSegue = @"videoPlayerSegue";
 static NSString *const kSlideSegue = @"slidesSegue";
