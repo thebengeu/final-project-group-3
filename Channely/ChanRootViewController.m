@@ -19,7 +19,7 @@
 - (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.delegate = self;
+//        self.delegate = self;
     }
     return self;
 }
@@ -46,13 +46,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark UI Navigation View Controller Delegate
-- (void) navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [viewController viewDidAppear:animated];
-}
-
-- (void) navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [viewController viewWillAppear:animated];
-}
+//#pragma mark UI Navigation View Controller Delegate
+//- (void) navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    [viewController viewDidAppear:animated];
+//}
+//
+//- (void) navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    [viewController viewWillAppear:animated];
+//}
 
 @end

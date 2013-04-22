@@ -68,6 +68,12 @@ static NSString *const cTakeVideoSegue = @"takeVideoSegue";
     [_imagePickerPopover dismissPopoverAnimated:YES];
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [UIViewController attemptRotationToDeviceOrientation];
+}
+
 # pragma mark Orientation Handlers
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
