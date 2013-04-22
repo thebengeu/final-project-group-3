@@ -26,6 +26,9 @@
     self.titleView.text = post.username;
     
     [self setupBackgroundImage];
+    
+    // Disable user interactions for the textview, so that touch events go to the cell
+    [self.textView setUserInteractionEnabled:NO];
 }
 
 - (void) setupBackgroundImage
