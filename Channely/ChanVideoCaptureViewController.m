@@ -67,12 +67,8 @@ static NSString *const cButtonStartRecording = @"Record";
     [self updateRecordingControlButtonState];
     
     //  #1 Force not to rotate to portrait
-    [(ChanRootViewController*)[self navigationController] setForceLandscape:YES];
-    
-    //  Hack to force switch rotation (refresh orientation) if it is portrait
-    UIViewController *mVC = [[UIViewController alloc] init];
-    [self presentViewController:mVC animated:NO completion:nil];
-    [mVC dismissViewControllerAnimated:NO completion:nil];
+    ((ChanRootViewController *)[self navigationController]).forceLandscape = YES;
+    [self forceRotationRefresh];
 }
 
 
@@ -89,7 +85,9 @@ static NSString *const cButtonStartRecording = @"Record";
 
 - (void) viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [(ChanRootViewController*)[self navigationController] setForceLandscape:NO];
+    
+    ((ChanRootViewController *)[self navigationController]).forceLandscape = NO;
+    [self forceRotationRefresh];
 }
 
 - (void) didReceiveMemoryWarning {
@@ -97,10 +95,15 @@ static NSString *const cButtonStartRecording = @"Record";
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//    [self updatePreviewRotationToOrientation];
     _recorder.previewLayer.frame = self.previewArea.bounds;
+}
+
+//  Hack to force switch rotation (refresh orientation) if it is portrait.
+- (void) forceRotationRefresh {
+    UIViewController *mVC = [[UIViewController alloc] init];
+    [self presentViewController:mVC animated:NO completion:nil];
+    [mVC dismissViewControllerAnimated:NO completion:nil];
 }
 
 #pragma mark Event Handlers

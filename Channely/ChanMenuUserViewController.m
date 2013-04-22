@@ -82,6 +82,7 @@
         if ([password length] == 0)
             password = nil;
         
+        //  Sends request to API
         [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
             [_updateStatus stopAnimating];
             [_username setText:[[ChanUser loggedInUser]name]];
