@@ -898,7 +898,6 @@
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -915,7 +914,7 @@
                                 <connections>
                                     <outlet property="textView" destination="hbK-r9-nIf" id="ivE-B2-7pV"/>
                                     <outlet property="titleView" destination="LEM-gn-K4x" id="UPq-gR-hCW"/>
-                                    <segue destination="Cbe-4d-Kde" kind="modal" identifier="textSegue" id="MkG-3d-6ld"/>
+                                    <segue destination="Cbe-4d-Kde" kind="modal" identifier="textSegue" modalTransitionStyle="flipHorizontal" id="MkG-3d-6ld"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TwitterCell" id="80k-Ne-4jd" customClass="ChanTwitterCell">
@@ -943,7 +942,6 @@
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -960,7 +958,7 @@
                                 <connections>
                                     <outlet property="textView" destination="6Wp-uL-xZA" id="b6B-gc-WgE"/>
                                     <outlet property="titleView" destination="lNA-MQ-6wD" id="UIV-r0-CRQ"/>
-                                    <segue destination="Cbe-4d-Kde" kind="modal" identifier="tweetSegue" id="olw-2z-8Cn"/>
+                                    <segue destination="Cbe-4d-Kde" kind="modal" identifier="tweetSegue" modalTransitionStyle="flipHorizontal" id="olw-2z-8Cn"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Xg6-95-Zvj" customClass="ChanImageCell">
@@ -996,7 +994,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="4OF-fU-x24" id="rsa-8J-S1B"/>
                                     <outlet property="labelView" destination="qP7-3Q-YFv" id="Vfv-LO-hFJ"/>
-                                    <segue destination="OML-PK-rTK" kind="modal" identifier="imageSegue" id="rtJ-7g-hmg"/>
+                                    <segue destination="OML-PK-rTK" kind="modal" identifier="imageSegue" modalTransitionStyle="flipHorizontal" id="rtJ-7g-hmg"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SlidesCell" id="UqZ-tO-xlB" customClass="ChanSlidesCell">
@@ -1179,7 +1177,7 @@
         <!--Chan View Text Post View Controller-->
         <scene sceneID="wSK-eB-D2O">
             <objects>
-                <viewController modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cbe-4d-Kde" customClass="ChanViewTextPostViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Cbe-4d-Kde" customClass="ChanViewTextPostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCQ-iM-QnU">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="800"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1249,7 +1247,6 @@
                             <constraint firstItem="PvF-Y9-alF" firstAttribute="leading" secondItem="pCQ-iM-QnU" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nx7-ui-IGf"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="768" height="800"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="date" destination="S6c-Jo-OD7" id="cRD-gG-Zhd"/>
@@ -1944,25 +1941,16 @@
         <!--Chan View Image Post View Controller-->
         <scene sceneID="Mz8-MT-UdU">
             <objects>
-                <viewController modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OML-PK-rTK" customClass="ChanViewImagePostViewController" sceneMemberID="viewController">
+                <viewController autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OML-PK-rTK" customClass="ChanViewImagePostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SkL-sh-QUB">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="700"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wP-sx-Q79">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Close">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="close:" destination="OML-PK-rTK" eventType="touchUpInside" id="OJN-B9-TEE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-b9-QAX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wqc-b9-QAX" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Ekb-zf-gI7"/>
+                                    <constraint firstAttribute="width" constant="68" id="mtk-Ez-KFs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1978,71 +1966,74 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Username" translatesAutoresizingMaskIntoConstraints="NO" id="H47-Kh-aua">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" type="user" id="fnU-SF-5Gh"/>
-                                    <constraint firstAttribute="width" constant="220" id="kqq-vX-JR9"/>
+                                    <constraint firstAttribute="width" constant="247" id="M0S-lv-9JL"/>
+                                    <constraint firstAttribute="height" constant="37" id="mQn-4W-SDB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.79607850309999995" green="0.0" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Date" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="d7l-3o-04o">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-qi-Bno">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xB5-qi-Bno">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="179" type="user" id="EbB-jK-GQI"/>
+                                    <constraint firstAttribute="height" constant="80" id="BUS-VR-B1v"/>
+                                    <constraint firstAttribute="width" constant="507" id="Jaw-RX-fIr"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Date" translatesAutoresizingMaskIntoConstraints="NO" id="d7l-3o-04o">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="165" id="3KS-ah-cgO"/>
+                                    <constraint firstAttribute="height" constant="26" id="AYT-3m-YZh"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="331" verticalCompressionResistancePriority="224" translatesAutoresizingMaskIntoConstraints="NO" id="khX-DT-40M">
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="480" type="user" id="Nqq-yi-sQh"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="728" type="user" id="nEu-KZ-ZQ7"/>
+                                    <constraint firstAttribute="height" constant="385" type="user" id="40w-lN-lwU"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDN-vo-K2J">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Annotate">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="annotate:" destination="OML-PK-rTK" eventType="touchUpInside" id="2ao-Gg-1Xm"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMP-wj-WLp">
+                                <items>
+                                    <navigationItem title="Image" id="KNe-rV-BPN">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="n4a-mX-L5n">
+                                            <connections>
+                                                <action selector="close:" destination="OML-PK-rTK" id="jMg-7d-xPz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Annotate" id="YdI-5q-cVb">
+                                            <connections>
+                                                <action selector="annotate:" destination="OML-PK-rTK" id="XBm-gm-Sgc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4wP-sx-Q79" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" constant="20" symbolic="YES" type="user" id="8jZ-FY-Qah"/>
-                            <constraint firstItem="xB5-qi-Bno" firstAttribute="top" secondItem="khX-DT-40M" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="B1F-76-1qX"/>
-                            <constraint firstItem="khX-DT-40M" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="C0h-Yf-PWu"/>
-                            <constraint firstItem="wqc-b9-QAX" firstAttribute="leading" secondItem="WDN-vo-K2J" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Kxi-ec-Ouv"/>
-                            <constraint firstItem="WDN-vo-K2J" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" constant="20" symbolic="YES" type="default" id="LBM-sa-xom"/>
-                            <constraint firstItem="wqc-b9-QAX" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" constant="20" symbolic="YES" type="default" id="ObR-tf-Vxy"/>
-                            <constraint firstItem="d7l-3o-04o" firstAttribute="leading" secondItem="H47-Kh-aua" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="T1v-nF-gPL"/>
-                            <constraint firstItem="4wP-sx-Q79" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="VTG-mR-NTt"/>
-                            <constraint firstItem="H47-Kh-aua" firstAttribute="top" secondItem="4wP-sx-Q79" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="WyY-uF-yBX"/>
-                            <constraint firstItem="khX-DT-40M" firstAttribute="top" secondItem="H47-Kh-aua" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="Xok-3k-Zzy"/>
-                            <constraint firstAttribute="trailing" secondItem="khX-DT-40M" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="ZtR-cX-kJz"/>
-                            <constraint firstAttribute="trailing" secondItem="d7l-3o-04o" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="a7F-0v-e0y"/>
-                            <constraint firstItem="xB5-qi-Bno" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cxV-YX-xxI"/>
-                            <constraint firstAttribute="trailing" secondItem="xB5-qi-Bno" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jwJ-5b-cHr"/>
-                            <constraint firstAttribute="trailing" secondItem="WDN-vo-K2J" secondAttribute="trailing" priority="331" constant="20" type="user" id="k2V-l2-B6h"/>
-                            <constraint firstItem="H47-Kh-aua" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oQz-7p-X2f"/>
-                            <constraint firstAttribute="trailing" secondItem="wqc-b9-QAX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pZE-zC-J2O"/>
-                            <constraint firstItem="d7l-3o-04o" firstAttribute="top" secondItem="WDN-vo-K2J" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="v5P-Px-nG9"/>
-                            <constraint firstAttribute="bottom" secondItem="xB5-qi-Bno" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="wVH-N6-idy"/>
-                            <constraint firstItem="khX-DT-40M" firstAttribute="top" secondItem="d7l-3o-04o" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zDA-De-75C"/>
+                            <constraint firstItem="khX-DT-40M" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" type="default" id="5N8-lt-W0j"/>
+                            <constraint firstItem="LMP-wj-WLp" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" type="user" id="Aq0-E7-MYa"/>
+                            <constraint firstItem="khX-DT-40M" firstAttribute="top" secondItem="H47-Kh-aua" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Bwd-2R-or4"/>
+                            <constraint firstItem="khX-DT-40M" firstAttribute="trailing" secondItem="SkL-sh-QUB" secondAttribute="trailing" type="default" id="NW9-Zc-dLu"/>
+                            <constraint firstItem="d7l-3o-04o" firstAttribute="top" secondItem="LMP-wj-WLp" secondAttribute="bottom" type="default" id="P96-tk-Np1"/>
+                            <constraint firstItem="LMP-wj-WLp" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" type="default" id="SGT-ta-zUo"/>
+                            <constraint firstAttribute="trailing" secondItem="xB5-qi-Bno" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Sls-BL-Kl6"/>
+                            <constraint firstItem="LMP-wj-WLp" firstAttribute="trailing" secondItem="SkL-sh-QUB" secondAttribute="trailing" type="user" id="TL9-AG-PX4"/>
+                            <constraint firstItem="H47-Kh-aua" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" constant="59" id="Y84-ae-pXG"/>
+                            <constraint firstItem="wqc-b9-QAX" firstAttribute="top" secondItem="SkL-sh-QUB" secondAttribute="top" constant="54" id="aRh-zn-HNo"/>
+                            <constraint firstItem="d7l-3o-04o" firstAttribute="leading" secondItem="SkL-sh-QUB" secondAttribute="leading" constant="5" id="cPk-AA-dmT"/>
+                            <constraint firstAttribute="trailing" secondItem="wqc-b9-QAX" secondAttribute="trailing" constant="10" id="elF-Ig-S60"/>
+                            <constraint firstItem="xB5-qi-Bno" firstAttribute="top" secondItem="khX-DT-40M" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="glI-1Z-Pgk"/>
+                            <constraint firstItem="H47-Kh-aua" firstAttribute="leading" secondItem="d7l-3o-04o" secondAttribute="leading" type="default" id="qaO-bT-2kC"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="768" height="800"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="date" destination="d7l-3o-04o" id="Umb-wu-AFn"/>
@@ -2054,7 +2045,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEC-wM-ZG3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4545" y="205"/>
+            <point key="canvasLocation" x="4545" y="179"/>
         </scene>
     </scenes>
     <resources>
@@ -2303,7 +2294,7 @@
                 <relationship kind="action" name="close:"/>
                 <relationship kind="action" name="deletePost:"/>
                 <relationship kind="outlet" name="date" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="BButton"/>
                 <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="text" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextView"/>

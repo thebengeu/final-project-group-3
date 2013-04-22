@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChanViewPostViewController.h"
 #import "ChannelViewController.h"
+#import "BButton.h"
 
 @interface ChanViewImagePostViewController : ChanViewPostViewController
 
@@ -20,7 +21,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *text;
 
-@property (strong, nonatomic) IBOutlet UIButton *deleteButton;
+@property (strong, nonatomic) IBOutlet BButton *deleteButton;
 
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 

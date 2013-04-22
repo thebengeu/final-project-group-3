@@ -39,6 +39,8 @@
     
     [_image setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)[self post] url]]];
     
+    // Set delete button
+    [_deleteButton setType:BButtonTypeInverse];
     if ([[ChanUser loggedInUser].id compare:[[self post] creator].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil)
         [_deleteButton setHidden:NO];
     else {
