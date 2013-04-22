@@ -17,11 +17,11 @@
 @property (atomic, readonly) BOOL isRecording;
 @property (readonly, strong) AVCaptureVideoPreviewLayer *previewLayer;
 
-- (id) initWithPreset:(NSString *)preset;
-- (AVCaptureVideoPreviewLayer *) startPreview;
-- (void) stopPreview;
-- (void) startRecordingToDirectory:(NSString *)directory;
-- (void) stopRecording;
-- (void) chunk;
+- (id)initWithPreset:(NSString *)preset;
+- (AVCaptureVideoPreviewLayer *)startPreview;
+- (void)stopPreview;
+- (void)startRecordingToDirectory:(NSString *)directory;
+- (void)stopRecording;
+- (void)chunk;
 
 @end

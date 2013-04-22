@@ -17,11 +17,11 @@ static NSString *const kHash = @"#";
 
 @interface HLSEventPlaylistHelper ()
 // Internal.
-@property (strong) NSURL * _fileName;
+@property (strong) NSURL *_fileName;
 @property (atomic) NSUInteger _targetInterval;
 @property (strong) NSMutableString *_buffer;
 
-- (void) writeBufferToFile;
+- (void)writeBufferToFile;
 
 @end
 
@@ -32,7 +32,8 @@ static NSString *const kHash = @"#";
 @synthesize _buffer;
 
 #pragma mark Constructors
-- (id) initWithFileURL:(NSURL *)url {
+- (id)initWithFileURL:(NSURL *)url
+{
     if (self = [super init]) {
         _fileName = url;
         _buffer = nil;
@@ -41,17 +42,20 @@ static NSString *const kHash = @"#";
 }
 
 #pragma mark Playlist Manipulation
-- (void) beginPlaylistWithTargetInterval:(NSUInteger)period {
+- (void)beginPlaylistWithTargetInterval:(NSUInteger)period
+{
     _targetInterval = period;
     _buffer = [[NSMutableString alloc] init];
     [_buffer appendFormat:kPlaylistHeaderFormat, _targetInterval, kDefaultSequenceNumber];
 }
 
-- (void) appendItem:(NSString *)path withDuration:(CGFloat)duration {
+- (void)appendItem:(NSString *)path withDuration:(CGFloat)duration
+{
     [self appendItem:path withDuration:duration withTitle:@""];
 }
 
-- (void) appendItem:(NSString *)path withDuration:(CGFloat)duration withTitle:(NSString *)title {
+- (void)appendItem:(NSString *)path withDuration:(CGFloat)duration withTitle:(NSString *)title
+{
     if (!_buffer) {
         return;
     }
@@ -60,7 +64,8 @@ static NSString *const kHash = @"#";
     [self writeBufferToFile];
 }
 
-- (void) endPlaylist {
+- (void)endPlaylist
+{
     if (!_buffer) {
         return;
     }
@@ -71,7 +76,8 @@ static NSString *const kHash = @"#";
 
 #pragma mark Serialization
 // If the file exists, it is truncated and overwritten.
-- (void) writeBufferToFile {
+- (void)writeBufferToFile
+{
     if (!_buffer) {
         return;
     }
@@ -81,7 +87,8 @@ static NSString *const kHash = @"#";
 }
 
 #pragma mark Static Methods
-+ (BOOL) playlistIsComplete:(NSString *)path {
++ (BOOL)playlistIsComplete:(NSString *)path
+{
     NSError *error = nil;
     NSString *plContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     
@@ -93,7 +100,8 @@ static NSString *const kHash = @"#";
     return [plContents hasSuffix:kPlaylistTrailerFormat];
 }
 
-+ (NSUInteger) playlistChunkCount:(NSString *)path {
++ (NSUInteger)playlistChunkCount:(NSString *)path
+{
     NSError *error = nil;
     NSString *plContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     

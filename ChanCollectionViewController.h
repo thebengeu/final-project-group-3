@@ -31,7 +31,7 @@
 @class ChanChannel;
 
 @interface ChanCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate, UICollectionViewDelegateWaterfallLayout,
-    AwesomeMenuDelegate, TimeScrollerDelegate>
+AwesomeMenuDelegate, TimeScrollerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -43,9 +43,9 @@
 @property (strong, nonatomic) AwesomeMenu *createPostMenu;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
--(CGFloat)collectionView:(UICollectionView *)collectionView
-                   layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
- heightForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (CGFloat)   collectionView:(UICollectionView *)collectionView
+                      layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
+    heightForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)refreshPosts;
 
 @end

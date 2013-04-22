@@ -17,9 +17,9 @@ static NSString *const kPlaylistFilenameFormat = @"%@.m3u8";
 @property (strong) NSMutableArray *_runningOps;
 @property (strong) NSMutableArray *_waitingOps;
 
-- (id) initWithBaseDirectory:(NSString *)dir;
-- (BOOL) recordingIdInWaitQueue:(NSString *)rId;
-- (BOOL) recordingIdIsRunning:(NSString *)rId;
+- (id)initWithBaseDirectory:(NSString *)dir;
+- (BOOL)recordingIdInWaitQueue:(NSString *)rId;
+- (BOOL)recordingIdIsRunning:(NSString *)rId;
 
 @end
 
@@ -32,15 +32,18 @@ static HLSStreamSync *_internal;
 @synthesize _waitingOps;
 
 #pragma mark Singleton
-- (id) init {
+- (id)init
+{
     return nil;
 }
 
-+ (HLSStreamSync *) streamSync {
++ (HLSStreamSync *)streamSync
+{
     return _internal;
 }
 
-+ (HLSStreamSync *) setupStreamSyncWithBaseDirectory:(NSString *)dir {
++ (HLSStreamSync *)setupStreamSyncWithBaseDirectory:(NSString *)dir
+{
     if (!_internal) {
         _internal = [[HLSStreamSync alloc] initWithBaseDirectory:dir];
         return _internal;
@@ -50,7 +53,8 @@ static HLSStreamSync *_internal;
 }
 
 #pragma mark Constructors
-- (id) initWithBaseDirectory:(NSString *)dir {
+- (id)initWithBaseDirectory:(NSString *)dir
+{
     if (self = [super init]) {
         _baseDirectory = dir;
         _opQueue = [[NSOperationQueue alloc] init];
@@ -61,11 +65,13 @@ static HLSStreamSync *_internal;
 }
 
 #pragma mark External Logic
-- (NSUInteger) operationCount {
+- (NSUInteger)operationCount
+{
     return _opQueue.operationCount;
 }
 
-- (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist {
+- (void)syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist
+{
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
     
     if ([ChanUtility directoryExists:streamDir]) {
@@ -89,13 +95,15 @@ static HLSStreamSync *_internal;
     [_waitingOps addObject:operation];
 }
 
-- (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId {
+- (BOOL)completeLocalStreamExistsForStreamId:(NSString *)sId
+{
     NSString *streamDir = [_baseDirectory stringByAppendingPathComponent:sId];
     NSString *playlistPath = [streamDir stringByAppendingPathComponent:[NSString stringWithFormat:kPlaylistFilenameFormat, sId]];
     return ([ChanUtility directoryExists:streamDir] && [HLSEventPlaylistHelper playlistIsComplete:playlistPath]);
 }
 
-- (void) recheckExistingStreams {
+- (void)recheckExistingStreams
+{
     NSLog(@"rechecking existing streams and performing prune of partial streams."); // DEBUG.
     
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -152,7 +160,8 @@ static HLSStreamSync *_internal;
 }
 
 #pragma mark Logic
-- (BOOL) recordingIdInWaitQueue:(NSString *)rId {
+- (BOOL)recordingIdInWaitQueue:(NSString *)rId
+{
     for (HLSPlaylistDownloadOperation *op in _waitingOps) {
         if ([op.recordingId isEqualToString:rId]) {
             return YES;
@@ -161,7 +170,8 @@ static HLSStreamSync *_internal;
     return NO;
 }
 
-- (BOOL) recordingIdIsRunning:(NSString *)rId {
+- (BOOL)recordingIdIsRunning:(NSString *)rId
+{
     for (HLSPlaylistDownloadOperation *op in _runningOps) {
         if ([op.recordingId isEqualToString:rId]) {
             return YES;
@@ -171,11 +181,13 @@ static HLSStreamSync *_internal;
 }
 
 #pragma mark HLS Playlist Download Operation Delegate
-- (void) playlistDownloadOperationDidFinish:(HLSPlaylistDownloadOperation *)operation {
+- (void)playlistDownloadOperationDidFinish:(HLSPlaylistDownloadOperation *)operation
+{
     [_runningOps removeObject:operation];
 }
 
-- (void) playlistDownloadOperationDidStart:(HLSPlaylistDownloadOperation *)operation {
+- (void)playlistDownloadOperationDidStart:(HLSPlaylistDownloadOperation *)operation
+{
     [_waitingOps removeObject:operation];
     [_runningOps addObject:operation];
 }

@@ -24,7 +24,8 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
 
 @implementation ChanDetailViewController
 
-- (void) viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(-5.0, 0.0, 200.0, 44.0)];
@@ -35,29 +36,30 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     [self navigationItem].leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
 }
 
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:cMenuSegueIdentifier]) {
         _menuPopover = ((UIStoryboardPopoverSegue *)segue).popoverController;
         _menuPopover.delegate = self;
         [_searchBar endEditing:YES];
-    } 
+    }
 }
 
-- (BOOL) shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
     if ([identifier isEqualToString:cMenuSegueIdentifier]) {
         return (_menuPopover == nil);
     }
     return YES;
 }
 
-- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    if (popoverController == _menuPopover)
-        _menuPopover = nil;
+    if (popoverController == _menuPopover) _menuPopover = nil;
 }
 
-- (void)startChannel:(ChanChannel*)channel{
+- (void)startChannel:(ChanChannel *)channel
+{
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
     
@@ -68,22 +70,22 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
     [[self navigationController]pushViewController:channelViewController animated:YES];
 }
 
-- (void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
     [self searchBarExpandAnimateWith:70];
 }
 
-- (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
     [self searchBarExpandAnimateWith:-70];
 }
 
-- (void) searchBarExpandAnimateWith:(int)width
+- (void)searchBarExpandAnimateWith:(int)width
 {
     [UIView animateWithDuration:0.3
-                     animations:^ {
+                     animations:^{
                          CGRect newBounds = _searchBar.frame;
                          newBounds.size.width += width;
                          _searchBar.frame = newBounds;
@@ -91,19 +93,18 @@ NSString *const cMenuSegueIdentifier = @"MenuSegue";
                      }];
 }
 
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchTerm = [searchBar text];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     UIViewController *searchController = [storyboard instantiateViewControllerWithIdentifier:@"ChanSearchTableViewController"];
     
-    [(ChanSearchTableViewController*)searchController setSearchTerm: searchTerm];
+    [(ChanSearchTableViewController *)searchController setSearchTerm : searchTerm];
     
     [_menuPopover dismissPopoverAnimated:YES];
     _menuPopover = nil;
-
+    
     [[self navigationController]pushViewController:searchController animated:YES];
 }
 

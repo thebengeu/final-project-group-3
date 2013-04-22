@@ -22,10 +22,10 @@ static NSTimeInterval const kRotationDelay = 0.0;
 static CGFloat const kLandscapeOrientationHeight = 704.0;
 
 @interface DiscoverViewController ()
-- (void) layoutForOrientation:(UIInterfaceOrientation)orientation;
-- (void) layoutFromCurrentOrientation;
-- (void) layoutPortrait;
-- (void) layoutLandscape;
+- (void)layoutForOrientation:(UIInterfaceOrientation)orientation;
+- (void)layoutFromCurrentOrientation;
+- (void)layoutPortrait;
+- (void)layoutLandscape;
 
 @end
 
@@ -33,10 +33,11 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     Boolean firstUpdate;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-
+    // Do any additional setup after loading the view.
+    
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     _locationManager.distanceFilter = kDistanceFilterMetres;
@@ -56,33 +57,37 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     ((UIImageView *)self.view).image = [UIImage imageNamed:@"collectionbg.png"];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
     NSLog(@"discover view controller view did appear");
     [self layoutFromCurrentOrientation];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"DiscoverChannelContainerSegue"]) {
-        ChannelUITableViewController *childViewController = (ChannelUITableViewController *) [segue destinationViewController];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueName = segue.identifier;
+    if ([segueName isEqualToString:@"DiscoverChannelContainerSegue"]) {
+        ChannelUITableViewController *childViewController = (ChannelUITableViewController *)[segue destinationViewController];
         _channelTableViewController = childViewController;
-    } else if ([[segue identifier] isEqualToString:@"ChannelSegue"]){
+    } else if ([[segue identifier] isEqualToString:@"ChannelSegue"]) {
         ChannelViewController *vc = (ChannelViewController *)[segue destinationViewController];
         vc.channel = [[sender event] channel];
     }
 }
 
--(void) populateTableWithChannel {
+- (void)populateTableWithChannel
+{
     [_channelTableViewController setChannelList:_channelList];
 }
 
--(void) populateMapWithChannelAnnotation {
+- (void)populateMapWithChannelAnnotation
+{
     [_mapView removeAnnotations:[_mapView annotations]];
     
     //  Channel nearby
-    for (int i = 0; i < [_channelList count]; i++){
+    for (int i = 0; i < [_channelList count]; i++) {
         ChanEvent *event = [_channelList objectAtIndex:i];
         
         CLLocationCoordinate2D channelLocation = CLLocationCoordinate2DMake(event.latitudeValue, event.longitudeValue);
@@ -101,30 +106,30 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     [self zoomToFitMapAnnotations:_mapView];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    _location = [(CLLocation*)[locations lastObject] coordinate];
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    _location = [(CLLocation *)[locations lastObject] coordinate];
     NSLog(@"Geo found at %f %f", _location.latitude, _location.longitude);
-        
+    
     // search for nearby events within 100 km
     [self refreshEvents];
 }
 
-
 - (void)refreshEvents
 {
-    [ChanEvent search:nil
-             latitude:[NSNumber numberWithDouble:self.location.latitude]
-            longitude:[NSNumber numberWithDouble:self.location.longitude]
-       withinDistance:[NSNumber numberWithDouble:100000.0]
+    [ChanEvent  search:nil
+              latitude:[NSNumber numberWithDouble:self.location.latitude]
+             longitude:[NSNumber numberWithDouble:self.location.longitude]
+        withinDistance:[NSNumber numberWithDouble:100000.0]
          occurDateTime:[NSDate date]
-       withCompletion:^(NSArray *events, NSError *error) {
-        [self.channelTableViewController.refreshControl endRefreshing];
-        
-        _channelList = events;
-        
-        [self populateTableWithChannel];
-        [self populateMapWithChannelAnnotation];
-    }];
+        withCompletion:^(NSArray *events, NSError *error) {
+            [self.channelTableViewController.refreshControl endRefreshing];
+            
+            _channelList = events;
+            
+            [self populateTableWithChannel];
+            [self populateMapWithChannelAnnotation];
+        }];
 }
 
 /*
@@ -132,9 +137,9 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
  Fit the map to contain all anotations with some padding
  
  */
--(void)zoomToFitMapAnnotations:(MKMapView*)mapView {
-    if([mapView.annotations count] == 0)
-        return;
+- (void)zoomToFitMapAnnotations:(MKMapView *)mapView
+{
+    if ([mapView.annotations count] == 0) return;
     
     CLLocationCoordinate2D topLeftCoord;
     topLeftCoord.latitude = -90;
@@ -144,8 +149,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     bottomRightCoord.latitude = 90;
     bottomRightCoord.longitude = -180;
     
-    for(ChannelAnnotation* annotation in mapView.annotations)
-    {
+    for (ChannelAnnotation *annotation in mapView.annotations) {
         topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
         topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
         
@@ -160,84 +164,80 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     region.span.latitudeDelta = MAX(region.span.latitudeDelta, 0.005);
     region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.2; // Add a little extra space on the sides
     region.span.latitudeDelta = MAX(region.span.longitudeDelta, 0.005);
-
+    
     
     region = [mapView regionThatFits:region];
     [mapView setRegion:region animated:YES];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
     static NSString *locationIdentifier = @"MyLocation";
     static NSString *channelIdentifier = @"ChannelLocation";
     MKPinAnnotationView *annotationView;
     
     if ([annotation isKindOfClass:[LocationAnnotation class]]) {
-        annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:locationIdentifier];
-        if (annotationView == nil) 
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:locationIdentifier];
-        else
-            annotationView.annotation = annotation;
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:locationIdentifier];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:locationIdentifier];
+        else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorGreen;
-    } else if ([annotation isKindOfClass:[ChannelAnnotation class]]){
-        annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:channelIdentifier];
-        if (annotationView == nil)
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:channelIdentifier];
-        else
-            annotationView.annotation = annotation;
+    } else if ([annotation isKindOfClass:[ChannelAnnotation class]]) {
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:channelIdentifier];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:channelIdentifier];
+        else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorRed;
     }
     
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
-
+    
     return annotationView;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ChannelUITableViewCell *cell = (ChannelUITableViewCell*) [tableView cellForRowAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    ChannelUITableViewCell *cell = (ChannelUITableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"ChannelSegue" sender:cell];
-
 }
 
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    if ([[view annotation] class] != [ChannelAnnotation class]){
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if ([[view annotation] class] != [ChannelAnnotation class]) {
         [[_channelTableViewController tableView] deselectRowAtIndexPath:[[_channelTableViewController tableView] indexPathForSelectedRow] animated:NO];
         return;
     }
     
     ChannelAnnotation *annotation = [view annotation];
     NSString *selectedEventId = [annotation eventID];
-    for (int i = 0; i < [_channelList count]; i++){
+    for (int i = 0; i < [_channelList count]; i++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         ChanEvent *event = [_channelList objectAtIndex:i];
-        if ([selectedEventId compare: event.id] == NSOrderedSame){
+        if ([selectedEventId compare:event.id] == NSOrderedSame) {
             [[_channelTableViewController tableView] selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
             break;
         }
     }
 }
 
-
--(void)selectMapAnnotationForChannel:(id)cell {
-    ChannelUITableViewCell *currCell = (ChannelUITableViewCell*) cell;
+- (void)selectMapAnnotationForChannel:(id)cell
+{
+    ChannelUITableViewCell *currCell = (ChannelUITableViewCell *)cell;
     NSString *selectedEventID = currCell.event.id;
     
     for (ChannelAnnotation *currAnnot in _mapView.annotations) {
-        if ( [currAnnot class] != [ChannelAnnotation class])
-            continue;
-        if ([[currAnnot eventID] compare:selectedEventID] == NSOrderedSame){
+        if ([currAnnot class] != [ChannelAnnotation class]) continue;
+        if ([[currAnnot eventID] compare:selectedEventID] == NSOrderedSame) {
             [_mapView deselectAnnotation:currAnnot animated:NO];
             [_mapView selectAnnotation:currAnnot animated:YES];
-//            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            //            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             break;
         }
     }
 }
 
 #pragma mark Rotation Methods
-- (void) layoutForOrientation:(UIInterfaceOrientation)orientation {
+- (void)layoutForOrientation:(UIInterfaceOrientation)orientation
+{
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         [self layoutLandscape];
     } else if (UIInterfaceOrientationIsPortrait(orientation)) {
@@ -245,16 +245,19 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     }
 }
 
-- (void) layoutFromCurrentOrientation {
+- (void)layoutFromCurrentOrientation
+{
     UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
     [self layoutForOrientation:currentOrientation];
 }
 
-- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
     [self layoutForOrientation:toInterfaceOrientation];
 }
 
-- (void) layoutPortrait {
+- (void)layoutPortrait
+{
     CGRect mapFrame = CGRectMake(0., 0., 768., 426.);
     self.mapView.frame = mapFrame;
     
@@ -262,7 +265,8 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     self.channelListContainer.frame = listFrame;
 }
 
-- (void) layoutLandscape {
+- (void)layoutLandscape
+{
     CGRect mapFrame = CGRectMake(0., 0., 424., kLandscapeOrientationHeight);
     self.mapView.frame = mapFrame;
     

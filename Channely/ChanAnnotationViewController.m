@@ -22,12 +22,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
 
-- (void) viewDidLoad
+- (void)viewDidLoad
 {
     // Setup button styles
     [_clearButton setType:BButtonTypeGray];
@@ -50,21 +49,21 @@
     self.navigationItem.title = @"Annotate";
 }
 
-- (void) setImage:(UIImage *)image
+- (void)setImage:(UIImage *)image
 {
     _image = image;
     [_annotationView setOriginalImage:image];
 }
 
-- (UIImage*) image{
+- (UIImage *)image
+{
     return [_annotationView image];
 }
 
-
-- (IBAction)done:(id)sender {
+- (IBAction)done:(id)sender
+{
     [[self delegate]didFinishAnnotation:[_annotationView image]];
 }
-
 
 /*
  
@@ -72,29 +71,34 @@
  
  */
 
-- (IBAction)redColor:(id)sender {
+- (IBAction)redColor:(id)sender
+{
     [_annotationView setMarkerColor:[UIColor redColor]];
 }
 
-- (IBAction)greenColor:(id)sender {
+- (IBAction)greenColor:(id)sender
+{
     [_annotationView setMarkerColor:[UIColor greenColor]];
 }
 
-- (IBAction)blueColor:(id)sender {
+- (IBAction)blueColor:(id)sender
+{
     [_annotationView setMarkerColor:[UIColor blueColor]];
 }
 
-- (IBAction)clear:(id)sender {
+- (IBAction)clear:(id)sender
+{
     [_annotationView clear];
 }
 
-- (IBAction)undo:(id)sender {
+- (IBAction)undo:(id)sender
+{
     [_annotationView undo];
 }
 
-- (IBAction)redo:(id)sender {
+- (IBAction)redo:(id)sender
+{
     [_annotationView redo];
 }
-
 
 @end

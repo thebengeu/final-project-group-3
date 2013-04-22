@@ -16,8 +16,8 @@
 
 @property (strong, nonatomic) ChanPost *post;
 
-+ (CGFloat) getHeightForPost:(ChanPost *)post;
++ (CGFloat)getHeightForPost:(ChanPost *)post;
 
-- (void) setupBackgroundImage;
+- (void)setupBackgroundImage;
 
 @end

@@ -27,13 +27,13 @@ CGImageRef UIGetScreenImage(void); // Private API.
 @property UIBarButtonItem *infoButton;
 
 // P2P Peer Selection.
-- (void) selectSource;
+- (void)selectSource;
 
 // Media Player.
-- (void) attachPlayer;
+- (void)attachPlayer;
 
 // Screenshot.
-- (UIImage *) getMediaPlayerScreenshot;
+- (UIImage *)getMediaPlayerScreenshot;
 
 @end
 
@@ -47,7 +47,8 @@ CGImageRef UIGetScreenImage(void); // Private API.
 @synthesize _channel;
 
 #pragma mark View Controller Methods
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _parametersSet = NO;
@@ -55,9 +56,10 @@ CGImageRef UIGetScreenImage(void); // Private API.
     return self;
 }
 
-- (void) viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     //  Bar items for annotation
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]initWithArray:[self navigationItem].rightBarButtonItems];
@@ -72,40 +74,42 @@ CGImageRef UIGetScreenImage(void); // Private API.
 }
 
 // Note: There may be a race condition here if the parent does not call setServerURL: before the view appears.
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     if (_firstLoad) {
         if (!_parametersSet) {
             NSLog(@"Race condition in VideoPlayerViewController!");
         }
-    
+        
         [self attachPlayer];
         _firstLoad = NO;
-    } else
-        _player.view.frame = self.contentView.bounds;
+    } else _player.view.frame = self.contentView.bounds;
 }
 
-
-
--(void) viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated
+{
     [_infoPopover dismissPopoverAnimated:YES];
     _infoPopover = nil;
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:cAnnotationSegueId]) {
         ChanAnnotationViewController *vc = (ChanAnnotationViewController *)segue.destinationViewController;
         vc.image = [self getMediaPlayerScreenshot];
     }
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     if (_player) {
         _player.view.frame = self.contentView.bounds;
     }
 }
 
 #pragma mark One Time Use Methods
-- (void) setServerURL:(NSString *)url forChannel:(ChanChannel *)channel {
+- (void)setServerURL:(NSString *)url forChannel:(ChanChannel *)channel
+{
     if (!_parametersSet) {
         _recordingId = [ChanUtility fileNameFromURLString:url];
         _serverURL = [NSURL URLWithString:url];
@@ -118,17 +122,19 @@ CGImageRef UIGetScreenImage(void); // Private API.
 }
 
 #pragma mark P2P Peer Selection
-- (void) selectSource {
+- (void)selectSource
+{
     _selectedURL = [HLSLoadBalancer selectBestLocalHostForRecording:_recordingId default:_serverURL];
     
     NSLog(@"selected source=%@", _selectedURL);
-
+    
     // Start P2P replication.
     [[HLSStreamSync streamSync] syncStreamId:_recordingId playlistURL:_selectedURL];
 }
 
 #pragma mark Media Player
-- (void) attachPlayer {
+- (void)attachPlayer
+{
     _player = [[MPMoviePlayerController alloc] initWithContentURL:_selectedURL];
     
     _player.view.frame = self.contentView.bounds;
@@ -138,19 +144,18 @@ CGImageRef UIGetScreenImage(void); // Private API.
     _player.controlStyle = MPMovieControlStyleEmbedded;
 }
 
-
 #pragma mark Annotation
-- (void) annotate {
+- (void)annotate
+{
     //  Pause if video is not streaming
-    if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId :_recordingId] == YES)
-        [_player pause];
+    if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId:_recordingId] == YES) [_player pause];
     [[self delegate]launchAnnotationForImagePost:[self getMediaPlayerScreenshot]];
 }
 
 #pragma mark Info
-- (void) info {
-    if (_infoPopover != nil)
-        return;
+- (void)info
+{
+    if (_infoPopover != nil) return;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
     ChanVideoInfoViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"ChanVideoInfoViewController"];
@@ -164,12 +169,10 @@ CGImageRef UIGetScreenImage(void); // Private API.
 }
 
 #pragma mark Info
-- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-    if (_infoPopover == popoverController)
-        _infoPopover = nil;
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    if (_infoPopover == popoverController) _infoPopover = nil;
 }
-
-
 
 #pragma mark Screenshot
 // Ref: http://stackoverflow.com/questions/2507220/code-example-for-iphone-uigetscreenimage
@@ -184,9 +187,10 @@ CGImageRef UIGetScreenImage(void); // Private API.
 // for annotation.
 // Note: The following private API precludes AppStore deployment.
 // Footnote: fxck apple.
-- (UIImage *) getMediaPlayerScreenshot {
-//    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.bounds.origin.x, self.contentView.bounds.origin.y, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
-//    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height);
+- (UIImage *)getMediaPlayerScreenshot
+{
+    //    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.bounds.origin.x, self.contentView.bounds.origin.y, self.contentView.bounds.size.width, self.contentView.bounds.size.height);
+    //    NSLog(@"x:%lf, y:%lf, width:%lf, height:%lf", self.contentView.frame.origin.x, self.contentView.frame.origin.y, self.contentView.frame.size.width, self.contentView.frame.size.height);
     
     CGImageRef screen = UIGetScreenImage();
     
@@ -218,24 +222,24 @@ CGImageRef UIGetScreenImage(void); // Private API.
     
     CGFloat scale;
     CGRect frame;
-    scale = MIN(playerFrame.size.width/videoSize.width, playerFrame.size.height/videoSize.height);
+    scale = MIN(playerFrame.size.width / videoSize.width, playerFrame.size.height / videoSize.height);
     videoSize.width *= scale;
     videoSize.height *= scale;
     
     if (UIInterfaceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]))
-        frame = CGRectMake((playerFrame.size.width-videoSize.width)/2.0 + position.x,
-                           (playerFrame.size.height-videoSize.height)/2.0 + position.y,
+        frame = CGRectMake((playerFrame.size.width - videoSize.width) / 2.0 + position.x,
+                           (playerFrame.size.height - videoSize.height) / 2.0 + position.y,
                            videoSize.width,
                            videoSize.height);
     else
-        frame = CGRectMake((playerFrame.size.height-videoSize.height)/2.0 + position.x,
-                           (playerFrame.size.width-videoSize.width)/2.0,    //  Yet another hardcode
+        frame = CGRectMake((playerFrame.size.height - videoSize.height) / 2.0 + position.x,
+                           (playerFrame.size.width - videoSize.width) / 2.0,    //  Yet another hardcode
                            videoSize.height,
                            videoSize.width);
     
     CGImageRef imageRef = CGImageCreateWithImageInRect(screen, frame);
-    UIImage* outImage = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:orientation];
-
+    UIImage *outImage = [UIImage imageWithCGImage:imageRef scale:[[UIScreen mainScreen] scale] orientation:orientation];
+    
     CGImageRelease(screen);
     CGImageRelease(imageRef);
     return outImage;

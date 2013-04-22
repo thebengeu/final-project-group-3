@@ -10,8 +10,8 @@
 
 @interface ChanAnonUser : NSObject
 
-+ (NSString*)name;
++ (NSString *)name;
 
-+ (void)setName:(NSString*)name;
++ (void)setName:(NSString *)name;
 
 @end

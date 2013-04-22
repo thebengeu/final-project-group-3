@@ -28,13 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     [_submitButton setType:BButtonTypeChan];
 }
 
-
-- (IBAction)submit:(id)sender {
-    if (![_status isAnimating]){
+- (IBAction)submit:(id)sender
+{
+    if (![_status isAnimating]) {
         if ([[_username text]length] == 0 || [[_password text]length] == 0) {
             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Invalid username or password"];
             __weak AHAlertView *weakA = alert;
@@ -47,7 +47,7 @@
         
         [ChanUser getAccessTokenWithUsername:[_username text] password:[_password text] withCompletion:^(ChanUser *user, NSError *error) {
             [_status stopAnimating];
-            if (error != nil){
+            if (error != nil) {
                 AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Login" message:@"Invalid Username or Password"];
                 __weak AHAlertView *weakA = alert;
                 [alert setCancelButtonTitle:@"OK" block:^{
@@ -63,6 +63,5 @@
         [_status startAnimating];
     }
 }
-
 
 @end

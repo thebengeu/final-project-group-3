@@ -14,7 +14,7 @@
 @property (readonly, strong) NSString *relativePath;
 @property (readonly, atomic) NSUInteger chunkCount;
 
-- (id) initWithNetService:(NSNetService *)ns path:(NSString *)path count:(NSUInteger)count;
-- (NSString *) description;
+- (id)initWithNetService:(NSNetService *)ns path:(NSString *)path count:(NSUInteger)count;
+- (NSString *)description;
 
 @end

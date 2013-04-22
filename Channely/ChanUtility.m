@@ -9,21 +9,25 @@
 #import "ChanUtility.h"
 
 @implementation ChanUtility
-+ (NSString *) documentsDirectory {
++ (NSString *)documentsDirectory
+{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 }
 
-+ (NSString *) webRootDirectory {
++ (NSString *)webRootDirectory
+{
     return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:kWebRootDir];
 }
 
-+ (NSString *) videoTempDirectory {
++ (NSString *)videoTempDirectory
+{
     return [[ChanUtility documentsDirectory] stringByAppendingPathComponent:kVideoTempDir];
 }
 
 // Non-destructively creates a directory. If the directory exists, no action is taken.
 // Returns YES if a directory was created, NO if no action was taken.
-+ (BOOL) createDirectory:(NSString *)directory {
++ (BOOL)createDirectory:(NSString *)directory
+{
     NSFileManager *fm = [NSFileManager defaultManager];
     if (![ChanUtility directoryExists:directory]) {
         [fm createDirectoryAtPath:directory withIntermediateDirectories:NO attributes:nil error:nil];
@@ -34,7 +38,8 @@
 
 // Removes all files from app's documents directory.
 // Ref: http://stackoverflow.com/questions/4793278/deleting-all-the-files-in-the-iphone-sandbox-documents-folder
-+ (void) clearDirectory:(NSString *)directory {
++ (void)clearDirectory:(NSString *)directory
+{
     NSFileManager *fm = [NSFileManager defaultManager];
     NSError *error = nil;
     
@@ -54,11 +59,13 @@
     }
 }
 
-+ (NSString *) fileNameFromURLString:(NSString *)url {
++ (NSString *)fileNameFromURLString:(NSString *)url
+{
     return [[url lastPathComponent] stringByDeletingPathExtension];
 }
 
-+ (void) removeItemAtPath:(NSString *)path {
++ (void)removeItemAtPath:(NSString *)path
+{
     NSFileManager *fm = [NSFileManager defaultManager];
     
     NSError *error = nil;
@@ -68,7 +75,8 @@
     }
 }
 
-+ (BOOL) directoryExists:(NSString *)directory {
++ (BOOL)directoryExists:(NSString *)directory
+{
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDirectory = NO;
     if ([fm fileExistsAtPath:directory isDirectory:&isDirectory] && isDirectory) {

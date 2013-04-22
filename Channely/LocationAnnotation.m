@@ -12,14 +12,16 @@
 
 @synthesize coordinate = _coordinate;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coord
+{
     if ((self = [super init])) {
         _coordinate = coord;
     }
     return self;
 }
 
-- (NSString *)title {
+- (NSString *)title
+{
     return @"You are here";
 }
 

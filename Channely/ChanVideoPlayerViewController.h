@@ -20,7 +20,7 @@
 @interface ChanVideoPlayerViewController : UIViewController <UIPopoverControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
-- (void) setServerURL:(NSString *)url forChannel:(ChanChannel *)channel;
+- (void)setServerURL:(NSString *)url forChannel:(ChanChannel *)channel;
 
 @property id<ChannelViewControllerDelegate> delegate;
 

@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     
-    [ChanChannel search:_searchTerm withCompletion:^(NSArray *channels, NSError *error){
+    [ChanChannel search:_searchTerm withCompletion:^(NSArray *channels, NSError *error) {
         _channelSearchResults = channels;
         [[self tableView]reloadData];
     }];
@@ -56,16 +56,16 @@
 
 #pragma mark - Table view data source
 
-- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0 && [_channelSearchResults count] > 0)
-        return kSearchChannelSectionName;
-    else if (section == 1 && [_eventSearchResults count] > 0)
-        return kSearchEventSectionName;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0 && [_channelSearchResults count] > 0) return kSearchChannelSectionName;
+    else if (section == 1 && [_eventSearchResults count] > 0) return kSearchEventSectionName;
     
     return nil;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 117;
 }
 
@@ -77,20 +77,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-        return [_channelSearchResults count];
-    else
-        return [_eventSearchResults count];
+    if (section == 0) return [_channelSearchResults count];
+    else return [_eventSearchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     int row = [indexPath row];
     
-    if ([indexPath section] == 0){
+    if ([indexPath section] == 0) {
         ChanSearchResultChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchChannelCell forIndexPath:indexPath];
-        if (!cell)
-            cell = [[ChanSearchResultChannelCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchChannelCell];
+        if (!cell) cell = [[ChanSearchResultChannelCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchChannelCell];
         
         ChanChannel *channel = [_channelSearchResults objectAtIndex:row];
         cell.channelName.text = [channel name];
@@ -99,9 +96,8 @@
         return cell;
     } else {
         ChanSearchResultEventCell *cell = [tableView dequeueReusableCellWithIdentifier:kSearchEventCell forIndexPath:indexPath];
-        if (!cell)
-            cell = [[ChanSearchResultEventCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchEventCell];
-
+        if (!cell) cell = [[ChanSearchResultEventCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kSearchEventCell];
+        
         ChanEvent *event = [_eventSearchResults objectAtIndex:row];
         ChanChannel *channel = [event channel];
         
@@ -113,7 +109,6 @@
     }
 }
 
-
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -123,10 +118,8 @@
     id rootVC = [[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
     ChanDetailViewController *detail = [[rootVC childViewControllers]objectAtIndex:0];
     
-    if (section == 0)
-        [detail startChannel:[_channelSearchResults objectAtIndex:row]];
-    else
-        [detail startChannel:[[_eventSearchResults objectAtIndex:row]channel]];
+    if (section == 0) [detail startChannel:[_channelSearchResults objectAtIndex:row]];
+    else [detail startChannel:[[_eventSearchResults objectAtIndex:row]channel]];
 }
 
 @end

@@ -10,13 +10,13 @@
 #import "Constants.h"
 
 @interface ChanUtility : NSObject
-+ (NSString *) documentsDirectory;
-+ (NSString *) webRootDirectory;
-+ (NSString *) videoTempDirectory;
-+ (BOOL) createDirectory:(NSString *)directory;
-+ (void) clearDirectory:(NSString *)directory;
-+ (NSString *) fileNameFromURLString:(NSString *)url;
-+ (void) removeItemAtPath:(NSString *)path;
-+ (BOOL) directoryExists:(NSString *)directory;
++ (NSString *)documentsDirectory;
++ (NSString *)webRootDirectory;
++ (NSString *)videoTempDirectory;
++ (BOOL)createDirectory:(NSString *)directory;
++ (void)clearDirectory:(NSString *)directory;
++ (NSString *)fileNameFromURLString:(NSString *)url;
++ (void)removeItemAtPath:(NSString *)path;
++ (BOOL)directoryExists:(NSString *)directory;
 
 @end

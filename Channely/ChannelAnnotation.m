@@ -12,7 +12,8 @@
 
 @synthesize coordinate = _coordinate;
 
-- (id)initWithChannelName:(NSString*)channelName eventName:(NSString*)eventName coordinate:(CLLocationCoordinate2D)coord {
+- (id)initWithChannelName:(NSString *)channelName eventName:(NSString *)eventName coordinate:(CLLocationCoordinate2D)coord
+{
     if ((self = [super init])) {
         _channelName = channelName;
         _eventName = eventName;
@@ -21,11 +22,13 @@
     return self;
 }
 
-- (NSString *)title {
+- (NSString *)title
+{
     return _channelName;
 }
 
-- (NSString *)subtitle {
+- (NSString *)subtitle
+{
     return _eventName;
 }
 

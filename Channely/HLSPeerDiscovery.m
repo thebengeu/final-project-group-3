@@ -20,26 +20,26 @@ static NSString *const kDD4AddressZero = @"0.0.0.0";
 @property (strong) HLSDiscoveredRecordings *_discovered;
 
 // Singleton Methods
-- (id) initWithDomain:(NSString *)domain serviceName:(NSString *)name;
+- (id)initWithDomain:(NSString *)domain serviceName:(NSString *)name;
 
 // Discovery
-- (void) startDiscovery;
+- (void)startDiscovery;
 
 // Delegates
-- (void) netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing;
-- (void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
-- (void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
-- (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing;
+- (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing;
+- (void)netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
+- (void)netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser;
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing;
 
-- (void) netServiceDidResolveAddress:(NSNetService *)sender;
-- (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
+- (void)netServiceDidResolveAddress:(NSNetService *)sender;
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
 
 // Logic
-- (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict;
+- (void)updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict;
 
 // Utility
-+ (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data;
-+ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn;
++ (NSDictionary *)decodedTXTRecordDictionaryFromData:(NSData *)data;
++ (NSString *)dottedDecimalFromSocketAddress:(NSData *)dataIn;
 
 @end
 
@@ -52,27 +52,31 @@ static NSString *const kDD4AddressZero = @"0.0.0.0";
 @synthesize _monitoredServices;
 @synthesize _discovered;
 
-static HLSPeerDiscovery * _internal;
+static HLSPeerDiscovery *_internal;
 
 #pragma mark Singleton Methods
-+ (HLSPeerDiscovery *) setupPeerDiscovery {
++ (HLSPeerDiscovery *)setupPeerDiscovery
+{
     if (!_internal) {
         _internal = [[HLSPeerDiscovery alloc] initWithDomain:kBonjourDomain serviceName:kAppServiceName];
     }
     return _internal;
 }
 
-+ (HLSPeerDiscovery *) peerDiscovery {
++ (HLSPeerDiscovery *)peerDiscovery
+{
     return _internal;
 }
 
 // Overriden default init.
-- (id) init {
+- (id)init
+{
     return nil;
 }
 
 // Private constructor.
-- (id) initWithDomain:(NSString *)domain serviceName:(NSString *)name {
+- (id)initWithDomain:(NSString *)domain serviceName:(NSString *)name
+{
     if (self = [super init]) {
         _serviceName = name;
         _domain = domain;
@@ -86,7 +90,8 @@ static HLSPeerDiscovery * _internal;
 }
 
 #pragma mark Discovery
-- (void) startDiscovery {
+- (void)startDiscovery
+{
     _browser = [[NSNetServiceBrowser alloc] init];
     _browser.delegate = self;
     [_browser searchForServicesOfType:kAppServiceName inDomain:kBonjourDomain];
@@ -95,7 +100,8 @@ static HLSPeerDiscovery * _internal;
 #pragma mark NetService Browser Delegate
 // When a service is found, we need to resolve its address before we can do anything useful with it.
 // First add it to a collection where it will wait for the resolve to complete. Once resolved, we proccess it (in another method).
-- (void) netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing {    
+- (void)netServiceBrowser:(NSNetServiceBrowser *)netServiceBrowser didFindService:(NSNetService *)netService moreComing:(BOOL)moreServicesComing
+{
     NSLog(@"found channely host: %@", netService); // DEBUG
     
     @synchronized(_waitingForResolve) {
@@ -106,19 +112,22 @@ static HLSPeerDiscovery * _internal;
     [netService resolveWithTimeout:kNetServiceResolveTimeout];
 }
 
-- (void) netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
+- (void)netServiceBrowserDidStopSearch:(NSNetServiceBrowser *)aNetServiceBrowser
+{
     NSLog(@"discovery stopped. restarting."); // DEBUG
     
     [_browser searchForServicesOfType:kAppServiceName inDomain:kBonjourDomain];
 }
 
-- (void) netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser {
+- (void)netServiceBrowserWillSearch:(NSNetServiceBrowser *)aNetServiceBrowser
+{
     NSLog(@"discovery started."); // DEBUG
 }
 
-- (void) netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing {
+- (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing
+{
     NSLog(@"netservice that went offline: %@, %@", aNetService, aNetService.name);
-
+    
     [_discovered removeDiscoveredFromServiceNamed:aNetService.name];
 }
 
@@ -128,7 +137,8 @@ static HLSPeerDiscovery * _internal;
 // We process services with resolved addresses here. The first step is to convert the 4-byte IPv4 address to a string, which is used as a key
 // for multiple dictionaries.
 // We ignore the above multi-homed scenario; if a device is multi-homed, the resolved NSNetService is discarded.
-- (void) netServiceDidResolveAddress:(NSNetService *)sender {   
+- (void)netServiceDidResolveAddress:(NSNetService *)sender
+{
     NSLog(@"service: %@ got resolved.", sender); // DEBUG
     
     // Remove the service from the waiting collection because it has been resolved.
@@ -150,7 +160,8 @@ static HLSPeerDiscovery * _internal;
     }
 }
 
-- (void) updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict {
+- (void)updateRecordingsDBWithNetServiceNamed:(NSNetService *)ns adDictionary:(NSDictionary *)dict
+{
     [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *rId = (NSString *)key;
         HLSStreamAdvertisement *ad = (HLSStreamAdvertisement *)obj;
@@ -163,7 +174,8 @@ static HLSPeerDiscovery * _internal;
 }
 
 // If the service fails to resolve, we discard it.
-- (void) netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict
+{
     NSLog(@"did not resolve service: %@", sender); // DEBUG
     
     @synchronized(_waitingForResolve) {
@@ -171,7 +183,8 @@ static HLSPeerDiscovery * _internal;
     }
 }
 
-- (void) netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data {
+- (void)netService:(NSNetService *)sender didUpdateTXTRecordData:(NSData *)data
+{
     NSDictionary *dict = [HLSPeerDiscovery decodedTXTRecordDictionaryFromData:data];
     [_discovered removeDiscoveredFromServiceNamed:sender.name];
     [self updateRecordingsDBWithNetServiceNamed:sender adDictionary:dict];
@@ -179,7 +192,8 @@ static HLSPeerDiscovery * _internal;
 
 #pragma mark External
 // There is no need to sort the array if we only want to test if the recording is complete.
-- (BOOL) recordingIsComplete:(NSString *)rId {
+- (BOOL)recordingIsComplete:(NSString *)rId
+{
     // Retrieve a list of peers hosting rId.
     NSMutableArray *result = [_discovered netServicesWithRecording:rId];
     
@@ -197,7 +211,8 @@ static HLSPeerDiscovery * _internal;
     return NO;
 }
 
-- (NSArray *) sortedPeersForRecording:(NSString *)rId {
+- (NSArray *)sortedPeersForRecording:(NSString *)rId
+{
     // Retrieve a list of peers hosting rId.
     NSMutableArray *result = [_discovered netServicesWithRecording:rId];
     
@@ -207,7 +222,7 @@ static HLSPeerDiscovery * _internal;
     }
     
     // Sort the list.
-    [result sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+    [result sortUsingComparator:^NSComparisonResult (id obj1, id obj2) {
         HLSNetServicePathChunkCountTuple *tuple1 = (HLSNetServicePathChunkCountTuple *)obj1;
         HLSNetServicePathChunkCountTuple *tuple2 = (HLSNetServicePathChunkCountTuple *)obj2;
         
@@ -226,16 +241,18 @@ static HLSPeerDiscovery * _internal;
 #pragma mark Utility
 // Note: We are assuming an IPv4 address.
 // Ref: http://stackoverflow.com/questions/2327864/converting-nsnetservice-addresses-to-ip-address-string
-+ (NSString *) dottedDecimalFromSocketAddress:(NSData *)dataIn {
++ (NSString *)dottedDecimalFromSocketAddress:(NSData *)dataIn
+{
     struct sockaddr_in *socketAddress = (struct sockaddr_in *)dataIn.bytes;
     
     // We need to convert from network byte order.
-    NSString *ipString = [NSString stringWithFormat: @"%s", inet_ntoa(socketAddress->sin_addr)];
+    NSString *ipString = [NSString stringWithFormat:@"%s", inet_ntoa(socketAddress->sin_addr)];
     
     return ipString;
 }
 
-+ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns {
++ (NSString *)dottedDecimalFromNetService:(NSNetService *)ns
+{
     // Discard service if it has an unsupported number of addresses.
     if (ns.addresses.count != 2) {
         return nil;
@@ -247,14 +264,15 @@ static HLSPeerDiscovery * _internal;
     return dd4;
 }
 
-+ (NSDictionary *) decodedTXTRecordDictionaryFromData:(NSData *)data {
++ (NSDictionary *)decodedTXTRecordDictionaryFromData:(NSData *)data
+{
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     
     NSDictionary *rawRecords = [NSNetService dictionaryFromTXTRecordData:data];
     [rawRecords enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         NSString *rId = (NSString *)key;
         NSString *recordData = [[NSString alloc] initWithData:(NSData *)obj encoding:NSUTF8StringEncoding];
-
+        
         HLSStreamAdvertisement *ad = [HLSStreamAdvertisement advertisementFromString:recordData];
         
         [result setObject:ad forKey:rId];

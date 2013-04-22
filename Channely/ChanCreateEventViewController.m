@@ -46,11 +46,11 @@
     [_locationManager startUpdatingLocation];
     
     _startDate = [NSDate date];
-    _endDate = [[NSDate date]dateByAddingTimeInterval:60*60];
+    _endDate = [[NSDate date]dateByAddingTimeInterval:60 * 60];
     
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action: @selector(selectedPoint:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectedPoint:)];
     _map.delegate = self;
     [_map addGestureRecognizer:tap];
     
@@ -73,10 +73,9 @@
     _map.layer.borderWidth = 1.0;
 }
 
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (_annotationCreated == YES)
-        return;
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    if (_annotationCreated == YES) return;
     
     _location = newLocation.coordinate;
     
@@ -88,13 +87,15 @@
     _annotationCreated = YES;
 }
 
-- (void) selectedPoint:(UITapGestureRecognizer *)gestureRecognizer {
+- (void)selectedPoint:(UITapGestureRecognizer *)gestureRecognizer
+{
     CLLocationCoordinate2D coordinate = [self.map convertPoint:[gestureRecognizer locationInView:self.map] toCoordinateFromView:self.map];
-
+    
     [self updateAnnotation:coordinate];
 }
 
-- (void) updateAnnotation: (CLLocationCoordinate2D)coordinate{
+- (void)updateAnnotation:(CLLocationCoordinate2D)coordinate
+{
     [_map removeAnnotations:[_map annotations]];
     _location = coordinate;
     _selection = [[SelectionAnnotation alloc]initWithCoordinate:_location];
@@ -106,13 +107,13 @@
     
     double delayInSeconds = 0.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
         [_map selectAnnotation:_selection animated:YES];
     });
-};
+}
 
-
-- (void) updateAnnotation{
+- (void)updateAnnotation
+{
     _selection = [[SelectionAnnotation alloc]initWithCoordinate:_location];
     _selection.eventName = _eventNameTextField.text;
     [_map addAnnotation:_selection];
@@ -120,17 +121,15 @@
     [_map selectAnnotation:_selection animated:YES];
 }
 
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
     static NSString *selectionIdentifier = @"Selection";
     MKPinAnnotationView *annotationView;
     
     if ([annotation isKindOfClass:[SelectionAnnotation class]]) {
-        annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:selectionIdentifier];
-        if (annotationView == nil)
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:selectionIdentifier];
-        else
-            annotationView.annotation = annotation;
+        annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:selectionIdentifier];
+        if (annotationView == nil) annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:selectionIdentifier];
+        else annotationView.annotation = annotation;
         annotationView.pinColor = MKPinAnnotationColorGreen;
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
@@ -139,57 +138,54 @@
     return annotationView;
 }
 
-
-
-
-
-- (IBAction)startDateEditingBegin:(id)sender {
-    if (_startDatePopoverController != nil)
-        return;
+- (IBAction)startDateEditingBegin:(id)sender
+{
+    if (_startDatePopoverController != nil) return;
     
-    UIViewController* popoverContent = [[UIViewController alloc] init]; //ViewController
+    UIViewController *popoverContent = [[UIViewController alloc] init]; //ViewController
     
     UIView *popoverView = [[UIView alloc] init];   //view
     popoverView.backgroundColor = [UIColor blackColor];
     
-    _startDateDatePicker = [[UIDatePicker alloc]init];//Date picker
-    _startDateDatePicker.frame=CGRectMake(0,44,320, 216);
+    _startDateDatePicker = [[UIDatePicker alloc]init]; //Date picker
+    _startDateDatePicker.frame = CGRectMake(0, 44, 320, 216);
     _startDateDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_startDateDatePicker setDate:_startDate animated:NO];
-    [popoverView addSubview: _startDateDatePicker];
+    [popoverView addSubview:_startDateDatePicker];
     
     popoverContent.view = popoverView;
     _startDatePopoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-    _startDatePopoverController.delegate=self;
- 
+    _startDatePopoverController.delegate = self;
+    
     [_startDatePopoverController setPopoverContentSize:CGSizeMake(320, 264) animated:NO];
     [_startDatePopoverController presentPopoverFromRect:_startDateTextField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-- (IBAction)endDateEditingBegin:(id)sender {
-    if (_endDatePopoverController != nil)
-        return;
+- (IBAction)endDateEditingBegin:(id)sender
+{
+    if (_endDatePopoverController != nil) return;
     
-    UIViewController* popoverContent = [[UIViewController alloc] init]; //ViewController
+    UIViewController *popoverContent = [[UIViewController alloc] init]; //ViewController
     
     UIView *popoverView = [[UIView alloc] init];   //view
     popoverView.backgroundColor = [UIColor blackColor];
     
-    _endDateDatePicker = [[UIDatePicker alloc]init];//Date picker
-    _endDateDatePicker.frame=CGRectMake(0,44,320, 216);
+    _endDateDatePicker = [[UIDatePicker alloc]init]; //Date picker
+    _endDateDatePicker.frame = CGRectMake(0, 44, 320, 216);
     _endDateDatePicker.datePickerMode = UIDatePickerModeDateAndTime;
     [_endDateDatePicker setDate:_endDate animated:NO];
-    [popoverView addSubview: _endDateDatePicker];
+    [popoverView addSubview:_endDateDatePicker];
     
     popoverContent.view = popoverView;
     _endDatePopoverController = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
-    _endDatePopoverController.delegate=self;
+    _endDatePopoverController.delegate = self;
     
     [_endDatePopoverController setPopoverContentSize:CGSizeMake(320, 264) animated:NO];
     [_endDatePopoverController presentPopoverFromRect:_endDateTextField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-- (IBAction)createEvent:(id)sender {
+- (IBAction)createEvent:(id)sender
+{
     if ([[_eventNameTextField text]length] == 0) {
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Create Event" message:@"Please enter an event name."];
         __weak AHAlertView *weakA = alert;
@@ -213,15 +209,14 @@
     [_delegate createEventWithEventName:[_eventNameTextField text] startDate:_startDate endDate:_endDate description:[_descriptionTextViewField text] location:_location];
 }
 
-
-- (IBAction)eventNameChanged:(id)sender{
-    if (sender == _eventNameTextField)
-        [self updateAnnotation];
+- (IBAction)eventNameChanged:(id)sender
+{
+    if (sender == _eventNameTextField) [self updateAnnotation];
 }
 
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
-    if ([popoverController isEqual:_startDatePopoverController]){
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    if ([popoverController isEqual:_startDatePopoverController]) {
         _startDate = [_startDateDatePicker date];
         [popoverController dismissPopoverAnimated:YES];
         _startDatePopoverController = nil;
@@ -229,7 +224,7 @@
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
         [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
-    } else if ([popoverController isEqual:_endDatePopoverController]){
+    } else if ([popoverController isEqual:_endDatePopoverController]) {
         _endDate = [_endDateDatePicker date];
         [popoverController dismissPopoverAnimated:YES];
         _endDatePopoverController = nil;
@@ -237,13 +232,12 @@
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MM/dd/yyyy hh:mma"];
         [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
-
     }
 }
 
--(void)zoomToFitMapAnnotations:(MKMapView*)mapView{
-    if([mapView.annotations count] == 0)
-        return;
+- (void)zoomToFitMapAnnotations:(MKMapView *)mapView
+{
+    if ([mapView.annotations count] == 0) return;
     
     CLLocationCoordinate2D topLeftCoord;
     topLeftCoord.latitude = -90;
@@ -253,8 +247,7 @@
     bottomRightCoord.latitude = 90;
     bottomRightCoord.longitude = -180;
     
-    for(SelectionAnnotation* annotation in _map.annotations)
-    {
+    for (SelectionAnnotation *annotation in _map.annotations) {
         topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
         topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
         
@@ -273,6 +266,5 @@
     region = [mapView regionThatFits:region];
     [mapView setRegion:region animated:YES];
 }
-
 
 @end

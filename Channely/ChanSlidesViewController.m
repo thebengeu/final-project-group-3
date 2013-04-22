@@ -21,7 +21,7 @@
 - (void)setPost:(ChanSlidesPost *)post
 {
     NSSortDescriptor *urlDescriptor = [[NSSortDescriptor alloc] initWithKey:@"url" ascending:YES];
-    NSArray * descriptors = [NSArray arrayWithObject:urlDescriptor];
+    NSArray *descriptors = [NSArray arrayWithObject:urlDescriptor];
     self.slides = [[post.slides allObjects] sortedArrayUsingDescriptors:descriptors];
 }
 
@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     //  Bar items
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
@@ -65,7 +65,7 @@
     if (self.slides.count) {
         self.selectedPage = 0;
         self.zone = 1;
-        ChanSlidePost* firstSlide = [self.slides objectAtIndex:0];
+        ChanSlidePost *firstSlide = [self.slides objectAtIndex:0];
         [self.imageView1 setImageWithURL:[NSURL URLWithString:firstSlide.url]];
     }
     
@@ -78,7 +78,6 @@
     self.imageView3.contentMode = UIViewContentModeScaleAspectFit;
     self.imageView3.tag = 3;
     [self.scrollView addSubview:self.imageView3];
-    
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
@@ -107,25 +106,21 @@
     const NSInteger prevPage = self.selectedPage - 1;
     
     /// Next page
-    if (nextPage < self.slides.count)
-    {
+    if (nextPage < self.slides.count) {
         NSInteger nextViewTag = self.zone + 1;
-        if (nextViewTag == 4)
-            nextViewTag = 1;
-        UIImageView* nextView = (UIImageView*)[self.scrollView viewWithTag:nextViewTag];
+        if (nextViewTag == 4) nextViewTag = 1;
+        UIImageView *nextView = (UIImageView *)[self.scrollView viewWithTag:nextViewTag];
         nextView.frame = CGRectMake(nextPage * self.pageWidth, 0.0f, self.pageWidth, self.pageHeight);
-        ChanSlidePost* nextSlide = [self.slides objectAtIndex:nextPage];
+        ChanSlidePost *nextSlide = [self.slides objectAtIndex:nextPage];
         [nextView setImageWithURL:[NSURL URLWithString:nextSlide.url]];
     }
     /// Prev page
-    if (prevPage >= 0)
-    {
+    if (prevPage >= 0) {
         NSInteger prevViewTag = self.zone - 1;
-        if (!prevViewTag)
-            prevViewTag = 3;
-        UIImageView* prevView = (UIImageView*)[self.scrollView viewWithTag:prevViewTag];
+        if (!prevViewTag) prevViewTag = 3;
+        UIImageView *prevView = (UIImageView *)[self.scrollView viewWithTag:prevViewTag];
         prevView.frame = CGRectMake(prevPage * self.pageWidth, 0.0f, self.pageWidth, self.pageHeight);
-        ChanSlidePost* prevSlide = [self.slides objectAtIndex:prevPage];
+        ChanSlidePost *prevSlide = [self.slides objectAtIndex:prevPage];
         [prevView setImageWithURL:[NSURL URLWithString:prevSlide.url]];
     }
 }
@@ -135,7 +130,6 @@
     [self updateNextPrevImages];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -143,12 +137,14 @@
 }
 
 #pragma mark Annotation
-- (void) annotate {
-    [[self delegate]launchAnnotationForImagePost:[(UIImageView*)[self.scrollView viewWithTag:self.zone] image]];
+- (void)annotate
+{
+    [[self delegate]launchAnnotationForImagePost:[(UIImageView *)[self.scrollView viewWithTag:self.zone] image]];
 }
 
 #pragma mark Event Handlers
-- (IBAction) backButton_Action:(id)sender {
+- (IBAction)backButton_Action:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:^{
         return;
     }];

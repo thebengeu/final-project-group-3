@@ -12,7 +12,7 @@
 
 @protocol DiscoverUITableCellDelegate <NSObject>
 
-- (void)selectMapAnnotationForChannel: (id)cell;
+- (void)selectMapAnnotationForChannel:(id)cell;
 
 @end
 

@@ -31,7 +31,7 @@
 - (IBAction)recordingControlButton_Action:(id)sender;
 
 // REST API
-- (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording;
-- (void) didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk;
+- (void)didReceiveCurrentRecording:(ChanHLSRecording *)recording;
+- (void)didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk;
 
 @end

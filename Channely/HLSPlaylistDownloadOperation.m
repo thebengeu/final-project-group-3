@@ -38,7 +38,8 @@
 @synthesize delegate;
 
 #pragma mark Constructors
-- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del {
+- (id)initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del
+{
     if (self = [super init]) {
         isExecuting = NO;
         isFinished = NO;
@@ -54,11 +55,13 @@
 }
 
 #pragma mark Logic
-- (BOOL) isConcurrent {
+- (BOOL)isConcurrent
+{
     return YES;
 }
 
-- (void) start {
+- (void)start
+{
     if (![NSThread isMainThread]) {
         NSLog(@"moving download operation to main thread."); // DEBUG
         
@@ -81,7 +84,8 @@
     }
 }
 
-- (void) finish {
+- (void)finish
+{
     [self willChangeValueForKey:kKVOIsExecuting];
     [self willChangeValueForKey:kKVOIsFinished];
     
@@ -97,7 +101,8 @@
 }
 
 #pragma mark Playlist Downloader Delegate
-- (void) playlistDownloader:(HLSPlaylistDownloader *)dl didDownloadNewChunkForRemoteStream:(NSURL *)stream {
+- (void)playlistDownloader:(HLSPlaylistDownloader *)dl didDownloadNewChunkForRemoteStream:(NSURL *)stream
+{
     _chunkCount++;
     
     // We guarantee that the relative path will never contain a comma ',' -
@@ -117,7 +122,8 @@
     }
 }
 
-- (void) playlistDownloader:(HLSPlaylistDownloader *)dl didFinishDownloadingRemoteStream:(NSURL *)stream {
+- (void)playlistDownloader:(HLSPlaylistDownloader *)dl didFinishDownloadingRemoteStream:(NSURL *)stream
+{
     NSLog(@"sync complete"); // DEBUG
     
     // Set bit-flag in chunkCount to indicate that a stream is complete.
@@ -128,14 +134,16 @@
     [self finish];
 }
 
-- (void) playlistDownloader:(HLSPlaylistDownloader *)dl didStartDownloadingRemoteStream:(NSURL *)stream {
+- (void)playlistDownloader:(HLSPlaylistDownloader *)dl didStartDownloadingRemoteStream:(NSURL *)stream
+{
     // Ignore.
 }
 
 // The timeout condition is triggered when some error occured during a playlist download. The resultant stream
 // is not guaranteed to be playable, and the software must stop advertising the stream over P2P.
 // We also clear the downloaded files to save space.
-- (void) playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream {
+- (void)playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream
+{
     // Stop advertising.
     HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager advertisingManager];
     if ([am isAdvertisingRecordingId:recordingId]) {

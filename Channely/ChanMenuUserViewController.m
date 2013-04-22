@@ -29,9 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
-    if ([ChanUser loggedInUser] == nil){
+    if ([ChanUser loggedInUser] == nil) {
         [self switchToAnonUserViewController];
         return;
     }
@@ -46,15 +46,15 @@
     [_updateButton setType:BButtonTypeChan];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
-    if ([ChanUser loggedInUser] == nil)
-        [self switchToAnonUserViewController];
+    if ([ChanUser loggedInUser] == nil) [self switchToAnonUserViewController];
 }
 
-
-- (void) switchToAnonUserViewController{
+- (void)switchToAnonUserViewController
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
     ChanMenuAnonUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:@"ChanMenuAnonUserViewController"];
     
@@ -65,9 +65,9 @@
     [self.navigationController setViewControllers:viewControllers];
 }
 
-
-- (IBAction)update:(id)sender {
-    if (![_updateStatus isAnimating]){
+- (IBAction)update:(id)sender
+{
+    if (![_updateStatus isAnimating]) {
         if ([[_username text]length] == 0) {
             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Update" message:@"Invalid username"];
             __weak AHAlertView *weakA = alert;
@@ -79,8 +79,7 @@
         }
         
         NSString *password = [_password text];
-        if ([password length] == 0)
-            password = nil;
+        if ([password length] == 0) password = nil;
         
         //  Sends request to API
         [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
@@ -94,9 +93,11 @@
     }
 }
 
-- (IBAction)logout:(id)sender {
+- (IBAction)logout:(id)sender
+{
     [ChanUser logout];
     [self switchToAnonUserViewController];
     [SVProgressHUD showSuccessWithStatus:@"Logged out"];
 }
+
 @end

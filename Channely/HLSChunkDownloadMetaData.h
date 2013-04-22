@@ -13,6 +13,6 @@
 @property (readonly) NSURL *path;
 @property (readonly) CGFloat duration;
 
-- (id) initWithSequence:(NSUInteger)seq URL:(NSURL *)url duration:(CGFloat)length;
+- (id)initWithSequence:(NSUInteger)seq URL:(NSURL *)url duration:(CGFloat)length;
 
 @end

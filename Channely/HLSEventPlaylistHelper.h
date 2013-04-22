@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface HLSEventPlaylistHelper : NSObject
-- (id) initWithFileURL:(NSURL *)url;
-- (void) beginPlaylistWithTargetInterval:(NSUInteger)period;
-- (void) appendItem:(NSString *)path withDuration:(CGFloat)duration;
-- (void) appendItem:(NSString *)path withDuration:(CGFloat)duration withTitle:(NSString *)title;
-- (void) endPlaylist;
+- (id)initWithFileURL:(NSURL *)url;
+- (void)beginPlaylistWithTargetInterval:(NSUInteger)period;
+- (void)appendItem:(NSString *)path withDuration:(CGFloat)duration;
+- (void)appendItem:(NSString *)path withDuration:(CGFloat)duration withTitle:(NSString *)title;
+- (void)endPlaylist;
 
-+ (BOOL) playlistIsComplete:(NSString *)path;
-+ (NSUInteger) playlistChunkCount:(NSString *)path;
++ (BOOL)playlistIsComplete:(NSString *)path;
++ (NSUInteger)playlistChunkCount:(NSString *)path;
 
 @end

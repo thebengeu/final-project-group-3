@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     [_submitButton setType:BButtonTypeChan];
 }
 
@@ -38,8 +38,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)submit:(id)sender {
-    if (![_status isAnimating]){
+- (IBAction)submit:(id)sender
+{
+    if (![_status isAnimating]) {
         if ([[_username text]length] == 0 || [[_password text]length] == 0) {
             AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Signup" message:@"Invalid username or password"];
             __weak AHAlertView *weakA = alert;

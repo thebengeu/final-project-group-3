@@ -16,32 +16,34 @@
 @synthesize forceLandscape;
 
 #pragma mark View Controller Methods
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.delegate = self;
+        //        self.delegate = self;
     }
     return self;
 }
 
-- (void) viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-
+    // Do any additional setup after loading the view.
 }
 
-- (BOOL)shouldAutorotate {
+- (BOOL)shouldAutorotate
+{
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    if (forceLandscape)
-        return UIInterfaceOrientationMaskLandscape;
-    else
-        return [super supportedInterfaceOrientations];
+- (NSUInteger)supportedInterfaceOrientations
+{
+    if (forceLandscape) return UIInterfaceOrientationMaskLandscape;
+    else return [super supportedInterfaceOrientations];
 }
 
-- (void) didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

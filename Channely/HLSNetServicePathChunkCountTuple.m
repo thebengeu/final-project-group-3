@@ -20,7 +20,8 @@
 @synthesize relativePath;
 @synthesize chunkCount;
 
-- (id) initWithNetService:(NSNetService *)ns path:(NSString *)path count:(NSUInteger)count {
+- (id)initWithNetService:(NSNetService *)ns path:(NSString *)path count:(NSUInteger)count
+{
     if (self = [super init]) {
         netService = ns;
         relativePath = path;
@@ -29,7 +30,8 @@
     return self;
 }
 
-- (NSString *) description {
+- (NSString *)description
+{
     return [NSString stringWithFormat:@"[netservice=%@, path=%@, count=%d]", netService, relativePath, chunkCount];
 }
 

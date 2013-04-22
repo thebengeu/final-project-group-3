@@ -30,10 +30,11 @@
      @"created_at":         @"createdAt",
      @"id_str":             @"id",
      @"user.screen_name":   @"username",
-     @"text":               @"content"}];
+     @"text":               @"content"
+     }];
     twitterPostMapping.identificationAttributes = @[ @"id" ];
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:twitterPostMapping pathPattern:nil keyPath:@"statuses" statusCodes:statusCodes];
-
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1.1/search/tweets.json?q=%@", [hashtag stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:[NSString stringWithFormat:@"Bearer %@", TWITTER_BEARER_TOKEN] forHTTPHeaderField:@"Authorization"];

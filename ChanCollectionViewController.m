@@ -82,8 +82,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSString * segueName = segue.identifier;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueName = segue.identifier;
     if ([segueName isEqualToString:kVideoPlayerSegue]) {
         ChanVideoPlayerViewController *vpvc = (ChanVideoPlayerViewController *)segue.destinationViewController;
         ChanVideoCell *cell = (ChanVideoCell *)sender;
@@ -97,12 +98,12 @@
         slidesViewController.channel = self.channel;
         slidesViewController.post = (ChanSlidesPost *)cell.post;
         slidesViewController.delegate = self.delegate;
-    } else if ([segueName isEqualToString:kTextSegue]){
+    } else if ([segueName isEqualToString:kTextSegue]) {
         ChanViewTextPostViewController *textViewController = (ChanViewTextPostViewController *)segue.destinationViewController;
         
         ChanTextCell *cell = (ChanTextCell *)sender;
         textViewController.post = (ChanPost *)cell.post;
-    } else if ([segueName isEqualToString:kImageSegue]){
+    } else if ([segueName isEqualToString:kImageSegue]) {
         ChanViewImagePostViewController *imageViewController = (ChanViewImagePostViewController *)segue.destinationViewController;
         
         ChanTextCell *cell = (ChanTextCell *)sender;
@@ -195,7 +196,7 @@
 #pragma mark Create Menu functions
 
 // Set up the awesome menu for creating posts
-- (void) addPostControl
+- (void)addPostControl
 {
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem@2x.png"];
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted@2x.png"];
@@ -213,14 +214,14 @@
     AwesomeMenuItem *videoMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:videoMenuImage highlightedContentImage:nil];
     
     AwesomeMenuItem *galleryMenuItem = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage highlightedImage:storyMenuItemImagePressed ContentImage:galleryMenuImage highlightedContentImage:nil];
-
-     _createPostMenu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, galleryMenuItem, pictureMenuItem, videoMenuItem, nil]];
+    
+    _createPostMenu = [[AwesomeMenu alloc] initWithFrame:self.view.window.bounds menus:[NSArray arrayWithObjects:textMenuItem, galleryMenuItem, pictureMenuItem, videoMenuItem, nil]];
     
     _createPostMenu.delegate = self;
     
     _createPostMenu.startPoint = [self getCreateMenuStartPoint:self.interfaceOrientation];
-    _createPostMenu.rotateAngle = M_PI * 23/16; // Menu location
-    _createPostMenu.menuWholeAngle = M_PI * 6/7; // Menu span
+    _createPostMenu.rotateAngle = M_PI * 23 / 16; // Menu location
+    _createPostMenu.menuWholeAngle = M_PI * 6 / 7; // Menu span
     _createPostMenu.endRadius = 140.0f; // Radius of expanded menu
     // Bounce animation
     _createPostMenu.farRadius = 160.0f;
@@ -232,7 +233,7 @@
 }
 
 // Returns the Create Menu's origin point given the UIInterfaceOrientation
-- (CGPoint)getCreateMenuStartPoint: (UIInterfaceOrientation) interfaceOrientation
+- (CGPoint)getCreateMenuStartPoint:(UIInterfaceOrientation)interfaceOrientation
 {
     if (UIInterfaceOrientationIsLandscape(interfaceOrientation)) {
         return CGPointMake(kPostMenuLandscapeX, kPostMenuLandscapeY);
@@ -247,7 +248,7 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     NSUInteger numberOfObjects = [sectionInfo numberOfObjects];
-
+    
     if (numberOfObjects == 0) {
         [SVProgressHUD show];
     } else {
@@ -281,7 +282,7 @@
 
 - (NSDate *)dateForCell:(UICollectionViewCell *)cell
 {
-    ChanAbstractCell *tempCell = (ChanAbstractCell *) cell;
+    ChanAbstractCell *tempCell = (ChanAbstractCell *)cell;
     return tempCell.post.createdAt;
 }
 
@@ -289,7 +290,7 @@
 {
     NSArray *visibles = [self.collectionView visibleCells];
     if (visibles.count != 0) {
-        UICollectionViewCell *cell = (UICollectionViewCell*) visibles[visibles.count/2];
+        UICollectionViewCell *cell = (UICollectionViewCell *)visibles[visibles.count / 2];
         [_timeScroller scrollViewDidScroll:cell];
     }
 }
@@ -313,11 +314,11 @@
 
 #pragma mark - Waterfall Layout methods
 
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewWaterfallLayout *)collectionViewLayout heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ChanPost *post = [self.fetchedResultsController objectAtIndexPath:indexPath];
     CGFloat height = [[self cellClassForPost:post] getHeightForPost:post];
-        
+    
     ChanCollectionView *chanCollectionView = (ChanCollectionView *)collectionView;
     if (height > chanCollectionView.maxCellHeight) {
         chanCollectionView.maxCellHeight = height;
@@ -327,7 +328,7 @@
 }
 
 // Used for updating the layout of the collection view when screen orientation changes, etc
--(void)updateLayout
+- (void)updateLayout
 {
     _waterfallLayout.columnCount = self.collectionView.bounds.size.width / kCellWidth;
     _waterfallLayout.itemWidth = kCellWidth;
@@ -337,16 +338,16 @@
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self updateLayout];
-    if (_awesomeMenuIsOpen == YES){
+    if (_awesomeMenuIsOpen == YES) {
         _awesomeMenuShouldReopen = YES;
         [_createPostMenu setExpanding:NO];
-    } else
-        _awesomeMenuShouldReopen = NO;
+    } else _awesomeMenuShouldReopen = NO;
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    if (_awesomeMenuShouldReopen){
+    if (_awesomeMenuShouldReopen) {
         [_createPostMenu setExpanding:YES];
     }
 }
@@ -359,7 +360,7 @@
             [_delegate launchTextPostSegue];
             break;
         case kPictureMenuItem: // Gallery Post
-            [_delegate launchImagePicker: _createPostMenu.addButton.frame];
+            [_delegate launchImagePicker:_createPostMenu.addButton.frame];
             break;
         case kVideoMenuItem: // Camera
             [_delegate launchCameraForImage];
@@ -372,11 +373,13 @@
     }
 }
 
-- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu{
+- (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu
+{
     _awesomeMenuIsOpen = NO;
 }
 
-- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu{
+- (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu
+{
     _awesomeMenuIsOpen = YES;
 }
 
@@ -394,24 +397,24 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Post" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides", @"twitter"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"channel == %@ AND (type = %@ OR type = %@ OR type = %@ OR type = %@ OR type = %@)", self.channel, @"text", @"image", @"video", @"slides", @"twitter"];
     [fetchRequest setPredicate:predicate];
-
+    
     [fetchRequest setFetchBatchSize:50];
-
+    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdAt" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
-
+    
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
-	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	}
+    NSError *error = nil;
+    if (![self.fetchedResultsController performFetch:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+    }
     
     return _fetchedResultsController;
 }

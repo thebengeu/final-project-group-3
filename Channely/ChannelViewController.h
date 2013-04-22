@@ -14,8 +14,8 @@
 
 @class ChanChannel;
 
-@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
-    ChannelViewControllerDelegate, ChanAnnotationViewControllerDelegate, ChanPostViewControllerDelegate>
+@interface ChannelViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChanCreateEventViewControllerDelegate, UIPopoverControllerDelegate,
+ChannelViewControllerDelegate, ChanAnnotationViewControllerDelegate, ChanPostViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentContainer;
 
@@ -25,14 +25,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *attachButton;
 
-- (void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location;
+- (void)createEventWithEventName:(NSString *)eventName startDate:(NSDate *)startDate endDate:(NSDate *)endDate description:(NSString *)description location:(CLLocationCoordinate2D)location;
 
 // ChannelViewControllerDelegate Methods
-- (void) launchVideoSegue;
-- (void) launchTextPostSegue;
-- (void) launchImagePostSegue:(UIImage *)image;
-- (void) launchCameraForImage;
-- (void) launchImagePicker: (CGRect)frame;
-- (void) launchAnnotationForImagePost:(UIImage *)image;
+- (void)launchVideoSegue;
+- (void)launchTextPostSegue;
+- (void)launchImagePostSegue:(UIImage *)image;
+- (void)launchCameraForImage;
+- (void)launchImagePicker:(CGRect)frame;
+- (void)launchAnnotationForImagePost:(UIImage *)image;
 
 @end

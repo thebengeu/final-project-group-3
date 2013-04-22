@@ -22,11 +22,10 @@
 
 - (void)setAttributedTitle:(NSAttributedString *)attributedTitle
 {
-    
     NSMutableAttributedString *mutableAttributedTitle = [[NSMutableAttributedString alloc] initWithAttributedString:attributedTitle];
     [mutableAttributedTitle addAttribute:NSForegroundColorAttributeName
-                            value:[UIColor channelyGray]
-                            range:NSMakeRange(0, attributedTitle.length)];
+                                   value:[UIColor channelyGray]
+                                   range:NSMakeRange(0, attributedTitle.length)];
     [super setAttributedTitle:mutableAttributedTitle];
 }
 

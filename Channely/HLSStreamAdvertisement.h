@@ -12,10 +12,10 @@
 @property (readonly, strong) NSString *playlist;
 @property (nonatomic, readonly) NSUInteger chunkCount;
 
-- (id) init;
-- (NSString *) description;
+- (id)init;
+- (NSString *)description;
 
-+ (HLSStreamAdvertisement *) advertisementFromString:(NSString *)str;
-+ (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl;
++ (HLSStreamAdvertisement *)advertisementFromString:(NSString *)str;
++ (NSString *)packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl;
 
 @end

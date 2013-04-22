@@ -65,7 +65,7 @@ static ChanUser *loggedInUser = nil;
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:managedObjectContext];
         [fetchRequest setEntity:entity];
         
-        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
         [fetchRequest setPredicate:predicate];
         
         NSError *error;
@@ -73,7 +73,7 @@ static ChanUser *loggedInUser = nil;
         if (array == nil) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         } else if (array.count) {
-            for (ChanUser *chanUser in array) {
+            for (ChanUser * chanUser in array) {
                 chanUser.loggedInValue = NO;
             }
         }

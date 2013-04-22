@@ -16,7 +16,7 @@
 @interface HLSPlaylistDownloader : NSObject
 @property (atomic, readonly) BOOL isConsumed;
 
-- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSPlaylistDownloaderDelegate>)delegate;
-- (void) downloadToDirectory:(NSString *)directory;
+- (id)initWithPlaylist:(NSURL *)playlist delegate:(id<HLSPlaylistDownloaderDelegate>)delegate;
+- (void)downloadToDirectory:(NSString *)directory;
 
 @end

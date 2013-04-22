@@ -31,30 +31,31 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     
     [_text setText:[[self post] content]];
     [_date setText:[[[self post]createdAt] description]];
     [_username setText:[[self post] username]];
     
-    [_image setImageWithURL:[NSURL URLWithString:[(ChanImagePost*)[self post] url]]];
+    [_image setImageWithURL:[NSURL URLWithString:[(ChanImagePost *)[self post] url]]];
     
     // Set delete button
     [_deleteButton setType:BButtonTypeInverse];
-    if ([[ChanUser loggedInUser].id compare:[[self post] creator].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil)
-        [_deleteButton setHidden:NO];
+    if ([[ChanUser loggedInUser].id compare:[[self post] creator].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil) [_deleteButton setHidden:NO];
     else {
         [_deleteButton removeFromSuperview];
     }
 }
 
-- (IBAction)close:(id)sender {
+- (IBAction)close:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)deletePost:(id)sender {
-    [(ChanImagePost*)[self post] deleteWithCompletion:^(ChanImagePost *textPost, NSError *error) {
-        if (error != nil){
+- (IBAction)deletePost:(id)sender
+{
+    [(ChanImagePost *)[self post] deleteWithCompletion :^(ChanImagePost *textPost, NSError *error) {
+        if (error != nil) {
             [SVProgressHUD setAnimationDuration:1.5];
             [SVProgressHUD showSuccessWithStatus:@"Error occurred"];
         } else {
@@ -65,7 +66,8 @@
     }];
 }
 
-- (IBAction)annotate:(id)sender {
+- (IBAction)annotate:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:^{
         [[self delegate]launchAnnotationForImagePost:[_image image]];
     }];

@@ -16,14 +16,14 @@
 #include <stdlib.h>
 
 @interface HLSPeerDiscovery : NSObject <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
-- (id) init;
+- (id)init;
 
-- (BOOL) recordingIsComplete:(NSString *)rId;
-- (NSArray *) sortedPeersForRecording:(NSString *)rId;
+- (BOOL)recordingIsComplete:(NSString *)rId;
+- (NSArray *)sortedPeersForRecording:(NSString *)rId;
 
-+ (NSString *) dottedDecimalFromNetService:(NSNetService *)ns;
++ (NSString *)dottedDecimalFromNetService:(NSNetService *)ns;
 
-+ (HLSPeerDiscovery *) setupPeerDiscovery;
-+ (HLSPeerDiscovery *) peerDiscovery;
++ (HLSPeerDiscovery *)setupPeerDiscovery;
++ (HLSPeerDiscovery *)peerDiscovery;
 
 @end

@@ -11,9 +11,9 @@
 
 // This class implements a bidirectional map.
 @interface HLSDiscoveredRecordings : NSObject
-- (id) init;
-- (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
-- (void) removeDiscoveredFromServiceNamed:(NSString *)ipAddr;
-- (NSMutableArray *) netServicesWithRecording:(NSString *)rId;
+- (id)init;
+- (void)addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple;
+- (void)removeDiscoveredFromServiceNamed:(NSString *)ipAddr;
+- (NSMutableArray *)netServicesWithRecording:(NSString *)rId;
 
 @end

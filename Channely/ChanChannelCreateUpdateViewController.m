@@ -23,7 +23,6 @@
     if (self) {
         // Custom initialization
         _isUpdateChannel = YES;
-
     }
     return self;
 }
@@ -31,12 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    
     // Set button style
     [_createUpdateButton setType:BButtonTypeChan];
     
     
-    if (_isUpdateChannel){
+    if (_isUpdateChannel) {
         [_channelName setText:[_channel name]];
         [_hashtag setText:[_channel hashTag]];
     } else {
@@ -45,9 +44,8 @@
     }
 }
 
-
-
-- (IBAction)createOrUpdate:(id)sender {
+- (IBAction)createOrUpdate:(id)sender
+{
     if ([[_channelName text]length] == 0) {
         AHAlertView *alert = [[AHAlertView alloc] initWithTitle:@"Oops" message:@"Channel Name must not be empty"];
         __weak AHAlertView *weakA = alert;
@@ -58,15 +56,15 @@
         return;
     }
     
-    if (_isUpdateChannel){
+    if (_isUpdateChannel) {
         id me = self;
-        [_channel updateChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error){
+        [_channel updateChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error) {
             [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ updated", [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];
-    }else {
+    } else {
         id me = self;
-        [ChanChannel addChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error){
+        [ChanChannel addChannelWithName:[_channelName text] hashTag:[_hashtag text] withCompletion:^(ChanChannel *channel, NSError *error) {
             [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"%@ created", [channel name]]];
             [[me navigationController]popToRootViewControllerAnimated:YES];
         }];

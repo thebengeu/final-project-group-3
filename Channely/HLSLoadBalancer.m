@@ -12,12 +12,12 @@ static NSString *const cURLFormat = @"http://%@:%d/%@";
 static NSString *const cLocalhost = @"127.0.0.1";
 
 @interface HLSLoadBalancer ()
-+ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount;
++ (NSUInteger)totalChunksFromChunkField:(NSUInteger)chunkCount;
 
 @end
 
 @implementation HLSLoadBalancer
-+ (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
++ (NSURL *)selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource {
     // If a complete device-local source exists, always select it.
     if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId:rId]) {
         NSString *relativePath = [rId stringByAppendingPathComponent:[serverSource lastPathComponent]];
@@ -94,7 +94,8 @@ static NSString *const cLocalhost = @"127.0.0.1";
     return selectedURL;
 }
 
-+ (NSUInteger) totalChunksFromChunkField:(NSUInteger)chunkCount {
++ (NSUInteger)totalChunksFromChunkField:(NSUInteger)chunkCount
+{
     return (chunkCount & kTotalChunksBitMask);
 }
 

@@ -15,11 +15,11 @@
 @property CLLocationCoordinate2D location;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *channelListContainer;
-@property NSArray* channelList;
+@property NSArray *channelList;
 @property ChannelUITableViewController *channelTableViewController;
 @property NSUInteger currentSelectedIndex;
 
-- (void) populateMapWithChannelAnnotation;
-- (void) populateTableWithChannel;
+- (void)populateMapWithChannelAnnotation;
+- (void)populateTableWithChannel;
 
 @end

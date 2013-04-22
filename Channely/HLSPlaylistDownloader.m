@@ -36,25 +36,25 @@ static NSString *const kMediaDirectoryFormat = @"%@";
 @property (atomic) BOOL _shouldFinishWhenQueueEmpty;
 @property (strong) NSURL *_playlistURL;
 @property (atomic) NSUInteger _intervalsSinceLastChange;
-- (void) setupPlaylistRefresh;
-- (void) refreshTimer_Tick:(NSTimer *)timer;
-- (BOOL) parsePartialPlaylist:(NSString *)diff;
-- (CGFloat) chunkDurationFromInfString:(NSString *)inf;
-- (NSUInteger) targetDurationFromInfString:(NSString *)inf;
+- (void)setupPlaylistRefresh;
+- (void)refreshTimer_Tick:(NSTimer *)timer;
+- (BOOL)parsePartialPlaylist:(NSString *)diff;
+- (CGFloat)chunkDurationFromInfString:(NSString *)inf;
+- (NSUInteger)targetDurationFromInfString:(NSString *)inf;
 
 // Chunk Download.
 @property (strong) NSOperationQueue *_downloadQueue;
 @property (atomic) NSUInteger _chunkSequenceNumber;
-- (void) setupDownloadQueue;
-- (void) addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length;
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
+- (void)setupDownloadQueue;
+- (void)addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 
 // Local HLS Generation.
 @property (strong) NSString *_playlistDirectory;
 @property (strong) HLSEventPlaylistHelper *_playlistHelper;
 
 // Utility.
-- (void) stopOperationWithError;
+- (void)stopOperationWithError;
 
 @end
 
@@ -88,7 +88,8 @@ static NSString *const kMediaDirectoryFormat = @"%@";
 @synthesize _playlistHelper;
 
 #pragma mark Constructors
-- (id) initWithPlaylist:(NSURL *)playlist delegate:(id<HLSPlaylistDownloaderDelegate>)delegate {
+- (id)initWithPlaylist:(NSURL *)playlist delegate:(id<HLSPlaylistDownloaderDelegate>)delegate
+{
     if (self = [super init]) {
         _delegate = delegate;
         
@@ -103,13 +104,14 @@ static NSString *const kMediaDirectoryFormat = @"%@";
         _playlistFileName = [playlist lastPathComponent];
         _playlistName = [_playlistFileName stringByDeletingPathExtension];
         
-//        NSLog(@"%@\n%@", _baseURL, _playlistFileName); // DEBUG
+        //        NSLog(@"%@\n%@", _baseURL, _playlistFileName); // DEBUG
     }
     return self;
 }
 
 #pragma mark Interface Methods
-- (void) downloadToDirectory:(NSString *)directory {
+- (void)downloadToDirectory:(NSString *)directory
+{
     if (isConsumed) {
         // Error.
         NSLog(@"this HLSPlaylistDownloader was already used.");
@@ -132,7 +134,8 @@ static NSString *const kMediaDirectoryFormat = @"%@";
 }
 
 #pragma mark Continuous Playlist Refresh
-- (void) setupPlaylistRefresh {
+- (void)setupPlaylistRefresh
+{
     _oldPlaylist = [NSString string];
     _curPlaylist = nil;
     _oldPlaylistHash = 0;
@@ -148,8 +151,9 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     }
 }
 
-- (void) refreshTimer_Tick:(NSTimer *)timer {
-//    NSLog(@"tick!"); // DEBUG
+- (void)refreshTimer_Tick:(NSTimer *)timer
+{
+    //    NSLog(@"tick!"); // DEBUG
     
     // Synchronously get new playlist.
     NSError *downloadError = nil;
@@ -168,7 +172,7 @@ static NSString *const kMediaDirectoryFormat = @"%@";
             
             // Discard common portion of playlist (items at the front are guaranteed not to change).
             NSString *diff = [_curPlaylist substringFromIndex:_oldPlaylist.length];
-//            NSLog(@"@start\ndiff:\n%@\n@end\n", diff); // DEBUG
+            //            NSLog(@"@start\ndiff:\n%@\n@end\n", diff); // DEBUG
             
             // Parse diff.
             _shouldFinishWhenQueueEmpty = [self parsePartialPlaylist:diff];
@@ -181,7 +185,7 @@ static NSString *const kMediaDirectoryFormat = @"%@";
                 [timer invalidate];
             }
         } else {
-//            NSLog(@"no change in playlist"); // DEBUG
+            //            NSLog(@"no change in playlist"); // DEBUG
             
             // Increment timeout timer.
             _intervalsSinceLastChange++;
@@ -191,23 +195,23 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     // Check for timeout condition.
     if (_intervalsSinceLastChange >= kStreamTimeoutFactor) {
         // Timeout condition.
-//        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
+        //        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
         
         if (_delegate) {
             [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
-            
         }
         
-//        [_downloadQueue cancelAllOperations];
-//        _error = YES;
-//        _shouldFinishWhenQueueEmpty = YES;
-//        [timer invalidate];
+        //        [_downloadQueue cancelAllOperations];
+        //        _error = YES;
+        //        _shouldFinishWhenQueueEmpty = YES;
+        //        [timer invalidate];
         
         [self stopOperationWithError];
     }
 }
 
-- (BOOL) parsePartialPlaylist:(NSString *)diff {
+- (BOOL)parsePartialPlaylist:(NSString *)diff
+{
     diff = [diff stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     BOOL containsEndTag = NO;
     BOOL hasLengthOfNextChunk = NO;
@@ -221,14 +225,14 @@ static NSString *const kMediaDirectoryFormat = @"%@";
             
             [_playlistHelper beginPlaylistWithTargetInterval:targetDuration];
         } else if ([line hasPrefix:kHLSEndListPrefix]) {
-//            NSLog(@"stream ended"); // DEBUG
+            //            NSLog(@"stream ended"); // DEBUG
             
             hasLengthOfNextChunk = NO;
             
             containsEndTag = YES;
         } else if ([line hasPrefix:kHLSChunkPrefix]) {
             NSString *infString = [line substringFromIndex:kHLSChunkPrefix.length];
-
+            
             hasLengthOfNextChunk = YES;
             lengthOfNextChunk = [self chunkDurationFromInfString:infString];
         } else if ([line hasPrefix:kHLSMetaPrefix]) {
@@ -251,18 +255,21 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     return containsEndTag;
 }
 
-- (CGFloat) chunkDurationFromInfString:(NSString *)inf {
+- (CGFloat)chunkDurationFromInfString:(NSString *)inf
+{
     NSArray *tokens = [inf componentsSeparatedByString:@","];
     CGFloat candidate = [[tokens objectAtIndex:0] doubleValue];
     return candidate;
 }
 
-- (NSUInteger) targetDurationFromInfString:(NSString *)inf {
+- (NSUInteger)targetDurationFromInfString:(NSString *)inf
+{
     return (NSUInteger)[inf integerValue];
 }
 
 #pragma mark Video Chunk Download
-- (void) setupDownloadQueue {
+- (void)setupDownloadQueue
+{
     _downloadQueue = [[NSOperationQueue alloc] init];
     _downloadQueue.maxConcurrentOperationCount = 1; // Set to 1 to avoid (out of) ordering issues.
     [_downloadQueue addObserver:self forKeyPath:kKVOOperation options:NSKeyValueObservingOptionNew context:nil];
@@ -270,8 +277,9 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     _chunkSequenceNumber = 0;
 }
 
-- (void) addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length {
-//    NSLog(@"found url:%@", url); // DEBUG
+- (void)addURLToDownloadQueue:(NSURL *)url duration:(CGFloat)length
+{
+    //    NSLog(@"found url:%@", url); // DEBUG
     NSUInteger curSeqNo = _chunkSequenceNumber++;
     NSString *fileName = [NSString stringWithFormat:@"chunk%d.ts", curSeqNo];
     NSString *filePath = [_mediaDirectory stringByAppendingPathComponent:fileName];
@@ -287,7 +295,8 @@ static NSString *const kMediaDirectoryFormat = @"%@";
 // Note: There is no notification if the download of an individual video chunk fails.
 // The didDownloadChunk delegate will be fired, but the chunk file will not be written.
 // Note: There may be a slight timing error where didFinishDownloading is called before the last chunk is written.
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
     if ([object class] == [HLSChunkDownloadOperation class] && [keyPath isEqualToString:kKVOIsFinished]) {
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
@@ -299,15 +308,15 @@ static NSString *const kMediaDirectoryFormat = @"%@";
                 [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
             }
             
-//            [_downloadQueue cancelAllOperations];
-//            _error = YES;
-//            _shouldFinishWhenQueueEmpty = YES;
-//            [_refreshTimer invalidate];
+            //            [_downloadQueue cancelAllOperations];
+            //            _error = YES;
+            //            _shouldFinishWhenQueueEmpty = YES;
+            //            [_refreshTimer invalidate];
             
             [self stopOperationWithError];
             
             return;
-        } 
+        }
         
         NSString *relativePath = [meta.path lastPathComponent];
         [_playlistHelper appendItem:relativePath withDuration:meta.duration];
@@ -330,7 +339,8 @@ static NSString *const kMediaDirectoryFormat = @"%@";
 }
 
 #pragma mark Utility
-- (void) stopOperationWithError {
+- (void)stopOperationWithError
+{
     [_downloadQueue cancelAllOperations];
     _error = YES;
     _shouldFinishWhenQueueEmpty = YES;

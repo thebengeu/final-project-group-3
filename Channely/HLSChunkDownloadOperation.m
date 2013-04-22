@@ -25,7 +25,8 @@
 @synthesize error;
 
 #pragma mark Constructors
-- (id) initWithURL:(NSURL *)source outputFile:(NSURL *)target meta:(HLSChunkDownloadMetaData *)data {
+- (id)initWithURL:(NSURL *)source outputFile:(NSURL *)target meta:(HLSChunkDownloadMetaData *)data
+{
     if (self = [super init]) {
         _source = source;
         _target = target;
@@ -35,7 +36,8 @@
 }
 
 #pragma mark Logic
-- (void) main {
+- (void)main
+{
     NSData *downloadedData = [NSData dataWithContentsOfURL:_source];
     
     // Report failure or success of download if the variable is set.

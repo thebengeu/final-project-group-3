@@ -28,7 +28,7 @@
     ChanChannel *channel = [NSEntityDescription insertNewObjectForEntityForName:@"Channel" inManagedObjectContext:[[RKManagedObjectStore defaultStore] mainQueueManagedObjectContext]];
     channel.name = name;
     channel.hashTag = hashTag;
-
+    
     [[RKObjectManager sharedManager] postObject:channel path:PATH_CHANNEL parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         if (block) block(channel, nil);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -36,8 +36,9 @@
     }];
 }
 
-+ (void)search:(NSString *)name
-withCompletion:(void (^)(NSArray *channels, NSError *error))block {
++ (void)    search:(NSString *)name
+    withCompletion:(void (^)(NSArray *channels, NSError *error))block
+{
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:
                             name, @"name",
                             nil];
@@ -62,7 +63,8 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
 
 - (void)getPostsSince:(NSDate *)since
                 until:(NSDate *)until
-       withCompletion:(void (^)(NSArray *posts, NSError *error))block {
+       withCompletion:(void (^)(NSArray *posts, NSError *error))block
+{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     if (since) {
         [params setObject:[NSNumber numberWithDouble:[since timeIntervalSince1970] * 1000] forKey:@"since"];
@@ -145,7 +147,7 @@ withCompletion:(void (^)(NSArray *channels, NSError *error))block {
 {
     if (self.hashTag.length > 1) {
         [ChanTwitterPost getTweetsWithHashTag:[NSString stringWithFormat:@"#%@", self.hashTag] WithCompletion:^(NSArray *tweets, NSError *error) {
-            for (ChanTwitterPost* twitterPost in tweets) {
+            for (ChanTwitterPost * twitterPost in tweets) {
                 twitterPost.type = @"twitter";
                 [self addPostsObject:twitterPost];
             }

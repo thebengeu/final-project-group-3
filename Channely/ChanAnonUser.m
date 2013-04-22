@@ -17,7 +17,8 @@ static NSString *anonName = @"Anonymous";
     return anonName;
 }
 
-+ (void) setName:(NSString *)name{
++ (void)setName:(NSString *)name
+{
     anonName = name;
 }
 

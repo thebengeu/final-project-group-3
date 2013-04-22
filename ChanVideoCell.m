@@ -27,45 +27,44 @@ static const CGFloat kHeaderHeight = 17.0f;
     return self;
 }
 
-- (void)setPost:(ChanPost *)post {
+- (void)setPost:(ChanPost *)post
+{
     [super setPost:post];
     [self setupBackgroundImage];
     
-    ChanVideoPost *videoPost = (ChanVideoPost*)post;
-
+    ChanVideoPost *videoPost = (ChanVideoPost *)post;
+    
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"startTime" ascending:NO];
-    NSArray * descriptors = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *descriptors = [NSArray arrayWithObject:sortDescriptor];
     NSArray *thumbnails  = [[videoPost.thumbnails allObjects] sortedArrayUsingDescriptors:descriptors];
-
+    
     for (UIView *subview in self.contentView.subviews) {
         [subview removeFromSuperview];
     }
-
+    
     [thumbnails enumerateObjectsUsingBlock:^(ChanVideoThumbnailPost *thumbnail, NSUInteger idx, BOOL *stop) {
         if (idx >= kMaxThumbnails) {
             *stop = YES;
         }
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
-            (idx % kThumbnailsPerRow) * kThumbnailWidth,
-            (kThumbnailHeight * (idx / kThumbnailsPerRow)) + kHeaderHeight,
-                kThumbnailWidth,
-                kThumbnailHeight)];
+                                                                               (idx % kThumbnailsPerRow) * kThumbnailWidth,
+                                                                               (kThumbnailHeight * (idx / kThumbnailsPerRow)) + kHeaderHeight,
+                                                                               kThumbnailWidth,
+                                                                               kThumbnailHeight)];
         [imageView setImageWithURL:[NSURL URLWithString:thumbnail.url]];
         [self.contentView addSubview:imageView];
     }];
 }
 
-+ (CGFloat) getHeightForPost:(ChanPost *)post
++ (CGFloat)getHeightForPost:(ChanPost *)post
 {
     ChanVideoPost *videoPost = (ChanVideoPost *)post;
-
+    
     CGFloat min = MIN(kThumbnailHeight * ceil(videoPost.thumbnails.count / (float)kThumbnailsPerRow), kThumbnailHeight * ceil(kMaxThumbnails / (float)kThumbnailsPerRow)) + kHeaderHeight;
     
-    if (min < 140.0f)
-        return 140.0f;
-    else
-        return min;
+    if (min < 140.0f) return 140.0f;
+    else return min;
 }
 
 - (void)setupBackgroundImage
@@ -76,12 +75,12 @@ static const CGFloat kHeaderHeight = 17.0f;
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end

@@ -19,7 +19,7 @@
 @property (strong) HLSStreamSync *_streamSync;
 
 // Appearance.
-- (void) customizeAppearance;
+- (void)customizeAppearance;
 
 @end
 
@@ -31,7 +31,8 @@
 @synthesize _streamSync;
 
 #pragma mark AppDelegate Methods
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     NSLog(@"did finish launching!");
     
     // Set UI customizations
@@ -50,7 +51,7 @@
     [managedObjectStore createPersistentStoreCoordinator];
     
     // Clear if having issues with persistent store when data model changes
-//    [ChanUtility clearDirectory:RKApplicationDataDirectory()];
+    //    [ChanUtility clearDirectory:RKApplicationDataDirectory()];
     
     NSString *path = [RKApplicationDataDirectory() stringByAppendingPathComponent:@"Store.sqlite"];
     NSLog(@"Core Data store path = \"%@\"", path);
@@ -63,7 +64,7 @@
     [managedObjectStore createManagedObjectContexts];
     
     // Configure a managed object cache to ensure we do not create duplicate objects
-//    managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
+    //    managedObjectStore.managedObjectCache = [[RKInMemoryManagedObjectCache alloc] initWithManagedObjectContext:managedObjectStore.persistentStoreManagedObjectContext];
     
     // Set the default store shared instance
     [RKManagedObjectStore setDefaultStore:managedObjectStore];
@@ -92,7 +93,8 @@
     return YES;
 }
 
-- (void) applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
     NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
     [_advertisingManager resumeAdvertising];
     
@@ -101,7 +103,8 @@
     [_streamSync recheckExistingStreams];
 }
 
-- (void) applicationDidEnterBackground:(UIApplication *)application {
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
     NSLog(@"%@", [HLSStreamAdvertisingManager advertisingManager].advertisements);
     NSLog(@"went background!");
     [self saveContext];
@@ -122,12 +125,13 @@
 }
 
 #pragma mark Appearance Customizations
-- (void) customizeAppearance {
+- (void)customizeAppearance
+{
     [self customizeNavButtonsAppearance];
     [self customizeNavBarAppearance];
 }
 
-- (void) customizeNavBarAppearance
+- (void)customizeNavBarAppearance
 {
     // Create resizable images
     UIImage *gradientImg44 = [[UIImage imageNamed:@"top_gradient_44"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -142,7 +146,7 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes:
      [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
+      [UIColor colorWithRed:255.0 / 255.0 green:255.0 / 255.0 blue:255.0 / 255.0 alpha:1.0],
       UITextAttributeTextColor,
       [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8],
       UITextAttributeTextShadowColor,
@@ -153,7 +157,7 @@
       nil]];
 }
 
-- (void) customizeNavButtonsAppearance
+- (void)customizeNavButtonsAppearance
 {
     // Change the appearance of back button
     UIImage *backButtonImage = [[UIImage imageNamed:@"button_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 13, 0, 8)];
@@ -171,7 +175,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"loggedIn == YES"];
     [fetchRequest setPredicate:predicate];
     
     NSError *error;
@@ -187,7 +191,8 @@
 }
 
 #pragma mark Http Server
-- (void) setupHttpServer {
+- (void)setupHttpServer
+{
     _localServer = [[HTTPServer alloc] init];
     _localServer.port = kLocalServerPort;
     _localServer.documentRoot = [ChanUtility webRootDirectory];
@@ -198,32 +203,37 @@
 }
 
 #pragma mark HLS Stream Advertising Manager
-- (void) setupAdvertisingManager {
+- (void)setupAdvertisingManager
+{
     _advertisingManager = [HLSStreamAdvertisingManager advertisingManagerWithAdvertiser:self];
 }
 
 #pragma mark HLS Stream Advertiser Delegate
-- (void) setAdvertiserDictionary:(NSDictionary *)dict {
+- (void)setAdvertiserDictionary:(NSDictionary *)dict
+{
     if (_localServer) {
         [_localServer setTXTRecordDictionary:dict];
     }
 }
 
-- (void) republishBonjour {
+- (void)republishBonjour
+{
     if (_localServer) {
         [_localServer republishBonjour];
     }
 }
 
 #pragma mark Recording Temp Directory
-- (void) setupDirectories {
+- (void)setupDirectories
+{
     // Note: non-destructive.
     [ChanUtility createDirectory:[ChanUtility webRootDirectory]];
     [ChanUtility createDirectory:[ChanUtility videoTempDirectory]];
 }
 
 #pragma mark HLS Stream Sync
-- (void) setupStreamSync {
+- (void)setupStreamSync
+{
     _streamSync = [HLSStreamSync setupStreamSyncWithBaseDirectory:[ChanUtility webRootDirectory]];
     
     // Note: This method might take some time to execute.
@@ -231,9 +241,9 @@
 }
 
 #pragma mark HLS Peer Discovery
-- (void) setupPeerDiscovery {
+- (void)setupPeerDiscovery
+{
     _loadBalancer = [HLSPeerDiscovery setupPeerDiscovery];
 }
-
 
 @end

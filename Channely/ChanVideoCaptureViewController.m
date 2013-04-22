@@ -24,14 +24,14 @@ static NSString *const cButtonStartRecording = @"Record";
 @property NSTimer *liveTextTimer;
 
 // UI Utility
-- (void) updateRecordingControlButtonState;
-- (void) updatePreviewRotationToOrientation;
+- (void)updateRecordingControlButtonState;
+- (void)updatePreviewRotationToOrientation;
 
 // Video Capture
-- (void) startPreviewing;
-- (void) stopPreviewing;
-- (void) startRecording;
-- (void) stopRecording;
+- (void)startPreviewing;
+- (void)stopPreviewing;
+- (void)startRecording;
+- (void)stopRecording;
 
 @end
 
@@ -48,7 +48,8 @@ static NSString *const cButtonStartRecording = @"Record";
 @synthesize _currentRecording;
 
 #pragma mark View Controller Methods
-- (id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -56,7 +57,8 @@ static NSString *const cButtonStartRecording = @"Record";
     return self;
 }
 
-- (void) viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     _recorder = [[TimedChunkingVideoRecorder alloc] initWithPreset:AVCaptureSessionPresetMedium];
@@ -71,8 +73,8 @@ static NSString *const cButtonStartRecording = @"Record";
     [self forceRotationRefresh];
 }
 
-
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     // Prevent device from going to sleep.
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -82,31 +84,35 @@ static NSString *const cButtonStartRecording = @"Record";
     _recorder.previewLayer.frame = self.previewArea.bounds;
 }
 
-
-- (void) viewWillDisappear:(BOOL)animated{
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
     
     ((ChanRootViewController *)[self navigationController]).forceLandscape = NO;
 }
 
-- (void) didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     _recorder.previewLayer.frame = self.previewArea.bounds;
 }
 
 //  Hack to force switch rotation (refresh orientation) if it is portrait.
-- (void) forceRotationRefresh {
+- (void)forceRotationRefresh
+{
     UIViewController *mVC = [[UIViewController alloc] init];
     [self presentViewController:mVC animated:NO completion:nil];
     [mVC dismissViewControllerAnimated:NO completion:nil];
 }
 
 #pragma mark Event Handlers
-- (IBAction)recordingControlButton_Action:(id)sender {
+- (IBAction)recordingControlButton_Action:(id)sender
+{
     if (_isRecording) {
         [self stopRecording];
     } else {
@@ -116,7 +122,8 @@ static NSString *const cButtonStartRecording = @"Record";
     [self updateRecordingControlButtonState];
 }
 
-- (IBAction)backButton_Action:(id)sender {
+- (IBAction)backButton_Action:(id)sender
+{
     if (_isRecording) {
         [self stopRecording];
     }
@@ -133,7 +140,8 @@ static NSString *const cButtonStartRecording = @"Record";
 }
 
 #pragma mark UI Utility
-- (void) updateRecordingControlButtonState {
+- (void)updateRecordingControlButtonState
+{
     if (_isRecording) {
         [self.recordingButton setTitle:cButtonStopRecording forState:UIControlStateNormal];
     } else {
@@ -141,14 +149,16 @@ static NSString *const cButtonStartRecording = @"Record";
     }
 }
 
-- (void) updatePreviewRotationToOrientation {
+- (void)updatePreviewRotationToOrientation
+{
     CGFloat transformAngle = -M_PI / 2.;
     CGAffineTransform transform = CGAffineTransformMakeRotation(transformAngle);
     _recorder.previewLayer.affineTransform = transform;
 }
 
 #pragma mark Logic
-- (void) startPreviewing {
+- (void)startPreviewing
+{
     AVCaptureVideoPreviewLayer *layer = [_recorder startPreview];
     
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -157,11 +167,13 @@ static NSString *const cButtonStartRecording = @"Record";
     NSLog(@"start previewing. channelid=%@, target=%@ target.layer=%@ preview.layer=%@", parentChannel.id, self.previewArea, self.previewArea.layer, layer); // DEBUG
 }
 
-- (void) stopPreviewing {
+- (void)stopPreviewing
+{
     [_recorder stopPreview];
 }
 
-- (void) startRecording {
+- (void)startRecording
+{
     [self navigationController].navigationBar.userInteractionEnabled = NO;
     [_recorder startTimedRecordingToDirectory:[ChanUtility videoTempDirectory] chunkInterval:cChunkPeriod];
     
@@ -171,7 +183,8 @@ static NSString *const cButtonStartRecording = @"Record";
     [self navigationController].navigationBar.alpha = 0;
 }
 
-- (void) stopRecording {
+- (void)stopRecording
+{
     [_liveTextTimer invalidate];
     _liveTextTimer = nil;
     [_liveText setHidden:YES];
@@ -180,12 +193,14 @@ static NSString *const cButtonStartRecording = @"Record";
     _isRecording = NO;
 }
 
-- (void) toggleLiveText{
+- (void)toggleLiveText
+{
     [_liveText setHidden:![_liveText isHidden]];
 }
 
 #pragma mark Chunking Video Recorder Delegate
-- (void) recorder:(ChunkingVideoRecorder *)recorder didChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+- (void)recorder:(ChunkingVideoRecorder *)recorder didChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration
+{
     NSLog(@"local video recording did chunk. index=%d", index);
     
     if (!_currentRecording) {
@@ -211,7 +226,8 @@ static NSString *const cButtonStartRecording = @"Record";
     }];
 }
 
-- (void) recorder:(ChunkingVideoRecorder *)recorder didStopRecordingWithChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration {
+- (void)recorder:(ChunkingVideoRecorder *)recorder didStopRecordingWithChunk:(NSURL *)chunk index:(NSUInteger)index duration:(NSTimeInterval)duration
+{
     NSLog(@"local video recording stopped.");
     
     if (!_currentRecording) {
@@ -234,15 +250,16 @@ static NSString *const cButtonStartRecording = @"Record";
             NSLog(@"Successfully stopped server recording.");
             [self navigationController].navigationBar.userInteractionEnabled = YES;
             [self navigationController].navigationBar.alpha = 1.0;
-    
+            
             [[UIApplication sharedApplication] setStatusBarHidden:NO];
-
+            
             return;
         }];
     }];
 }
 
-- (void) recorderDidStartRecording:(ChunkingVideoRecorder *)recorder {
+- (void)recorderDidStartRecording:(ChunkingVideoRecorder *)recorder
+{
     NSLog(@"local video recording started.");
     
     isExpectingFirstChunk = YES;
@@ -258,13 +275,15 @@ static NSString *const cButtonStartRecording = @"Record";
 }
 
 #pragma mark REST API
-- (void) didReceiveCurrentRecording:(ChanHLSRecording *)recording {
+- (void)didReceiveCurrentRecording:(ChanHLSRecording *)recording
+{
     NSLog(@"received current recording from server. playlist=%@", recording.playlistURL); // DEBUG
     
     _currentRecording = recording;
 }
 
-- (void) didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk {
+- (void)didReceiveFirstTranscodedChunk:(ChanHLSChunk *)chunk
+{
     NSLog(@"received first transcoded chunk from server."); // DEBUG
     
     NSURL *playlistURL = [NSURL URLWithString:_currentRecording.playlistURL];

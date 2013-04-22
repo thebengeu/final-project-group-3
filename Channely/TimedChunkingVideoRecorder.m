@@ -15,7 +15,7 @@
 // Internal.
 @property (strong) NSTimer *_chunkTimer;
 
-- (void) timerDidFire:(NSTimer *)timer;
+- (void)timerDidFire:(NSTimer *)timer;
 
 @end
 
@@ -27,7 +27,8 @@
 @synthesize _chunkTimer;
 
 #pragma mark Overriden Constructor
-- (id) initWithPreset:(NSString *)preset {
+- (id)initWithPreset:(NSString *)preset
+{
     if (self = [super initWithPreset:preset]) {
         interval = 0.;
         
@@ -37,7 +38,8 @@
 }
 
 #pragma mark Timed Chunking
-- (void) startTimedRecordingToDirectory:(NSString *)directory chunkInterval:(CGFloat)period {
+- (void)startTimedRecordingToDirectory:(NSString *)directory chunkInterval:(CGFloat)period
+{
     interval = period;
     [self startRecordingToDirectory:directory];
     if (interval != 0.) {
@@ -47,13 +49,15 @@
     }
 }
 
-- (void) timerDidFire:(NSTimer *)timer {
+- (void)timerDidFire:(NSTimer *)timer
+{
     if (self.isRecording) {
         [self chunk];
     }
 }
 
-- (void) stopRecording {
+- (void)stopRecording
+{
     if (_chunkTimer) {
         [_chunkTimer invalidate];
         _chunkTimer = nil;

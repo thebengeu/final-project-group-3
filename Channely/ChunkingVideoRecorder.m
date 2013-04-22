@@ -24,13 +24,13 @@
 @property (strong) NSString *_recordingDirectory;
 @property (strong) NSDate *_chunkStart;
 
-- (AVCaptureDevice *) getCameraInput;
-- (AVCaptureDeviceInput *) getMicInput;
-- (void) clearDirectory:(NSString *)directory;
-- (NSURL *) newChunkUrlInDirectory:(NSString *)directory;
-- (void) resetChunkId;
-- (NSUInteger) getAndIncrementChunkId;
-- (NSUInteger) previousChunkId;
+- (AVCaptureDevice *)getCameraInput;
+- (AVCaptureDeviceInput *)getMicInput;
+- (void)clearDirectory:(NSString *)directory;
+- (NSURL *)newChunkUrlInDirectory:(NSString *)directory;
+- (void)resetChunkId;
+- (NSUInteger)getAndIncrementChunkId;
+- (NSUInteger)previousChunkId;
 
 @end
 
@@ -52,7 +52,8 @@
 @synthesize _chunkStart;
 
 #pragma mark Constructors
-- (id) initWithPreset:(NSString *)preset {
+- (id)initWithPreset:(NSString *)preset
+{
     if (self = [super init]) {
         _preset = preset;
         
@@ -65,7 +66,8 @@
 }
 
 #pragma mark Preview
-- (AVCaptureVideoPreviewLayer *) startPreview {
+- (AVCaptureVideoPreviewLayer *)startPreview
+{
     _session = [[AVCaptureSession alloc] init];
     
     [_session beginConfiguration];
@@ -73,7 +75,7 @@
     [_session addInput:(AVCaptureInput *)[self getCameraInput]];    // Attach video stream.
     [_session addInput:(AVCaptureInput *)[self getMicInput]];       // Attach audio stream.
     [_session commitConfiguration];
-
+    
     [_session startRunning];
     
     previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
@@ -82,7 +84,8 @@
     return previewLayer;
 }
 
-- (void) stopPreview {
+- (void)stopPreview
+{
     if (isRecording) {
         [self stopRecording];
     }
@@ -92,7 +95,8 @@
 }
 
 #pragma mark Recording
-- (void) startRecordingToDirectory:(NSString *)directory {
+- (void)startRecordingToDirectory:(NSString *)directory
+{
     _recordingDirectory = directory;
     
     [self resetChunkId];
@@ -104,15 +108,16 @@
     for (AVCaptureConnection *conn in _movieFileOutput.connections) {
         conn.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
     }
-    [_movieFileOutput startRecordingToOutputFileURL: initialChunk recordingDelegate:self];
+    [_movieFileOutput startRecordingToOutputFileURL:initialChunk recordingDelegate:self];
     
     isRecording = YES;
     if (delegate) {
         [delegate recorderDidStartRecording:self];
-    }    
+    }
 }
 
-- (void) stopRecording {
+- (void)stopRecording
+{
     _videoRecordingPermanentStop = YES;
     _videoRecordingChunkStop = NO;
     _recordingDirectory = nil;
@@ -121,7 +126,8 @@
     isRecording = NO;
 }
 
-- (void) chunk {
+- (void)chunk
+{
     _videoRecordingPermanentStop = NO;
     _videoRecordingChunkStop = YES;
     
@@ -129,12 +135,14 @@
 }
 
 #pragma mark AVCaptureFileOutputRecordingDelegate Methods
-- (void) captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections {
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections
+{
     // Store the start date of the recording so we can compute its length when it ends.
     _chunkStart = [NSDate date];
 }
 
-- (void) captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
+{
     if (error) {
         NSLog(@"%@", error);
         return;
@@ -152,7 +160,6 @@
         // Restart recording if the previous file output was stopped due to a chunk request.
         NSURL *nextChunk = [self newChunkUrlInDirectory:_recordingDirectory];
         [_movieFileOutput startRecordingToOutputFileURL:nextChunk recordingDelegate:self];
-        
     } else if (_videoRecordingPermanentStop) {
         // Otherwise terminate permanently.
         [_session removeOutput:_movieFileOutput];
@@ -164,7 +171,8 @@
 }
 
 #pragma mark Convenience Methods
-- (AVCaptureDeviceInput *) getCameraInput {
+- (AVCaptureDeviceInput *)getCameraInput
+{
     AVCaptureDevice *defCamera = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     NSError *error = nil;
@@ -175,7 +183,8 @@
     return cameraInput;
 }
 
-- (AVCaptureDeviceInput *) getMicInput {
+- (AVCaptureDeviceInput *)getMicInput
+{
     AVCaptureDevice *defMic = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     
     NSError *error = nil;
@@ -188,7 +197,8 @@
 
 // Removes all files from app's documents directory.
 // Ref: http://stackoverflow.com/questions/4793278/deleting-all-the-files-in-the-iphone-sandbox-documents-folder
-- (void) clearDirectory:(NSString *)directory {
+- (void)clearDirectory:(NSString *)directory
+{
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSError *error = nil;
     
@@ -208,20 +218,24 @@
     }
 }
 
-- (void) resetChunkId {
+- (void)resetChunkId
+{
     _chunkIndex = 0;
 }
 
-- (NSUInteger) getAndIncrementChunkId {
+- (NSUInteger)getAndIncrementChunkId
+{
     return _chunkIndex++;
 }
 
-- (NSURL *) newChunkUrlInDirectory:(NSString *)directory {
+- (NSURL *)newChunkUrlInDirectory:(NSString *)directory
+{
     NSString *outputFile = [NSString stringWithFormat:kOutputFilePathFormat, directory, [self getAndIncrementChunkId]];
     return [NSURL fileURLWithPath:outputFile];
 }
 
-- (NSUInteger) previousChunkId {
+- (NSUInteger)previousChunkId
+{
     // Note: we subtract 1 here because the value of _chunkId would have been atomically incremented after starting to record a new chunk.
     return MAX(0, (_chunkIndex - 1));
 }

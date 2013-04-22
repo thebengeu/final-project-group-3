@@ -23,6 +23,6 @@
 @property (strong) NSString *recordingId;
 @property (readonly, weak) id<HLSPlaylistDownloadOperationDelegate> delegate;
 
-- (id) initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del;
+- (id)initWithStreamId:(NSString *)rId forPlaylist:(NSURL *)playlistURL toDirectory:(NSString *)dir delegate:(id<HLSPlaylistDownloadOperationDelegate>)del;
 
 @end

@@ -20,7 +20,7 @@
 
 @synthesize channelList = _channelList;
 
-- (id)initWithStyle:(UITableViewStyle)style :(NSMutableArray*)channelList
+- (id)initWithStyle:(UITableViewStyle)style:(NSMutableArray *)channelList
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -30,7 +30,8 @@
     return self;
 }
 
-- (void)setChannelList: (NSMutableArray*)channels{
+- (void)setChannelList:(NSMutableArray *)channels
+{
     _channelList = channels;
     [[self tableView]reloadData];
 }
@@ -40,7 +41,7 @@
     [super viewDidLoad];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -50,6 +51,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -68,10 +70,10 @@
 {
     ChanEvent *event = [_channelList objectAtIndex:[indexPath row]];
     ChannelUITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EventCell"];
-    if(cell == nil) {
+    if (cell == nil) {
         cell = [[ChannelUITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EventCell"];
     }
-
+    
     cell.channelNameTextView.text = event.channel.name;
     cell.eventNameTextView.text = event.name;
     
@@ -84,26 +86,22 @@
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentLocationCoords.latitude longitude:currentLocationCoords.longitude];
     CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude:event.latitudeValue longitude:event.longitudeValue];
     CLLocationDistance distance = [eventLocation distanceFromLocation:currentLocation];
-    [[cell distanceTextView]setText: [NSString stringWithFormat:@"%.1f km", distance / 1000]];
+    [[cell distanceTextView]setText:[NSString stringWithFormat:@"%.1f km", distance / 1000]];
     
     cell.event = event;
-    [cell setDelegate:(id<DiscoverUITableCellDelegate>)self];
+    [cell setDelegate:(id < DiscoverUITableCellDelegate >)self];
     
     return cell;
 }
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[self delegate]tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
--(void) selectMapAnnotationForChannel: (id) cell
+- (void)selectMapAnnotationForChannel:(id)cell
 {
-    [[self delegate] selectMapAnnotationForChannel: cell];
+    [[self delegate] selectMapAnnotationForChannel:cell];
 }
-
-
-
 
 @end

@@ -21,7 +21,8 @@
 @synthesize _recordingIdToTuple;
 
 #pragma mark Constructors
-- (id) init {
+- (id)init
+{
     if (self = [super init]) {
         _nameToRecordingId = [NSMutableDictionary dictionary];
         _recordingIdToTuple = [NSMutableDictionary dictionary];
@@ -30,7 +31,8 @@
 }
 
 #pragma mark External Methods
-- (void) addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple {
+- (void)addDiscoveredRecordingId:(NSString *)rId onServiceNamed:(NSString *)addr tuple:(HLSNetServicePathChunkCountTuple *)tuple
+{
     // Add the record in the forward dictionary.
     @synchronized(_nameToRecordingId) {
         NSMutableArray *nameRecord = [_nameToRecordingId objectForKey:addr];
@@ -56,7 +58,8 @@
     }
 }
 
-- (void) removeDiscoveredFromServiceNamed:(NSString *)name {
+- (void)removeDiscoveredFromServiceNamed:(NSString *)name
+{
     // Get the recording Ids that ipAddr is serving.
     NSMutableArray *served = nil;
     @synchronized(_nameToRecordingId) {
@@ -69,38 +72,40 @@
     }
     
     // Enumerate through the reverse dictionary, removing the target host from each recordingId.
-    @synchronized(served) { @synchronized(_recordingIdToTuple) {
-        for (NSString *rId in served) {
-            NSMutableArray *serversHostingRId = [_recordingIdToTuple objectForKey:rId];
-            
-            // If there are no servers hosting rId (this is a race condition), then do nothing.
-            if (!serversHostingRId) {
-                continue;
-            }
-            
-            BOOL shouldRemoveThisRId = NO;
-            NSMutableArray *tuplesToRemove = [NSMutableArray array];
-            @synchronized(serversHostingRId) {
-                for (HLSNetServicePathChunkCountTuple *tuple in serversHostingRId) {
-                    if ([tuple.netService.name isEqualToString:name]) {
-                        [tuplesToRemove addObject:tuple];
+    @synchronized(served) {
+        @synchronized(_recordingIdToTuple) {
+            for (NSString *rId in served) {
+                NSMutableArray *serversHostingRId = [_recordingIdToTuple objectForKey:rId];
+                
+                // If there are no servers hosting rId (this is a race condition), then do nothing.
+                if (!serversHostingRId) {
+                    continue;
+                }
+                
+                BOOL shouldRemoveThisRId = NO;
+                NSMutableArray *tuplesToRemove = [NSMutableArray array];
+                @synchronized(serversHostingRId) {
+                    for (HLSNetServicePathChunkCountTuple *tuple in serversHostingRId) {
+                        if ([tuple.netService.name isEqualToString:name]) {
+                            [tuplesToRemove addObject:tuple];
+                        }
+                    }
+                    
+                    [serversHostingRId removeObjectsInArray:tuplesToRemove];
+                    
+                    // If no servers are hosting this record after removal, then indicate that we should delete the corresponding key.
+                    if (serversHostingRId.count == 0) {
+                        shouldRemoveThisRId = YES;
                     }
                 }
                 
-                [serversHostingRId removeObjectsInArray:tuplesToRemove];
-                
-                // If no servers are hosting this record after removal, then indicate that we should delete the corresponding key.
-                if (serversHostingRId.count == 0) {
-                    shouldRemoveThisRId = YES;
+                // Remove the key if the flag is set.
+                if (shouldRemoveThisRId) {
+                    [_recordingIdToTuple removeObjectForKey:rId];
                 }
             }
-            
-            // Remove the key if the flag is set.
-            if (shouldRemoveThisRId) {
-                [_recordingIdToTuple removeObjectForKey:rId];
-            }
         }
-    }}
+    }
     
     // Finally, remove the target ipAddr from the forward dictionary.
     @synchronized(_nameToRecordingId) {
@@ -108,7 +113,8 @@
     }
 }
 
-- (NSMutableArray *) netServicesWithRecording:(NSString *)rId {
+- (NSMutableArray *)netServicesWithRecording:(NSString *)rId
+{
     NSMutableArray *array = nil;
     @synchronized(_recordingIdToTuple) {
         array = [_recordingIdToTuple objectForKey:rId];
@@ -119,7 +125,7 @@
     }
     
     NSMutableArray *result = nil;
-    @synchronized(array) {        
+    @synchronized(array) {
         result = [NSMutableArray arrayWithArray:array];
     }
     

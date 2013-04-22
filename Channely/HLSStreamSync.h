@@ -15,13 +15,13 @@
 #import "Constants.h"
 
 @interface HLSStreamSync : NSObject <HLSPlaylistDownloadOperationDelegate>
-- (id) init;
-- (NSUInteger) operationCount;
-- (void) syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist;
-- (BOOL) completeLocalStreamExistsForStreamId:(NSString *)sId;
-- (void) recheckExistingStreams;
+- (id)init;
+- (NSUInteger)operationCount;
+- (void)syncStreamId:(NSString *)sId playlistURL:(NSURL *)playlist;
+- (BOOL)completeLocalStreamExistsForStreamId:(NSString *)sId;
+- (void)recheckExistingStreams;
 
-+ (HLSStreamSync *) streamSync;
-+ (HLSStreamSync *) setupStreamSyncWithBaseDirectory:(NSString *)dir;
++ (HLSStreamSync *)streamSync;
++ (HLSStreamSync *)setupStreamSyncWithBaseDirectory:(NSString *)dir;
 
 @end

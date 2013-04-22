@@ -11,8 +11,8 @@
 @interface TimedChunkingVideoRecorder : ChunkingVideoRecorder
 @property (atomic, readonly) CGFloat interval;
 
-- (id) initWithPreset:(NSString *)preset;
-- (void) startTimedRecordingToDirectory:(NSString *)directory chunkInterval:(CGFloat)period;
-- (void) stopRecording;
+- (id)initWithPreset:(NSString *)preset;
+- (void)startTimedRecordingToDirectory:(NSString *)directory chunkInterval:(CGFloat)period;
+- (void)stopRecording;
 
 @end

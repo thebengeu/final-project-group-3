@@ -20,7 +20,8 @@
 @synthesize path;
 @synthesize duration;
 
-- (id) initWithSequence:(NSUInteger)seq URL:(NSURL *)url duration:(CGFloat)length {
+- (id)initWithSequence:(NSUInteger)seq URL:(NSURL *)url duration:(CGFloat)length
+{
     if (self = [super init]) {
         sequenceNumber = seq;
         path = url;

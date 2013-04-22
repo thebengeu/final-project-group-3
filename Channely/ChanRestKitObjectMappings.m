@@ -47,9 +47,10 @@
      @"content":    @"content",
      @"time":       @"createdAt",
      @"type":       @"type",
-     @"username":   @"username"}];
+     @"username":   @"username"
+     }];
     textPostMapping.identificationAttributes = @[ @"id" ];
-
+    
     [textPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     [textPostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
@@ -65,7 +66,8 @@
      @"width":      @"width",
      @"height":     @"height",
      @"type":       @"type",
-     @"username":   @"username"}];
+     @"username":   @"username"
+     }];
     imagePostMapping.identificationAttributes = @[ @"id" ];
     
     [imagePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
@@ -82,7 +84,8 @@
      @"endDate":        @"endTime",
      @"playlistURL":    @"url",
      @"type":           @"type",
-     @"username":       @"username"}];
+     @"username":       @"username"
+     }];
     videoPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
@@ -98,12 +101,13 @@
      @"startDate":  @"startTime",
      @"url":        @"url",
      @"type":       @"type",
-     @"username":   @"username"}];
+     @"username":   @"username"
+     }];
     videoThumbnailPostMapping.identificationAttributes = @[ @"id" ];
     
     [videoThumbnailPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     [videoThumbnailPostMapping addConnectionForRelationship:@"video" connectedBy:@{ @"videoId": @"id" }];
-        
+    
     RKEntityMapping *slidesPostMapping = [RKEntityMapping mappingForEntityForName:@"SlidesPost" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [slidesPostMapping addAttributeMappingsFromDictionary:@{
      @"_id":        @"id",
@@ -113,9 +117,10 @@
      @"time":       @"createdAt",
      @"url":        @"url",
      @"type":       @"type",
-     @"username":   @"username"}];
+     @"username":   @"username"
+     }];
     slidesPostMapping.identificationAttributes = @[ @"id" ];
-
+    
     [slidesPostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     [slidesPostMapping addConnectionForRelationship:@"creator" connectedBy:@{ @"creatorId": @"id" }];
     
@@ -128,13 +133,14 @@
      @"thumbUrl":       @"thumbUrl",
      @"width":          @"width",
      @"height":         @"height",
-     @"url":            @"url"}];
+     @"url":            @"url"
+     }];
     slidePostMapping.identificationAttributes = @[ @"id" ];
     
     [slidePostMapping addConnectionForRelationship:@"channel" connectedBy:@{ @"channelId": @"id" }];
     [slidePostMapping addConnectionForRelationship:@"slidesPost" connectedBy:@{ @"slidesPostId": @"id" }];
-
-    RKDynamicMapping* dynamicMapping = [RKDynamicMapping new];
+    
+    RKDynamicMapping *dynamicMapping = [RKDynamicMapping new];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"text" objectMapping:textPostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"image" objectMapping:imagePostMapping]];
     [dynamicMapping addMatcher:[RKObjectMappingMatcher matcherWithKeyPath:@"type" expectedValue:@"video" objectMapping:videoPostMapping]];
@@ -150,14 +156,16 @@
     [textPostRequestMapping addAttributeMappingsFromDictionary:@{
      @"channel.id": @"_channel",
      @"username":   @"username",
-     @"content":    @"content"}];
+     @"content":    @"content"
+     }];
     RKRequestDescriptor *textPostRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:textPostRequestMapping objectClass:[ChanTextPost class] rootKeyPath:nil];
     
     RKObjectMapping *imagePostRequestMapping = [RKObjectMapping requestMapping];
     [imagePostRequestMapping addAttributeMappingsFromDictionary:@{
      @"channel.id": @"_channel",
      @"username":   @"username",
-     @"content":    @"content"}];
+     @"content":    @"content"
+     }];
     RKRequestDescriptor *imagePostRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:imagePostRequestMapping objectClass:[ChanImagePost class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
@@ -178,7 +186,8 @@
      @"startDate":      @"startDate",
      @"endDate":        @"endDate",
      @"endSeqNo":       @"endSeqNo",
-     @"playlistURL":    @"playlistURL"}];
+     @"playlistURL":    @"playlistURL"
+     }];
     hlsRecordingMapping.identificationAttributes = @[ @"id" ];
     
     RKResponseDescriptor *createRecordingDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hlsRecordingMapping pathPattern:PATH_CREATE_RECORDING keyPath:nil statusCodes:statusCodes];
@@ -194,7 +203,8 @@
      @"startDate":      @"startDate",
      @"endDate":        @"endDate",
      @"endSeqNo":       @"endSeqNo",
-     @"playlistURL":    @"playlistURL"}];
+     @"playlistURL":    @"playlistURL"
+     }];
     RKRequestDescriptor *hlsRecordingRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:hlsRecordingRequestMapping objectClass:[ChanHLSRecording class] rootKeyPath:nil];
     
     RKEntityMapping *hlsChunkMapping = [RKEntityMapping mappingForEntityForName:@"HLSChunk" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
@@ -202,7 +212,8 @@
      @"_id":        @"id",
      @"duration":   @"duration",
      @"seqNo":      @"seqNo",
-     @"url":        @"url"}];
+     @"url":        @"url"
+     }];
     hlsChunkMapping.identificationAttributes = @[ @"id" ];
     
     RKResponseDescriptor *addChunkDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:hlsChunkMapping pathPattern:PATH_ADD_CHUNK keyPath:nil statusCodes:statusCodes];
@@ -211,9 +222,10 @@
     RKObjectMapping *hlsChunkRequestMapping = [RKObjectMapping requestMapping];
     [hlsChunkRequestMapping addAttributeMappingsFromDictionary:@{
      @"duration":   @"duration",
-     @"seqNo":      @"seqNo"}];
+     @"seqNo":      @"seqNo"
+     }];
     RKRequestDescriptor *hlsChunkRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:hlsChunkRequestMapping objectClass:[ChanHLSChunk class] rootKeyPath:nil];
-
+    
     [[RKObjectManager sharedManager] addRequestDescriptor:hlsRecordingRequestDescriptor];
     [[RKObjectManager sharedManager] addRequestDescriptor:hlsChunkRequestDescriptor];
 }
@@ -227,9 +239,10 @@
      @"_id":        @"id",
      @"name":       @"name",
      @"hashTag":    @"hashTag",
-     @"createdAt":  @"createdAt"}];
+     @"createdAt":  @"createdAt"
+     }];
     responseMapping.identificationAttributes = @[ @"id" ];
-
+    
     [responseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"owner" toKeyPath:@"owner" withMapping:userMapping]];
     
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_CHANNEL keyPath:nil statusCodes:statusCodes];
@@ -242,7 +255,8 @@
      @"id":         @"_id",
      @"name":       @"name",
      @"hashTag":    @"hashTag",
-     @"createdAt":  @"createdAt"}];
+     @"createdAt":  @"createdAt"
+     }];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanChannel class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
@@ -257,7 +271,7 @@
 + (void)setupEventMappings:(RKEntityMapping *)channelMapping
 {
     NSIndexSet *statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful);
-        
+    
     RKEntityMapping *responseMapping = [RKEntityMapping mappingForEntityForName:@"Event" inManagedObjectStore:[RKManagedObjectStore defaultStore]];
     [responseMapping addAttributeMappingsFromDictionary:@{
      @"_id":            @"id",
@@ -266,7 +280,8 @@
      @"latitude":       @"latitude",
      @"longitude":      @"longitude",
      @"name":           @"name",
-     @"startDateTime":  @"startTime"}];
+     @"startDateTime":  @"startTime"
+     }];
     responseMapping.identificationAttributes = @[ @"id" ];
     
     [responseMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"_channel" toKeyPath:@"channel" withMapping:channelMapping]];
@@ -282,7 +297,8 @@
      @"latitude":       @"latitude",
      @"longitude":      @"longitude",
      @"name":           @"name",
-     @"startTime":      @"startDateTime"}];
+     @"startTime":      @"startDateTime"
+     }];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanEvent class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
@@ -298,7 +314,8 @@
      @"_id":            @"id",
      @"username":       @"name",
      @"password":       @"password",
-     @"accessToken":    @"accessToken"}];
+     @"accessToken":    @"accessToken"
+     }];
     responseMapping.identificationAttributes = @[ @"id" ];
     RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_USER keyPath:nil statusCodes:statusCodes];
     RKResponseDescriptor *userUpdateDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping pathPattern:PATH_USER_UPDATE keyPath:nil statusCodes:statusCodes];
@@ -308,7 +325,8 @@
     [requestMapping addAttributeMappingsFromDictionary:@{
      @"id":         @"_id",
      @"name":       @"username",
-     @"password":   @"password"}];
+     @"password":   @"password"
+     }];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[ChanUser class] rootKeyPath:nil];
     
     [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];

@@ -14,6 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIView *container;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
-- (void)startChannel:(ChanChannel*)channel;
+- (void)startChannel:(ChanChannel *)channel;
 
 @end

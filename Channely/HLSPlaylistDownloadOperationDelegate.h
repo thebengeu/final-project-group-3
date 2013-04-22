@@ -11,7 +11,7 @@
 @class HLSPlaylistDownloadOperation;
 
 @protocol HLSPlaylistDownloadOperationDelegate <NSObject>
-- (void) playlistDownloadOperationDidStart:(HLSPlaylistDownloadOperation *)operation;
-- (void) playlistDownloadOperationDidFinish:(HLSPlaylistDownloadOperation *)operation;
+- (void)playlistDownloadOperationDidStart:(HLSPlaylistDownloadOperation *)operation;
+- (void)playlistDownloadOperationDidFinish:(HLSPlaylistDownloadOperation *)operation;
 
 @end

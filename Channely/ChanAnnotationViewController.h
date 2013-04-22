@@ -13,7 +13,7 @@
 
 @protocol ChanAnnotationViewControllerDelegate
 
-- (void) didFinishAnnotation:(UIImage*)image;
+- (void)didFinishAnnotation:(UIImage *)image;
 
 @end
 

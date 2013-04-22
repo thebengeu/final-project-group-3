@@ -30,31 +30,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-
+    // Do any additional setup after loading the view.
+    
     //  If user is logged in
-    if ([ChanUser loggedInUser] != nil){
+    if ([ChanUser loggedInUser] != nil) {
         [self switchToUserViewController];
         return;
     }
     
     // Set navbar items
     [_anonUsername setText:[ChanAnonUser name]];
-    [self.navigationItem setTitle: @"User Settings"];
+    [self.navigationItem setTitle:@"User Settings"];
     
     // Set button styles
     [_loginButton setType:BButtonTypeChan];
     [_signupButton setType:BButtonTypeInverse];
-  
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    if ([ChanUser loggedInUser] != nil)
-        [self switchToUserViewController];
+    if ([ChanUser loggedInUser] != nil) [self switchToUserViewController];
 }
 
-- (void) switchToUserViewController
+- (void)switchToUserViewController
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
     ChanMenuUserViewController *userViewController = [storyboard instantiateViewControllerWithIdentifier:kMenuUserVCName];
@@ -66,22 +64,23 @@
     [self.navigationController setViewControllers:viewControllers];
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
     [textField resignFirstResponder];
     return YES;
 }
 
--(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
     [textField resignFirstResponder];
     return YES;
 }
 
-- (void) textFieldDidEndEditing:(UITextField *)textField{
-    if (textField == _anonUsername){
-        if ([[textField text] length] > 0)
-            [ChanAnonUser setName: [textField text]];
-        else
-            [textField setText: [ChanAnonUser name]];
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField == _anonUsername) {
+        if ([[textField text] length] > 0) [ChanAnonUser setName:[textField text]];
+        else [textField setText:[ChanAnonUser name]];
     }
 }
 

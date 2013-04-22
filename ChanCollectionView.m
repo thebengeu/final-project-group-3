@@ -13,7 +13,8 @@
 
 // Uses private API to fix UICollectionView bug with very tall cells
 // Ref: http://stackoverflow.com/questions/14254222/large-uicollectionviewcell-stopped-being-displayed-when-scrolling
-- (CGRect)_visibleBounds {
+- (CGRect)_visibleBounds
+{
     CGRect rect = super._visibleBounds;
     rect.size.height = MAX(self.maxCellHeight, self.bounds.size.height);
     return rect;

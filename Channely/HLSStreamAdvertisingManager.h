@@ -13,14 +13,14 @@
 @interface HLSStreamAdvertisingManager : NSObject
 @property (readonly) NSDictionary *advertisements;
 
-- (id) init;
-- (void) updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count;
-- (BOOL) isAdvertisingRecordingId:(NSString *)rId;
-- (void) stopAdvertisingRecordingId:(NSString *)rId;
-- (void) resumeAdvertising;
-- (void) stopAdvertising;
+- (id)init;
+- (void)updateAdvertisementForPlaylist:(NSString *)playlist asRecordingId:(NSString *)rId withChunkCount:(NSUInteger)count;
+- (BOOL)isAdvertisingRecordingId:(NSString *)rId;
+- (void)stopAdvertisingRecordingId:(NSString *)rId;
+- (void)resumeAdvertising;
+- (void)stopAdvertising;
 
-+ (HLSStreamAdvertisingManager *) advertisingManager;
-+ (HLSStreamAdvertisingManager *) advertisingManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
++ (HLSStreamAdvertisingManager *)advertisingManager;
++ (HLSStreamAdvertisingManager *)advertisingManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;
 
 @end

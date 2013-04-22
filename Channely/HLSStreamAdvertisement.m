@@ -19,7 +19,7 @@ static NSString *const kDescFormat = @"[playlist=%@, count=%d]";
 @property (nonatomic, readwrite) NSUInteger chunkCount;
 
 // Private Constructor
-- (id) initWithPlaylist:(NSString *)pl withChunkCount:(NSUInteger)count;
+- (id)initWithPlaylist:(NSString *)pl withChunkCount:(NSUInteger)count;
 
 @end
 
@@ -30,12 +30,14 @@ static NSString *const kDescFormat = @"[playlist=%@, count=%d]";
 
 #pragma mark Static Initialization Only
 // Overriden default init.
-- (id) init {
+- (id)init
+{
     return nil;
 }
 
 #pragma mark Constructors
-- (id) initWithPlaylist:(NSString *)pl withChunkCount:(NSUInteger)count {
+- (id)initWithPlaylist:(NSString *)pl withChunkCount:(NSUInteger)count
+{
     if (self = [super init]) {
         playlist = pl;
         chunkCount = count;
@@ -44,7 +46,8 @@ static NSString *const kDescFormat = @"[playlist=%@, count=%d]";
 }
 
 #pragma mark External Static Methods
-+ (HLSStreamAdvertisement *) advertisementFromString:(NSString *)str {
++ (HLSStreamAdvertisement *)advertisementFromString:(NSString *)str
+{
     NSArray *components = [str componentsSeparatedByString:@","];
     
     if (components.count != kExpectedDataComponents) {
@@ -55,13 +58,15 @@ static NSString *const kDescFormat = @"[playlist=%@, count=%d]";
     }
 }
 
-+ (NSString *) packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl {
++ (NSString *)packAdvertisementForChunkCount:(NSUInteger)count playlist:(NSString *)pl
+{
     NSString *result = [NSString stringWithFormat:kAdFormat, count, pl];
     return result;
 }
 
 #pragma mark Utility
-- (NSString *) description {
+- (NSString *)description
+{
     return [NSString stringWithFormat:kDescFormat, playlist, chunkCount];
 }
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol HLSStreamAdvertiser <NSObject>
-- (void) setAdvertiserDictionary:(NSDictionary *)dict;
-- (void) republishBonjour;
+- (void)setAdvertiserDictionary:(NSDictionary *)dict;
+- (void)republishBonjour;
 
 @end

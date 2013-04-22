@@ -20,7 +20,8 @@
     return self;
 }
 
--(void)setPost:(ChanPost*)post{
+- (void)setPost:(ChanPost *)post
+{
     [super setPost:post];
     self.textView.text = post.content;
     self.titleView.text = post.username;
@@ -31,14 +32,14 @@
     [self.textView setUserInteractionEnabled:NO];
 }
 
-- (void) setupBackgroundImage
+- (void)setupBackgroundImage
 {
     [super setupBackgroundImage];
     UIImage *cellImg = [[UIImage imageNamed:@"twitterbar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];
     self.backgroundView = [[UIImageView alloc] initWithImage:cellImg];
 }
 
-+ (CGFloat) getHeightForPost:(ChanPost *)post
++ (CGFloat)getHeightForPost:(ChanPost *)post
 {
     CGSize sizeWithFont = [post.content sizeWithFont:[UIFont fontWithName:kTextCellContentFontName size:kTextCellContentFontSize]
                                    constrainedToSize:CGSizeMake(kTextCellContentMaxWidth, kTextCellContentMaxHeight)

@@ -39,23 +39,23 @@
     [[self navigationItem] setTitle:@"Channels"];
     
     
-    [[ChanUser loggedInUser]getOwnedChannels:^(NSArray *channels, NSError *error){
+    [[ChanUser loggedInUser]getOwnedChannels:^(NSArray *channels, NSError *error) {
         _channels = [NSMutableArray arrayWithArray:channels];
         [[self tableView]reloadData];
         [[self tableView]setHidden:NO];
     }];
 }
 
-
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: @"CreateChannelSegue"]) {
-        ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *) [segue destinationViewController];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueName = segue.identifier;
+    if ([segueName isEqualToString:@"CreateChannelSegue"]) {
+        ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *)[segue destinationViewController];
         channelCreateUpdateViewController.isUpdateChannel = NO;
-    } else if ([segueName isEqualToString: @"UpdateChannelSegue"]){
-        ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *) [segue destinationViewController];
+    } else if ([segueName isEqualToString:@"UpdateChannelSegue"]) {
+        ChanChannelCreateUpdateViewController *channelCreateUpdateViewController = (ChanChannelCreateUpdateViewController *)[segue destinationViewController];
         channelCreateUpdateViewController.isUpdateChannel = YES;
-        channelCreateUpdateViewController.channel = [(ChanChannelOwnedTableCell*)[[sender superview]superview] channel];
+        channelCreateUpdateViewController.channel = [(ChanChannelOwnedTableCell *)[[sender superview]superview] channel];
     }
 }
 
@@ -67,7 +67,8 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return 80;
 }
 
@@ -81,19 +82,18 @@
 {
     static NSString *CellIdentifier = @"ChanChannelOwnedTableCell";
     ChanChannelOwnedTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    if (!cell){
+    if (!cell) {
         cell = [[ChanChannelOwnedTableCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ChanChannelOwnedTableCell"];
     }
     ChanChannel *channel = [_channels objectAtIndex:[indexPath row]];
-    [cell.channelName setText: [channel name]];
-    if ([[channel hashTag]length] > 0)
-        [cell.hashtag setText: [NSString stringWithFormat:@"#%@", [channel hashTag]]];
-    else
-        [cell.hashtag setText:@""];
+    [cell.channelName setText:[channel name]];
+    if ([[channel hashTag]length] > 0) [cell.hashtag setText:[NSString stringWithFormat:@"#%@", [channel hashTag]]];
+    else [cell.hashtag setText:@""];
     cell.channel = [_channels objectAtIndex:[indexPath row]];
     
     return cell;
 }
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

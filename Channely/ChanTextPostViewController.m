@@ -20,15 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Setup button styles
+    // Setup button styles
     [_postButton setType:BButtonTypeChan];
     [_cancelButton setType:BButtonTypeInverse];
     
     NSString *name;
-    if ([ChanUser loggedInUser] == nil)
-        name = [ChanAnonUser name];
-    else
-        name = [[ChanUser loggedInUser] name];
+    if ([ChanUser loggedInUser] == nil) name = [ChanAnonUser name];
+    else name = [[ChanUser loggedInUser] name];
     
     _username.text = name;
     
@@ -43,13 +41,15 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:img];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     [_text becomeFirstResponder];
 }
 
-- (IBAction)submit:(id)sender {
-    if ([[_text text]length] > 0){
+- (IBAction)submit:(id)sender
+{
+    if ([[_text text]length] > 0) {
         ChanTextPostViewController *me = self;
         [[me status]startAnimating];
         [self hideKeyboard];
@@ -60,15 +60,14 @@
                 [me dismissViewControllerAnimated:YES completion:^{
                     [[me delegate]didPost:[me channel]];
                 }];
-            else
-                [super showErrorDialog];
+            else [super showErrorDialog];
         }];
     }
 }
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel:(id)sender
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end

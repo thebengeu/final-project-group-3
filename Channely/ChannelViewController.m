@@ -34,7 +34,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
@@ -50,7 +49,7 @@
     NSMutableArray *rightBarItems = [[NSMutableArray alloc]init];
     
     // If owner, show create event button
-    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil){
+    if ([[ChanUser loggedInUser].id compare:[_channel owner].id] == NSOrderedSame && [ChanUser loggedInUser].id != nil) {
         _createEventButton = [[UIBarButtonItem alloc]initWithTitle:kCreateEventButtonTitle style:UIBarButtonItemStylePlain target:self action:@selector(createEventButtonPressed)];
         [rightBarItems addObject:_createEventButton];
     }
@@ -67,7 +66,8 @@
     [_imagePickerPopover dismissPopoverAnimated:YES];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
     [UIViewController attemptRotationToDeviceOrientation];
@@ -79,59 +79,58 @@
                                          duration:(NSTimeInterval)duration
 {
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
-                                                                duration:duration];
-    [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
                                             duration:duration];
-
+    [_collectionViewController willAnimateRotationToInterfaceOrientation:toInterfaceOrientation
+                                                                duration:duration];
 }
 
-- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
     //  Reload imagepicker popover
-    if (_imagePickerPopover != nil){
+    if (_imagePickerPopover != nil) {
         [self.imagePickerPopover presentPopoverFromRect:[[_collectionViewController createPostMenu]addButton ].frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSString * segueName = segue.identifier;
-    if ([segueName isEqualToString: kCollectionViewSegue]) {
-        ChanCollectionViewController * childViewController = (ChanCollectionViewController *) [segue destinationViewController];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *segueName = segue.identifier;
+    if ([segueName isEqualToString:kCollectionViewSegue]) {
+        ChanCollectionViewController *childViewController = (ChanCollectionViewController *)[segue destinationViewController];
         _collectionViewController = childViewController;
         _collectionViewController.channel = self.channel;
         _collectionViewController.delegate = self;
-    } else if ([segueName isEqualToString: kTakeVideoSegue]) {
+    } else if ([segueName isEqualToString:kTakeVideoSegue]) {
         ChanVideoCaptureViewController *destination = segue.destinationViewController;
         destination.delegate = self;
         destination.parentChannel = [self underlyingChannel];
     }
-      
 }
 
 #pragma mark Post Creation Controls
 
 
 // Based on type, displays image picker, video picker, or camera
-- (void) presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton*)sender type:(NSArray*) type frame:(CGRect)frame
+- (void)presentPicker:(UIImagePickerControllerSourceType)sourceType sender:(UIButton *)sender type:(NSArray *)type frame:(CGRect)frame
 {
-    if ([UIImagePickerController isSourceTypeAvailable:sourceType]){
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
         NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:sourceType];
-        if ([availableMediaTypes containsObject:(NSString*)kUTTypeImage]) {
+        if ([availableMediaTypes containsObject:(NSString *)kUTTypeImage]) {
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.sourceType = sourceType;
             
             if (type) picker.mediaTypes = type;
-            else picker.mediaTypes = @[(NSString*) kUTTypeImage];
+            else picker.mediaTypes = @[(NSString *)kUTTypeImage];
             
             picker.allowsEditing = NO;
             picker.delegate = self;
             
-            if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)){
-                if (self.imagePickerPopover == nil){
+            if ((sourceType != UIImagePickerControllerSourceTypeCamera) && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
+                if (self.imagePickerPopover == nil) {
                     self.imagePickerPopover = [[UIPopoverController alloc]initWithContentViewController:picker];
                     [self.imagePickerPopover presentPopoverFromRect:frame inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     self.imagePickerPopover.delegate = self;
                 }
-                
             } else {
                 [self presentViewController:picker animated:YES completion:nil];
             }
@@ -139,58 +138,54 @@
     }
 }
 
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = info[UIImagePickerControllerEditedImage];
-    if (!image)
-        image = info[UIImagePickerControllerOriginalImage];
+    if (!image) image = info[UIImagePickerControllerOriginalImage];
     
     [picker dismissViewControllerAnimated:YES completion:^{
-        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
-            [self launchImagePostSegue:image];
+        if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) [self launchImagePostSegue:image];
     }];
     
-    if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum){
+    if (picker.sourceType == UIImagePickerControllerSourceTypeSavedPhotosAlbum) {
         [_imagePickerPopover dismissPopoverAnimated:YES];
         _imagePickerPopover = nil;
-
-        if (image)
-            [self launchImagePostSegue:image];
+        
+        if (image) [self launchImagePostSegue:image];
     }
 }
 
-
 - (void)launchVideoSegue
 {
-    [self performSegueWithIdentifier: kTakeVideoSegue sender:self];
+    [self performSegueWithIdentifier:kTakeVideoSegue sender:self];
 }
 
 - (void)launchTextPostSegue
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName: kStoryboardName bundle:nil];
-    ChanTextPostViewController *controller = (ChanTextPostViewController*)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
+    ChanTextPostViewController *controller = (ChanTextPostViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ChanTextPostViewController"];
     controller.channel = _channel;
     controller.delegate = self;
-
+    
     [self presentViewController:controller animated:YES completion:nil];
     [controller view].superview.bounds = CGRectMake(0, 0, 500, 234);
     [controller view].bounds = CGRectMake(0, 0, 500, 244);
 }
 
-- (void)launchImagePicker: (CGRect)frame
+- (void)launchImagePicker:(CGRect)frame
 {
-    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString*) kUTTypeImage] frame:frame];
+    [self presentPicker:UIImagePickerControllerSourceTypeSavedPhotosAlbum sender:_attachButton type:@[(NSString *)kUTTypeImage] frame:frame];
 }
-
 
 - (void)launchCameraForImage
 {
     [self presentPicker:UIImagePickerControllerSourceTypeCamera sender:_attachButton type:nil frame:CGRectZero];
 }
 
-- (void)launchAnnotationForImagePost:(UIImage*)image{
+- (void)launchAnnotationForImagePost:(UIImage *)image
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
-    ChanAnnotationViewController *controller = (ChanAnnotationViewController*)[storyboard instantiateViewControllerWithIdentifier: kChanAnnotationVCName];
+    ChanAnnotationViewController *controller = (ChanAnnotationViewController *)[storyboard instantiateViewControllerWithIdentifier:kChanAnnotationVCName];
     [controller setImage:image];
     controller.delegate = self;
     
@@ -200,10 +195,10 @@
                          [[self navigationController]pushViewController:controller animated:NO];
                          [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
                      }];
-    
 }
 
-- (void) didFinishAnnotation:(UIImage*)image{
+- (void)didFinishAnnotation:(UIImage *)image
+{
     [UIView animateWithDuration:0.75
                      animations:^{
                          [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -214,9 +209,10 @@
     [self launchImagePostSegue:image];
 }
 
--(void)launchImagePostSegue: (UIImage*)image{
+- (void)launchImagePostSegue:(UIImage *)image
+{
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
-    ChanImagePostViewController *controller = (ChanImagePostViewController*)[storyboard instantiateViewControllerWithIdentifier: kChanImagePostVC];
+    ChanImagePostViewController *controller = (ChanImagePostViewController *)[storyboard instantiateViewControllerWithIdentifier:kChanImagePostVC];
     controller.channel = _channel;
     controller.image = image;
     controller.delegate = self;
@@ -226,16 +222,14 @@
     [controller view].bounds = CGRectMake(0, 0, 500, 300);
 }
 
-
-
 #pragma mark Event Creation Controls
 
--(void)createEventButtonPressed{
-    if (_createEventPopover != nil)
-        return;
+- (void)createEventButtonPressed
+{
+    if (_createEventPopover != nil) return;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kStoryboardName bundle:nil];
-    _createEventViewController = [storyboard instantiateViewControllerWithIdentifier: kChanCreateEventVC];
+    _createEventViewController = [storyboard instantiateViewControllerWithIdentifier:kChanCreateEventVC];
     [_createEventViewController setDelegate:self];
     
     _createEventPopover = [[UIPopoverController alloc]initWithContentViewController:_createEventViewController];
@@ -243,29 +237,30 @@
     [_createEventPopover presentPopoverFromBarButtonItem:_createEventButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
--(void) createEventWithEventName:(NSString*)eventName startDate:(NSDate*)startDate endDate:(NSDate*)endDate description:(NSString*)description location:(CLLocationCoordinate2D)location{
+- (void)createEventWithEventName:(NSString *)eventName startDate:(NSDate *)startDate endDate:(NSDate *)endDate description:(NSString *)description location:(CLLocationCoordinate2D)location
+{
     ChannelViewController *me = self;
     [_channel addEventWithName:eventName details:description location:location startTime:startDate endTime:endDate withCompletion:^(ChanEvent *event, NSError *error) {
         [[me createEventPopover] dismissPopoverAnimated:YES];
-        [SVProgressHUD showSuccessWithStatus: kEventCreatedMessage];
+        [SVProgressHUD showSuccessWithStatus:kEventCreatedMessage];
     }];
 }
 
-- (ChanChannel *) underlyingChannel {
+- (ChanChannel *)underlyingChannel
+{
     return self.channel;
 }
 
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
-    if (popoverController == self.imagePickerPopover)
-        self.imagePickerPopover = nil;
-    if (popoverController == self.createEventPopover)
-        self.createEventPopover = nil;
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    if (popoverController == self.imagePickerPopover) self.imagePickerPopover = nil;
+    if (popoverController == self.createEventPopover) self.createEventPopover = nil;
 }
 
-- (void)didPost:(ChanChannel *)channel{
+- (void)didPost:(ChanChannel *)channel
+{
     [self.collectionViewController refreshPosts];
-    [SVProgressHUD showSuccessWithStatus: kPostPostedMessage];
+    [SVProgressHUD showSuccessWithStatus:kPostPostedMessage];
 }
 
 @end

@@ -25,7 +25,8 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)locationButtonTapped:(id)sender {
+- (IBAction)locationButtonTapped:(id)sender
+{
     [[self delegate]selectMapAnnotationForChannel:self];
 }
 

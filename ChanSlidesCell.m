@@ -32,21 +32,22 @@
     return slides.count ? [slides objectAtIndex:0] : nil;
 }
 
--(void)setPost:(ChanPost *)post {
+- (void)setPost:(ChanPost *)post
+{
     [super setPost:post];
-
-    ChanSlidePost* firstSlide = [ChanSlidesCell firstSlide:post];
+    
+    ChanSlidePost *firstSlide = [ChanSlidesCell firstSlide:post];
     if (firstSlide) {
         [self.imageView setImageWithURL:[NSURL URLWithString:firstSlide.thumbUrl]];
     }
-
+    
     [self.labelView setText:[post content]];
     [self setupBackgroundImage];
 }
 
-+ (CGFloat) getHeightForPost:(ChanPost *)post
++ (CGFloat)getHeightForPost:(ChanPost *)post
 {
-    ChanSlidePost* firstSlide = [ChanSlidesCell firstSlide:post];
+    ChanSlidePost *firstSlide = [ChanSlidesCell firstSlide:post];
     if (firstSlide) {
         return firstSlide.thumbHeight + kSlidesCellThumbnailVerticalMargins;
     } else {
@@ -54,7 +55,7 @@
     }
 }
 
-- (void) setupBackgroundImage
+- (void)setupBackgroundImage
 {
     [super setupBackgroundImage];
     UIImage *cellImg = [[UIImage imageNamed:@"slidebar"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 0, 0, 0)];

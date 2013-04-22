@@ -12,6 +12,6 @@
 #import "Constants.h"
 
 @interface HLSLoadBalancer : NSObject
-+ (NSURL *) selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
++ (NSURL *)selectBestLocalHostForRecording:(NSString *)rId default:(NSURL *)serverSource;
 
 @end
