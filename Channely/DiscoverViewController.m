@@ -29,9 +29,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 
 @end
 
-@implementation DiscoverViewController {
-    Boolean firstUpdate;
-}
+@implementation DiscoverViewController
 
 - (void)viewDidLoad
 {
@@ -45,10 +43,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
     [_locationManager startUpdatingLocation];
     _mapView.delegate = self;
     _channelTableViewController.delegate = self;
-    
-    //  Force first update
-    firstUpdate = false;
-    
+
     UIRefreshControl *refreshControl = [ChanRefreshControl new];
     [refreshControl addTarget:self action:@selector(refreshEvents) forControlEvents:UIControlEventValueChanged];
     refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refresh Events"];
@@ -60,7 +55,7 @@ static CGFloat const kLandscapeOrientationHeight = 704.0;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [self refreshEvents];
     [self layoutFromCurrentOrientation];
 }
 
