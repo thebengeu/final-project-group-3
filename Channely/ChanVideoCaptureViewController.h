@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChunkingVideoRecorderDelegate.h"
+#import "BButton.h"
 
 @class ChanChannel;
 @class ChanHLSRecording;
@@ -17,7 +18,7 @@
 @interface ChanVideoCaptureViewController : UIViewController <ChunkingVideoRecorderDelegate>
 // Storyboard.
 @property (strong, nonatomic) IBOutlet UIView *previewArea;
-@property (strong, nonatomic) IBOutlet UIButton *recordingButton;
+@property (strong, nonatomic) IBOutlet BButton *recordingButton;
 @property (weak, nonatomic) id<ChanPostViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextView *liveText;
 

@@ -1553,7 +1553,11 @@
                                     <constraint firstAttribute="width" constant="1024" type="user" id="rDg-A8-5Av"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-og-mbs">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-og-mbs" customClass="BButton">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" type="user" id="DIu-XG-GkM"/>
+                                    <constraint firstAttribute="width" constant="76" type="user" id="eBp-bE-PdR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Record">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1573,7 +1577,7 @@
                                     <constraint firstAttribute="width" constant="124" id="MuY-aX-hRN"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="0.047118742970000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="48"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -2363,10 +2367,11 @@
         <class className="ChanVideoCaptureViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCaptureViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButton_Action:"/>
                 <relationship kind="action" name="recordingControlButton_Action:"/>
                 <relationship kind="outlet" name="liveText" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="previewArea" candidateClass="UIView"/>
-                <relationship kind="outlet" name="recordingButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="recordingButton" candidateClass="BButton"/>
             </relationships>
         </class>
         <class className="ChanVideoCell" superclassName="ChanAbstractCell">
