@@ -45,19 +45,6 @@
         _backgroundView.frame = CGRectMake(CGRectGetWidth(self.frame) - 80.0f, 0.0f, 80.0f, CGRectGetHeight(self.frame));
         [self addSubview:_backgroundView];
         
-        _handContainer = [[UIView alloc] initWithFrame:CGRectMake(5.0f, 4.0f, 20.0f, 20.0f)];
-        [_backgroundView addSubview:_handContainer];
-        
-        _hourHand = [[UIView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 4.0f, 20.0f)];
-        UIImageView *hourImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TimeScroller.bundle/timescroll_hourhand"]];
-        [_hourHand addSubview:hourImageView];
-        [_handContainer addSubview:_hourHand];
-        
-        _minuteHand = [[UIView alloc] initWithFrame:CGRectMake(8.0f, 0.0f, 4.0f, 20.0f)];
-        UIImageView *minuteImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TimeScroller.bundle/timescroll_minutehand"]];
-        [_minuteHand addSubview:minuteImageView];
-        [_handContainer addSubview:_minuteHand];
-        
         
         _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30.0f, 4.0f, 50.0f, 20.0f)];
         _timeLabel.textColor = [UIColor whiteColor];
@@ -158,145 +145,9 @@
     
     NSDateComponents *dateComponents = [self.calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:date];
     NSDateComponents *todayComponents = [self.calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:today];
-    NSDateComponents *lastDateComponents = [self.calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:_lastDate];
+//    NSDateComponents *lastDateComponents = [self.calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekOfYearCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit fromDate:_lastDate];
     
     _timeLabel.text = [self.timeDateFormatter stringFromDate:date];
-    
-    CGFloat currentHourAngle = 0.5f * ((lastDateComponents.hour * 60.0f) + lastDateComponents.minute);
-    CGFloat newHourAngle = 0.5f * ((dateComponents.hour * 60.0f) + dateComponents.minute);
-    CGFloat currentMinuteAngle = 6.0f * lastDateComponents.minute;
-    CGFloat newMinuteAngle = 6.0f * dateComponents.minute;
-    
-    currentHourAngle = currentHourAngle > 360 ? currentHourAngle - 360 : currentHourAngle;
-    newHourAngle = newHourAngle > 360 ? newHourAngle - 360 : newHourAngle;
-    currentMinuteAngle = currentMinuteAngle > 360 ? currentMinuteAngle - 360 : currentMinuteAngle;
-    newMinuteAngle = newMinuteAngle > 360 ? newMinuteAngle - 360 : newMinuteAngle;
-    
-    CGFloat hourPartOne;
-    CGFloat hourPartTwo;
-    CGFloat hourPartThree;
-    CGFloat hourPartFour;
-    
-    CGFloat minutePartOne;
-    CGFloat minutePartTwo;
-    CGFloat minutePartThree;
-    CGFloat minutePartFour;
-    
-    if (newHourAngle > currentHourAngle && [date timeIntervalSinceDate:_lastDate] > 0)
-    {
-        CGFloat diff = newHourAngle - currentHourAngle;
-        CGFloat part = diff / 4.0f;
-        hourPartOne = currentHourAngle + part;
-        hourPartTwo = hourPartOne + part;
-        hourPartThree = hourPartTwo + part;
-        hourPartFour = hourPartThree + part;
-    }
-    else if (newHourAngle < currentHourAngle && [date timeIntervalSinceDate:_lastDate] > 0)
-    {
-        CGFloat diff = (360 - currentHourAngle) + newHourAngle;
-        CGFloat part = diff / 4.0f;
-        hourPartOne = currentHourAngle + part;
-        hourPartTwo = hourPartOne + part;
-        hourPartThree = hourPartTwo + part;
-        hourPartFour = hourPartThree + part;
-    }
-    else if (newHourAngle > currentHourAngle && [date timeIntervalSinceDate:_lastDate] < 0)
-    {
-        CGFloat diff = ((currentHourAngle) * -1.0f) - (360 - newHourAngle);
-        CGFloat part = diff / 4.0f;
-        hourPartOne = currentHourAngle + part;
-        hourPartTwo = hourPartOne + part;
-        hourPartThree = hourPartTwo + part;
-        hourPartFour = hourPartThree + part;
-    }
-    else if (newHourAngle < currentHourAngle && [date timeIntervalSinceDate:_lastDate] < 0)
-    {
-        CGFloat diff = currentHourAngle - newHourAngle;
-        CGFloat part = diff / 4;
-        hourPartOne = currentHourAngle - part;
-        hourPartTwo = hourPartOne - part;
-        hourPartThree = hourPartTwo - part;
-        hourPartFour = hourPartThree - part;
-    }
-    else
-    {
-        hourPartOne = hourPartTwo = hourPartThree = hourPartFour = currentHourAngle;
-    }
-    
-    if (newMinuteAngle > currentMinuteAngle && [date timeIntervalSinceDate:_lastDate] > 0)
-    {
-        CGFloat diff = newMinuteAngle - currentMinuteAngle;
-        CGFloat part = diff / 4.0f;
-        minutePartOne = currentMinuteAngle + part;
-        minutePartTwo = minutePartOne + part;
-        minutePartThree = minutePartTwo + part;
-        minutePartFour = minutePartThree + part;
-    }
-    else if (newMinuteAngle < currentMinuteAngle && [date timeIntervalSinceDate:_lastDate] > 0)
-    {
-        CGFloat diff = (360 - currentMinuteAngle) + newMinuteAngle;
-        CGFloat part = diff / 4.0f;
-        minutePartOne = currentMinuteAngle + part;
-        minutePartTwo = minutePartOne + part;
-        minutePartThree = minutePartTwo + part;
-        minutePartFour = minutePartThree + part;
-    }
-    else if (newMinuteAngle > currentMinuteAngle && [date timeIntervalSinceDate:_lastDate] < 0)
-    {
-        CGFloat diff = ((currentMinuteAngle) * -1.0f) - (360 - newMinuteAngle);
-        CGFloat part = diff / 4.0f;
-        minutePartOne = currentMinuteAngle + part;
-        minutePartTwo = minutePartOne + part;
-        minutePartThree = minutePartTwo + part;
-        minutePartFour = minutePartThree + part;
-    }
-    else if (newMinuteAngle < currentMinuteAngle && [date timeIntervalSinceDate:_lastDate] < 0)
-    {
-        CGFloat diff = currentMinuteAngle - newMinuteAngle;
-        CGFloat part = diff / 4;
-        minutePartOne = currentMinuteAngle - part;
-        minutePartTwo = minutePartOne - part;
-        minutePartThree = minutePartTwo - part;
-        minutePartFour = minutePartThree - part;
-    }
-    else
-    {
-        minutePartOne = minutePartTwo = minutePartThree = minutePartFour = currentMinuteAngle;
-    }
-    
-    [UIView animateWithDuration:0.075f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        _hourHand.transform =  CGAffineTransformMakeRotation(hourPartOne * (M_PI / 180.0f));
-        _minuteHand.transform =  CGAffineTransformMakeRotation(minutePartOne * (M_PI / 180.0f));
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:0.075f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
-            
-            _hourHand.transform =  CGAffineTransformMakeRotation(hourPartTwo * (M_PI / 180.0f));
-            _minuteHand.transform =  CGAffineTransformMakeRotation(minutePartTwo * (M_PI / 180.0f));
-            
-        } completion:^(BOOL finished) {
-            
-            [UIView animateWithDuration:0.075f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear animations:^{
-                
-                _hourHand.transform =  CGAffineTransformMakeRotation(hourPartThree * (M_PI / 180.0f));
-                _minuteHand.transform =  CGAffineTransformMakeRotation(minutePartThree * (M_PI / 180.0f));
-                
-            } completion:^(BOOL finished) {
-                
-                [UIView animateWithDuration:0.075f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut animations:^{
-                    
-                    _hourHand.transform =  CGAffineTransformMakeRotation(hourPartFour * (M_PI / 180.0f));
-                    _minuteHand.transform =  CGAffineTransformMakeRotation(minutePartFour * (M_PI / 180.0f));
-                    
-                } completion:nil];
-                
-            }];
-            
-        }];
-        
-    }];
     
     _lastDate = date;
     

@@ -39,9 +39,6 @@
     UILabel *_timeLabel;
     UILabel *_dateLabel;
     UIImageView *_backgroundView;
-    UIView *_handContainer;
-    UIView *_hourHand;
-    UIView *_minuteHand;
     NSDate *_lastDate;
     CGSize _saved_tableview_size;
     
