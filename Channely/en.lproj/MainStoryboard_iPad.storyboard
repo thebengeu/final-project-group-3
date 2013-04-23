@@ -626,8 +626,8 @@
                                                 <constraint firstAttribute="width" constant="190" id="Wzi-9f-zIf"/>
                                                 <constraint firstAttribute="height" constant="25" id="fqR-ha-ehw"/>
                                             </constraints>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Event EndDateTime" translatesAutoresizingMaskIntoConstraints="NO" id="FPE-S9-Qsz">
@@ -639,8 +639,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="190" id="6Mf-Zf-nn9"/>
                                             </constraints>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dist" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-Q4-Wrb">
@@ -730,7 +730,7 @@
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="99" id="0Ms-Oh-eOi"/>
                                     <constraint firstItem="fX1-KY-mzw" firstAttribute="top" secondItem="17i-ae-21d" secondAttribute="top" type="default" id="3G3-6N-rUu"/>
                                     <constraint firstItem="fX1-KY-mzw" firstAttribute="top" secondItem="6F0-iB-VvR" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6RD-Pm-qzT"/>
-                                    <constraint firstItem="fX1-KY-mzw" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="300" id="8dT-5D-a4y"/>
+                                    <constraint firstItem="fX1-KY-mzw" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="272" id="BSj-6A-aoU"/>
                                     <constraint firstAttribute="bottom" secondItem="Ah0-Q4-Wrb" secondAttribute="bottom" constant="23" id="Dm5-8m-zty"/>
                                     <constraint firstItem="FPE-S9-Qsz" firstAttribute="bottom" secondItem="fX1-KY-mzw" secondAttribute="bottom" type="default" id="FFB-t7-Rh1"/>
                                     <constraint firstItem="Ah0-Q4-Wrb" firstAttribute="leading" secondItem="LkH-L5-43l" secondAttribute="leading" type="default" id="Ohd-cr-vEO"/>
@@ -745,7 +745,7 @@
                                     <constraint firstItem="FPE-S9-Qsz" firstAttribute="top" secondItem="SzL-au-8qE" secondAttribute="top" type="default" id="nXv-bD-Ick"/>
                                     <constraint firstItem="6F0-iB-VvR" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="188" id="oR5-O2-3aO"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="21" id="odb-jd-IZH"/>
-                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="trailing" secondItem="M8s-79-2OM" secondAttribute="trailing" type="default" id="q95-XE-q64"/>
+                                    <constraint firstItem="FPE-S9-Qsz" firstAttribute="leading" secondItem="rNn-5t-cVJ" secondAttribute="leading" constant="286" id="pJ8-tR-OCw"/>
                                     <constraint firstItem="A7q-Vt-0jn" firstAttribute="trailing" secondItem="LkH-L5-43l" secondAttribute="trailing" type="default" id="sci-KR-5K3"/>
                                     <constraint firstItem="LkH-L5-43l" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="15" id="uqs-zZ-LFP"/>
                                     <constraint firstItem="JyG-61-Scb" firstAttribute="top" secondItem="rNn-5t-cVJ" secondAttribute="top" constant="51" id="yzr-KL-Ef6"/>
