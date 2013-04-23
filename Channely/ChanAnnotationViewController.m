@@ -56,6 +56,19 @@
     [[self delegate]didFinishAnnotation:[_annotationView image]];
 }
 
+- (void)removeTicks
+{
+    [_redButton setImage:nil forState:UIControlStateNormal];
+    [_greenButton setImage:nil forState:UIControlStateNormal];
+    [_blueButton setImage:nil forState:UIControlStateNormal];
+}
+
+- (void)addTickTo:(BButton *)button
+{
+    UIImage *tick = [UIImage imageNamed:@"tick"];
+    [button setImage:tick forState:UIControlStateNormal];
+}
+
 /*
  
  Palette functions
@@ -65,16 +78,22 @@
 - (IBAction)redColor:(id)sender
 {
     [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypeDanger]];
+    [self removeTicks];
+    [self addTickTo:_redButton];
 }
 
 - (IBAction)greenColor:(id)sender
 {
     [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypeSuccess]];
+    [self removeTicks];
+    [self addTickTo:_greenButton];
 }
 
 - (IBAction)blueColor:(id)sender
 {
     [_annotationView setMarkerColor:[BButton colorForButtonType:BButtonTypePrimary]];
+    [self removeTicks];
+    [self addTickTo:_blueButton];
 }
 
 - (IBAction)clear:(id)sender

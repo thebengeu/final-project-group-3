@@ -96,6 +96,7 @@
 		82A907E61722677E0001F489 /* TimeScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A907E51722677E0001F489 /* TimeScroller.m */; };
 		82A907E81722AC9D0001F489 /* slidebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A907E71722AC9D0001F489 /* slidebar.png */; };
 		82A907EA1722B1D70001F489 /* twitterbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A907E91722B1D70001F489 /* twitterbar.png */; };
+		82EB809B1727034700625C43 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EB809A1727034600625C43 /* tick.png */; };
 		82EF9E6F1719B50B0043079D /* collectionbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E6E1719B50B0043079D /* collectionbg.png */; };
 		82EF9E79171A90AD0043079D /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 82EF9E78171A90AC0043079D /* user.png */; };
 		82EF9E7F171A9D290043079D /* AwesomeMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF9E7C171A9D290043079D /* AwesomeMenu.m */; };
@@ -335,6 +336,7 @@
 		82A907E51722677E0001F489 /* TimeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeScroller.m; sourceTree = "<group>"; };
 		82A907E71722AC9D0001F489 /* slidebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slidebar.png; sourceTree = "<group>"; };
 		82A907E91722B1D70001F489 /* twitterbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterbar.png; sourceTree = "<group>"; };
+		82EB809A1727034600625C43 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 		82EF9E6E1719B50B0043079D /* collectionbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collectionbg.png; sourceTree = "<group>"; };
 		82EF9E78171A90AC0043079D /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		82EF9E7B171A9D290043079D /* AwesomeMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeMenu.h; sourceTree = "<group>"; };
@@ -1028,6 +1030,7 @@
 				82EF9E82171AA5D20043079D /* Posting Menu Images */,
 				82EF9E81171AA59D0043079D /* Collection Backgrounds */,
 				825016731711CFC3003BC16A /* mapmarker_red.png */,
+				82EB809A1727034600625C43 /* tick.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1235,6 +1238,7 @@
 				82A907E3172267770001F489 /* TimeScroller.bundle in Resources */,
 				82A907E81722AC9D0001F489 /* slidebar.png in Resources */,
 				82A907EA1722B1D70001F489 /* twitterbar.png in Resources */,
+				82EB809B1727034700625C43 /* tick.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
