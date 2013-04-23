@@ -61,7 +61,7 @@
     
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat: kDateFormat];
+    [dateFormat setDateFormat: kChanDateFormat];
     [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
     [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
     
@@ -216,7 +216,7 @@
         _startDatePopoverController = nil;
         _startDateDatePicker = nil;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:kDateFormat];
+        [dateFormat setDateFormat:kChanDateFormat];
         [_startDateTextField setTitle:[dateFormat stringFromDate:_startDate] forState:UIControlStateNormal];
     } else if ([popoverController isEqual:_endDatePopoverController]) {
         _endDate = [_endDateDatePicker date];
@@ -224,7 +224,7 @@
         _endDatePopoverController = nil;
         _endDateDatePicker = nil;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:kDateFormat];
+        [dateFormat setDateFormat:kChanDateFormat];
         [_endDateTextField setTitle:[dateFormat stringFromDate:_endDate] forState:UIControlStateNormal];
     }
 }

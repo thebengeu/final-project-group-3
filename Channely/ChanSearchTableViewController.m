@@ -90,7 +90,7 @@
         cell.eventName.text = [event name];
         cell.description.text = [event details];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:kDateFormat];
+        [dateFormat setDateFormat:kChanDateFormat];
         cell.startDate.text = [dateFormat stringFromDate:event.startTime];
         cell.endDate.text = [dateFormat stringFromDate:event.endTime];
         

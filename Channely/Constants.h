@@ -171,7 +171,8 @@ static NSString *const kCreateChannelCompletedMessageFormat = @"Created %@";
 static NSString *const kDeleteChannelCompletedMessageFormat = @"Deleted %@";
 
 // Create Event
-static NSString *const kDateFormat = @"dd/MM/yyyy hh:mm a";
+static NSString *const kChanDateFormat = @"dd MMM h:mm a";
+static NSString *const kPostDateFormat = @"dd MMMM YYYY h:mm a";
 static NSString *const kCreateEventDescriptionPlaceholder = @"Description";
 static NSString *const kSelectedMapAnnotationTitle = @"Selection";
 static NSString *const kCreateEventAlertTitle = @"Create Event";

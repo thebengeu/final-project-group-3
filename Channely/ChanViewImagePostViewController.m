@@ -19,9 +19,11 @@
 {
     [super viewWillAppear:animated];
     // Do any additional setup after loading the view.
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:kPostDateFormat];
     
     [_text setText:[[self post] content]];
-    [_date setText:[[[self post]createdAt] description]];
+    [_date setText:[dateFormat stringFromDate:self.post.createdAt]];
     [_username setText:[[self post] username]];
     
     [_image setImageWithURL:[NSURL URLWithString:[(ChanImagePost *)[self post] url]]];
