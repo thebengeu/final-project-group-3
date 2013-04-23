@@ -23,6 +23,8 @@
     [_redButton setType:BButtonTypeDanger];
     [_blueButton setType:BButtonTypePrimary];
     [_greenButton setType:BButtonTypeSuccess];
+    
+    [self addTickTo:_redButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
