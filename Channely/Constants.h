@@ -102,6 +102,7 @@ static const CGFloat kAnnotationImageMaxSize = 640.0;
 //  Discover View Controller
 static const NSInteger kDistanceFilterMetres = 10;
 static const CGFloat kEventsSearchRadiusInMetres = 1000.0f;
+static const NSUInteger kMetresPerKm = 1000;
 
 // HTTP Live Streaming Advertisement
 static NSUInteger const kCompleteStreamShift = 31; // The right-shift offset for the bit-flag indicating if a stream is complete.

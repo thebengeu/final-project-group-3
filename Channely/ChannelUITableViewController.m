@@ -71,7 +71,13 @@
     CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:currentLocationCoords.latitude longitude:currentLocationCoords.longitude];
     CLLocation *eventLocation = [[CLLocation alloc] initWithLatitude:event.latitudeValue longitude:event.longitudeValue];
     CLLocationDistance distance = [eventLocation distanceFromLocation:currentLocation];
-    [[cell distanceTextView]setText:[NSString stringWithFormat:@"%.1f km", distance / 1000]];
+    
+    // Display distances below 1 km in metres
+    if (distance < kMetresPerKm) {
+        [[cell distanceTextView]setText:[NSString stringWithFormat:@"%.f m", distance]];
+    } else {
+        [[cell distanceTextView]setText:[NSString stringWithFormat:@"%.1f km", distance / kMetresPerKm]];
+    }
     
     cell.event = event;
     [cell setDelegate:(id < DiscoverUITableCellDelegate >)self];
