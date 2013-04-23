@@ -8,8 +8,8 @@
 
 #import "HLSLoadBalancer.h"
 
-static NSString *const cURLFormat = @"http://%@:%d/%@";
-static NSString *const cLocalhost = @"127.0.0.1";
+static NSString *const kURLFormat = @"http://%@:%d/%@";
+static NSString *const kLocalhost = @"127.0.0.1";
 
 @interface HLSLoadBalancer ()
 + (NSUInteger)totalChunksFromChunkField:(NSUInteger)chunkCount;
@@ -21,7 +21,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     // If a complete device-local source exists, always select it.
     if ([[HLSStreamSync streamSync] completeLocalStreamExistsForStreamId:rId]) {
         NSString *relativePath = [rId stringByAppendingPathComponent:[serverSource lastPathComponent]];
-        NSString *localURLStr = [NSString stringWithFormat:cURLFormat, cLocalhost, kLocalServerPort, relativePath];
+        NSString *localURLStr = [NSString stringWithFormat:kURLFormat, kLocalhost, kLocalServerPort, relativePath];
         return [NSURL URLWithString:localURLStr];
     }
     
@@ -31,6 +31,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     
     // If nobody has the recording, use the default server source.
     if (!result) {
+        NSLog(@"selected server source for lack of recordings.");
         return serverSource;
     }
     
@@ -68,6 +69,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
     while (!peerReachable) {
         // If there are no more reachable peers left from the array, return the default source.
         if (sourcePool.count == 0) {
+            NSLog(@"selected server source for lack of reachable peers.");
             return serverSource;
         }
         
@@ -76,7 +78,7 @@ static NSString *const cLocalhost = @"127.0.0.1";
         NSUInteger randIndex = arc4random_uniform(sourcePool.count);
         HLSNetServicePathChunkCountTuple *selectedPeer = [result objectAtIndex:randIndex];
         NSString *hostIpAddr = [HLSPeerDiscovery dottedDecimalFromNetService:selectedPeer.netService];
-        NSString *urlStr = [NSString stringWithFormat:cURLFormat, hostIpAddr, kLocalServerPort, selectedPeer.relativePath];
+        NSString *urlStr = [NSString stringWithFormat:kURLFormat, hostIpAddr, kLocalServerPort, selectedPeer.relativePath];
         
         // Test if the peer is reachable by attempting to download the playlist.
         selectedURL = [NSURL URLWithString:urlStr];
