@@ -185,7 +185,7 @@ static NSString *const kMediaDirectoryFormat = @"%@";
                 [timer invalidate];
             }
         } else {
-            //            NSLog(@"no change in playlist"); // DEBUG
+            NSLog(@"no change in playlist"); // DEBUG
             
             // Increment timeout timer.
             _intervalsSinceLastChange++;
@@ -195,16 +195,11 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     // Check for timeout condition.
     if (_intervalsSinceLastChange >= kStreamTimeoutFactor) {
         // Timeout condition.
-        //        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
+        NSLog(@"timeout after:%d", _intervalsSinceLastChange); // DEBUG
         
         if (_delegate) {
             [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
         }
-        
-        //        [_downloadQueue cancelAllOperations];
-        //        _error = YES;
-        //        _shouldFinishWhenQueueEmpty = YES;
-        //        [timer invalidate];
         
         [self stopOperationWithError];
     }
