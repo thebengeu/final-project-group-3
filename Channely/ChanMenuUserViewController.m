@@ -73,9 +73,15 @@
         //  Sends request to API
         [[ChanUser loggedInUser]updateUser:[_username text] password:password withCompletion:^(ChanUser *user, NSError *error) {
             [_updateStatus stopAnimating];
-            [_username setText:[[ChanUser loggedInUser]name]];
-            [_password setText:@""];
-            [SVProgressHUD showSuccessWithStatus:@"Updated"];
+            if (error != nil){
+                [_username setText:[[ChanUser loggedInUser]name]];
+                [_password setText:@""];
+                [SVProgressHUD showErrorWithStatus:@"Username already existed."];
+            } else {
+                [_username setText:[[ChanUser loggedInUser]name]];
+                [_password setText:@""];
+                [SVProgressHUD showSuccessWithStatus:@"Updated"];
+            }
         }];
         
         [_updateStatus startAnimating];

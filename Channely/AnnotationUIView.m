@@ -108,11 +108,17 @@
  */
 - (void)clear
 {
+    UIColor *currentColor = _markerColor;
+    CGFloat currentSize = _markerSize;
+    
     [self setImage:_originalImage];
     [_strokeColors removeAllObjects];
     [_strokeSizes removeAllObjects];
     [_strokesPoints removeAllObjects];
     _currentStrokeIndex = 0;
+    
+    _markerColor = currentColor;
+    _markerSize = currentSize;
 }
 
 /*
@@ -266,6 +272,9 @@
 
 - (void)undo
 {
+    UIColor *currentColor = _markerColor;
+    CGFloat currentSize = _markerSize;
+    
     //  Ensure that there are moves to undo
     if (_currentStrokeIndex <= 0) return;
     
@@ -289,10 +298,16 @@
         if (i == _currentStrokeIndex - 1) [self doneDrawContext:YES];
         else [self doneDrawContext:NO];
     }
+    
+    _markerColor = currentColor;
+    _markerSize = currentSize;
 }
 
 - (void)redo
 {
+    UIColor *currentColor = _markerColor;
+    CGFloat currentSize = _markerSize;
+    
     //  Redo the next stroke
     if (_currentStrokeIndex >= [_strokeSizes count]) return;
     
@@ -310,6 +325,9 @@
     [self doneDrawContext:YES];
     
     _currentStrokeIndex++;
+    
+    _markerColor = currentColor;
+    _markerSize = currentSize;
 }
 
 /*
