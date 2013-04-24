@@ -144,6 +144,8 @@
 // We also clear the downloaded files to save space.
 - (void)playlistDownloader:(HLSPlaylistDownloader *)dl didTimeoutWhenDownloadingRemoteStream:(NSURL *)stream
 {
+    NSLog(@"download operation timed out."); // DEBUG
+    
     // Stop advertising.
     HLSStreamAdvertisingManager *am = [HLSStreamAdvertisingManager advertisingManager];
     if ([am isAdvertisingRecordingId:recordingId]) {
