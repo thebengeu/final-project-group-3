@@ -76,7 +76,7 @@
         
         ChanChannel *channel = [_channelSearchResults objectAtIndex:row];
         cell.channelName.text = [channel name];
-        cell.hashtag.text = [channel hashTag];
+        cell.hashtag.text = [NSString stringWithFormat:@"#%@",[channel hashTag]];
         
         return cell;
     } else {
