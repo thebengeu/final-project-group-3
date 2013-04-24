@@ -10,5 +10,6 @@
 #import "ChanAbstractCell.h"
 
 @interface ChanVideoCell : ChanAbstractCell
+@property (weak, nonatomic) IBOutlet UILabel *liveLabel;
 
 @end

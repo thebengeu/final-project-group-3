@@ -1155,11 +1155,26 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="260" height="254"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="Streaming Live" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5b-K6-4gx">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="a71-y4-fLn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="o5b-K6-4gx" firstAttribute="top" secondItem="JmJ-JF-038" secondAttribute="top" type="default" id="3Pa-Uf-bkc"/>
+                                    <constraint firstAttribute="trailing" secondItem="o5b-K6-4gx" secondAttribute="trailing" constant="5" id="5PW-8O-vr3"/>
+                                </constraints>
                                 <size key="customSize" width="260" height="254"/>
                                 <connections>
+                                    <outlet property="liveLabel" destination="o5b-K6-4gx" id="dQ9-NV-si7"/>
                                     <segue destination="mLk-YZ-vAp" kind="push" identifier="videoPlayerSegue" id="Z6b-uW-ajH"/>
                                 </connections>
                             </collectionViewCell>
@@ -2405,6 +2420,9 @@
         </class>
         <class className="ChanVideoCell" superclassName="ChanAbstractCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="liveLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="ChanVideoInfoViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ChanVideoInfoViewController.h"/>
