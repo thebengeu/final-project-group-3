@@ -27,7 +27,7 @@ typedef enum {
 static NSString *const kServerAddress = @"https://upthetreehouse.com:10000";
 static NSString *const kBonjourDomain = @"local.";
 static NSString *const kAppServiceName = @"_channely._tcp.";
-static NSUInteger const kLocalServerPort = 22;
+static NSUInteger const kLocalServerPort = 2000;
 
 // Storyboard
 static NSString *const kStoryboardName = @"MainStoryboard_iPad";

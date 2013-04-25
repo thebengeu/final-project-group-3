@@ -9,7 +9,7 @@
 #import "HLSPlaylistDownloader.h"
 
 static NSTimeInterval const kRefreshInterval = 5.0; // Time in seconds.
-static NSUInteger const kStreamTimeoutFactor = 5; // No. intervals before concluding timeout.
+static NSUInteger const kStreamTimeoutFactor = 10; // No. intervals before concluding timeout.
 static NSString *const kHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
 static NSString *const kHLSEndListPrefix = @"#EXT-X-ENDLIST";
 static NSString *const kHLSChunkPrefix = @"#EXTINF:";
