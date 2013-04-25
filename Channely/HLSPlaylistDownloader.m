@@ -158,7 +158,7 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     // Synchronously get new playlist.
     NSError *downloadError = nil;
     _curPlaylist = [NSString stringWithContentsOfURL:_playlistURL encoding:NSUTF8StringEncoding error:&downloadError];
-    if (downloadError) {
+    if (!_curPlaylist) {
         NSLog(@"PlaylistDownloader/refreshTimer_Tick/download error:%@", downloadError);
         
         // Increment timeout timer.
@@ -302,11 +302,6 @@ static NSString *const kMediaDirectoryFormat = @"%@";
             if (_delegate) {
                 [_delegate playlistDownloader:self didTimeoutWhenDownloadingRemoteStream:_playlistURL];
             }
-            
-            //            [_downloadQueue cancelAllOperations];
-            //            _error = YES;
-            //            _shouldFinishWhenQueueEmpty = YES;
-            //            [_refreshTimer invalidate];
             
             [self stopOperationWithError];
             

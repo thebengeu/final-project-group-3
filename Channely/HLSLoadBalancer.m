@@ -83,8 +83,8 @@ static NSString *const kLocalhost = @"127.0.0.1";
         // Test if the peer is reachable by attempting to download the playlist.
         selectedURL = [NSURL URLWithString:urlStr];
         NSError *error;
-        [NSString stringWithContentsOfURL:selectedURL encoding:NSUTF8StringEncoding error:&error];
-        if (!error) {
+        NSString *content = [NSString stringWithContentsOfURL:selectedURL encoding:NSUTF8StringEncoding error:&error];
+        if (content) {
             NSLog(@"playlist:%@ was reachable. returning.", [selectedURL absoluteString]); // DEBUG.
             peerReachable = YES;
         } else {
