@@ -13,17 +13,14 @@
 
 @interface ChanViewTextPostViewController : ChanViewPostViewController
 
-- (IBAction)close:(id)sender;
-
+//  UI Components
 @property (strong, nonatomic) IBOutlet UITextView *username;
-
 @property (strong, nonatomic) IBOutlet UITextView *date;
-
 @property (strong, nonatomic) IBOutlet UITextView *text;
-
 @property (strong, nonatomic) IBOutlet BButton *deleteButton;
 
+//  UI Actions
 - (IBAction)deletePost:(id)sender;
-
+- (IBAction)close:(id)sender;
 
 @end

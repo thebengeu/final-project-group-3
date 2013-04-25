@@ -12,8 +12,10 @@
 
 @interface ChanViewPostViewController : UIViewController
 
+//  For tap to exit
 @property UITapGestureRecognizer *tapBehindRecognizer;
 
+//  Data
 @property ChanPost *post;
 
 @end

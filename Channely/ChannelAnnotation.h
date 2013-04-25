@@ -14,12 +14,10 @@
 }
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
+//  Data for annotation
 @property (nonatomic, readonly) NSString *channelName;
-
 @property (nonatomic, readonly) NSString *eventName;
-
 @property (nonatomic) NSString *channelID;
-
 @property (nonatomic) NSString *eventID;
 
 - (id)initWithChannelName:(NSString *)channelName eventName:(NSString *)eventName coordinate:(CLLocationCoordinate2D)coord;

@@ -10,6 +10,7 @@
 
 @class ChanChannel;
 
+//  Delegate to handle didPost
 @protocol ChanPostViewControllerDelegate
 
 - (void)didPost:(ChanChannel *)channel;
@@ -22,6 +23,7 @@
 @property UITapGestureRecognizer *tapBehindRecognizer;
 @property id<ChanPostViewControllerDelegate> delegate;
 
+//  Methods available for subclasses
 - (void)hideKeyboard;
 - (void)showErrorDialog;
 

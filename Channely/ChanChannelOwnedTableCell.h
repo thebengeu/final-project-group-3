@@ -12,10 +12,11 @@
 
 @interface ChanChannelOwnedTableCell : UITableViewCell
 
+//  UI Component
 @property (strong, nonatomic) IBOutlet UILabel *channelName;
-
 @property (strong, nonatomic) IBOutlet UILabel *hashtag;
 
+//  Data
 @property ChanChannel *channel;
 
 @end

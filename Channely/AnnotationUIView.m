@@ -12,14 +12,16 @@
 
 @interface AnnotationUIView ()
 
+//  All strokes
 @property NSMutableArray *currentStrokePoints;
 
+//  Current drawing data
 @property NSMutableArray *strokesPoints;
 @property NSMutableArray *strokeSizes;
 @property NSMutableArray *strokeColors;
-
 @property NSInteger currentStrokeIndex;
 
+//  Scale of screen (For retina)
 @property CGFloat scale;
 
 @end

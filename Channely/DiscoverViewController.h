@@ -11,15 +11,18 @@
 #import "ChannelUITableViewController.h"
 
 @interface DiscoverViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, DiscoverUITableViewControllerDelegate>
+
+//  Locations for map
 @property CLLocationManager *locationManager;
 @property CLLocationCoordinate2D location;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+//  Table
 @property (weak, nonatomic) IBOutlet UIView *channelListContainer;
-@property NSArray *channelList;
 @property ChannelUITableViewController *channelTableViewController;
 @property NSUInteger currentSelectedIndex;
 
-- (void)populateMapWithChannelAnnotation;
-- (void)populateTableWithChannel;
+//  Current list of channels listed
+@property NSArray *channelList;
 
 @end

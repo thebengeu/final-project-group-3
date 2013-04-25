@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//  Methods that sub components of the Channel View need to launch another component
 @protocol ChannelViewControllerDelegate <NSObject>
 
 - (void)launchVideoSegue;

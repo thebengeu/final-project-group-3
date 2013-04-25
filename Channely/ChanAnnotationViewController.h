@@ -18,6 +18,8 @@
 @end
 
 @interface ChanAnnotationViewController : UIViewController
+
+//  UI Components
 @property (strong, nonatomic) IBOutlet AnnotationUIView *annotationView;
 @property UIImage *image;
 @property (weak, nonatomic) IBOutlet BButton *clearButton;
@@ -26,12 +28,14 @@
 @property (weak, nonatomic) IBOutlet BButton *greenButton;
 @property (weak, nonatomic) IBOutlet BButton *blueButton;
 @property (weak, nonatomic) IBOutlet BButton *redButton;
+
+//  Delegate for didFinishAnnotation
 @property id<ChanAnnotationViewControllerDelegate> delegate;
 
+//  Palette actions
 - (IBAction)redColor:(id)sender;
 - (IBAction)greenColor:(id)sender;
 - (IBAction)blueColor:(id)sender;
-
 - (IBAction)done:(id)sender;
 - (IBAction)clear:(id)sender;
 - (IBAction)undo:(id)sender;

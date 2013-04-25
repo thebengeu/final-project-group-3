@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "ChannelUITableViewCell.h"
 
+//  For map to receive updates
 @protocol DiscoverUITableViewControllerDelegate <NSObject, DiscoverUITableCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -26,6 +27,7 @@
 
 @property (nonatomic) NSArray *channelList;
 
+//  Set to view map
 @property id<DiscoverUITableViewControllerDelegate> delegate;
 
 @end

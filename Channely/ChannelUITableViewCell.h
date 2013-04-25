@@ -10,6 +10,7 @@
 
 @class ChanEvent;
 
+//  Delegate for changing table when map annotation is selected
 @protocol DiscoverUITableCellDelegate <NSObject>
 
 - (void)selectMapAnnotationForChannel:(id)cell;
@@ -18,17 +19,17 @@
 
 @interface ChannelUITableViewCell : UITableViewCell
 
+//  UI Component
 @property (strong, nonatomic) IBOutlet UILabel *channelNameLabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *eventNameLabel;
-
 @property (weak, nonatomic) IBOutlet UITextView *distanceTextView;
 @property (weak, nonatomic) IBOutlet UITextView *startDateTimeTextView;
 @property (weak, nonatomic) IBOutlet UITextView *endDateTimeTextView;
 
+//  UI Actions
+- (IBAction)locationButtonTapped:(id)sender;
+
 @property (weak, nonatomic) ChanEvent *event;
 @property (strong, nonatomic) id<DiscoverUITableCellDelegate> delegate;
-
-- (IBAction)locationButtonTapped:(id)sender;
 
 @end

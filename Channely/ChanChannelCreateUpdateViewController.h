@@ -13,18 +13,18 @@
 
 @interface ChanChannelCreateUpdateViewController : UIViewController <UIAlertViewDelegate>
 
+//  Data
 @property BOOL isUpdateChannel;
-
 @property ChanChannel *channel;
 
+//  UI Components
 @property (strong, nonatomic) IBOutlet BButton *createUpdateButton;
 @property (strong, nonatomic) IBOutlet BButton *deleteButton;
-
 @property (strong, nonatomic) IBOutlet UITextField *channelName;
 @property (strong, nonatomic) IBOutlet UITextField *hashtag;
 
+//  UI Actions
 - (IBAction)createOrUpdate:(id)sender;
-
 - (IBAction)deleteChannel:(id)sender;
 
 @end
