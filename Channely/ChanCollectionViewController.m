@@ -190,7 +190,7 @@
         case kTwitterPost:
             return @"TwitterCell";
         default:
-            NSLog(@"Unexpected type constant %d", post.typeConstant);
+            NSLog(kUnexpectedTypeConstantMessage, post.typeConstant);
             return nil;
     }
 }
