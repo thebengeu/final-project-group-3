@@ -8,7 +8,7 @@
 
 #import "HLSPlaylistDownloader.h"
 
-static NSTimeInterval const kRefreshInterval = 5.0; // Time in seconds.
+static NSTimeInterval const kRefreshInterval = 9.0; // Time in seconds.
 static NSUInteger const kStreamTimeoutFactor = 10; // No. intervals before concluding timeout.
 static NSString *const kHLSTargetDurationPrefix = @"#EXT-X-TARGETDURATION:";
 static NSString *const kHLSEndListPrefix = @"#EXT-X-ENDLIST";
@@ -250,6 +250,7 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     return containsEndTag;
 }
 
+// Returns the chunk duration given a string of the form "#EXTINF:12,text"
 - (CGFloat)chunkDurationFromInfString:(NSString *)inf
 {
     NSArray *tokens = [inf componentsSeparatedByString:@","];
@@ -287,12 +288,14 @@ static NSString *const kMediaDirectoryFormat = @"%@";
     [_downloadQueue addOperation:operation];
 }
 
-// Note: There is no notification if the download of an individual video chunk fails.
-// The didDownloadChunk delegate will be fired, but the chunk file will not be written.
-// Note: There may be a slight timing error where didFinishDownloading is called before the last chunk is written.
+// Note: We need to observer both individual operations, and the state of the queue itself. We should not try to infer the state
+// of the queue from the completion of each chunk download operation, and at the same time, we cannot extract details of a
+// download operation from the queue itself.
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([object class] == [HLSChunkDownloadOperation class] && [keyPath isEqualToString:kKVOIsFinished]) {
+        // Executed when a HLS Chunk Download Operation finishes.
+        
         HLSChunkDownloadOperation *finishedOp = (HLSChunkDownloadOperation *)object;
         HLSChunkDownloadMetaData *meta = finishedOp.meta;
         
@@ -317,6 +320,8 @@ static NSString *const kMediaDirectoryFormat = @"%@";
         
         [finishedOp removeObserver:self forKeyPath:kKVOIsFinished];
     } else if ([object class] == [NSOperationQueue class] && [keyPath isEqualToString:kKVOOperation]) {
+        // Executed when the operation queue finishes an operation.
+        
         NSArray *queueState = (NSArray *)[change valueForKey:NSKeyValueChangeNewKey];
         if (_shouldFinishWhenQueueEmpty && queueState.count == 0) {
             [_playlistHelper endPlaylist];
