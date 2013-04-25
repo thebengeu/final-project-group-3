@@ -14,9 +14,6 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>channely_114.png</string>
-				<string>channely_144.png</string>
-				<string>channely_72.png</string>
 				<string>icon@2x.png</string>
 				<string>icon.png</string>
 				<string>icon-small@2x.png</string>
