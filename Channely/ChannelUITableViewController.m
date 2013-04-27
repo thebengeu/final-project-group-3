@@ -7,7 +7,6 @@
 //
 
 #import "ChannelUITableViewController.h"
-#import "ChannelUITableViewCell.h"
 #import "ChannelViewController.h"
 #import "ChanEvent.h"
 #import "ChanChannel.h"

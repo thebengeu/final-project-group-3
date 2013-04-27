@@ -9,9 +9,7 @@
 #import "ChanSlidesViewController.h"
 #import "ChanSlidesPost.h"
 #import "ChanSlidePost.h"
-#import "ChanAnnotationViewController.h"
 #import "ChannelViewControllerDelegate.h"
-#import "Constants.h"
 
 @implementation ChanSlidesViewController
 

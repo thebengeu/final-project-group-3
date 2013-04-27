@@ -7,7 +7,6 @@
 //
 
 #import "ChanCollectionView.h"
-#import "ChanAbstractCell.h"
 
 @implementation ChanCollectionView
 

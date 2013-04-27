@@ -7,12 +7,10 @@
 //
 
 #import "ChannelViewController.h"
-#import "ChanCreateEventViewController.h"
 #import "ChanTextPostViewController.h"
 #import "ChanImagePostViewController.h"
 #import "ChanVideoCaptureViewController.h"
 #import "SVProgressHUD.h"
-#import "Constants.h"
 #import "ChanUser.h"
 #import "ChanChannel.h"
 

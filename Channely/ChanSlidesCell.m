@@ -9,7 +9,6 @@
 #import "ChanSlidesCell.h"
 #import "ChanSlidesPost.h"
 #import "ChanSlidePost.h"
-#import "Constants.h"
 
 @implementation ChanSlidesCell
 

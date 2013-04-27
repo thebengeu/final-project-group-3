@@ -7,8 +7,6 @@
 //
 
 #import "ChanAnnotationViewController.h"
-#import "ChanAnonUser.h"
-#import "ChanChannel.h"
 #import "AnnotationUIView.h"
 #import "BButton.h"
 

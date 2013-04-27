@@ -9,7 +9,6 @@
 #import "ChanVideoCell.h"
 #import "ChanVideoPost.h"
 #import "ChanVideoThumbnailPost.h"
-#import "Constants.h"
 
 @implementation ChanVideoCell
 

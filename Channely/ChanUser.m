@@ -1,6 +1,5 @@
 #import "ChanUser.h"
 #import "ChanAPIEndpoints.h"
-#import "ChanChannel.h"
 
 static ChanUser *loggedInUser = nil;
 

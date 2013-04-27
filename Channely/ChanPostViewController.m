@@ -8,9 +8,6 @@
 
 #import "ChanPostViewController.h"
 #import "Constants.h"
-#import "ChanChannel.h"
-#import "ChanUser.h"
-#import "ChanAnonUser.h"
 
 @interface ChanPostViewController ()
 

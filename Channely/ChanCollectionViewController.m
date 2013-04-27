@@ -20,16 +20,11 @@
 #import "ChanSlidesCell.h"
 #import "ChanTwitterCell.h"
 #import "ChanPost.h"
-#import "ChanTextPost.h"
-#import "ChanImagePost.h"
 #import "ChanVideoPost.h"
-#import "ChanVideoThumbnailPost.h"
 #import "ChanSlidesPost.h"
-#import "ChanTwitterPost.h"
 #import "ChanVideoPlayerViewController.h"
 #import "ChanSlidesViewController.h"
 #import "ChannelViewControllerDelegate.h"
-#import "AwesomeMenuItem.h"
 
 @interface ChanCollectionViewController ()
 

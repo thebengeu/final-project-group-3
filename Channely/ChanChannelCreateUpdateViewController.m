@@ -8,11 +8,9 @@
 
 #import "ChanChannelCreateUpdateViewController.h"
 #import "ChanChannel.h"
-#import "ChanDetailViewController.h"
 #include "SVProgressHUD.h"
 #import "Constants.h"
 #import "AHAlertView+Channely.h"
-#import "ChanChannel.h"
 #import "BButton.h"
 
 @implementation ChanChannelCreateUpdateViewController

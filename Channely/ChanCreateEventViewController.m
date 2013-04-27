@@ -7,7 +7,6 @@
 //
 
 #import "ChanCreateEventViewController.h"
-#import "SVProgressHUD.h"
 #import "Constants.h"
 #import "AHAlertView+Channely.h"
 #import "BButton.h"

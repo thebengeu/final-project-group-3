@@ -1,6 +1,5 @@
 #import "ChanImagePost.h"
 #import "ChanAPIEndpoints.h"
-#import "Constants.h"
 
 @implementation ChanImagePost
 

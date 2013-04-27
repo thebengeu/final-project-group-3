@@ -7,8 +7,6 @@
 //
 
 #import "DiscoverViewController.h"
-#import "ChannelUITableViewCell.h"
-#import "ChannelUITableViewController.h"
 #import "ChannelAnnotation.h"
 #import "LocationAnnotation.h"
 #import "ChannelViewController.h"

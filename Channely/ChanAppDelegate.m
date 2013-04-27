@@ -14,8 +14,6 @@
 #import "ChanRestKitObjectMappings.h"
 #import "ChanAPIEndpoints.h"
 #import "HLSStreamAdvertisingManager.h"
-#import "HLSStreamAdvertiser.h"
-#import "ChanUtility.h"
 #import "HLSStreamSync.h"
 #import "HLSPeerDiscovery.h"
 

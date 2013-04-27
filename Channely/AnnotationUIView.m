@@ -7,7 +7,6 @@
 //
 
 #import "AnnotationUIView.h"
-#import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 
 @interface AnnotationUIView ()

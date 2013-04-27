@@ -7,13 +7,11 @@
 //
 
 #import <MediaPlayer/MediaPlayer.h>
-#import <QuartzCore/QuartzCore.h>
 
 #import "ChanVideoPlayerViewController.h"
 #import "ChanVideoInfoViewController.h"
 #import "ChanChannel.h"
 #import "ChanUtility.h"
-#import "HLSPeerDiscovery.h"
 #import "HLSStreamSync.h"
 #import "ChanAnnotationViewController.h"
 #import "HLSLoadBalancer.h"
