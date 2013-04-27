@@ -50,7 +50,7 @@
         } else {
             [SVProgressHUD setAnimationDuration:1.5];
             [SVProgressHUD showSuccessWithStatus:kPostDeletedMessage];
-            [self dismissViewControllerAnimated:YES completion:NO];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
 }
