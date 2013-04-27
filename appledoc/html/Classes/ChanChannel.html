@@ -1,0 +1,976 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>ChanChannel Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">Channely </a></h1>
+				<a id="developerHome" href="../index.html">CS3217</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">ChanChannel Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/addChannelWithName:hashTag:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;+ addChannelWithName:hashTag:withCompletion:</option>
+	
+	<option value="//api/name/getAllChannelsWithCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;+ getAllChannelsWithCompletion:</option>
+	
+	<option value="//api/name/search:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;+ search:withCompletion:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addEventWithName:details:location:startTime:endTime:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- addEventWithName:details:location:startTime:endTime:withCompletion:</option>
+	
+	<option value="//api/name/addImagePostWithContent:username:image:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- addImagePostWithContent:username:image:withCompletion:</option>
+	
+	<option value="//api/name/addTextPostWithContent:username:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- addTextPostWithContent:username:withCompletion:</option>
+	
+	<option value="//api/name/deleteWithCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteWithCompletion:</option>
+	
+	<option value="//api/name/getPostsSince:until:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- getPostsSince:until:withCompletion:</option>
+	
+	<option value="//api/name/getTweetsWithCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- getTweetsWithCompletion:</option>
+	
+	<option value="//api/name/updateChannelWithName:hashTag:withCompletion:">&nbsp;&nbsp;&nbsp;&nbsp;- updateChannelWithName:hashTag:withCompletion:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addChannelWithName:hashTag:withCompletion:">addChannelWithName:hashTag:withCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAllChannelsWithCompletion:">getAllChannelsWithCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/search:withCompletion:">search:withCompletion:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addEventWithName:details:location:startTime:endTime:withCompletion:">addEventWithName:details:location:startTime:endTime:withCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addImagePostWithContent:username:image:withCompletion:">addImagePostWithContent:username:image:withCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addTextPostWithContent:username:withCompletion:">addTextPostWithContent:username:withCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteWithCompletion:">deleteWithCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getPostsSince:until:withCompletion:">getPostsSince:until:withCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getTweetsWithCompletion:">getTweetsWithCompletion:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateChannelWithName:hashTag:withCompletion:">updateChannelWithName:hashTag:withCompletion:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="ChanChannel Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">ChanChannel Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">_ChanChannel : NSManagedObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">ChanChannel.h<br />ChanChannel.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p><code>ChanChannel</code> wraps API and persistence operations for Channely channels.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getAllChannelsWithCompletion:">+&nbsp;getAllChannelsWithCompletion:</a></code>
+		<span class="tooltip"><p>Gets all channels in Channely.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addChannelWithName:hashTag:withCompletion:">+&nbsp;addChannelWithName:hashTag:withCompletion:</a></code>
+		<span class="tooltip"><p>Creates and returns new channel with given name and hashtag.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/search:withCompletion:">+&nbsp;search:withCompletion:</a></code>
+		<span class="tooltip"><p>Searches for channels with names containing given substring.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/updateChannelWithName:hashTag:withCompletion:">&ndash;&nbsp;updateChannelWithName:hashTag:withCompletion:</a></code>
+		<span class="tooltip"><p>Updates channel with given name and hashtag.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteWithCompletion:">&ndash;&nbsp;deleteWithCompletion:</a></code>
+		<span class="tooltip"><p>Deletes channel.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getPostsSince:until:withCompletion:">&ndash;&nbsp;getPostsSince:until:withCompletion:</a></code>
+		<span class="tooltip"><p>Gets posts for channel between given since and until parameters. If both parameters are nil, all posts will be retrieved.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addTextPostWithContent:username:withCompletion:">&ndash;&nbsp;addTextPostWithContent:username:withCompletion:</a></code>
+		<span class="tooltip"><p>Adds new text post to channel.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addImagePostWithContent:username:image:withCompletion:">&ndash;&nbsp;addImagePostWithContent:username:image:withCompletion:</a></code>
+		<span class="tooltip"><p>Adds new image post to channel.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addEventWithName:details:location:startTime:endTime:withCompletion:">&ndash;&nbsp;addEventWithName:details:location:startTime:endTime:withCompletion:</a></code>
+		<span class="tooltip"><p>Adds new event to channel.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getTweetsWithCompletion:">&ndash;&nbsp;getTweetsWithCompletion:</a></code>
+		<span class="tooltip"><p>Gets tweets using the channel&rsquo;s assigned hashtag. Does nothing if length of hashtag is below 2 characters.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addChannelWithName:hashTag:withCompletion:" title="addChannelWithName:hashTag:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">addChannelWithName:hashTag:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates and returns new channel with given name and hashtag.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)addChannelWithName:(NSString *)<em>name</em> hashTag:(NSString *)<em>hashTag</em> withCompletion:(void ( ^ ) ( ChanChannel *channel , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the created channel.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>hashTag</em></dt>
+			<dd><p>The hashtag of the created channel.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the created channel and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Creates and returns new channel with given name and hashtag.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getAllChannelsWithCompletion:" title="getAllChannelsWithCompletion:"></a>
+	<h3 class="subsubtitle method-title">getAllChannelsWithCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets all channels in Channely.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)getAllChannelsWithCompletion:(void ( ^ ) ( NSArray *channels , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: an NSArray of all channels and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Gets all channels in Channely.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/search:withCompletion:" title="search:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">search:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Searches for channels with names containing given substring.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (void)search:(NSString *)<em>name</em> withCompletion:(void ( ^ ) ( NSArray *channels , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The substring to match against channel names.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: an NSArray of the searched for channels and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Searches for channels with names containing given substring.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addEventWithName:details:location:startTime:endTime:withCompletion:" title="addEventWithName:details:location:startTime:endTime:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">addEventWithName:details:location:startTime:endTime:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds new event to channel.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addEventWithName:(NSString *)<em>name</em> details:(NSString *)<em>details</em> location:(CLLocationCoordinate2D)<em>location</em> startTime:(NSDate *)<em>startTime</em> endTime:(NSDate *)<em>endTime</em> withCompletion:(void ( ^ ) ( ChanEvent *event , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name of the event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>details</em></dt>
+			<dd><p>The details of the event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>location</em></dt>
+			<dd><p>The location of the event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>startTime</em></dt>
+			<dd><p>The starting time of the event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>endTime</em></dt>
+			<dd><p>The ending time of the event.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the added event and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds new event to channel.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addImagePostWithContent:username:image:withCompletion:" title="addImagePostWithContent:username:image:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">addImagePostWithContent:username:image:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds new image post to channel.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addImagePostWithContent:(NSString *)<em>content</em> username:(NSString *)<em>username</em> image:(UIImage *)<em>image</em> withCompletion:(void ( ^ ) ( ChanImagePost *imagePost , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>content</em></dt>
+			<dd><p>The caption content for the image post.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username to attribute the image post to. Will be ignored if user is logged in.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image to be added.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the added image post and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds new image post to channel.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addTextPostWithContent:username:withCompletion:" title="addTextPostWithContent:username:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">addTextPostWithContent:username:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Adds new text post to channel.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)addTextPostWithContent:(NSString *)<em>content</em> username:(NSString *)<em>username</em> withCompletion:(void ( ^ ) ( ChanTextPost *textPost , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>content</em></dt>
+			<dd><p>The content for the text post.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>username</em></dt>
+			<dd><p>The username to attribute the image post to. Will be ignored if user is logged in.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the added text post and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Adds new text post to channel.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/deleteWithCompletion:" title="deleteWithCompletion:"></a>
+	<h3 class="subsubtitle method-title">deleteWithCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Deletes channel.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)deleteWithCompletion:(void ( ^ ) ( ChanChannel *channel , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the deleted channel and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Deletes channel.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getPostsSince:until:withCompletion:" title="getPostsSince:until:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">getPostsSince:until:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets posts for channel between given since and until parameters. If both parameters are nil, all posts will be retrieved.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getPostsSince:(NSDate *)<em>since</em> until:(NSDate *)<em>until</em> withCompletion:(void ( ^ ) ( NSArray *posts , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>since</em></dt>
+			<dd><p>Posts since this date/time will be retrieved. If nil, posts since the beginning will be retrieved.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>until</em></dt>
+			<dd><p>Posts until this date/time will be retrieved. If nil, posts until now will be retrieved.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: an NSArray of the posts and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Gets posts for channel between given since and until parameters. If both parameters are nil, all posts will be retrieved.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getTweetsWithCompletion:" title="getTweetsWithCompletion:"></a>
+	<h3 class="subsubtitle method-title">getTweetsWithCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Gets tweets using the channel&rsquo;s assigned hashtag. Does nothing if length of hashtag is below 2 characters.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)getTweetsWithCompletion:(void ( ^ ) ( NSArray *tweets , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: an array of the tweets and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Gets tweets using the channel&rsquo;s assigned hashtag. Does nothing if length of hashtag is below 2 characters.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/updateChannelWithName:hashTag:withCompletion:" title="updateChannelWithName:hashTag:withCompletion:"></a>
+	<h3 class="subsubtitle method-title">updateChannelWithName:hashTag:withCompletion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Updates channel with given name and hashtag.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)updateChannelWithName:(NSString *)<em>name</em> hashTag:(NSString *)<em>hashTag</em> withCompletion:(void ( ^ ) ( ChanChannel *channel , NSError *error ))<em>block</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>The name to update the channel with.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>hashTag</em></dt>
+			<dd><p>The hashtag to update the channel with.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>A block object to be executed when the request operation finishes. This block has no return value and takes two arguments: the updated channel and the <code>NSError</code> object describing the network or parsing error that occurred or nil if there are no errors.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Updates channel with given name and hashtag.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">ChanChannel.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 CS3217. All rights reserved. (Last updated: 2013-04-28)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>
