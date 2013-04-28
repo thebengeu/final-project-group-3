@@ -54,12 +54,16 @@
 /**
  Determines if the HLS playlist at the specified path is complete.
  
+ @param path The path of the specified playlist.
+ 
  @return `YES` if the playlist contains the playlist footer. A `NO` may be returned if the playlist could not be read.
  */
 + (BOOL)playlistIsComplete:(NSString *)path;
 
 /**
  Determines the number of chunks in the playlist.
+ 
+ @param path The path of the specified playlist.
  
  @return The number of chunks in the playlist. A `0` may be returned if the playlist could not be read.
  */

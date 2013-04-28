@@ -69,6 +69,8 @@
 /**
  Initializes a single instance of `HLSStreamSync` and returns a reference to it. If the object has already been initialized, then this method returns a reference to the existing copy.
  
+ @param advertiser The Bonjour Net Service advertiser that publishes service information.
+ 
  @return An initialized instance of this object.
  */
 + (HLSStreamAdvertisingManager *)advertisingManagerWithAdvertiser:(id<HLSStreamAdvertiser>)advertiser;

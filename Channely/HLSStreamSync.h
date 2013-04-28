@@ -65,6 +65,8 @@
 /**
  Initializes a single instance of `HLSStreamSync` and returns a reference to it. If the object has already been initialized, then this method returns a reference to the existing copy.
  
+ @param dir The media directory of this object. Downloaded recordings are placed in subfolders of this directory. The name of each subfolder is its recording id.
+ 
  @return An initialized instance of this object.
  */
 + (HLSStreamSync *)setupStreamSyncWithBaseDirectory:(NSString *)dir;
