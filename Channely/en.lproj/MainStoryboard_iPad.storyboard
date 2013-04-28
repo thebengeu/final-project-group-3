@@ -1659,7 +1659,7 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mqt-Ok-tN6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="206" id="p7z-Ck-GtL"/>
+                                    <constraint firstAttribute="height" constant="206" type="user" id="p7z-Ck-GtL"/>
                                 </constraints>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Event Name" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="paY-Gw-plI" customClass="SLGlowingTextField">
@@ -1759,22 +1759,21 @@
                             <constraint firstItem="paY-Gw-plI" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="86G-v9-tAr"/>
                             <constraint firstItem="GFI-XE-Dip" firstAttribute="top" secondItem="ihe-h0-xmD" secondAttribute="top" type="default" id="8Ua-j7-6kf"/>
                             <constraint firstItem="wCi-Fv-dtQ" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="BWt-fe-fRO"/>
-                            <constraint firstItem="wCi-Fv-dtQ" firstAttribute="top" secondItem="Vf0-2L-r5g" secondAttribute="top" constant="8" id="Fhi-XC-XYE"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="trailing" secondItem="paY-Gw-plI" secondAttribute="trailing" type="default" id="IGj-tu-zJV"/>
                             <constraint firstItem="hKz-3X-fMT" firstAttribute="leading" secondItem="paY-Gw-plI" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="JSw-3S-FzM"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="KgH-Su-a2z"/>
                             <constraint firstAttribute="bottom" secondItem="ihe-h0-xmD" secondAttribute="bottom" constant="14" id="O3J-TM-8XC"/>
+                            <constraint firstAttribute="bottom" secondItem="wCi-Fv-dtQ" secondAttribute="bottom" constant="391" type="user" id="OaB-uX-M8o"/>
                             <constraint firstAttribute="trailing" secondItem="mqt-Ok-tN6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="PBF-wq-jkO"/>
+                            <constraint firstAttribute="bottom" secondItem="mqt-Ok-tN6" secondAttribute="bottom" constant="182" type="user" id="Poj-Zt-dzS"/>
                             <constraint firstItem="mqt-Ok-tN6" firstAttribute="leading" secondItem="Vf0-2L-r5g" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vqp-4f-Ztk"/>
                             <constraint firstItem="zYE-ju-NE1" firstAttribute="leading" secondItem="hKz-3X-fMT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="YOx-uP-vzk"/>
                             <constraint firstItem="zYE-ju-NE1" firstAttribute="leading" secondItem="GFI-XE-Dip" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="c6H-z3-E6D"/>
                             <constraint firstItem="ihe-h0-xmD" firstAttribute="top" secondItem="paY-Gw-plI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f5H-fM-6sa"/>
                             <constraint firstItem="xQY-rH-8Rf" firstAttribute="top" secondItem="zYE-ju-NE1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f5p-cF-WyZ"/>
-                            <constraint firstItem="mqt-Ok-tN6" firstAttribute="top" secondItem="Vf0-2L-r5g" secondAttribute="top" constant="32" id="gqN-US-sAn"/>
-                            <constraint firstItem="ihe-h0-xmD" firstAttribute="bottom" secondItem="v6I-oS-lcH" secondAttribute="bottom" type="default" id="kWf-mO-q1J"/>
-                            <constraint firstItem="mqt-Ok-tN6" firstAttribute="top" secondItem="Vf0-2L-r5g" secondAttribute="top" priority="1" constant="14" type="user" id="kxm-KA-XwV"/>
                             <constraint firstItem="xQY-rH-8Rf" firstAttribute="leading" secondItem="GFI-XE-Dip" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="nBL-VI-fDp"/>
                             <constraint firstAttribute="trailing" secondItem="xQY-rH-8Rf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nQ0-5L-uvr"/>
+                            <constraint firstAttribute="bottom" secondItem="v6I-oS-lcH" secondAttribute="bottom" constant="15" id="ofD-JK-iEX"/>
                             <constraint firstItem="GFI-XE-Dip" firstAttribute="top" secondItem="hKz-3X-fMT" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tZa-QC-yer"/>
                             <constraint firstAttribute="trailing" secondItem="v6I-oS-lcH" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uDC-S7-ifx"/>
                             <constraint firstAttribute="trailing" secondItem="zYE-ju-NE1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zfb-sr-PA8"/>
