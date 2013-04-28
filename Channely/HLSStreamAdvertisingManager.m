@@ -38,10 +38,8 @@ static HLSStreamAdvertisingManager *_internal;
 {
     if (!_internal) {
         _internal = [[HLSStreamAdvertisingManager alloc] initWithAdvertiser:advertiser];
-        return _internal;
-    } else {
-        return nil;
     }
+    return _internal;
 }
 
 #pragma mark Constructors

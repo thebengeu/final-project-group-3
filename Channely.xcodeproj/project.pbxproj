@@ -22,7 +22,6 @@
 		0A991D311719590400275B3B /* ChanAnonUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A991D301719590300275B3B /* ChanAnonUser.m */; };
 		0A9B21FB16FC4428008E5A23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ABB364816FC16A500436E06 /* MapKit.framework */; };
 		0A9B21FC16FC442E008E5A23 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */; };
-		0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */ = {isa = PBXBuildFile; fileRef = 0A9C9E8D16F304960017FECB /* ntp.hosts */; };
 		0A9EAEF817229FB2001B5DD7 /* ChanViewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EAEF717229FB2001B5DD7 /* ChanViewPostViewController.m */; };
 		0A9EAEFB1722B2B7001B5DD7 /* ChanViewTextPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EAEFA1722B2B6001B5DD7 /* ChanViewTextPostViewController.m */; };
 		0AA247661708430C00E5A4C0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA247651708430B00E5A4C0 /* MobileCoreServices.framework */; };
@@ -213,7 +212,6 @@
 		0A991D2F1719590300275B3B /* ChanAnonUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanAnonUser.h; path = Channely/ChanAnonUser.h; sourceTree = "<group>"; };
 		0A991D301719590300275B3B /* ChanAnonUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanAnonUser.m; path = Channely/ChanAnonUser.m; sourceTree = "<group>"; };
 		0A9B21F916FC43ED008E5A23 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0A9C9E8D16F304960017FECB /* ntp.hosts */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ntp.hosts; path = Channely/ntp.hosts; sourceTree = "<group>"; };
 		0A9EAEF617229FB2001B5DD7 /* ChanViewPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanViewPostViewController.h; path = Channely/ChanViewPostViewController.h; sourceTree = "<group>"; };
 		0A9EAEF717229FB2001B5DD7 /* ChanViewPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChanViewPostViewController.m; path = Channely/ChanViewPostViewController.m; sourceTree = "<group>"; };
 		0A9EAEF91722B2B5001B5DD7 /* ChanViewTextPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChanViewTextPostViewController.h; path = Channely/ChanViewTextPostViewController.h; sourceTree = "<group>"; };
@@ -955,7 +953,6 @@
 				B66FDCBB16EF88A40042A36C /* ChannelyTests */,
 				B66FDC8416EF88A30042A36C /* Frameworks */,
 				B66FDC8316EF88A30042A36C /* Products */,
-				0A9C9E8D16F304960017FECB /* ntp.hosts */,
 				97663AA3EF11435B88CF1377 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
@@ -1198,7 +1195,6 @@
 				B66FDC9E16EF88A40042A36C /* Default-568h@2x.png in Resources */,
 				B66FDCA116EF88A40042A36C /* MainStoryboard_iPhone.storyboard in Resources */,
 				B66FDCA416EF88A40042A36C /* MainStoryboard_iPad.storyboard in Resources */,
-				0A9C9E8E16F304970017FECB /* ntp.hosts in Resources */,
 				824E963E17113B1A00E96418 /* icon-small@2x.png in Resources */,
 				824E964017113B8C00E96418 /* icon@2x.png in Resources */,
 				824E964217113BD100E96418 /* icon.png in Resources */,

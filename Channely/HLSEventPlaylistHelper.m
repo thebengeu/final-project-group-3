@@ -106,7 +106,7 @@ static NSString *const kHash = @"#";
     NSString *plContents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
     
     if (error) {
-        return NO;
+        return 0;
     }
     
     plContents = [plContents stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

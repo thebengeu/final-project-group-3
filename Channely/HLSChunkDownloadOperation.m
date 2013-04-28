@@ -40,7 +40,7 @@
 {
     NSData *downloadedData = [NSData dataWithContentsOfURL:_source];
     
-    // Report failure or success of download if the variable is set.
+    // Report failure or success of download.
     error = (!downloadedData);
     
     [downloadedData writeToURL:_target atomically:YES];
